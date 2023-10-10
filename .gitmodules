@@ -1,0 +1,3 @@
+[submodule "Latex_Templates"]
+	path = Latex_Templates
+	url = https://github.com/TheoKoppenhoefer/latex-templates.git
