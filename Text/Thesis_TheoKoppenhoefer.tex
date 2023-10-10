@@ -1,0 +1,196 @@
+
+
+\input{../Latex_Templates/Preamble_Report}
+
+%%%%% TITLE PAGE
+
+%\subject{, VT23}
+\title{ Some title \\[1ex]
+	  \large Master Thesis}
+%\subtitle{}
+\author{Theo Koppenhöfer}
+\date{Lund \\[1ex] \today}
+
+\addbibresource{bibliography.bib}
+
+\usepackage{pythonhighlight}
+\usepackage{pgfplots}
+\graphicspath{{../Plots/}}
+
+\pgfplotsset{
+	compat=newest,
+    every axis/.append style={
+        axis y line=left,
+        axis x line=bottom,
+        scale only axis,
+%    	max space between ticks=25pt,
+        width=0.7\textwidth,
+        scaled ticks=true,
+        axis line style={thick,-,>=latex, shorten >=-.4cm},
+    		x tick label style={
+		    /pgf/number format/precision=3
+		}
+    },
+    every axis plot/.append style={thick},
+    tick style={black, thick}
+}
+
+\newcommand{\bx}{\bar{x}}
+
+%%%%% The content starts here %%%%%%%%%%%%%
+
+
+\begin{document}
+
+\maketitle
+
+Some amazing introduction
+ 
+\newpage
+
+\section*{Some general remarks}
+
+\subsection*{On assuming non-degeneracy}
+
+\newpage
+
+\section*{The case $n=2$}
+
+\begin{claim}
+  Let $\Omega$ be homoemorph to $B_1\subseteq\R^2$. Let further $f\colon\overline{\Omega}\to\R$ be harmonic and admissable 
+  as in Morse with critical point $x_0\in\Omega$. Then $\Sigma^-\subseteq\partial\Omega$ consists fo at least 2 components.
+\end{claim}
+
+
+\subsection*{A proof involving level-sets}
+
+\begin{proof}
+  Let $y_c=f(x_0)$ and $x_0,\dots,x_N$ be all the critical points s.t.\ $f(x_i)=y_c$. We claim that the set
+  \begin{align*}
+    C=\brk[c]*{f=y_c}\subseteq\overline{\Omega}
+  \end{align*}
+  divides $\partial\Omega$ into 4 components. To show this let $\gamma_i\colon \brk*{a_i,b_i}\to C$ parametrise the curves in
+  $C$ intersecting at $x_0$. These can be constructed with the initial value problem
+  \begin{align*} 
+    \gamma'=\brk*{Df}^\perp\big\vert_\gamma \\
+    \gamma(0) = \gamma_0
+  \end{align*}
+  where $\gamma_0\in C$ is chosen sufficiently near $x_0$. Without loss of generality the intervals on which the $\gamma_i$ are
+  defined are maximal. We thus have for
+  \begin{align*}
+    \gamma_i^-=\lim_{t\to a_i}\gamma(t) \\
+    \gamma_i^+=\lim_{t\to b_i}\gamma(t)
+  \end{align*}
+  that $\gamma_i^\pm\in\brk*[c]{x_0,\dots,x_N,\partial\Omega}$ since the $x_j$ are the sole points on $\Omega\cap\overline{C}$
+  at which $Df^\perp=0$. We therefore have a situation similar to the one depicted in [TODO: make figure].
+  One sees that $C$ can thus be represented by a graph $G$ with vertices $v_0,\dots,v_M$ and edges $e_0,\dots,e_L\subseteq C$.
+  Assume $G$ contains a cycle with vertex sequence $v_{i_1},\dots,v_{i_K}$ and edges $e_{i_1},\dots,v_{i_K}$. Then
+  \begin{align*}
+    \partial E = \bigcup_k e_{i_k}\subseteq C
+  \end{align*}
+  is the boundary of a domain $E$ for which $f=y_c$ on $\partial E$.By the maximum principle $f=0$ on $E$ and thus
+  $f=0$ on $\overline{\Omega}$, a contradiction to the non-degeneracy. Hence $G$ is acyclic and the number of 
+  intersections of $C$ with $\partial \Omega$ is at least 4 and thus $\partial\Omega$ is divided into 4 components.
+  Now choose 4 neighbouring components as depicted in figure [TODO: insert figure]. Let $A\subseteq\Omega$ be the domain bounded
+  by $\omega_1$ and $C$ as in the figure. The maximum principle yields that $\omega_1$ contains a local maximum or minimum of $f$.
+  Analogously $\omega_2,\dots,\omega_4$ also contain local extrema. Since the $\partial\omega_i$ cannot be extremal points on $\partial\Omega$
+  we can assume without loss of generality (by switching $f$ for $-f$) that $\omega_1$ and $\omega_3$ contain local maxima and $\omega_2 $ and $\omega_4$ local
+  minima. By Hopf's lemma we thus have
+  \begin{align*}
+    \Sigma^-\cap\omega_2\neq\emptyset\neq\Sigma^-\cap\omega_4
+  \end{align*}
+  and 
+  \begin{align*}
+    \Sigma^+\cap\omega_1\neq\emptyset\neq\Sigma^+\cap\omega_3
+  \end{align*}
+  From this the claim follows.
+\end{proof}
+
+\subsection*{A proof involving invariant manifolds}
+\begin{proof}
+  Let $x_0,\dots,x_N$ denote the critical points of $f$. Let $\lambda_i\colon\brk*{a_i,b_i}\to\overline{\Omega}$ for $i\in\brk[c]{1,2}$ parametrise the unstable manifolds of the
+  critical point $x_0$ and
+  $\lambda_i\colon\brk*{a_i,b_i}\to\overline{\Omega}$ for $i\in\brk[c]{1,2}$ be chosen to parametrise the stable manifolds of $x_0$.
+  As in the previous proof we can assume the interval on which the $\lambda_i$ are defined to be maximal. We thus have for
+  \begin{align*}
+    \lambda_i^-=\lim_{t\to a_i}\lambda(t) \\
+    \lambda_i^+=\lim_{t\to b_i}\lambda(t)
+  \end{align*}
+  that $\lambda_i^\pm\in\brk*[c]{x_0,\dots,x_N,\partial\Omega}$ since the $x_j$ are the sole points on $\Omega\cap\overline{C}$
+  at which $Df\perp=0$. Thus all invariant manifolds of all critical points form an directed graph $G$ with vertices $v_1,\dots,v_M$ and 
+  edges $e_1,\dots,e_L\subseteq\overline{\Omega}$. Here the direction of the edge is determined by whether $f$ increases or decreases
+  along the edge. Our graph is in fact acyclic directed.
+  % The vertices corresponding to the critical points are partially ordered by the edges and thus there exists a minimal element 
+  % Now each vertex corresponding to a critical point has 2 incoming and 2 outgoing arcs.
+  TODO: continue proof
+\end{proof}  
+
+\newpage
+
+\section*{The case $n=3$}
+
+\subsection*{The case of a single critical point}
+
+\newpage
+
+\subsection*{The case of dimensions $n=4$}
+Define the harmonic function 
+\begin{align*}
+  f\colon B_1\subseteq\R^4&\to \R \\
+  x &\mapsto x_1^2+x_2^2-x_3^2-x_4^2\,.
+\end{align*}
+This has the origin as a stagnation point. We now claim that the sets $\Sigma^+$ and $\Sigma^-$ are both simply connected, i.e.\
+we have a tube in $\R^4$ with throughflow and a stagnation point.
+
+\begin{proof}
+To prove this claim we observe that the boundary $\partial B_1$ can be parametrised by the coordinates $\bx = (x_2,x_3,x_4)$
+for which we have $\abs{\bx}\leq 1$. By the condition
+\begin{align}
+  \sum_i x_i^2 = 1\label{eq:n4:ball}
+\end{align}
+on the boundary $\partial B_1$ we have that $x_1$ is then uniquely determined up to sign. Thus we have have defined parametrisations
+\begin{align}
+  \begin{aligned}\Sigma^\pm\colon B_1\subseteq\R^3&\to\R \\
+  \bx\mapsto x, \pm x_1\geq0
+  \end{aligned}\label{eq:n4:parametrisation}
+\end{align}
+We now calculate the derivative of $f$
+\begin{align*}
+  Df = 2\vect{x_1 & x_2 & -x_3 & -x_4}^\top
+\end{align*}
+and the normal to $\partial B_1$
+\begin{align*}
+  n = \vect{x_1 & \cdots & x_4}^\top\,.
+\end{align*}
+Thus we have $x\in\Sigma^\pm$ iff
+\begin{align*}
+  0<\pm Df\cdot n = \pm 2\brk*{x_1^2+x_2^2-x_3^2-x_4^2}
+\end{align*}
+Using the condition \eqref{eq:n4:ball} we obtain the equivalent condition
+\begin{align*}
+  0<\pm 1-2\brk*{x_3^2+x_4^2}
+\end{align*}
+Define the cylinder
+\begin{align*}
+  C = \brk[c]*{\bx\in \R^3\colon x_3^2+x_4^2<1/2} = \R\times B_{1/\sqrt{2}}
+\end{align*}
+If we return to our parametrisation \eqref{eq:n4:parametrisation} we see that we have $\bx\in B_1\cap C$ iff
+$\Sigma^\pm(x)\in \Sigma^+$. Analogously  we have that $\bx\in B_1\setminus C$ iff
+$\Sigma^\pm(x)\in \Sigma^-$. Taking into account that $x_1=0$ is equivalent to $\bx\in \partial B_1\subseteq \R^2$
+the claim follows from a picture.
+
+(TODO: Elaborate here with some argument with homeormophisms)
+\end{proof}
+
+\newpage
+
+% TODO: potentially add Irwin, smooth dynamical systems
+\section*{Bibliography}
+\nocite{*}
+%Main source
+%\printbibliography[heading=none, keyword={main}]
+%\noindent Other sources
+\printbibliography[heading=none]
+
+
+\end{document}
