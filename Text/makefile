@@ -2,11 +2,12 @@
 
 ALLTEX=$(wildcard *.tex ../Plots/*.pgf ../Figures/*.tex)
 ALLCACHE=$(wildcard cache/* cache)
-ALLPYTH=$(wildcard ../*.py)
+ALLFIG=$(wildcard Figures/*.pdf_tex)
 MAIN=Thesis_TheoKoppenhoefer.tex
 SHELL=/bin/bash
 
-all: $(ALLTEX) $(ALLCACHE) ## Build full thesis (LaTeX + figures)
+all: $(ALLTEX) $(ALLCACHE) $(ALLFIG) ## Build full thesis (LaTeX + figures)
+	make figures
 	rubber --pdf --unsafe $(MAIN)				# main run
 	biber $(MAIN:.tex=)			 # bibliography
 	rubber --unsafe $(MAIN)				# incremental run
@@ -14,6 +15,10 @@ all: $(ALLTEX) $(ALLCACHE) ## Build full thesis (LaTeX + figures)
    
 # ../Figures/FlowchartTranscriptionFactors_modified.tex : ../Figures/FlowchartTranscriptionFactors_modified.dia
 # 	cd ../Figures; dia --export=FlowchartTranscriptionFactors_modified.tex FlowchartTranscriptionFactors_modified.dia; ./modify_diagrams.sh
+
+
+figures:
+	cd ../Figures; for file in $$(ls *.svg); do inkscape --export-pdf=$${file%.svg}.pdf --export-latex $$file; done
 
 quick: $(MAIN)
 	pdflatex -shell-escape $(MAIN)

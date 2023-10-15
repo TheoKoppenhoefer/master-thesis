@@ -16,6 +16,7 @@
 \usepackage{pythonhighlight}
 \usepackage{pgfplots}
 \graphicspath{{../Plots/}}
+\graphicspath{{../Figures/}}
 
 \pgfplotsset{
 	compat=newest,
@@ -50,50 +51,80 @@ Some amazing introduction
 
 \section*{Some general remarks}
 
+remarks:
+\begin{itemize}
+  \item only finitely many critical points possible
+  \item state Hopf's lemma
+\end{itemize}
+
+\subsection*{General definitions}
+
+Define:
+\begin{itemize}
+  \item emergent, entrant boundary
+  \item admissable function, non-degeneracy
+\end{itemize}
+
 \subsection*{On assuming non-degeneracy}
 
 \newpage
 
-\section*{The case $n=2$}
+\section*{Harmonic functions, $n=2$}
 
 \begin{claim}
   Let $\Omega$ be homoemorph to $B_1\subseteq\R^2$. Let further $f\colon\overline{\Omega}\to\R$ be harmonic and admissable 
-  as in Morse with critical point $x_0\in\Omega$. Then $\Sigma^-\subseteq\partial\Omega$ consists fo at least 2 components.
+  as in Morse with critical point $x_1\in\Omega$. Then $\Sigma^-\subseteq\partial\Omega$ consists of at least 2 components.
 \end{claim}
 
 
 \subsection*{A proof involving level-sets}
 
-\begin{proof}
-  Let $y_c=f(x_0)$ and $x_0,\dots,x_N$ be all the critical points s.t.\ $f(x_i)=y_c$. We claim that the set
+\begin{proof}[Sketch of Proof.]
+  Let $y_c=f(x_1)$ and $x_1,\dots,x_M$ be all the critical points such that $f(x_\cdot)=y_c$.
+  We claim that the set of level curves
   \begin{align*}
     C=\brk[c]*{f=y_c}\subseteq\overline{\Omega}
   \end{align*}
-  divides $\partial\Omega$ into 4 components. To show this let $\gamma_i\colon \brk*{a_i,b_i}\to C$ parametrise the curves in
-  $C$ intersecting at $x_0$. These can be constructed with the initial value problem
+  divides the boundary $\partial\Omega$ into 4 components. To show this let $\gamma_i\colon \brk*{a_i,b_i}\to C$ for $i\in\brk[c]{1,\dots,4}$ parametrise the curves in
+  $C$ intersecting at $x_1$. These can be constructed with the initial value problem
   \begin{align*} 
-    \gamma'=\brk*{Df}^\perp\big\vert_\gamma \\
-    \gamma(0) = \gamma_0
+    \gamma'&=\brk*{Df}^\perp\big\vert_\gamma \\
+    \gamma(0) &= \gamma_0
   \end{align*}
-  where $\gamma_0\in C$ is chosen sufficiently near $x_0$. Without loss of generality the intervals on which the $\gamma_i$ are
+  where $\gamma_0\in C$ is chosen sufficiently near $x_1$. Without loss of generality the intervals on which the $\gamma_i$ are
   defined are maximal. We thus have for
   \begin{align*}
     \gamma_i^-=\lim_{t\to a_i}\gamma(t) \\
     \gamma_i^+=\lim_{t\to b_i}\gamma(t)
   \end{align*}
-  that $\gamma_i^\pm\in\brk*[c]{x_0,\dots,x_N,\partial\Omega}$ since the $x_j$ are the sole points on $\Omega\cap\overline{C}$
-  at which $Df^\perp=0$. We therefore have a situation similar to the one depicted in [TODO: make figure].
-  One sees that $C$ can thus be represented by a graph $G$ with vertices $v_0,\dots,v_M$ and edges $e_0,\dots,e_L\subseteq C$.
-  Assume $G$ contains a cycle with vertex sequence $v_{i_1},\dots,v_{i_K}$ and edges $e_{i_1},\dots,v_{i_K}$. Then
+  that $\gamma_i^\pm\in\brk[c]*{x_1,\dots,x_M,\partial\Omega}$ since the $x_j$ are the sole points on $\Omega\cap\overline{C}$
+  at which $Df^\perp=0$. This argument can be applied to all of the 
+  $x_1,\dots,x_M$. We therefore have a situation similar to the one depicted in figure \ref{fi:n2:levelSets:overview}.
+  
+  \begin{figure}
+    \centering
+    \def\svgwidth{0.6\textwidth}
+    \input{../Figures/n2_levelSets_overview.pdf_tex}
+    \caption{An overview.}
+    \label{fi:n2:levelSets:overview}
+  \end{figure}
+
+  One sees that $C$ can thus be represented by a multigraph $G$ with vertices $v_1,\dots,v_K$ and edges $e_1,\dots,e_L\subseteq C$.
+  Assume $G$ contains a cycle with vertex sequence $v_{i_1},\dots,v_{i_J}$ and edges $e_{i_1},\dots,e_{i_J}$. Then
   \begin{align*}
-    \partial E = \bigcup_k e_{i_k}\subseteq C
+    \partial E = \bigcup_j e_{i_j}\subseteq C
   \end{align*}
-  is the boundary of a domain $E$ for which $f=y_c$ on $\partial E$.By the maximum principle $f=0$ on $E$ and thus
+  is the boundary of a domain $E$ for which $f=y_c$ on $\partial E$. By the maximum principle $f=0$ on $E$ and thus
   $f=0$ on $\overline{\Omega}$, a contradiction to the non-degeneracy. Hence $G$ is acyclic and the number of 
   intersections of $C$ with $\partial \Omega$ is at least 4 and thus $\partial\Omega$ is divided into 4 components.
-  Now choose 4 neighbouring components as depicted in figure [TODO: insert figure]. Let $A\subseteq\Omega$ be the domain bounded
-  by $\omega_1$ and $C$ as in the figure. The maximum principle yields that $\omega_1$ contains a local maximum or minimum of $f$.
-  Analogously $\omega_2,\dots,\omega_4$ also contain local extrema. Since the $\partial\omega_i$ cannot be extremal points on $\partial\Omega$
+  
+  Now choose 4 neighbouring components as depicted in figure [TODO: insert figure]. 
+  Let $A\subseteq\Omega$ be the domain bounded
+  by $\omega_1$ and $C$ as in the figure. The maximum principle yields that $\omega_1$ contains a local maximum or minimum of $f$ since
+  $f$ is constant on the other boundaries of $A$.
+  By the same argument $\omega_2,\dots,\omega_4$ also contain local extrema. 
+  TODO: use argument with $\nabla f$ here to show that extrema can be assumed to be alternating.
+  Since the $\partial\omega_i$ cannot be extremal points on $\partial\Omega$
   we can assume without loss of generality (by switching $f$ for $-f$) that $\omega_1$ and $\omega_3$ contain local maxima and $\omega_2 $ and $\omega_4$ local
   minima. By Hopf's lemma we thus have
   \begin{align*}
@@ -107,39 +138,153 @@ Some amazing introduction
 \end{proof}
 
 \subsection*{A proof involving invariant manifolds}
-\begin{proof}
-  Let $x_0,\dots,x_N$ denote the critical points of $f$. Let $\lambda_i\colon\brk*{a_i,b_i}\to\overline{\Omega}$ for $i\in\brk[c]{1,2}$ parametrise the unstable manifolds of the
-  critical point $x_0$ and
-  $\lambda_i\colon\brk*{a_i,b_i}\to\overline{\Omega}$ for $i\in\brk[c]{1,2}$ be chosen to parametrise the stable manifolds of $x_0$.
+
+Using invariant manifolds we obtain the following proof.
+
+\begin{proof}[Sketch of Proof.]
+  Let $x_1,\dots,x_M$ denote the critical points of $f$. Let $\lambda_i\colon\brk*{a_i,b_i}\to\overline{\Omega}$ for $i\in\brk[c]{1,2}$ parametrise the unstable manifolds of the
+  critical point $x_1$ and
+  $\lambda_i\colon\brk*{a_i,b_i}\to\overline{\Omega}$ for $i\in\brk[c]{3,4}$ be chosen to parametrise the stable manifolds of $x_1$.
   As in the previous proof we can assume the interval on which the $\lambda_i$ are defined to be maximal. We thus have for
   \begin{align*}
     \lambda_i^-=\lim_{t\to a_i}\lambda(t) \\
     \lambda_i^+=\lim_{t\to b_i}\lambda(t)
   \end{align*}
-  that $\lambda_i^\pm\in\brk*[c]{x_0,\dots,x_N,\partial\Omega}$ since the $x_j$ are the sole points on $\Omega\cap\overline{C}$
-  at which $Df\perp=0$. Thus all invariant manifolds of all critical points form an directed graph $G$ with vertices $v_1,\dots,v_M$ and 
+  that $\lambda_i^\pm\in\brk[c]*{x_1,\dots,x_M,\partial\Omega}$ since the $x_j$ are the sole points on $\overline{\Omega}$
+  at which $Df=0$. Thus all invariant manifolds of all critical points form a directed multigraph $G$ with vertices $v_1,\dots,v_K$ and 
   edges $e_1,\dots,e_L\subseteq\overline{\Omega}$. Here the direction of the edge is determined by whether $f$ increases or decreases
-  along the edge. Our graph is in fact acyclic directed.
-  % The vertices corresponding to the critical points are partially ordered by the edges and thus there exists a minimal element 
-  % Now each vertex corresponding to a critical point has 2 incoming and 2 outgoing arcs.
-  TODO: continue proof
-\end{proof}  
+  along the edge. Here we exclude edges along the boundary $\partial\Omega$.
+  By construction graph is acyclic directed. We claim that the underlying undirected graph is in fact a forest. Thus it remains to
+  be shown that the underlying undirected graph is acyclic.
+  Assume not, i.e.\ we have a undirected cycle with vertices $x_{i_1},\dots,x_{i_J}$ and edges $e_{i_1},\dots,e_{i_J}$.
+  Since the set of cycles forms a partial ordering with respect to the property `contains another cycle' we can choose this cycle such
+  that it contains no other distinct cycles, i.e.\ it is a minimal cycle.
+  We note that each vertex has 2 incoming and 2 outgoing arcs which lie opposite to each other.
+  We also note that the edges cannot cross. 
+  We can thus describe the trail $x_{i_1},\dots,x_{i_J}$ by a set of directives of the type
+  \begin{align*}
+    (d_1,\dots,d_K) \in \brk[c]*{\text{l},\text{r},\text{s}}^J\,.
+  \end{align*}
+  Here l, r and s stand for `left', `right' and `straight' respectively.
+  The underlying idea is that we follow a particular trail and orient all vertices as in figure \ref{fi:n2:invariantMF:directivesDefinition}.
+  
+  \begin{figure}
+    \centering
+    \begin{minipage}{0.4\textwidth}
+      \def\svgwidth{0.7\textwidth}
+      \input{../Figures/n2_invariantMF_directivesDefinition.pdf_tex}
+      \caption{Explanation of the directives `l',`r' and `r'.}
+      \label{fi:n2:invariantMF:directivesDefinition}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.4\textwidth}
+      \def\svgwidth{1\textwidth}
+      \input{../Figures/n2_invariantMF_directivesExample.pdf_tex}
+      \caption{An example for a cycle.}
+      \label{fi:n2:invariantMF:directivesExample}
+    \end{minipage}
+  \end{figure}
+
+  An example of the trail `srsr' is given in figure \ref{fi:n2:invariantMF:directivesExample}.
+  We now note that cycles of the type r,\dots,r or l,\dots,l
+  cannot occur as we otherwise would have a directed cycle. Thus there exists a vertex where the chosen direction is s. 
+  Without loss of generality this vertex is $x_{i_1}$.
+  Since we can swap $f$ with $-f$ we can assume without loss of generality that the cycle lies to right of $x_{i_1}$.
+  Now we look at the directives r,\dots,r
+  Since all vertices lie within the cycle we must at some step reach a vertex on the cycle. But then this cycle is a new distinct cycle
+  contained in the outer cycle, a contradiction.
+  Hence every case considered leads to a contradiction and it follows that the underlying undirected multigraph of $G$
+  is acyclic.
+  
+  We now call a leaf positive if it lies on the emergent boundary and
+  negative if it lies on the entrant boundary. The case that a leaf is neither positive or negative cannot occur (elaborate).
+  We now pick a tree $\widetilde{G}$ out of $G$ and note that
+  there are at least 4 boundary vertices to this tree.
+  By construction we see that each `neighbouring' (elaborate) leaf of this tree
+  has opposite signage and the claim follows.
+\end{proof} 
+
+% We claim that the above proof can be generalised to show the following
+% \begin{conjecture}
+%   Let $\Omega\subseteq\R^2$ be a regular domain with Betti numbers $R_0=1$ and $R_1$.
+%   Let further $f\colon\overline{\Omega}\to\R$ be harmonic and admissable 
+%   as in Morse with $M$ critical points. Assume further that 
+%   $\overline{\Sigma^-}\subseteq\partial\Omega$ on a given connected component 
+%   of the boundary $\partial\Omega$
+%   consists of at most 1 connected component. Then we have
+%   \begin{align*}
+%     2R_1\geq M\,.
+%   \end{align*}
+% \end{conjecture}
 
 \newpage
 
-\section*{The case $n=3$}
+\section*{Harmonic vector fields, $n=2$}
+
+\subsection*{No inflow or outflow}
+
+\begin{itemize}
+  \item define inflow, outflow
+  \item define harmonic vector field
+  \item define minimal cycle 
+  \item show that $u$ is the gradient of a harmonic function if the domain is simply connected.
+  \item discuss what it means for a critical point to be non-degenerate.
+\end{itemize}
+
+\begin{proposition}
+  Let $\Omega$ be a regular domain with Betti numbers $R_0=1$, and $R_1$ and let $u\colon\Omega\to\R^2$ be 
+  a harmonic vector field without inflow or outflow on $\partial\Omega$. Let $M$ denote the number of critical points of $u$.
+  Then we have $$M+1\leq R_1$$.
+\end{proposition}
+\begin{proof}[Sketch of proof.]
+  As in previous proofs the critical manifolds form a directed multigraph. Since no critical manifold can intersect with the boundary each vertex
+  of the graph has degree 4 and we thus have $2M$ edges. Now we obtain with Euler's polyhedron formula
+  for a planar graph with multiple components
+  \begin{align*}
+    \text{\# interiour minimal cycles}
+    &= \text{\#faces}-1 \\
+    &= 1+\text{\#components}-\text{\#vertices}+\text{\#edges} -1 \\
+    &\geq 1+1-M+2M -1 = M+1
+  \end{align*}
+  Now note that each interiour minimal cycle must contain a hole of the domain since else we could restrict $u$ to a simply
+  connected region containing this cycle. Then $u$ would correspond to the gradient of 
+  a harmonic function and we would obtain a contradiction as in the previous proof.
+  Hence the number of minimal cycles is a lower bound on the number of holes $R_1$ of the domain.
+\end{proof}
+
+We now claim that the inequality in the previous proposition cannot be improved by giving an example of a harmonic vector field
+for which $M=R_1-1$.
+For this consider the field defined by
+\begin{align*}
+  u\colon\R^2\setminus\brk*{\brk[c]*{\vect{1\\0},\dots,\vect{m\\0}}}&\to\R^2 \\
+  x&\mapsto\sum_{m=1}^M\nabla^\perp\Phi_2\brk*{x-\vect{m \\ 0}}
+\end{align*}
+where
+\begin{align*}
+  \Phi_2=\log(\abs{\cdot})
+\end{align*}
+is the fundamental solution of $\Delta$ on $\R^2$. This is a harmonic vector field since
+\begin{align*}
+  \curl \nabla^\perp\Phi_2(\cdot-y)= -\Delta\Phi_2(\cdot-y)=0
+\end{align*}
+and by the spherical symmetry of $\Phi_2$
+\begin{align*}
+  \diver \nabla^\perp\Phi_2(\cdot-y) = \brk*{\partial_1^2-\partial_2^2}\Phi_2(\cdot-y)=0\,.
+\end{align*}
+
+\section*{Harmonic functions, $n=3$}
 
 \subsection*{The case of a single critical point}
 
 \newpage
 
-\subsection*{The case of dimensions $n=4$}
+\subsection*{Harmonic functions, $n=4$} 
 Define the harmonic function 
 \begin{align*}
   f\colon B_1\subseteq\R^4&\to \R \\
   x &\mapsto x_1^2+x_2^2-x_3^2-x_4^2\,.
 \end{align*}
-This has the origin as a stagnation point. We now claim that the sets $\Sigma^+$ and $\Sigma^-$ are both simply connected, i.e.\
+This has a stagnation point at the origin. We now claim that the sets $\Sigma^+$ and $\Sigma^-$ are both simply connected, i.e.\
 we have a tube in $\R^4$ with throughflow and a stagnation point.
 
 \begin{proof}
@@ -150,13 +295,14 @@ for which we have $\abs{\bx}\leq 1$. By the condition
 \end{align}
 on the boundary $\partial B_1$ we have that $x_1$ is then uniquely determined up to sign. Thus we have have defined parametrisations
 \begin{align}
-  \begin{aligned}\Sigma^\pm\colon B_1\subseteq\R^3&\to\R \\
-  \bx\mapsto x, \pm x_1\geq0
+  \begin{aligned}\phi_\pm\colon B_1\subseteq\R^3&\to\R \\
+  \bx&\mapsto x\text{ such that } \pm x_1\geq0
   \end{aligned}\label{eq:n4:parametrisation}
 \end{align}
-We now calculate the derivative of $f$
+with inverses $\psi_\pm = \brk*{\phi_\pm}^{-1}$.
+We now calculate the gradient of $f$
 \begin{align*}
-  Df = 2\vect{x_1 & x_2 & -x_3 & -x_4}^\top
+  \nabla f = 2\vect{x_1 & x_2 & -x_3 & -x_4}^\top
 \end{align*}
 and the normal to $\partial B_1$
 \begin{align*}
@@ -164,7 +310,7 @@ and the normal to $\partial B_1$
 \end{align*}
 Thus we have $x\in\Sigma^\pm$ iff
 \begin{align*}
-  0<\pm Df\cdot n = \pm 2\brk*{x_1^2+x_2^2-x_3^2-x_4^2}
+  0<\pm \nabla f\cdot n = \pm 2\brk*{x_1^2+x_2^2-x_3^2-x_4^2}
 \end{align*}
 Using the condition \eqref{eq:n4:ball} we obtain the equivalent condition
 \begin{align*}
@@ -175,11 +321,24 @@ Define the cylinder
   C = \brk[c]*{\bx\in \R^3\colon x_3^2+x_4^2<1/2} = \R\times B_{1/\sqrt{2}}
 \end{align*}
 If we return to our parametrisation \eqref{eq:n4:parametrisation} we see that we have $\bx\in B_1\cap C$ iff
-$\Sigma^\pm(x)\in \Sigma^+$. Analogously  we have that $\bx\in B_1\setminus C$ iff
-$\Sigma^\pm(x)\in \Sigma^-$. Taking into account that $x_1=0$ is equivalent to $\bx\in \partial B_1\subseteq \R^2$
-the claim follows from a picture.
+$\phi_\pm(x)\in \Sigma^+$ and hence 
+\begin{align*}
+  B_1\cap C=\psi_\pm\brk*{\Sigma^+}\,.
+\end{align*}
+Analogously  we have 
+\begin{align*}
+  B_1\setminus C=\psi_\pm\brk*{\Sigma^-}\,.
+\end{align*}
+The claim then follows from the fact that $\phi$ is a homeomorphism onto its image and $x_1=0$ is 
+equivalent to $\bx\in \partial B_1\subseteq \R^2$. The situation is depicted in figure \ref{fi:n4_sigma}.
 
-(TODO: Elaborate here with some argument with homeormophisms)
+\begin{figure}
+  \centering
+  \def\svgwidth{0.7\textwidth}
+  \input{../Figures/n4_sigma.pdf_tex}
+  \caption{Visualisation of the situation.}
+  \label{fi:n4_sigma}
+\end{figure}
 \end{proof}
 
 \newpage
