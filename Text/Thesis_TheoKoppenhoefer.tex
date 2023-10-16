@@ -13,8 +13,7 @@
 
 \addbibresource{bibliography.bib}
 
-\usepackage{pythonhighlight}
-\usepackage{pgfplots}
+\usepackage{svg}
 \graphicspath{{../Plots/}}
 \graphicspath{{../Figures/}}
 
@@ -105,7 +104,7 @@ Define:
     \centering
     \def\svgwidth{0.6\textwidth}
     \input{../Figures/n2_levelSets_overview.pdf_tex}
-    \caption{An overview.}
+    \caption{The situation at hand: The edges represent level curves and the vertices critical points.}
     \label{fi:n2:levelSets:overview}
   \end{figure}
 
@@ -204,18 +203,19 @@ Using invariant manifolds we obtain the following proof.
   has opposite signage and the claim follows.
 \end{proof} 
 
-% We claim that the above proof can be generalised to show the following
-% \begin{conjecture}
-%   Let $\Omega\subseteq\R^2$ be a regular domain with Betti numbers $R_0=1$ and $R_1$.
-%   Let further $f\colon\overline{\Omega}\to\R$ be harmonic and admissable 
-%   as in Morse with $M$ critical points. Assume further that 
-%   $\overline{\Sigma^-}\subseteq\partial\Omega$ on a given connected component 
-%   of the boundary $\partial\Omega$
-%   consists of at most 1 connected component. Then we have
-%   \begin{align*}
-%     2R_1\geq M\,.
-%   \end{align*}
-% \end{conjecture}
+The strategy in the above proofs can be generalised to show the following
+\begin{conjecture}
+  Let $\Omega\subseteq\R^2$ be a regular domain with Betti numbers $R_0=1$ and $R_1$.
+  Let further $f\colon\overline{\Omega}\to\R$ be harmonic and admissable 
+  as in Morse with $M$ critical points. Assume further that 
+  $\overline{\Sigma^-}\subseteq\partial\Omega$ on a given connected component 
+  of the boundary $\partial\Omega$
+  consists of at most 1 connected component. Then we have
+  \begin{align*}
+    \frac{4}{3}M\leq R_1+1\,.
+  \end{align*}
+\end{conjecture}
+This inequality can probably be improved considerably.
 
 \newpage
 
@@ -223,12 +223,14 @@ Using invariant manifolds we obtain the following proof.
 
 \subsection*{No inflow or outflow}
 
+TODO
 \begin{itemize}
   \item define inflow, outflow
   \item define harmonic vector field
   \item define minimal cycle 
   \item show that $u$ is the gradient of a harmonic function if the domain is simply connected.
   \item discuss what it means for a critical point to be non-degenerate.
+  \item Introduce Morse inequalities for $f$ and for $-f$.
 \end{itemize}
 
 \begin{proposition}
@@ -252,7 +254,34 @@ Using invariant manifolds we obtain the following proof.
   Hence the number of minimal cycles is a lower bound on the number of holes $R_1$ of the domain.
 \end{proof}
 
-We now claim that the inequality in the previous proposition cannot be improved by giving an example of a harmonic vector field
+In fact using the Morse inequalities we can obtain the stronger result
+\begin{proposition}
+  Let $\Omega$ be a regular domain with Betti numbers $R_0=1$, and $R_1$ and let $u\colon\Omega\to\R^2$ be 
+  a harmonic vector field without inflow or outflow on $\partial\Omega$. Let $M$ denote the number of critical points of $u$.
+  Then we have $$M+1=R_1$$.
+\end{proposition}
+\begin{proof}[Sketch of proof.]
+  We cut down the domain such that it is homeomorphic to the disk. By some previous lemma (to appear)
+   $u$ is the gradient of a harmonic function $f$ on this new domain.
+  $f$ has no critical points on the boundary of the uncut domain $\Omega$ and fulfills on the cuts the conditions
+  \begin{align}
+    \mu_0=\nu_1 \qquad \mu_1=\nu_0 \label{eq:n2:hvf:relationsMuNu}
+  \end{align}
+  since every entrant critical point is also an emergent critical point on the other side of the cut of shifted index.
+  We have for this new cut domain the Morse inequalities
+  \begin{align}
+    M+\mu_0-R_1-\mu_1+R_0&=0 \label{eq:n2_hvf_MorseInequalities_1}\\
+    M+\nu_0-R_1-\nu_0+R_0&=0\,. \label{eq:n2_hvf_MorseInequalities_2}
+  \end{align}
+  Adding eqations \eqref{eq:n2_hvf_MorseInequalities_1} and \eqref{eq:n2_hvf_MorseInequalities_2} and using the relation
+  \eqref{eq:n2:hvf:relationsMuNu} we obtain
+  \begin{align*}
+    2\brk*{M-R_1+R_0}=0
+  \end{align*}
+  from which the claim follows.
+\end{proof}
+
+We now give an example of a harmonic vector field
 for which $M=R_1-1$.
 For this consider the field defined by
 \begin{align*}
@@ -261,7 +290,7 @@ For this consider the field defined by
 \end{align*}
 where
 \begin{align*}
-  \Phi_2=\log(\abs{\cdot})
+  \Phi_2=-\frac{1}{2\pi}\log(\abs{\cdot})
 \end{align*}
 is the fundamental solution of $\Delta$ on $\R^2$. This is a harmonic vector field since
 \begin{align*}
@@ -271,10 +300,75 @@ and by the spherical symmetry of $\Phi_2$
 \begin{align*}
   \diver \nabla^\perp\Phi_2(\cdot-y) = \brk*{\partial_1^2-\partial_2^2}\Phi_2(\cdot-y)=0\,.
 \end{align*}
+Figure \ref{pl:n2_hvf_noInflowNoOutflow} with $M=1$ indicates that $u$ has the desired properties. One can see that
+the plots for larger
+$M$ also have the desired properties (but I am too lazy to show them here).
+\begin{figure}
+  \centering
+  \includesvg[width=0.5\textwidth]{../Plots/n2_hvf_noInflowNoOutflow.svg}
+  \caption{A plot of $u$ for $M=1$ (TODO: This looks awful).}
+  \label{pl:n2_hvf_noInflowNoOutflow}
+\end{figure}
+
+\newpage
 
 \section*{Harmonic functions, $n=3$}
 
-\subsection*{The case of a single critical point}
+\subsection*{The cylinder}
+
+\begin{proposition}
+  Let $\Omega=(0,1)\times B_1\subseteq\R^3$ be the cylinder. Let further $f\colon\overline{\Omega}\to\R$ be nontrivial and 
+  harmonic with no inflow or outflow on the sides 
+  $\partial (0,1)\times B_1$, inflow on $\brk[c]{0}\times B_1$ and outflow on $\brk[c]{1}\times B_1$. 
+  Then $f$ cannot have a critical point.
+\end{proposition}
+\begin{proof}
+  Assume not. Since
+  \begin{align*}
+    \Delta(\partial_1f)=\partial_1(\Delta f)=0
+  \end{align*}
+  we have that $\partial f$ attains its minimum on $\partial\Omega$. Since $\partial_1 f(x)=0$ for some interiour point 
+  by assumption and $\partial_1 f>0$ on the lids $\brk[c]{x_1=0}\cup\brk[c]{x_1=1}$ there exists a point
+  $x\in(0,1)\times S^1$ such that $\partial_1f(x)$ is minimal on $\overline{\Omega}$. But then we have by Hopf's lemma
+  that
+  \begin{align*}
+    0<\nabla (\partial_1f)\cdot n=\partial_1(\nabla f\cdot n)=0\,,
+  \end{align*}
+  a contradiction.
+\end{proof}
+
+\newpage
+
+\subsection*{Harmonic vector fields, $n=3$}
+
+
+Mimiking the proof in 2 dimensions we obtain the following proposition.
+\begin{proposition}
+  Let $\Omega$ have Betti numbers $R_0$,$R_1$ and $R_2$
+  Let $u\colon\overline{\Omega}\to\R$ be a harmonic vector field without inflow or outflow. Then we have the following relation for
+  critical points of $u$
+  \begin{align*}
+    M_2=M_1
+  \end{align*}
+\end{proposition}
+\begin{proof}
+  As in the two-dimensional case we begin by cutting up the boundary such that $\Omega$ is homeomorphic to the ball with bubbles.
+  Once again by a lemma (TODO: now I'm not quite sure about this statement in 3D) $u$ is the gradient of a harmonic function $u$ on this new domain.
+  $f$ has no critical points on the boundary $\partial\Omega$ and on the cut boundary it fulfills the conditions
+  \begin{align}
+    \mu_0=\nu_2\qquad \mu_1=\nu_1 \qquad \mu_2=\nu_0 \label{eq:n3:hvf:relationsMuNu}
+  \end{align}
+  by the same reasoning. We now have the Morse inequalities
+  \begin{align}
+    M_2+\mu_2-R_2-M_1-\mu_1+R_1+\mu_0-R_0=0 \label{eq:n3:hvf:MorseInequalities:1} \\
+    M_1+\nu_2-R_2-M_2-\nu_1+R_1+\nu_0-R_0=0 \label{eq:n3:hvf:MorseInequalities:2}
+  \end{align}
+  It then follows by subtracting equation \eqref{eq:n3:hvf:MorseInequalities:2} from \eqref{eq:n3:hvf:MorseInequalities:1}
+  and using relations \eqref{eq:n3:hvf:relationsMuNu} that
+  \begin{align*}
+    2\brk*{M_2-M_1}=0\,.
+  \end{align*}
+\end{proof}
 
 \newpage
 
@@ -332,7 +426,7 @@ Analogously  we have
 The claim then follows from the fact that $\phi$ is a homeomorphism onto its image and $x_1=0$ is 
 equivalent to $\bx\in \partial B_1\subseteq \R^2$. The situation is depicted in figure \ref{fi:n4_sigma}.
 
-\begin{figure}
+\begin{figure}[h]
   \centering
   \def\svgwidth{0.7\textwidth}
   \input{../Figures/n4_sigma.pdf_tex}
@@ -341,7 +435,7 @@ equivalent to $\bx\in \partial B_1\subseteq \R^2$. The situation is depicted in 
 \end{figure}
 \end{proof}
 
-\newpage
+\clearpage
 
 % TODO: potentially add Irwin, smooth dynamical systems
 \section*{Bibliography}
