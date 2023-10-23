@@ -44,39 +44,173 @@
 
 \maketitle
 
-Some amazing introduction
+\tableofcontents
+
+\newpage
+
+\listoftodos
+
+\todoin[]{
+  General TODOs
+  \begin{itemize}
+    \item Disproof using hairy ball theorem.
+    \item Write other example
+    \item Look what happens if you add the examples
+    \item Check that the signs of the examples are correct
+    \item Make the plots of the examples look nice.
+    \item Change $n$ to $d$, consistent notation.
+    \item Check for typos.
+  \end{itemize}
+}
+
+\newpage
+
+\ruggedtodo[inline]{Some amazing introduction}
  
 \newpage
 
-\section*{Some general remarks}
 
-remarks:
+\subsection{General definitions}
+
+Unless otherwise stated we denote by $\Omega\subseteq\R^d$ an open bounded subset of $\R^d$ with boundary $\Sigma=\partial\Omega$.
+We denote with
+\begin{align*}
+  f\colon\overline{\Omega}\to\R
+\end{align*}
+a scalar function of class $C^2$. We also denote by
+\begin{align*}
+  u\colon\overline{\Omega}\to\R^d
+\end{align*}
+a vector field of class $C^1$. Often but not always $u$ can be thought of as 
+a \emph{harmonic vector field}, that is $u$ fulfills
+\begin{align*}
+  \diver u=0 \qquad \text{ and }\qquad \curl u=0\,.
+\end{align*}
+Also often but not always we assume that locally $u=\nabla f$, implying that $f$ is harmonic.
+
+In the following we define the emergent and the entrant boundary as in \cite[p.282]{Morse1970}
+\begin{definition}[Emergent and entrant boundary]
+  We call a vector $v\in T_x\R^d$ \emph{entrant} at a boundary point $x\in\Sigma$ iff $v$ is not tangent to $\Sigma$
+  and directed into the interiour of $\Omega$. Analogously if $v$ is not tangent and
+  directed to the exteriour we call $v$ \emph{emergent}.
+  We define the \emph{entrant boundary} $\Sigma^-$ to be the set of boundary points at which $u$ is entrant.
+  Analogously define the \emph{emergent boundary} $\Sigma^+$ to be the set of boundary points at which
+  $u$ is emergent.
+  Further define $\Sigma^0$ to contain all other boundary points such that we have a decomposition
+  of the boundary
+  \begin{align*}
+    \Sigma=\Sigma^-\sqcup\Sigma^0\sqcup\Sigma^+\,.
+  \end{align*}
+\end{definition}
+
+The following are slight generalisation of the definitions given in \cite[p.138f]{Shelton1980}, \cite[§5]{Morse1969} and \cite[p.282f]{Morse1970}
+to include harmonic vector fields.
+We call the zeroes of $u$ \emph{critical points}. A critical point $x\in\Omega$ is called
+\emph{non-degenerate} if the derivative $Du(x)$ is invertible. We say that $x$ has \emph{index} $k$
+if $Du(x)$ has exactly $k$ negative eigenvalues. $u$ is called \emph{non-degenerate} if all its critical points
+are non-degenerate.
+
+We now define the \emph{interiour type numbers} $M_k$
+to be the number of critical points of $u$ of index $k$.
+The total number of critical points is thus given by
+\begin{align*}
+  M=\sum_kM_k\,.
+\end{align*}
+We call $\Omega$ a \emph{regular domain} if $\Sigma$ is a manifold of class $C^2$.
+In the following definition we require $\Omega$ to be regular.
+\begin{definition}[Boundary type numbers]
+  For a boundary point $x$ let $$\pi_x\colon \R^d\cong T_x\R^d\to T_x\Sigma$$ denote the projection of a
+  vector at $x$ onto the tangent space of $\Sigma$ at $x$.
+  Let $$u_{\Sigma^-}=\pi\circ u\vert_{\Sigma^-}\in C^1\brk*{T\Sigma^-}$$ to be the restriction and projection of $u$ onto the tangent bundle of $\Sigma^-$.
+  We define the \emph{boundary type numbers} $\mu_k$ to be
+  the number of critical points of $u_{\Sigma^-}$ on the entrant boundary
+  $\Sigma^-$ of index $k$.
+  We further write $\nu_k$ for the $k$-th boundary type number of $-u$.
+\end{definition}
+
+We now call $u$ \emph{regular} iff $u$ and $u_\Sigma$ are non-degenerate and all critical points lie in $\Omega$.
+
+The previous definitions translate naturally to $f$.
+We call $f$ regular, non-degenerate, et cetera iff $u=\nabla f$ is regular, non-degenreate, et cetera.
+
+
+\subsection{On assuming non-degeneracy}
+
+
+\section{Some general remarks}
+
+\todoin[]{
 \begin{itemize}
   \item only finitely many critical points possible
   \item state Hopf's lemma
 \end{itemize}
+}
 
-\subsection*{General definitions}
+\subsection{Betti numbers}
 
-Define:
+For a formal definition of Betti numbers we refer to ??.
+We do however give some examples of Betti numbers for some domains.
+
+\subsection{The Morse inequalities}
+
+We state the Morse inequalities.\ruggedtodo[]{More citations.}
+\begin{theorem}[Morse inequalities]
+Let $\Omega$ and $f$ be regular. Then we have the inequalities
+\begin{align*}
+  0&\leq M_0+\mu_0-R_0\\
+  0&\leq M_1+\mu_1-R_1-\brk*{M_0+\mu_0-R_0} \\
+  &\vdots \\
+  0&\leq M_{d-1}+\mu_{d-1}-R_{d-1}-\cdots +\brk*{-1}^{d-1}\brk*{M_0+\mu_0-R_0} \\
+  0&=M_{d}-R_{d}-\brk*{M_{d-1}+\mu_{d-1}-R_{d-1}}+\cdots +\brk*{-1}^{d}\brk*{M_0+\mu_0-R_0}\,.
+\end{align*}
+\end{theorem}
+\begin{proof}
+  See \cite{Morse1969}.\ruggedtodo[]{Give a more precise reference.}
+\end{proof}
+If we now assume that $f$ is harmonic then the maximum principle implies that
+$M_0=0=M_d$ and thus we obtain for the special case of dimensions $d=2$.
+\begin{corollary}[Morse inequalities for $f$ harmonic, $d=2$]
+  Let $d=2$, $\Omega$ and $f$ be regular and assume that $f$ is harmonic. Then we have
+  \begin{align*}
+    0&\leq \mu_0-R_0 \\
+    0&=M+\mu_1-R_1-\mu_0+R_0\,.
+  \end{align*}
+\end{corollary}
+In dimensions $d=3$ we obtain
+\begin{corollary}[Morse inequalities for $f$ harmonic, $d=3$]
+  Let $d=3$, $\Omega$ and $f$ be regular and assume that $f$ is harmonic. Then we have
+  \begin{align*}
+    0&\leq \mu_0-R_0 \\
+    0&\leq M_1+\mu_1-R_1-\mu_0+R_0 \\
+    0&= M_2+\mu_2-R_2-M_1-\mu_1+R_1-\mu_0+R_0\,.
+  \end{align*}
+\end{corollary}
+
+
+\todoin{
 \begin{itemize}
-  \item emergent, entrant boundary
-  \item admissable function, non-degeneracy
+  \item Introduce Morse inequalities for $f$ and for $-f$.
 \end{itemize}
-
-\subsection*{On assuming non-degeneracy}
-
+}
 \newpage
 
-\section*{Harmonic functions, $n=2$}
+\section{Harmonic functions, $n=2$}
 
-\begin{claim}
+
+\begin{proposition}
   Let $\Omega$ be homoemorph to $B_1\subseteq\R^2$. Let further $f\colon\overline{\Omega}\to\R$ be harmonic and admissable 
   as in Morse with critical point $x_1\in\Omega$. Then $\Sigma^-\subseteq\partial\Omega$ consists of at least 2 components.
-\end{claim}
+\end{proposition}
+
+\subsection{On minimal cycles}
+
+The following proofs make use of graph theory.
+Here note that we identify the graph $G$ with its planar embedding which we assume to be unique.
+We call a cycle in $G$ minimal if it contains no distinct cycle.
+\ruggedtodo[]{More precise.}
 
 
-\subsection*{A proof involving level-sets}
+\subsection{A proof involving level-sets}
 
 \begin{proof}[Sketch of Proof.]
   Let $y_c=f(x_1)$ and $x_1,\dots,x_M$ be all the critical points such that $f(x_\cdot)=y_c$.
@@ -117,12 +251,18 @@ Define:
   $f=0$ on $\overline{\Omega}$, a contradiction to the non-degeneracy. Hence $G$ is acyclic and the number of 
   intersections of $C$ with $\partial \Omega$ is at least 4 and thus $\partial\Omega$ is divided into 4 components.
   
-  Now choose 4 neighbouring components as depicted in figure [TODO: insert figure]. 
+  Now choose 4 neighbouring components as depicted in figure \ref{fi:n2:levelSets:neighbouringComponents}
+  \begin{figure}
+    \centering
+    \missingfigure[figwidth=0.5\textwidth]{Insert a figure here.}
+    \caption{The choice of $\omega_1,\dots,\omega_4$.}
+    \label{fi:n2:levelSets:neighbouringComponents}
+  \end{figure}
   Let $A\subseteq\Omega$ be the domain bounded
   by $\omega_1$ and $C$ as in the figure. The maximum principle yields that $\omega_1$ contains a local maximum or minimum of $f$ since
   $f$ is constant on the other boundaries of $A$.
   By the same argument $\omega_2,\dots,\omega_4$ also contain local extrema. 
-  TODO: use argument with $\nabla f$ here to show that extrema can be assumed to be alternating.
+  \ruggedtodo[]{use argument with $\nabla f$ here to show that extrema can be assumed to be alternating.}
   Since the $\partial\omega_i$ cannot be extremal points on $\partial\Omega$
   we can assume without loss of generality (by switching $f$ for $-f$) that $\omega_1$ and $\omega_3$ contain local maxima and $\omega_2 $ and $\omega_4$ local
   minima. By Hopf's lemma we thus have
@@ -136,7 +276,7 @@ Define:
   From this the claim follows.
 \end{proof}
 
-\subsection*{A proof involving invariant manifolds}
+\subsection{A proof involving invariant manifolds}
 
 Using invariant manifolds we obtain the following proof.
 
@@ -219,23 +359,29 @@ This inequality can probably be improved considerably.
 
 \newpage
 
-\section*{Harmonic vector fields, $n=2$}
+\section{Harmonic vector fields, $n=2$}
 
-\subsection*{No inflow or outflow}
+We state the following result for harmonic vector fields in $d=2$ dimensions.
+\begin{proposition}[Harmonic vector fields on simply connected domains]
+  Let $\Omega$ be simply connected and $u$ be a harmonic vector field. Then there exists
+  a harmonic function $f\colon\Omega\to\R$ such that $u=\nabla f$.
+\end{proposition}
+\begin{proof}
+  \ruggedtodo[]{State some proof}
+\end{proof}
+This implies
+\begin{corollary}
+  Let $u$ be a harmonic vector field and $x\in\Omega$. Then there exists a harmonic function $f$ such
+  that locally around $x$ we have $u=\nabla f$.
+\end{corollary}
 
-TODO
-\begin{itemize}
-  \item define inflow, outflow
-  \item define harmonic vector field
-  \item define minimal cycle 
-  \item show that $u$ is the gradient of a harmonic function if the domain is simply connected.
-  \item discuss what it means for a critical point to be non-degenerate.
-  \item Introduce Morse inequalities for $f$ and for $-f$.
-\end{itemize}
+\subsection{No inflow or outflow}
 
-\begin{proposition}
-  Let $\Omega$ be a regular domain with Betti numbers $R_0=1$, and $R_1$ and let $u\colon\Omega\to\R^2$ be 
-  a harmonic vector field without inflow or outflow on $\partial\Omega$. Let $M$ denote the number of critical points of $u$.
+We say that $u$ has no inflow on a subset $S\subseteq\Sigma$ iff $\Sigma^-\cap S=\emptyset$ and that it has no outflow iff $\Sigma^+\cap S=\emptyset$.
+Armed with this definition we can state the following result.
+\begin{proposition}[Upper bound on $M$]
+  Let $d=2$ and $\Omega$ be a regular domain with Betti numbers $R_0=1$, and $R_1$. Let further $u\colon\Omega\to\R^2$ be 
+  a regular harmonic vector field without inflow or outflow.
   Then we have $$M+1\leq R_1$$.
 \end{proposition}
 \begin{proof}[Sketch of proof.]
@@ -257,7 +403,7 @@ TODO
 In fact using the Morse inequalities we can obtain the stronger result
 \begin{proposition}
   Let $\Omega$ be a regular domain with Betti numbers $R_0=1$, and $R_1$ and let $u\colon\Omega\to\R^2$ be 
-  a harmonic vector field without inflow or outflow on $\partial\Omega$. Let $M$ denote the number of critical points of $u$.
+  a harmonic vector field without inflow or outflow.
   Then we have $$M+1=R_1$$.
 \end{proposition}
 \begin{proof}[Sketch of proof.]
@@ -282,8 +428,15 @@ In fact using the Morse inequalities we can obtain the stronger result
 \end{proof}
 
 We now give an example of a harmonic vector field
-for which $M=R_1-1$.
-For this consider the field defined by
+for which $M=R_1-1$. In order to do this we define two differential operators for $d=2$ by
+\begin{align*}
+  \nabla^\perp f=\Curl f=\vect{-\partial_2f \\ \partial_2f}
+\end{align*}
+and
+\begin{align*}
+  \curl u=-\partial_1u_2+\partial_2u_1
+\end{align*}\ruggedtodo[]{Find source of this in Gedicke script. Relation to differential forms.}
+Now consider the field defined by
 \begin{align*}
   u\colon\R^2\setminus\brk*{\brk[c]*{\vect{1\\0},\dots,\vect{m\\0}}}&\to\R^2 \\
   x&\mapsto\sum_{m=1}^M\nabla^\perp\Phi_2\brk*{x-\vect{m \\ 0}}
@@ -306,20 +459,40 @@ $M$ also have the desired properties (but I am too lazy to show them here).
 \begin{figure}
   \centering
   \includesvg[width=0.5\textwidth]{../Plots/n2_hvf_noInflowNoOutflow.svg}
-  \caption{A plot of $u$ for $M=1$ (TODO: This looks awful).}
+  \caption{A plot of $u$ for $M=1$ }
   \label{pl:n2_hvf_noInflowNoOutflow}
 \end{figure}
+\ruggedtodo[]{This figure looks awful}
+
+
+\subsection{An example of inflow on one side and outflow on the other}
+Consider the degerate harmonic function
+\begin{align*}
+  f_1\colon\C\cong\R^2&\to\R \\
+  z&\mapsto \Re(z^3)\,.
+\end{align*}
+Since we are only interested in non-degenerate functions we modify this to
+\begin{align*}
+  f_2(z)=\Re(z^3+(1-\iu)z)
+\end{align*}
+Now we set
+\begin{align*}
+  u\colon\R^2\setminus\brk*{\brk[c]*{\dots}}&\to\R^2 \\
+  x&\mapsto\nabla^\perp f(x_1+\iu x_2)
+\end{align*}
+As before $u$ is a harmonic vector field and a plot shows that it has the desired properties
+
 
 \newpage
 
-\section*{Harmonic functions, $n=3$}
+\section{Harmonic functions, $n=3$}
 
-\subsection*{The cylinder}
+\subsection{The cylinder}
 
 \begin{proposition}
-  Let $\Omega=(0,1)\times B_1\subseteq\R^3$ be the cylinder. Let further $f\colon\overline{\Omega}\to\R$ be nontrivial and 
+  Let $\Omega=(0,1)\times B_1\subseteq\R^3$ be the cylinder. Let further $f\colon\overline{\Omega}\to\R$ be regular 
   harmonic with no inflow or outflow on the sides 
-  $\partial (0,1)\times B_1$, inflow on $\brk[c]{0}\times B_1$ and outflow on $\brk[c]{1}\times B_1$. 
+  $\partial (0,1)\times B_1$, no outflow on $\brk[c]{0}\times B_1$ and no inflow on $\brk[c]{1}\times B_1$. 
   Then $f$ cannot have a critical point.
 \end{proposition}
 \begin{proof}
@@ -339,7 +512,7 @@ $M$ also have the desired properties (but I am too lazy to show them here).
 
 \newpage
 
-\subsection*{Harmonic vector fields, $n=3$}
+\subsection{Harmonic vector fields, $n=3$}
 
 
 Mimiking the proof in 2 dimensions we obtain the following proposition.
@@ -353,7 +526,7 @@ Mimiking the proof in 2 dimensions we obtain the following proposition.
 \end{proposition}
 \begin{proof}
   As in the two-dimensional case we begin by cutting up the boundary such that $\Omega$ is homeomorphic to the ball with bubbles.
-  Once again by a lemma (TODO: now I'm not quite sure about this statement in 3D) $u$ is the gradient of a harmonic function $u$ on this new domain.
+  Once again by a lemma \ruggedtodo[]{now I'm not quite sure about this statement in 3D} $u$ is the gradient of a harmonic function $u$ on this new domain.
   $f$ has no critical points on the boundary $\partial\Omega$ and on the cut boundary it fulfills the conditions
   \begin{align}
     \mu_0=\nu_2\qquad \mu_1=\nu_1 \qquad \mu_2=\nu_0 \label{eq:n3:hvf:relationsMuNu}
@@ -372,7 +545,7 @@ Mimiking the proof in 2 dimensions we obtain the following proposition.
 
 \newpage
 
-\subsection*{Harmonic functions, $n=4$} 
+\subsection{Harmonic functions, $n=4$} 
 Define the harmonic function 
 \begin{align*}
   f\colon B_1\subseteq\R^4&\to \R \\
@@ -438,7 +611,7 @@ equivalent to $\bx\in \partial B_1\subseteq \R^2$. The situation is depicted in 
 \clearpage
 
 % TODO: potentially add Irwin, smooth dynamical systems
-\section*{Bibliography}
+\section{Bibliography}
 \nocite{*}
 %Main source
 %\printbibliography[heading=none, keyword={main}]
