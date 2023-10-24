@@ -60,17 +60,20 @@
     \item Make the plots of the examples look nice.
     \item Change $n$ to $d$, consistent notation.
     \item Check for typos.
+    \item Does Girault-Raviart theorem with Helmholtz decomp. help?
+    \item bring in results from \cite{Shelton1980} and \cite{Morse1970}
+  \end{itemize}
+  Some questions
+  \begin{itemize}
+    \item Should I state Hopf's Lemma?
   \end{itemize}
 }
 
 \newpage
 
+\section{Introduction}
+
 \ruggedtodo[inline]{Some amazing introduction}
- 
-\newpage
-
-
-\subsection{General definitions}
 
 Unless otherwise stated we denote by $\Omega\subseteq\R^d$ an open bounded subset of $\R^d$ with boundary $\Sigma=\partial\Omega$.
 We denote with
@@ -82,11 +85,23 @@ a scalar function of class $C^2$. We also denote by
   u\colon\overline{\Omega}\to\R^d
 \end{align*}
 a vector field of class $C^1$. Often but not always $u$ can be thought of as 
-a \emph{harmonic vector field}, that is $u$ fulfills
+a \emph{harmonic vector field}, that is $u$ fulfils
 \begin{align*}
   \diver u=0 \qquad \text{ and }\qquad \curl u=0\,.
 \end{align*}
 Also often but not always we assume that locally $u=\nabla f$, implying that $f$ is harmonic.
+One question we seek to answer during this thesis is the following.
+\begin{question}[Flowthrough with stagnation point]\label{qu:flowthroughStagnationPoint}
+  Does there exist a tube $\Omega\subseteq\R^3$ with flow $u$ through the tube such that
+  \begin{enumerate}
+    \item $u$ is a harmonic vector field
+    \item $u$ has an interiour stagnation point
+    \item $u$ enters the tube on the one end and exits the tube on the other?
+  \end{enumerate}
+\end{question}
+To make the formulation more precise we begin with some general definitions regarding stagnation points and the boundary conditions.
+
+\subsection{General definitions}
 
 In the following we define the emergent and the entrant boundary as in \cite[p.282]{Morse1970}
 \begin{definition}[Emergent and entrant boundary]
@@ -121,7 +136,8 @@ In the following definition we require $\Omega$ to be regular.
 \begin{definition}[Boundary type numbers]
   For a boundary point $x$ let $$\pi_x\colon \R^d\cong T_x\R^d\to T_x\Sigma$$ denote the projection of a
   vector at $x$ onto the tangent space of $\Sigma$ at $x$.
-  Let $$u_{\Sigma^-}=\pi\circ u\vert_{\Sigma^-}\in C^1\brk*{T\Sigma^-}$$ to be the restriction and projection of $u$ onto the tangent bundle of $\Sigma^-$.
+  Let $$u_{\Sigma^-}=\pi\circ u\vert_{\Sigma^-}\in C^1\brk*{T\Sigma^-}$$ be the restriction and projection of $u$ onto the tangent bundle of $\Sigma^-$.
+  \ruggedtodo[]{This construction surely has a name in diffGeo.}
   We define the \emph{boundary type numbers} $\mu_k$ to be
   the number of critical points of $u_{\Sigma^-}$ on the entrant boundary
   $\Sigma^-$ of index $k$.
@@ -131,7 +147,7 @@ In the following definition we require $\Omega$ to be regular.
 We now call $u$ \emph{regular} iff $u$ and $u_\Sigma$ are non-degenerate and all critical points lie in $\Omega$.
 
 The previous definitions translate naturally to $f$.
-We call $f$ regular, non-degenerate, et cetera iff $u=\nabla f$ is regular, non-degenreate, et cetera.
+We call $f$ regular, non-degenerate, et cetera iff $u=\nabla f$ is regular, non-degenerate, et cetera.
 
 
 \subsection{On assuming non-degeneracy}
@@ -142,7 +158,6 @@ We call $f$ regular, non-degenerate, et cetera iff $u=\nabla f$ is regular, non-
 \todoin[]{
 \begin{itemize}
   \item only finitely many critical points possible
-  \item state Hopf's lemma
 \end{itemize}
 }
 
@@ -150,6 +165,7 @@ We call $f$ regular, non-degenerate, et cetera iff $u=\nabla f$ is regular, non-
 
 For a formal definition of Betti numbers we refer to ??.
 We do however give some examples of Betti numbers for some domains.
+\ruggedtodo[inline]{complete this section}
 
 \subsection{The Morse inequalities}
 
@@ -159,7 +175,7 @@ Let $\Omega$ and $f$ be regular. Then we have the inequalities
 \begin{align*}
   0&\leq M_0+\mu_0-R_0\\
   0&\leq M_1+\mu_1-R_1-\brk*{M_0+\mu_0-R_0} \\
-  &\vdots \\
+  &\;\;\vdots \\
   0&\leq M_{d-1}+\mu_{d-1}-R_{d-1}-\cdots +\brk*{-1}^{d-1}\brk*{M_0+\mu_0-R_0} \\
   0&=M_{d}-R_{d}-\brk*{M_{d-1}+\mu_{d-1}-R_{d-1}}+\cdots +\brk*{-1}^{d}\brk*{M_0+\mu_0-R_0}\,.
 \end{align*}
@@ -185,73 +201,63 @@ In dimensions $d=3$ we obtain
     0&= M_2+\mu_2-R_2-M_1-\mu_1+R_1-\mu_0+R_0\,.
   \end{align*}
 \end{corollary}
+\ruggedtodo[]{Introduce Morse inequalities for $-f$.}
 
-
-\todoin{
-\begin{itemize}
-  \item Introduce Morse inequalities for $f$ and for $-f$.
-\end{itemize}
-}
 \newpage
 
-\section{Harmonic functions, $n=2$}
+\section{Harmonic functions, $d=2$}
 
-
-\begin{proposition}
-  Let $\Omega$ be homoemorph to $B_1\subseteq\R^2$. Let further $f\colon\overline{\Omega}\to\R$ be harmonic and admissable 
-  as in Morse with critical point $x_1\in\Omega$. Then $\Sigma^-\subseteq\partial\Omega$ consists of at least 2 components.
+The following result is essentially a negative to question \ref{qu:flowthroughStagnationPoint} in $d=2$ dimensions.
+\begin{proposition}\label{pr:n2:hf:nonExistence}
+  Let $\Omega$ be homeomorphic to $B_1\subseteq\R^2$. Let further $f\colon\overline{\Omega}\to\R$ be regular harmonic  
+  with critical point $x_1\in\Omega$. Then $\Sigma^-\subseteq\Sigma$ is not connected.
 \end{proposition}
-
-\subsection{On minimal cycles}
-
-The following proofs make use of graph theory.
-Here note that we identify the graph $G$ with its planar embedding which we assume to be unique.
-We call a cycle in $G$ minimal if it contains no distinct cycle.
-\ruggedtodo[]{More precise.}
-
+We shall give two different proofs of this result. One involving level-sets and the other involving invariant manifolds
 
 \subsection{A proof involving level-sets}
 
 \begin{proof}[Sketch of Proof.]
   Let $y_c=f(x_1)$ and $x_1,\dots,x_M$ be all the critical points such that $f(x_\cdot)=y_c$.
-  We claim that the set of level curves
+  We claim that the level set
   \begin{align*}
     C=\brk[c]*{f=y_c}\subseteq\overline{\Omega}
   \end{align*}
-  divides the boundary $\partial\Omega$ into 4 components. To show this let $\gamma_i\colon \brk*{a_i,b_i}\to C$ for $i\in\brk[c]{1,\dots,4}$ parametrise the curves in
+  can be represented by a multigraph $G$
+  which divides the boundary $\Sigma$ into 4 components. To show this let $\gamma_i\colon \brk*{a_i,b_i}\to C$ for $i\in\brk[c]{1,\dots,4}$ parametrise the curves in
   $C$ intersecting at $x_1$. These can be constructed with the initial value problem
   \begin{align*} 
-    \gamma'&=\brk*{Df}^\perp\big\vert_\gamma \\
+    \gamma'&=\brk*{\nabla f}^\perp\big\vert_\gamma \\
     \gamma(0) &= \gamma_0
   \end{align*}
-  where $\gamma_0\in C$ is chosen sufficiently near $x_1$. Without loss of generality the intervals on which the $\gamma_i$ are
+  where $\gamma_0\in C$ is chosen sufficiently near $x_1$. We assume that the intervals on which the $\gamma_i$ are
   defined are maximal. We thus have for
   \begin{align*}
     \gamma_i^-=\lim_{t\to a_i}\gamma(t) \\
     \gamma_i^+=\lim_{t\to b_i}\gamma(t)
   \end{align*}
-  that $\gamma_i^\pm\in\brk[c]*{x_1,\dots,x_M,\partial\Omega}$ since the $x_j$ are the sole points on $\Omega\cap\overline{C}$
-  at which $Df^\perp=0$. This argument can be applied to all of the 
+  that $\gamma_i^\pm\in\brk[c]*{x_1,\dots,x_M,\Sigma}$ since the $x_j$ are the sole points on $\Omega\cap\overline{C}$
+  at which $\nabla f^\perp=0$. This argument can be applied to all of the 
   $x_1,\dots,x_M$. We therefore have a situation similar to the one depicted in figure \ref{fi:n2:levelSets:overview}.
   
   \begin{figure}
     \centering
     \def\svgwidth{0.6\textwidth}
     \input{../Figures/n2_levelSets_overview.pdf_tex}
-    \caption{The situation at hand: The edges represent level curves and the vertices critical points.}
+    \caption{The situation at hand: The edges represent level curves and the interiour vertices critical points.}
     \label{fi:n2:levelSets:overview}
-  \end{figure}
+  \end{figure}\ruggedtodo[]{This figure is not quite accurate as it does not contain loops on the boundary. Also, add $E$ to the figure.}
 
-  One sees that $C$ can thus be represented by a multigraph $G$ with vertices $v_1,\dots,v_K$ and edges $e_1,\dots,e_L\subseteq C$.
+  Thus $C$ can be represented by a multigraph $G$ with vertices $v_1,\dots,v_K$ and edges $e_1,\dots,e_L\subseteq C$.
+  In the following we identify the graph $G$ with its planar embedding in $\overline{\Omega}$.
   Assume $G$ contains a cycle with vertex sequence $v_{i_1},\dots,v_{i_J}$ and edges $e_{i_1},\dots,e_{i_J}$. Then
   \begin{align*}
     \partial E = \bigcup_j e_{i_j}\subseteq C
   \end{align*}
-  is the boundary of a domain $E$ for which $f=y_c$ on $\partial E$. By the maximum principle $f=0$ on $E$ and thus
-  $f=0$ on $\overline{\Omega}$, a contradiction to the non-degeneracy. Hence $G$ is acyclic and the number of 
-  intersections of $C$ with $\partial \Omega$ is at least 4 and thus $\partial\Omega$ is divided into 4 components.
+  is the boundary of a domain $E$ for which $f=y_c$ on $\partial E$. By the maximum principle $f=y_c$ on $E$ and thus
+  $f=y_c$ on $\overline{\Omega}$, a contradiction to the non-degeneracy. Hence $G$ is acyclic and the number of 
+  intersections of $C$ with the boundary $\Sigma$ is at least four and thus the boundary $\Sigma$ is divided into at least four components.
   
-  Now choose 4 neighbouring components as depicted in figure \ref{fi:n2:levelSets:neighbouringComponents}
+  Now choose four neighbouring components $\omega_1,\dots,\omega_4$ as depicted in figure \ref{fi:n2:levelSets:neighbouringComponents}
   \begin{figure}
     \centering
     \missingfigure[figwidth=0.5\textwidth]{Insert a figure here.}
@@ -260,10 +266,10 @@ We call a cycle in $G$ minimal if it contains no distinct cycle.
   \end{figure}
   Let $A\subseteq\Omega$ be the domain bounded
   by $\omega_1$ and $C$ as in the figure. The maximum principle yields that $\omega_1$ contains a local maximum or minimum of $f$ since
-  $f$ is constant on the other boundaries of $A$.
+  $f=y_c$ is constant on the other boundaries $\partial A\setminus\omega_1$.
   By the same argument $\omega_2,\dots,\omega_4$ also contain local extrema. 
   \ruggedtodo[]{use argument with $\nabla f$ here to show that extrema can be assumed to be alternating.}
-  Since the $\partial\omega_i$ cannot be extremal points on $\partial\Omega$
+  Since the $\partial\omega_i$ cannot be extremal points on $\Sigma$
   we can assume without loss of generality (by switching $f$ for $-f$) that $\omega_1$ and $\omega_3$ contain local maxima and $\omega_2 $ and $\omega_4$ local
   minima. By Hopf's lemma we thus have
   \begin{align*}
@@ -289,16 +295,19 @@ Using invariant manifolds we obtain the following proof.
     \lambda_i^-=\lim_{t\to a_i}\lambda(t) \\
     \lambda_i^+=\lim_{t\to b_i}\lambda(t)
   \end{align*}
-  that $\lambda_i^\pm\in\brk[c]*{x_1,\dots,x_M,\partial\Omega}$ since the $x_j$ are the sole points on $\overline{\Omega}$
+  that $\lambda_i^\pm\in\brk[c]*{x_1,\dots,x_M,\Sigma}$ since the $x_j$ are the sole points on $\overline{\Omega}$
   at which $Df=0$. Thus all invariant manifolds of all critical points form a directed multigraph $G$ with vertices $v_1,\dots,v_K$ and 
   edges $e_1,\dots,e_L\subseteq\overline{\Omega}$. Here the direction of the edge is determined by whether $f$ increases or decreases
-  along the edge. Here we exclude edges along the boundary $\partial\Omega$.
+  along the edge.
+  Once again we identify the graph with its planar embedding.
   By construction graph is acyclic directed. We claim that the underlying undirected graph is in fact a forest. Thus it remains to
   be shown that the underlying undirected graph is acyclic.
-  Assume not, i.e.\ we have a undirected cycle with vertices $x_{i_1},\dots,x_{i_J}$ and edges $e_{i_1},\dots,e_{i_J}$.
-  Since the set of cycles forms a partial ordering with respect to the property `contains another cycle' we can choose this cycle such
-  that it contains no other distinct cycles, i.e.\ it is a minimal cycle.
-  We note that each vertex has 2 incoming and 2 outgoing arcs which lie opposite to each other.
+  Assume not, i.e.\ we have a undirected cycle A with vertices $x_{i_1},\dots,x_{i_J}$ and edges $e_{i_1},\dots,e_{i_J}$.
+  The set of cycles forms a partial ordering with respect to the property `contains another cycle'.
+  \ruggedtodo[]{More precise.}
+  We can assume that our chosen cycle A
+  contains no other distinct cycles, i.e.\ it is a minimal cycle.
+  We note that each vertex has 2 incoming and 2 outgoing arcs which lie opposite to one another.
   We also note that the edges cannot cross. 
   We can thus describe the trail $x_{i_1},\dots,x_{i_J}$ by a set of directives of the type
   \begin{align*}
@@ -329,28 +338,28 @@ Using invariant manifolds we obtain the following proof.
   cannot occur as we otherwise would have a directed cycle. Thus there exists a vertex where the chosen direction is s. 
   Without loss of generality this vertex is $x_{i_1}$.
   Since we can swap $f$ with $-f$ we can assume without loss of generality that the cycle lies to right of $x_{i_1}$.
-  Now we look at the directives r,\dots,r
-  Since all vertices lie within the cycle we must at some step reach a vertex on the cycle. But then this cycle is a new distinct cycle
-  contained in the outer cycle, a contradiction.
+  Now consider new cycle B starting at $x_{i_1}$ with directives r,\dots,r.
+  Since all vertices of B lie within the cycle A we must at some step reach a vertex on the cycle A. But then cycle B is a new distinct cycle
+  contained in cycle A, a contradiction to the minimality of A.
   Hence every case considered leads to a contradiction and it follows that the underlying undirected multigraph of $G$
   is acyclic.
   
-  We now call a leaf positive if it lies on the emergent boundary and
-  negative if it lies on the entrant boundary. The case that a leaf is neither positive or negative cannot occur (elaborate).
+  Now call a leaf positive if it lies on the emergent boundary and
+  negative if it lies on the entrant boundary. The case that a leaf is neither positive or negative cannot occur.\ruggedtodo[]{elaborate}
   We now pick a tree $\widetilde{G}$ out of $G$ and note that
   there are at least 4 boundary vertices to this tree.
-  By construction we see that each `neighbouring' (elaborate) leaf of this tree
+  By construction we see that each `neighbouring'\ruggedtodo[]{elaborate} leaf of this tree
   has opposite signage and the claim follows.
 \end{proof} 
 
 The strategy in the above proofs can be generalised to show the following
 \begin{conjecture}
   Let $\Omega\subseteq\R^2$ be a regular domain with Betti numbers $R_0=1$ and $R_1$.
-  Let further $f\colon\overline{\Omega}\to\R$ be harmonic and admissable 
-  as in Morse with $M$ critical points. Assume further that 
-  $\overline{\Sigma^-}\subseteq\partial\Omega$ on a given connected component 
-  of the boundary $\partial\Omega$
-  consists of at most 1 connected component. Then we have
+  Let further $f\colon\overline{\Omega}\to\R$ be regular harmonic with $M$ critical points.
+  Assume that 
+  $\overline{\Sigma^-}\subseteq\Sigma$ on a given connected component 
+  of the boundary $\Sigma$
+  consists of at most one connected component. Then we have
   \begin{align*}
     \frac{4}{3}M\leq R_1+1\,.
   \end{align*}
@@ -359,10 +368,10 @@ This inequality can probably be improved considerably.
 
 \newpage
 
-\section{Harmonic vector fields, $n=2$}
+\section{Harmonic vector fields, $d=2$}
 
 We state the following result for harmonic vector fields in $d=2$ dimensions.
-\begin{proposition}[Harmonic vector fields on simply connected domains]
+\begin{proposition}[Harmonic vector fields on simply connected domains]\label{pr:n2:hvf:simplyConnected}
   Let $\Omega$ be simply connected and $u$ be a harmonic vector field. Then there exists
   a harmonic function $f\colon\Omega\to\R$ such that $u=\nabla f$.
 \end{proposition}
@@ -377,55 +386,59 @@ This implies
 
 \subsection{No inflow or outflow}
 
-We say that $u$ has no inflow on a subset $S\subseteq\Sigma$ iff $\Sigma^-\cap S=\emptyset$ and that it has no outflow iff $\Sigma^+\cap S=\emptyset$.
+We say that $u$ has no \emph{inflow} on a boundary subset $S\subseteq\Sigma$ iff $\Sigma^-\cap S=\emptyset$ and
+that it has no \emph{outflow} iff $\Sigma^+\cap S=\emptyset$.
 Armed with this definition we can state the following result.
 \begin{proposition}[Upper bound on $M$]
-  Let $d=2$ and $\Omega$ be a regular domain with Betti numbers $R_0=1$, and $R_1$. Let further $u\colon\Omega\to\R^2$ be 
+  Let $d=2$ and $\Omega$ be a regular domain with Betti numbers $R_0=1$, and $R_1$. Let further $u\colon\overline{\Omega}\to\R^2$ be 
   a regular harmonic vector field without inflow or outflow.
-  Then we have $$M+1\leq R_1$$.
+  Then we have $$M+1\leq R_1\,.$$
 \end{proposition}
 \begin{proof}[Sketch of proof.]
-  As in previous proofs the critical manifolds form a directed multigraph. Since no critical manifold can intersect with the boundary each vertex
+  As in the second proof of proposition \ref{pr:n2:hf:nonExistence} the critical manifolds form a directed multigraph.
+  Since no critical manifold can intersect with the boundary each vertex
   of the graph has degree 4 and we thus have $2M$ edges. Now we obtain with Euler's polyhedron formula
   for a planar graph with multiple components
   \begin{align*}
-    \text{\# interiour minimal cycles}
+    \text{\# minimal cycles}
     &= \text{\#faces}-1 \\
     &= 1+\text{\#components}-\text{\#vertices}+\text{\#edges} -1 \\
     &\geq 1+1-M+2M -1 = M+1
   \end{align*}
-  Now note that each interiour minimal cycle must contain a hole of the domain since else we could restrict $u$ to a simply
-  connected region containing this cycle. Then $u$ would correspond to the gradient of 
-  a harmonic function and we would obtain a contradiction as in the previous proof.
+  Here we use the term `minimal' as in the second proof of proposition \ref{pr:n2:hf:nonExistence}.
+  Note that each minimal cycle must contain a hole of the domain since else we could restrict $u$ to a simply
+  connected region containing this cycle. Then by proposition \ref{pr:n2:hvf:simplyConnected} $u$ would correspond to the gradient of 
+  a harmonic function in this region and we would obtain a contradiction as in the proof of proposition \ref{pr:n2:hf:nonExistence}.
   Hence the number of minimal cycles is a lower bound on the number of holes $R_1$ of the domain.
 \end{proof}
 
-In fact using the Morse inequalities we can obtain the stronger result
+In fact using the Morse inequalities we can obtain the stronger result.
 \begin{proposition}
-  Let $\Omega$ be a regular domain with Betti numbers $R_0=1$, and $R_1$ and let $u\colon\Omega\to\R^2$ be 
-  a harmonic vector field without inflow or outflow.
+  Let $\Omega$ be a regular domain with Betti numbers $R_0=1$, and $R_1$ and let $u\colon\overline{\Omega}\to\R^2$ be 
+  a regular harmonic vector field without inflow or outflow.
   Then we have $$M+1=R_1$$.
 \end{proposition}
 \begin{proof}[Sketch of proof.]
-  We cut down the domain such that it is homeomorphic to the disk. By some previous lemma (to appear)
-   $u$ is the gradient of a harmonic function $f$ on this new domain.
-  $f$ has no critical points on the boundary of the uncut domain $\Omega$ and fulfills on the cuts the conditions
+  We cut the domain such that it is homeomorphic to the disk. By proposition \ref{pr:n2:hvf:simplyConnected}
+  $u$ is the gradient of a harmonic function $f$ on this new domain.
+  $f$ has no critical points on the boundary $\Sigma$ and fulfils on the cuts the conditions
   \begin{align}
     \mu_0=\nu_1 \qquad \mu_1=\nu_0 \label{eq:n2:hvf:relationsMuNu}
   \end{align}
   since every entrant critical point is also an emergent critical point on the other side of the cut of shifted index.
-  We have for this new cut domain the Morse inequalities
+  We have for this new cut domain the Morse inequalities for $f$ and $-f$
   \begin{align}
-    M+\mu_0-R_1-\mu_1+R_0&=0 \label{eq:n2_hvf_MorseInequalities_1}\\
-    M+\nu_0-R_1-\nu_0+R_0&=0\,. \label{eq:n2_hvf_MorseInequalities_2}
+    M+\mu_1-R_1-\mu_0+R_0&=0 \label{eq:n2_hvf_MorseInequalities_1}\\
+    M+\nu_1-R_1-\nu_0+R_0&=0\,. \label{eq:n2_hvf_MorseInequalities_2}
   \end{align}
-  Adding eqations \eqref{eq:n2_hvf_MorseInequalities_1} and \eqref{eq:n2_hvf_MorseInequalities_2} and using the relation
+  Adding equations \eqref{eq:n2_hvf_MorseInequalities_1} and \eqref{eq:n2_hvf_MorseInequalities_2} and using the relation
   \eqref{eq:n2:hvf:relationsMuNu} we obtain
   \begin{align*}
     2\brk*{M-R_1+R_0}=0
   \end{align*}
   from which the claim follows.
 \end{proof}
+\ruggedtodo[]{Find complex analysis counterpart (covering spaces etc.)}
 
 We now give an example of a harmonic vector field
 for which $M=R_1-1$. In order to do this we define two differential operators for $d=2$ by
@@ -455,37 +468,45 @@ and by the spherical symmetry of $\Phi_2$
 \end{align*}
 Figure \ref{pl:n2_hvf_noInflowNoOutflow} with $M=1$ indicates that $u$ has the desired properties. One can see that
 the plots for larger
-$M$ also have the desired properties (but I am too lazy to show them here).
+$M$ also have the desired properties (but I am too lazy to show them here).\ruggedtodo[]{Maybe I should show them.}
 \begin{figure}
   \centering
-  \includesvg[width=0.5\textwidth]{../Plots/n2_hvf_noInflowNoOutflow.svg}
+  \includegraphics[width=0.7\textwidth]{../Plots/n2_hvf_noInflowNoOutflow_asymmetric.pdf}
   \caption{A plot of $u$ for $M=1$ }
   \label{pl:n2_hvf_noInflowNoOutflow}
 \end{figure}
-\ruggedtodo[]{This figure looks awful}
-
 
 \subsection{An example of inflow on one side and outflow on the other}
-Consider the degerate harmonic function
+Consider the degenerate harmonic function
 \begin{align*}
   f_1\colon\C\cong\R^2&\to\R \\
-  z&\mapsto \Re(z^3)\,.
+  x&\mapsto \Re\brk*{\brk*{x_1+\iu x_2}^3}\,.
 \end{align*}
 Since we are only interested in non-degenerate functions we modify this to
 \begin{align*}
-  f_2(z)=\Re(z^3+(1-\iu)z)
+  f_2(x)= \Re\brk*{\brk*{x_1+\iu x_2}^3}-3\brk*{x_1+x_2}
 \end{align*}
 Now we set
-\begin{align*}
-  u\colon\R^2\setminus\brk*{\brk[c]*{\dots}}&\to\R^2 \\
-  x&\mapsto\nabla^\perp f(x_1+\iu x_2)
-\end{align*}
-As before $u$ is a harmonic vector field and a plot shows that it has the desired properties
+\begin{align}
+  u\colon\R^2\setminus\brk*{\brk[c]*{\vect{-1\\1},\vect{1\\-1}}}&\to\R^2 \\
+  x&\mapsto\nabla^\perp f(x)=3\vect{-x_2^2+1\\-x_1^2+1}\label{eq:n2:hvf:InflowOutflow:asymmetric}
+\end{align}
+As before $u$ is a harmonic vector field. One can show that $u$ has critical points at $\vect{1&1}$ and
+$\vect{-1&-1}$. One can further see from figure \ref{pl:n2:hvf:InflowOutflow:asymmetric}
+that on a fitting domain with two holes $u$ has inflow from one side and outflow on the other.
 
+\begin{figure}
+  \centering
+  \includegraphics[width=0.7\textwidth]{../Plots/n2_hvf_InflowOutflow_asymmetric.pdf}
+  \caption{A plot of $u$ as given by equation \eqref{eq:n2:hvf:InflowOutflow:asymmetric}.}
+  \label{pl:n2:hvf:InflowOutflow:asymmetric}
+\end{figure}
+
+\ruggedtodo[inline]{Restrict the plots and functions above to suitable domains.}
 
 \newpage
 
-\section{Harmonic functions, $n=3$}
+\section{Harmonic functions, $d=3$}
 
 \subsection{The cylinder}
 
@@ -500,7 +521,7 @@ As before $u$ is a harmonic vector field and a plot shows that it has the desire
   \begin{align*}
     \Delta(\partial_1f)=\partial_1(\Delta f)=0
   \end{align*}
-  we have that $\partial f$ attains its minimum on $\partial\Omega$. Since $\partial_1 f(x)=0$ for some interiour point 
+  we have by the maximum principle that $\partial_1 f$ attains its minimum on the boundary $\Sigma$. Since $\partial_1 f(x)=0$ for some interiour point 
   by assumption and $\partial_1 f>0$ on the lids $\brk[c]{x_1=0}\cup\brk[c]{x_1=1}$ there exists a point
   $x\in(0,1)\times S^1$ such that $\partial_1f(x)$ is minimal on $\overline{\Omega}$. But then we have by Hopf's lemma
   that
@@ -512,26 +533,26 @@ As before $u$ is a harmonic vector field and a plot shows that it has the desire
 
 \newpage
 
-\subsection{Harmonic vector fields, $n=3$}
+\subsection{Harmonic vector fields, $d=3$}
 
-
-Mimiking the proof in 2 dimensions we obtain the following proposition.
+\ruggedtodo[inline]{I think the following proof (and statement) is flawed. It needs fixing.}
+Mimicking the proof in 2 dimensions we obtain the following proposition.
 \begin{proposition}
   Let $\Omega$ have Betti numbers $R_0$,$R_1$ and $R_2$
-  Let $u\colon\overline{\Omega}\to\R$ be a harmonic vector field without inflow or outflow. Then we have the following relation for
+  Let $u\colon\overline{\Omega}\to\R$ be a regular harmonic vector field without inflow or outflow. Then we have the following relation for
   critical points of $u$
   \begin{align*}
     M_2=M_1
   \end{align*}
 \end{proposition}
-\begin{proof}
+\begin{proof}[Attempt at proof.]
   As in the two-dimensional case we begin by cutting up the boundary such that $\Omega$ is homeomorphic to the ball with bubbles.
-  Once again by a lemma \ruggedtodo[]{now I'm not quite sure about this statement in 3D} $u$ is the gradient of a harmonic function $u$ on this new domain.
-  $f$ has no critical points on the boundary $\partial\Omega$ and on the cut boundary it fulfills the conditions
+  Once again by a lemma \ruggedtodo[]{now I'm not quite sure about this statement in 3D.} $u$ is the gradient of a harmonic function $u$ on this new domain.
+  $f$ has no critical points on the boundary $\Sigma$ and on the cut boundary it fulfils the conditions
   \begin{align}
     \mu_0=\nu_2\qquad \mu_1=\nu_1 \qquad \mu_2=\nu_0 \label{eq:n3:hvf:relationsMuNu}
   \end{align}
-  by the same reasoning. We now have the Morse inequalities
+  by the same reasoning. We now have the Morse inequalities for $f$ and $-f$
   \begin{align}
     M_2+\mu_2-R_2-M_1-\mu_1+R_1+\mu_0-R_0=0 \label{eq:n3:hvf:MorseInequalities:1} \\
     M_1+\nu_2-R_2-M_2-\nu_1+R_1+\nu_0-R_0=0 \label{eq:n3:hvf:MorseInequalities:2}
@@ -545,7 +566,7 @@ Mimiking the proof in 2 dimensions we obtain the following proposition.
 
 \newpage
 
-\subsection{Harmonic functions, $n=4$} 
+\subsection{Harmonic functions, $d=4$} 
 Define the harmonic function 
 \begin{align*}
   f\colon B_1\subseteq\R^4&\to \R \\
@@ -579,7 +600,7 @@ Thus we have $x\in\Sigma^\pm$ iff
 \begin{align*}
   0<\pm \nabla f\cdot n = \pm 2\brk*{x_1^2+x_2^2-x_3^2-x_4^2}
 \end{align*}
-Using the condition \eqref{eq:n4:ball} we obtain the equivalent condition
+Using condition \eqref{eq:n4:ball} we obtain the equivalent condition
 \begin{align*}
   0<\pm 1-2\brk*{x_3^2+x_4^2}
 \end{align*}
