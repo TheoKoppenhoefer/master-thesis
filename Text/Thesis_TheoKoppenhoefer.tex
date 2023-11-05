@@ -53,19 +53,23 @@
 \todoin[]{
   General TODOs
   \begin{itemize}
-    \item Disproof using hairy ball theorem.
-    \item Write other example
     \item Look what happens if you add the examples
-    \item Check that the signs of the examples are correct
-    \item Make the plots of the examples look nice.
-    \item Change $n$ to $d$, consistent notation.
     \item Check for typos.
     \item Does Girault-Raviart theorem with Helmholtz decomp. help?
     \item bring in results from \cite{Shelton1980} and \cite{Morse1970}
+    \item Fix issue with examples
+    \item Find modern version of complex analysis counterpart
+    \item Vector identities for curl and div in R2
+    \item Harmonic vector fields, find up to date reference \textrightarrow prove used identities
+    \item Look up Leau-Fatou flower
+    \item Look up Bocher theorem
+    \item Give a complex analysis proof of the number of critical points without inflow or outflow \textrightarrow does this generalise to one inflow, outflow?
+    \item Look at application of Sperner's lemma
   \end{itemize}
   Some questions
   \begin{itemize}
     \item Should I state Hopf's Lemma?
+    \item Weak formulation - a distraction? \textrightarrow Hartman, Wintner
   \end{itemize}
 }
 
@@ -76,6 +80,7 @@
 \ruggedtodo[inline]{Some amazing introduction}
 
 Unless otherwise stated we denote by $\Omega\subseteq\R^d$ an open bounded subset of $\R^d$ with boundary $\Sigma=\partial\Omega$.
+In the following we will work in dimensions $d\in\brk[c]{2,3}$.
 We denote with
 \begin{align*}
   f\colon\overline{\Omega}\to\R
@@ -85,11 +90,11 @@ a scalar function of class $C^2$. We also denote by
   u\colon\overline{\Omega}\to\R^d
 \end{align*}
 a vector field of class $C^1$. Often but not always $u$ can be thought of as 
-a \emph{harmonic vector field}, that is $u$ fulfils
+a \emph{harmonic vector field}, that is $u$ is of type $C^1$ and fulfils
 \begin{align*}
   \diver u=0 \qquad \text{ and }\qquad \curl u=0\,.
 \end{align*}
-Also often but not always we assume that locally $u=\nabla f$, implying that $f$ is harmonic.
+Also often but not always we assume that globally $u=\nabla f$ is a gradient field, implying that $f$ is harmonic.
 One question we seek to answer during this thesis is the following.
 \begin{question}[Flowthrough with stagnation point]\label{qu:flowthroughStagnationPoint}
   Does there exist a tube $\Omega\subseteq\R^3$ with flow $u$ through the tube such that
@@ -120,14 +125,14 @@ In the following we define the emergent and the entrant boundary as in \cite[p.2
 
 The following are slight generalisation of the definitions given in \cite[p.138f]{Shelton1980}, \cite[§5]{Morse1969} and \cite[p.282f]{Morse1970}
 to include harmonic vector fields.
-We call the zeroes of $u$ \emph{critical points}. A critical point $x\in\Omega$ is called
+We call the zeroes of $u$ \emph{stagnation points}. A stagnation point $x\in\Omega$ is called
 \emph{non-degenerate} if the derivative $Du(x)$ is invertible. We say that $x$ has \emph{index} $k$
-if $Du(x)$ has exactly $k$ negative eigenvalues. $u$ is called \emph{non-degenerate} if all its critical points
+if $Du(x)$ has exactly $k$ negative eigenvalues. $u$ is called \emph{non-degenerate} if all its stagnation points
 are non-degenerate.
 
 We now define the \emph{interiour type numbers} $M_k$
-to be the number of critical points of $u$ of index $k$.
-The total number of critical points is thus given by
+to be the number of stagnation points of $u$ of index $k$.
+The total number of stagnation points is thus given by
 \begin{align*}
   M=\sum_kM_k\,.
 \end{align*}
@@ -139,37 +144,83 @@ In the following definition we require $\Omega$ to be regular.
   Let $$u_{\Sigma^-}=\pi\circ u\vert_{\Sigma^-}\in C^1\brk*{T\Sigma^-}$$ be the restriction and projection of $u$ onto the tangent bundle of $\Sigma^-$.
   \ruggedtodo[]{This construction surely has a name in diffGeo.}
   We define the \emph{boundary type numbers} $\mu_k$ to be
-  the number of critical points of $u_{\Sigma^-}$ on the entrant boundary
+  the number of stagnation points of $u_{\Sigma^-}$ on the entrant boundary
   $\Sigma^-$ of index $k$.
   We further write $\nu_k$ for the $k$-th boundary type number of $-u$.
 \end{definition}
 
-We now call $u$ \emph{regular} iff $u$ and $u_\Sigma$ are non-degenerate and all critical points lie in $\Omega$.
+We now call $u$ \emph{regular} iff $u$ and $u_\Sigma$ are non-degenerate and all stagnation points lie in $\Omega$.
 
 The previous definitions translate naturally to $f$.
 We call $f$ regular, non-degenerate, et cetera iff $u=\nabla f$ is regular, non-degenerate, et cetera.
+Similarly we call $x$ a critical point of index $k$ if it is a stagnation point of $u$ of index $k$.
 
 
 \subsection{On assuming non-degeneracy}
 
+We now comment on the assumption of non-degeneracy of $u$ and $f$.
+Given $u$ we define the modification
+\begin{align*}
+  u_\e=u+\e
+\end{align*}
+for some $\e\in\R^d$. The following is a slight adaptation of results in \cite[§2]{Morse1970}.
+
+We call a boundary point $x$ \emph{ordinary} if it is not tangent, that is $u(x)\not\in T_x\Sigma$.
+\begin{proposition}
+  Assume all stagnation points of $u$ lie in $\Omega$ and that the stagnation points on $\Omega$ are
+  ordinary. Then there exists a $\delta>0$ and a Lebesgue nullset $N$ such that
+  for all $\e\in B_\delta\setminus N$ such that
+  \begin{itemize}
+    \item $u_\e$ is regular
+    \item there is a one to one relation of the stagnation points in $\Omega$ and $\Sigma$ preserving
+      index and the property of being entrant or emergent.
+  \end{itemize}
+\end{proposition}
+\begin{proof}
+  \ruggedtodo[inline]{insert proof here}
+\end{proof}
 
 \section{Some general remarks}
 
-\todoin[]{
-\begin{itemize}
-  \item only finitely many critical points possible
-\end{itemize}
-}
+We make the following remarks
+\begin{proposition}
+  Let $u$ be non-degenerate. Then the number of
+  stagnation points is finite.
+\end{proposition}
+\begin{proof}
+Let $x$ be a non-degenerate stagnation point. Since $Du(x)$ is invertible there exists
+by the inverse function theorem an open neighbourhood $U_x\subseteq\Omega$ of $x$ on which 
+$u$ is bijective. Hence $x$ is the only stagnation point in $U_x$. Let $C$ denote the set of all
+stagnation points of $u$. Then the sets $U_x$ together with
+\begin{align}
+  U_C=\R^d\setminus \overline{C}
+\end{align}
+form an open cover of $\overline{\Omega}$. But $\overline{\Omega}$ is compact and thus there exists
+a finite subcover. Since we have for every stagnation point $x\in C$ that
+$x\not\in U_y$ for all other $y\in C\setminus\brk*[c]{x}$ and $x\not\in U_C$ we must have that $U_x$
+is in the finite subcover. Thus it follows that $\#C<\infty$ is finite.
+\end{proof}\ruggedtodo[]{This was stated somewhere in Morse1969. Also, what is with the boundary stagnation points}
+As a consequence we obtain the following.
+\begin{corollary}
+  For a non-degenerate $u$ the type numbers $M_0,\dots,M_d$ and the boundary type numbers $\mu_0,\dots,\mu_{d-1}$
+  are finite.
+\end{corollary}
 
 \subsection{Betti numbers}
 
 For a formal definition of Betti numbers we refer to ??.
 We do however give some examples of Betti numbers for some domains.
 \ruggedtodo[inline]{complete this section}
+\todoin[]{
+\begin{itemize}
+  \item betti numbers are finite
+\end{itemize}
+}
 
 \subsection{The Morse inequalities}
 
-We state the Morse inequalities.\ruggedtodo[]{More citations.}
+\ruggedtodo[]{How do we know that the betti numbers are finite?}
+We state the Morse inequalities.\ruggedtodo[]{More citations. Check if $C^2$ is really sufficient for Morse.}
 \begin{theorem}[Morse inequalities]
 Let $\Omega$ and $f$ be regular. Then we have the inequalities
 \begin{align*}
@@ -201,7 +252,35 @@ In dimensions $d=3$ we obtain
     0&= M_2+\mu_2-R_2-M_1-\mu_1+R_1-\mu_0+R_0\,.
   \end{align*}
 \end{corollary}
-\ruggedtodo[]{Introduce Morse inequalities for $-f$.}
+\ruggedtodo[]{Give a classical example of a Morse function to determine the betti numbers.}
+
+\subsection{On harmonic vector fields}
+
+We state the following result for harmonic vector fields in $d=2$ dimensions.
+In the following we deduce some basic relations for harmonic vector fields.
+\begin{proposition}[Harmonic vector fields on simply connected domains]\label{pr:n2:hvf:simplyConnected}
+  Let $\Omega\subseteq\R^d$ be open and simply connected and $u$ be a harmonic vector field. Then
+  \begin{enumerate}
+    \item 
+    $u=\nabla f$ is the gradient field of some
+    function $f\colon\Omega\to\R$.
+    \item  $f$ is harmonic.
+    \item $u$ is in fact $C^\infty$.
+    \item The components $u_i=\partial_if$ are harmonic.
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  \begin{enumerate}
+    \item 
+    Since $\curl u =0$ this is a direct consequence of Stokes theorem.
+    \item This follows from $\Delta f = \diver u=0$.
+    \item This follows from the fact that $f$ is harmonic
+    \item This follows from $u_i=\partial_if$.
+  \end{enumerate}
+\end{proof}
+
+If one considers not necessarily simply connected domains $\Omega$ then we obtain the previous
+properties at least locally.
 
 \newpage
 
@@ -216,6 +295,7 @@ We shall give two different proofs of this result. One involving level-sets and 
 
 \subsection{A proof involving level-sets}
 
+\ruggedtodo[]{write omega-limit.}
 \begin{proof}[Sketch of Proof.]
   Let $y_c=f(x_1)$ and $x_1,\dots,x_M$ be all the critical points such that $f(x_\cdot)=y_c$.
   We claim that the level set
@@ -260,7 +340,7 @@ We shall give two different proofs of this result. One involving level-sets and 
   Now choose four neighbouring components $\omega_1,\dots,\omega_4$ as depicted in figure \ref{fi:n2:levelSets:neighbouringComponents}
   \begin{figure}
     \centering
-    \missingfigure[figwidth=0.5\textwidth]{Insert a figure here.}
+    \input{../figures/n2_levelSets_selectionOmega.pdf_tex}
     \caption{The choice of $\omega_1,\dots,\omega_4$.}
     \label{fi:n2:levelSets:neighbouringComponents}
   \end{figure}
@@ -365,24 +445,12 @@ The strategy in the above proofs can be generalised to show the following
   \end{align*}
 \end{conjecture}
 This inequality can probably be improved considerably.
+\ruggedtodo[]{Check with A}
 
 \newpage
 
 \section{Harmonic vector fields, $d=2$}
 
-We state the following result for harmonic vector fields in $d=2$ dimensions.
-\begin{proposition}[Harmonic vector fields on simply connected domains]\label{pr:n2:hvf:simplyConnected}
-  Let $\Omega$ be simply connected and $u$ be a harmonic vector field. Then there exists
-  a harmonic function $f\colon\Omega\to\R$ such that $u=\nabla f$.
-\end{proposition}
-\begin{proof}
-  \ruggedtodo[]{State some proof}
-\end{proof}
-This implies
-\begin{corollary}
-  Let $u$ be a harmonic vector field and $x\in\Omega$. Then there exists a harmonic function $f$ such
-  that locally around $x$ we have $u=\nabla f$.
-\end{corollary}
 
 \subsection{No inflow or outflow}
 
@@ -419,7 +487,7 @@ In fact using the Morse inequalities we can obtain the stronger result.
   Then we have $$M+1=R_1$$.
 \end{proposition}
 \begin{proof}[Sketch of proof.]
-  We cut the domain such that it is homeomorphic to the disk. By proposition \ref{pr:n2:hvf:simplyConnected}
+  We slit the domain such that it is homeomorphic to the disk. By proposition \ref{pr:n2:hvf:simplyConnected}
   $u$ is the gradient of a harmonic function $f$ on this new domain.
   $f$ has no critical points on the boundary $\Sigma$ and fulfils on the cuts the conditions
   \begin{align}
@@ -438,7 +506,28 @@ In fact using the Morse inequalities we can obtain the stronger result.
   \end{align*}
   from which the claim follows.
 \end{proof}
-\ruggedtodo[]{Find complex analysis counterpart (covering spaces etc.)}
+We now give an alternative proof using the argument principle.\ruggedtodo[]{One could use the argument principle for Riemann surfaces.}
+\begin{proof}
+  As before we slit the domain such that it is homeomorphic to a disk. By proposition ?? $u$ is the gradient of a
+  harmonic function $f$ on this new domain. Let $h\in\Hol(\C)$ be a holomorphic function such that $h'=\nabla f$.
+  Let $\gamma$ traverse the boundary of the slit domain such that the domain lies to the left of $\gamma$.
+  We now determine the change of argument $\arg h'$ along $\gamma$. For this
+  consider first the parts of $\gamma$ traversing the slits. Since $\nabla f$ is continuously differentiable
+  along the slit and $\gamma$ traverses the slit once in one direction and once in the other 
+  the contribution in the change of $\arg h'$ from the slits vanishes.
+  On the other hand as $\gamma$ traverses the boundary $\Sigma$ the contribution to the change in
+  argument of $\arg h'$ is $2\pi$ for every hole in the domain 
+  since $h'=u$ is tangent to $\Sigma$ and traverses the holes clockwise direction.
+  Similarly the contribution to the change in argument of $\arg h'$ is $-2\pi$ for the outer boundary component
+  which is traversed counterclockwise.
+  Since we have $R_1$ holes in the domain the total change of $\arg h'$ as $\gamma$ traverses $\Sigma$ is
+  $2\pi(R_1-1)$.
+  Since $h$ has no poles it follows from the argument principle (see for example \cite[Chapter VIII]{Gamelin2001}) that
+  \begin{align}
+    2\pi(R_1-1)=\int_\gamma\dif\arg (h'(z)) =  2\pi M
+  \end{align}
+  From this the claim follows.
+\end{proof}
 
 We now give an example of a harmonic vector field
 for which $M=R_1-1$. In order to do this we define two differential operators for $d=2$ by
@@ -451,48 +540,38 @@ and
 \end{align*}\ruggedtodo[]{Find source of this in Gedicke script. Relation to differential forms.}
 Now consider the field defined by
 \begin{align*}
-  u\colon\R^2\setminus\brk*{\brk[c]*{\vect{1\\0},\dots,\vect{m\\0}}}&\to\R^2 \\
-  x&\mapsto\sum_{m=1}^M\nabla^\perp\Phi_2\brk*{x-\vect{m \\ 0}}
+  u\colon\R^2\setminus\brk*{\brk[c]*{-e_1,e_1}}&\to\R^2 \\
+  x&\mapsto\nabla^\perp\Phi_2\brk*{x-e_1}+\nabla^\perp\Phi_2\brk*{x+e_1}
 \end{align*}
 where
 \begin{align*}
   \Phi_2=-\frac{1}{2\pi}\log(\abs{\cdot})
 \end{align*}
-is the fundamental solution of $\Delta$ on $\R^2$. This is a harmonic vector field since
+is the fundamental solution of $\Delta$ on $\R^2$ and $e_i=\delta_{i\cdot}$ is the first unit vector.
+This is a harmonic vector field since
 \begin{align*}
-  \curl \nabla^\perp\Phi_2(\cdot-y)= -\Delta\Phi_2(\cdot-y)=0
+  \curl \nabla^\perp \Phi(\cdot-y)= -\Delta \Phi(\cdot-y)=0
 \end{align*}
-and by the spherical symmetry of $\Phi_2$
+and
 \begin{align*}
-  \diver \nabla^\perp\Phi_2(\cdot-y) = \brk*{\partial_1^2-\partial_2^2}\Phi_2(\cdot-y)=0\,.
+  \diver \nabla^\perp =0\,.
 \end{align*}
-Figure \ref{pl:n2_hvf_noInflowNoOutflow} with $M=1$ indicates that $u$ has the desired properties. One can see that
-the plots for larger
-$M$ also have the desired properties (but I am too lazy to show them here).\ruggedtodo[]{Maybe I should show them.}
+Figure \ref{pl:n2_hvf_noInflowNoOutflow} indicates that $u$ has the desired properties.
 \begin{figure}
   \centering
   \includegraphics[width=0.7\textwidth]{../Plots/n2_hvf_noInflowNoOutflow_asymmetric.pdf}
   \caption{A plot of $u$ for $M=1$ }
   \label{pl:n2_hvf_noInflowNoOutflow}
-\end{figure}
+\end{figure}\ruggedtodo[]{Update this graphic.}
 
 \subsection{An example of inflow on one side and outflow on the other}
-Consider the degenerate harmonic function
+Consider
 \begin{align*}
-  f_1\colon\C\cong\R^2&\to\R \\
-  x&\mapsto \Re\brk*{\brk*{x_1+\iu x_2}^3}\,.
+  u\colon\R^2\setminus\brk*{\brk[c]*{-e_1,e_1}}&\to\R^2 \\
+  x&\mapsto\nabla^\perp\Phi_2\brk*{x-e_1}-\nabla^\perp\Phi_2\brk*{x+e_1}+x_1
 \end{align*}
-Since we are only interested in non-degenerate functions we modify this to
-\begin{align*}
-  f_2(x)= \Re\brk*{\brk*{x_1+\iu x_2}^3}-3\brk*{x_1+x_2}
-\end{align*}
-Now we set
-\begin{align}
-  u\colon\R^2\setminus\brk*{\brk[c]*{\vect{-1\\1},\vect{1\\-1}}}&\to\R^2 \\
-  x&\mapsto\nabla^\perp f(x)=3\vect{-x_2^2+1\\-x_1^2+1}\label{eq:n2:hvf:InflowOutflow:asymmetric}
-\end{align}
-As before $u$ is a harmonic vector field. One can show that $u$ has critical points at $\vect{1&1}$ and
-$\vect{-1&-1}$. One can further see from figure \ref{pl:n2:hvf:InflowOutflow:asymmetric}
+As before $u$ is a harmonic vector field. One can show that $u$ has critical points at $-e_2$ and
+$e_2$.\ruggedtodo[]{Show this.} One can further see from figure \ref{pl:n2:hvf:InflowOutflow:asymmetric}
 that on a fitting domain with two holes $u$ has inflow from one side and outflow on the other.
 
 \begin{figure}
@@ -510,6 +589,7 @@ that on a fitting domain with two holes $u$ has inflow from one side and outflow
 
 \subsection{The cylinder}
 
+The following proof comes from \cite{Wahlen2023}
 \begin{proposition}
   Let $\Omega=(0,1)\times B_1\subseteq\R^3$ be the cylinder. Let further $f\colon\overline{\Omega}\to\R$ be regular 
   harmonic with no inflow or outflow on the sides 
@@ -534,11 +614,24 @@ that on a fitting domain with two holes $u$ has inflow from one side and outflow
 \newpage
 
 \subsection{Harmonic vector fields, $d=3$}
-
-\ruggedtodo[inline]{I think the following proof (and statement) is flawed. It needs fixing.}
+We obtain as a quick consequence of the hairy ball theorem
+\begin{proposition}
+  Let $\Omega$ have Betti numbers $R_0$, $R_1$ and $R_2$.
+  Let $u\colon\overline{\Omega}\to\R$
+  be a regular harmonic vector field without inflow or outflow. Then we have
+  \begin{align*}
+    R_2\leq R_1\,.
+  \end{align*}
+\end{proposition}
+\begin{proof}
+  Assume not. Since $\Omega$ has $R_2$ bubbles and $R_1$ holes there exists by the pidgeon hole
+  principle a bubble $\Gamma\subseteq\Sigma$ without a hole. Since $u$ has no inflow or outflow on $\Gamma$ we
+  have that the restriction $u\vert_\Gamma\in T\Gamma$ is a vector field on $\Gamma$. Since $u$ is regular
+  $u\vert_\Gamma$ does not vanish. But $\Gamma$ is homeomorphic to the Ball in contradiction to the hairy ball theorem.
+\end{proof}\ruggedtodo[]{A little more rigour would not harm.}
 Mimicking the proof in 2 dimensions we obtain the following proposition.
 \begin{proposition}
-  Let $\Omega$ have Betti numbers $R_0$,$R_1$ and $R_2$
+  Let $\Omega$ have Betti numbers $R_0$, $R_1$ and $R_2$.
   Let $u\colon\overline{\Omega}\to\R$ be a regular harmonic vector field without inflow or outflow. Then we have the following relation for
   critical points of $u$
   \begin{align*}
@@ -546,8 +639,8 @@ Mimicking the proof in 2 dimensions we obtain the following proposition.
   \end{align*}
 \end{proposition}
 \begin{proof}[Attempt at proof.]
-  As in the two-dimensional case we begin by cutting up the boundary such that $\Omega$ is homeomorphic to the ball with bubbles.
-  Once again by a lemma \ruggedtodo[]{now I'm not quite sure about this statement in 3D.} $u$ is the gradient of a harmonic function $u$ on this new domain.
+  As in the two-dimensional case we begin by cutting up the domain such that the slit domain is homeomorphic to the ball with bubbles.
+  Once again by proposition \ref{pr:n2:hvf:simplyConnected} $u$ is the gradient of a harmonic function $u$ on this new domain.
   $f$ has no critical points on the boundary $\Sigma$ and on the cut boundary it fulfils the conditions
   \begin{align}
     \mu_0=\nu_2\qquad \mu_1=\nu_1 \qquad \mu_2=\nu_0 \label{eq:n3:hvf:relationsMuNu}
@@ -562,7 +655,8 @@ Mimicking the proof in 2 dimensions we obtain the following proposition.
   \begin{align*}
     2\brk*{M_2-M_1}=0\,.
   \end{align*}
-\end{proof}
+\end{proof}\ruggedtodo[]{Introduce Morse inequalities for $-f$.}
+
 
 \newpage
 
