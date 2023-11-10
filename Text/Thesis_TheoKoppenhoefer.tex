@@ -17,23 +17,8 @@
 \graphicspath{{../Plots/}}
 \graphicspath{{../Figures/}}
 
-\pgfplotsset{
-	compat=newest,
-    every axis/.append style={
-        axis y line=left,
-        axis x line=bottom,
-        scale only axis,
-%    	max space between ticks=25pt,
-        width=0.7\textwidth,
-        scaled ticks=true,
-        axis line style={thick,-,>=latex, shorten >=-.4cm},
-    		x tick label style={
-		    /pgf/number format/precision=3
-		}
-    },
-    every axis plot/.append style={thick},
-    tick style={black, thick}
-}
+% The following displays the labels, uncomment for final version
+% \usepackage{showlabels}
 
 \newcommand{\bx}{\bar{x}}
 
@@ -53,18 +38,15 @@
 \todoin[]{
   General TODOs
   \begin{itemize}
-    \item Look what happens if you add the examples
     \item Check for typos.
     \item Does Girault-Raviart theorem with Helmholtz decomp. help?
     \item bring in results from \cite{Shelton1980} and \cite{Morse1970}
-    \item Fix issue with examples
-    \item Find modern version of complex analysis counterpart
-    \item Vector identities for curl and div in R2
-    \item Harmonic vector fields, find up to date reference \textrightarrow prove used identities
-    \item Look up Leau-Fatou flower
-    \item Look up Bocher theorem
-    \item Give a complex analysis proof of the number of critical points without inflow or outflow \textrightarrow does this generalise to one inflow, outflow?
+    \item Harmonic vector fields, find up to date reference
+    \item Mention Sard's theorem
+    \item Does Bocher's theorem help?
+    \item Generalise argument principle proof to one inflow, outflow
     \item Look at application of Sperner's lemma
+    \item $C$ is used once for critical points, once for level sets.
   \end{itemize}
   Some questions
   \begin{itemize}
@@ -122,7 +104,7 @@ In the following we define the emergent and the entrant boundary as in \cite[p.2
     \Sigma=\Sigma^-\sqcup\Sigma^0\sqcup\Sigma^+\,.
   \end{align*}
 \end{definition}
-
+\tdrewrite{Use differential topology language in the following section.}
 The following are slight generalisation of the definitions given in \cite[p.138f]{Shelton1980}, \cite[§5]{Morse1969} and \cite[p.282f]{Morse1970}
 to include harmonic vector fields.
 We call the zeroes of $u$ \emph{stagnation points}. A stagnation point $x\in\Omega$ is called
@@ -139,17 +121,20 @@ The total number of stagnation points is thus given by
 We call $\Omega$ a \emph{regular domain} if $\Sigma$ is a manifold of class $C^2$.
 In the following definition we require $\Omega$ to be regular.
 \begin{definition}[Boundary type numbers]
-  For a boundary point $x$ let $$\pi_x\colon \R^d\cong T_x\R^d\to T_x\Sigma$$ denote the projection of a
+  For a boundary point $x$ let $$\pi_x\colon \R^d\cong T_x\R^d\to T_x\Sigma$$ denote the orthogonal projection of a
   vector at $x$ onto the tangent space of $\Sigma$ at $x$.
-  Let $$u_{\Sigma^-}=\pi\circ u\vert_{\Sigma^-}\in C^1\brk*{T\Sigma^-}$$ be the restriction and projection of $u$ onto the tangent bundle of $\Sigma^-$.
-  \ruggedtodo[]{This construction surely has a name in diffGeo.}
+  Let 
+  \begin{align}
+    \tiu=\pi\circ u\vert_{\Sigma^-}\in C^1\brk*{T\Sigma^-}\label{eq:definitions:projectionSigma}
+  \end{align}
+  be the restriction and orthogonal projection of $u$ onto the tangent bundle of $\Sigma^-$.
   We define the \emph{boundary type numbers} $\mu_k$ to be
   the number of stagnation points of $u_{\Sigma^-}$ on the entrant boundary
   $\Sigma^-$ of index $k$.
   We further write $\nu_k$ for the $k$-th boundary type number of $-u$.
 \end{definition}
 
-We now call $u$ \emph{regular} iff $u$ and $u_\Sigma$ are non-degenerate and all stagnation points lie in $\Omega$.
+We now call $u$ \emph{regular} iff $u$ and $\tiu$ are non-degenerate and all stagnation points lie in $\Omega$.
 
 The previous definitions translate naturally to $f$.
 We call $f$ regular, non-degenerate, et cetera iff $u=\nabla f$ is regular, non-degenerate, et cetera.
@@ -158,18 +143,117 @@ Similarly we call $x$ a critical point of index $k$ if it is a stagnation point 
 
 \subsection{On assuming non-degeneracy}
 
-We now comment on the assumption of non-degeneracy of $u$ and $f$.
+In the following section we argue that assuming non-degeneracy 
+of $u$ and $f$ is not a great restriction.
 Given $u$ we define the modification
-\begin{align*}
-  u_\e=u+\e
-\end{align*}
-for some $\e\in\R^d$. The following is a slight adaptation of results in \cite[§2]{Morse1970}.
+\begin{align}
+  u_\e=u+\e\label{eq:nonDegeneracy:definitionUEps}
+\end{align}
+for some $\e\in\R^d$. We would like to show that $u_\e$ is for almost all choices of $\e$ non-degenerate and can 
+thus be used to approximate a degenerate $u$.
+Our approach is to use Thom's theorem which is inspired by the approach in \cite[Chapter 6]{Hirsch1994}.
+In this section we refer to $X$ and $Y$ as generic manifolds \ruggedtodo{of which class?}.
+\begin{definition}[Transversality]
+  We call a function $g\colon X\to Y$ transverse to a submanifold $A\subseteq Y$ iff for all points in the 
+  preimage $x\in g^{-1}(A)$ we have that
+  \begin{align*}
+    \Image(dg_x)+T_{g(x)}A = T_{g(x)}Y\,.
+  \end{align*}
+\end{definition}
+As an application we make the following observation.
+\begin{proposition}[Transversal characterisation of non-degeneracy]\label{pr:nonDegeneracy:alternativeCharacterisation}
+  Let $u\colon X\to TX$ be a differentiable vector field.
+  Then $u$ non-degenerate iff $u$ is transverse to the zero section $A$ of $TX$.
+\end{proposition}
+\begin{proof}
+  First note that we have that $x\in u^{-1}(A)$ iff $u(x)=0$ and thus $u^{-1}(A)=C$.
+  Unraveling the definition of transversality we get that $u$ is transverse to the zero section iff for all $x\in C=u^{-1}(A)$
+  we have that
+  \begin{align}
+    \Image(du_x)+T_{u(x)}A = T_{u(x)}TX\,. \label{eq:nonDegeneracy:uTransverse}
+  \end{align}
+  As $A$ is the zero section we have $T_{u(x)}A=0$ and equation \eqref{eq:nonDegeneracy:uTransverse}
+  is equivalent to stating that $du$ is of full rank. But $du$ being of full rank at all points
+  in $C$ is equivalent to $u$ being non-degenerate.
+\end{proof}
+The following version of Thom's transversality theorem is an adaption (i.e.\ weakening) of \cite[Theorem 2.7]{Hirsch1994} to our needs.
+\begin{theorem}[Parametric transversality theorem.]
+  Let $E,X,Y$ be $C^r$-manifolds (without boundary) and $A\subseteq Y$ a $C^r$ submanifold such that
+  \begin{align*}
+    r>\dim X-\dim Y+\dim A\,.
+  \end{align*}
+  Let further $F\colon E\to C^r\brk*{X,Y}$ be such that the evaluation map
+  \begin{align*}
+    F^\text{ev}\colon E\times X&\to Y \\
+    (\e,x)&\mapsto F_\e(x)
+  \end{align*}
+  is $C^r$ and transverse to $A$.
+  Then the set
+  \begin{align*}
+    \pitchfork(F;A)=\brk[c]*{\e\in E\colon F_\e\text{ is transverse to } A}
+  \end{align*}
+  is dense.
+\end{theorem}
+\begin{proof}
+  See \cite[Threorem 2.7]{Hirsch1994} for details.
+\end{proof}
+Using proposition \ref{pr:nonDegeneracy:alternativeCharacterisation} we obtain the corollary
+\begin{corollary}
+  Let $u$ be a harmonic vector field on the regular domain $\overline{\Omega}$.
+  Then for almost every $\e\in\R^d$ we have that
+  \begin{itemize}
+    \item $u_\e$ given by equation \eqref{eq:nonDegeneracy:definitionUEps} is non-degenerate on $\Omega$ and
+    \item $\widetilde{u_\e}$ as in \eqref{eq:definitions:projectionSigma} is non-degenerate on $\Sigma$.
+  \end{itemize}
+\end{corollary}
+\begin{proof}
+  Set $r=2$, $E=\R^d$ and $Y=TX$ where we initially assume that $X=\Omega$.
+  We would like to apply the parametric transversality theorem to the function
+  \begin{align*}
+    F\colon E&\to C^\infty(X,TX) \\
+    \e&\mapsto u_\e
+  \end{align*}
+  We note that $F^\text{ev}$ is sufficiently smooth. 
+  We need to show that $F^\text{ev}$ is transverse to the
+  zero section $A\subseteq TX$. Then the parametric transversality theorem 
+  yields a dense $E_\Omega\subseteq E$ on which
+  $F$ is transverse to $A$.
+  For this note that $E\times C = F^{-1}(A)$.
+  It then follows for all $(\e,x)\in F^{-1}(A)$ that
+  \begin{align}
+    \Image\brk*{dF^\text{ev}_{(\e,x)}}=T_xTX\label{eq:nonDegeneracy:surjectiveDF}
+  \end{align}
+  since we have that
+  \begin{align*}
+    DF^\text{ev}_{(\e,x)}=\begin{bmatrix}
+      Du_x\mid \Id_{d\times d}
+    \end{bmatrix}
+  \end{align*}
+  is surjective. 
+  Proposition \ref{pr:nonDegeneracy:alternativeCharacterisation}
+  now yields that $u_\e$ non-degenerate on $E_\Omega$.
+  
+  Analogously we set $X=\Sigma$ in the previous proof and replace
+  $u_\e$ with the restriction $\widetilde{u_\e}$. To show that 
+  equation \eqref{eq:nonDegeneracy:surjectiveDF} holds we resort to the fact that
+  \begin{align*}
+    dF^\text{ev}_{(\e,x)}
+    =d\brk*{\widetilde{u_\e}(x)}_{(\e,x)}
+    =d\pi\circ \brk*{du_\e(x)}_{(\e,x)}
+  \end{align*}
+  is surjective as a concatenation of surjective functions.
+  Thus there also exists a dense set $E_\Sigma\subseteq\R$ on which $\widetilde{u_\e}$ is
+  non-degenerate on $\Sigma$. Now the set $E_\Omega\cap E_\Sigma\subseteq\R$ is dense and
+  for every $\e$ in this set has the desired properties.
+\end{proof}
 
-We call a boundary point $x$ \emph{ordinary} if it is not tangent, that is $u(x)\not\in T_x\Sigma$.
+As a consequence we get a version of the results in \cite[§2]{Morse1970}.
+
+We call a boundary point $x\in\Sigma$ \emph{ordinary} iff $u(x)$ is not tangent to $\Sigma$.
 \begin{proposition}
   Assume all stagnation points of $u$ lie in $\Omega$ and that the stagnation points on $\Omega$ are
-  ordinary. Then there exists a $\delta>0$ and a Lebesgue nullset $N$ such that
-  for all $\e\in B_\delta\setminus N$ such that
+  ordinary. Then there exists a positive $\delta>0$ such that
+  for (Lebesgue) almost every $\e\in B_\delta$ we have that
   \begin{itemize}
     \item $u_\e$ is regular
     \item there is a one to one relation of the stagnation points in $\Omega$ and $\Sigma$ preserving
@@ -177,7 +261,16 @@ We call a boundary point $x$ \emph{ordinary} if it is not tangent, that is $u(x)
   \end{itemize}
 \end{proposition}
 \begin{proof}
-  \ruggedtodo[inline]{insert proof here}
+  We follow \cite[text]{Morse1970}.
+  First choose $\delta$ so small that for all stagnation points of $u_\e$ lie in $\Omega$.
+  If there did not exist such a $\delta$ we could choose a sequence $\e_n\to0$ in $\R^d$ such 
+  that $u_{\e_n}$ had a stagnation point $x_n$ on $\Sigma$. Since $\Sigma$ is compact we can assume that $x_n$ converges
+  to a stagnation point $x$. But then $x$ is also a stagnation point of $u$. A contradiction.
+
+  
+  
+  We note that since $\overline{\Omega}$ is compact we have that $\nabla u_\e\to \nabla u$ 
+  uniformly as $\abs*{\e}\to0$.
 \end{proof}
 
 \section{Some general remarks}
@@ -209,18 +302,18 @@ As a consequence we obtain the following.
 \subsection{Betti numbers}
 
 For a formal definition of Betti numbers we refer to ??.
+\td{Define Betti numbers.}
 We do however give some examples of Betti numbers for some domains.
 \ruggedtodo[inline]{complete this section}
 \todoin[]{
 \begin{itemize}
-  \item betti numbers are finite
+  \item comment on that betti numbers are finite
 \end{itemize}
 }
 
 \subsection{The Morse inequalities}
 
-\ruggedtodo[]{How do we know that the betti numbers are finite?}
-We state the Morse inequalities.\ruggedtodo[]{More citations. Check if $C^2$ is really sufficient for Morse.}
+We state the Morse inequalities.\ruggedtodo[]{More citations.}
 \begin{theorem}[Morse inequalities]
 Let $\Omega$ and $f$ be regular. Then we have the inequalities
 \begin{align*}
@@ -232,10 +325,11 @@ Let $\Omega$ and $f$ be regular. Then we have the inequalities
 \end{align*}
 \end{theorem}
 \begin{proof}
-  See \cite{Morse1969}.\ruggedtodo[]{Give a more precise reference.}
+  See \cite[Theorem 10.2']{Morse1969}.\ruggedtodo[]{Give outline of proof idea.}
 \end{proof}
 If we now assume that $f$ is harmonic then the maximum principle implies that
-$M_0=0=M_d$ and thus we obtain for the special case of dimensions $d=2$.
+$M_0=0=M_d$. 
+If we additionally assume that we have dimensions $d=2$ we obtain \cite[Corollary 10.1]{Morse1969}.
 \begin{corollary}[Morse inequalities for $f$ harmonic, $d=2$]
   Let $d=2$, $\Omega$ and $f$ be regular and assume that $f$ is harmonic. Then we have
   \begin{align*}
@@ -243,7 +337,7 @@ $M_0=0=M_d$ and thus we obtain for the special case of dimensions $d=2$.
     0&=M+\mu_1-R_1-\mu_0+R_0\,.
   \end{align*}
 \end{corollary}
-In dimensions $d=3$ we obtain
+In dimensions $d=3$ we obtain \cite[Corollary 10.2]{Morse1969}
 \begin{corollary}[Morse inequalities for $f$ harmonic, $d=3$]
   Let $d=3$, $\Omega$ and $f$ be regular and assume that $f$ is harmonic. Then we have
   \begin{align*}
@@ -252,12 +346,12 @@ In dimensions $d=3$ we obtain
     0&= M_2+\mu_2-R_2-M_1-\mu_1+R_1-\mu_0+R_0\,.
   \end{align*}
 \end{corollary}
-\ruggedtodo[]{Give a classical example of a Morse function to determine the betti numbers.}
+\ruggedtodo[inline]{Give a classical example of a Morse function to determine the betti numbers.}
+\td{Give an outline of the proof.}
 
 \subsection{On harmonic vector fields}
 
-We state the following result for harmonic vector fields in $d=2$ dimensions.
-In the following we deduce some basic relations for harmonic vector fields.
+In the following we deduce some basic relations for harmonic vector fields in dimensions $d\in\brk[c]{2,3}$.
 \begin{proposition}[Harmonic vector fields on simply connected domains]\label{pr:n2:hvf:simplyConnected}
   Let $\Omega\subseteq\R^d$ be open and simply connected and $u$ be a harmonic vector field. Then
   \begin{enumerate}
@@ -529,59 +623,139 @@ We now give an alternative proof using the argument principle.\ruggedtodo[]{One 
   From this the claim follows.
 \end{proof}
 
-We now give an example of a harmonic vector field
-for which $M=R_1-1$. In order to do this we define two differential operators for $d=2$ by
+In the following we would like to give examples for harmonic vector fields.
+In order to do this we define two differential operators for $d=2$ by
 \begin{align*}
   \nabla^\perp f=\Curl f=\vect{-\partial_2f \\ \partial_2f}
 \end{align*}
 and
 \begin{align*}
   \curl u=-\partial_1u_2+\partial_2u_1
-\end{align*}\ruggedtodo[]{Find source of this in Gedicke script. Relation to differential forms.}
-Now consider the field defined by
-\begin{align*}
-  u\colon\R^2\setminus\brk*{\brk[c]*{-e_1,e_1}}&\to\R^2 \\
-  x&\mapsto\nabla^\perp\Phi_2\brk*{x-e_1}+\nabla^\perp\Phi_2\brk*{x+e_1}
 \end{align*}
+\td{Look into James Kelliher, stream functions for divergence free vector fields. 
+Relation to differential forms.}
+
+The following proposition gives us a recipe to generate harmonic vector fields in $d=2$ dimensions.
+\begin{proposition}
+  Let $\psi\colon\Omega\to\R$ be harmonic then $\nabla^\perp f$ is a harmonic vector field.
+\end{proposition} 
+\begin{proof}
+  Since $\diver \nabla^\perp=0$ we have
+  \begin{align*}
+    \diver u = \diver\nabla^\perp \psi=0
+  \end{align*}
+  and one calculates
+  \begin{align*}
+    \curl u = \curl\nabla^\perp \psi = -\Delta \psi = 0\,.
+  \end{align*}
+\end{proof}
+The function $\psi$ is also called a stream function.
+
+We now give an example of a harmonic vector field without 
+inflow or outflow and with one critical point.
+For this consider the stream function
+\begin{equation}
+  \begin{aligned}
+  \psi\colon\R^2\setminus\brk*{\brk[c]*{-e_1,e_1}}&\to\R \\
+  x&\mapsto\Phi_2\brk*{x-e_1}+\Phi_2\brk*{x+e_1}
+  \end{aligned}\label{eq:n2:hvf:noInflowNoOutflow}
+\end{equation}
 where
 \begin{align*}
-  \Phi_2=-\frac{1}{2\pi}\log(\abs{\cdot})
+  \Phi_2=\log(\abs{\cdot})
 \end{align*}
-is the fundamental solution of $\Delta$ on $\R^2$ and $e_i=\delta_{i\cdot}$ is the first unit vector.
-This is a harmonic vector field since
-\begin{align*}
-  \curl \nabla^\perp \Phi(\cdot-y)= -\Delta \Phi(\cdot-y)=0
-\end{align*}
-and
-\begin{align*}
-  \diver \nabla^\perp =0\,.
-\end{align*}
-Figure \ref{pl:n2_hvf_noInflowNoOutflow} indicates that $u$ has the desired properties.
+is a multiple of the fundamental solution of the laplace equation on $\R^2$ and $e_i=\delta_{i\cdot}$ are the unit vectors.
+Figure \ref{pl:n2_hvf_noInflowNoOutflow} indicates that $u=\nabla^\perp\psi$ has the desired properties.
 \begin{figure}
   \centering
-  \includegraphics[width=0.7\textwidth]{../Plots/n2_hvf_noInflowNoOutflow_asymmetric.pdf}
-  \caption{A plot of $u$ for $M=1$ }
+  \includegraphics[width=0.7\textwidth]{../Plots/HarmonicVectorFields_gr1.eps}
+  \caption{A plot of $u=\nabla^\perp\psi$ in the region $\psi^{-1}\brk*{[-1,1]}$.
+    Here $\psi$ is given by equation \eqref{eq:n2:hvf:noInflowNoOutflow}.}
   \label{pl:n2_hvf_noInflowNoOutflow}
-\end{figure}\ruggedtodo[]{Update this graphic.}
-
-\subsection{An example of inflow on one side and outflow on the other}
-Consider
-\begin{align*}
-  u\colon\R^2\setminus\brk*{\brk[c]*{-e_1,e_1}}&\to\R^2 \\
-  x&\mapsto\nabla^\perp\Phi_2\brk*{x-e_1}-\nabla^\perp\Phi_2\brk*{x+e_1}+x_1
-\end{align*}
-As before $u$ is a harmonic vector field. One can show that $u$ has critical points at $-e_2$ and
-$e_2$.\ruggedtodo[]{Show this.} One can further see from figure \ref{pl:n2:hvf:InflowOutflow:asymmetric}
-that on a fitting domain with two holes $u$ has inflow from one side and outflow on the other.
-
-\begin{figure}
-  \centering
-  \includegraphics[width=0.7\textwidth]{../Plots/n2_hvf_InflowOutflow_asymmetric.pdf}
-  \caption{A plot of $u$ as given by equation \eqref{eq:n2:hvf:InflowOutflow:asymmetric}.}
-  \label{pl:n2:hvf:InflowOutflow:asymmetric}
 \end{figure}
 
-\ruggedtodo[inline]{Restrict the plots and functions above to suitable domains.}
+In a second example given by \cite{Wahlen2023} we fix the domain rather than the function.
+For this set $\overline{\Omega}=\overline{B_4}\setminus\brk*{B_1(2e_1)\cup B_1(-2e_1)}$ to be the domain.
+We then have the system
+\begin{equation}
+  \begin{aligned}
+    \Delta \psi&=0 &&\text{, on }\Omega \\
+    \psi&=0 &&\text{, on the outer ring }4S^1 \\
+    \psi&=1 &&\text{, on the inner rings }S^1(-2e_1)\cup S^1(2e_1)
+  \end{aligned}\label{eq:n2:hvf:roundRegion:noInflowNoOutflow}
+\end{equation}
+We solve this system numerically and set $u=\nabla^\perp\psi$.
+The result is plotted in figure \ref{pl:n2_hvf_roundRegion_noInflowNoOutflow}.
+\begin{figure}
+  \centering
+  \includegraphics[width=0.7\textwidth]{../Plots/HarmonicVectorFields_gr4.eps}
+  \caption{A plot of $u=\nabla^\perp\psi$ where $\psi$ is the numerical solution to
+   \eqref{eq:n2:hvf:roundRegion:noInflowNoOutflow}.}
+  \label{pl:n2_hvf_roundRegion_noInflowNoOutflow}
+\end{figure}
+
+\subsection{An example of inflow on one side and outflow on the other}
+In the following we aim to give examples of domains in $d=2$ dimensions for which 
+we have inflow on one simply connected boundary component and outflow on another simply connected boundary
+component.
+For this consider first the stream function
+\begin{equation}
+  \begin{aligned}
+  \psi\colon \R^2\setminus\brk*{\brk[c]*{-e_1,e_1}}&\to\R^2 \\
+  x&\mapsto\Phi_2\brk*{x-e_1}+x_1
+  \end{aligned}\label{eq:n2:hvf:InflowOutflow:singleHole}
+\end{equation}
+Figure \ref{pl:n2_hvf_InflowOutflow_asymmetric_single} indicates that $u=\nabla^\perp\psi$ fulfills the
+requirements.
+\begin{figure}
+  \centering
+  \includegraphics[width=0.7\textwidth]{../Plots/HarmonicVectorFields_gr3.eps}
+  \caption{A plot of $u=\nabla^\perp\psi$ in the region $\psi^{-1}\brk*{[-0.5,2]}\cap \R\times[-2,2]$.
+  Here $\psi$ is given by equation \eqref{eq:n2:hvf:InflowOutflow:singleHole}.}
+  \label{pl:n2_hvf_InflowOutflow_asymmetric_single}
+\end{figure}
+
+Now we would like to have a harmonic vector field similar to the example with two holes with
+inflow on the one side and outflow on the other. 
+For this consider the streamline
+\begin{equation}
+  \begin{aligned}
+  u\colon\R^2\setminus\brk*{\brk[c]*{-e_1,e_1}}&\to\R^2 \\
+  x&\mapsto\Phi_2\brk*{x-e_1}-\Phi_2\brk*{x+e_1}+x_1
+  \end{aligned}\label{eq:n2:hvf:noInflowNoOutflow:doubleHoles}
+\end{equation}
+Figure \ref{pl:n2_hvf_InflowOutflow_symmetric_region} indicates that $u=\nabla^\perp\psi$ is the function
+we are looking for.
+\begin{figure}
+  \centering
+  \includegraphics[width=0.7\textwidth]{../Plots/HarmonicVectorFields_gr2.eps}
+  \caption{A plot of $u=\nabla^\perp\psi$ in the region $\psi^{-1}\brk*{[-0.7,0.7]}\cap \R\times[-2,2]$.
+  Here $\psi$ is given by equation \eqref{eq:n2:hvf:noInflowNoOutflow:doubleHoles}.}
+  \label{pl:n2_hvf_InflowOutflow_symmetric_region}
+\end{figure}
+
+
+In another example given by \cite{Wahlen2023} we once again fix the domain rather than the function.
+Let $\Omega=B_4\setminus\brk*{B_1(2e_1)\cup B_1(-2e_1)}$ be the domain as before.
+We now have the system
+\begin{equation}
+  \begin{aligned}
+    \Delta \psi&=0 &&\text{, on }\Omega \\
+    \psi&=0 &&\text{, on the outer ring }4S^1 \\
+    \psi&=-1 &&\text{, on the left inner ring }S^1(-2e_1) \\
+    \psi&=1 &&\text{, on the right inner ring }S^1(2e_1)
+  \end{aligned}\label{eq:n2:hvf:roundRegion:InflowOutflow}
+\end{equation}
+We solve this system numerically and set $u=\nabla^\perp\psi$.
+The result is plotted in figure \ref{pl:n2_hvf_roundRegion_InflowOutflow}.
+\begin{figure}
+  \centering
+  \includegraphics[width=0.7\textwidth]{../Plots/HarmonicVectorFields_gr5.eps}
+  \caption{A plot of $u=\nabla^\perp\psi$ where $\psi$ is the numerical solution to
+   \eqref{eq:n2:hvf:roundRegion:InflowOutflow}.}
+  \label{pl:n2_hvf_roundRegion_InflowOutflow}
+\end{figure}
+\td{Check the signs of this example. Give explanation for why it works.}
 
 \newpage
 
@@ -714,6 +888,7 @@ Analogously  we have
 The claim then follows from the fact that $\phi$ is a homeomorphism onto its image and $x_1=0$ is 
 equivalent to $\bx\in \partial B_1\subseteq \R^2$. The situation is depicted in figure \ref{fi:n4_sigma}.
 
+\td{Check that the transition at the boundary is legal.}
 \begin{figure}[h]
   \centering
   \def\svgwidth{0.7\textwidth}
