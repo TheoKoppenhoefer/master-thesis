@@ -1,0 +1,22 @@
+bib2gls version 2.0 (2020-02-12)
+Reading Thesis_TheoKoppenhoefer.aux
+TeX character encoding: UTF-8
+Initialising resource Thesis_TheoKoppenhoefer.glstex.
+Parsing bib files for resource Thesis_TheoKoppenhoefer.glstex.
+Default encoding: not set
+Detected encoding: UTF-8
+Reading symbolsList.bib
+Encoding: UTF-8
+Cross-resource references allowed.
+Processing resource Thesis_TheoKoppenhoefer.glstex.
+Inserting empty group in front of \ensuremath to protect it from mfirstuc.
+Inserting empty group in front of \ensuremath to protect it from mfirstuc.
+Inserting empty group in front of \ensuremath to protect it from mfirstuc.
+Inserting empty group in front of \ensuremath to protect it from mfirstuc.
+Inserting empty group in front of \ensuremath to protect it from mfirstuc.
+Selecting entries for resource Thesis_TheoKoppenhoefer.glstex.
+texparserlib: {}\ensuremath{t} -> t
+Writing /mnt/64BB-4184/Filing/Education/University/Lund/Courses/MasterThesis/Text/Thesis_TheoKoppenhoefer.glstex
+Encoding: UTF-8
+t
+1 entry written to /mnt/64BB-4184/Filing/Education/University/Lund/Courses/MasterThesis/Text/Thesis_TheoKoppenhoefer.glstex.

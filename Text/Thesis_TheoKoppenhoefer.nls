@@ -1,0 +1,10 @@
+
+\begin{thenomenclature} 
+\nomgroup{A}
+  \item [{$\Omega$}]\begingroup Domain in $R^d$\nomeqref {0}\nompageref{4}
+  \item [{$f\colon \overline{\Omega}\to\R$}]\begingroup A $C^2$ mapping, often assumed harmonic\nomeqref {0}\nompageref{4}
+  \item [{$M$}]\begingroup Total number of stagnation points\nomeqref {0}\nompageref{5}
+  \item [{$M_k$}]\begingroup Interiour type numbers\nomeqref {0}\nompageref{5}
+  \item [{$u\colon \overline{\Omega}\to\R^d\text{ or }T^*\overline{\Omega}$}]\begingroup A $C^1$ vector field, often assumed harmonic\nomeqref {0}\nompageref{4}
+
+\end{thenomenclature}

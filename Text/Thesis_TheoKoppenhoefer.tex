@@ -5,7 +5,7 @@
 %%%%% TITLE PAGE
 
 %\subject{, VT23}
-\title{ Some title \\[1ex]
+\title{Some relations between equilibria of harmonic vector fields and the domain topology. \\[1ex]
 	  \large Master Thesis}
 %\subtitle{}
 \author{Theo Koppenhöfer}
@@ -17,10 +17,37 @@
 \graphicspath{{../Plots/}}
 \graphicspath{{../Figures/}}
 
+\usepackage{makecell}
+\newcounter{symbolCount}
+\newcommand{\nomenclature}[2]{\stepcounter{symbolCount}
+\glsxtrnewsymbol[description={#2}]{\arabic{symbolCount}}{#1}}
+\usepackage[symbols,
+  stylemods={tree},% loads glossaries-extra-stylemods to patch styles
+  record, % using 'bib2gls'
+  nonumberlist
+]{glossaries-extra}
+
+% % assign titles to group labels: 
+% \glsxtrsetgrouptitle{latin}{Latin}
+% \glsxtrsetgrouptitle{greek}{Greek}
+
+% \GlsXtrLoadResources[
+%  src={symbolsList.bib},
+%  type=symbols,
+% %  group={latin},% assign group label
+% %  set-widest,% needed for 'alttree' styles
+%  save-locations=false
+% ]
+
+% \glsxtrnewsymbol[description={velocity}]{v}{\ensuremath{v}}
+
+
+
 % The following displays the labels, uncomment for final version
 % \usepackage{showlabels}
 
 \newcommand{\bx}{\bar{x}}
+\renewcommand{\chaptername}{Section}
 
 %%%%% The content starts here %%%%%%%%%%%%%
 
@@ -62,16 +89,23 @@
 \ruggedtodo[inline]{Some amazing introduction}
 
 Unless otherwise stated we denote by $\Omega\subseteq\R^d$ an open bounded subset of $\R^d$ with boundary $\Sigma=\partial\Omega$.
+\nomenclature{$d$}{Dimensions $d=2$ or $d=3$}
+\nomenclature{$\Omega$}{Domain in $\R^d$}
+\nomenclature{$\Sigma$}{Boundary of $\Omega$, often assumed to be a $C^2$ manifold}
 In the following we will work in dimensions $d\in\brk[c]{2,3}$.
 We denote with
 \begin{align*}
   f\colon\overline{\Omega}\to\R
 \end{align*}
-a scalar function of class $C^2$. We also denote by
+a scalar function of class $C^2$.
+\nomenclature{$f\colon \overline{\Omega}\to\R$}{A $C^2$ mapping, often assumed harmonic}
+We also denote by
 \begin{align*}
   u\colon\overline{\Omega}\to\R^d
 \end{align*}
-a vector field of class $C^1$. Often but not always $u$ can be thought of as 
+a vector field of class $C^1$.
+\nomenclature{$u\colon \overline{\Omega}\to\R^d\text{ or }T^*\overline{\Omega}$}{A $C^1$ vector field, often assumed harmonic}
+Often but not always $u$ can be thought of as 
 a \emph{harmonic vector field}, that is $u$ is of type $C^1$ and fulfils
 \begin{align*}
   \diver u=0 \qquad \text{ and }\qquad \curl u=0\,.
@@ -83,7 +117,7 @@ One question we seek to answer during this thesis is the following.
   \begin{enumerate}
     \item $u$ is a harmonic vector field
     \item $u$ has an interiour stagnation point
-    \item $u$ enters the tube on the one end and exits the tube on the other?
+    \item $u$ enters the tube on the one side and exits the tube on the other?
   \end{enumerate}
 \end{question}
 To make the formulation more precise we begin with some general definitions regarding stagnation points and the boundary conditions.
@@ -91,55 +125,165 @@ To make the formulation more precise we begin with some general definitions rega
 \subsection{General definitions}
 
 In the following we define the emergent and the entrant boundary as in \cite[p.282]{Morse1970}
-\begin{definition}[Emergent and entrant boundary]
+\begin{definition}[Emergent and entrant boundary]\label{df:emergentEntrantBd}
   We call a vector $v\in T_x\R^d$ \emph{entrant} at a boundary point $x\in\Sigma$ iff $v$ is not tangent to $\Sigma$
   and directed into the interiour of $\Omega$. Analogously if $v$ is not tangent and
   directed to the exteriour we call $v$ \emph{emergent}.
   We define the \emph{entrant boundary} $\Sigma^-$ to be the set of boundary points at which $u$ is entrant.
   Analogously define the \emph{emergent boundary} $\Sigma^+$ to be the set of boundary points at which
   $u$ is emergent.
-  Further define $\Sigma^0$ to contain all other boundary points such that we have a decomposition
+  Further define the \emph{tangential boundary} $\Sigma^0$ to contain all other boundary points such that we have a decomposition
   of the boundary
   \begin{align*}
     \Sigma=\Sigma^-\sqcup\Sigma^0\sqcup\Sigma^+\,.
   \end{align*}
 \end{definition}
+\nomenclature{$\Sigma^-$}{entrant boundary, see definition \ref{df:emergentEntrantBd}}
+\nomenclature{$\Sigma^+$}{emergent boundary, see definition \ref{df:emergentEntrantBd}}
+\nomenclature{$\Sigma^0$}{tangential boundary, see definition \ref{df:emergentEntrantBd}}
 \tdrewrite{Use differential topology language in the following section.}
-The following are slight generalisation of the definitions given in \cite[p.138f]{Shelton1980}, \cite[§5]{Morse1969} and \cite[p.282f]{Morse1970}
-to include harmonic vector fields.
-We call the zeroes of $u$ \emph{stagnation points}. A stagnation point $x\in\Omega$ is called
-\emph{non-degenerate} if the derivative $Du(x)$ is invertible. We say that $x$ has \emph{index} $k$
-if $Du(x)$ has exactly $k$ negative eigenvalues. $u$ is called \emph{non-degenerate} if all its stagnation points
-are non-degenerate.
 
-We now define the \emph{interiour type numbers} $M_k$
-to be the number of stagnation points of $u$ of index $k$.
-The total number of stagnation points is thus given by
-\begin{align*}
-  M=\sum_kM_k\,.
-\end{align*}
+We would now like to illustrate the preceeding definitions.
+\begin{example}\label{ex:n3_hvf_canonical}
+  We now consider our domain to be the ball $B_1\subseteq\R^3$ around the origin in $d=3$ dimensions.
+  Now consider the harmonic function
+  \begin{equation}
+    \begin{aligned}
+    f\colon \Omega&\to\R \\
+    x&\mapsto x_1^2+x_2^2-2x_3^2\label{eq:n3_hf_canonical}
+    \end{aligned}
+  \end{equation}
+  Which induces the harmonic vector field $u=\nabla f$, or more precisely
+  \begin{equation}
+    \begin{aligned}
+    u\colon \Omega&\to\R \\
+    x&\mapsto \vect{2x_1 & 2x_2 & -4x_3}^\top\,.\label{eq:n3_hvf_canonical}
+    \end{aligned}
+  \end{equation}
+  We have that the normal to the boundary $\Sigma=S^2$ is given by
+  \begin{align*}
+    n\colon S^2&\to S^2 \\
+    x&\mapsto x
+  \end{align*}
+  and thus we have that $x\in\Sigma^-$ iff 
+  \begin{align*}
+    0>n\cdot u = 2\brk*{x_1^2+x_2^2-2x_3^2}=2f(x)
+  \end{align*}
+  A plot of the sets can be seen in figure \ref{pl:n3_hvf_canonical_boundary}.
+  \begin{figure}
+    \centering
+    \missingfigure[figwidth=0.7\textwidth]{}
+    \caption{Plots of the entrant, emergant and tangential boundary for the
+      function $f$ given by equation \eqref{eq:n3_hf_canonical}}
+    \label{pl:n3_hvf_canonical_boundary}
+  \end{figure}
+\end{example}
+
+The following are slight generalisation of definitions given in \cite[p.138f]{Shelton1980}, \cite[§5]{Morse1969} and \cite[p.282f]{Morse1970}
+to include harmonic vector fields.
+\begin{definition}[Non-degeneracy]\label{df:nonDegeneracy}
+  Let $v\colon X\to T^*X$ be a $C^1$ vector field on an $s$ dimensional $C^2$ manifold (with possibly boundary) $X$.
+  Here $T^*X$ denotes the
+  cotangent bundle of $X$ as defined for example in \cite[Chapter 6]{Hirsch1994}.
+  We can think of $X\in\brk[c]*{\Omega,\Sigma}$.
+  We call the zeroes of $v$ \emph{stagnation points}. A stagnation point $x\in X$ is called
+  \emph{non-degenerate} if the derivative $$Dv(x)=Dv_x\in T_xT^*X\cong \R^{s\times s}$$ is bijective. We say that $x$ has \emph{index} $k$
+  if $Dv(x)$ has exactly $k$ negative eigenvalues. $v$ is called \emph{non-degenerate} if all its stagnation points
+  are non-degenerate.
+\end{definition}
+\nomenclature{$X,Y$}{arbitrary $C^s$ manifolds, potentially with boundary}
+
+We first set $u=v$ and $X=\overline{\Omega}$ in the preceeding definition to obtain
+\begin{definition}[Interiour type numbers]
+  We call the stagnation points of $u$ \emph{interiour stagnation points}.
+  The \emph{interiour type numbers} $M_k$ are defined to be
+  the number of stagnation points of $u$ of index $k$.
+  \nomenclature{$M_k$}{Interiour type numbers}
+  The total number of interiour stagnation points is thus given by
+  \begin{align*}
+    M=\sum_kM_k\,.
+  \end{align*}
+  \nomenclature{$M$}{Total number of stagnation points}
+\end{definition}
+
 We call $\Omega$ a \emph{regular domain} if $\Sigma$ is a manifold of class $C^2$.
 In the following definition we require $\Omega$ to be regular.
-\begin{definition}[Boundary type numbers]
-  For a boundary point $x$ let $$\pi_x\colon \R^d\cong T_x\R^d\to T_x\Sigma$$ denote the orthogonal projection of a
-  vector at $x$ onto the tangent space of $\Sigma$ at $x$.
-  Let 
-  \begin{align}
-    \tiu=\pi\circ u\vert_{\Sigma^-}\in C^1\brk*{T\Sigma^-}\label{eq:definitions:projectionSigma}
-  \end{align}
-  be the restriction and orthogonal projection of $u$ onto the tangent bundle of $\Sigma^-$.
+For a boundary point $x$ let $$\pi_x\colon \R^d\cong T_x\R^d\to T_x\Sigma$$ denote the orthogonal projection of a
+vector at $x$ onto the tangent space of $\Sigma$ at $x$.
+Let 
+\begin{align}
+  \tiu=\pi\circ u\vert_{\Sigma}\in C^1\brk*{T\Sigma}\label{eq:definitions:projectionSigma}
+\end{align}
+be the restriction and orthogonal projection of $u$ onto the tangent bundle of $\Sigma$.
+We now apply definition \ref{df:nonDegeneracy} to $X=\Sigma$ and $v=\tiu$.
+\begin{definition}[Boundary type numbers]\label{df:bdTypeNbrs}
   We define the \emph{boundary type numbers} $\mu_k$ to be
   the number of stagnation points of $u_{\Sigma^-}$ on the entrant boundary
   $\Sigma^-$ of index $k$.
   We further write $\nu_k$ for the $k$-th boundary type number of $-u$.
 \end{definition}
+\nomenclature{$\mu_k$}{boundary type numbers of $f$, see definition \ref{df:bdTypeNbrs}}
+\nomenclature{$\nu_k$}{boundary type numbers of $-f$, see definition \ref{df:bdTypeNbrs}}
+\nomenclature{$\tiu$}{restriction and orthogonal projection of $u$ onto $\Sigma$, see definition \ref{df:bdTypeNbrs}}
 
-We now call $u$ \emph{regular} iff $u$ and $\tiu$ are non-degenerate and all stagnation points lie in $\Omega$.
+We now call $u$ \emph{regular} iff $u$, $\tiu$ and $-\tiu$ are non-degenerate and all stagnation points of $u$ lie in $\Omega$.
 
 The previous definitions translate naturally to $f$.
-We call $f$ regular, non-degenerate, et cetera iff $u=\nabla f$ is regular, non-degenerate, et cetera.
-Similarly we call $x$ a critical point of index $k$ if it is a stagnation point of $u$ of index $k$.
+That is we call $f$ regular, non-degenerate, et cetera iff $u=\nabla f$ is regular, non-degenerate, et cetera.
+Similarly we call $x$ an interiour or boundary critical point of index $k$ if it is a interiour or
+boundary stagnation point of $u$ of index $k$.
 
+To illustrate the preceeding definitions we return to our previous example.
+\begin{example}
+  Let $f$ and $u$ be as in example \ref{ex:n3_hvf_canonical}. One sees from equation \eqref{eq:n3_hvf_canonical}
+  that the origin $0$ is the sole interiour critical point of $f$. Since we have that
+  \begin{align*}
+    Du(x) = \begin{bmatrix}
+      2 & & \\
+       & 2 & \\
+      & & -4
+    \end{bmatrix}
+  \end{align*}
+  for all $x\in\Omega$ we see that $Du(0)$ is bijective and thus a non-degenerate critical point. Since $Du(0)$ has
+  exactly one negative eigenvalue we see that the origin has index $1$. Since there are no other critical points we have
+  $M=1$ and
+  \begin{align*}
+    M_k=\delta_{k1}\,.
+  \end{align*}
+  We now calculate for $x\in S^2$
+  \begin{align*}
+    \tiu(x) = \brk*{u-\brk*{n\cdot u}n}(x)
+    = \brk*{u-2f\,n}(x)
+    = 2\vect{(1-f(x))x_1 \\(1-f(x))x_2 \\(-2-f(x))x_2}
+  \end{align*}
+  Hence we see that $x\in\Sigma$ is a critical point iff 
+  \begin{align}
+    f(x)=1 \text{ and }x_3=0\text{ or } \label{eq:n3_hf_canonical_cps_degenerate} \\
+    f(x)=-2 = \text{ and }x_1=0=x_2\,. \label{eq:n3_hf_canonical_cps_nondegenerate}
+  \end{align}
+  The former equation \eqref{eq:n3_hf_canonical_cps_degenerate} gives that every
+  point belonging to $S^1\times\brk[c]{0}\subseteq\R^3$ is in fact a critical point of $f$.
+  But since $f=1$ on this set these points are degenerate.
+  We will discuss a fix to this issue in the upcoming section.
+  We now consider equation \eqref{eq:n3_hf_canonical_cps_nondegenerate} and take 
+   $f(x)=-2$ then we must have that $x=\pm e_3$ where $e_k=\delta_{k\cdot}$
+  is the $k$-th basis vector in $\R^d$. We now determine their index. For this consider the curves
+  \begin{align*}
+    \gamma_k\colon\R&\to S^2\\
+    t&\mapsto \sin(t)e_k\pm\cos(t)e_3
+  \end{align*}
+  for $k\in\brk[c]*{1,2}$.
+  Note that $\gamma_k'(0)=e_k$ and $\gamma_k(0)=\pm e_3$.
+  We see that
+  \begin{align*}
+    Du(e_1)(\gamma_k'(0))=(u\circ\gamma_k)'(0)
+    =\brk*{\sin(t)e_k\mp2\cos(t)e_3}'(0)
+    =e_k=\gamma_k'(0)
+  \end{align*}
+  and thus $e_k\in T_{\pm e_3}S^2$ are eigenvectors of $Du(e_k)$ to eigenvalues $1$.
+  Since the $e_k$ span the tangent space $T_{\pm e_3}S^2$ it follows that
+  the $\pm e_3$ are non-degenerate critical points of $f$ with index $0$.
+\end{example}
 
 \subsection{On assuming non-degeneracy}
 
@@ -149,6 +293,7 @@ Given $u$ we define the modification
 \begin{align}
   u_\e=u+\e\label{eq:nonDegeneracy:definitionUEps}
 \end{align}
+\nomenclature{$u_\e$}{modification to $u$ as in equation \eqref{eq:nonDegeneracy:definitionUEps}}
 for some $\e\in\R^d$. We would like to show that $u_\e$ is for almost all choices of $\e$ non-degenerate and can 
 thus be used to approximate a degenerate $u$.
 Our approach is to use Thom's theorem which is inspired by the approach in \cite[Chapter 6]{Hirsch1994}.
@@ -157,20 +302,21 @@ In this section we refer to $X$ and $Y$ as generic manifolds \ruggedtodo{of whic
   We call a function $g\colon X\to Y$ transverse to a submanifold $A\subseteq Y$ iff for all points in the 
   preimage $x\in g^{-1}(A)$ we have that
   \begin{align*}
-    \Image(dg_x)+T_{g(x)}A = T_{g(x)}Y\,.
+    \Image(Dg_x)+T_{g(x)}A = T_{g(x)}Y\,.
   \end{align*}
 \end{definition}
+\nomenclature{$A$}{submanifold, can be thought of as the zero section of $T^*X$}
 As an application we make the following observation.
 \begin{proposition}[Transversal characterisation of non-degeneracy]\label{pr:nonDegeneracy:alternativeCharacterisation}
-  Let $u\colon X\to TX$ be a differentiable vector field.
-  Then $u$ non-degenerate iff $u$ is transverse to the zero section $A$ of $TX$.
+  Let $u\colon X\to T^*X$ be a differentiable vector field.
+  Then $u$ non-degenerate iff $u$ is transverse to the zero section $A$ of $T^*X$.
 \end{proposition}
 \begin{proof}
   First note that we have that $x\in u^{-1}(A)$ iff $u(x)=0$ and thus $u^{-1}(A)=C$.
   Unraveling the definition of transversality we get that $u$ is transverse to the zero section iff for all $x\in C=u^{-1}(A)$
   we have that
   \begin{align}
-    \Image(du_x)+T_{u(x)}A = T_{u(x)}TX\,. \label{eq:nonDegeneracy:uTransverse}
+    \Image(Du_x)+T_{u(x)}A = T_{u(x)}TX\,. \label{eq:nonDegeneracy:uTransverse}
   \end{align}
   As $A$ is the zero section we have $T_{u(x)}A=0$ and equation \eqref{eq:nonDegeneracy:uTransverse}
   is equivalent to stating that $du$ is of full rank. But $du$ being of full rank at all points
@@ -210,18 +356,18 @@ Using proposition \ref{pr:nonDegeneracy:alternativeCharacterisation} we obtain t
   Set $r=2$, $E=\R^d$ and $Y=TX$ where we initially assume that $X=\Omega$.
   We would like to apply the parametric transversality theorem to the function
   \begin{align*}
-    F\colon E&\to C^\infty(X,TX) \\
+    F\colon E&\to C^\infty(X,T^*X) \\
     \e&\mapsto u_\e
   \end{align*}
   We note that $F^\text{ev}$ is sufficiently smooth. 
   We need to show that $F^\text{ev}$ is transverse to the
-  zero section $A\subseteq TX$. Then the parametric transversality theorem 
+  zero section $A\subseteq T^*X$. Then the parametric transversality theorem 
   yields a dense $E_\Omega\subseteq E$ on which
   $F$ is transverse to $A$.
   For this note that $E\times C = F^{-1}(A)$.
   It then follows for all $(\e,x)\in F^{-1}(A)$ that
   \begin{align}
-    \Image\brk*{dF^\text{ev}_{(\e,x)}}=T_xTX\label{eq:nonDegeneracy:surjectiveDF}
+    \Image\brk*{DF^\text{ev}_{(\e,x)}}=T_xT^*X\label{eq:nonDegeneracy:surjectiveDF}
   \end{align}
   since we have that
   \begin{align*}
@@ -237,9 +383,9 @@ Using proposition \ref{pr:nonDegeneracy:alternativeCharacterisation} we obtain t
   $u_\e$ with the restriction $\widetilde{u_\e}$. To show that 
   equation \eqref{eq:nonDegeneracy:surjectiveDF} holds we resort to the fact that
   \begin{align*}
-    dF^\text{ev}_{(\e,x)}
-    =d\brk*{\widetilde{u_\e}(x)}_{(\e,x)}
-    =d\pi\circ \brk*{du_\e(x)}_{(\e,x)}
+    DF^\text{ev}_{(\e,x)}
+    =D\brk*{\widetilde{u_\e}(x)}_{(\e,x)}
+    =D\pi\circ \brk*{du_\e(x)}_{(\e,x)}
   \end{align*}
   is surjective as a concatenation of surjective functions.
   Thus there also exists a dense set $E_\Sigma\subseteq\R$ on which $\widetilde{u_\e}$ is
@@ -249,6 +395,7 @@ Using proposition \ref{pr:nonDegeneracy:alternativeCharacterisation} we obtain t
 
 As a consequence we get a version of the results in \cite[§2]{Morse1970}.
 
+\tdrewrite{the following result makes no sense.}
 We call a boundary point $x\in\Sigma$ \emph{ordinary} iff $u(x)$ is not tangent to $\Sigma$.
 \begin{proposition}
   Assume all stagnation points of $u$ lie in $\Omega$ and that the stagnation points on $\Omega$ are
@@ -281,17 +428,17 @@ We make the following remarks
   stagnation points is finite.
 \end{proposition}
 \begin{proof}
-Let $x$ be a non-degenerate stagnation point. Since $Du(x)$ is invertible there exists
-by the inverse function theorem an open neighbourhood $U_x\subseteq\Omega$ of $x$ on which 
-$u$ is bijective. Hence $x$ is the only stagnation point in $U_x$. Let $C$ denote the set of all
-stagnation points of $u$. Then the sets $U_x$ together with
-\begin{align}
-  U_C=\R^d\setminus \overline{C}
-\end{align}
-form an open cover of $\overline{\Omega}$. But $\overline{\Omega}$ is compact and thus there exists
-a finite subcover. Since we have for every stagnation point $x\in C$ that
-$x\not\in U_y$ for all other $y\in C\setminus\brk*[c]{x}$ and $x\not\in U_C$ we must have that $U_x$
-is in the finite subcover. Thus it follows that $\#C<\infty$ is finite.
+  Let $x$ be a non-degenerate stagnation point. Since $Du(x)$ is invertible there exists
+  by the inverse function theorem an open neighbourhood $U_x\subseteq\Omega$ of $x$ on which 
+  $u$ is bijective. Hence $x$ is the only stagnation point in $U_x$. Let $C$ denote the set of all
+  stagnation points of $u$. Then the sets $U_x$ together with
+  \begin{align}
+    U_C=\R^d\setminus \overline{C}
+  \end{align}
+  form an open cover of $\overline{\Omega}$. But $\overline{\Omega}$ is compact and thus there exists
+  a finite subcover. Since we have for every stagnation point $x\in C$ that
+  $x\not\in U_y$ for all other $y\in C\setminus\brk[c]*{x}$ and $x\not\in U_C$ we must have that $U_x$
+  is in the finite subcover. Thus it follows that $\#C<\infty$ is finite.
 \end{proof}\ruggedtodo[]{This was stated somewhere in Morse1969. Also, what is with the boundary stagnation points}
 As a consequence we obtain the following.
 \begin{corollary}
@@ -299,17 +446,107 @@ As a consequence we obtain the following.
   are finite.
 \end{corollary}
 
+\td{State the theorem of Sard}
+
+We state Morse's lemma according to \cite[p.145]{Hirsch1994}
+\begin{lemma}
+  Let $f\colon X\to\R$ be $C^{2+r}$ and $x$ be a non-degenerate
+  critical point of index $k$. Then there exists a $C^r$ chart $(\varphi,U)$ at $x$
+  such that we have
+  \begin{align*}
+    f\colon\varphi^{-1}(y)=f(x)-\sum_{j=1}^ky_j^2+\sum_{j=k+1}^dy_j^2\,.
+  \end{align*}
+\end{lemma}
+\td{State proof.}
+
 \subsection{Betti numbers}
 
-For a formal definition of Betti numbers we refer to ??.
-\td{Define Betti numbers.}
-We do however give some examples of Betti numbers for some domains.
-\ruggedtodo[inline]{complete this section}
-\todoin[]{
-\begin{itemize}
-  \item comment on that betti numbers are finite
-\end{itemize}
-}
+Let $H_k(X;\R)$ denote the $k$-th homology space of $X$.
+For an introduction and definition of these we refer the reader to \cite[Chapter 2]{Hatcher2002}.
+We define the $k$-th Betti number as the dimension
+\begin{align}
+  R_k=\dim_\R H_k(X;\R)\,.\label{eq:df_bettiNbrs}
+\end{align}
+\nomenclature{$R_k$}{Betti number as defined in equation \eqref{eq:df_bettiNbrs}}
+
+We proceed to give examples for Betti numbers of selected connected domains in $\R^d$.
+\begin{example}[In flatland]
+  In $d=2$ dimensions the $0$-th Betti number counts the number of connected components
+  of $\Omega$ and the first Betti number counts the number of holes of this domain.
+  All other Betti numbers vanish in $\R^2$.
+  More concretely we give the Betti numbers for selected domains in table \ref{tb:n2_domains_bettiNbrs}.
+\end{example}
+
+\begin{table}
+  \centering
+  \renewcommand{\arraystretch}{3}
+  \begin{tabular}{c|c|c|c|c}
+    Domain & Picture & $R_0$ & $R_1$ & $R_k$, $k\geq2$ \\ \hline
+    Disk $D$ & 
+    \begin{minipage}{0.1\textwidth}
+      \def\svgwidth{\textwidth}
+      \input{../Figures/n2_domains_disk.pdf_tex}
+    \end{minipage}
+    & 1 & 0 & 0 \\
+    Annulus $2D\setminus D$ & 
+    \begin{minipage}{0.1\textwidth}
+      \def\svgwidth{\textwidth}
+      \input{../Figures/n2_domains_annulus.pdf_tex}
+    \end{minipage}
+    & 1 & 1 & 0 \\
+    Two holed button & 
+    \begin{minipage}{0.1\textwidth}
+      \def\svgwidth{\textwidth}
+      \input{../Figures/n2_domains_button.pdf_tex}
+    \end{minipage}
+    & 1 & 2 & 0 \\
+  \end{tabular}
+  \caption{Betti numbers for selected domains in $\R^2$.}
+  \label{tb:n2_domains_bettiNbrs}
+\end{table}
+
+\begin{example}[In spaceland]
+  In $d=3$ dimensions the $0$-th Betti number counts the number of connected components
+  of $\Omega$, the first Betti number counts the number of holes and the second Betti number
+  counts the number of bubbles of the domain. All other Betti numbers vanish.
+  The Betti numbers for selected domains can be seen in table \ref{tb:n3_domains_bettiNbrs}.
+\end{example}
+
+\begin{table}
+  \centering
+  \renewcommand{\arraystretch}{3}
+  \begin{tabular}{c|c|c|c|c|c}
+    Domain & Picture & $R_0$ & $R_1$ & $R_2$ & $R_k$, $k\geq3$ \\ \hline
+    Ball $B$ & 
+    \begin{minipage}{0.1\textwidth}
+      \def\svgwidth{\textwidth}
+      \input{../Figures/n3_domains_ball.pdf_tex}
+    \end{minipage}
+    & 1 & 0 & 0 & 0 \\
+    Solid torus $S^1\times D$ & 
+    \begin{minipage}{0.1\textwidth}
+      \def\svgwidth{\textwidth}
+      \input{../Figures/n3_domains_torus.pdf_tex}
+    \end{minipage}
+    & 1 & 1 & 0 & 0 \\
+    Ball with bubble $2B\setminus B$ & 
+    \begin{minipage}{0.1\textwidth}
+      \def\svgwidth{\textwidth}
+      \input{../Figures/n3_domains_ballBubble.pdf_tex}
+    \end{minipage}
+    & 1 & 0 & 1 & 0 \\
+    \makecell{Ball with bubble \\in shape of torus} & 
+    \begin{minipage}{0.1\textwidth}
+      \def\svgwidth{\textwidth}
+      \input{../Figures/n3_domains_ballTorusHole.pdf_tex}
+    \end{minipage}
+    & 1 & 1 & 1 & 0 \\
+  \end{tabular}
+  \caption{Betti numbers for selected domains in $\R^3$.}
+  \label{tb:n3_domains_bettiNbrs}
+\end{table}
+
+\td{Comment on the finiteness of betti numbers. Check numbers for ball with torus bubble.}
 
 \subsection{The Morse inequalities}
 
@@ -317,33 +554,39 @@ We state the Morse inequalities.\ruggedtodo[]{More citations.}
 \begin{theorem}[Morse inequalities]
 Let $\Omega$ and $f$ be regular. Then we have the inequalities
 \begin{align*}
-  0&\leq M_0+\mu_0-R_0\\
-  0&\leq M_1+\mu_1-R_1-\brk*{M_0+\mu_0-R_0} \\
+  M_0+\mu_0&\geq R_0\\
+  M_1+\mu_1-\brk*{M_0+\mu_0}&\geq R_1-R_0 \\
   &\;\;\vdots \\
-  0&\leq M_{d-1}+\mu_{d-1}-R_{d-1}-\cdots +\brk*{-1}^{d-1}\brk*{M_0+\mu_0-R_0} \\
-  0&=M_{d}-R_{d}-\brk*{M_{d-1}+\mu_{d-1}-R_{d-1}}+\cdots +\brk*{-1}^{d}\brk*{M_0+\mu_0-R_0}\,.
+  M_{d-1}+\mu_{d-1}-\dots+\brk*{-1}^{d-1}\brk*{M_0+\mu_0}&\geq R_{d-1}-\dots +\brk*{-1}^{d-1}R_0 \\
+  M_{d}-\brk*{M_{d-1}+\mu_{d-1}}-\dots+\brk*{-1}^{d}\brk*{M_0+\mu_0}&=R_{d}-R_{d-1}-\dots +\brk*{-1}^{d}R_0\,.
 \end{align*}
 \end{theorem}
 \begin{proof}
   See \cite[Theorem 10.2']{Morse1969}.\ruggedtodo[]{Give outline of proof idea.}
 \end{proof}
+We note that the alternating sum of Betti numbers
+is up to signage equal to the Euler characteristic
+\begin{align*}
+  \chi\brk*{\Omega}=R_0-R_1+\dots+\brk*{-1}^{d}R_d
+\end{align*}
+of the domain $\overline{\Omega}$.
 If we now assume that $f$ is harmonic then the maximum principle implies that
 $M_0=0=M_d$. 
 If we additionally assume that we have dimensions $d=2$ we obtain \cite[Corollary 10.1]{Morse1969}.
 \begin{corollary}[Morse inequalities for $f$ harmonic, $d=2$]
   Let $d=2$, $\Omega$ and $f$ be regular and assume that $f$ is harmonic. Then we have
   \begin{align*}
-    0&\leq \mu_0-R_0 \\
-    0&=M+\mu_1-R_1-\mu_0+R_0\,.
+    \mu_0&\geq R_0 \\
+    M+\mu_1-\mu_0&=R_1-R_0\,.
   \end{align*}
 \end{corollary}
 In dimensions $d=3$ we obtain \cite[Corollary 10.2]{Morse1969}
 \begin{corollary}[Morse inequalities for $f$ harmonic, $d=3$]
   Let $d=3$, $\Omega$ and $f$ be regular and assume that $f$ is harmonic. Then we have
   \begin{align*}
-    0&\leq \mu_0-R_0 \\
-    0&\leq M_1+\mu_1-R_1-\mu_0+R_0 \\
-    0&= M_2+\mu_2-R_2-M_1-\mu_1+R_1-\mu_0+R_0\,.
+    \mu_0&\geq R_0 \\
+    M_1+\mu_1-\mu_0&\geq R_1-R_0 \\
+    M_2+\mu_2-M_1-\mu_1+\mu_0&= R_2-R_1+R_0\,.
   \end{align*}
 \end{corollary}
 \ruggedtodo[inline]{Give a classical example of a Morse function to determine the betti numbers.}
@@ -415,11 +658,11 @@ We shall give two different proofs of this result. One involving level-sets and 
   
   \begin{figure}
     \centering
-    \def\svgwidth{0.6\textwidth}
+    \def\svgwidth{0.8\textwidth}
     \input{../Figures/n2_levelSets_overview.pdf_tex}
     \caption{The situation at hand: The edges represent level curves and the interiour vertices critical points.}
     \label{fi:n2:levelSets:overview}
-  \end{figure}\ruggedtodo[]{This figure is not quite accurate as it does not contain loops on the boundary. Also, add $E$ to the figure.}
+  \end{figure}
 
   Thus $C$ can be represented by a multigraph $G$ with vertices $v_1,\dots,v_K$ and edges $e_1,\dots,e_L\subseteq C$.
   In the following we identify the graph $G$ with its planar embedding in $\overline{\Omega}$.
@@ -524,7 +767,9 @@ Using invariant manifolds we obtain the following proof.
   there are at least 4 boundary vertices to this tree.
   By construction we see that each `neighbouring'\ruggedtodo[]{elaborate} leaf of this tree
   has opposite signage and the claim follows.
-\end{proof} 
+\end{proof}
+
+\subsection{Allowing for Inflow and outflow}
 
 The strategy in the above proofs can be generalised to show the following
 \begin{conjecture}
@@ -539,7 +784,33 @@ The strategy in the above proofs can be generalised to show the following
   \end{align*}
 \end{conjecture}
 This inequality can probably be improved considerably.
-\ruggedtodo[]{Check with A}
+
+Let $J^\pm$ denote the number of connected components of $\Sigma^\pm$ then.
+We state a consequence of a result from \cite[Theorem 2.1]{Alessandrini1992}
+\begin{proposition} 
+  Let $\Omega$ be a domain with certain requirements.
+  Let $u\colon \overline{\Omega}\to \R$ be harmonic (with certain conditions on the boundary).
+  Then we have
+  \begin{align*}
+    M\leq R_1-1+J^-\,.
+  \end{align*}
+  If in addition we assume that there are no critical points on the boundary then we have
+  \begin{align*}
+    M\leq R_1-1+\frac{J^++J^-}{2}\,.
+  \end{align*}
+\end{proposition}
+\begin{proof}
+  See \cite{Alessandrini1992}.
+\end{proof}
+
+Now let $J^{\geq0}$ denote the number of connected components of $\Sigma^{\geq0}$. 
+We obtain from \cite{Deng2022} that
+\begin{proposition}
+  \begin{align*}
+    M\leq J^{\geq0}-1
+  \end{align*}
+\end{proposition}
+
 
 \newpage
 
@@ -581,9 +852,26 @@ In fact using the Morse inequalities we can obtain the stronger result.
   Then we have $$M+1=R_1$$.
 \end{proposition}
 \begin{proof}[Sketch of proof.]
-  We slit the domain such that it is homeomorphic to the disk. By proposition \ref{pr:n2:hvf:simplyConnected}
+  The idea is to slit the domain such that it is homeomorphic to the disk.
+  To ensure that the domain has $C^2$ boundary we slit it as depicted in
+  figure \ref{fi:n2_hvf_slitDomain} to obtain a new domain $\Omega_1$ with boundary
+  $\Sigma_1=\partial\Omega_1$.
+  Since the number of interiour critical points is finite by ??
+  we can assume that the slit does not contain any interiour critical points.
+  \begin{figure}
+    \centering
+    \input{../Figures/n2_cutOmega.pdf_tex}
+    \caption{How we slit the domain.}
+    \label{fi:n2_hvf_slitDomain}
+  \end{figure}
+  By proposition \ref{pr:n2:hvf:simplyConnected}
   $u$ is the gradient of a harmonic function $f$ on this new domain.
-  $f$ has no critical points on the boundary $\Sigma$ and fulfils on the cuts the conditions
+  By assumption $f$ has no boundary critical points on $\Sigma$.
+  Each cut introduces two new boundary critical points as indicated in figure 
+  \ref{fi:n2_hvf_slitDomain} on $\Sigma^-$. These boundary critical points are minima.
+  Thus the cuts increase the number of boundary critical points of index $0$ by $2R_1$.
+  Denote by $\timu_i$ the number of boundary critical points of $f$ on the slit $\Sigma_1^-\cap\Gamma$.
+   and fulfils where the cuts meet the conditions
   \begin{align}
     \mu_0=\nu_1 \qquad \mu_1=\nu_0 \label{eq:n2:hvf:relationsMuNu}
   \end{align}
@@ -656,7 +944,7 @@ inflow or outflow and with one critical point.
 For this consider the stream function
 \begin{equation}
   \begin{aligned}
-  \psi\colon\R^2\setminus\brk*{\brk[c]*{-e_1,e_1}}&\to\R \\
+  \psi\colon\R^2\setminus\brk[c]*{-e_1,e_1}&\to\R \\
   x&\mapsto\Phi_2\brk*{x-e_1}+\Phi_2\brk*{x+e_1}
   \end{aligned}\label{eq:n2:hvf:noInflowNoOutflow}
 \end{equation}
@@ -701,7 +989,7 @@ component.
 For this consider first the stream function
 \begin{equation}
   \begin{aligned}
-  \psi\colon \R^2\setminus\brk*{\brk[c]*{-e_1,e_1}}&\to\R^2 \\
+  \psi\colon \R^2\setminus\brk[c]*{-e_1,e_1}&\to\R^2 \\
   x&\mapsto\Phi_2\brk*{x-e_1}+x_1
   \end{aligned}\label{eq:n2:hvf:InflowOutflow:singleHole}
 \end{equation}
@@ -720,7 +1008,7 @@ inflow on the one side and outflow on the other.
 For this consider the streamline
 \begin{equation}
   \begin{aligned}
-  u\colon\R^2\setminus\brk*{\brk[c]*{-e_1,e_1}}&\to\R^2 \\
+  u\colon\R^2\setminus\brk[c]*{-e_1,e_1}&\to\R^2 \\
   x&\mapsto\Phi_2\brk*{x-e_1}-\Phi_2\brk*{x+e_1}+x_1
   \end{aligned}\label{eq:n2:hvf:noInflowNoOutflow:doubleHoles}
 \end{equation}
@@ -900,13 +1188,21 @@ equivalent to $\bx\in \partial B_1\subseteq \R^2$. The situation is depicted in 
 
 \clearpage
 
+% \printnomenclature
+
+
+\glsaddall
+\printunsrtglossary[type=symbols,style=long]
+
+\clearpage
+
 % TODO: potentially add Irwin, smooth dynamical systems
-\section{Bibliography}
+% \section{Bibliography}
 \nocite{*}
 %Main source
 %\printbibliography[heading=none, keyword={main}]
 %\noindent Other sources
-\printbibliography[heading=none]
+\printbibliography
 
 
 \end{document}
