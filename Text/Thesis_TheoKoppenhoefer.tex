@@ -71,9 +71,9 @@
     \item Harmonic vector fields, find up to date reference
     \item Mention Sard's theorem
     \item Does Bocher's theorem help?
-    \item Generalise argument principle proof to one inflow, outflow
     \item Look at application of Sperner's lemma
     \item $C$ is used once for critical points, once for level sets.
+    \item Define traversing vector field
   \end{itemize}
   Some questions
   \begin{itemize}
@@ -89,22 +89,17 @@
 \ruggedtodo[inline]{Some amazing introduction}
 
 Unless otherwise stated we denote by $\Omega\subseteq\R^d$ an open bounded subset of $\R^d$ with boundary $\Sigma=\partial\Omega$.
-\nomenclature{$d$}{Dimensions $d=2$ or $d=3$}
-\nomenclature{$\Omega$}{Domain in $\R^d$}
-\nomenclature{$\Sigma$}{Boundary of $\Omega$, often assumed to be a $C^2$ manifold}
 In the following we will work in dimensions $d\in\brk[c]{2,3}$.
 We denote with
 \begin{align*}
   f\colon\overline{\Omega}\to\R
 \end{align*}
 a scalar function of class $C^2$.
-\nomenclature{$f\colon \overline{\Omega}\to\R$}{A $C^2$ mapping, often assumed harmonic}
 We also denote by
 \begin{align*}
   u\colon\overline{\Omega}\to\R^d
 \end{align*}
 a vector field of class $C^1$.
-\nomenclature{$u\colon \overline{\Omega}\to\R^d\text{ or }T^*\overline{\Omega}$}{A $C^1$ vector field, often assumed harmonic}
 Often but not always $u$ can be thought of as 
 a \emph{harmonic vector field}, that is $u$ is of type $C^1$ and fulfils
 \begin{align*}
@@ -122,7 +117,63 @@ One question we seek to answer during this thesis is the following.
 \end{question}
 To make the formulation more precise we begin with some general definitions regarding stagnation points and the boundary conditions.
 
+\nomenclature{$d$}{Dimensions $d=2$ or $d=3$}
+\nomenclature{$\Omega$}{Domain in $\R^d$, assumed to be $\interior\brk*{X}$}
+\nomenclature{$\Sigma$}{Boundary of $\Omega$ or $X$}
+\nomenclature{$f\colon X\to\R$}{A $C^2$ mapping, often assumed harmonic}
+\nomenclature{$u\colon X\to\R^d\text{ or }T^*\overline{\Omega}$}{A $C^1$ vector field, often assumed harmonic}
+
 \subsection{General definitions}
+
+We start by requiring some regularity for the boundary of $\Omega$.
+More precisely we require $X=\overline{\Omega}$ to be a manifold with cornerse as in \cite{Handron2002}.
+\begin{definition}[Manifolds with corners]
+  We introduce the notation
+  \begin{align*}
+    H_j^d=\R_{\geq0}^j\times\R^{d-j}\subseteq\R^d\,.
+  \end{align*}
+  A \emph{manifold with (convex) corners} is a topological space $X$ together with an atlas $\cA$ such that for every point
+  $x\in X$ there exists an open neighbourhood $U_x$ of $x$, a number $j=j(x)$ and a
+  diffeomorphism $\cA\ni\phi\colon U_x\to H_j^d$ with $\phi(x)=0$.
+  We further define sets 
+  \begin{align}
+    X_k=\brk[c]*{x\in X\colon j(x)=k}\label{eq:def_mfCorners_stratification}
+  \end{align}
+  which form a stratification of $X$.
+\end{definition}
+\nomenclature{$X$}{A compact manifold with corners, assumed to be $X=\overline{\Omega}$}
+\nomenclature{$Y$}{A manifold}
+
+More generally we give the definition of a stratification as 
+\begin{definition}[Stratified space]\label{df:stratified_space}
+  A \emph{stratified space} is a collection of a topological space $X$ and a collection of subspaces
+  $X_j\subseteq X$, $j\in\cJ$ indexed by a partially ordered set $\cJ$ such that
+  \begin{enumerate}
+    \item each $X_j$ is a manifold (without boundary) of dimension $n=n(j)$
+    \item $X=\bigcup_jX_j$
+    \item $X_j\cap \overline{X_k}\neq\emptyset$ iff $X_j\subseteq\overline{X_k}$
+  \end{enumerate}
+\end{definition}
+\nomenclature{$X_j$}{A stratification of $X$ as given in definition \ref{df:stratified_space}.
+   Often but not always assumed to be given by equation \ref{eq:def_mfCorners_stratification}}
+
+Given a vector field $u\colon X\to\R^d$ and the above stratification $X_k$ of $X$ we can construct for every
+$j\in\cJ$ a vector field
+\begin{align*}
+  u_j\colon X_j\to T^*X_j\,.
+\end{align*}
+Here $T^*X_j$ denotes the cotangent space of the manifold $X_j$ as defined for example in \cite[Chapter 6]{Hirsch1994}.
+More precisely, for $x\in X_j$ let
+\begin{align*}
+  \pi_x\colon\R^d\cong T_x^*\R^d\to T_x^*X_{j}
+\end{align*}
+denote the orthogonal projection of a vector at $x$ onto the cotangent space of the stratum $X_j$ at $x$.
+Now set
+\begin{align}
+  u_j=u\big\vert_{T^*X_j}=\pi\circ u\big\vert_{X_j}\in C^1\brk*{T^*X_j}\label{eq:def_projectionStratification}
+\end{align}
+be the restriction of $u$ onto the cotangent bundle $T^*X_j$.
+\nomenclature{$u_j$}{Restriction of $u$ to the cotangent bundle $T^*X_j$, see equation \ref{eq:def_projectionStratification}}
 
 In the following we define the emergent and the entrant boundary as in \cite[p.282]{Morse1970}
 \begin{definition}[Emergent and entrant boundary]\label{df:emergentEntrantBd}
@@ -137,12 +188,14 @@ In the following we define the emergent and the entrant boundary as in \cite[p.2
   \begin{align*}
     \Sigma=\Sigma^-\sqcup\Sigma^0\sqcup\Sigma^+\,.
   \end{align*}
+  For convenience we also introduce the \emph{non-entrant boundary} $\Sigma^{\geq0}=\Sigma^+\sqcup\Sigma^0$ and the 
+  \emph{non-emergent} boundary  $\Sigma^{\leq}=\Sigma^-\sqcup\Sigma^0$.
 \end{definition}
 \nomenclature{$\Sigma^-$}{entrant boundary, see definition \ref{df:emergentEntrantBd}}
 \nomenclature{$\Sigma^+$}{emergent boundary, see definition \ref{df:emergentEntrantBd}}
 \nomenclature{$\Sigma^0$}{tangential boundary, see definition \ref{df:emergentEntrantBd}}
-\tdrewrite{Use differential topology language in the following section.}
 
+\td{illustrate on boundary with corners}
 We would now like to illustrate the preceeding definitions.
 \begin{example}\label{ex:n3_hvf_canonical}
   We now consider our domain to be the ball $B_1\subseteq\R^3$ around the origin in $d=3$ dimensions.
@@ -180,59 +233,65 @@ We would now like to illustrate the preceeding definitions.
 \end{example}
 
 The following are slight generalisation of definitions given in \cite[p.138f]{Shelton1980}, \cite[§5]{Morse1969} and \cite[p.282f]{Morse1970}
-to include harmonic vector fields.
-\begin{definition}[Non-degeneracy]\label{df:nonDegeneracy}
-  Let $v\colon X\to T^*X$ be a $C^1$ vector field on an $s$ dimensional $C^2$ manifold (with possibly boundary) $X$.
-  Here $T^*X$ denotes the
-  cotangent bundle of $X$ as defined for example in \cite[Chapter 6]{Hirsch1994}.
-  We can think of $X\in\brk[c]*{\Omega,\Sigma}$.
-  We call the zeroes of $v$ \emph{stagnation points}. A stagnation point $x\in X$ is called
-  \emph{non-degenerate} if the derivative $$Dv(x)=Dv_x\in T_xT^*X\cong \R^{s\times s}$$ is bijective. We say that $x$ has \emph{index} $k$
-  if $Dv(x)$ has exactly $k$ negative eigenvalues. $v$ is called \emph{non-degenerate} if all its stagnation points
-  are non-degenerate.
-\end{definition}
-\nomenclature{$X,Y$}{arbitrary $C^s$ manifolds, potentially with boundary}
-
-We first set $u=v$ and $X=\overline{\Omega}$ in the preceeding definition to obtain
-\begin{definition}[Interiour type numbers]
-  We call the stagnation points of $u$ \emph{interiour stagnation points}.
-  The \emph{interiour type numbers} $M_k$ are defined to be
-  the number of stagnation points of $u$ of index $k$.
-  \nomenclature{$M_k$}{Interiour type numbers}
-  The total number of interiour stagnation points is thus given by
+to include harmonic vector fields.\td{Have a closer look at the regularity in the following.}
+\begin{definition}[Stagnation points]\label{df:nonDegeneracy}
+  Let $u_j\colon X_j\to T^*X_j$ be a $C^1$ vector field on a stratification of $X$.
+  We call a zero $x$ of $u_j$ a \emph{stagnation point}.
+  If $X_j$ has dimension $n(j)=d$ then we call $x$ an \emph{interiour stagnation point}.
+  If $x$ does not lie in the emergent boundary $\Sigma^+$ we call $x$ an \emph{essential stagnation point}.
+  The set of all essential stagnation points of $u_j$ is denoted by $\critical_j=\critical_j(u)$.
+  A stagnation point $x$ is called
+  \emph{non-degenerate} if the derivative
+  \begin{align*}
+    Du_j(x)=Du_j\big\vert_x\in T_xT^*X\cong \R^{n\times n}
+  \end{align*}
+  is bijective.
+  In addition we say that $x$ has \emph{index} $k$
+  if $Du_j(x)$ has exactly $k$ negative eigenvalues.
+  $u_j$ is called \emph{(essentially) non-degenerate} if all its stagnation points
+  are (essentially) non-degenerate. 
+  Assume $u_j$ is non-degenerate then we can define the \emph{$k$-th type number} of the
+  stratum $X_j$ to be the number of essential critical points of $u_j$ of index $k$,
+  that is
+  \begin{align*}
+    \ind_{j,k}(u)=\#\brk[c]*{x\in\critical_j(u)\colon x\text{ has index }k}\,.
+  \end{align*}
+  We define the \emph{interiour type numbers} by
+  \begin{align*}
+    M_k=\sum_{j\colon n(j)=d}\ind_{j,k}(u)\,.
+  \end{align*}
+  The total number of interiour
+  stagnation points of $u$ is then given by
   \begin{align*}
     M=\sum_kM_k\,.
   \end{align*}
+  \nomenclature{$M_k$}{Interiour type numbers}
   \nomenclature{$M$}{Total number of stagnation points}
-\end{definition}
-
-We call $\Omega$ a \emph{regular domain} if $\Sigma$ is a manifold of class $C^2$.
-In the following definition we require $\Omega$ to be regular.
-For a boundary point $x$ let $$\pi_x\colon \R^d\cong T_x\R^d\to T_x\Sigma$$ denote the orthogonal projection of a
-vector at $x$ onto the tangent space of $\Sigma$ at $x$.
-Let 
-\begin{align}
-  \tiu=\pi\circ u\vert_{\Sigma}\in C^1\brk*{T\Sigma}\label{eq:definitions:projectionSigma}
-\end{align}
-be the restriction and orthogonal projection of $u$ onto the tangent bundle of $\Sigma$.
-We now apply definition \ref{df:nonDegeneracy} to $X=\Sigma$ and $v=\tiu$.
-\begin{definition}[Boundary type numbers]\label{df:bdTypeNbrs}
-  We define the \emph{boundary type numbers} $\mu_k$ to be
-  the number of stagnation points of $u_{\Sigma^-}$ on the entrant boundary
-  $\Sigma^-$ of index $k$.
+  Analogously we define the \emph{$k$-th boundary type numbers} to be the number of essential boundary 
+  stagnation points of $u$ of index $k$, that is
+  \begin{align*}
+    \mu_k=\sum_{j\colon n(j)<d}\ind_{j,k}(u)
+  \end{align*}
   We further write $\nu_k$ for the $k$-th boundary type number of $-u$.
 \end{definition}
 \nomenclature{$\mu_k$}{boundary type numbers of $f$, see definition \ref{df:bdTypeNbrs}}
 \nomenclature{$\nu_k$}{boundary type numbers of $-f$, see definition \ref{df:bdTypeNbrs}}
-\nomenclature{$\tiu$}{restriction and orthogonal projection of $u$ onto $\Sigma$, see definition \ref{df:bdTypeNbrs}}
 
-We now call $u$ \emph{regular} iff $u$, $\tiu$ and $-\tiu$ are non-degenerate and all stagnation points of $u$ lie in $\Omega$.
+\begin{definition}[Morse functions]
+  We call $u$ \emph{(essentially) Morse} iff for all $j$ we have that $u_j$ is (essentially) non-degenerate.
+  For an essentially Morse function $u$ we will denote the number of
+  essential stagnation points of $u$ of index $k$ by
+  \begin{align*}
+    \ind_k(u)=\sum_{j=0}^d\ind_{j,k}(u)=\#\brk[c]*{x\in\bigcup_j\critical_j(u)\colon x\text{ has index }k}\,.
+  \end{align*}
+\end{definition}
 
 The previous definitions translate naturally to $f$.
-That is we call $f$ regular, non-degenerate, et cetera iff $u=\nabla f$ is regular, non-degenerate, et cetera.
-Similarly we call $x$ an interiour or boundary critical point of index $k$ if it is a interiour or
-boundary stagnation point of $u$ of index $k$.
+That is we call $f$ Morse, non-degenerate, et cetera iff $u=\nabla f$ is Morse, non-degenerate, et cetera.
+Similarly we call $x$ an critical point of $f$ of index $k$ if it is a
+stagnation point of $u$ of index $k$.
 
+\tdrewrite{discuss index on manifold with corners.}
 To illustrate the preceeding definitions we return to our previous example.
 \begin{example}
   Let $f$ and $u$ be as in example \ref{ex:n3_hvf_canonical}. One sees from equation \eqref{eq:n3_hvf_canonical}
@@ -287,6 +346,7 @@ To illustrate the preceeding definitions we return to our previous example.
 
 \subsection{On assuming non-degeneracy}
 
+\tdrewrite{Use updated notation from previous section. Change for manifolds with corners.}
 In the following section we argue that assuming non-degeneracy 
 of $u$ and $f$ is not a great restriction.
 Given $u$ we define the modification
@@ -459,15 +519,17 @@ We state Morse's lemma according to \cite[p.145]{Hirsch1994}
 \end{lemma}
 \td{State proof.}
 
+\td{Bring order into this section.}
+
 \subsection{Betti numbers}
 
 Let $H_k(X;\R)$ denote the $k$-th homology space of $X$.
 For an introduction and definition of these we refer the reader to \cite[Chapter 2]{Hatcher2002}.
 We define the $k$-th Betti number as the dimension
 \begin{align}
-  R_k=\dim_\R H_k(X;\R)\,.\label{eq:df_bettiNbrs}
+  b_k=\dim_\R H_k(X;\R)\,.\label{eq:df_bettiNbrs}
 \end{align}
-\nomenclature{$R_k$}{Betti number as defined in equation \eqref{eq:df_bettiNbrs}}
+\nomenclature{$b_k$}{Betti number as defined in equation \eqref{eq:df_bettiNbrs}}
 
 We proceed to give examples for Betti numbers of selected connected domains in $\R^d$.
 \begin{example}[In flatland]
@@ -481,7 +543,7 @@ We proceed to give examples for Betti numbers of selected connected domains in $
   \centering
   \renewcommand{\arraystretch}{3}
   \begin{tabular}{c|c|c|c|c}
-    Domain & Picture & $R_0$ & $R_1$ & $R_k$, $k\geq2$ \\ \hline
+    Domain & Picture & $b_0$ & $b_1$ & $b_k$, $k\geq2$ \\ \hline
     Disk $D$ & 
     \begin{minipage}{0.1\textwidth}
       \def\svgwidth{\textwidth}
@@ -516,7 +578,7 @@ We proceed to give examples for Betti numbers of selected connected domains in $
   \centering
   \renewcommand{\arraystretch}{3}
   \begin{tabular}{c|c|c|c|c|c}
-    Domain & Picture & $R_0$ & $R_1$ & $R_2$ & $R_k$, $k\geq3$ \\ \hline
+    Domain & Picture & $b_0$ & $b_1$ & $b_2$ & $b_k$, $k\geq3$ \\ \hline
     Ball $B$ & 
     \begin{minipage}{0.1\textwidth}
       \def\svgwidth{\textwidth}
@@ -551,42 +613,53 @@ We proceed to give examples for Betti numbers of selected connected domains in $
 \subsection{The Morse inequalities}
 
 We state the Morse inequalities.\ruggedtodo[]{More citations.}
-\begin{theorem}[Morse inequalities]
-Let $\Omega$ and $f$ be regular. Then we have the inequalities
+\begin{theorem}[Strong Morse inequalities]
+Let $X$ be a manifold with corners and $f\colon X\to\R$ be essentially Morse.
+Then we have for $k\in\brk[c]*{0,\dots,d}$ the inequalities
 \begin{align*}
-  M_0+\mu_0&\geq R_0\\
-  M_1+\mu_1-\brk*{M_0+\mu_0}&\geq R_1-R_0 \\
-  &\;\;\vdots \\
-  M_{d-1}+\mu_{d-1}-\dots+\brk*{-1}^{d-1}\brk*{M_0+\mu_0}&\geq R_{d-1}-\dots +\brk*{-1}^{d-1}R_0 \\
-  M_{d}-\brk*{M_{d-1}+\mu_{d-1}}-\dots+\brk*{-1}^{d}\brk*{M_0+\mu_0}&=R_{d}-R_{d-1}-\dots +\brk*{-1}^{d}R_0\,.
+  \sum_{j=0}^k \brk*{-1}^{j+k}\essind_j(f)\geq \sum_{j=0}^k\brk*{-1}^{k+j}b_j(X)\,.
 \end{align*}
+For $k=d$ we in fact have equality
+\begin{align*}
+  \sum_{j=0}^d \brk*{-1}^{j}\essind_j(f)= \chi(X)
+\end{align*}
+where the euler characteristic
+\begin{align*}
+  \chi(X)=\sum_{j=0}^d\brk*{-1}^{j}b_j(X)
+\end{align*}
+is the alternating sum of the Betti numbers.
 \end{theorem}
 \begin{proof}
-  See \cite[Theorem 10.2']{Morse1969}.\ruggedtodo[]{Give outline of proof idea.}
+  See \cite[Theorem 10.2']{Morse1969}.\ruggedtodo[]{Give outline of proof idea. The citation for this version is no longer up to date.}
 \end{proof}
-We note that the alternating sum of Betti numbers
-is up to signage equal to the Euler characteristic
-\begin{align*}
-  \chi\brk*{\Omega}=R_0-R_1+\dots+\brk*{-1}^{d}R_d
-\end{align*}
-of the domain $\overline{\Omega}$.
+
+\begin{corollary}[Weak Morse inequalities]
+  Let $X$ be a manifold with corners and $f\colon X\to\R$ essentially Morse. Then we have for $k\in\brk[c]*{0,\dots,d}$
+  the inequalities
+  \begin{align*}
+    \essind_k(f)\geq b_k(X)\,.
+  \end{align*}
+\end{corollary}
+\begin{proof}
+  \td{Write some proof.}
+\end{proof}
 If we now assume that $f$ is harmonic then the maximum principle implies that
-$M_0=0=M_d$. 
+$M_0=0=M_d$.
 If we additionally assume that we have dimensions $d=2$ we obtain \cite[Corollary 10.1]{Morse1969}.
 \begin{corollary}[Morse inequalities for $f$ harmonic, $d=2$]
   Let $d=2$, $\Omega$ and $f$ be regular and assume that $f$ is harmonic. Then we have
   \begin{align*}
-    \mu_0&\geq R_0 \\
-    M+\mu_1-\mu_0&=R_1-R_0\,.
+    \mu_0&\geq b_0 \\
+    M+\mu_1-\mu_0&=b_1-b_0\,.
   \end{align*}
 \end{corollary}
 In dimensions $d=3$ we obtain \cite[Corollary 10.2]{Morse1969}
 \begin{corollary}[Morse inequalities for $f$ harmonic, $d=3$]
   Let $d=3$, $\Omega$ and $f$ be regular and assume that $f$ is harmonic. Then we have
   \begin{align*}
-    \mu_0&\geq R_0 \\
-    M_1+\mu_1-\mu_0&\geq R_1-R_0 \\
-    M_2+\mu_2-M_1-\mu_1+\mu_0&= R_2-R_1+R_0\,.
+    \mu_0&\geq b_0 \\
+    M_1+\mu_1-\mu_0&\geq b_1-b_0 \\
+    M_2+\mu_2-M_1-\mu_1+\mu_0&= b_2-b_1+b_0\,.
   \end{align*}
 \end{corollary}
 \ruggedtodo[inline]{Give a classical example of a Morse function to determine the betti numbers.}
@@ -769,48 +842,137 @@ Using invariant manifolds we obtain the following proof.
   has opposite signage and the claim follows.
 \end{proof}
 
+\subsection{A proof involving Morse theory}
+
+\begin{proof}
+  Assume that $\Sigma^-$ is connected. Then we can cut the domain along $\Gamma$ such that the endpoints
+  of the cut coincide with the endpoints of $\Sigma^-$, that is $\partial\Gamma=\partial\Sigma^-$.
+  Now we obtain two new domains $X^+$ and $X^-$ such that $\partial X^+ =\Sigma^+\cup\Sigma^0\cup\overline{\Gamma}$ and
+  $\partial X^-=\Sigma^-\cup\overline{\Gamma}$. We can assume that $\Gamma$ is a smooth manifold and corresponds to the stratum 
+  $X_\Gamma$ for $X^+$ and $X^-$. We also assume that the corner points $x_1,x_2\in\partial\Gamma$ correspond to the strata $X_{1}$ and $X_{2}$.
+  Locally around the corner point $x_1$ we have a situation depicted as in figure \ref{}
+  \begin{figure}
+    \centering
+    \input{../Figures/n2_cutOmega_flowthrough.pdf_tex}
+    \caption{The situation at hand.}
+    \label{}
+  \end{figure}
+  That is $u=\nabla f$ is essentially parallel to the boundary $\Sigma$.
+  We assume that we chose $\Gamma$ such that the acute angle is on the side where $u$ flows into the new domain.
+  Thus we have that $x_1$ is not a critical point of either $f$ nor $-f$.
+  Analogously we can choose $\Gamma$ in such a way around $x_2$.
+  We now focus our attention on $X^+$. Since no essential critical points lie on $\Sigma^+$ or
+  $\partial\Gamma$ it follows for the boundary type numbers that
+  \begin{align}
+    \mu^+_j=\ind_{\Gamma,j}(f)\,.\label{eq:n2_disproof_morse_muplus}
+  \end{align}
+  Analogously we have on $X^-$ that
+  \begin{align}
+    \nu^-_j=\ind_{\Gamma,j}(-f)\,.\label{eq:n2_disproof_morse_numinus}
+  \end{align}
+  In addition we have that the emergent critical points of $f$ on $X^+$ are the
+  entrant critical points of $-f$ on $X^-$, that is
+  \begin{align}
+    \ind_{\Gamma,0}(f)=\ind_{\Gamma,1}(-f)\qquad\text{ and }\qquad 
+    \ind_{\Gamma,1}(f)=\ind_{\Gamma,0}(-f)\label{eq:n2_disproof_morse_relationIndex} 
+  \end{align}
+  Using equations \eqref{eq:n2_disproof_morse_muplus}, \eqref{eq:n2_disproof_morse_numinus} and \eqref{eq:n2_disproof_morse_relationIndex}
+  we obtain
+  \begin{align}
+    \mu^+_0=\nu^-_1 \qquad\text{ and }\qquad \mu^+_1=\nu^-_0\,.\label{eq:n2_disproof_morse_relationMuNu}
+  \end{align}
+  Consider the Morse inequality for $f$
+  \begin{align}
+    M^++\mu^+_1-\mu^+_0=-\chi(X^+)=-\chi(X)\,.\label{eq:n2_disproof_morse_morseineqplus}
+  \end{align}
+  and the Morse inequality for $-f$
+  \begin{align}
+    M^-+\nu^-_1-\nu^-_0=-\chi(X^-)=-\chi(X)\,.\label{eq:n2_disproof_morse_morseineqminus}
+  \end{align}
+  We now add equations \eqref{eq:n2_disproof_morse_morseineqplus} and \eqref{eq:n2_disproof_morse_morseineqminus}
+  and insert relations \eqref{eq:n2_disproof_morse_relationMuNu} to obtain
+  \begin{align*}
+    M^-+M^+=-2\chi(X)<0
+  \end{align*}
+  in contradiction to $M^\pm\geq0$.
+\end{proof}
+% \begin{proposition}
+%   Let $X$ be a simply connected manifold with corners and $f\colon X\to\R$ harmonic and Morse. 
+%   Assume further that $\Sigma^-$ is connected. Then $f$ cannot have an interiour critical point.
+% \end{proposition}
+% \begin{proof}
+%   Since $\Sigma^-$ is connected we can cut the domain along a cut $\Gamma$ such that the endpoints $\partial\Gamma$ of
+%   $\Gamma$ coincide with the endpoints of $\Sigma^-$. Thus we obtain two domains $X^+$ and $X^-$ with boundaries
+%   $\partial X^+=\Gamma\cup\Sigma^{\geq0}$ and $\partial X^-=\Gamma\cup\Sigma^-$.
+%   On $X^+$ we obtain the Morse inequalities 
+% \end{proof}
+% \subsubsection*{A proof involving the argument principle}
+
+% \begin{proposition}
+%   Let $X$ be a simply connected manifold with corners and $f\colon X\to\R$ harmonic with an
+%   interiour critical point.
+%   Then $\Sigma^-$ is not connected.
+% \end{proposition}
+% \begin{proof}
+%   Assume not.
+%   Let $h\in\Hol(X)$ be the holomorphic function given by $h=\nabla f$.
+%   Let $\gamma\colon \R\supseteq (t_0,t_2) \to\Sigma$ traverse the boundary of $X$ such that
+%   the interiour of $X$ lies to the left of $\gamma$.
+%   Without loss of generality $\gamma(t_0)$ is the point where $\gamma$ enters the entrant boundary $\Sigma^-$.
+%   Let $\gamma(t_1)$ denote the point at which $\gamma$ leaves the entrant boundary $\Sigma^-$.
+%   As $\gamma$ traverses $\Sigma^-$ we have that $h$ points into $\Omega$ and thus lies to the left of
+%   the tangent $T_\gamma X$. Thus we obtain for the change in argument of $\arg h$ that
+%   \begin{align*}
+%     \arg h(\gamma(t_1))-\arg h(\gamma(t_0))=\gamma'(t_0)-\gamma'(t_1)+\pi k
+%   \end{align*}
+%   where $k\in\brk[c]{-1,0,1}$. Similarly we obtain for the change in argument of $\arg h$ as $\gamma$ traverses
+%   $\Sigma^+\cup\Sigma^0$ that
+%   \begin{align*}
+%     \arg h(\gamma(t_2))-\arg h(\gamma(t_1))=\gamma'(t_2)-\gamma'(t_1)+\pi k
+%   \end{align*}
+%   We then obtain with the argument principle
+%   \begin{align*}
+%     2\pi M=\int_{\partial X}\dif{\arg(h(z))}
+%   \end{align*}
+% \end{proof}
+
 \subsection{Allowing for Inflow and outflow}
 
 The strategy in the above proofs can be generalised to show the following
 \begin{conjecture}
-  Let $\Omega\subseteq\R^2$ be a regular domain with Betti numbers $R_0=1$ and $R_1$.
-  Let further $f\colon\overline{\Omega}\to\R$ be regular harmonic with $M$ critical points.
+  Let $X\subseteq\R^2$ be a manifold with corners with Betti numbers $b_0=1$ and $b_1$.
+  Let further $f\colon X\to\R$ be Morse harmonic with $M$ critical points.
   Assume that 
   $\overline{\Sigma^-}\subseteq\Sigma$ on a given connected component 
   of the boundary $\Sigma$
   consists of at most one connected component. Then we have
   \begin{align*}
-    \frac{4}{3}M\leq R_1+1\,.
+    \frac{4}{3}M\leq b_1+1\,.
   \end{align*}
 \end{conjecture}
 This inequality can probably be improved considerably.
 
-Let $J^\pm$ denote the number of connected components of $\Sigma^\pm$ then.
+Let $J^\pm$ denote the number of connected components of $\Sigma^\pm$.
+Consider a disjoint decomposition of the boundary $\Sigma=\Sigma_{\geq0}\sqcup\Sigma_{\leq0}$ such
+that $\Sigma_{\geq0}\subseteq\Sigma^{\geq0}$ and $\Sigma_{\leq0}\subseteq\Sigma^{\leq0}$.
+Let now $J^{\geq0}$ denote the minimal number of connected components of $\Sigma^{\geq0}$ of all such
+decompositions.
 We state a consequence of a result from \cite[Theorem 2.1]{Alessandrini1992}
 \begin{proposition} 
-  Let $\Omega$ be a domain with certain requirements.
+  Let $\Omega\subseteq\R^d$ be an open bounded domain with a boundary consisting of simple closed $C^{1,\alpha}$ curves.
   Let $u\colon \overline{\Omega}\to \R$ be harmonic (with certain conditions on the boundary).
   Then we have
   \begin{align*}
-    M\leq R_1-1+J^-\,.
+    M\leq b_1-b_0+\frac{J^++J^-}{2}\,.
   \end{align*}
   If in addition we assume that there are no critical points on the boundary then we have
   \begin{align*}
-    M\leq R_1-1+\frac{J^++J^-}{2}\,.
+    M\leq b_1-b_0+J^{\geq0}\,.
   \end{align*}
 \end{proposition}
 \begin{proof}
-  See \cite{Alessandrini1992}.
+  See \cite[Theorem 2.1]{Alessandrini1992}.
 \end{proof}
-
-Now let $J^{\geq0}$ denote the number of connected components of $\Sigma^{\geq0}$. 
-We obtain from \cite{Deng2022} that
-\begin{proposition}
-  \begin{align*}
-    M\leq J^{\geq0}-1
-  \end{align*}
-\end{proposition}
-
 
 \newpage
 
@@ -823,9 +985,10 @@ We say that $u$ has no \emph{inflow} on a boundary subset $S\subseteq\Sigma$ iff
 that it has no \emph{outflow} iff $\Sigma^+\cap S=\emptyset$.
 Armed with this definition we can state the following result.
 \begin{proposition}[Upper bound on $M$]
-  Let $d=2$ and $\Omega$ be a regular domain with Betti numbers $R_0=1$, and $R_1$. Let further $u\colon\overline{\Omega}\to\R^2$ be 
-  a regular harmonic vector field without inflow or outflow.
-  Then we have $$M+1\leq R_1\,.$$
+  Let $d=2$ and $\Omega$ be a compact manifold with corners with Betti numbers $b_0=1$, and $b_1$.
+  Let further $u\colon X\to\R^2$ be 
+  a Morse harmonic vector field without inflow or outflow.
+  Then we have $$M+1\leq b_1\,.$$
 \end{proposition}
 \begin{proof}[Sketch of proof.]
   As in the second proof of proposition \ref{pr:n2:hf:nonExistence} the critical manifolds form a directed multigraph.
@@ -842,71 +1005,95 @@ Armed with this definition we can state the following result.
   Note that each minimal cycle must contain a hole of the domain since else we could restrict $u$ to a simply
   connected region containing this cycle. Then by proposition \ref{pr:n2:hvf:simplyConnected} $u$ would correspond to the gradient of 
   a harmonic function in this region and we would obtain a contradiction as in the proof of proposition \ref{pr:n2:hf:nonExistence}.
-  Hence the number of minimal cycles is a lower bound on the number of holes $R_1$ of the domain.
+  Hence the number of minimal cycles is a lower bound on the number of holes $b_1$ of the domain.
 \end{proof}
 
 In fact using the Morse inequalities we can obtain the stronger result.
 \begin{proposition}
-  Let $\Omega$ be a regular domain with Betti numbers $R_0=1$, and $R_1$ and let $u\colon\overline{\Omega}\to\R^2$ be 
-  a regular harmonic vector field without inflow or outflow.
-  Then we have $$M+1=R_1$$.
+  Let $X\subset\R^2$ be a compact manifold with corners and Betti numbers $b_0=1$, and $b_1$
+  and let $u\colon X\to\R^2$ be 
+  a Morse harmonic vector field without inflow or outflow.
+  Then we have $$M+1=b_1$$.
 \end{proposition}
 \begin{proof}[Sketch of proof.]
-  The idea is to slit the domain such that it is homeomorphic to the disk.
-  To ensure that the domain has $C^2$ boundary we slit it as depicted in
-  figure \ref{fi:n2_hvf_slitDomain} to obtain a new domain $\Omega_1$ with boundary
-  $\Sigma_1=\partial\Omega_1$.
-  Since the number of interiour critical points is finite by ??
-  we can assume that the slit does not contain any interiour critical points.
+  We slit $\Omega$ such that it is homeomorphic to the disk as is 
+  depicted in figure \ref{fi:n2_hvf_slitDomain}.
+  Denote the slit by $\Gamma$. Since the number of critical points is 
+  finite by proposition ??, we can choose $\Gamma$ in such a way that it does not contain
+  any critical points.
+   We also denote the points at which
+  $\Gamma$ meets $\Sigma$ by $x_1,\dots,x_{2b_1}\in\partial\Gamma$.
+  Note that there are $2b_1$ many such points.
+  We can assume that $\Gamma$ is a smooth manifold. Now at the point $x_1$
+  we have that $u$ is almost parallel to the boundary $\Sigma$. Thus we can slant
+  the cut in such a way such that $x_1$ is an essential critical point of index $0$ of $u$ on the statification
+  of $\tiX$. Here $\tiX$ denotes the covering space of $X$ generated by the cut $\Gamma$.
+  We denote the induced strata by $\Gamma$ also with $\Gamma$. Note that $x_1$ then is no
+  essential critical point for $-u$.
+  We modify the cut for the other points $x_2,\dots,x_{2b_1}$ as with $x_1$.
+  The situation is depicted in figure \ref{fi:n2_hvf_slitDomain}.
   \begin{figure}
     \centering
-    \input{../Figures/n2_cutOmega.pdf_tex}
+    \input{../Figures/n2_cutOmega_noInflowNoOutflow.pdf_tex}
     \caption{How we slit the domain.}
     \label{fi:n2_hvf_slitDomain}
   \end{figure}
-  By proposition \ref{pr:n2:hvf:simplyConnected}
-  $u$ is the gradient of a harmonic function $f$ on this new domain.
-  By assumption $f$ has no boundary critical points on $\Sigma$.
-  Each cut introduces two new boundary critical points as indicated in figure 
-  \ref{fi:n2_hvf_slitDomain} on $\Sigma^-$. These boundary critical points are minima.
-  Thus the cuts increase the number of boundary critical points of index $0$ by $2R_1$.
-  Denote by $\timu_i$ the number of boundary critical points of $f$ on the slit $\Sigma_1^-\cap\Gamma$.
-   and fulfils where the cuts meet the conditions
+  Since there are no critical points on $\Sigma$ all boundary critical points of $u$ are on
+  the strata induced by $\Gamma$ and $x_1,\dots,x_{2b_1}$. Hence we have relations
   \begin{align}
-    \mu_0=\nu_1 \qquad \mu_1=\nu_0 \label{eq:n2:hvf:relationsMuNu}
+    \mu_k=\ind_{\Gamma,k}(u)+2b_1\delta_{k0} \qquad\text{ and }\qquad
+    \nu_k=\ind_{\Gamma,k}(-u)\label{eq:n2_hvf_noInflowNoOutflow_relationsMuIndex}
   \end{align}
-  since every entrant critical point is also an emergent critical point on the other side of the cut of shifted index.
-  We have for this new cut domain the Morse inequalities for $f$ and $-f$
+  for all $k\in\brk[c]*{0,1}$.
+  Since on $\Gamma$ all entrant critical points of $u$ are also emergent
+  critical points of $-u$ (and vice versa) we have the relations
   \begin{align}
-    M+\mu_1-R_1-\mu_0+R_0&=0 \label{eq:n2_hvf_MorseInequalities_1}\\
-    M+\nu_1-R_1-\nu_0+R_0&=0\,. \label{eq:n2_hvf_MorseInequalities_2}
+    \ind_{\Gamma,0}(u)=\ind_{\Gamma,1}(-u) \qquad\text{ and }\qquad
+    \ind_{\Gamma,1}(u)=\ind_{\Gamma,0}(-u)\,.\label{eq:n2_hvf_noInflowNoOutflow_relationsIndex}
+  \end{align}
+  Equations \eqref{eq:n2_hvf_noInflowNoOutflow_relationsMuIndex} and \eqref{eq:n2_hvf_noInflowNoOutflow_relationsIndex}
+  yield 
+  \begin{align}
+    \mu_0=\nu_1+2b_1 \qquad\text{ and }\qquad
+    \mu_1=\nu_0\,.\label{eq:n2_hvf_noInflowNoOutflow_relationsMuNu}
+  \end{align}
+  Since $\Omega$ is now simply connected $u$ is 
+  by proposition \ref{pr:n2:hvf:simplyConnected}
+  the gradient of a harmonic function $f$ on this new domain.
+  For this $f$ we have the Morse inequalities
+  \begin{align}
+    M+\mu_1-\mu_0&=-\chi(\tiX)=-1 \label{eq:n2_hvf_MorseInequalities_1}
+  \end{align}
+  and for $-f$ the Morse inequalities
+  \begin{align}
+    M+\nu_1-\nu_0&=-\chi(\tiX)=-1\,. \label{eq:n2_hvf_MorseInequalities_2}
   \end{align}
   Adding equations \eqref{eq:n2_hvf_MorseInequalities_1} and \eqref{eq:n2_hvf_MorseInequalities_2} and using the relation
-  \eqref{eq:n2:hvf:relationsMuNu} we obtain
+  \eqref{eq:n2_hvf_noInflowNoOutflow_relationsMuNu} we obtain
   \begin{align*}
-    2\brk*{M-R_1+R_0}=0
+    2M-2b_1=-2
   \end{align*}
   from which the claim follows.
 \end{proof}
 We now give an alternative proof using the argument principle.\ruggedtodo[]{One could use the argument principle for Riemann surfaces.}
 \begin{proof}
   As before we slit the domain such that it is homeomorphic to a disk. By proposition ?? $u$ is the gradient of a
-  harmonic function $f$ on this new domain. Let $h\in\Hol(\C)$ be a holomorphic function such that $h'=\nabla f$.
+  harmonic function $f$ on this new domain. Let $h\in\Hol(\C)$ be the holomorphic function given by $h=\nabla f$.
   Let $\gamma$ traverse the boundary of the slit domain such that the domain lies to the left of $\gamma$.
-  We now determine the change of argument $\arg h'$ along $\gamma$. For this
+  We now determine the change of argument $\arg h$ along $\gamma$. For this
   consider first the parts of $\gamma$ traversing the slits. Since $\nabla f$ is continuously differentiable
   along the slit and $\gamma$ traverses the slit once in one direction and once in the other 
-  the contribution in the change of $\arg h'$ from the slits vanishes.
+  the contribution in the change of $\arg h$ from the slits vanishes.
   On the other hand as $\gamma$ traverses the boundary $\Sigma$ the contribution to the change in
-  argument of $\arg h'$ is $2\pi$ for every hole in the domain 
-  since $h'=u$ is tangent to $\Sigma$ and traverses the holes clockwise direction.
-  Similarly the contribution to the change in argument of $\arg h'$ is $-2\pi$ for the outer boundary component
+  argument of $\arg h$ is $2\pi$ for every hole in the domain 
+  since $h=u$ is tangent to $\Sigma$ and traverses the holes clockwise direction.
+  Similarly the contribution to the change in argument of $\arg h$ is $-2\pi$ for the outer boundary component
   which is traversed counterclockwise.
-  Since we have $R_1$ holes in the domain the total change of $\arg h'$ as $\gamma$ traverses $\Sigma$ is
-  $2\pi(R_1-1)$.
+  Since we have $b_1$ holes in the domain the total change of $\arg h$ as $\gamma$ traverses $\Sigma$ is
+  $2\pi(b_1-1)$.
   Since $h$ has no poles it follows from the argument principle (see for example \cite[Chapter VIII]{Gamelin2001}) that
   \begin{align}
-    2\pi(R_1-1)=\int_\gamma\dif\arg (h'(z)) =  2\pi M
+    2\pi(b_1-1)=\int_\gamma\dif\arg (h(z)) =  2\pi M
   \end{align}
   From this the claim follows.
 \end{proof}
@@ -1078,46 +1265,118 @@ The following proof comes from \cite{Wahlen2023}
 \subsection{Harmonic vector fields, $d=3$}
 We obtain as a quick consequence of the hairy ball theorem
 \begin{proposition}
-  Let $\Omega$ have Betti numbers $R_0$, $R_1$ and $R_2$.
-  Let $u\colon\overline{\Omega}\to\R$
-  be a regular harmonic vector field without inflow or outflow. Then we have
+  Let $\Omega$ have Betti numbers $b_0$, $b_1$ and $b_2$.
+  Let $u\colon X\to\R$
+  be a Morse harmonic vector field without inflow or outflow. Then we have
   \begin{align*}
-    R_2\leq R_1\,.
+    b_2\leq b_1\,.
   \end{align*}
 \end{proposition}
 \begin{proof}
-  Assume not. Since $\Omega$ has $R_2$ bubbles and $R_1$ holes there exists by the pidgeon hole
+  Assume not. Since $\Omega$ has $b_2$ bubbles and $b_1$ holes there exists by the pidgeon hole
   principle a bubble $\Gamma\subseteq\Sigma$ without a hole. Since $u$ has no inflow or outflow on $\Gamma$ we
   have that the restriction $u\vert_\Gamma\in T\Gamma$ is a vector field on $\Gamma$. Since $u$ is regular
   $u\vert_\Gamma$ does not vanish. But $\Gamma$ is homeomorphic to the Ball in contradiction to the hairy ball theorem.
 \end{proof}\ruggedtodo[]{A little more rigour would not harm.}
 Mimicking the proof in 2 dimensions we obtain the following proposition.
 \begin{proposition}
-  Let $\Omega$ have Betti numbers $R_0$, $R_1$ and $R_2$.
-  Let $u\colon\overline{\Omega}\to\R$ be a regular harmonic vector field without inflow or outflow. Then we have the following relation for
-  critical points of $u$
+  Let $X\subset\R^3$ be a compact manifold with corners homeomorphic to the ball $B$.
+  Let $f\colon X\to\R$ be a Morse harmonic function. Assume that $\Sigma^-$ is simply connected.
+  Then we have that
   \begin{align*}
-    M_2=M_1
+    M_1=M_2
   \end{align*}
 \end{proposition}
-\begin{proof}[Attempt at proof.]
-  As in the two-dimensional case we begin by cutting up the domain such that the slit domain is homeomorphic to the ball with bubbles.
-  Once again by proposition \ref{pr:n2:hvf:simplyConnected} $u$ is the gradient of a harmonic function $u$ on this new domain.
-  $f$ has no critical points on the boundary $\Sigma$ and on the cut boundary it fulfils the conditions
+\begin{proof}
+  As in the two dimensional case we split the domain $\Omega$ with a plane $\Gamma$ such that
+  $\partial\Gamma=\gamma=\partial\Sigma^-$.
+  Denote the two arising domains $X^+$ and $X^-$ where $\partial X^+=\Sigma^+\cup\Sigma^0\cup\overline{\Gamma}$ and
+  $\partial X^-=\Sigma^-\cup\overline{\Gamma}$.
+  We can assume that $\Gamma$ is a smooth manifold.
+  Since by proposition ?? there are finitely many critical points in $\Omega$
+  we can also assume that no interiour critical points lie on $\Omega$.
+  We now look at a critical point $x$ on $\Gamma$.
+  \ruggedtodo[]{Why are there finitely many?}
+  We choose the slant at which $\Gamma$ approaches $\gamma$ in such a way that $x$
+  is neither an essential critical point of $f$ nor of $-f$.
+  \ruggedtodo[]{More details here.}
+  We now turn our attention to $X^+$. Since no essential critical points lie on $\Sigma^+$ or
+  $\gamma$ it follows for the boundary type numbers that
   \begin{align}
-    \mu_0=\nu_2\qquad \mu_1=\nu_1 \qquad \mu_2=\nu_0 \label{eq:n3:hvf:relationsMuNu}
+    \mu^+_j=\ind_{j,\Gamma}(f)\,.\label{eq:n2_disproof_morse_muplus}
   \end{align}
-  by the same reasoning. We now have the Morse inequalities for $f$ and $-f$
+  Analogously we have on $X^-$ that
   \begin{align}
-    M_2+\mu_2-R_2-M_1-\mu_1+R_1+\mu_0-R_0=0 \label{eq:n3:hvf:MorseInequalities:1} \\
-    M_1+\nu_2-R_2-M_2-\nu_1+R_1+\nu_0-R_0=0 \label{eq:n3:hvf:MorseInequalities:2}
+    \nu^-_j=\ind_{j,\Gamma}(-f)\,.\label{eq:n2_disproof_morse_numinus}
   \end{align}
-  It then follows by subtracting equation \eqref{eq:n3:hvf:MorseInequalities:2} from \eqref{eq:n3:hvf:MorseInequalities:1}
-  and using relations \eqref{eq:n3:hvf:relationsMuNu} that
+  In addition we have that the emergent critical points of $f$ on $X^+$ are the
+  entrant critical points of $-f$ on $X^-$, that is
+  \begin{equation}
+    \begin{aligned}
+      \ind_{0,\Gamma}(u)=\ind_{2,\Gamma}(-f) \\
+      \ind_{1,\Gamma}(u)=\ind_{1,\Gamma}(-f) \\
+      \ind_{2,\Gamma}(u)=\ind_{0,\Gamma}(-f)\label{eq:n2_disproof_morse_relationIndex} 
+    \end{aligned}
+  \end{equation}
+  Using equations \eqref{eq:n2_disproof_morse_muplus}, \eqref{eq:n2_disproof_morse_numinus} and \eqref{eq:n2_disproof_morse_relationIndex}
+  we obtain
+  \begin{equation}
+    \begin{aligned}
+      \mu^+_0=\nu^-_2 \\
+      \mu^+_1=\nu^-_1 \\
+      \mu^+_2=\nu^-_0\label{eq:n2_disproof_morse_relationMuNu}
+    \end{aligned}
+  \end{equation}
+  We observe the Morse inequalities for $f$
+  \begin{align}
+    M_2^++\mu^+_2-M_1^+-\mu^+_1+\mu^+_0=\chi(X^+)=\chi(X)\,.\label{eq:n2_disproof_morse_morseineqplus}
+  \end{align}
+  and the Morse inequalities for $-f$
+  \begin{align}
+    M_1^-+\nu^-_2-M_2^--\nu^-_1+\nu^-_0=\chi(X^-)=\chi(X)\label{eq:n2_disproof_morse_morseineqminus}
+  \end{align}
+  where the $M_j$ continue to denote the interiour type numbers of $f$.
+  We now subtract equation \eqref{eq:n2_disproof_morse_morseineqplus} from \eqref{eq:n2_disproof_morse_morseineqminus}
+  and insert relations \eqref{eq:n2_disproof_morse_relationMuNu} to obtain
   \begin{align*}
-    2\brk*{M_2-M_1}=0\,.
+    M_1^--M_2^-+M_1^+-M_2^+=0
   \end{align*}
-\end{proof}\ruggedtodo[]{Introduce Morse inequalities for $-f$.}
+  from which the claim follows.
+\end{proof}
+\td{Try to say something about the case without inflow or outflow.}
+% And we also obtain
+% \tdrewrite{Rewrite this to incorporate the updated notation. And fix the boundary smoothness issues.}
+% \begin{proposition}
+%   Let $X\subseteq\R^3$ be a compact manifold with corners and Betti numbers $b_0$, $b_1$ and $b_2$.
+%   Let $u\colon X\to\R$ be a Morse harmonic vector field without inflow or outflow. Then we have the following relation for
+%   the interiour type numbers of $u$
+%   \begin{align*}
+%     M_2=M_1\,.
+%   \end{align*}
+% \end{proposition}
+% \begin{proof}[Sketch of proof.]
+%   As in the two dimensional case we cut the domain $\Omega$ with planes $\Gamma$ such that the slit domain is
+%   homeomorphic to a ball with bubbles.
+%   Since the number of critical points is finite by proposition ??, we can choose $\Gamma$ in such a way
+%   that it does not contain any critical points. We also denote the curves at which $\Gamma$ meets $\Sigma$ by 
+%   $\gamma_1,\dots,\gamma_{b_1}\subseteq\partial\Gamma$. Note that there are $b_1$ many such curves.
+
+%   Once again by proposition \ref{pr:n2:hvf:simplyConnected} $u$ is the gradient of a harmonic function $u$ on this new domain.
+%   $f$ has no critical points on the boundary $\Sigma$ and on the cut boundary it fulfils the conditions
+%   \begin{align}
+%     \mu_0=\nu_2\qquad \mu_1=\nu_1 \qquad \mu_2=\nu_0 \label{eq:n3:hvf:relationsMuNu}
+%   \end{align}
+%   by the same reasoning. We now have the Morse inequalities for $f$ and $-f$
+%   \begin{align}
+%     M_2+\mu_2-b_2-M_1-\mu_1+b_1+\mu_0-b_0=0 \label{eq:n3:hvf:MorseInequalities:1} \\
+%     M_1+\nu_2-b_2-M_2-\nu_1+b_1+\nu_0-b_0=0 \label{eq:n3:hvf:MorseInequalities:2}
+%   \end{align}
+%   It then follows by subtracting equation \eqref{eq:n3:hvf:MorseInequalities:2} from \eqref{eq:n3:hvf:MorseInequalities:1}
+%   and using relations \eqref{eq:n3:hvf:relationsMuNu} that
+%   \begin{align*}
+%     2\brk*{M_2-M_1}=0\,.
+%   \end{align*}
+% \end{proof}\ruggedtodo[]{Introduce Morse inequalities for $-f$.}
 
 
 \newpage
@@ -1186,15 +1445,12 @@ equivalent to $\bx\in \partial B_1\subseteq \R^2$. The situation is depicted in 
 \end{figure}
 \end{proof}
 
-\clearpage
 
 % \printnomenclature
-
 
 \glsaddall
 \printunsrtglossary[type=symbols,style=long]
 
-\clearpage
 
 % TODO: potentially add Irwin, smooth dynamical systems
 % \section{Bibliography}
