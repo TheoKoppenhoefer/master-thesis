@@ -74,6 +74,7 @@
     \item Look at application of Sperner's lemma
     \item $C$ is used once for critical points, once for level sets.
     \item Define traversing vector field
+    \item Look at regularity requirements. In particular: Riemannian mfs
   \end{itemize}
   Some questions
   \begin{itemize}
@@ -88,11 +89,12 @@
 
 \ruggedtodo[inline]{Some amazing introduction}
 
-Unless otherwise stated we denote by $\Omega\subseteq\R^d$ an open bounded subset of $\R^d$ with boundary $\Sigma=\partial\Omega$.
+Unless otherwise stated we denote by $X\subseteq\R^d$ a compact subset of $\R^d$ with boundary $\Sigma=\partial X$ and interior
+$\Omega=\interior(X)$.
 In the following we will work in dimensions $d\in\brk[c]{2,3}$.
-We denote with
+We denote by
 \begin{align*}
-  f\colon\overline{\Omega}\to\R
+  f\colon X\to\R
 \end{align*}
 a scalar function of class $C^2$.
 We also denote by
@@ -106,16 +108,24 @@ a \emph{harmonic vector field}, that is $u$ is of type $C^1$ and fulfils
   \diver u=0 \qquad \text{ and }\qquad \curl u=0\,.
 \end{align*}
 Also often but not always we assume that globally $u=\nabla f$ is a gradient field, implying that $f$ is harmonic.
-One question we seek to answer during this thesis is the following.
+One question we seek to answer in this thesis is the following.
 \begin{question}[Flowthrough with stagnation point]\label{qu:flowthroughStagnationPoint}
   Does there exist a tube $\Omega\subseteq\R^3$ with flow $u$ through the tube such that
   \begin{enumerate}
     \item $u$ is a harmonic vector field
-    \item $u$ has an interiour stagnation point
+    \item $u$ has an interior stagnation point
     \item $u$ enters the tube on the one side and exits the tube on the other?
   \end{enumerate}
 \end{question}
-To make the formulation more precise we begin with some general definitions regarding stagnation points and the boundary conditions.
+The answer for this will turn out to be yes for dimensions $d\geq3$ and no for the dimension $d=2$.
+In the case of $d=2$ dimensions we will look at what happens if we allow for holes in the domain.
+other questions are of the type
+\begin{question}[stagnation points of harmonic vector fields without inflow or outflow]
+  Let $u$ be a flow in a domain $X$ and such that at every boundary point it is tangential to the boundary.
+  What can be said about the relation between the number of critical points and the domain topology?
+\end{question}
+This question yields a very nice result in the case of $d=2$ dimensions.
+To make the formulation of these questions more precise we begin with some general definitions regarding stagnation points and the boundary conditions.
 
 \nomenclature{$d$}{Dimensions $d=2$ or $d=3$}
 \nomenclature{$\Omega$}{Domain in $\R^d$, assumed to be $\interior\brk*{X}$}
@@ -125,8 +135,8 @@ To make the formulation more precise we begin with some general definitions rega
 
 \subsection{General definitions}
 
-We start by requiring some regularity for the boundary of $\Omega$.
-More precisely we require $X=\overline{\Omega}$ to be a manifold with cornerse as in \cite{Handron2002}.
+We start by requiring some regularity for the boundary of $X$.
+More precisely we require $X$ to be a compact manifold with corners as in \cite{Handron2002}.
 \begin{definition}[Manifolds with corners]
   We introduce the notation
   \begin{align*}
@@ -134,10 +144,10 @@ More precisely we require $X=\overline{\Omega}$ to be a manifold with cornerse a
   \end{align*}
   A \emph{manifold with (convex) corners} is a topological space $X$ together with an atlas $\cA$ such that for every point
   $x\in X$ there exists an open neighbourhood $U_x$ of $x$, a number $j=j(x)$ and a
-  diffeomorphism $\cA\ni\phi\colon U_x\to H_j^d$ with $\phi(x)=0$.
+  diffeomorphism $\phi\colon U_x\to H_j^d$ in $\cA$ with $\phi(x)=0$.
   We further define sets 
   \begin{align}
-    X_k=\brk[c]*{x\in X\colon j(x)=k}\label{eq:def_mfCorners_stratification}
+    X_k=\brk[c]*{x\in X\colon j(x)=k}\label{eq:def_mfCorners_stratification},
   \end{align}
   which form a stratification of $X$.
 \end{definition}
@@ -147,15 +157,39 @@ More precisely we require $X=\overline{\Omega}$ to be a manifold with cornerse a
 More generally we give the definition of a stratification as 
 \begin{definition}[Stratified space]\label{df:stratified_space}
   A \emph{stratified space} is a collection of a topological space $X$ and a collection of subspaces
-  $X_j\subseteq X$, $j\in\cJ$ indexed by a partially ordered set $\cJ$ such that
+  $X_j\subseteq X$, $j\in\cJ$, called \emph{strata},  indexed by a partially ordered set $\cJ$ such that
   \begin{enumerate}
     \item each $X_j$ is a manifold (without boundary) of dimension $n=n(j)$
     \item $X=\bigcup_jX_j$
-    \item $X_j\cap \overline{X_k}\neq\emptyset$ iff $X_j\subseteq\overline{X_k}$
+    \item $X_j\cap \overline{X}_k\neq\emptyset$ iff $X_j\subseteq\overline{X}_k$.
   \end{enumerate}
+  In the case that $X_j\subseteq\overline{X}_k$ and additionally $n(j)=0$ or $n(j)=n(k)+1$ we will
+  write $X_j\precsim X_k$ or, abusing notation, write $X_k=X_{j-1}$.
 \end{definition}
 \nomenclature{$X_j$}{A stratification of $X$ as given in definition \ref{df:stratified_space}.
    Often but not always assumed to be given by equation \ref{eq:def_mfCorners_stratification}}
+
+In the case that the stratification arises through relation \eqref{eq:def_mfCorners_stratification}
+we have precisely $X_{j}\precsim X_{j-1}$ for $j\in\brk[c]*{1,\dots,d}$ and $X_0\precsim X_0$.
+
+For completeness we also give the definition of the conormal bundle and the contingent cone for a 
+stratification $X_j$ of $X$
+\begin{definition}[Normal bundle, contingent cone]
+  We define the \emph{normal bundle} for a stratification of $X$ to be the quotient space
+  \begin{align}
+    NX_j=TX_{j-1}/TX_j,
+  \end{align}
+  where $TX_j$ is the tangent space of $X_j$.
+  The \emph{conormal bundle} $N^*X_j$ is defined as its pointwise dual, that is
+  \begin{align*}
+    N_x^*X_j=\brk*{N_xX_j}'\,.
+  \end{align*}
+  We define the \emph{contingent cone} (according to Bouligand) for a set $Y\subseteq X$ at $x\in\overline{Y}$ as
+  \begin{align}
+    C_xY=\brk[c]*{v\in\R^d\colon \text{ there exists }\lambda_n\to0\text{ and }Y\ni x_n\to x\text{ s.t. }
+    \lim_n\lambda_n(v-v_n)=0}\,.
+  \end{align}
+\end{definition}
 
 Given a vector field $u\colon X\to\R^d$ and the above stratification $X_k$ of $X$ we can construct for every
 $j\in\cJ$ a vector field
@@ -164,30 +198,40 @@ $j\in\cJ$ a vector field
 \end{align*}
 Here $T^*X_j$ denotes the cotangent space of the manifold $X_j$ as defined for example in \cite[Chapter 6]{Hirsch1994}.
 More precisely, for $x\in X_j$ let
-\begin{align*}
-  \pi_x\colon\R^d\cong T_x^*\R^d\to T_x^*X_{j}
-\end{align*}
+\begin{align}
+  \pi_j\big\vert_x\colon\R^d\cong T_x^*\R^d\to T_x^*X_{j}\label{eq:def_projectionStratification}
+\end{align}
 denote the orthogonal projection of a vector at $x$ onto the cotangent space of the stratum $X_j$ at $x$.
 Now set
 \begin{align}
-  u_j=u\big\vert_{T^*X_j}=\pi\circ u\big\vert_{X_j}\in C^1\brk*{T^*X_j}\label{eq:def_projectionStratification}
+  u_j=u\big\vert_{T^*X_j}=\pi_j\circ u\big\vert_{X_j}\in C^1\brk*{T^*X_j}\label{eq:def_projectionUStratification}
 \end{align}
 be the restriction of $u$ onto the cotangent bundle $T^*X_j$.
-\nomenclature{$u_j$}{Restriction of $u$ to the cotangent bundle $T^*X_j$, see equation \ref{eq:def_projectionStratification}}
+\nomenclature{$u_j$}{Restriction of $u$ to the cotangent bundle $T^*X_j$, see equation \ref{eq:def_projectionUStratification}}
 
-In the following we define the emergent and the entrant boundary as in \cite[p.282]{Morse1970}
+
+In the following we define the emergent and the entrant boundary in a way that generalises
+\cite[p.282]{Morse1970} for stratified manifolds.
 \begin{definition}[Emergent and entrant boundary]\label{df:emergentEntrantBd}
-  We call a vector $v\in T_x\R^d$ \emph{entrant} at a boundary point $x\in\Sigma$ iff $v$ is not tangent to $\Sigma$
-  and directed into the interiour of $\Omega$. Analogously if $v$ is not tangent and
-  directed to the exteriour we call $v$ \emph{emergent}.
+  \td{rewrite the following}
+  We call a vector $v\in T_x\R^d$ \emph{entrant} at a boundary point $x\in\Sigma$ iff $v$
+  lies in the relative interiour of the polar cone of the contingent cone $C_xX$, that is
+  \begin{align*}
+    v\in \relint \brk*{C_xX}^o=\brk[c]*{w\in T_xX\colon w\cdot w'<0\text{ for all }w'\in C_xX}
+  \end{align*}
+  This can be thought of as that $v$ is not tangent to the boundary $\Sigma$ and points into the interiour of $\Omega$.
+  Analogously we call $v$ \emph{emergent} iff $v$ belongs to the relative interiour of 
+  the dual cone of the contingent cone $C_x\Sigma$, that is
+  \begin{align*}
+    v\in \relint \brk*{C_xX}^*=\brk[c]*{w\in T_xX\colon w\cdot w'>0\text{ for all }w'\in C_xX}
+  \end{align*}
   We define the \emph{entrant boundary} $\Sigma^-$ to be the set of boundary points at which $u$ is entrant.
   Analogously define the \emph{emergent boundary} $\Sigma^+$ to be the set of boundary points at which
   $u$ is emergent.
-  Further define the \emph{tangential boundary} $\Sigma^0$ to contain all other boundary points such that we have a decomposition
-  of the boundary
-  \begin{align*}
-    \Sigma=\Sigma^-\sqcup\Sigma^0\sqcup\Sigma^+\,.
-  \end{align*}
+  Further define the \emph{tangential boundary} $\Sigma^0$ to be
+  \begin{align}
+    \Sigma^0=\Sigma\setminus\brk*{\Sigma^+\cup\Sigma^-}\cup \partial\Sigma^+\cup\partial\Sigma^-
+  \end{align}
   For convenience we also introduce the \emph{non-entrant boundary} $\Sigma^{\geq0}=\Sigma^+\sqcup\Sigma^0$ and the 
   \emph{non-emergent} boundary  $\Sigma^{\leq}=\Sigma^-\sqcup\Sigma^0$.
 \end{definition}
@@ -195,8 +239,10 @@ In the following we define the emergent and the entrant boundary as in \cite[p.2
 \nomenclature{$\Sigma^+$}{emergent boundary, see definition \ref{df:emergentEntrantBd}}
 \nomenclature{$\Sigma^0$}{tangential boundary, see definition \ref{df:emergentEntrantBd}}
 
+
+
 \td{illustrate on boundary with corners}
-We would now like to illustrate the preceeding definitions.
+We would now like to illustrate the preceding definitions.
 \begin{example}\label{ex:n3_hvf_canonical}
   We now consider our domain to be the ball $B_1\subseteq\R^3$ around the origin in $d=3$ dimensions.
   Now consider the harmonic function
@@ -226,7 +272,7 @@ We would now like to illustrate the preceeding definitions.
   \begin{figure}
     \centering
     \missingfigure[figwidth=0.7\textwidth]{}
-    \caption{Plots of the entrant, emergant and tangential boundary for the
+    \caption{Plots of the entrant, emergent and tangential boundary for the
       function $f$ given by equation \eqref{eq:n3_hf_canonical}}
     \label{pl:n3_hvf_canonical_boundary}
   \end{figure}
@@ -236,12 +282,26 @@ The following are slight generalisation of definitions given in \cite[p.138f]{Sh
 to include harmonic vector fields.\td{Have a closer look at the regularity in the following.}
 \begin{definition}[Stagnation points]\label{df:nonDegeneracy}
   Let $u_j\colon X_j\to T^*X_j$ be a $C^1$ vector field on a stratification of $X$.
-  We call a zero $x$ of $u_j$ a \emph{stagnation point}.
-  If $X_j$ has dimension $n(j)=d$ then we call $x$ an \emph{interiour stagnation point}.
+  We call $x\in X_j$ a \emph{stagnation point} iff $u_{j-1}(x)$ belongs to  the
+  polar cone of the contingent
+  cone $C_xX_j$ or to the dual cone of the contingent cone $C_xX_j$, that is
+  \begin{align*}
+    u_{j-1}(x)\in (C_xX_j)^o=\brk[c]*{v\in T_x^*X\colon v\cdot w\leq0 \text{ for all }w\in C_xX_j}
+  \end{align*}
+  or
+  \begin{align*}
+    u_{j-1}(x)\in (C_xX_j)^*=\brk[c]*{v\in T_x^*X\colon v\cdot w\geq0 \text{ for all }w\in C_xX_j}\,.
+  \end{align*}
+  A necessary condition for this is that $x$ is a zero of $u_j$.
+  If $X_j$ has dimension $n(j)=d$ then we call $x$ an \emph{interior stagnation point}.
   If $x$ does not lie in the emergent boundary $\Sigma^+$ we call $x$ an \emph{essential stagnation point}.
   The set of all essential stagnation points of $u_j$ is denoted by $\critical_j=\critical_j(u)$.
   A stagnation point $x$ is called
-  \emph{non-degenerate} if the derivative
+  \emph{non-degenerate} iff 
+  \begin{align}
+    u_{j-1}(x)\in\relint (C_xX_j)^*\cup \relint (C_xX_j)^o
+  \end{align}
+  and additionally the derivative
   \begin{align*}
     Du_j(x)=Du_j\big\vert_x\in T_xT^*X\cong \R^{n\times n}
   \end{align*}
@@ -256,16 +316,16 @@ to include harmonic vector fields.\td{Have a closer look at the regularity in th
   \begin{align*}
     \ind_{j,k}(u)=\#\brk[c]*{x\in\critical_j(u)\colon x\text{ has index }k}\,.
   \end{align*}
-  We define the \emph{interiour type numbers} by
+  We define the \emph{interior type numbers} by
   \begin{align*}
     M_k=\sum_{j\colon n(j)=d}\ind_{j,k}(u)\,.
   \end{align*}
-  The total number of interiour
+  The total number of interior
   stagnation points of $u$ is then given by
   \begin{align*}
     M=\sum_kM_k\,.
   \end{align*}
-  \nomenclature{$M_k$}{Interiour type numbers}
+  \nomenclature{$M_k$}{interior type numbers}
   \nomenclature{$M$}{Total number of stagnation points}
   Analogously we define the \emph{$k$-th boundary type numbers} to be the number of essential boundary 
   stagnation points of $u$ of index $k$, that is
@@ -286,16 +346,24 @@ to include harmonic vector fields.\td{Have a closer look at the regularity in th
   \end{align*}
 \end{definition}
 
+The following definition is inspired by \cite{Katz2014}.
+\td{this definition is floating freely, also incorporate strata.}
+\begin{definition}[Tangency regular]
+  We call a point $x\in\Sigma^0$ a \emph{tangency point}.
+  We call a function $u\colon X\to\R^d$ tangency regular iff at every tangency point $x\in\Sigma^0$
+  we have that $Du_x(u)\neq0$.
+\end{definition}
+
 The previous definitions translate naturally to $f$.
 That is we call $f$ Morse, non-degenerate, et cetera iff $u=\nabla f$ is Morse, non-degenerate, et cetera.
 Similarly we call $x$ an critical point of $f$ of index $k$ if it is a
 stagnation point of $u$ of index $k$.
 
 \tdrewrite{discuss index on manifold with corners.}
-To illustrate the preceeding definitions we return to our previous example.
+To illustrate the preceding definitions we return to our previous example.
 \begin{example}
   Let $f$ and $u$ be as in example \ref{ex:n3_hvf_canonical}. One sees from equation \eqref{eq:n3_hvf_canonical}
-  that the origin $0$ is the sole interiour critical point of $f$. Since we have that
+  that the origin $0$ is the sole interior critical point of $f$. Since we have that
   \begin{align*}
     Du(x) = \begin{bmatrix}
       2 & & \\
@@ -351,13 +419,13 @@ In the following section we argue that assuming non-degeneracy
 of $u$ and $f$ is not a great restriction.
 Given $u$ we define the modification
 \begin{align}
-  u_\e=u+\e\label{eq:nonDegeneracy:definitionUEps}
+  u^\e=u+\e\label{eq:nonDegeneracy:definitionUEps}
 \end{align}
 \nomenclature{$u_\e$}{modification to $u$ as in equation \eqref{eq:nonDegeneracy:definitionUEps}}
 for some $\e\in\R^d$. We would like to show that $u_\e$ is for almost all choices of $\e$ non-degenerate and can 
 thus be used to approximate a degenerate $u$.
 Our approach is to use Thom's theorem which is inspired by the approach in \cite[Chapter 6]{Hirsch1994}.
-In this section we refer to $X$ and $Y$ as generic manifolds \ruggedtodo{of which class?}.
+In this section we refer to $X$ and $Y$ as generic manifolds without boundary \ruggedtodo{of which class?}.
 \begin{definition}[Transversality]
   We call a function $g\colon X\to Y$ transverse to a submanifold $A\subseteq Y$ iff for all points in the 
   preimage $x\in g^{-1}(A)$ we have that
@@ -369,18 +437,28 @@ In this section we refer to $X$ and $Y$ as generic manifolds \ruggedtodo{of whic
 As an application we make the following observation.
 \begin{proposition}[Transversal characterisation of non-degeneracy]\label{pr:nonDegeneracy:alternativeCharacterisation}
   Let $u\colon X\to T^*X$ be a differentiable vector field.
-  Then $u$ non-degenerate iff $u$ is transverse to the zero section $A$ of $T^*X$.
+  Then $u$ is non-degenerate iff $u$ is transverse to the zero section $A$ of $T^*X$.
 \end{proposition}
 \begin{proof}
   First note that we have that $x\in u^{-1}(A)$ iff $u(x)=0$ and thus $u^{-1}(A)=C$.
-  Unraveling the definition of transversality we get that $u$ is transverse to the zero section iff for all $x\in C=u^{-1}(A)$
+  Unravelling the definition of transversality we get that $u$ is transverse to the zero section iff for all $x\in C=u^{-1}(A)$
   we have that
   \begin{align}
     \Image(Du_x)+T_{u(x)}A = T_{u(x)}TX\,. \label{eq:nonDegeneracy:uTransverse}
   \end{align}
   As $A$ is the zero section we have $T_{u(x)}A=0$ and equation \eqref{eq:nonDegeneracy:uTransverse}
-  is equivalent to stating that $du$ is of full rank. But $du$ being of full rank at all points
+  is equivalent to stating that $Du$ is of full rank. But $Du$ being of full rank at all points
   in $C$ is equivalent to $u$ being non-degenerate.
+\end{proof}
+A further application is given by the following proposition.
+\begin{proposition}[Transversal characterisation of tangency regularity]
+  Let $u\colon X\to T^*X$ be a differentiable vector field on a manifold with corners $X$.
+  Let $X_j=\partial_jX$ be a stratification of $X$.
+  Then $u$ is tangency regular iff $u$ viewed as a section of the normal bundle $N^*X_j$ is transverse to the zero section of $N^*X_j$ for all $j>0$.
+  \ruggedtodo{Why do we require $j>0$}
+\end{proposition}
+\begin{proof}
+  \td{Some proof}
 \end{proof}
 The following version of Thom's transversality theorem is an adaption (i.e.\ weakening) of \cite[Theorem 2.7]{Hirsch1994} to our needs.
 \begin{theorem}[Parametric transversality theorem.]
@@ -401,28 +479,28 @@ The following version of Thom's transversality theorem is an adaption (i.e.\ wea
   is dense.
 \end{theorem}
 \begin{proof}
-  See \cite[Threorem 2.7]{Hirsch1994} for details.
+  See \cite[Theorem 2.7]{Hirsch1994} for details.
 \end{proof}
 Using proposition \ref{pr:nonDegeneracy:alternativeCharacterisation} we obtain the corollary
 \begin{corollary}
-  Let $u$ be a harmonic vector field on the regular domain $\overline{\Omega}$.
-  Then for almost every $\e\in\R^d$ we have that
-  \begin{itemize}
-    \item $u_\e$ given by equation \eqref{eq:nonDegeneracy:definitionUEps} is non-degenerate on $\Omega$ and
-    \item $\widetilde{u_\e}$ as in \eqref{eq:definitions:projectionSigma} is non-degenerate on $\Sigma$.
-  \end{itemize}
+  Let $u\colon X\to T^*X$ be a harmonic vector field on $X$ and let $X_j$ be a stratification of $X$.
+   Then for almost every $\e\in\R^d$ we have that
+  \begin{enumerate}
+    \item $u_j^\e$ given by equations \eqref{} and \eqref{} is non-degenerate\label{co:nonDegeneracy_density_nonDeg}
+    \item $u_j^\e$ is tangency regular\label{co:nonDegeneracy_density_tanReg}
+  \end{enumerate}
 \end{corollary}
 \begin{proof}
-  Set $r=2$, $E=\R^d$ and $Y=TX$ where we initially assume that $X=\Omega$.
+  Set $r=2$, $E=\R^d$ and $Y=T^*X_j$. We initially set $X=\Omega$.
   We would like to apply the parametric transversality theorem to the function
   \begin{align*}
     F\colon E&\to C^\infty(X,T^*X) \\
-    \e&\mapsto u_\e
+    \e&\mapsto u^\e
   \end{align*}
   We note that $F^\text{ev}$ is sufficiently smooth. 
   We need to show that $F^\text{ev}$ is transverse to the
   zero section $A\subseteq T^*X$. Then the parametric transversality theorem 
-  yields a dense $E_\Omega\subseteq E$ on which
+  yields a dense $E_j\subseteq E$ on which
   $F$ is transverse to $A$.
   For this note that $E\times C = F^{-1}(A)$.
   It then follows for all $(\e,x)\in F^{-1}(A)$ that
@@ -437,47 +515,64 @@ Using proposition \ref{pr:nonDegeneracy:alternativeCharacterisation} we obtain t
   \end{align*}
   is surjective. 
   Proposition \ref{pr:nonDegeneracy:alternativeCharacterisation}
-  now yields that $u_\e$ non-degenerate on $E_\Omega$.
+  now yields that $u^\e$ non-degenerate on $E_j$.
   
-  Analogously we set $X=\Sigma$ in the previous proof and replace
-  $u_\e$ with the restriction $\widetilde{u_\e}$. To show that 
+  Analogously we set $X=X_j$ in the previous proof and replace
+  $u^\e$ with the restriction $u_j^\e$. To show that 
   equation \eqref{eq:nonDegeneracy:surjectiveDF} holds we resort to the fact that
   \begin{align*}
     DF^\text{ev}_{(\e,x)}
-    =D\brk*{\widetilde{u_\e}(x)}_{(\e,x)}
-    =D\pi\circ \brk*{du_\e(x)}_{(\e,x)}
+    =D\brk*{u_j^\e(x)}_{(\e,x)}
+    =D\pi_j\circ \brk*{Du^\e(x)}_{(\e,x)}
   \end{align*}
   is surjective as a concatenation of surjective functions.
-  Thus there also exists a dense set $E_\Sigma\subseteq\R$ on which $\widetilde{u_\e}$ is
-  non-degenerate on $\Sigma$. Now the set $E_\Omega\cap E_\Sigma\subseteq\R$ is dense and
-  for every $\e$ in this set has the desired properties.
+  Thus there also exists a dense set $E_\Sigma\subseteq\R$ on which $u^\e_j$ is
+  non-degenerate on $X_j$. Now the set
+  \begin{align}
+    \overline{E}=\cap_j E_j\subseteq\R
+  \end{align}
+  is dense and
+  for every $\e\in\overline{E}$ the function $u^\e$ fulfils condition \ref{co:nonDegeneracy_density_nonDeg}.
+
+  Now to the tangency regularity. 
 \end{proof}
 
 As a consequence we get a version of the results in \cite[§2]{Morse1970}.
 
-\tdrewrite{the following result makes no sense.}
-We call a boundary point $x\in\Sigma$ \emph{ordinary} iff $u(x)$ is not tangent to $\Sigma$.
-\begin{proposition}
-  Assume all stagnation points of $u$ lie in $\Omega$ and that the stagnation points on $\Omega$ are
+We call a boundary point $x\in X_j$ on a strata $X_j$ \emph{ordinary} iff $x$ lies
+in the interior of $X_j$ and if there exists a stratum $X_{j-1}$ that $x$ is not critical point of $X_{j-1}$.
+\begin{proposition}\label{pr:approximationU}
+  Assume all stagnation points of $u$ are
   ordinary. Then there exists a positive $\delta>0$ such that
   for (Lebesgue) almost every $\e\in B_\delta$ we have that
   \begin{itemize}
-    \item $u_\e$ is regular
+    \item $u^\e$ is non-degenerate
+    \item $u^\e$ is tangency regular
     \item there is a one to one relation of the stagnation points in $\Omega$ and $\Sigma$ preserving
       index and the property of being entrant or emergent.
   \end{itemize}
 \end{proposition}
 \begin{proof}
   We follow \cite[text]{Morse1970}.
-  First choose $\delta$ so small that for all stagnation points of $u_\e$ lie in $\Omega$.
+  First choose $\delta$ so small that for all stagnation points of $u^\e$ lie in $\Omega$.
   If there did not exist such a $\delta$ we could choose a sequence $\e_n\to0$ in $\R^d$ such 
-  that $u_{\e_n}$ had a stagnation point $x_n$ on $\Sigma$. Since $\Sigma$ is compact we can assume that $x_n$ converges
+  that $u^{\e_n}$ had a stagnation point $x_n$ on $\Sigma$. Since $\Sigma$ is compact we can assume that $x_n$ converges
   to a stagnation point $x$. But then $x$ is also a stagnation point of $u$. A contradiction.
 
   
-  
+
   We note that since $\overline{\Omega}$ is compact we have that $\nabla u_\e\to \nabla u$ 
   uniformly as $\abs*{\e}\to0$.
+  \td{complete proof}
+\end{proof}
+
+One of the reasons for introducing boundary tangency is the following proposition 
+\begin{proposition}
+  Let $u$ be tangency regular.
+  \td{Formulate that $\Sigma^0$ is a substratification with desired properties.}
+\end{proposition}
+\begin{proof}
+  Let $u^\e\to u$. Then we have that 
 \end{proof}
 
 \section{Some general remarks}
@@ -608,7 +703,7 @@ We proceed to give examples for Betti numbers of selected connected domains in $
   \label{tb:n3_domains_bettiNbrs}
 \end{table}
 
-\td{Comment on the finiteness of betti numbers. Check numbers for ball with torus bubble.}
+\td{Comment on the finiteness of Betti numbers. Check numbers for ball with torus bubble.}
 
 \subsection{The Morse inequalities}
 
@@ -623,7 +718,7 @@ For $k=d$ we in fact have equality
 \begin{align*}
   \sum_{j=0}^d \brk*{-1}^{j}\essind_j(f)= \chi(X)
 \end{align*}
-where the euler characteristic
+where the Euler characteristic
 \begin{align*}
   \chi(X)=\sum_{j=0}^d\brk*{-1}^{j}b_j(X)
 \end{align*}
@@ -662,7 +757,7 @@ In dimensions $d=3$ we obtain \cite[Corollary 10.2]{Morse1969}
     M_2+\mu_2-M_1-\mu_1+\mu_0&= b_2-b_1+b_0\,.
   \end{align*}
 \end{corollary}
-\ruggedtodo[inline]{Give a classical example of a Morse function to determine the betti numbers.}
+\ruggedtodo[inline]{Give a classical example of a Morse function to determine the Betti numbers.}
 \td{Give an outline of the proof.}
 
 \subsection{On harmonic vector fields}
@@ -733,7 +828,7 @@ We shall give two different proofs of this result. One involving level-sets and 
     \centering
     \def\svgwidth{0.8\textwidth}
     \input{../Figures/n2_levelSets_overview.pdf_tex}
-    \caption{The situation at hand: The edges represent level curves and the interiour vertices critical points.}
+    \caption{The situation at hand: The edges represent level curves and the interior vertices critical points.}
     \label{fi:n2:levelSets:overview}
   \end{figure}
 
@@ -844,12 +939,123 @@ Using invariant manifolds we obtain the following proof.
 
 \subsection{A proof involving Morse theory}
 
+\td{fix the following proof}
+
+% We start with a technical lemma
+% \begin{lemma}
+%   Let $u\colon\R^{d}\supset (-\eta,\eta)\times U_0\to\R^d$ be a vector field on an open set $U_0\subset\R^{d-1}$. Assume that on $U$ we
+%   have that $u\colon e_1>\delta$ on $\brk[c]{0}\times U_0$ for some $\delta>0$. Then we have for almost every $\e>0$ that $u$ restricted to the cotangent space
+%   $T^*U_\e$ is Morse. Here the submanifold $U_\e$ is given as 
+%   \begin{align}
+%     U_\e=\e\graph(\phi)
+%   \end{align}
+%   for some suitable function $\phi\in C_c^\infty(U_0;[0,1])$.
+% \end{lemma}
+% \begin{proof}
+%   Let $x_0\in U_0$ be degenerate.
+% \end{proof}
+% For the following proof we require the following technical lemma
+% \begin{lemma}
+%   Let $X$ be a $d$ dimensional manifold with boundary and $u\colon X\to\R^d$ a smooth Morse vector field. Assume that $\Gamma\subset X$ is
+%   $d-1$ dimensional manifold with boundary not containing any interior critical points of $u$ on $X$ and let $\e>0$. Then there exists a manifold $\Gamma_\e\subseteq U_\e\brk*{\Gamma}$ contained
+%   in an $\e$ neighbourhood of $\Gamma$ such that $\partial\Gamma=\partial\Gamma_\e$ and such that $f$ is morse on
+%   $\interior(\Gamma_\e)$.
+% \end{lemma}
+% \begin{proof}
+  % Let $x$ be a critical point of $u$ on $\Gamma$. Since $x$ is not an interior critical point there exists a neighbourhood $U\subseteq\Gamma$ of 
+  % $x$ such that the normal $n\colon U\to \R^d$ is defined, $\abs*{u\cdot n}>\delta$ for some $\delta>0$ and $\abs{n-n(x)}\leq\delta$.
+  % Let $r>0$ such that $B_r(x)\cap\Gamma\subseteq U$. We choose a function $\phi\in C_c^\infty(B_r(x);[0,1])$ such that $\phi(x)\neq0$.
+  % Define for $\eta>0$
+  % the manifold $\Gamma_\eta=\Gamma+\eta\phi n(x)$. We now claim that for almost all $\eta\leq\e$ the function 
+  % \begin{align}
+  %   \phi\in C_c^\infty(U;\R)
+  % \end{align}
+  % and require $\phi(x)\neq0$. Now consider the function given by
+  % \begin{align}
+  %   G(x,t)=\Phi(x,\eta\phi(x)t)
+  % \end{align}
+  % where $\eta>0$ and $\Phi$ is the flow induced by the vector field $u$. We note that by construction for every $t$ the set
+  % \begin{align}
+  %   \Gamma\setminus U\cup \image(G(\cdot,t))
+  % \end{align}
+  % is a smooth manifold.
+%   Our aim is to apply the parametric transversality theorem. 
+%   Let $x_0$ be a critical point on $\Gamma$. Let $U_0\subseteq\Gamma$ be an open neighbourhood of $x_0$ and
+%   let $\phi_0\colon U_0\to U\subseteq\R^{d-1}$ be a chart. Define further the map
+%   \begin{align}
+%     \Phi_\e(x)=\Phi(x,f(\e,x))\,.
+%   \end{align}
+%   Here $\Phi$ denotes the flow induced by $u$ and $f\colon E\times U_0\to\R$ is a suitable function (think bump function).
+%   Set $\Psi_\e=\Phi_\e^{-1}$, $x_\e=\Phi_\e(x_0)$ and $U_\e=\Phi_\e(U_0)$.
+%   Set $\phi_\e=\phi_0\circ\Psi_\e$ and
+%   \begin{align}
+%     u_\e = D_x\phi_\e\circ\pi_\e\circ u\circ\phi_\e^{-1}
+%   \end{align}
+%   where $\pi_\e$ is the restriction onto $T^*U_\e$. We now calculate
+%   \begin{align}
+%     D_\e u_\e=D_\e D_x\phi_\e+D_x\phi_\e D_e\pi_\e+D_x\phi_\e \pi_\e Du D_\e\phi_\e^{-1}
+%   \end{align}
+%   where we used the linearity of $D_x\phi_\e$ and $\pi_\e$.
+%   We now calculate
+%   \begin{align}
+%     \Id_{E\times T^*U_\e} &=D_{(\e,x)}\vect{\cdot_1&\Phi_{\cdot_1}(\cdot_2)}\circ\vect{\e&\Psi_\e(x)} \\
+%     &=\begin{bmatrix}
+%       \Id_E&0\\
+%       D_\e\Phi_\e(x) & D_x\Phi_\e(x)
+%     \end{bmatrix}
+%     \begin{bmatrix}
+%       \Id_E &0 \\
+%       D_\e\Psi_\e(x) & D_x\Psi_\e(x)
+%     \end{bmatrix} \\
+%     &= 
+%     \begin{bmatrix}
+%       \Id_E &0 \\
+%       D_\e\Phi_\e(x)+D_x\Phi_\e(x)D_\e\Psi_\e(x) & D_x\Phi_\e(x)D_x\Psi_\e(x)
+%     \end{bmatrix}
+%   \end{align}
+%   Thus in particular
+%   \begin{align}
+%     D_x\Psi_\e=\brk*{D_x\Phi_\e}^{-1}
+%   \end{align}
+%   Now notice that
+%   \begin{align}
+%     D_\e\Phi_\e(x)
+%     =D_t\Phi D_\e f(\e,x)=u D_\e f 
+%   \end{align}
+%   and
+%   \begin{align}
+%     D_x\Phi_\e
+%     =D_x\Phi + D_t\Phi D_x f=D_x\Phi + u \otimes D_x f
+%   \end{align}
+%   by the property of the flow.
+  
+%   Hence
+%   \begin{align}
+%     D_x\phi_\e=D\phi_0 D_x\Psi_\e
+%   \end{align}
+%   which implies
+%   \begin{align}
+%     D_\e D_x\phi_\e=D^2\phi_0\brk*{D_x\Psi_\e,D_x\Psi_\e}+D\phi_0 D_\e D_x\Psi_\e
+%   \end{align}
+%   We also see
+%   \begin{align}
+%     D_\e\phi_\e^{-1}=D_\e\brk*{\Phi_\e\circ\phi_0^{-1}}
+%     =D_\e\Phi_\e D\phi_0^{-1}
+%   \end{align}
+
+%   Now we look at $\pi_\e$. This is given as 
+%   \begin{align}
+%     \pi_\e(u)=\sum_i\partial^\e_i(e_i)\cdot u\partial^\e_i
+%   \end{align}
+% \end{proof}
+
 \begin{proof}
   Assume that $\Sigma^-$ is connected. Then we can cut the domain along $\Gamma$ such that the endpoints
   of the cut coincide with the endpoints of $\Sigma^-$, that is $\partial\Gamma=\partial\Sigma^-$.
   Now we obtain two new domains $X^+$ and $X^-$ such that $\partial X^+ =\Sigma^+\cup\Sigma^0\cup\overline{\Gamma}$ and
   $\partial X^-=\Sigma^-\cup\overline{\Gamma}$. We can assume that $\Gamma$ is a smooth manifold and corresponds to the stratum 
   $X_\Gamma$ for $X^+$ and $X^-$. We also assume that the corner points $x_1,x_2\in\partial\Gamma$ correspond to the strata $X_{1}$ and $X_{2}$.
+  For the following argumentation we require that $u$ is Morse on both $X^+$ and $X^-$ so assume this is the case.
   Locally around the corner point $x_1$ we have a situation depicted as in figure \ref{}
   \begin{figure}
     \centering
@@ -895,10 +1101,18 @@ Using invariant manifolds we obtain the following proof.
     M^-+M^+=-2\chi(X)<0
   \end{align*}
   in contradiction to $M^\pm\geq0$.
+
+  % The statement now remains to be shown for $u$ which are not Morse on $\Gamma$.
+  % By proposition \ref{} we can approximate such $u$ by a sequence $u^\e$ which are
+  % Morse on the stratification
+  % $$\brk[c]*{X_j}_{j\in\cJ}\cup\brk[c]*{X_\Gamma}\cup\brk[c]*{X_j}_{j\in\brk[c]*{1,2}}$$
+  % of $X$. Again by proposition \ref{} we have that $\Sigma^0(u^\e)\to\Sigma^0(u)$ for $\e\to0$.
+  % This implies that if we choose the cut $\Gamma^\e$ for $u^\e$ as in figure \ref{}
+  % we obtain that for all $u^\e$ all 
 \end{proof}
 % \begin{proposition}
 %   Let $X$ be a simply connected manifold with corners and $f\colon X\to\R$ harmonic and Morse. 
-%   Assume further that $\Sigma^-$ is connected. Then $f$ cannot have an interiour critical point.
+%   Assume further that $\Sigma^-$ is connected. Then $f$ cannot have an interior critical point.
 % \end{proposition}
 % \begin{proof}
 %   Since $\Sigma^-$ is connected we can cut the domain along a cut $\Gamma$ such that the endpoints $\partial\Gamma$ of
@@ -910,14 +1124,14 @@ Using invariant manifolds we obtain the following proof.
 
 % \begin{proposition}
 %   Let $X$ be a simply connected manifold with corners and $f\colon X\to\R$ harmonic with an
-%   interiour critical point.
+%   interior critical point.
 %   Then $\Sigma^-$ is not connected.
 % \end{proposition}
 % \begin{proof}
 %   Assume not.
 %   Let $h\in\Hol(X)$ be the holomorphic function given by $h=\nabla f$.
 %   Let $\gamma\colon \R\supseteq (t_0,t_2) \to\Sigma$ traverse the boundary of $X$ such that
-%   the interiour of $X$ lies to the left of $\gamma$.
+%   the interior of $X$ lies to the left of $\gamma$.
 %   Without loss of generality $\gamma(t_0)$ is the point where $\gamma$ enters the entrant boundary $\Sigma^-$.
 %   Let $\gamma(t_1)$ denote the point at which $\gamma$ leaves the entrant boundary $\Sigma^-$.
 %   As $\gamma$ traverses $\Sigma^-$ we have that $h$ points into $\Omega$ and thus lies to the left of
@@ -1026,7 +1240,7 @@ In fact using the Morse inequalities we can obtain the stronger result.
   Note that there are $2b_1$ many such points.
   We can assume that $\Gamma$ is a smooth manifold. Now at the point $x_1$
   we have that $u$ is almost parallel to the boundary $\Sigma$. Thus we can slant
-  the cut in such a way such that $x_1$ is an essential critical point of index $0$ of $u$ on the statification
+  the cut in such a way such that $x_1$ is an essential critical point of index $0$ of $u$ on the stratification
   of $\tiX$. Here $\tiX$ denotes the covering space of $X$ generated by the cut $\Gamma$.
   We denote the induced strata by $\Gamma$ also with $\Gamma$. Note that $x_1$ then is no
   essential critical point for $-u$.
@@ -1139,7 +1353,7 @@ where
 \begin{align*}
   \Phi_2=\log(\abs{\cdot})
 \end{align*}
-is a multiple of the fundamental solution of the laplace equation on $\R^2$ and $e_i=\delta_{i\cdot}$ are the unit vectors.
+is a multiple of the fundamental solution of the Laplace equation on $\R^2$ and $e_i=\delta_{i\cdot}$ are the unit vectors.
 Figure \ref{pl:n2_hvf_noInflowNoOutflow} indicates that $u=\nabla^\perp\psi$ has the desired properties.
 \begin{figure}
   \centering
@@ -1180,7 +1394,7 @@ For this consider first the stream function
   x&\mapsto\Phi_2\brk*{x-e_1}+x_1
   \end{aligned}\label{eq:n2:hvf:InflowOutflow:singleHole}
 \end{equation}
-Figure \ref{pl:n2_hvf_InflowOutflow_asymmetric_single} indicates that $u=\nabla^\perp\psi$ fulfills the
+Figure \ref{pl:n2_hvf_InflowOutflow_asymmetric_single} indicates that $u=\nabla^\perp\psi$ fulfils the
 requirements.
 \begin{figure}
   \centering
@@ -1250,7 +1464,7 @@ The following proof comes from \cite{Wahlen2023}
   \begin{align*}
     \Delta(\partial_1f)=\partial_1(\Delta f)=0
   \end{align*}
-  we have by the maximum principle that $\partial_1 f$ attains its minimum on the boundary $\Sigma$. Since $\partial_1 f(x)=0$ for some interiour point 
+  we have by the maximum principle that $\partial_1 f$ attains its minimum on the boundary $\Sigma$. Since $\partial_1 f(x)=0$ for some interior point 
   by assumption and $\partial_1 f>0$ on the lids $\brk[c]{x_1=0}\cup\brk[c]{x_1=1}$ there exists a point
   $x\in(0,1)\times S^1$ such that $\partial_1f(x)$ is minimal on $\overline{\Omega}$. But then we have by Hopf's lemma
   that
@@ -1272,8 +1486,8 @@ We obtain as a quick consequence of the hairy ball theorem
     b_2\leq b_1\,.
   \end{align*}
 \end{proposition}
-\begin{proof}
-  Assume not. Since $\Omega$ has $b_2$ bubbles and $b_1$ holes there exists by the pidgeon hole
+\begin{proof} 
+  Assume not. Since $\Omega$ has $b_2$ bubbles and $b_1$ holes there exists by the pigeon hole
   principle a bubble $\Gamma\subseteq\Sigma$ without a hole. Since $u$ has no inflow or outflow on $\Gamma$ we
   have that the restriction $u\vert_\Gamma\in T\Gamma$ is a vector field on $\Gamma$. Since $u$ is regular
   $u\vert_\Gamma$ does not vanish. But $\Gamma$ is homeomorphic to the Ball in contradiction to the hairy ball theorem.
@@ -1294,7 +1508,7 @@ Mimicking the proof in 2 dimensions we obtain the following proposition.
   $\partial X^-=\Sigma^-\cup\overline{\Gamma}$.
   We can assume that $\Gamma$ is a smooth manifold.
   Since by proposition ?? there are finitely many critical points in $\Omega$
-  we can also assume that no interiour critical points lie on $\Omega$.
+  we can also assume that no interior critical points lie on $\Omega$.
   We now look at a critical point $x$ on $\Gamma$.
   \ruggedtodo[]{Why are there finitely many?}
   We choose the slant at which $\Gamma$ approaches $\gamma$ in such a way that $x$
@@ -1335,7 +1549,7 @@ Mimicking the proof in 2 dimensions we obtain the following proposition.
   \begin{align}
     M_1^-+\nu^-_2-M_2^--\nu^-_1+\nu^-_0=\chi(X^-)=\chi(X)\label{eq:n2_disproof_morse_morseineqminus}
   \end{align}
-  where the $M_j$ continue to denote the interiour type numbers of $f$.
+  where the $M_j$ continue to denote the interior type numbers of $f$.
   We now subtract equation \eqref{eq:n2_disproof_morse_morseineqplus} from \eqref{eq:n2_disproof_morse_morseineqminus}
   and insert relations \eqref{eq:n2_disproof_morse_relationMuNu} to obtain
   \begin{align*}
@@ -1343,13 +1557,43 @@ Mimicking the proof in 2 dimensions we obtain the following proposition.
   \end{align*}
   from which the claim follows.
 \end{proof}
+In fact we can give an example for such a function with
+simply connected entrant boundary.
+\begin{example}[Example of a harmonic vector field with simply connected entrant boundary]
+  Consider the domain $X=\overline{B}_r\subseteq\R^3$ with $r>0$ sufficiently large and the harmonic function
+  \begin{align*}
+    f\colon X&\to\R \\
+    x&\mapsto \frac{x_1^2}{2}-\frac{x_1^3}{3}-\frac{x_2^2}{2}+x_1x_2^2+x_2x_3
+  \end{align*}
+  This induces the harmonic vector field
+  \begin{align*}
+    u\colon X&\to\R^3 \\
+    x&\mapsto\vect{x_1(1-x_1)+x_2^2 \\
+      x_2(2x_1-1)+x_3 \\
+      x_2}
+  \end{align*}
+  It follows from setting $u(x)=0$ implies that $x_2=0$
+  and then that $x_3=0$ and $x_1\in\brk[c]*{0,1}$. Thus we have that $x\in\brk[c]*{0,e_1}$
+  are the sole possible zeroes of $u$. Conversely these are zeroes of $u$.
+
+  Figure \ref{pl:n3_hf_inflowOutflowStagnationPoint_overview}
+  indicates that $f$ has the desired properties.
+  \begin{figure}
+    \centering
+    \missingfigure{Some amazing plot showing an overview of f}
+    \caption{An plot of the function $u$}
+    \label{pl:n3_hf_inflowOutflowStagnationPoint_overview}
+  \end{figure}
+  \td{complete this section.}
+\end{example}
+
 \td{Try to say something about the case without inflow or outflow.}
 % And we also obtain
 % \tdrewrite{Rewrite this to incorporate the updated notation. And fix the boundary smoothness issues.}
 % \begin{proposition}
 %   Let $X\subseteq\R^3$ be a compact manifold with corners and Betti numbers $b_0$, $b_1$ and $b_2$.
 %   Let $u\colon X\to\R$ be a Morse harmonic vector field without inflow or outflow. Then we have the following relation for
-%   the interiour type numbers of $u$
+%   the interior type numbers of $u$
 %   \begin{align*}
 %     M_2=M_1\,.
 %   \end{align*}
@@ -1455,6 +1699,7 @@ equivalent to $\bx\in \partial B_1\subseteq \R^2$. The situation is depicted in 
 % TODO: potentially add Irwin, smooth dynamical systems
 % \section{Bibliography}
 \nocite{*}
+\td{Change Gamelin to Lang, complex analysis}
 %Main source
 %\printbibliography[heading=none, keyword={main}]
 %\noindent Other sources
