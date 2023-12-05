@@ -74,12 +74,10 @@
     \item Look at application of Sperner's lemma
     \item $C$ is used once for critical points, once for level sets.
     \item Define traversing vector field
-    \item Look at regularity requirements. In particular: Riemannian mfs
   \end{itemize}
   Some questions
   \begin{itemize}
     \item Should I state Hopf's Lemma?
-    \item Weak formulation - a distraction? \textrightarrow Hartman, Wintner
   \end{itemize}
 }
 
@@ -99,29 +97,29 @@ We denote by
 a scalar function of class $C^2$.
 We also denote by
 \begin{align*}
-  u\colon\overline{\Omega}\to\R^d
+  u\colon X\to\R^d
 \end{align*}
 a vector field of class $C^1$.
 Often but not always $u$ can be thought of as 
-a \emph{harmonic vector field}, that is $u$ is of type $C^1$ and fulfils
+a \emph{harmonic vector field}, that is $u$ is smooth and fulfils
 \begin{align*}
   \diver u=0 \qquad \text{ and }\qquad \curl u=0\,.
 \end{align*}
 Also often but not always we assume that globally $u=\nabla f$ is a gradient field, implying that $f$ is harmonic.
 One question we seek to answer in this thesis is the following.
 \begin{question}[Flowthrough with stagnation point]\label{qu:flowthroughStagnationPoint}
-  Does there exist a tube $\Omega\subseteq\R^3$ with flow $u$ through the tube such that
+  Does there exist a region $X\subseteq\R^3$ with flow $u$ through the region such that
   \begin{enumerate}
     \item $u$ is a harmonic vector field
     \item $u$ has an interior stagnation point
-    \item $u$ enters the tube on the one side and exits the tube on the other?
+    \item the boundary on which $u$ enters or exits the region are both simply connected
   \end{enumerate}
 \end{question}
 The answer for this will turn out to be yes for dimensions $d\geq3$ and no for the dimension $d=2$.
 In the case of $d=2$ dimensions we will look at what happens if we allow for holes in the domain.
 other questions are of the type
 \begin{question}[stagnation points of harmonic vector fields without inflow or outflow]
-  Let $u$ be a flow in a domain $X$ and such that at every boundary point it is tangential to the boundary.
+  Let $u$ be a flow in a domain $X$ such that at every boundary point it is tangential to the boundary.
   What can be said about the relation between the number of critical points and the domain topology?
 \end{question}
 This question yields a very nice result in the case of $d=2$ dimensions.
@@ -186,8 +184,12 @@ stratification $X_j$ of $X$
   \end{align*}
   We define the \emph{contingent cone} (according to Bouligand) for a set $Y\subseteq X$ at $x\in\overline{Y}$ as
   \begin{align}
-    C_xY=\brk[c]*{v\in\R^d\colon \text{ there exists }\lambda_n\to0\text{ and }Y\ni x_n\to x\text{ s.t. }
-    \lim_n\lambda_n(v-v_n)=0}\,.
+    C_xY=\left\{\begin{array}{l|l}
+      v\in\R^d & \begin{array}{l}
+        \text{ there exists }\lambda_n\to0\text{ and }x_n\to x \text{ in }Y \\
+        \text{ such that }\lim_n\lambda_n(x-x_n)=v\,.
+      \end{array}
+    \end{array}\right\}\,.
   \end{align}
 \end{definition}
 
@@ -213,27 +215,24 @@ be the restriction of $u$ onto the cotangent bundle $T^*X_j$.
 In the following we define the emergent and the entrant boundary in a way that generalises
 \cite[p.282]{Morse1970} for stratified manifolds.
 \begin{definition}[Emergent and entrant boundary]\label{df:emergentEntrantBd}
-  \td{rewrite the following}
-  We call a vector $v\in T_x\R^d$ \emph{entrant} at a boundary point $x\in\Sigma$ iff $v$
-  lies in the relative interiour of the polar cone of the contingent cone $C_xX$, that is
-  \begin{align*}
-    v\in \relint \brk*{C_xX}^o=\brk[c]*{w\in T_xX\colon w\cdot w'<0\text{ for all }w'\in C_xX}
-  \end{align*}
-  This can be thought of as that $v$ is not tangent to the boundary $\Sigma$ and points into the interiour of $\Omega$.
-  Analogously we call $v$ \emph{emergent} iff $v$ belongs to the relative interiour of 
-  the dual cone of the contingent cone $C_x\Sigma$, that is
-  \begin{align*}
-    v\in \relint \brk*{C_xX}^*=\brk[c]*{w\in T_xX\colon w\cdot w'>0\text{ for all }w'\in C_xX}
-  \end{align*}
-  We define the \emph{entrant boundary} $\Sigma^-$ to be the set of boundary points at which $u$ is entrant.
-  Analogously define the \emph{emergent boundary} $\Sigma^+$ to be the set of boundary points at which
-  $u$ is emergent.
+  We call a vector $v\in T_x\R^d$ \emph{entrant} at a boundary point $x\in\Sigma$ iff
+  \begin{enumerate}
+    \item $v$ points into $\Omega$ or
+    \item $v$ lies in the dual cone of the contingent cone $C_xX$, that is
+    \begin{align*}
+      v\in \brk*{C_xX}^*=\brk[c]*{w\in T_x^*X\colon \brk[a]*{w, w'}\leq0\text{ for all }w'\in C_xX}
+    \end{align*}
+  \end{enumerate}
+  if in addition $v$ is not tangential to $\Sigma$ or $v$ lies in the relative interiour $\relint\brk*{C_xX}^*$ then we
+  call $v$ \emph{strictly entrant}. 
+  We call $v$ \emph{(strictly) emergent} iff $-v$ is (strictly) entrant.
+  We now define the \emph{entrant boundary} $\Sigma^{\leq0}$ to be the set of boundary points at which $u$ is entrant.
+  We define the \emph{strictly entrant boundary} $\Sigma^-$ to be the set of strictly entrant boundary points of $u$.
+  Analogously we define the \emph{emergant} and \emph{strictly emergent boundary}.
   Further define the \emph{tangential boundary} $\Sigma^0$ to be
   \begin{align}
-    \Sigma^0=\Sigma\setminus\brk*{\Sigma^+\cup\Sigma^-}\cup \partial\Sigma^+\cup\partial\Sigma^-
+    \Sigma^0=\Sigma\setminus\brk*{\Sigma^+\cup\Sigma^-}
   \end{align}
-  For convenience we also introduce the \emph{non-entrant boundary} $\Sigma^{\geq0}=\Sigma^+\sqcup\Sigma^0$ and the 
-  \emph{non-emergent} boundary  $\Sigma^{\leq}=\Sigma^-\sqcup\Sigma^0$.
 \end{definition}
 \nomenclature{$\Sigma^-$}{entrant boundary, see definition \ref{df:emergentEntrantBd}}
 \nomenclature{$\Sigma^+$}{emergent boundary, see definition \ref{df:emergentEntrantBd}}
@@ -279,28 +278,15 @@ We would now like to illustrate the preceding definitions.
 \end{example}
 
 The following are slight generalisation of definitions given in \cite[p.138f]{Shelton1980}, \cite[§5]{Morse1969} and \cite[p.282f]{Morse1970}
-to include harmonic vector fields.\td{Have a closer look at the regularity in the following.}
+to include harmonic vector fields.
 \begin{definition}[Stagnation points]\label{df:nonDegeneracy}
   Let $u_j\colon X_j\to T^*X_j$ be a $C^1$ vector field on a stratification of $X$.
-  We call $x\in X_j$ a \emph{stagnation point} iff $u_{j-1}(x)$ belongs to  the
-  polar cone of the contingent
-  cone $C_xX_j$ or to the dual cone of the contingent cone $C_xX_j$, that is
-  \begin{align*}
-    u_{j-1}(x)\in (C_xX_j)^o=\brk[c]*{v\in T_x^*X\colon v\cdot w\leq0 \text{ for all }w\in C_xX_j}
-  \end{align*}
-  or
-  \begin{align*}
-    u_{j-1}(x)\in (C_xX_j)^*=\brk[c]*{v\in T_x^*X\colon v\cdot w\geq0 \text{ for all }w\in C_xX_j}\,.
-  \end{align*}
-  A necessary condition for this is that $x$ is a zero of $u_j$.
-  If $X_j$ has dimension $n(j)=d$ then we call $x$ an \emph{interior stagnation point}.
-  If $x$ does not lie in the emergent boundary $\Sigma^+$ we call $x$ an \emph{essential stagnation point}.
+  We call the zeroes $x\in X_j$ of $u_j$ \emph{stagnation points}.
+  If $x\in\Omega$ then we call $x$ an \emph{interior stagnation point}.
+  If $x$ lies in the entrant boundary $\Sigma^{\leq0}$ or is an interior stagnation point we call $x$ an \emph{essential stagnation point}.
   The set of all essential stagnation points of $u_j$ is denoted by $\critical_j=\critical_j(u)$.
   A stagnation point $x$ is called
-  \emph{non-degenerate} iff 
-  \begin{align}
-    u_{j-1}(x)\in\relint (C_xX_j)^*\cup \relint (C_xX_j)^o
-  \end{align}
+  \emph{non-degenerate} iff $x$ does not lie in the tangential boundary $\Sigma^0$ 
   and additionally the derivative
   \begin{align*}
     Du_j(x)=Du_j\big\vert_x\in T_xT^*X\cong \R^{n\times n}
@@ -308,8 +294,8 @@ to include harmonic vector fields.\td{Have a closer look at the regularity in th
   is bijective.
   In addition we say that $x$ has \emph{index} $k$
   if $Du_j(x)$ has exactly $k$ negative eigenvalues.
-  $u_j$ is called \emph{(essentially) non-degenerate} if all its stagnation points
-  are (essentially) non-degenerate. 
+  $u_j$ is called \emph{(essentially) non-degenerate} if all its (essential) stagnation points
+  are non-degenerate. 
   Assume $u_j$ is non-degenerate then we can define the \emph{$k$-th type number} of the
   stratum $X_j$ to be the number of essential critical points of $u_j$ of index $k$,
   that is
@@ -348,10 +334,12 @@ to include harmonic vector fields.\td{Have a closer look at the regularity in th
 
 The following definition is inspired by \cite{Katz2014}.
 \td{this definition is floating freely, also incorporate strata.}
-\begin{definition}[Tangency regular]
-  We call a point $x\in\Sigma^0$ a \emph{tangency point}.
-  We call a function $u\colon X\to\R^d$ tangency regular iff at every tangency point $x\in\Sigma^0$
-  we have that $Du_x(u)\neq0$.
+\begin{definition}[Tangency points]
+  Let $u^N_j=u\big\vert_{N^*X_j}$ denote the restriction of $u$ to the normal bundle analogous to the construction of $u_j$.
+  We call the zeroes $x\in X_j$ of $u^N_j$ \emph{tangency points}.
+  A tangency point is called \emph{regular} iff the derivative $Du^N_j(x)$ is bijective.
+  We call a function $u\colon X\to\R^d$ tangency regular iff every tangency point
+  is regular.
 \end{definition}
 
 The previous definitions translate naturally to $f$.
@@ -414,7 +402,6 @@ To illustrate the preceding definitions we return to our previous example.
 
 \subsection{On assuming non-degeneracy}
 
-\tdrewrite{Use updated notation from previous section. Change for manifolds with corners.}
 In the following section we argue that assuming non-degeneracy 
 of $u$ and $f$ is not a great restriction.
 Given $u$ we define the modification
@@ -425,9 +412,9 @@ Given $u$ we define the modification
 for some $\e\in\R^d$. We would like to show that $u_\e$ is for almost all choices of $\e$ non-degenerate and can 
 thus be used to approximate a degenerate $u$.
 Our approach is to use Thom's theorem which is inspired by the approach in \cite[Chapter 6]{Hirsch1994}.
-In this section we refer to $X$ and $Y$ as generic manifolds without boundary \ruggedtodo{of which class?}.
 \begin{definition}[Transversality]
-  We call a function $g\colon X\to Y$ transverse to a submanifold $A\subseteq Y$ iff for all points in the 
+  We call a function $g\colon X\to Y$ between to manifolds $X$ and $Y$ without boundary
+  \emph{transverse} to a submanifold $A\subseteq Y$ iff for all points in the 
   preimage $x\in g^{-1}(A)$ we have that
   \begin{align*}
     \Image(Dg_x)+T_{g(x)}A = T_{g(x)}Y\,.
@@ -436,29 +423,29 @@ In this section we refer to $X$ and $Y$ as generic manifolds without boundary \r
 \nomenclature{$A$}{submanifold, can be thought of as the zero section of $T^*X$}
 As an application we make the following observation.
 \begin{proposition}[Transversal characterisation of non-degeneracy]\label{pr:nonDegeneracy:alternativeCharacterisation}
-  Let $u\colon X\to T^*X$ be a differentiable vector field.
-  Then $u$ is non-degenerate iff $u$ is transverse to the zero section $A$ of $T^*X$.
+  Let $u_j\colon X_j\to T^*X_j$ be a differentiable vector field.
+  Then $u_j$ is non-degenerate iff $u_j$ is transverse to the zero section $A_j$ of $T^*X_j$
+  and contains no critical points in $\Sigma^0$.
 \end{proposition}
 \begin{proof}
-  First note that we have that $x\in u^{-1}(A)$ iff $u(x)=0$ and thus $u^{-1}(A)=C$.
-  Unravelling the definition of transversality we get that $u$ is transverse to the zero section iff for all $x\in C=u^{-1}(A)$
+  First note that we have that $x\in u_j^{-1}(A)$ iff $u_j(x)=0$ and thus $u_j^{-1}(A)=C$.
+  Unravelling the definition of transversality we get that $u_j$ is transverse to the zero section iff for all $x\in C=u_j^{-1}(A)$
   we have that
   \begin{align}
-    \Image(Du_x)+T_{u(x)}A = T_{u(x)}TX\,. \label{eq:nonDegeneracy:uTransverse}
+    \Image(Du_j(x))+T_{u_j(x)}A = T_{u_j(x)}TX\,. \label{eq:nonDegeneracy:uTransverse}
   \end{align}
-  As $A$ is the zero section we have $T_{u(x)}A=0$ and equation \eqref{eq:nonDegeneracy:uTransverse}
-  is equivalent to stating that $Du$ is of full rank. But $Du$ being of full rank at all points
-  in $C$ is equivalent to $u$ being non-degenerate.
+  As $A$ is the zero section we have $T_{u_j(x)}A=0$ and equation \eqref{eq:nonDegeneracy:uTransverse}
+  is equivalent to stating that $Du_j$ is of full rank. But $Du_j$ being of full rank at all points
+  in $C$ and $u_j$ having no critical points in $\Sigma^0$ is equivalent to $u_j$ being non-degenerate.
 \end{proof}
-A further application is given by the following proposition.
+Analogously we make the following observation.
 \begin{proposition}[Transversal characterisation of tangency regularity]
-  Let $u\colon X\to T^*X$ be a differentiable vector field on a manifold with corners $X$.
-  Let $X_j=\partial_jX$ be a stratification of $X$.
-  Then $u$ is tangency regular iff $u$ viewed as a section of the normal bundle $N^*X_j$ is transverse to the zero section of $N^*X_j$ for all $j>0$.
-  \ruggedtodo{Why do we require $j>0$}
+  Let $u^N_j$ be defined as in \ref{}.
+  Then we have that $u$ is tangency regular on a stratum $X_j$ iff
+   $u^N_j$ is transverse to the zero section of $N^*X_j$.
 \end{proposition}
 \begin{proof}
-  \td{Some proof}
+  \td{State proof.}
 \end{proof}
 The following version of Thom's transversality theorem is an adaption (i.e.\ weakening) of \cite[Theorem 2.7]{Hirsch1994} to our needs.
 \begin{theorem}[Parametric transversality theorem.]
@@ -486,12 +473,13 @@ Using proposition \ref{pr:nonDegeneracy:alternativeCharacterisation} we obtain t
   Let $u\colon X\to T^*X$ be a harmonic vector field on $X$ and let $X_j$ be a stratification of $X$.
    Then for almost every $\e\in\R^d$ we have that
   \begin{enumerate}
-    \item $u_j^\e$ given by equations \eqref{} and \eqref{} is non-degenerate\label{co:nonDegeneracy_density_nonDeg}
-    \item $u_j^\e$ is tangency regular\label{co:nonDegeneracy_density_tanReg}
+    \item $u^\e$ given by equations \eqref{} and \eqref{} is non-degenerate on $X_j$ \label{co:nonDegeneracy_density_nonDeg}
+    \item $u^\e$ is tangency regular on $X_j$ \label{co:nonDegeneracy_density_tanReg}
   \end{enumerate}
 \end{corollary}
 \begin{proof}
-  Set $r=2$, $E=\R^d$ and $Y=T^*X_j$. We initially set $X=\Omega$.
+  Set $r=2$, $E=\R^d$ and $Y=T^*X_j$ in the previous theorem.
+  We initially set $X=\Omega$.
   We would like to apply the parametric transversality theorem to the function
   \begin{align*}
     F\colon E&\to C^\infty(X,T^*X) \\
@@ -1050,12 +1038,14 @@ Using invariant manifolds we obtain the following proof.
 % \end{proof}
 
 \begin{proof}
-  Assume that $\Sigma^-$ is connected. Then we can cut the domain along $\Gamma$ such that the endpoints
-  of the cut coincide with the endpoints of $\Sigma^-$, that is $\partial\Gamma=\partial\Sigma^-$.
+  Assume that $\Sigma^-$ is connected.
+  Let $x_1,x_2\in\Sigma^0(f)$ be two points on different connectivity components which will be fixed later.
+
+  Then we can cut the domain along $\Gamma$ such that the endpoints
+  of the cut coincide with $x_1$ and $x_2$, that is $\partial\Gamma=\brk[c]*{x_1,x_2}$.
   Now we obtain two new domains $X^+$ and $X^-$ such that $\partial X^+ =\Sigma^+\cup\Sigma^0\cup\overline{\Gamma}$ and
   $\partial X^-=\Sigma^-\cup\overline{\Gamma}$. We can assume that $\Gamma$ is a smooth manifold and corresponds to the stratum 
   $X_\Gamma$ for $X^+$ and $X^-$. We also assume that the corner points $x_1,x_2\in\partial\Gamma$ correspond to the strata $X_{1}$ and $X_{2}$.
-  For the following argumentation we require that $u$ is Morse on both $X^+$ and $X^-$ so assume this is the case.
   Locally around the corner point $x_1$ we have a situation depicted as in figure \ref{}
   \begin{figure}
     \centering
@@ -1065,8 +1055,13 @@ Using invariant manifolds we obtain the following proof.
   \end{figure}
   That is $u=\nabla f$ is essentially parallel to the boundary $\Sigma$.
   We assume that we chose $\Gamma$ such that the acute angle is on the side where $u$ flows into the new domain.
-  Thus we have that $x_1$ is not a critical point of either $f$ nor $-f$.
+  % More concretely this condition is equivalent to that there exists an open neighbourhood $U_1$ of $x_1$ such that
+  % $n_\Gamma\cdot u< u$ on $U_1$.
+  % Here $n_\Gamma\colon\Gamma\to S^1\subseteq\R^2$ denotes the normal of the cut $\Gamma$ which points in the direction of the flow.
+  Thus we have that $x_1$ is not an essential critical point of either $f$ nor $-f$.
   Analogously we can choose $\Gamma$ in such a way around $x_2$.
+  For the following argumentation we require that $u$ is Morse on both $X^+$ and $X^-$, so assume for a moment that this
+  is the case.
   We now focus our attention on $X^+$. Since no essential critical points lie on $\Sigma^+$ or
   $\partial\Gamma$ it follows for the boundary type numbers that
   \begin{align}
@@ -1102,9 +1097,23 @@ Using invariant manifolds we obtain the following proof.
   \end{align*}
   in contradiction to $M^\pm\geq0$.
 
-  % The statement now remains to be shown for $u$ which are not Morse on $\Gamma$.
-  % By proposition \ref{} we can approximate such $u$ by a sequence $u^\e$ which are
-  % Morse on the stratification
+  The statement now remains to be shown for $u$ which are not Morse on $\Gamma$.
+  Let $u^\e\to u$ be a family of boundary generic functions with respect to the 
+  stratification $X^+\cup X^-$ as in definition \ref{}.
+  By proposition \ref{} we can define the set $\brk[c]*{x_1,x_2}\subseteq\Sigma^0(u)$
+  to be the limit of the set $\Sigma^0\brk*{u^\e}=\brk[c]*{x_1^\e,x_2^\e}$ converges to the set
+  as $\e\to0$.
+  Fix the cut $\Gamma$ as above.
+  Let $U_1$ be a neighbourhood of $x_1$ such that $\overline{U}_1$ contains no critical points of $f$.
+  Analogously define $U_2$.
+  Then there exists by proposition \ref{} a $\delta>0$ such that for all 
+  $\abs{\e}<\delta$ the function $u^\e$ has no essential critical points in $U_1$
+  or $U_2$.
+  Define the modified cut $\Gamma^\e$ as above with the addition that it is equal to $\Gamma$ outside of $U_1\cup U_2$ and such that it
+  converges uniformly to $\Gamma$ on $U_1\cup U_2$ as $\e\to0$.
+  Let $n_\Gamma^\e\colon\Gamma^\e\to S^1\subseteq\R^2$ denote the
+  normal of $\Gamma^\e$.
+  By the above argument the statement holds for $u^\e$ with the modified cut
   % $$\brk[c]*{X_j}_{j\in\cJ}\cup\brk[c]*{X_\Gamma}\cup\brk[c]*{X_j}_{j\in\brk[c]*{1,2}}$$
   % of $X$. Again by proposition \ref{} we have that $\Sigma^0(u^\e)\to\Sigma^0(u)$ for $\e\to0$.
   % This implies that if we choose the cut $\Gamma^\e$ for $u^\e$ as in figure \ref{}
@@ -1559,7 +1568,7 @@ Mimicking the proof in 2 dimensions we obtain the following proposition.
 \end{proof}
 In fact we can give an example for such a function with
 simply connected entrant boundary.
-\begin{example}[Example of a harmonic vector field with simply connected entrant boundary]
+\begin{example}[A harmonic vector field with simply connected entrant boundary]
   Consider the domain $X=\overline{B}_r\subseteq\R^3$ with $r>0$ sufficiently large and the harmonic function
   \begin{align*}
     f\colon X&\to\R \\
@@ -1580,9 +1589,15 @@ simply connected entrant boundary.
   indicates that $f$ has the desired properties.
   \begin{figure}
     \centering
-    \missingfigure{Some amazing plot showing an overview of f}
+    \includegraphics[width=0.7\textwidth]{../plots/n3_hf_inflowOutflow_Ball_overview.pdf}
     \caption{An plot of the function $u$}
     \label{pl:n3_hf_inflowOutflowStagnationPoint_overview}
+  \end{figure}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{../plots/n3_hf_inflowOutflow_Ball_Surface.pdf}
+    \caption{Stereographic projection of the surface $\Sigma$.}
+    \label{pl:n3_hf_inflowOutflowStagnationPoint_Surface}
   \end{figure}
   \td{complete this section.}
 \end{example}
