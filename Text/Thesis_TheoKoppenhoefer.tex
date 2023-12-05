@@ -210,7 +210,7 @@ Now set
 \end{align}
 be the restriction of $u$ onto the cotangent bundle $T^*X_j$.
 \nomenclature{$u_j$}{Restriction of $u$ to the cotangent bundle $T^*X_j$, see equation \ref{eq:def_projectionUStratification}}
-Analogously we can define the vectorfield
+Analogously we can define the vector field
 \begin{align*}
   u_j^N\colon X_j\to N^*X_j
 \end{align*}
@@ -236,7 +236,7 @@ In the following we define the emergent and the entrant boundary in a way that g
   We call $v$ \emph{(strictly) emergent} iff $-v$ is (strictly) entrant.
   We now define the \emph{entrant boundary} $\Sigma^{\leq0}$ to be the set of boundary points at which $u$ is entrant.
   We define the \emph{strictly entrant boundary} $\Sigma^-$ to be the set of strictly entrant boundary points of $u$.
-  Analogously we define the \emph{emergant} and \emph{strictly emergent boundary}.
+  Analogously we define the \emph{emergent} and \emph{strictly emergent boundary}.
   Further define the \emph{tangential boundary} $\Sigma^0$ to be
   \begin{align}
     \Sigma^0=\Sigma\setminus\brk*{\Sigma^+\cup\Sigma^-}
@@ -539,9 +539,9 @@ Using proposition \ref{pr:nonDegeneracy:alternativeCharacterisation} we obtain t
 We have a brief intermezzo
 \begin{proposition}
   We have that
-  \begin{align}
-    \partial\Sigma^-\cup\partial\Sigma^+\subseteq\Sigma^0
-  \end{align}
+  \begin{align*}
+    \partial\Sigma^-\cup\partial\Sigma^+\subseteq\Sigma^0\,.
+  \end{align*}
 \end{proposition}
 \begin{proof}
   \td{Some proof}
@@ -550,41 +550,43 @@ We have a brief intermezzo
 One of the reasons for introducing boundary tangency is the following proposition 
 \begin{proposition}
   Let $u$ be tangency regular.
-  Then $\Sigma^0$ consists of \td{complete formulation}
+  Then $\partial\Sigma^+=\partial\Sigma^-$.
 \end{proposition}
 \begin{proof}
-  Let $u^\e\to u$. Then we have that 
+  
 \end{proof}
 
 As a consequence we get a version of the results in \cite[§2]{Morse1970}.
 
 We call a boundary point $x\in X_j$ on a strata $X_j$ \emph{ordinary} iff $x$ lies
 in the interior of $X_j$ and if there exists a stratum $X_{j-1}$ that $x$ is not critical point of $X_{j-1}$.
-\begin{proposition}\label{pr:approximationU}
-  Assume all stagnation points of $u$ are
-  ordinary. Then there exists a positive $\delta>0$ such that
-  for (Lebesgue) almost every $\e\in B_\delta$ we have that
-  \begin{itemize}
-    \item $u^\e$ is non-degenerate
-    \item $u^\e$ is tangency regular
-    \item there is a one to one relation of the stagnation points in $\Omega$ and $\Sigma$ preserving
-      index and the property of being entrant or emergent.
-  \end{itemize}
-\end{proposition}
+
+We summarise this section with the following lemma.
+\begin{lemma}[Density of boundary generic functions]
+  Let $u\colon X\to T^*X$ and $X$ be a stratified space. Then there exists a dense subset $E\subseteq B_r\R^d$
+  for some $r>0$ such that
+  \begin{enumerate}
+    \item $u^\e\to u$ uniformly
+    \item The critical points of $u^\e$ converge uniformly to the critical points of $u$
+    \item The critical points of $u^\e$ and $u$ can be put into a one-to-one correspondence preserving index and the property
+     of being emergent or entrant
+    \item $u^\e$ is boundary generic
+    \item $\Sigma^0\brk*{u^\e}$ converges and has a limit contained in $\Sigma^0(u)$
+    \item The boundaries $\Sigma^+$ and $\Sigma^-$ are conserved
+  \end{enumerate}
+  as $\e\to0$ for $\e\in E$.
+\end{lemma}
 \begin{proof}
   We follow \cite[text]{Morse1970}.
   First choose $\delta$ so small that for all stagnation points of $u^\e$ lie in $\Omega$.
   If there did not exist such a $\delta$ we could choose a sequence $\e_n\to0$ in $\R^d$ such 
   that $u^{\e_n}$ had a stagnation point $x_n$ on $\Sigma$. Since $\Sigma$ is compact we can assume that $x_n$ converges
   to a stagnation point $x$. But then $x$ is also a stagnation point of $u$. A contradiction.
-
   
-
-  We note that since $\overline{\Omega}$ is compact we have that $\nabla u_\e\to \nabla u$ 
+  We note that since $X$ is compact we have that $\nabla u_\e\to \nabla u$ 
   uniformly as $\abs*{\e}\to0$.
-  \td{complete proof}
+  \td{complete proof}.
 \end{proof}
-
 
 \section{Some general remarks}
 
