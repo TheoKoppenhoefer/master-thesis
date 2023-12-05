@@ -210,6 +210,14 @@ Now set
 \end{align}
 be the restriction of $u$ onto the cotangent bundle $T^*X_j$.
 \nomenclature{$u_j$}{Restriction of $u$ to the cotangent bundle $T^*X_j$, see equation \ref{eq:def_projectionUStratification}}
+Analogously we can define the vectorfield
+\begin{align*}
+  u_j^N\colon X_j\to N^*X_j
+\end{align*}
+to be the restriction of $u$ to the conormal bundle $N^*X_j$, that is
+\begin{align}
+  u_j^N=u\big\vert_{N^*X_j}\,.\label{eq:def_projectionUNStratification}
+\end{align}
 
 
 In the following we define the emergent and the entrant boundary in a way that generalises
@@ -335,12 +343,14 @@ to include harmonic vector fields.
 The following definition is inspired by \cite{Katz2014}.
 \td{this definition is floating freely, also incorporate strata.}
 \begin{definition}[Tangency points]
-  Let $u^N_j=u\big\vert_{N^*X_j}$ denote the restriction of $u$ to the normal bundle analogous to the construction of $u_j$.
+  Let $u^N_j$ be as in equation \eqref{eq:def_projectionUNStratification}.
   We call the zeroes $x\in X_j$ of $u^N_j$ \emph{tangency points}.
   A tangency point is called \emph{regular} iff the derivative $Du^N_j(x)$ is bijective.
   We call a function $u\colon X\to\R^d$ tangency regular iff every tangency point
   is regular.
 \end{definition}
+
+As in \cite{Katz2014} we call $u$ \emph{boundary generic} iff $u$ is Morse and tangency regular.
 
 The previous definitions translate naturally to $f$.
 That is we call $f$ Morse, non-degenerate, et cetera iff $u=\nabla f$ is Morse, non-degenerate, et cetera.
@@ -363,8 +373,9 @@ To illustrate the preceding definitions we return to our previous example.
   exactly one negative eigenvalue we see that the origin has index $1$. Since there are no other critical points we have
   $M=1$ and
   \begin{align*}
-    M_k=\delta_{k1}\,.
+    M_k=\delta_{k1}
   \end{align*}
+  where $\delta$ denotes the Kronecker delta.
   We now calculate for $x\in S^2$
   \begin{align*}
     \tiu(x) = \brk*{u-\brk*{n\cdot u}n}(x)
@@ -525,6 +536,26 @@ Using proposition \ref{pr:nonDegeneracy:alternativeCharacterisation} we obtain t
   Now to the tangency regularity. 
 \end{proof}
 
+We have a brief intermezzo
+\begin{proposition}
+  We have that
+  \begin{align}
+    \partial\Sigma^-\cup\partial\Sigma^+\subseteq\Sigma^0
+  \end{align}
+\end{proposition}
+\begin{proof}
+  \td{Some proof}
+\end{proof}
+
+One of the reasons for introducing boundary tangency is the following proposition 
+\begin{proposition}
+  Let $u$ be tangency regular.
+  Then $\Sigma^0$ consists of \td{complete formulation}
+\end{proposition}
+\begin{proof}
+  Let $u^\e\to u$. Then we have that 
+\end{proof}
+
 As a consequence we get a version of the results in \cite[§2]{Morse1970}.
 
 We call a boundary point $x\in X_j$ on a strata $X_j$ \emph{ordinary} iff $x$ lies
@@ -554,14 +585,6 @@ in the interior of $X_j$ and if there exists a stratum $X_{j-1}$ that $x$ is not
   \td{complete proof}
 \end{proof}
 
-One of the reasons for introducing boundary tangency is the following proposition 
-\begin{proposition}
-  Let $u$ be tangency regular.
-  \td{Formulate that $\Sigma^0$ is a substratification with desired properties.}
-\end{proposition}
-\begin{proof}
-  Let $u^\e\to u$. Then we have that 
-\end{proof}
 
 \section{Some general remarks}
 
@@ -1039,12 +1062,12 @@ Using invariant manifolds we obtain the following proof.
 
 \begin{proof}
   Assume that $\Sigma^-$ is connected.
-  Let $x_1,x_2\in\Sigma^0(f)$ be two points on different connectivity components which will be fixed later.
+  Let $x_1,x_2\in\Sigma^0(f)$ be two points on different connectivity components which we will fix later.
 
   Then we can cut the domain along $\Gamma$ such that the endpoints
   of the cut coincide with $x_1$ and $x_2$, that is $\partial\Gamma=\brk[c]*{x_1,x_2}$.
-  Now we obtain two new domains $X^+$ and $X^-$ such that $\partial X^+ =\Sigma^+\cup\Sigma^0\cup\overline{\Gamma}$ and
-  $\partial X^-=\Sigma^-\cup\overline{\Gamma}$. We can assume that $\Gamma$ is a smooth manifold and corresponds to the stratum 
+  Now we obtain two new domains $X^+$ and $X^-$ such that $\partial X^+ \subseteq\Sigma^+\cup\Sigma^0\cup\Gamma$ and
+  $\partial X^-\subseteq\Sigma^-\cup\Sigma^0\cup\Gamma$. We can assume that $\Gamma$ is a smooth manifold and corresponds to the stratum 
   $X_\Gamma$ for $X^+$ and $X^-$. We also assume that the corner points $x_1,x_2\in\partial\Gamma$ correspond to the strata $X_{1}$ and $X_{2}$.
   Locally around the corner point $x_1$ we have a situation depicted as in figure \ref{}
   \begin{figure}
@@ -1054,7 +1077,7 @@ Using invariant manifolds we obtain the following proof.
     \label{}
   \end{figure}
   That is $u=\nabla f$ is essentially parallel to the boundary $\Sigma$.
-  We assume that we chose $\Gamma$ such that the acute angle is on the side where $u$ flows into the new domain.
+  We assume that we chose $\Gamma$ such that the acute angle between $u$ and $\Gamma$ around $x_1$ is on the side where $u$ flows into the new domain.
   % More concretely this condition is equivalent to that there exists an open neighbourhood $U_1$ of $x_1$ such that
   % $n_\Gamma\cdot u< u$ on $U_1$.
   % Here $n_\Gamma\colon\Gamma\to S^1\subseteq\R^2$ denotes the normal of the cut $\Gamma$ which points in the direction of the flow.
@@ -1062,8 +1085,8 @@ Using invariant manifolds we obtain the following proof.
   Analogously we can choose $\Gamma$ in such a way around $x_2$.
   For the following argumentation we require that $u$ is Morse on both $X^+$ and $X^-$, so assume for a moment that this
   is the case.
-  We now focus our attention on $X^+$. Since no essential critical points lie on $\Sigma^+$ or
-  $\partial\Gamma$ it follows for the boundary type numbers that
+  We now focus our attention on $X^+$. Since no essential critical points lie on $\Sigma^+$ or $\Sigma^0$ 
+  it follows for the boundary type numbers that
   \begin{align}
     \mu^+_j=\ind_{\Gamma,j}(f)\,.\label{eq:n2_disproof_morse_muplus}
   \end{align}
