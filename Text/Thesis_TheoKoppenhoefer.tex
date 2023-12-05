@@ -323,13 +323,13 @@ to include harmonic vector fields.
   \nomenclature{$M$}{Total number of stagnation points}
   Analogously we define the \emph{$k$-th boundary type numbers} to be the number of essential boundary 
   stagnation points of $u$ of index $k$, that is
-  \begin{align*}
-    \mu_k=\sum_{j\colon n(j)<d}\ind_{j,k}(u)
-  \end{align*}
+  \begin{align}
+    \mu_k=\sum_{j\colon n(j)<d}\ind_{j,k}(u)\label{eq:bdTypeNbrs}
+  \end{align}
   We further write $\nu_k$ for the $k$-th boundary type number of $-u$.
 \end{definition}
-\nomenclature{$\mu_k$}{boundary type numbers of $f$, see definition \ref{df:bdTypeNbrs}}
-\nomenclature{$\nu_k$}{boundary type numbers of $-f$, see definition \ref{df:bdTypeNbrs}}
+\nomenclature{$\mu_k$}{boundary type numbers of $f$, see equation \eqref{eq:bdTypeNbrs}}
+\nomenclature{$\nu_k$}{boundary type numbers of $-f$, see definition \ref{df:nonDegeneracy}}
 
 \begin{definition}[Morse functions]
   We call $u$ \emph{(essentially) Morse} iff for all $j$ we have that $u_j$ is (essentially) non-degenerate.
@@ -411,7 +411,7 @@ To illustrate the preceding definitions we return to our previous example.
   the $\pm e_3$ are non-degenerate critical points of $f$ with index $0$.
 \end{example}
 
-\subsection{On assuming non-degeneracy}
+\subsection{On assuming non-degeneracy}\label{se:assuming_nonDegeneracy}
 
 In the following section we argue that assuming non-degeneracy 
 of $u$ and $f$ is not a great restriction.
@@ -424,8 +424,8 @@ for some $\e\in\R^d$. We would like to show that $u_\e$ is for almost all choice
 thus be used to approximate a degenerate $u$.
 Our approach is to use Thom's theorem which is inspired by the approach in \cite[Chapter 6]{Hirsch1994}.
 \begin{definition}[Transversality]
-  We call a function $g\colon X\to Y$ between to manifolds $X$ and $Y$ without boundary
-  \emph{transverse} to a submanifold $A\subseteq Y$ iff for all points in the 
+  We call a function $g\colon Y_1\to Y_2$ between to manifolds $Y_1$ and $Y_2$ (without boundary)
+  \emph{transverse} to a submanifold $A\subseteq Y_2$ iff for all points in the 
   preimage $x\in g^{-1}(A)$ we have that
   \begin{align*}
     \Image(Dg_x)+T_{g(x)}A = T_{g(x)}Y\,.
@@ -451,7 +451,7 @@ As an application we make the following observation.
 \end{proof}
 Analogously we make the following observation.
 \begin{proposition}[Transversal characterisation of tangency regularity]
-  Let $u^N_j$ be defined as in \ref{}.
+  Let $u^N_j$ be given as in equation \eqref{eq:def_projectionUNStratification}.
   Then we have that $u$ is tangency regular on a stratum $X_j$ iff
    $u^N_j$ is transverse to the zero section of $N^*X_j$.
 \end{proposition}
@@ -460,13 +460,13 @@ Analogously we make the following observation.
 \end{proof}
 The following version of Thom's transversality theorem is an adaption (i.e.\ weakening) of \cite[Theorem 2.7]{Hirsch1994} to our needs.
 \begin{theorem}[Parametric transversality theorem.]
-  Let $E,X,Y$ be $C^r$-manifolds (without boundary) and $A\subseteq Y$ a $C^r$ submanifold such that
+  Let $E,Y_1,Y_2$ be $C^r$-manifolds (without boundary) and $A\subseteq Y_2$ a $C^r$ submanifold such that
   \begin{align*}
-    r>\dim X-\dim Y+\dim A\,.
+    r>\dim Y_1-\dim Y_2+\dim A\,.
   \end{align*}
-  Let further $F\colon E\to C^r\brk*{X,Y}$ be such that the evaluation map
+  Let further $F\colon E\to C^r\brk*{Y_1,Y_2}$ be such that the evaluation map
   \begin{align*}
-    F^\text{ev}\colon E\times X&\to Y \\
+    F^\text{ev}\colon E\times Y_1&\to Y_2 \\
     (\e,x)&\mapsto F_\e(x)
   \end{align*}
   is $C^r$ and transverse to $A$.
@@ -480,7 +480,7 @@ The following version of Thom's transversality theorem is an adaption (i.e.\ wea
   See \cite[Theorem 2.7]{Hirsch1994} for details.
 \end{proof}
 Using proposition \ref{pr:nonDegeneracy:alternativeCharacterisation} we obtain the corollary
-\begin{corollary}
+\begin{corollary}[Density of boundary generic functions I]
   Let $u\colon X\to T^*X$ be a harmonic vector field on $X$ and let $X_j$ be a stratification of $X$.
    Then for almost every $\e\in\R^d$ we have that
   \begin{enumerate}
@@ -489,22 +489,22 @@ Using proposition \ref{pr:nonDegeneracy:alternativeCharacterisation} we obtain t
   \end{enumerate}
 \end{corollary}
 \begin{proof}
-  Set $r=2$, $E=\R^d$ and $Y=T^*X_j$ in the previous theorem.
-  We initially set $X=\Omega$.
+  Set $r=2$, $E=\R^d$ and $Y_2=T^*X_j$ in the previous theorem.
+  We initially set $Y_1=X_j=\Omega$.
   We would like to apply the parametric transversality theorem to the function
   \begin{align*}
-    F\colon E&\to C^\infty(X,T^*X) \\
+    F\colon E&\to C^\infty(X_j,T^*X_j) \\
     \e&\mapsto u^\e
   \end{align*}
   We note that $F^\text{ev}$ is sufficiently smooth. 
   We need to show that $F^\text{ev}$ is transverse to the
-  zero section $A\subseteq T^*X$. Then the parametric transversality theorem 
+  zero section $A\subseteq T^*X_j$. Then the parametric transversality theorem 
   yields a dense $E_j\subseteq E$ on which
   $F$ is transverse to $A$.
   For this note that $E\times C = F^{-1}(A)$.
   It then follows for all $(\e,x)\in F^{-1}(A)$ that
   \begin{align}
-    \Image\brk*{DF^\text{ev}_{(\e,x)}}=T_xT^*X\label{eq:nonDegeneracy:surjectiveDF}
+    \Image\brk*{DF^\text{ev}_{(\e,x)}}=T_xT^*X_j\label{eq:nonDegeneracy:surjectiveDF}
   \end{align}
   since we have that
   \begin{align*}
@@ -516,8 +516,8 @@ Using proposition \ref{pr:nonDegeneracy:alternativeCharacterisation} we obtain t
   Proposition \ref{pr:nonDegeneracy:alternativeCharacterisation}
   now yields that $u^\e$ non-degenerate on $E_j$.
   
-  Analogously we set $X=X_j$ in the previous proof and replace
-  $u^\e$ with the restriction $u_j^\e$. To show that 
+  Analogously we set $Y_1=X_j$ to be an arbitrary strata in the previous proof and replace
+  $u^\e$ with the restriction $u_j^\e$. To show that
   equation \eqref{eq:nonDegeneracy:surjectiveDF} holds we resort to the fact that
   \begin{align*}
     DF^\text{ev}_{(\e,x)}
@@ -566,22 +566,22 @@ We summarise this section with the following lemma.
   Let $u\colon X\to T^*X$ and $X$ be a stratified space. Then there exists a dense subset $E\subseteq B_r\R^d$
   for some $r>0$ such that
   \begin{enumerate}
+    \item the $u^\e$ are boundary generic
     \item $u^\e\to u$ uniformly
     \item The critical points of $u^\e$ converge uniformly to the critical points of $u$
     \item The critical points of $u^\e$ and $u$ can be put into a one-to-one correspondence preserving index and the property
      of being emergent or entrant
-    \item $u^\e$ is boundary generic
     \item $\Sigma^0\brk*{u^\e}$ converges and has a limit contained in $\Sigma^0(u)$
     \item The boundaries $\Sigma^+$ and $\Sigma^-$ are conserved
   \end{enumerate}
   as $\e\to0$ for $\e\in E$.
 \end{lemma}
 \begin{proof}
-  We follow \cite[text]{Morse1970}.
-  First choose $\delta$ so small that for all stagnation points of $u^\e$ lie in $\Omega$.
-  If there did not exist such a $\delta$ we could choose a sequence $\e_n\to0$ in $\R^d$ such 
-  that $u^{\e_n}$ had a stagnation point $x_n$ on $\Sigma$. Since $\Sigma$ is compact we can assume that $x_n$ converges
-  to a stagnation point $x$. But then $x$ is also a stagnation point of $u$. A contradiction.
+  % We follow \cite[text]{Morse1970}.
+  % First choose $\delta$ so small that for all stagnation points of $u^\e$ lie in $\Omega$.
+  % If there did not exist such a $\delta$ we could choose a sequence $\e_n\to0$ in $\R^d$ such 
+  % that $u^{\e_n}$ had a stagnation point $x_n$ on $\Sigma$. Since $\Sigma$ is compact we can assume that $x_n$ converges
+  % to a stagnation point $x$. But then $x$ is also a stagnation point of $u$. A contradiction.
   
   We note that since $X$ is compact we have that $\nabla u_\e\to \nabla u$ 
   uniformly as $\abs*{\e}\to0$.
@@ -1071,12 +1071,12 @@ Using invariant manifolds we obtain the following proof.
   Now we obtain two new domains $X^+$ and $X^-$ such that $\partial X^+ \subseteq\Sigma^+\cup\Sigma^0\cup\Gamma$ and
   $\partial X^-\subseteq\Sigma^-\cup\Sigma^0\cup\Gamma$. We can assume that $\Gamma$ is a smooth manifold and corresponds to the stratum 
   $X_\Gamma$ for $X^+$ and $X^-$. We also assume that the corner points $x_1,x_2\in\partial\Gamma$ correspond to the strata $X_{1}$ and $X_{2}$.
-  Locally around the corner point $x_1$ we have a situation depicted as in figure \ref{}
+  Locally around the corner point $x_1$ we have a situation depicted as in figure \ref{fi:n2_cutOmega_flowthrough}
   \begin{figure}
     \centering
     \input{../Figures/n2_cutOmega_flowthrough.pdf_tex}
     \caption{The situation at hand.}
-    \label{}
+    \label{fi:n2_cutOmega_flowthrough}
   \end{figure}
   That is $u=\nabla f$ is essentially parallel to the boundary $\Sigma$.
   We assume that we chose $\Gamma$ such that the acute angle between $u$ and $\Gamma$ around $x_1$ is on the side where $u$ flows into the new domain.
@@ -1124,7 +1124,7 @@ Using invariant manifolds we obtain the following proof.
 
   The statement now remains to be shown for $u$ which are not Morse on $\Gamma$.
   Let $u^\e\to u$ be a family of boundary generic functions with respect to the 
-  stratification $X^+\cup X^-$ as in definition \ref{}.
+  stratification $X^+\cup X^-$ as in section \ref{se:assuming_nonDegeneracy}.
   By proposition \ref{} we can define the set $\brk[c]*{x_1,x_2}\subseteq\Sigma^0(u)$
   to be the limit of the set $\Sigma^0\brk*{u^\e}=\brk[c]*{x_1^\e,x_2^\e}$ converges to the set
   as $\e\to0$.
@@ -1551,11 +1551,11 @@ Mimicking the proof in 2 dimensions we obtain the following proposition.
   We now turn our attention to $X^+$. Since no essential critical points lie on $\Sigma^+$ or
   $\gamma$ it follows for the boundary type numbers that
   \begin{align}
-    \mu^+_j=\ind_{j,\Gamma}(f)\,.\label{eq:n2_disproof_morse_muplus}
+    \mu^+_j=\ind_{j,\Gamma}(f)\,.\label{eq:n3_disproof_morse_muplus}
   \end{align}
   Analogously we have on $X^-$ that
   \begin{align}
-    \nu^-_j=\ind_{j,\Gamma}(-f)\,.\label{eq:n2_disproof_morse_numinus}
+    \nu^-_j=\ind_{j,\Gamma}(-f)\,.\label{eq:n3_disproof_morse_numinus}
   \end{align}
   In addition we have that the emergent critical points of $f$ on $X^+$ are the
   entrant critical points of $-f$ on $X^-$, that is
@@ -1563,29 +1563,29 @@ Mimicking the proof in 2 dimensions we obtain the following proposition.
     \begin{aligned}
       \ind_{0,\Gamma}(u)=\ind_{2,\Gamma}(-f) \\
       \ind_{1,\Gamma}(u)=\ind_{1,\Gamma}(-f) \\
-      \ind_{2,\Gamma}(u)=\ind_{0,\Gamma}(-f)\label{eq:n2_disproof_morse_relationIndex} 
+      \ind_{2,\Gamma}(u)=\ind_{0,\Gamma}(-f)\label{eq:n3_disproof_morse_relationIndex} 
     \end{aligned}
   \end{equation}
-  Using equations \eqref{eq:n2_disproof_morse_muplus}, \eqref{eq:n2_disproof_morse_numinus} and \eqref{eq:n2_disproof_morse_relationIndex}
+  Using equations \eqref{eq:n3_disproof_morse_muplus}, \eqref{eq:n3_disproof_morse_numinus} and \eqref{eq:n3_disproof_morse_relationIndex}
   we obtain
   \begin{equation}
     \begin{aligned}
       \mu^+_0=\nu^-_2 \\
       \mu^+_1=\nu^-_1 \\
-      \mu^+_2=\nu^-_0\label{eq:n2_disproof_morse_relationMuNu}
+      \mu^+_2=\nu^-_0\label{eq:n3_disproof_morse_relationMuNu}
     \end{aligned}
   \end{equation}
   We observe the Morse inequalities for $f$
   \begin{align}
-    M_2^++\mu^+_2-M_1^+-\mu^+_1+\mu^+_0=\chi(X^+)=\chi(X)\,.\label{eq:n2_disproof_morse_morseineqplus}
+    M_2^++\mu^+_2-M_1^+-\mu^+_1+\mu^+_0=\chi(X^+)=\chi(X)\,.\label{eq:n3_disproof_morse_morseineqplus}
   \end{align}
   and the Morse inequalities for $-f$
   \begin{align}
-    M_1^-+\nu^-_2-M_2^--\nu^-_1+\nu^-_0=\chi(X^-)=\chi(X)\label{eq:n2_disproof_morse_morseineqminus}
+    M_1^-+\nu^-_2-M_2^--\nu^-_1+\nu^-_0=\chi(X^-)=\chi(X)\label{eq:n3_disproof_morse_morseineqminus}
   \end{align}
   where the $M_j$ continue to denote the interior type numbers of $f$.
-  We now subtract equation \eqref{eq:n2_disproof_morse_morseineqplus} from \eqref{eq:n2_disproof_morse_morseineqminus}
-  and insert relations \eqref{eq:n2_disproof_morse_relationMuNu} to obtain
+  We now subtract equation \eqref{eq:n3_disproof_morse_morseineqplus} from \eqref{eq:n3_disproof_morse_morseineqminus}
+  and insert relations \eqref{eq:n3_disproof_morse_relationMuNu} to obtain
   \begin{align*}
     M_1^--M_2^-+M_1^+-M_2^+=0
   \end{align*}
