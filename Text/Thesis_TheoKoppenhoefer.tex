@@ -1,6 +1,6 @@
 
 
-\input{../Latex_Templates/Preamble_Report}
+\input{../Latex_Templates/Preamble_Thesis}
 
 %%%%% TITLE PAGE
 
@@ -47,7 +47,7 @@
 % \usepackage{showlabels}
 
 \newcommand{\bx}{\bar{x}}
-\renewcommand{\chaptername}{Section}
+% \renewcommand{\chaptername}{Section}
 
 %%%%% The content starts here %%%%%%%%%%%%%
 
@@ -106,18 +106,18 @@ a \emph{harmonic vector field}, that is $u$ is smooth and fulfils
   \diver u=0 \qquad \text{ and }\qquad \curl u=0\,.
 \end{align*}
 Also often but not always we assume that globally $u=\nabla f$ is a gradient field, implying that $f$ is harmonic.
-One question we seek to answer in this thesis is the following.
+One question we seek to answer in this thesis is the following:
 \begin{question}[Flowthrough with stagnation point]\label{qu:flowthroughStagnationPoint}
   Does there exist a region $X\subseteq\R^3$ with flow $u$ through the region such that
   \begin{enumerate}
     \item $u$ is a harmonic vector field
     \item $u$ has an interior stagnation point
-    \item the boundary on which $u$ enters or exits the region are both simply connected
+    \item the boundary on which $u$ enters or exits the region are both simply connected?
   \end{enumerate}
 \end{question}
 The answer for this will turn out to be yes for dimensions $d\geq3$ and no for the dimension $d=2$.
 In the case of $d=2$ dimensions we will look at what happens if we allow for holes in the domain.
-other questions are of the type
+other questions are of the type:
 \begin{question}[stagnation points of harmonic vector fields without inflow or outflow]
   Let $u$ be a flow in a domain $X$ such that at every boundary point it is tangential to the boundary.
   What can be said about the relation between the number of critical points and the domain topology?
@@ -170,27 +170,13 @@ More generally we give the definition of a stratification as
 In the case that the stratification arises through relation \eqref{eq:def_mfCorners_stratification}
 we have precisely $X_{j}\precsim X_{j-1}$ for $j\in\brk[c]*{1,\dots,d}$ and $X_0\precsim X_0$.
 
-For completeness we also give the definition of the conormal bundle and the contingent cone for a 
+For completeness we also give the definition of the contingent cone for a 
 stratification $X_j$ of $X$
-\begin{definition}[Normal bundle, contingent cone]
-  We define the \emph{normal bundle} for a stratification of $X$ to be the quotient space
-  \begin{align}
-    NX_j=TX_{j-1}/TX_j,
-  \end{align}
-  where $TX_j$ is the tangent space of $X_j$.
-  The \emph{conormal bundle} $N^*X_j$ is defined as its pointwise dual, that is
-  \begin{align*}
-    N_x^*X_j=\brk*{N_xX_j}'\,.
-  \end{align*}
-  We define the \emph{contingent cone} (according to Bouligand) for a set $Y\subseteq X$ at $x\in\overline{Y}$ as
-  \begin{align}
-    C_xY=\left\{\begin{array}{l|l}
-      v\in\R^d & \begin{array}{l}
-        \text{ there exists }\lambda_n\to0\text{ and }x_n\to x \text{ in }Y \\
-        \text{ such that }\lim_n\lambda_n(x-x_n)=v\,.
-      \end{array}
-    \end{array}\right\}\,.
-  \end{align}
+\begin{definition}[contingent cone]
+  We denote the \emph{(Bouligand) contingent cone} for a set $Y\subseteq X$ at $x\in\overline{Y}$ by $C_xY$.
+  It is defined as the set of all $v\in\R^d$ such that there exists sequences $\lambda_n\to0$ and $x_n\to x$ in
+  $Y$ such that
+  $$\lim_n\lambda_n\brk*{x-x_n}=v\,.$$
 \end{definition}
 
 Given a vector field $u\colon X\to\R^d$ and the above stratification $X_k$ of $X$ we can construct for every
@@ -204,20 +190,13 @@ More precisely, for $x\in X_j$ let
   \pi_j\big\vert_x\colon\R^d\cong T_x^*\R^d\to T_x^*X_{j}\label{eq:def_projectionStratification}
 \end{align}
 denote the orthogonal projection of a vector at $x$ onto the cotangent space of the stratum $X_j$ at $x$.
-Now set
+Now let
 \begin{align}
   u_j=u\big\vert_{T^*X_j}=\pi_j\circ u\big\vert_{X_j}\in C^1\brk*{T^*X_j}\label{eq:def_projectionUStratification}
 \end{align}
 be the restriction of $u$ onto the cotangent bundle $T^*X_j$.
 \nomenclature{$u_j$}{Restriction of $u$ to the cotangent bundle $T^*X_j$, see equation \ref{eq:def_projectionUStratification}}
-Analogously we can define the vector field
-\begin{align*}
-  u_j^N\colon X_j\to N^*X_j
-\end{align*}
-to be the restriction of $u$ to the conormal bundle $N^*X_j$, that is
-\begin{align}
-  u_j^N=u\big\vert_{N^*X_j}\,.\label{eq:def_projectionUNStratification}
-\end{align}
+
 
 
 In the following we define the emergent and the entrant boundary in a way that generalises
@@ -228,18 +207,17 @@ In the following we define the emergent and the entrant boundary in a way that g
     \item $v$ points into $\Omega$ or
     \item $v$ lies in the dual cone of the contingent cone $C_xX$, that is
     \begin{align*}
-      v\in \brk*{C_xX}^*=\brk[c]*{w\in T_x^*X\colon \brk[a]*{w, w'}\leq0\text{ for all }w'\in C_xX}
+      v\in \brk*{C_xX}^*=\brk[c]*{w\in T_x^*X\colon \brk[a]*{w, w'}\leq0\text{ for all }w'\in C_xX}\,.
     \end{align*}
   \end{enumerate}
-  if in addition $v$ is not tangential to $\Sigma$ or $v$ lies in the relative interiour $\relint\brk*{C_xX}^*$ then we
-  call $v$ \emph{strictly entrant}. 
-  We call $v$ \emph{(strictly) emergent} iff $-v$ is (strictly) entrant.
-  We now define the \emph{entrant boundary} $\Sigma^{\leq0}$ to be the set of boundary points at which $u$ is entrant.
+  We call $v$ \emph{strictly entrant} iff in addition $v$ is not tangential to $\Sigma$ or $v$ lies in the relative interior $\relint\brk*{C_xX}^*$. 
+  Analogously $v$ is \emph{(strictly) emergent} iff $-v$ is (strictly) entrant.
+  Now define the \emph{entrant boundary} $\Sigma^{\leq0}$ to be the set of boundary points at which $u$ is entrant.
   We define the \emph{strictly entrant boundary} $\Sigma^-$ to be the set of strictly entrant boundary points of $u$.
-  Analogously we define the \emph{emergent} and \emph{strictly emergent boundary}.
+  In the same manner we define the \emph{emergent boundary} $\Sigma^{\geq0}$ and the \emph{strictly emergent boundary} $\Sigma^+$.
   Further define the \emph{tangential boundary} $\Sigma^0$ to be
   \begin{align}
-    \Sigma^0=\Sigma\setminus\brk*{\Sigma^+\cup\Sigma^-}
+    \Sigma^0=\Sigma^{\leq0}\cup\Sigma^{\geq0}\setminus\brk*{\Sigma^+\cup\Sigma^-}\subseteq\Sigma\,.
   \end{align}
 \end{definition}
 \nomenclature{$\Sigma^-$}{entrant boundary, see definition \ref{df:emergentEntrantBd}}
@@ -331,6 +309,17 @@ to include harmonic vector fields.
 \nomenclature{$\mu_k$}{boundary type numbers of $f$, see equation \eqref{eq:bdTypeNbrs}}
 \nomenclature{$\nu_k$}{boundary type numbers of $-f$, see definition \ref{df:nonDegeneracy}}
 
+The following definition is inspired by \cite{Morse1970}.
+We call a boundary point $x\in X_j$ on a strata $X_j$ \emph{ordinary} iff $u(x)$ is not 
+critical point of a stratum $x_{j-1}$.
+\begin{proposition}
+  The condition that the critical point $x\in X_j$ does not lie in $\Sigma^0$ is equivalent to that
+  $x$ is ordinary.
+\end{proposition}
+\begin{proof}
+  \td{Some proof}
+\end{proof}
+
 \begin{definition}[Morse functions]
   We call $u$ \emph{(essentially) Morse} iff for all $j$ we have that $u_j$ is (essentially) non-degenerate.
   For an essentially Morse function $u$ we will denote the number of
@@ -340,8 +329,33 @@ to include harmonic vector fields.
   \end{align*}
 \end{definition}
 
+To better describe the boundary of the emergent boundary $\partial\Sigma^+$ we introduce the
+concept of tangency regularity, which is inspired by similar definitions made in \cite{Katz2014}.
+In order to avoid the technical intricaties involved with manifolds with corners we assume that
+$\Sigma$ is a differentiable manifold for the following definitions to make sense.
+\begin{definition}[Normal bundle]
+  We define the \emph{normal bundle} for a stratification of $X$ to be the quotient space
+  \begin{align}
+    NX_j=TX_{j-1}/TX_j,
+  \end{align}
+  where $TX_j$ is the tangent space of $X_j$. This is well-defined if $X_{j-1}$ is uniquely determined
+  by $X_j$. This is the case if $\Sigma$ is a $C^1$ manifold.
+  The \emph{conormal bundle} $N^*X_j$ is defined as its pointwise dual, that is
+  \begin{align*}
+    N_x^*X_j=\brk*{N_xX_j}'\,.
+  \end{align*}
+\end{definition}
+
+Analogously to the definition of $u_j$ we can define the vector field
+\begin{align*}
+  u_j^N\colon X_j\to N^*X_j
+\end{align*}
+as the restriction of $u$ to the conormal bundle $N^*X_j$, that is
+\begin{align}
+  u_j^N=u\big\vert_{N^*X_j}\,.\label{eq:def_projectionUNStratification}
+\end{align}
+
 The following definition is inspired by \cite{Katz2014}.
-\td{this definition is floating freely, also incorporate strata.}
 \begin{definition}[Tangency points]
   Let $u^N_j$ be as in equation \eqref{eq:def_projectionUNStratification}.
   We call the zeroes $x\in X_j$ of $u^N_j$ \emph{tangency points}.
@@ -450,14 +464,11 @@ As an application we make the following observation.
   in $C$ and $u_j$ having no critical points in $\Sigma^0$ is equivalent to $u_j$ being non-degenerate.
 \end{proof}
 Analogously we make the following observation.
-\begin{proposition}[Transversal characterisation of tangency regularity]
+\begin{proposition}[Transversal characterisation of tangency regularity]\label{pr:tanRegular_alternativeCharacterisation}
   Let $u^N_j$ be given as in equation \eqref{eq:def_projectionUNStratification}.
   Then we have that $u$ is tangency regular on a stratum $X_j$ iff
    $u^N_j$ is transverse to the zero section of $N^*X_j$.
 \end{proposition}
-\begin{proof}
-  \td{State proof.}
-\end{proof}
 The following version of Thom's transversality theorem is an adaption (i.e.\ weakening) of \cite[Theorem 2.7]{Hirsch1994} to our needs.
 \begin{theorem}[Parametric transversality theorem.]
   Let $E,Y_1,Y_2$ be $C^r$-manifolds (without boundary) and $A\subseteq Y_2$ a $C^r$ submanifold such that
@@ -479,21 +490,41 @@ The following version of Thom's transversality theorem is an adaption (i.e.\ wea
 \begin{proof}
   See \cite[Theorem 2.7]{Hirsch1994} for details.
 \end{proof}
-Using proposition \ref{pr:nonDegeneracy:alternativeCharacterisation} we obtain the corollary
-\begin{corollary}[Density of boundary generic functions I]
+Using proposition \ref{pr:nonDegeneracy:alternativeCharacterisation} 
+we get a generalisation of the results in \cite[§2]{Morse1970}.
+\begin{corollary}[Density of boundary generic functions]\label{co:density_boundaryGeneric}
   Let $u\colon X\to T^*X$ be a harmonic vector field on $X$ and let $X_j$ be a stratification of $X$.
-   Then for almost every $\e\in\R^d$ we have that
+  Assume that $u$ has no critical points on $\Sigma^0$.
+  Then there exists a $\delta>0$ such that for almost every $\e\in B_\delta\subseteq\R^d$ we have that
   \begin{enumerate}
-    \item $u^\e$ given by equations \eqref{} and \eqref{} is non-degenerate on $X_j$ \label{co:nonDegeneracy_density_nonDeg}
-    \item $u^\e$ is tangency regular on $X_j$ \label{co:nonDegeneracy_density_tanReg}
+    \item $u^\e$ given is non-degenerate on $X_j$ \label{co:nonDegeneracy_density_nonDeg}
+    \item if in addition $\Sigma$ is a differentiable manifold then $u^\e$ is tangency regular on $X_j$ \label{co:nonDegeneracy_density_tanReg}
+  \end{enumerate}
+  Here $u^\e$ is given by equation \eqref{}. In addition we have as $\e\to0$ that
+  \begin{enumerate}
+    \item $u^\e\to u$ uniformly
+    \item The critical points of $u^\e$ converge uniformly to critical points of $u$
+    \item The critical points of $u^\e$ and $u$ can be put into a one-to-one correspondence preserving index and the property
+     of being emergent or entrant
   \end{enumerate}
 \end{corollary}
 \begin{proof}
-  Set $r=2$, $E=\R^d$ and $Y_2=T^*X_j$ in the previous theorem.
+  \td{Fill in the details for the following. Note the parallels to Morse's proof in \cite{Morse1970}.}
+  We first show that we can choose a $\delta>0$ such that for all $\e\in B_\delta\subseteq\R^d$ we have no critical points on $\Sigma^0\brk*{u^\e}$.
+  Assume not. Then there exist sequences $\e_k\to0$ and $x_k$ of critical points of $u^{\e_k}$ on $\Sigma^0(u^{\e_k})$.
+  By compactness of $X$ we can assume that $x_k\to x$ for some $x\in X$ after taking a subsequence.
+  After taking a further subsequence we can also assume that all $x_k$ lie in a stratum $X_j$.
+  The condition that $x_j$ are critical points and lie in $\Sigma^0\brk*{u^{\e_j}}$
+  means that there exists a stratum $X_{j-1}$ such that $x_j$ is also critical point of this stratum.
+  But then $x$ is also a critical point of $X_{j-1}$ for $u$ since $u^\e\to u$.
+  This implies that $x$ is a critical point of $X_{j-1}$, but $x\in\overline{X}_j$ and hence $x\in\Sigma^0$
+  is a critical point. A contradiction.
+
+  Set $r=2$, $E=B_\delta$ and $Y_2=T^*X_j$ in the previous theorem.
   We initially set $Y_1=X_j=\Omega$.
   We would like to apply the parametric transversality theorem to the function
   \begin{align*}
-    F\colon E&\to C^\infty(X_j,T^*X_j) \\
+    F\colon E&\to C^\infty\brk*{X_j,T^*X_j} \\
     \e&\mapsto u^\e
   \end{align*}
   We note that $F^\text{ev}$ is sufficiently smooth. 
@@ -501,20 +532,19 @@ Using proposition \ref{pr:nonDegeneracy:alternativeCharacterisation} we obtain t
   zero section $A\subseteq T^*X_j$. Then the parametric transversality theorem 
   yields a dense $E_j\subseteq E$ on which
   $F$ is transverse to $A$.
-  For this note that $E\times C = F^{-1}(A)$.
-  It then follows for all $(\e,x)\in F^{-1}(A)$ that
+  For this note that for all $(\e,x)\in F^{-1}(A)$ we have
   \begin{align}
     \Image\brk*{DF^\text{ev}_{(\e,x)}}=T_xT^*X_j\label{eq:nonDegeneracy:surjectiveDF}
   \end{align}
-  since we have that
+  since
   \begin{align*}
     DF^\text{ev}_{(\e,x)}=\begin{bmatrix}
-      Du_x\mid \Id_{d\times d}
+      \Id_{d\times d}\mid Du_x
     \end{bmatrix}
   \end{align*}
   is surjective. 
   Proposition \ref{pr:nonDegeneracy:alternativeCharacterisation}
-  now yields that $u^\e$ non-degenerate on $E_j$.
+  now yields that $u^\e$ is non-degenerate on $E_j$.
   
   Analogously we set $Y_1=X_j$ to be an arbitrary strata in the previous proof and replace
   $u^\e$ with the restriction $u_j^\e$. To show that
@@ -525,68 +555,220 @@ Using proposition \ref{pr:nonDegeneracy:alternativeCharacterisation} we obtain t
     =D\pi_j\circ \brk*{Du^\e(x)}_{(\e,x)}
   \end{align*}
   is surjective as a concatenation of surjective functions.
-  Thus there also exists a dense set $E_\Sigma\subseteq\R$ on which $u^\e_j$ is
-  non-degenerate on $X_j$. Now the set
-  \begin{align}
-    \overline{E}=\cap_j E_j\subseteq\R
-  \end{align}
-  is dense and
-  for every $\e\in\overline{E}$ the function $u^\e$ fulfils condition \ref{co:nonDegeneracy_density_nonDeg}.
+  Thus there also exists a dense set $E_j\subseteq\R$ on which $u^\e_j$ is
+  non-degenerate on $X_j$.
 
   Now to the tangency regularity. 
+  For this we set $Y_2=N^*X_j$ and $Y_1=X_j$. 
+  We would like to apply the parametric transversality theorem to the function
+  \begin{align*}
+    F\colon E&\to C^\infty(X_j,N^*X_j) \\
+    \e&\mapsto u_j^{\e,N}
+  \end{align*}
+  Again $F^\text{ev}$ is sufficiently smooth.
+  We need to show that $F^\text{ev}$ is transverse to the
+  zero section $A\subseteq N^*X_j$. Then the parametric transversality theorem 
+  yields a dense $E_j^N\subseteq E$ on which
+  $F$ is transverse to $A$.
+  It now follows for all $(\e,x)\in F^{-1}(A)$ that
+  \begin{align}
+    \Image\brk*{DF^\text{ev}_{(\e,x)}}=T_xN^*X_j
+  \end{align}
+  since we have that
+  \begin{align*}
+    DF^\text{ev}_{(\e,x)}
+    =D\brk*{u_j^{\e,N}(x)}_{(\e,x)}
+    =D\pi_j^N\circ \brk*{Du^\e(x)}_{(\e,x)}
+  \end{align*}
+  is surjective as a concatenation of surjective mappings. 
+  Proposition \ref{pr:tanRegular_alternativeCharacterisation}
+  yields that $u^{\e,N}$ is tangency regular on $E_j^N$.
+  
+  Now the set
+  \begin{align}
+    \overline{E}=\brk*{\bigcap_j E_j}\cap\brk*{\bigcap_j E_j^N}\subseteq\R
+  \end{align}
+  is dense in $\R$ and
+  for every $\e\in\overline{E}$ the function $u^\e$ fulfils conditions
+  \ref{co:nonDegeneracy_density_nonDeg} and \ref{co:nonDegeneracy_density_tanReg}.
+
+  \td{Show a version of the second part of the corollary}
 \end{proof}
 
-We have a brief intermezzo
-\begin{proposition}
-  We have that
-  \begin{align*}
-    \partial\Sigma^-\cup\partial\Sigma^+\subseteq\Sigma^0\,.
-  \end{align*}
-\end{proposition}
-\begin{proof}
-  \td{Some proof}
-\end{proof}
+% We have a brief intermezzo
+% \begin{proposition}
+%   We have that
+%   \begin{align*}
+%     \partial\Sigma^-\cup\partial\Sigma^+\subseteq\Sigma^0\,.
+%   \end{align*}
+% \end{proposition}
+% \begin{proof}
+%   \td{Some proof}
+% \end{proof}
 
 One of the reasons for introducing boundary tangency is the following proposition 
 \begin{proposition}
-  Let $u$ be tangency regular.
-  Then $\partial\Sigma^+=\partial\Sigma^-$.
+  Assume that $\Sigma$ is a $C^1$ manifold and $u\colon X\to T^*X$
+  a tangency regular vector field. Then we have that
+  $\partial\Sigma^+$ is a submanifold.
 \end{proposition}
 \begin{proof}
-  
+  In this case we have that $\partial\Sigma^+=\Sigma^0$.
+  Since
+  \begin{align}
+    \Sigma^0=\brk*{u_j^N}^{-1}\brk*{0}
+  \end{align}
+  And since $u_j^N$ is transverse to the zero section of $N^*\Sigma$ the claim follows.
+  \td{Elaborate}
 \end{proof}
 
-As a consequence we get a version of the results in \cite[§2]{Morse1970}.
-
-We call a boundary point $x\in X_j$ on a strata $X_j$ \emph{ordinary} iff $x$ lies
-in the interior of $X_j$ and if there exists a stratum $X_{j-1}$ that $x$ is not critical point of $X_{j-1}$.
-
-We summarise this section with the following lemma.
-\begin{lemma}[Density of boundary generic functions]
-  Let $u\colon X\to T^*X$ and $X$ be a stratified space. Then there exists a dense subset $E\subseteq B_r\R^d$
-  for some $r>0$ such that
-  \begin{enumerate}
-    \item the $u^\e$ are boundary generic
-    \item $u^\e\to u$ uniformly
-    \item The critical points of $u^\e$ converge uniformly to the critical points of $u$
-    \item The critical points of $u^\e$ and $u$ can be put into a one-to-one correspondence preserving index and the property
-     of being emergent or entrant
-    \item $\Sigma^0\brk*{u^\e}$ converges and has a limit contained in $\Sigma^0(u)$
-    \item The boundaries $\Sigma^+$ and $\Sigma^-$ are conserved
-  \end{enumerate}
-  as $\e\to0$ for $\e\in E$.
-\end{lemma}
+In the following we need a notion of convergence of subsets on a metric space.
+We define the \emph{Hausdorff metric} for two sets $A,B\subseteq X$ to be given by 
+\begin{align}
+  d_H\brk*{A,B}=\max\brk[c]*{\sup_{x\in A}\dist\brk*{x,B},\,\sup_{y\in B}\dist\brk*{y,A}}
+\end{align}
+where
+\begin{align}
+  \dist\brk*{x,B}=\inf_{y\in B}d(x,y)
+\end{align}
+is the smallest distance from $x$ to $B$.
+We are now able to state the following proposition:
+\td{What happens if one of the sets involved is empty?}
+\begin{proposition}\label{pr:tanReg_convergence_Sigma0}
+  Assume that $\Sigma$ is a $C^1$ manifold and that $u$ is tangency regular
+  Then we have
+  \begin{align}
+    \lim_\e\Sigma^0\brk*{u^\e}=\Sigma^0(u)
+  \end{align}
+  in the topology induced by the Hausdorff metric.
+\end{proposition}
 \begin{proof}
-  % We follow \cite[text]{Morse1970}.
-  % First choose $\delta$ so small that for all stagnation points of $u^\e$ lie in $\Omega$.
-  % If there did not exist such a $\delta$ we could choose a sequence $\e_n\to0$ in $\R^d$ such 
-  % that $u^{\e_n}$ had a stagnation point $x_n$ on $\Sigma$. Since $\Sigma$ is compact we can assume that $x_n$ converges
-  % to a stagnation point $x$. But then $x$ is also a stagnation point of $u$. A contradiction.
-  
-  We note that since $X$ is compact we have that $\nabla u_\e\to \nabla u$ 
-  uniformly as $\abs*{\e}\to0$.
-  \td{complete proof}.
+  Set $E=\R^d$.
+  % One calculates
+  % \begin{align}
+  %   \partial\Sigma^+(u^\e)
+  %   &= \Sigma^0(u^\e)
+  %   &=\brk*{u_j^{\e,N}}^{-1}\brk*{0}
+  %   &=\brk*{\pi_j^N\circ u^\e}^{-1}\brk*{0}
+  % \end{align}
+  % For every $\e$ and every $x\in \Sigma^0\brk*{u^\e}$ there exists
+  % a neighbourhood $U\subseteq\Sigma$ of $x$ and charts
+  % $\phi\colon U\to V\subseteq\R^d-1$ and $\psi\colon N^*U\to V\times W\subseteq\R^{d-1}\times\R$
+  % such that $\phi$ is a diffeomorphism and $\psi$ a vector space isomorphism.
+  For every $x\in \Sigma^0\brk*{u}$ there exists
+  a neighbourhood $U\subseteq\Sigma$ of $x$ and charts
+  $\phi\colon U\to V\subseteq\R^d-1$ and $\psi\colon N^*U\to V\times W\subseteq\R^{d-1}\times\R$
+  such that $\phi$ is a diffeomorphism and $\psi$ a vector space isomorphism.
+  % \begin{center}
+  %   \tikzset{external/export next=false}
+  %   \begin{tikzcd}
+  %     U_\e\subseteq\Sigma \arrow[d,"\phi"]\arrow[r,"u^\e"] & T^*U_\e \arrow[r,"\pi^N"] & N^*U_\e \arrow[d,"\psi"] \\
+  %     V_\e\subseteq\R^{d-1}\arrow[rr,"f^\e"] & & V\times W\subseteq\R^{d-1}\R
+  %   \end{tikzcd}
+  % \end{center}
+  Define $f$ via the following diagram:
+  \begin{center}
+    \tikzset{external/export next=false}
+    \begin{tikzcd}
+      U\times E\subseteq\Sigma\times E \arrow[d,"\phi"]\arrow[r,"u^{\cdot_2}(\cdot_1)"] & T^*U \arrow[r,"\pi^N"] & N^*U \arrow[d,"\pi_W\circ\psi"] \\
+      V\times E\subseteq\R^{d-1}\times E \arrow[rr,"f"] & & W\subseteq\R
+    \end{tikzcd}
+  \end{center}
+  Since $u$ is transverse to the zero section of $N^*U$ the function $f$ is of full rank around the
+  point $(x,0)$ in the $x$ variable.
+  By the implicit function theorem or constant rank theorem there exists  a coordinate permutation
+  and a differentiable function $g\colon \pi_{\R^{d-2}}V\times E\to \R$ on $V$ such that
+  \begin{align}
+    \brk[c]*{\brk*{y,g(y,\e),\e}\colon (y,\e)\in \pi_{\R^{d-2}}V\times E}
+  \end{align}
+  is precisely the set around $(x,0)$ on which $f$ vanishes.
+  Here the sets $U$, $E$ and $V$ potentially shrink and we assume that the coordinate permutation was incorporated into the
+  mapping $\phi$. Since $g$ is continuous it follows at least locally that the
+  set $\Sigma^0\brk*{u^\e}$ depends continuously on the parameter $\e$.
+  This shows that
+  \begin{align}
+    \lim_{\e\to0}\sup_{x\in\Sigma^0\brk*{u}}\dist\brk*{x,\Sigma^0(u^\e)}=0\,.
+    \label{eq:convergence_Sigma0_limsup1}
+  \end{align}
+
+  It remains to be shown that
+  \begin{align}
+    \lim_{\e\to0}\sup_{x\in\Sigma^0\brk*{u^\e}}\dist\brk*{x,\Sigma^0\brk*{u}}=0\,.
+    \label{eq:convergence_Sigma0_limsup2}
+  \end{align}
+  Assume not. Then there exists sequences $\e_k$ and $x_k\in\Sigma^0\brk*{u^{\e_k}}$ and a $\delta>0$ such that
+  \begin{align}
+    \dist\brk*{x_k,\Sigma^0\brk*{u}}\geq\delta\,.
+  \end{align}
+  By compactness of $\Sigma$ we can assume that $x_k\to x$ in $\Sigma$ after taking a subsequence. 
+  But now by continuity of $\pi^N$ we obtain
+  \begin{align}
+    0=\lim_{k}u^{N,\e_k}\brk*{x_k}
+    =\pi^N\circ\lim_{k}\brk*{u\brk*{x_k}+\e_k}
+    =\pi^N\circ u\brk*{\lim_kx_k}
+    =u^{N,0}\brk*{x}
+  \end{align}
+  and thus $x\in\Sigma^0(u)$. But $x_k\to x$ is a contradiction to $\dist\brk*{x_k,x}\geq\delta$.
+
+  Now equations \eqref{eq:convergence_Sigma0_limsup1} and \eqref{eq:convergence_Sigma0_limsup2} imply that
+  \begin{align}
+    \lim_\e d_H\brk*{\Sigma^0\brk*{u^\e},\Sigma^0\brk*{u}}=0
+  \end{align}
 \end{proof}
+
+From the previous proof we obtain the corollary
+\begin{corollary}\label{co:tanReg_homotopy}
+  Assume that $\Sigma$ is a $C^1$ manifold and that $u$ is tangency regular.
+  Then there exists a $\delta>0$, such that for every
+  $\e\in B_\delta$ the set $\Sigma^+\brk*{u^\e}$ is homotopic to $\Sigma^+(u)$.
+\end{corollary}
+\begin{proof}
+  Since $\Sigma^0$ is compact we obtain as in the proof above finitely points $x\in\Sigma(u)$,
+  open sets $U=U_x$,
+  $g=g_x$, $\phi=\phi_x$ etc.\ as in the proof above such that the $U_x$ cover $\Sigma^0(u)$.
+  Choose $\eta$ sufficiently small such that the set
+  \begin{align}
+    \brk*{\Sigma^0\brk*{u}}_\eta=\brk[c]*{y\in\Sigma\colon \dist\brk*{y,\Sigma^0\brk*{u}}<\delta}\subseteq \bigcup_xU_x
+  \end{align}
+  is contained in the union of the $U_x$. By the previous proposition we can choose $\delta$ such that 
+  \begin{align}
+    d_H\brk*{\Sigma^0\brk*{u^\e},\Sigma^0\brk*{u}}<\eta
+  \end{align}
+  for all $\e\in B_\delta$. Now fix $\e\in E$.
+  We now construct the homotopy
+  \begin{align}
+    G\colon [0,1]\times\Sigma^+\brk*{u}&\to\Sigma^+\brk*{u^\e}
+  \end{align}
+  as $G(t,\cdot)=\Id$ is the identity outside of $\brk*{\Sigma^0\brk*{u}}_\eta$ 
+  \td{complete construction}
+\end{proof}
+
+% We define the \emph{Kuratowski limit inferior} for a sequence of sets $A_n\subseteq X$ as
+% \begin{align}
+%   \liminf_n A_n=\brk[c]*{x\in X\colon \limsup_n \dist\brk*{x,A_n}=0}\,.
+% \end{align}
+% Analogously define the \emph{Kuratowski limit superior}.
+% With this notion we can formulate the following proposition
+% \begin{proposition}
+%   Assume that $\Sigma$ is a $C^1$ manifold. Then there exists a sequence $\e_n$ such that each
+%   $\e_n$ is tangency regular and such that the limit
+%   \begin{align}
+%     \liminf_{n}\Sigma^0\brk*{u^{\e_n}}\subseteq\Sigma^0\brk*{u}
+%   \end{align}
+%   contains a point in each connected component of $\Sigma^0(u)$.
+% \end{proposition}
+% \begin{proof}
+  
+% \end{proof}
+
+% Thus we obtain the corollary
+% \begin{corollary}[Density of boundary generic functions for $C^1$ boundary]
+%   Let $u$, $\delta$ and $\e$ be as in corollary \ref{} and assume that $\Sigma$ is a $C^1$ manifold. Then
+%   we have as $\e\to0$ that
+%   \begin{enumerate}[resume]
+%     \item $\Sigma^0\brk*{u^\e}$ converges and has a limit contained in $\Sigma^0(u)$
+%   \end{enumerate}
+% \end{corollary}
 
 \section{Some general remarks}
 
@@ -952,6 +1134,12 @@ Using invariant manifolds we obtain the following proof.
 
 \subsection{A proof involving Morse theory}
 
+
+We now give a proof involving Morse theory since this generalises to the three dimensional case.
+\begin{proposition}
+  Let $d=2$ and $X$ be simply connected such that $\Sigma$ is a differentiable manifold and let $f\colon X\to\R$ be tangency regular.
+  Assume further that $\Sigma^-$ and $\Sigma^+$ are nonempty and simply connected. Then $f$ has no interior critical point.
+\end{proposition}
 \td{fix the following proof}
 
 % We start with a technical lemma
@@ -1063,40 +1251,41 @@ Using invariant manifolds we obtain the following proof.
 % \end{proof}
 
 \begin{proof}
-  Assume that $\Sigma^-$ is connected.
   Let $x_1,x_2\in\Sigma^0(f)$ be two points on different connectivity components which we will fix later.
-
-  Then we can cut the domain along $\Gamma$ such that the endpoints
+  Then we can cut the domain along a curve $\Gamma$ such that the endpoints
   of the cut coincide with $x_1$ and $x_2$, that is $\partial\Gamma=\brk[c]*{x_1,x_2}$.
   Now we obtain two new domains $X^+$ and $X^-$ such that $\partial X^+ \subseteq\Sigma^+\cup\Sigma^0\cup\Gamma$ and
   $\partial X^-\subseteq\Sigma^-\cup\Sigma^0\cup\Gamma$. We can assume that $\Gamma$ is a smooth manifold and corresponds to the stratum 
   $X_\Gamma$ for $X^+$ and $X^-$. We also assume that the corner points $x_1,x_2\in\partial\Gamma$ correspond to the strata $X_{1}$ and $X_{2}$.
-  Locally around the corner point $x_1$ we have a situation depicted as in figure \ref{fi:n2_cutOmega_flowthrough}
+  Locally around the corner point $x_1$ we have a situation depicted as in figure \ref{fi:n2_cutOmega_flowthrough}.
   \begin{figure}
     \centering
     \input{../Figures/n2_cutOmega_flowthrough.pdf_tex}
     \caption{The situation at hand.}
     \label{fi:n2_cutOmega_flowthrough}
   \end{figure}
-  That is $u=\nabla f$ is essentially parallel to the boundary $\Sigma$.
-  We assume that we chose $\Gamma$ such that the acute angle between $u$ and $\Gamma$ around $x_1$ is on the side where $u$ flows into the new domain.
+  In words, the vector field $u=\nabla f$ is essentially parallel to the boundary $\Sigma$ in a neighbourhood of $x_1$.
+  We assume that we chose $\Gamma$ such that the acute angle between $u$ and $\Gamma$ at $x_1$ is on the side where $u$ flows into the new domain.
   % More concretely this condition is equivalent to that there exists an open neighbourhood $U_1$ of $x_1$ such that
   % $n_\Gamma\cdot u< u$ on $U_1$.
   % Here $n_\Gamma\colon\Gamma\to S^1\subseteq\R^2$ denotes the normal of the cut $\Gamma$ which points in the direction of the flow.
-  Thus we have that $x_1$ is not an essential critical point of either $f$ nor $-f$.
+  Thus we have that $x_1$ is not an essential critical point of $-f$ on $X^-$.
+  $x_1$ may or may not however be a critical point of $f$ on $X^+$.
   Analogously we can choose $\Gamma$ in such a way around $x_2$.
-  For the following argumentation we require that $u$ is Morse on both $X^+$ and $X^-$, so assume for a moment that this
+  For the following argumentation we require that $u$ is strictly Morse on both $X^+$ and $X^-$, so assume for a moment that this
   is the case.
-  We now focus our attention on $X^+$. Since no essential critical points lie on $\Sigma^+$ or $\Sigma^0$ 
+  We now focus our attention on $X^+$. Since no essential critical points lie on $\Sigma^+$
   it follows for the boundary type numbers that
   \begin{align}
-    \mu^+_j=\ind_{\Gamma,j}(f)\,.\label{eq:n2_disproof_morse_muplus}
+    \mu^+_j=\ind_{\Gamma,j}(f)+\delta_{j0}\ind_{\Sigma^0,j}(f)\label{eq:n2_disproof_morse_muplus}
   \end{align}
+  where $\delta_{ij}$ denotes the Kronecker delta.
   Analogously we have on $X^-$ that
   \begin{align}
-    \nu^-_j=\ind_{\Gamma,j}(-f)\,.\label{eq:n2_disproof_morse_numinus}
+    \nu^-_j=\ind_{\Gamma,j}(-f)\label{eq:n2_disproof_morse_numinus}
   \end{align}
-  In addition we have that the emergent critical points of $f$ on $X^+$ are the
+  where we took into account that $\ind_{\Sigma^0,j}(-f)=0$.
+  In addition we have on $\Gamma$ that the emergent critical points of $f$ on $X^+$ are the
   entrant critical points of $-f$ on $X^-$, that is
   \begin{align}
     \ind_{\Gamma,0}(f)=\ind_{\Gamma,1}(-f)\qquad\text{ and }\qquad 
@@ -1105,7 +1294,7 @@ Using invariant manifolds we obtain the following proof.
   Using equations \eqref{eq:n2_disproof_morse_muplus}, \eqref{eq:n2_disproof_morse_numinus} and \eqref{eq:n2_disproof_morse_relationIndex}
   we obtain
   \begin{align}
-    \mu^+_0=\nu^-_1 \qquad\text{ and }\qquad \mu^+_1=\nu^-_0\,.\label{eq:n2_disproof_morse_relationMuNu}
+    \mu^+_0-\ind_{\Sigma^0,0}(f)=\nu^-_1 \qquad\text{ and }\qquad \mu^+_1=\nu^-_0\,.\label{eq:n2_disproof_morse_relationMuNu}
   \end{align}
   Consider the Morse inequality for $f$
   \begin{align}
@@ -1118,31 +1307,40 @@ Using invariant manifolds we obtain the following proof.
   We now add equations \eqref{eq:n2_disproof_morse_morseineqplus} and \eqref{eq:n2_disproof_morse_morseineqminus}
   and insert relations \eqref{eq:n2_disproof_morse_relationMuNu} to obtain
   \begin{align*}
-    M^-+M^+=-2\chi(X)<0
+    M^-+M^+-\ind_{\Sigma^0,0}(f)=-2\chi(X)=-2\,.
   \end{align*}
-  in contradiction to $M^\pm\geq0$.
+  Since $\ind_{\Sigma^0,0}(f)\leq2$ and $M^\pm\geq0$ we must in fact have $M^\pm=0$ from which the claim follows.
+
+  % \ref{pr:tanReg_convergence_Sigma0}
+  % \ref{co:tanReg_homotopy}
+  % \ref{co:density_boundaryGeneric}
 
   The statement now remains to be shown for $u$ which are not Morse on $\Gamma$.
-  Let $u^\e\to u$ be a family of boundary generic functions with respect to the 
-  stratification $X^+\cup X^-$ as in section \ref{se:assuming_nonDegeneracy}.
-  By proposition \ref{} we can define the set $\brk[c]*{x_1,x_2}\subseteq\Sigma^0(u)$
-  to be the limit of the set $\Sigma^0\brk*{u^\e}=\brk[c]*{x_1^\e,x_2^\e}$ converges to the set
-  as $\e\to0$.
-  Fix the cut $\Gamma$ as above.
-  Let $U_1$ be a neighbourhood of $x_1$ such that $\overline{U}_1$ contains no critical points of $f$.
-  Analogously define $U_2$.
-  Then there exists by proposition \ref{} a $\delta>0$ such that for all 
-  $\abs{\e}<\delta$ the function $u^\e$ has no essential critical points in $U_1$
-  or $U_2$.
-  Define the modified cut $\Gamma^\e$ as above with the addition that it is equal to $\Gamma$ outside of $U_1\cup U_2$ and such that it
-  converges uniformly to $\Gamma$ on $U_1\cup U_2$ as $\e\to0$.
-  Let $n_\Gamma^\e\colon\Gamma^\e\to S^1\subseteq\R^2$ denote the
-  normal of $\Gamma^\e$.
-  By the above argument the statement holds for $u^\e$ with the modified cut
+  Let $u^\e\to u$ for $\e\in E$ be a family of boundary generic functions with respect to the 
+  stratification $X^+\cup X^-$ as in corollary 
+  \ref{co:density_boundaryGeneric}.
+  By proposition \ref{pr:tanReg_convergence_Sigma0} the set $\Sigma^0\brk*{u^\e}$ converges
+  to $\Sigma^0\brk*{u}$ as $\e\to0$.
+  Choose $\delta$ sufficiently small according to corollary \ref{co:tanReg_homotopy}
+  and now assume that $\e\in E_\delta=B_\delta\cap E$.
+  Now take a sufficiently small $\eta>0$ such that $\Gamma$ has no critical points in
+  $\overline{B_\eta\brk*{x_1}}\cup \overline{B_\eta\brk*{x_2}}$. 
+  We modify for every
+  $\e\in E_\delta$ the cut $\Gamma$ to yield a cut $\Gamma_\e$ such that $\Gamma=\Gamma_\e$
+  outside of $B_\eta(x_1)\cup B_\eta(x_2)$ and such that $\Gamma_\e$ intersects the boundary $\Sigma$
+  precisely at $\Sigma^0\brk*{u^\e}$.
+  Furthermore by choosing $\delta$ sufficiently small we can also ensure that
+  $\Gamma$ has no critical points of $u^\e$ inside of $\overline{B_\eta\brk*{x_1}}\cup \overline{B_\eta\brk*{x_2}}$
+  and that $\Gamma_\e$ is slanted in such a way that $u_\e$ has no critical points on
+  $\Gamma_\e\cap B_\eta\brk*{x_1}\cap B_\eta\brk*{x_2}$.
+  
+  
+  Now $u^\e$ is by construction strictly Morse on $\Gamma^\e$.
+  By the above argument the statement holds for $u^\e$ with the modified cut $\Gamma^\e$.
   % $$\brk[c]*{X_j}_{j\in\cJ}\cup\brk[c]*{X_\Gamma}\cup\brk[c]*{X_j}_{j\in\brk[c]*{1,2}}$$
   % of $X$. Again by proposition \ref{} we have that $\Sigma^0(u^\e)\to\Sigma^0(u)$ for $\e\to0$.
   % This implies that if we choose the cut $\Gamma^\e$ for $u^\e$ as in figure \ref{}
-  % we obtain that for all $u^\e$ all 
+  % we obtain that for all $u^\e$ all
 \end{proof}
 % \begin{proposition}
 %   Let $X$ be a simply connected manifold with corners and $f\colon X\to\R$ harmonic and Morse. 
@@ -1624,6 +1822,25 @@ simply connected entrant boundary.
     \caption{Stereographic projection of the surface $\Sigma$.}
     \label{pl:n3_hf_inflowOutflowStagnationPoint_Surface}
   \end{figure}
+  Consider now the inverse stereographic projection given by 
+  \begin{align}
+    \psi\colon \R^2&\to B_1\setminus\brk*{e_3} \\
+    x&\mapsto \frac{1}{s^2+1}\vect{x \\ s^2-1}
+  \end{align}
+  where $s=\abs{x}$. We calculate
+  \begin{align}
+    \frac{1}{r}n\cdot u(x) = x_1^2(1-x_1)+x_2^2(3x_1-1)+2x_2x_3
+  \end{align}
+  If we now precompose with the stereographic projection we obtain
+  \begin{align}
+    &\brk*{\frac{1}{r}n\cdot u}\circ\psi (x) \\
+    &= \frac{1}{\brk*{s^2+1}^3}\brk*{x_1^2\brk*{\brk*{s^2+1}-x_1}+x_2^2\brk*{3x_1-\brk*{s^2+1}}+2x_2\brk*{s^2+1}\brk*{s^2-1}}
+  \end{align}
+  which vanishes precisely iff
+  \begin{align}
+    0&=x_1^2\brk*{\brk*{s^2+1}-x_1}+x_2^2\brk*{3x_1-\brk*{s^2+1}}+2x_2\brk*{s^2+1}\brk*{s^2-1} \\
+    &=\brk*{s^2+1}\brk*{x_1^2-x_2^2}-x_1^3+3x_1x_2^2+2x_2\brk*{s^4-1} \\
+  \end{align}
   \td{complete this section.}
 \end{example}
 
