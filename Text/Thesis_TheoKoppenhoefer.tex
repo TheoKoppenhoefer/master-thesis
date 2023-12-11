@@ -83,7 +83,7 @@
 
 \newpage
 
-\section{Introduction}
+\chapter{Introduction}
 
 \ruggedtodo[inline]{Some amazing introduction}
 
@@ -131,7 +131,7 @@ To make the formulation of these questions more precise we begin with some gener
 \nomenclature{$f\colon X\to\R$}{A $C^2$ mapping, often assumed harmonic}
 \nomenclature{$u\colon X\to\R^d\text{ or }T^*\overline{\Omega}$}{A $C^1$ vector field, often assumed harmonic}
 
-\subsection{General definitions}
+\section{General definitions}
 
 We start by requiring some regularity for the boundary of $X$.
 More precisely we require $X$ to be a compact manifold with corners as in \cite{Handron2002}.
@@ -331,7 +331,7 @@ critical point of a stratum $x_{j-1}$.
 
 To better describe the boundary of the emergent boundary $\partial\Sigma^+$ we introduce the
 concept of tangency regularity, which is inspired by similar definitions made in \cite{Katz2014}.
-In order to avoid the technical intricaties involved with manifolds with corners we assume that
+In order to avoid the technical intricacies involved with manifolds with corners we assume that
 $\Sigma$ is a differentiable manifold for the following definitions to make sense.
 \begin{definition}[Normal bundle]
   We define the \emph{normal bundle} for a stratification of $X$ to be the quotient space
@@ -425,7 +425,7 @@ To illustrate the preceding definitions we return to our previous example.
   the $\pm e_3$ are non-degenerate critical points of $f$ with index $0$.
 \end{example}
 
-\subsection{On assuming non-degeneracy}\label{se:assuming_nonDegeneracy}
+\section{On assuming non-degeneracy}\label{se:assuming_nonDegeneracy}
 
 In the following section we argue that assuming non-degeneracy 
 of $u$ and $f$ is not a great restriction.
@@ -450,7 +450,7 @@ As an application we make the following observation.
 \begin{proposition}[Transversal characterisation of non-degeneracy]\label{pr:nonDegeneracy:alternativeCharacterisation}
   Let $u_j\colon X_j\to T^*X_j$ be a differentiable vector field.
   Then $u_j$ is non-degenerate iff $u_j$ is transverse to the zero section $A_j$ of $T^*X_j$
-  and contains no critical points in $\Sigma^0$.
+  and contains no stagnation points in $\Sigma^0$.
 \end{proposition}
 \begin{proof}
   First note that we have that $x\in u_j^{-1}(A)$ iff $u_j(x)=0$ and thus $u_j^{-1}(A)=C$.
@@ -461,7 +461,7 @@ As an application we make the following observation.
   \end{align}
   As $A$ is the zero section we have $T_{u_j(x)}A=0$ and equation \eqref{eq:nonDegeneracy:uTransverse}
   is equivalent to stating that $Du_j$ is of full rank. But $Du_j$ being of full rank at all points
-  in $C$ and $u_j$ having no critical points in $\Sigma^0$ is equivalent to $u_j$ being non-degenerate.
+  in $C$ and $u_j$ having no stagnation points in $\Sigma^0$ is equivalent to $u_j$ being non-degenerate.
 \end{proof}
 Analogously we make the following observation.
 \begin{proposition}[Transversal characterisation of tangency regularity]\label{pr:tanRegular_alternativeCharacterisation}
@@ -494,32 +494,38 @@ Using proposition \ref{pr:nonDegeneracy:alternativeCharacterisation}
 we get a generalisation of the results in \cite[§2]{Morse1970}.
 \begin{corollary}[Density of boundary generic functions]\label{co:density_boundaryGeneric}
   Let $u\colon X\to T^*X$ be a harmonic vector field on $X$ and let $X_j$ be a stratification of $X$.
-  Assume that $u$ has no critical points on $\Sigma^0$.
+  Assume that $u$ has no stagnation points on $\Sigma^0$.
   Then there exists a $\delta>0$ such that for almost every $\e\in B_\delta\subseteq\R^d$ we have that
   \begin{enumerate}
-    \item $u^\e$ given is non-degenerate on $X_j$ \label{co:nonDegeneracy_density_nonDeg}
+    \item $u^\e$ is non-degenerate on $X_j$ \label{co:nonDegeneracy_density_nonDeg}
     \item if in addition $\Sigma$ is a differentiable manifold then $u^\e$ is tangency regular on $X_j$ \label{co:nonDegeneracy_density_tanReg}
-  \end{enumerate}
-  Here $u^\e$ is given by equation \eqref{}. In addition we have as $\e\to0$ that
-  \begin{enumerate}
     \item $u^\e\to u$ uniformly
-    \item The critical points of $u^\e$ converge uniformly to critical points of $u$
-    \item The critical points of $u^\e$ and $u$ can be put into a one-to-one correspondence preserving index and the property
-     of being emergent or entrant
+    \item if $x_\e\to x$ then $x$ is a stagnation point of $u$
+    \item Additionally we can find for every $\eta>0$ a $\delta>0$ such that all stagnation points of $u^\e$ are contained in a 
+    $\eta$-neighbourhood of the set of stagnation points of $u$.
+    \item the property of being entrant or emergent of stagnation points of $u^\e$ is preserved, that is 
+      a stagnation point $x^\e$ of $u^\e$ lies in $\Sigma^+\brk*{u^\e}$ iff it lies in $\Sigma^-\brk*{u}$.
+    \item If $x$ is a non-degenerate stagnation point on the stratum $X_j$ of $u$ we have that
+     \begin{align*}
+        \ind_{k,X_j}\brk*{u^\e}=\ind_{k,X_j}\brk*{u}\qquad\text{ and }\qquad\ind_{k,X_j}\brk*{-u^\e}=\ind_{k,X_j}\brk*{-u}
+      \end{align*}
+      for all $k$.
   \end{enumerate}
 \end{corollary}
 \begin{proof}
-  \td{Fill in the details for the following. Note the parallels to Morse's proof in \cite{Morse1970}.}
-  We first show that we can choose a $\delta>0$ such that for all $\e\in B_\delta\subseteq\R^d$ we have no critical points on $\Sigma^0\brk*{u^\e}$.
-  Assume not. Then there exist sequences $\e_k\to0$ and $x_k$ of critical points of $u^{\e_k}$ on $\Sigma^0(u^{\e_k})$.
-  By compactness of $X$ we can assume that $x_k\to x$ for some $x\in X$ after taking a subsequence.
-  After taking a further subsequence we can also assume that all $x_k$ lie in a stratum $X_j$.
-  The condition that $x_j$ are critical points and lie in $\Sigma^0\brk*{u^{\e_j}}$
-  means that there exists a stratum $X_{j-1}$ such that $x_j$ is also critical point of this stratum.
-  But then $x$ is also a critical point of $X_{j-1}$ for $u$ since $u^\e\to u$.
-  This implies that $x$ is a critical point of $X_{j-1}$, but $x\in\overline{X}_j$ and hence $x\in\Sigma^0$
-  is a critical point. A contradiction.
+  \td{Fill in the details for the following. .}
+  The following is essentially an adaptation of a proof given in \cite[§2]{Morse1970}.
+  We first show that we can choose a $\delta>0$ such that for all $\e\in B_\delta\subseteq\R^d$ we have no stagnation points on $\Sigma^0\brk*{u^\e}$.
+  Assume not. Then there exist sequences $\e_k\to0$ and $x_k$ of stagnation points of $u^{\e_k}$ on $\Sigma^0(u^{\e_k})$.
+  By compactness of $X$ we can assume that $x_k\to x$ for some $x\in X$ after taking a sub-sequence.
+  After taking a further sub-sequence we can also assume that all $x_k$ lie in a stratum $X_j$.
+  The condition that $x_j$ are stagnation points and lie in $\Sigma^0\brk*{u^{\e_j}}$
+  means that there exists a stratum $X_{j-1}$ such that $x_j$ is also stagnation point of this stratum.
+  But then $x$ is also a stagnation point of $X_{j-1}$ for $u$ since $u^\e\to u$.
+  This implies that $x$ is a stagnation point of $X_{j-1}$, but $x\in\overline{X}_j$ and hence $x\in\Sigma^0$
+  is a stagnation point. A contradiction.
 
+  The next part of the proof is inspired by \cite{Hirsch1994} use of transversality to show a similar statement.
   Set $r=2$, $E=B_\delta$ and $Y_2=T^*X_j$ in the previous theorem.
   We initially set $Y_1=X_j=\Omega$.
   We would like to apply the parametric transversality theorem to the function
@@ -592,7 +598,46 @@ we get a generalisation of the results in \cite[§2]{Morse1970}.
   for every $\e\in\overline{E}$ the function $u^\e$ fulfils conditions
   \ref{co:nonDegeneracy_density_nonDeg} and \ref{co:nonDegeneracy_density_tanReg}.
 
-  \td{Show a version of the second part of the corollary}
+  
+  Let $x_\e\to x$ on the stratum $X_j$.
+  The uniform convergence $u^\e\to u$ as $\e\to0$ and the continuity of $\pi_j$ 
+  imply that $x$ is a stagnation point of $u$.
+  More concretely let $x_\e\to x$ be convergent sequence of stagnation points for $u^\e$
+  as $\e\to0$ then we have that
+  \begin{align}
+    0=\lim_\e u_j^\e\brk*{x_\e}
+    =u_j\brk*{x}
+  \end{align}
+  and thus $x$ is a stagnation point.
+
+
+  Let $U_\eta$ denote the open $\eta$-neighbourhood of the set of critical points of $u$.
+  Since $u$ has no stagnation points in $\Sigma^0$ we have for any stratum $X_j$ that
+  $u_j\neq0$ on the compact set $\overline{X}_j\setminus U_\eta$ which implies that we can choose $\delta>0$ 
+  so small that $\abs{u_j}>\delta$ on $\overline{X}_j\setminus U_\eta$
+  for all strata $X_j$.
+  For any $\e\in B_\delta$ it then follows that $u^\e$ has no critical points on the set $\overline{X}_j\setminus U_\eta$
+  which yields the claim.
+
+  Since the boundary stagnation points of $u$ have a positive distance to the tangential boundary $\Sigma^0$,
+  say $2\eta$ we can choose $\delta$ as in the previous part of the proof. Now consider the continuous mapping
+  \begin{align*}
+    x\mapsto \dist\brk*{u(x),\partial C_xX_j}
+  \end{align*}
+  which is positive on $X_j\setminus \brk*{\Sigma^0}_\eta$ and thus attains a positive minimum over all strata $X_j$.
+  We can assume that $\delta>0$ is less than this minimum.
+  The choice of $\delta$ in this way ensures that the property of being entrant or emergent is preserved.
+
+  Since $x$ is not contained in $\Sigma^0$, by continuity $x$ will
+  be entrant or emergent.
+  On the other hand if $x$ is a non-degenerate stagnation point of $u$ on the stratum $X_j$ it follows 
+  from the inverse function theorem that there exists for sufficiently small $\delta$
+  a neighbourhood around $x$ on which there is a one-to-one correspondence between the
+  stagnation points of $u$ and $u^\e$.
+  Since there are by proposition \ref{} at most finitely many non-degenerate stagnation points of
+  $u$ we can choose $\delta$ to be minimal over all these stagnation points.
+  The equality of the indexes then follows from $Du^\e=Du$.
+
 \end{proof}
 
 % We have a brief intermezzo
@@ -700,7 +745,7 @@ We are now able to state the following proposition:
   \begin{align}
     \dist\brk*{x_k,\Sigma^0\brk*{u}}\geq\delta\,.
   \end{align}
-  By compactness of $\Sigma$ we can assume that $x_k\to x$ in $\Sigma$ after taking a subsequence. 
+  By compactness of $\Sigma$ we can assume that $x_k\to x$ in $\Sigma$ after taking a sub-sequence. 
   But now by continuity of $\pi^N$ we obtain
   \begin{align}
     0=\lim_{k}u^{N,\e_k}\brk*{x_k}
@@ -770,7 +815,7 @@ From the previous proof we obtain the corollary
 %   \end{enumerate}
 % \end{corollary}
 
-\section{Some general remarks}
+\chapter{Some general remarks}
 
 We make the following remarks
 \begin{proposition}
@@ -811,7 +856,7 @@ We state Morse's lemma according to \cite[p.145]{Hirsch1994}
 
 \td{Bring order into this section.}
 
-\subsection{Betti numbers}
+\section{Betti numbers}
 
 Let $H_k(X;\R)$ denote the $k$-th homology space of $X$.
 For an introduction and definition of these we refer the reader to \cite[Chapter 2]{Hatcher2002}.
@@ -900,7 +945,7 @@ We proceed to give examples for Betti numbers of selected connected domains in $
 
 \td{Comment on the finiteness of Betti numbers. Check numbers for ball with torus bubble.}
 
-\subsection{The Morse inequalities}
+\section{The Morse inequalities}
 
 We state the Morse inequalities.\ruggedtodo[]{More citations.}
 \begin{theorem}[Strong Morse inequalities]
@@ -955,7 +1000,7 @@ In dimensions $d=3$ we obtain \cite[Corollary 10.2]{Morse1969}
 \ruggedtodo[inline]{Give a classical example of a Morse function to determine the Betti numbers.}
 \td{Give an outline of the proof.}
 
-\subsection{On harmonic vector fields}
+\section{On harmonic vector fields}
 
 In the following we deduce some basic relations for harmonic vector fields in dimensions $d\in\brk[c]{2,3}$.
 \begin{proposition}[Harmonic vector fields on simply connected domains]\label{pr:n2:hvf:simplyConnected}
@@ -984,7 +1029,7 @@ properties at least locally.
 
 \newpage
 
-\section{Harmonic functions, $d=2$}
+\chapter{Harmonic functions, $d=2$}
 
 The following result is essentially a negative to question \ref{qu:flowthroughStagnationPoint} in $d=2$ dimensions.
 \begin{proposition}\label{pr:n2:hf:nonExistence}
@@ -993,7 +1038,7 @@ The following result is essentially a negative to question \ref{qu:flowthroughSt
 \end{proposition}
 We shall give two different proofs of this result. One involving level-sets and the other involving invariant manifolds
 
-\subsection{A proof involving level-sets}
+\section{A proof involving level-sets}
 
 \ruggedtodo[]{write omega-limit.}
 \begin{proof}[Sketch of Proof.]
@@ -1062,7 +1107,7 @@ We shall give two different proofs of this result. One involving level-sets and 
   From this the claim follows.
 \end{proof}
 
-\subsection{A proof involving invariant manifolds}
+\section{A proof involving invariant manifolds}
 
 Using invariant manifolds we obtain the following proof.
 
@@ -1132,15 +1177,14 @@ Using invariant manifolds we obtain the following proof.
   has opposite signage and the claim follows.
 \end{proof}
 
-\subsection{A proof involving Morse theory}
+\section{A proof involving Morse theory}
 
 
 We now give a proof involving Morse theory since this generalises to the three dimensional case.
 \begin{proposition}
-  Let $d=2$ and $X$ be simply connected such that $\Sigma$ is a differentiable manifold and let $f\colon X\to\R$ be tangency regular.
-  Assume further that $\Sigma^-$ and $\Sigma^+$ are nonempty and simply connected. Then $f$ has no interior critical point.
+  Let $d=2$ and $X$ be simply connected such that $\Sigma$ is a differentiable manifold and let $f\colon X\to\R$ have no critical points on $\Sigma^0$.
+  Assume further that $\Sigma^-$ and $\Sigma^+$ are nonempty and simply connected. Then $f$ has no non-degenerate interior critical point.
 \end{proposition}
-\td{fix the following proof}
 
 % We start with a technical lemma
 % \begin{lemma}
@@ -1252,7 +1296,7 @@ We now give a proof involving Morse theory since this generalises to the three d
 
 \begin{proof}
   Let $x_1,x_2\in\Sigma^0(f)$ be two points on different connectivity components which we will fix later.
-  Then we can cut the domain along a curve $\Gamma$ such that the endpoints
+  Then we can cut the domain along a curve $\Gamma$ such that the endpoints $\gamma=\partial\Gamma$
   of the cut coincide with $x_1$ and $x_2$, that is $\partial\Gamma=\brk[c]*{x_1,x_2}$.
   Now we obtain two new domains $X^+$ and $X^-$ such that $\partial X^+ \subseteq\Sigma^+\cup\Sigma^0\cup\Gamma$ and
   $\partial X^-\subseteq\Sigma^-\cup\Sigma^0\cup\Gamma$. We can assume that $\Gamma$ is a smooth manifold and corresponds to the stratum 
@@ -1264,8 +1308,7 @@ We now give a proof involving Morse theory since this generalises to the three d
     \caption{The situation at hand.}
     \label{fi:n2_cutOmega_flowthrough}
   \end{figure}
-  In words, the vector field $u=\nabla f$ is essentially parallel to the boundary $\Sigma$ in a neighbourhood of $x_1$.
-  We assume that we chose $\Gamma$ such that the acute angle between $u$ and $\Gamma$ at $x_1$ is on the side where $u$ flows into the new domain.
+  We assume that we chose $\Gamma$ in such a way that it forms an acute angle with $\Sigma$ at the boundary points $\gamma$.
   % More concretely this condition is equivalent to that there exists an open neighbourhood $U_1$ of $x_1$ such that
   % $n_\Gamma\cdot u< u$ on $U_1$.
   % Here $n_\Gamma\colon\Gamma\to S^1\subseteq\R^2$ denotes the normal of the cut $\Gamma$ which points in the direction of the flow.
@@ -1277,14 +1320,14 @@ We now give a proof involving Morse theory since this generalises to the three d
   We now focus our attention on $X^+$. Since no essential critical points lie on $\Sigma^+$
   it follows for the boundary type numbers that
   \begin{align}
-    \mu^+_j=\ind_{\Gamma,j}(f)+\delta_{j0}\ind_{\Sigma^0,j}(f)\label{eq:n2_disproof_morse_muplus}
+    \mu^+_j=\ind_{\Gamma,j}(f)+\delta_{j0}\ind_{\gamma,j}(f)\label{eq:n2_disproof_morse_muplus}
   \end{align}
   where $\delta_{ij}$ denotes the Kronecker delta.
   Analogously we have on $X^-$ that
   \begin{align}
     \nu^-_j=\ind_{\Gamma,j}(-f)\label{eq:n2_disproof_morse_numinus}
   \end{align}
-  where we took into account that $\ind_{\Sigma^0,j}(-f)=0$.
+  where we took into account that $\ind_{\gamma,j}(-f)=0$.
   In addition we have on $\Gamma$ that the emergent critical points of $f$ on $X^+$ are the
   entrant critical points of $-f$ on $X^-$, that is
   \begin{align}
@@ -1294,7 +1337,7 @@ We now give a proof involving Morse theory since this generalises to the three d
   Using equations \eqref{eq:n2_disproof_morse_muplus}, \eqref{eq:n2_disproof_morse_numinus} and \eqref{eq:n2_disproof_morse_relationIndex}
   we obtain
   \begin{align}
-    \mu^+_0-\ind_{\Sigma^0,0}(f)=\nu^-_1 \qquad\text{ and }\qquad \mu^+_1=\nu^-_0\,.\label{eq:n2_disproof_morse_relationMuNu}
+    \mu^+_0-\ind_{\gamma,0}(f)=\nu^-_1 \qquad\text{ and }\qquad \mu^+_1=\nu^-_0\,.\label{eq:n2_disproof_morse_relationMuNu}
   \end{align}
   Consider the Morse inequality for $f$
   \begin{align}
@@ -1307,40 +1350,62 @@ We now give a proof involving Morse theory since this generalises to the three d
   We now add equations \eqref{eq:n2_disproof_morse_morseineqplus} and \eqref{eq:n2_disproof_morse_morseineqminus}
   and insert relations \eqref{eq:n2_disproof_morse_relationMuNu} to obtain
   \begin{align*}
-    M^-+M^+-\ind_{\Sigma^0,0}(f)=-2\chi(X)=-2\,.
+    M^-+M^+-\ind_{\gamma,0}(f)=-2\chi(X)=-2\,.
   \end{align*}
-  Since $\ind_{\Sigma^0,0}(f)\leq2$ and $M^\pm\geq0$ we must in fact have $M^\pm=0$ from which the claim follows.
+  Since $\ind_{\gamma,0}(f)\leq2$ and $M^\pm\geq0$ we must in fact have $M^\pm=0$ from which the claim follows.
 
   % \ref{pr:tanReg_convergence_Sigma0}
   % \ref{co:tanReg_homotopy}
   % \ref{co:density_boundaryGeneric}
 
-  The statement now remains to be shown for $u$ which are not Morse on $\Gamma$.
-  Let $u^\e\to u$ for $\e\in E$ be a family of boundary generic functions with respect to the 
-  stratification $X^+\cup X^-$ as in corollary 
-  \ref{co:density_boundaryGeneric}.
-  By proposition \ref{pr:tanReg_convergence_Sigma0} the set $\Sigma^0\brk*{u^\e}$ converges
-  to $\Sigma^0\brk*{u}$ as $\e\to0$.
-  Choose $\delta$ sufficiently small according to corollary \ref{co:tanReg_homotopy}
-  and now assume that $\e\in E_\delta=B_\delta\cap E$.
-  Now take a sufficiently small $\eta>0$ such that $\Gamma$ has no critical points in
-  $\overline{B_\eta\brk*{x_1}}\cup \overline{B_\eta\brk*{x_2}}$. 
-  We modify for every
-  $\e\in E_\delta$ the cut $\Gamma$ to yield a cut $\Gamma_\e$ such that $\Gamma=\Gamma_\e$
-  outside of $B_\eta(x_1)\cup B_\eta(x_2)$ and such that $\Gamma_\e$ intersects the boundary $\Sigma$
-  precisely at $\Sigma^0\brk*{u^\e}$.
-  Furthermore by choosing $\delta$ sufficiently small we can also ensure that
-  $\Gamma$ has no critical points of $u^\e$ inside of $\overline{B_\eta\brk*{x_1}}\cup \overline{B_\eta\brk*{x_2}}$
-  and that $\Gamma_\e$ is slanted in such a way that $u_\e$ has no critical points on
-  $\Gamma_\e\cap B_\eta\brk*{x_1}\cap B_\eta\brk*{x_2}$.
+  % The statement now remains to be shown for $u$ which are not Morse on $\Gamma$.
+  % Let $u^\e\to u$ for $\e\in E$ be a family of boundary generic functions with respect to the 
+  % stratification $X^+\cup X^-$ as in corollary 
+  % \ref{co:density_boundaryGeneric}.
+  % By proposition \ref{pr:tanReg_convergence_Sigma0} the set $\Sigma^0\brk*{u^\e}$ converges
+  % to $\Sigma^0\brk*{u}$ as $\e\to0$.
+  % Choose $\delta$ sufficiently small according to corollary \ref{co:tanReg_homotopy}
+  % and now assume that $\e\in E_\delta=B_\delta\cap E$.
+  % Now take a sufficiently small $\eta>0$ such that $\Gamma$ has no critical points in
+  % $\overline{B_\eta\brk*{x_1}}\cup \overline{B_\eta\brk*{x_2}}$. 
+  % We modify for every
+  % $\e\in E_\delta$ the cut $\Gamma$ to yield a cut $\Gamma_\e$ such that $\Gamma=\Gamma_\e$
+  % outside of $B_\eta(x_1)\cup B_\eta(x_2)$ and such that $\Gamma_\e$ intersects the boundary $\Sigma$
+  % precisely at $\Sigma^0\brk*{u^\e}$.
+  % Furthermore by choosing $\delta$ sufficiently small we can also ensure that
+  % $\Gamma$ has no critical points of $u^\e$ inside of $\overline{B_\eta\brk*{x_1}}\cup \overline{B_\eta\brk*{x_2}}$
+  % and that $\Gamma_\e$ is slanted in such a way that $u_\e$ has no critical points on
+  % $\Gamma_\e\cap B_\eta\brk*{x_1}\cap B_\eta\brk*{x_2}$.
   
   
-  Now $u^\e$ is by construction strictly Morse on $\Gamma^\e$.
-  By the above argument the statement holds for $u^\e$ with the modified cut $\Gamma^\e$.
+  % Now $u^\e$ is by construction strictly Morse on $\Gamma^\e$.
+  % By the above argument the statement holds for $u^\e$ with the modified cut $\Gamma^\e$.
   % $$\brk[c]*{X_j}_{j\in\cJ}\cup\brk[c]*{X_\Gamma}\cup\brk[c]*{X_j}_{j\in\brk[c]*{1,2}}$$
   % of $X$. Again by proposition \ref{} we have that $\Sigma^0(u^\e)\to\Sigma^0(u)$ for $\e\to0$.
   % This implies that if we choose the cut $\Gamma^\e$ for $u^\e$ as in figure \ref{}
   % we obtain that for all $u^\e$ all
+
+  The claim remains to be shown in the case that $f$ is not strictly Morse on $X^+$ and $X^-$. In this case let
+  $u^\e$ for $\e\in E$ be a family of strictly Morse functions as in corollary \ref{co:density_boundaryGeneric}.
+  Since $x_1$, $x_2$ are non-degenerate critical points of $f$
+  due to the slanted angle at which
+  $\Gamma$ approaches $\gamma$
+  we obtain that
+  \begin{align}
+    \ind_{j,\gamma}\brk*{f^\e}=\ind_{j,\gamma}(f)\qquad\text{ and }\qquad 
+    \ind_{j,\gamma}\brk*{-f^\e}=\ind_{j,\gamma}(-f)
+    \label{eq:n3_disproof_morse_indexApprox}
+  \end{align}
+  By the same corollary $u^\e$ has no essential stagnation points on $\Sigma^+(u)$
+  and $-u$ has no essential stagnation points on $\Sigma^-(u)$.
+  % \begin{align}
+  %   \ind_{j,X_k}\brk*{f^\e}=\ind_{j,X_k}(f)\qquad\text{ and }\qquad 
+  %   \ind_{j,X_k}\brk*{-f^\e}=\ind_{j,X_k}(-f)
+  %   \label{eq:n3_disproof_morse_indexApprox}
+  % \end{align}
+  % for all $j$ and strata $X_k$.
+  The claim then follows by the calculations above where we replace
+  $f$ with $f^\e$ and then note that $M^\e=M$.
 \end{proof}
 % \begin{proposition}
 %   Let $X$ be a simply connected manifold with corners and $f\colon X\to\R$ harmonic and Morse. 
@@ -1382,7 +1447,7 @@ We now give a proof involving Morse theory since this generalises to the three d
 %   \end{align*}
 % \end{proof}
 
-\subsection{Allowing for Inflow and outflow}
+\section{Allowing for Inflow and outflow}
 
 The strategy in the above proofs can be generalised to show the following
 \begin{conjecture}
@@ -1422,10 +1487,10 @@ We state a consequence of a result from \cite[Theorem 2.1]{Alessandrini1992}
 
 \newpage
 
-\section{Harmonic vector fields, $d=2$}
+\chapter{Harmonic vector fields, $d=2$}
 
 
-\subsection{No inflow or outflow}
+\section{No inflow or outflow}
 
 We say that $u$ has no \emph{inflow} on a boundary subset $S\subseteq\Sigma$ iff $\Sigma^-\cap S=\emptyset$ and
 that it has no \emph{outflow} iff $\Sigma^+\cap S=\emptyset$.
@@ -1456,26 +1521,26 @@ Armed with this definition we can state the following result.
 
 In fact using the Morse inequalities we can obtain the stronger result.
 \begin{proposition}
-  Let $X\subset\R^2$ be a compact manifold with corners and Betti numbers $b_0=1$, and $b_1$
+  Let $X\subset\R^2$ be a compact manifold with $C^1$ boundary and Betti numbers $b_0=1$, and $b_1$
   and let $u\colon X\to\R^2$ be 
-  a Morse harmonic vector field without inflow or outflow.
+  a strictly Morse harmonic vector field without inflow or outflow.
   Then we have $$M+1=b_1$$.
 \end{proposition}
 \begin{proof}[Sketch of proof.]
   We slit $\Omega$ such that it is homeomorphic to the disk as is 
   depicted in figure \ref{fi:n2_hvf_slitDomain}.
-  Denote the slit by $\Gamma$. Since the number of critical points is 
+  Denote the slit by $\Gamma$. Since the number of stagnation points is 
   finite by proposition ??, we can choose $\Gamma$ in such a way that it does not contain
-  any critical points.
-   We also denote the points at which
-  $\Gamma$ meets $\Sigma$ by $x_1,\dots,x_{2b_1}\in\partial\Gamma$.
+  any stagnation points.
+  We also denote the points at which
+  $\Gamma$ meets $\Sigma$ by $x_1,\dots,x_{2b_1}\in\partial\Gamma=\gamma$.
   Note that there are $2b_1$ many such points.
   We can assume that $\Gamma$ is a smooth manifold. Now at the point $x_1$
   we have that $u$ is almost parallel to the boundary $\Sigma$. Thus we can slant
-  the cut in such a way such that $x_1$ is an essential critical point of index $0$ of $u$ on the stratification
+  the cut in such a way such that $x_1$ is an essential stagnation point of index $0$ of $u$ on the stratification
   of $\tiX$. Here $\tiX$ denotes the covering space of $X$ generated by the cut $\Gamma$.
-  We denote the induced strata by $\Gamma$ also with $\Gamma$. Note that $x_1$ then is no
-  essential critical point for $-u$.
+  We denote the induced strata by $\Gamma$ also with $\Gamma$. Note that then $x_1$ is no
+  essential stagnation point for $-u$.
   We modify the cut for the other points $x_2,\dots,x_{2b_1}$ as with $x_1$.
   The situation is depicted in figure \ref{fi:n2_hvf_slitDomain}.
   \begin{figure}
@@ -1484,7 +1549,9 @@ In fact using the Morse inequalities we can obtain the stronger result.
     \caption{How we slit the domain.}
     \label{fi:n2_hvf_slitDomain}
   \end{figure}
-  Since there are no critical points on $\Sigma$ all boundary critical points of $u$ are on
+  For the following argumentation we require that $u$ is strictly Morse on the new domain $\tiX$ 
+  so assume for a moment that this is the case.
+  Since there are no stagnation points on $\Sigma$ all boundary stagnation points of $u$ are on
   the strata induced by $\Gamma$ and $x_1,\dots,x_{2b_1}$. Hence we have relations
   \begin{align}
     \mu_k=\ind_{\Gamma,k}(u)+2b_1\delta_{k0} \qquad\text{ and }\qquad
@@ -1520,6 +1587,21 @@ In fact using the Morse inequalities we can obtain the stronger result.
     2M-2b_1=-2
   \end{align*}
   from which the claim follows.
+
+  The claim remains to be shown in the case that $u$ is not strictly Morse on $\tiX$. In this case let
+  $u^\e$ for $\e\in E$ be a family of strictly Morse functions as in corollary \ref{co:density_boundaryGeneric}.
+  Since the $x_1,\dots,x_{2b_1}\in\gamma$ are non-degenerate stagnation points of $u$
+  due to the slanted angle at which
+  $\Gamma$ approaches $\gamma$
+  we obtain that
+  \begin{align}
+    \ind_{j,\gamma}\brk*{u^\e}=\ind_{j,\gamma}(u)\qquad\text{ and }\qquad 
+    \ind_{j,\gamma}\brk*{-u^\e}=\ind_{j,\gamma}(-u)
+    \label{eq:n3_disproof_morse_indexApprox}
+  \end{align}
+  By the same corollary $u^\e$ has no stagnation points on $\Sigma^0(u)$.
+  The claim then follows by the calculations above where we replace
+  $u$ with $u^\e$ and then note that $M^\e=M$.
 \end{proof}
 We now give an alternative proof using the argument principle.\ruggedtodo[]{One could use the argument principle for Riemann surfaces.}
 \begin{proof}
@@ -1589,7 +1671,7 @@ is a multiple of the fundamental solution of the Laplace equation on $\R^2$ and 
 Figure \ref{pl:n2_hvf_noInflowNoOutflow} indicates that $u=\nabla^\perp\psi$ has the desired properties.
 \begin{figure}
   \centering
-  \includegraphics[width=0.7\textwidth]{../Plots/HarmonicVectorFields_gr1.eps}
+  \includegraphics[width=0.6\textwidth]{../Plots/HarmonicVectorFields_gr1.eps}
   \caption{A plot of $u=\nabla^\perp\psi$ in the region $\psi^{-1}\brk*{[-1,1]}$.
     Here $\psi$ is given by equation \eqref{eq:n2:hvf:noInflowNoOutflow}.}
   \label{pl:n2_hvf_noInflowNoOutflow}
@@ -1609,13 +1691,13 @@ We solve this system numerically and set $u=\nabla^\perp\psi$.
 The result is plotted in figure \ref{pl:n2_hvf_roundRegion_noInflowNoOutflow}.
 \begin{figure}
   \centering
-  \includegraphics[width=0.7\textwidth]{../Plots/HarmonicVectorFields_gr4.eps}
+  \includegraphics[width=0.6\textwidth]{../Plots/HarmonicVectorFields_gr4.eps}
   \caption{A plot of $u=\nabla^\perp\psi$ where $\psi$ is the numerical solution to
    \eqref{eq:n2:hvf:roundRegion:noInflowNoOutflow}.}
   \label{pl:n2_hvf_roundRegion_noInflowNoOutflow}
 \end{figure}
 
-\subsection{An example of inflow on one side and outflow on the other}
+\section{An example of inflow on one side and outflow on the other}
 In the following we aim to give examples of domains in $d=2$ dimensions for which 
 we have inflow on one simply connected boundary component and outflow on another simply connected boundary
 component.
@@ -1630,7 +1712,7 @@ Figure \ref{pl:n2_hvf_InflowOutflow_asymmetric_single} indicates that $u=\nabla^
 requirements.
 \begin{figure}
   \centering
-  \includegraphics[width=0.7\textwidth]{../Plots/HarmonicVectorFields_gr3.eps}
+  \includegraphics[width=0.6\textwidth]{../Plots/HarmonicVectorFields_gr3.eps}
   \caption{A plot of $u=\nabla^\perp\psi$ in the region $\psi^{-1}\brk*{[-0.5,2]}\cap \R\times[-2,2]$.
   Here $\psi$ is given by equation \eqref{eq:n2:hvf:InflowOutflow:singleHole}.}
   \label{pl:n2_hvf_InflowOutflow_asymmetric_single}
@@ -1649,7 +1731,7 @@ Figure \ref{pl:n2_hvf_InflowOutflow_symmetric_region} indicates that $u=\nabla^\
 we are looking for.
 \begin{figure}
   \centering
-  \includegraphics[width=0.7\textwidth]{../Plots/HarmonicVectorFields_gr2.eps}
+  \includegraphics[width=0.6\textwidth]{../Plots/HarmonicVectorFields_gr2.eps}
   \caption{A plot of $u=\nabla^\perp\psi$ in the region $\psi^{-1}\brk*{[-0.7,0.7]}\cap \R\times[-2,2]$.
   Here $\psi$ is given by equation \eqref{eq:n2:hvf:noInflowNoOutflow:doubleHoles}.}
   \label{pl:n2_hvf_InflowOutflow_symmetric_region}
@@ -1671,7 +1753,7 @@ We solve this system numerically and set $u=\nabla^\perp\psi$.
 The result is plotted in figure \ref{pl:n2_hvf_roundRegion_InflowOutflow}.
 \begin{figure}
   \centering
-  \includegraphics[width=0.7\textwidth]{../Plots/HarmonicVectorFields_gr5.eps}
+  \includegraphics[width=0.6\textwidth]{../Plots/HarmonicVectorFields_gr5.eps}
   \caption{A plot of $u=\nabla^\perp\psi$ where $\psi$ is the numerical solution to
    \eqref{eq:n2:hvf:roundRegion:InflowOutflow}.}
   \label{pl:n2_hvf_roundRegion_InflowOutflow}
@@ -1680,9 +1762,9 @@ The result is plotted in figure \ref{pl:n2_hvf_roundRegion_InflowOutflow}.
 
 \newpage
 
-\section{Harmonic functions, $d=3$}
+\chapter{Harmonic functions, $d=3$}
 
-\subsection{The cylinder}
+\section{The cylinder}
 
 The following proof comes from \cite{Wahlen2023}
 \begin{proposition}
@@ -1706,72 +1788,65 @@ The following proof comes from \cite{Wahlen2023}
   a contradiction.
 \end{proof}
 
-\newpage
+\section{Simply connected entrant boundary}
 
-\subsection{Harmonic vector fields, $d=3$}
-We obtain as a quick consequence of the hairy ball theorem
-\begin{proposition}
-  Let $\Omega$ have Betti numbers $b_0$, $b_1$ and $b_2$.
-  Let $u\colon X\to\R$
-  be a Morse harmonic vector field without inflow or outflow. Then we have
-  \begin{align*}
-    b_2\leq b_1\,.
-  \end{align*}
-\end{proposition}
-\begin{proof} 
-  Assume not. Since $\Omega$ has $b_2$ bubbles and $b_1$ holes there exists by the pigeon hole
-  principle a bubble $\Gamma\subseteq\Sigma$ without a hole. Since $u$ has no inflow or outflow on $\Gamma$ we
-  have that the restriction $u\vert_\Gamma\in T\Gamma$ is a vector field on $\Gamma$. Since $u$ is regular
-  $u\vert_\Gamma$ does not vanish. But $\Gamma$ is homeomorphic to the Ball in contradiction to the hairy ball theorem.
-\end{proof}\ruggedtodo[]{A little more rigour would not harm.}
 Mimicking the proof in 2 dimensions we obtain the following proposition.
 \begin{proposition}
-  Let $X\subset\R^3$ be a compact manifold with corners homeomorphic to the ball $B$.
+  Let $X\subset\R^3$ be a compact manifold homeomorphic to the ball $B$ such that $\Sigma$ is a differentiable manifold.
   Let $f\colon X\to\R$ be a Morse harmonic function. Assume that $\Sigma^-$ is simply connected.
   Then we have that
   \begin{align*}
-    M_1=M_2
+    M_1-M_2=0\,.
   \end{align*}
 \end{proposition}
 \begin{proof}
   As in the two dimensional case we split the domain $\Omega$ with a plane $\Gamma$ such that
-  $\partial\Gamma=\gamma=\partial\Sigma^-$.
-  Denote the two arising domains $X^+$ and $X^-$ where $\partial X^+=\Sigma^+\cup\Sigma^0\cup\overline{\Gamma}$ and
+  $\partial\Gamma=\gamma\subseteq\Sigma^0$.
+  Denote the two arising domains $X^+$ and $X^-$ where $\partial X^+\subseteq\Sigma^+\cup\Sigma^0\cup\overline{\Gamma}$ and
   $\partial X^-=\Sigma^-\cup\overline{\Gamma}$.
-  We can assume that $\Gamma$ is a smooth manifold.
+  We can assume that $\Gamma$ as well as $\gamma$ are smooth manifold.
   Since by proposition ?? there are finitely many critical points in $\Omega$
-  we can also assume that no interior critical points lie on $\Omega$.
-  We now look at a critical point $x$ on $\Gamma$.
-  \ruggedtodo[]{Why are there finitely many?}
-  We choose the slant at which $\Gamma$ approaches $\gamma$ in such a way that $x$
-  is neither an essential critical point of $f$ nor of $-f$.
-  \ruggedtodo[]{More details here.}
-  We now turn our attention to $X^+$. Since no essential critical points lie on $\Sigma^+$ or
-  $\gamma$ it follows for the boundary type numbers that
+  we can also assume that no interior critical points lie on $\Gamma$.
+  Furthermore we assume that $\Gamma$ is bent towards $X^+$ at $\gamma$.
+  For the following argumentation we require that $f$ is strictly Morse on both $X^+$ and
+  $X^-$ so assume for a moment that this is the case.
+  Now we have that $\gamma$ is diffeomorphic to the circle $\R/\Z$.
+  Since $f$ is non-degenerate the
+  the number of maxima and minima of $f$ on $\gamma$ must be equal and thus
   \begin{align}
-    \mu^+_j=\ind_{j,\Gamma}(f)\,.\label{eq:n3_disproof_morse_muplus}
+    \ind_{0,\gamma^+}(f)+\ind_{1,\gamma^-}(-f)=\ind_{1,\gamma^+}(f)+\ind_{0,\gamma^-}(-f)
+    \label{eq:n3_disproof_morse_maxMinRel}
+  \end{align}
+  % \begin{align}
+  %   \ind_{0,\gamma^+}(f)+\ind_{1,\gamma^-}(-f)=2l
+  % \end{align}
+  % for some $l\in\N$.\ruggedtodo{elaborate this}
+  We now turn our attention to $X^+$. Since no essential critical points lie on $\Sigma^+$ 
+  it follows for the boundary type numbers that
+  \begin{align}
+    \mu^+_j=\ind_{j,\Gamma^+}(f)+\ind_{j,\gamma^+}(f)\,.\label{eq:n3_disproof_morse_muplus}
   \end{align}
   Analogously we have on $X^-$ that
   \begin{align}
-    \nu^-_j=\ind_{j,\Gamma}(-f)\,.\label{eq:n3_disproof_morse_numinus}
+    \nu^-_j=\ind_{j,\Gamma^-}(-f)+\ind_{j,\gamma^-}(-f)\,.\label{eq:n3_disproof_morse_numinus}
   \end{align}
-  In addition we have that the emergent critical points of $f$ on $X^+$ are the
-  entrant critical points of $-f$ on $X^-$, that is
+  In addition we have that the emergent critical points on $\Gamma=\Gamma^+$ of $f$ on $X^+$ are the
+  entrant critical points on $\Gamma=\Gamma^-$ of $-f$ on $X^-$, that is
   \begin{equation}
     \begin{aligned}
-      \ind_{0,\Gamma}(u)=\ind_{2,\Gamma}(-f) \\
-      \ind_{1,\Gamma}(u)=\ind_{1,\Gamma}(-f) \\
-      \ind_{2,\Gamma}(u)=\ind_{0,\Gamma}(-f)\label{eq:n3_disproof_morse_relationIndex} 
-    \end{aligned}
+      \ind_{0,\Gamma^+}(f)&=\ind_{2,\Gamma^-}(-f) \\
+      \ind_{1,\Gamma^+}(f)&=\ind_{1,\Gamma^-}(-f) \\
+      \ind_{2,\Gamma^+}(f)&=\ind_{0,\Gamma^-}(-f)\label{eq:n3_disproof_morse_relationIndex} 
+    \end{aligned}\,.
   \end{equation}
   Using equations \eqref{eq:n3_disproof_morse_muplus}, \eqref{eq:n3_disproof_morse_numinus} and \eqref{eq:n3_disproof_morse_relationIndex}
   we obtain
   \begin{equation}
     \begin{aligned}
-      \mu^+_0=\nu^-_2 \\
-      \mu^+_1=\nu^-_1 \\
-      \mu^+_2=\nu^-_0\label{eq:n3_disproof_morse_relationMuNu}
-    \end{aligned}
+      \mu^+_0-\nu^-_2&=\ind_{0,\gamma^+}(f) \\
+      \mu^+_1-\nu^-_1&=\ind_{1,\gamma^+}(f)-\ind_{1,\gamma^-}(-f) \\
+      \mu^+_2-\nu^-_0&=-\ind_{0,\gamma^-}(-f)
+    \end{aligned}\,.\label{eq:n3_disproof_morse_relationMuNu}
   \end{equation}
   We observe the Morse inequalities for $f$
   \begin{align}
@@ -1782,12 +1857,30 @@ Mimicking the proof in 2 dimensions we obtain the following proposition.
     M_1^-+\nu^-_2-M_2^--\nu^-_1+\nu^-_0=\chi(X^-)=\chi(X)\label{eq:n3_disproof_morse_morseineqminus}
   \end{align}
   where the $M_j$ continue to denote the interior type numbers of $f$.
-  We now subtract equation \eqref{eq:n3_disproof_morse_morseineqplus} from \eqref{eq:n3_disproof_morse_morseineqminus}
+  We now subtract equation \eqref{eq:n3_disproof_morse_morseineqminus} from \eqref{eq:n3_disproof_morse_morseineqplus}
   and insert relations \eqref{eq:n3_disproof_morse_relationMuNu} to obtain
+  then with equation \eqref{eq:n3_disproof_morse_maxMinRel}
   \begin{align*}
-    M_1^--M_2^-+M_1^+-M_2^+=0
+    0&=M_1^--M_2^-+M_1^+-M_2^++\ind_{0,\gamma^+}(f)+\ind_{1,\gamma^-}(-f)-\ind_{1,\gamma^+}(f)-\ind_{0,\gamma^-}(-f) \\
+    &= M_1-M_2
   \end{align*}
   from which the claim follows.
+
+  The claim remains to be shown in the case that $f$ is not strictly Morse on $X^+$ and $X^-$. In this case let
+  $f^\e$ for $\e\in E$ be a family of strictly Morse functions as in corollary \ref{co:density_boundaryGeneric}.
+  Since $x_1$, $x_2$ are non-degenerate critical points of $f$
+  due to the slanted angle at which
+  $\Gamma$ approaches $\gamma$
+  we obtain that
+  \begin{align}
+    \ind_{j,\gamma}\brk*{f^\e}=\ind_{j,\gamma}(f)\qquad\text{ and }\qquad 
+    \ind_{j,\gamma}\brk*{-f^\e}=\ind_{j,\gamma}(-f)
+    \label{eq:n3_disproof_morse_indexApprox}
+  \end{align}
+  By the same corollary we can assume that $f^\e$ has no essential critical points on
+  $\Sigma^+(f)$ and $-f^\e$ has no essential critical points on $\Sigma^-(f)$.
+  The claim then follows by the calculations above where we replace
+  $f$ with $f^\e$ and then note that $M_1^\e=M_1$ and $M_2^\e=M_2$.
 \end{proof}
 In fact we can give an example for such a function with
 simply connected entrant boundary.
@@ -1812,13 +1905,13 @@ simply connected entrant boundary.
   indicates that $f$ has the desired properties.
   \begin{figure}
     \centering
-    \includegraphics[width=0.7\textwidth]{../plots/n3_hf_inflowOutflow_Ball_overview.pdf}
-    \caption{An plot of the function $u$}
+    \includegraphics[width=0.6\textwidth]{../plots/n3_hf_inflowOutflow_Ball_overview.pdf}
+    \caption{A plot of the function $u$}
     \label{pl:n3_hf_inflowOutflowStagnationPoint_overview}
   \end{figure}
-  \begin{figure}
+  \begin{figure} 
     \centering
-    \includegraphics[width=0.7\textwidth]{../plots/n3_hf_inflowOutflow_Ball_Surface.pdf}
+    \includegraphics[width=0.6\textwidth]{../plots/n3_hf_inflowOutflow_Ball_Surface.pdf}
     \caption{Stereographic projection of the surface $\Sigma$.}
     \label{pl:n3_hf_inflowOutflowStagnationPoint_Surface}
   \end{figure}
@@ -1839,50 +1932,132 @@ simply connected entrant boundary.
   which vanishes precisely iff
   \begin{align}
     0&=x_1^2\brk*{\brk*{s^2+1}-x_1}+x_2^2\brk*{3x_1-\brk*{s^2+1}}+2x_2\brk*{s^2+1}\brk*{s^2-1} \\
-    &=\brk*{s^2+1}\brk*{x_1^2-x_2^2}-x_1^3+3x_1x_2^2+2x_2\brk*{s^4-1} \\
+    &=\brk*{s^2+1}\brk*{x_1^2-x_2^2}-x_1^3+3x_1x_2^2+2x_2\brk*{s^4-1}
   \end{align}
   \td{complete this section.}
 \end{example}
 
-\td{Try to say something about the case without inflow or outflow.}
-% And we also obtain
-% \tdrewrite{Rewrite this to incorporate the updated notation. And fix the boundary smoothness issues.}
-% \begin{proposition}
-%   Let $X\subseteq\R^3$ be a compact manifold with corners and Betti numbers $b_0$, $b_1$ and $b_2$.
-%   Let $u\colon X\to\R$ be a Morse harmonic vector field without inflow or outflow. Then we have the following relation for
-%   the interior type numbers of $u$
-%   \begin{align*}
-%     M_2=M_1\,.
-%   \end{align*}
-% \end{proposition}
-% \begin{proof}[Sketch of proof.]
-%   As in the two dimensional case we cut the domain $\Omega$ with planes $\Gamma$ such that the slit domain is
-%   homeomorphic to a ball with bubbles.
-%   Since the number of critical points is finite by proposition ??, we can choose $\Gamma$ in such a way
-%   that it does not contain any critical points. We also denote the curves at which $\Gamma$ meets $\Sigma$ by 
-%   $\gamma_1,\dots,\gamma_{b_1}\subseteq\partial\Gamma$. Note that there are $b_1$ many such curves.
+\chapter{Harmonic vector fields, $d=3$}
+\section{No inflow or outflow}
+We obtain as a quick consequence of the hairy ball theorem
+\begin{proposition}
+  Let $\Omega$ have Betti numbers $b_0$, $b_1$ and $b_2$.
+  Let $u\colon X\to\R$
+  be a Morse harmonic vector field without inflow or outflow. Then we have
+  \begin{align*}
+    b_2\leq b_1\,.
+  \end{align*}
+\end{proposition}
+\begin{proof} 
+  Assume not. Since $\Omega$ has $b_2$ bubbles and $b_1$ holes there exists by the pigeon hole
+  principle a bubble $\Gamma\subseteq\Sigma$ without a hole. Since $u$ has no inflow or outflow on $\Gamma$ we
+  have that the restriction $u\vert_\Gamma\in T\Gamma$ is a vector field on $\Gamma$. Since $u$ is regular
+  $u\vert_\Gamma$ does not vanish. But $\Gamma$ is homeomorphic to the Ball in contradiction to the hairy ball theorem.
+\end{proof}\ruggedtodo[]{A little more rigour would not harm.}
+We also obtain the following result:
+\begin{proposition}
+  Let $X\subseteq\R^3$ be a differentiable manifold with Betti numbers $b_0$, $b_1$ and $b_2$.
+  Let $u\colon X\to\R$ be a Morse harmonic vector field without inflow or outflow. Then we have the following relation for
+  the interior type numbers of $u$
+  \begin{align*}
+    M_2=M_1\,.
+  \end{align*}
+\end{proposition}
+\begin{proof}[Sketch of proof.]
+  As in the two dimensional case we cut the domain $X$ with planes $\Gamma$ such that the slit domain is
+  homeomorphic to a ball with bubbles.
+  Since the number of stagnation points is finite by proposition ??, we can choose $\Gamma$ in such a way
+  that it does not contain any stagnation points. We also denote the curves at which $\Gamma$ meets $\Sigma$ by 
+  $\gamma_1,\dots,\gamma_{b_1}\subseteq\partial\Gamma$. Note that there are $b_1$ many such curves.
+  We can assume that $\Gamma$ and the $\gamma_j$ are smooth manifolds and that $\Gamma$ approaches
+  each $\gamma_j$ at a slanted angle.
+  The cut now yields a new domain $\tiX$ which is a covering space of $X$.
+  On this covering space we denote the cover of the cut $\Gamma$ and the sets $\gamma_j$ by
+  $\Gamma^i$ and $\gamma_j^i$ with $i\in\brk*{1,2}$.
+  Since this new domain $\tiX$ is homeomorphic to a ball with bubbles by proposition \ref{pr:n2:hvf:simplyConnected}
+  the vector field $u$ is the gradient of a harmonic function $f$.
+  For the following argumentation we require that $u$ is strictly Morse on $\tiX$.
+  Now we have that each $\gamma_j$ is diffeomorphic to the circle $S^1\subseteq\R^2$.
+  Since $f$ is non-degenerate the number of maxima and minima of $f$ on $\gamma_j^1\cup\gamma_j^2$ must be equal and thus
+  \begin{align}
+    \sum_i\brk*{\ind_{0,\gamma_j^i}(f)+\ind_{1,\gamma_j^i}(-f)}=\sum_i\brk*{\ind_{1,\gamma_j^i}(f)+\ind_{0,\gamma_j^i}(-f)}\,.
+    \label{eq:n3_hvf_noInflowNoOutflow_maxMinRel}
+  \end{align}
 
-%   Once again by proposition \ref{pr:n2:hvf:simplyConnected} $u$ is the gradient of a harmonic function $u$ on this new domain.
-%   $f$ has no critical points on the boundary $\Sigma$ and on the cut boundary it fulfils the conditions
-%   \begin{align}
-%     \mu_0=\nu_2\qquad \mu_1=\nu_1 \qquad \mu_2=\nu_0 \label{eq:n3:hvf:relationsMuNu}
-%   \end{align}
-%   by the same reasoning. We now have the Morse inequalities for $f$ and $-f$
-%   \begin{align}
-%     M_2+\mu_2-b_2-M_1-\mu_1+b_1+\mu_0-b_0=0 \label{eq:n3:hvf:MorseInequalities:1} \\
-%     M_1+\nu_2-b_2-M_2-\nu_1+b_1+\nu_0-b_0=0 \label{eq:n3:hvf:MorseInequalities:2}
-%   \end{align}
-%   It then follows by subtracting equation \eqref{eq:n3:hvf:MorseInequalities:2} from \eqref{eq:n3:hvf:MorseInequalities:1}
-%   and using relations \eqref{eq:n3:hvf:relationsMuNu} that
-%   \begin{align*}
-%     2\brk*{M_2-M_1}=0\,.
-%   \end{align*}
-% \end{proof}\ruggedtodo[]{Introduce Morse inequalities for $-f$.}
+  Since on $\Gamma$ all entrant critical points of $u$ are also emergent
+  critical points of $-u$ (and vice versa) we have the relations
+  \begin{equation}
+    \begin{aligned}
+    \ind_{\Gamma^1,0}(\pm u)&=\ind_{\Gamma^2,2}(\mp u) \\
+    \ind_{\Gamma^1,1}(\pm u)&=\ind_{\Gamma^2,1}(\mp u) \\
+    \ind_{\Gamma^1,2}(\pm u)&=\ind_{\Gamma^2,0}(\mp u)\,.
+    \end{aligned}\label{eq:n3_hvf_noInflowNoOutflow_relationsIndex}
+  \end{equation}
+  % and similarly we obtain on $\gamma_j^i$ the relations
+  % \begin{equation}
+  %   \begin{aligned}
+  %   \ind_{\gamma^1,0}(\pm u)&=\ind_{\gamma^2,1}(\mp u) \\
+  %   \ind_{\gamma^1,1}(\pm u)&=\ind_{\gamma^2,0}(\mp u)\,.
+  %   \end{aligned}\label{eq:n3_hvf_noInflowNoOutflow_relationsIndex_gamma}
+  % \end{equation}
+  Since there are no boundary critical points on $\Sigma^0$ it follows for the 
+  boundary type numbers that
+  \begin{align*}
+    \mu_k=\sum_i\brk*{\ind_{\Gamma^i,k}+\sum_j\ind_{\gamma_j^i,k}}(f) \\
+    \nu_k=\sum_i\brk*{\ind_{\Gamma^i,k}+\sum_j\ind_{\gamma_j^i,k}}(-f)\label{eq:n3_hvf_noInflowNoOutflow_relationsMuIndex}
+  \end{align*}
+  Equations \eqref{eq:n3_hvf_noInflowNoOutflow_relationsMuIndex} and \eqref{eq:n3_hvf_noInflowNoOutflow_relationsIndex}
+  yield 
+  \begin{equation}
+    \begin{aligned}
+    \mu_0-\nu_2&=\sum_{i,j}\ind_{\gamma_j^i,0}(f) \\
+    \mu_1-\nu_1&=\sum_{i,j}\brk*{\ind_{\gamma_j^i,1}(f)-\ind_{\gamma_j^i,1}(-f)} \\
+    \mu_2-\nu_0&=-\sum_{i,j}\ind_{\gamma_j^i,0}(-f)
+    \end{aligned}
+    \label{eq:n3_hvf_noInflowNoOutflow_relationsMuNu}
+  \end{equation}
+  Since $\Omega$ is now simply connected $u$ is 
+  by proposition \ref{pr:n3:hvf:simplyConnected}
+  the gradient of a harmonic function $f$ on this new domain.
+  For this $f$ we have the Morse inequalities
+  \begin{align} 
+    M_2+\mu_2-M_1-\mu_1+\mu_0&=-\chi(\tiX) \label{eq:n3_hvf_MorseInequalities_1}
+  \end{align}
+  and for $-f$ the Morse inequalities
+  \begin{align}
+    M_1+\nu_2-M_2-\nu_1+\nu_0=-\chi(\tiX) \label{eq:n3_hvf_MorseInequalities_2}\,.
+  \end{align}
+  Subtracting equation \eqref{eq:n3_hvf_MorseInequalities_2} from \eqref{eq:n3_hvf_MorseInequalities_1} and using the relation
+  \eqref{eq:n3_hvf_noInflowNoOutflow_relationsMuNu} we obtain
+  together with equation \eqref{eq:n3_hvf_noInflowNoOutflow_maxMinRel}
+  \begin{align*}
+    0&=2\brk*{M_2-M_1}
+    +\sum_{i,j}\brk*{\ind_{\gamma_j^i,0}(f)
+    -\ind_{\gamma_j^i,1}(f)
+    +\ind_{\gamma_j^i,1}(-f)
+    -\ind_{\gamma_j^i,0}(-f)} \\
+    &=2\brk*{M_2-M_1}
+  \end{align*}
+  from which the claim follows.
 
+  The claim remains to be shown in the case that $f$ is not strictly Morse on $X^+$ and $X^-$. In this case let
+  $f^\e$ for $\e\in E$ be a family of strictly Morse functions as in corollary \ref{co:density_boundaryGeneric}.
+  Since $x_1$, $x_2$ are non-degenerate critical points of $f$
+  due to the slanted angle at which
+  $\Gamma$ approaches each $\gamma_j$
+  we obtain that
+  \begin{align}
+    \ind_{k,\gamma_j}\brk*{f^\e}=\ind_{k,\gamma_j}(f)\qquad\text{ and }\qquad 
+    \ind_{k,\gamma_j}\brk*{-f^\e}=\ind_{k,\gamma_j}(-f)
+    \label{eq:n3_hvf_noInflowNoOutflow_morse_indexApprox}
+  \end{align}
+  By the same corollary we can assume that $f^\e$ has no critical points on
+  $\Sigma^0(f)$.
+  The claim then follows by the calculations above where we replace
+  $f$ with $f^\e$ and then note that $M_1^\e=M_1$ and $M_2^\e=M_2$.
+\end{proof}
 
-\newpage
-
-\subsection{Harmonic functions, $d=4$} 
+\chapter{Harmonic functions, $d=4$} 
 Define the harmonic function 
 \begin{align*}
   f\colon B_1\subseteq\R^4&\to \R \\
@@ -1954,7 +2129,7 @@ equivalent to $\bx\in \partial B_1\subseteq \R^2$. The situation is depicted in 
 
 
 % TODO: potentially add Irwin, smooth dynamical systems
-% \section{Bibliography}
+% \chapter{Bibliography}
 \nocite{*}
 \td{Change Gamelin to Lang, complex analysis}
 %Main source
