@@ -54,7 +54,7 @@
 
 \begin{document}
 
-\maketitle
+\maketitle 
 
 \tableofcontents
 
@@ -82,6 +82,7 @@
 }
 
 \newpage
+
 
 \chapter{Introduction}
 
@@ -120,7 +121,7 @@ In the case of $d=2$ dimensions we will look at what happens if we allow for hol
 other questions are of the type:
 \begin{question}[stagnation points of harmonic vector fields without inflow or outflow]
   Let $u$ be a flow in a domain $X$ such that at every boundary point it is tangential to the boundary.
-  What can be said about the relation between the number of critical points and the domain topology?
+  What can be said about the relation between the number of stagnation points and the domain topology?
 \end{question}
 This question yields a very nice result in the case of $d=2$ dimensions.
 To make the formulation of these questions more precise we begin with some general definitions regarding stagnation points and the boundary conditions.
@@ -154,13 +155,13 @@ More precisely we require $X$ to be a compact manifold with corners as in \cite{
 
 More generally we give the definition of a stratification as 
 \begin{definition}[Stratified space]\label{df:stratified_space}
-  A \emph{stratified space} is a collection of a topological space $X$ and a collection of subspaces
-  $X_j\subseteq X$, $j\in\cJ$, called \emph{strata},  indexed by a partially ordered set $\cJ$ such that
+  Let $X$ be a topological space. A \emph{stratum} is a subspace $X_j\subseteq X$, $j\in\cJ$, indexed by a partially ordered set $\cJ$ such that
   \begin{enumerate}
     \item each $X_j$ is a manifold (without boundary) of dimension $n=n(j)$
     \item $X=\bigcup_jX_j$
     \item $X_j\cap \overline{X}_k\neq\emptyset$ iff $X_j\subseteq\overline{X}_k$.
   \end{enumerate}
+  The pair of $X$ and the $X_j$ is called a \emph{stratified space}.
   In the case that $X_j\subseteq\overline{X}_k$ and additionally $n(j)=0$ or $n(j)=n(k)+1$ we will
   write $X_j\precsim X_k$ or, abusing notation, write $X_k=X_{j-1}$.
 \end{definition}
@@ -283,7 +284,7 @@ to include harmonic vector fields.
   $u_j$ is called \emph{(essentially) non-degenerate} if all its (essential) stagnation points
   are non-degenerate. 
   Assume $u_j$ is non-degenerate then we can define the \emph{$k$-th type number} of the
-  stratum $X_j$ to be the number of essential critical points of $u_j$ of index $k$,
+  stratum $X_j$ to be the number of essential stagnation points of $u_j$ of index $k$,
   that is
   \begin{align*}
     \ind_{j,k}(u)=\#\brk[c]*{x\in\critical_j(u)\colon x\text{ has index }k}\,.
@@ -309,11 +310,10 @@ to include harmonic vector fields.
 \nomenclature{$\mu_k$}{boundary type numbers of $f$, see equation \eqref{eq:bdTypeNbrs}}
 \nomenclature{$\nu_k$}{boundary type numbers of $-f$, see definition \ref{df:nonDegeneracy}}
 
-The following definition is inspired by \cite{Morse1970}.
 We call a boundary point $x\in X_j$ on a strata $X_j$ \emph{ordinary} iff $u(x)$ is not 
-critical point of a stratum $x_{j-1}$.
+stagnation point of a stratum $x_{j-1}$. This definition of ordinary points is inspired \cite{Morse1970}.
 \begin{proposition}
-  The condition that the critical point $x\in X_j$ does not lie in $\Sigma^0$ is equivalent to that
+  The condition that the stagnation point $x\in X_j$ does not lie in $\Sigma^0$ is equivalent to that
   $x$ is ordinary.
 \end{proposition}
 \begin{proof}
@@ -368,7 +368,7 @@ As in \cite{Katz2014} we call $u$ \emph{boundary generic} iff $u$ is Morse and t
 
 The previous definitions translate naturally to $f$.
 That is we call $f$ Morse, non-degenerate, et cetera iff $u=\nabla f$ is Morse, non-degenerate, et cetera.
-Similarly we call $x$ an critical point of $f$ of index $k$ if it is a
+Similarly we call $x$ a \emph{critical point} of $f$ of index $k$ if it is a
 stagnation point of $u$ of index $k$.
 
 \tdrewrite{discuss index on manifold with corners.}
@@ -383,7 +383,7 @@ To illustrate the preceding definitions we return to our previous example.
       & & -4
     \end{bmatrix}
   \end{align*}
-  for all $x\in\Omega$ we see that $Du(0)$ is bijective and thus a non-degenerate critical point. Since $Du(0)$ has
+  for all $x\in\Omega$ we see that $Du(0)$ is bijective and thus $0$ is a non-degenerate critical point. Since $Du(0)$ has
   exactly one negative eigenvalue we see that the origin has index $1$. Since there are no other critical points we have
   $M=1$ and
   \begin{align*}
@@ -611,12 +611,12 @@ we get a generalisation of the results in \cite[§2]{Morse1970}.
   and thus $x$ is a stagnation point.
 
 
-  Let $U_\eta$ denote the open $\eta$-neighbourhood of the set of critical points of $u$.
+  Let $U_\eta$ denote the open $\eta$-neighbourhood of the set of stagnation points of $u$.
   Since $u$ has no stagnation points in $\Sigma^0$ we have for any stratum $X_j$ that
   $u_j\neq0$ on the compact set $\overline{X}_j\setminus U_\eta$ which implies that we can choose $\delta>0$ 
   so small that $\abs{u_j}>\delta$ on $\overline{X}_j\setminus U_\eta$
   for all strata $X_j$.
-  For any $\e\in B_\delta$ it then follows that $u^\e$ has no critical points on the set $\overline{X}_j\setminus U_\eta$
+  For any $\e\in B_\delta$ it then follows that $u^\e$ has no stagnation points on the set $\overline{X}_j\setminus U_\eta$
   which yields the claim.
 
   Since the boundary stagnation points of $u$ have a positive distance to the tangential boundary $\Sigma^0$,
@@ -1181,7 +1181,7 @@ Using invariant manifolds we obtain the following proof.
 \section{A proof involving Morse theory}
 
 
-We now give a proof involving Morse theory since this generalises to the three dimensional case.
+We now give a proof involving Morse theory since the techniques of the proof generalise to the three dimensional case.
 \begin{proposition}
   Let $d=2$ and $X$ be simply connected such that $\Sigma$ is a differentiable manifold and let $f\colon X\to\R$ have no critical points on $\Sigma^0$.
   Assume further that $\Sigma^-$ and $\Sigma^+$ are nonempty and simply connected. Then $f$ has no non-degenerate interior critical point.
@@ -1477,7 +1477,7 @@ We state a consequence of a result from \cite[Theorem 2.1]{Alessandrini1992}
   \begin{align*}
     M\leq b_1-b_0+\frac{J^++J^-}{2}\,.
   \end{align*}
-  If in addition we assume that there are no critical points on the boundary then we have
+  If in addition we assume that there are no stagnation points on the boundary then we have
   \begin{align*}
     M\leq b_1-b_0+J^{\geq0}\,.
   \end{align*}
@@ -1496,32 +1496,32 @@ We state a consequence of a result from \cite[Theorem 2.1]{Alessandrini1992}
 We say that $u$ has no \emph{inflow} on a boundary subset $S\subseteq\Sigma$ iff $\Sigma^-\cap S=\emptyset$ and
 that it has no \emph{outflow} iff $\Sigma^+\cap S=\emptyset$.
 Armed with this definition we can state the following result.
-\begin{proposition}[Upper bound on $M$]
-  Let $d=2$ and $\Omega$ be a compact manifold with corners with Betti numbers $b_0=1$, and $b_1$.
-  Let further $u\colon X\to\R^2$ be 
-  a Morse harmonic vector field without inflow or outflow.
-  Then we have $$M+1\leq b_1\,.$$
-\end{proposition}
-\begin{proof}[Sketch of proof.]
-  As in the second proof of proposition \ref{pr:n2:hf:nonExistence} the critical manifolds form a directed multigraph.
-  Since no critical manifold can intersect with the boundary each vertex
-  of the graph has degree 4 and we thus have $2M$ edges. Now we obtain with Euler's polyhedron formula
-  for a planar graph with multiple components
-  \begin{align*}
-    \text{\# minimal cycles}
-    &= \text{\#faces}-1 \\
-    &= 1+\text{\#components}-\text{\#vertices}+\text{\#edges} -1 \\
-    &\geq 1+1-M+2M -1 = M+1
-  \end{align*}
-  Here we use the term `minimal' as in the second proof of proposition \ref{pr:n2:hf:nonExistence}.
-  Note that each minimal cycle must contain a hole of the domain since else we could restrict $u$ to a simply
-  connected region containing this cycle. Then by proposition \ref{pr:n2:hvf:simplyConnected} $u$ would correspond to the gradient of 
-  a harmonic function in this region and we would obtain a contradiction as in the proof of proposition \ref{pr:n2:hf:nonExistence}.
-  Hence the number of minimal cycles is a lower bound on the number of holes $b_1$ of the domain.
-\end{proof}
+% \begin{proposition}[Upper bound on $M$]
+%   Let $d=2$ and $\Omega$ be a compact manifold with corners with Betti numbers $b_0=1$, and $b_1$.
+%   Let further $u\colon X\to\R^2$ be 
+%   a Morse harmonic vector field without inflow or outflow.
+%   Then we have $$M+1\leq b_1\,.$$
+% \end{proposition}
+% \begin{proof}[Sketch of proof.]
+%   As in the second proof of proposition \ref{pr:n2:hf:nonExistence} the critical manifolds form a directed multigraph.
+%   Since no critical manifold can intersect with the boundary each vertex
+%   of the graph has degree 4 and we thus have $2M$ edges. Now we obtain with Euler's polyhedron formula
+%   for a planar graph with multiple components
+%   \begin{align*}
+%     \text{\# minimal cycles}
+%     &= \text{\#faces}-1 \\
+%     &= 1+\text{\#components}-\text{\#vertices}+\text{\#edges} -1 \\
+%     &\geq 1+1-M+2M -1 = M+1
+%   \end{align*}
+%   Here we use the term `minimal' as in the second proof of proposition \ref{pr:n2:hf:nonExistence}.
+%   Note that each minimal cycle must contain a hole of the domain since else we could restrict $u$ to a simply
+%   connected region containing this cycle. Then by proposition \ref{pr:n2:hvf:simplyConnected} $u$ would correspond to the gradient of 
+%   a harmonic function in this region and we would obtain a contradiction as in the proof of proposition \ref{pr:n2:hf:nonExistence}.
+%   Hence the number of minimal cycles is a lower bound on the number of holes $b_1$ of the domain.
+% \end{proof}
 
-In fact using the Morse inequalities we can obtain the stronger result.
-\begin{proposition}
+% In fact using the Morse inequalities we can obtain the stronger result.
+\begin{proposition}[Special case of the Poincaré-Hopf index theorem.]
   Let $X\subset\R^2$ be a compact manifold with $C^1$ boundary and Betti numbers $b_0=1$, and $b_1$
   and let $u\colon X\to\R^2$ be 
   a strictly Morse harmonic vector field without inflow or outflow.
@@ -1559,8 +1559,8 @@ In fact using the Morse inequalities we can obtain the stronger result.
     \nu_k=\ind_{\Gamma,k}(-u)\label{eq:n2_hvf_noInflowNoOutflow_relationsMuIndex}
   \end{align}
   for all $k\in\brk[c]*{0,1}$.
-  Since on $\Gamma$ all entrant critical points of $u$ are also emergent
-  critical points of $-u$ (and vice versa) we have the relations
+  Since on $\Gamma$ all entrant stagnation points of $u$ are also emergent
+  stagnation points of $-u$ (and vice versa) we have the relations
   \begin{align}
     \ind_{\Gamma,0}(u)=\ind_{\Gamma,1}(-u) \qquad\text{ and }\qquad
     \ind_{\Gamma,1}(u)=\ind_{\Gamma,0}(-u)\,.\label{eq:n2_hvf_noInflowNoOutflow_relationsIndex}
@@ -1656,7 +1656,7 @@ The following proposition gives us a recipe to generate harmonic vector fields i
 The function $\psi$ is also called a stream function.
 
 We now give an example of a harmonic vector field without 
-inflow or outflow and with one critical point.
+inflow or outflow and with one stagnation point.
 For this consider the stream function
 \begin{equation}
   \begin{aligned}
@@ -1774,7 +1774,7 @@ The following proof comes from \cite{Wahlen2023}
   harmonic such that the sides
   $[0,1]\times \partial U=\Sigma^0$ are the tangential boundary,
   the lid $\brk[c]{0}\times U=\Sigma^+$ is the entrant boundary and
-  the lid $\brk[c]{1}\times U=\Sigma^-$ is the emergant boundary. 
+  the lid $\brk[c]{1}\times U=\Sigma^-$ is the emergent boundary. 
   Then $f$ cannot have an interior critical point.
 \end{proposition}
 \begin{proof}
@@ -1886,9 +1886,12 @@ Mimicking the proof in 2 dimensions we obtain the following proposition.
   The claim then follows by the calculations above where we replace
   $f$ with $f^\e$ and then note that $M_1^\e=M_1$ and $M_2^\e=M_2$.
 \end{proof}
+
+
+\section{A harmonic function with interior critical point and simply connected entrant boundary}
 In fact we can give an example for such a function with
 simply connected entrant boundary.
-\begin{example}[A harmonic vector field with simply connected entrant boundary]
+\begin{example}[A harmonic function with interior critical point and simply connected entrant boundary]
   Consider the domain $X=\overline{B}_r\subseteq\R^3$ with $r>0$ sufficiently large and the harmonic function
   \begin{align*}
     f\colon X&\to\R \\
@@ -1919,7 +1922,12 @@ simply connected entrant boundary.
     \caption{Stereographic projection of the surface $\Sigma$.}
     \label{pl:n3_hf_inflowOutflowStagnationPoint_Surface}
   \end{figure}
-  Consider now the inverse stereographic projection given by 
+\end{example}
+\begin{proposition}
+  The function given by equation \eqref{} has simply connected emergent and entrant boundaries.
+\end{proposition}
+\begin{proof}
+  Consider the inverse stereographic projection given by 
   \begin{align*}
     \psi\colon \R^2&\to B_r\setminus\brk[c]*{re_1} \\
     x&\mapsto \frac{r}{s^2+1}\vect{s^2-1 \\ x}
@@ -1928,101 +1936,47 @@ simply connected entrant boundary.
   \begin{align*}
     rn\cdot u(x) = x_1^2(1-x_1)+x_2^2(3x_1-1)+2x_2x_3
   \end{align*}
-  If we now precompose with the inverse stereographic projection we obtain
+  If we precompose with the inverse stereographic projection we obtain
   \begin{align*}
     &\brk*{rn\cdot u}\circ\psi (x) \\
     &= \frac{r^2}{\brk*{s^2+1}^3}\brk*{\brk*{s^2-1}^2\brk*{\brk*{s^2+1}-r\brk*{s^2-1}}+x_1^2\brk*{3r\brk*{s^2-1}-\brk*{s^2+1}}+2x_1\brk*{s^2+1}x_2}
   \end{align*}
   which vanishes precisely iff
-  \begin{align}
-    0&=\brk*{s^2-1}^2\brk*{\brk*{s^2+1}-r\brk*{s^2-1}}+x_1^2\brk*{3r\brk*{s^2-1}-\brk*{s^2+1}}+2x_1\brk*{s^2+1}x_2 \\
-    &=\brk*{s^2+1}\brk*{\brk*{s^2-1}^2-x_1^2}-r\brk*{s^2-1}^3+3r\brk*{s^2-1}x_1^2+2x_1x_2\brk*{s^2+1}\\
-    &=p_\e(x)
-  \end{align}
-  Our aim is to show that the real variety defined in this way is compact and has precisely one connectivity component.
+  \begin{align*}
+    0&=\frac{1}{r}\brk*{s^2-1}^2\brk*{\brk*{s^2+1}-\brk*{s^2-1}}+x_1^2\brk*{3\brk*{s^2-1}-\frac{1}{r}\brk*{s^2+1}}+\frac{1}{r}2x_1\brk*{s^2+1}x_2 \\
+    &=\frac{1}{r}\brk*{s^2+1}\brk*{\brk*{s^2-1}^2-x_1^2}-\brk*{s^2-1}^3+3\brk*{s^2-1}x_1^2+\frac{1}{r}2x_1x_2\brk*{s^2+1}
+  \end{align*}
+  Writing $\e=1/r$ and setting
+  \begin{align*}
+    p^\e(x)=\e\brk*{\brk*{s^2+1}\brk*{\brk*{s^2-1}^2-x_1^2}+2x_1x_2\brk*{s^2+1}}-\brk*{s^2-1}^3+3\brk*{s^2-1}x_1^2
+  \end{align*}
+  we see that this is equivalent to the condition $p^\e(x)=0$.
+  Our aim is to show that the real planar variety defined in this way is compact and has precisely one connectivity component.
   It then follows from the Jordan curve theorem that this variety splits the plane into two components, namely one where 
-  $p_\e$ is positive and one where it is negative. The image of these sets under the stereographic projection is then precisely
+  $p^\e$ is positive and one where it is negative. The image of these sets under the stereographic projection is then precisely
   $\Sigma^+$ and $\Sigma^-$ respectively and it follows that these sets are simply connected.
-  Dividing this equation by $r$ and considering the limit $r\to\infty$ we obtain the relation
-  \begin{align*}
-    0&=\brk*{s^2-1}\brk*{\brk*{s^2-1}^2-3x_1^2} \\
-    &=p(x)
-  \end{align*}
-  which vanishes precisely if $x\in S^1$ or
-  \begin{align*}
-    0=\brk*{s^2-1}^2-3x_1^2
-  \end{align*}
-  substituting $\tix_k=x_k^2$ we can write this as
-  \begin{align*}
-    0&=\brk*{\tix_1+\tix_2-1}^2-3\tix_1\\
-    &=\tix_1^2+2\tix_1\tix_2+\tix_2^2-5\tix_1-2\tix_2+1 \\
-    &=\brk*{\tix_1+\tix_2}^2-5\tix_1-2\tix_2+1
-  \end{align*}
-  which is the equation of a conic section. Since we are assuming $\tix\in\R_{\geq0}^2$
-  we obtain the section of a parabola $C$ in the upper right quadrant intersecting the $\tix_1$-axis at the points
-  \begin{align*}
-    \vect{a_\pm & 0}=\vect{\frac{5\pm2\sqrt{6}}{2} & 0}^\top
-  \end{align*}
-  and touching the $\tix_2$-axis at the point $e_2$. This is a connected curve.
-  Now taking the square root we obtain four curves
-  \begin{align*}
-    C_{\circ_1\circ_2}=\brk[c]*{\vect{\circ_1\sqrt{\tix_1}&\circ_2\sqrt{\tix_2}}^\top\colon\tix\in C}
-  \end{align*}
-  for signs $\circ_1,\circ_2\in\brk[c]*{+,-}$. These curves intersect precisely at the points $\pm e_2$
-  and at the four points on the $x_1$-axis given by
-  \begin{align}
-    \vect{\pm \sqrt{a_+}&0}^\top\qquad\vect{\pm \sqrt{a_-}&0}^\top\,.\label{eq:n3_example_rootsOfZeroes}
-  \end{align}
-  Since we have that
-  \begin{align*}
-    q(x)=\brk*{x_1^2+x_2^2}^2-3x_1^2
-    =x_1^4+x_2^4+2x_1^2x_2^2-3x_1^2
-  \end{align*}
-  has the gradient
-  \begin{align*}
-    \nabla q(x)=\vect{4x_1^3+4x_1x_2^2-6x_1 \\ 4x_2^3+4x_1^2x_2}
-    =4\vect{x_1\brk*{x_1^2+x_2^2-\frac{3}{2}x_1} \\ x_2^3+x_1^2x_2}
-  \end{align*}
-  which does not vanish at the points given by \eqref{eq:n3_example_rootsOfZeroes}
-  we have that the four curves are in fact two curves.
-  We also calculate the derivative
-  \begin{align*}
-    p(x) =
-  \end{align*}
-  We also take the second derivative
-  \begin{align*}
-    D^2p(x)=6\begin{bmatrix}
-      5x_1^4 + 6x_1^2x_2^2 + x_2^4 - 12x_1^2 - 3x_2^2 + 2 & 2x_1x_2(2x_1^2 + 2x_2^2 - 3) \\
-      * & x_1^4 + 6x_1^2x_2^2 + 5x_2^4 - 3x_1^2 - 6x_2^2 + 1
-    \end{bmatrix}
-  \end{align*}
-  Note that this is degenerate at the points $\pm e_2$.
-  
-  All six curves intersect precisely at the points $\pm e_1$. If we now add the variation
-  \begin{align*}
-    q_\e(x)=\e\brk*{\brk*{s^2+1}\brk*{\brk*{s^2-1}^2-x_1^2}+2x_1x_2\brk*{s^2+1}}
-  \end{align*}
-  to our variety we 
 
-  we also calculate for this part
-  \begin{align*}
-    \nabla q_\e(x)=2\e\vect{3x_1^2x_2 + x_1x_2^2 + x_2^3 - x_1 + x_2 \\ x_1^3 + x_1^2x_2 + 3x_1x_2^2 + 2x_2^3 + x_1}
-  \end{align*}
-  and
-  \begin{align*}
-    D^2q_\e(x)=2\e\begin{bmatrix}
-      6x_1x_2 + x_2^2 - 1 & 3x_1^2 + 2x_1x_2 + 3x_2^2 + 1 \\
-      *& x_1^2 + 6x_1x_2 + 6x_2^2
-    \end{bmatrix}
-  \end{align*}
-  Now notice that we have around the point $\pm e_2$ that
-  \begin{align*}
-    D^2q_\e(\pm e_2)=2\e\begin{bmatrix}
-      0 & 4 \\
-      4 & 6
-    \end{bmatrix}
-  \end{align*}
-  which is of full rank. 
+  % we also calculate for this part
+  % \begin{align*}
+  %   \nabla q_1(x)=2\vect{3x_1^2x_2 + x_1x_2^2 + x_2^3 - x_1 + x_2 \\ x_1^3 + x_1^2x_2 + 3x_1x_2^2 + 2x_2^3 + x_1}
+  % \end{align*}
+  % and
+  % \begin{align*}
+  %   D^2q_1(x)=2\begin{bmatrix}
+  %     6x_1x_2 + x_2^2 - 1 & 3x_1^2 + 2x_1x_2 + 3x_2^2 + 1 \\
+  %     *& x_1^2 + 6x_1x_2 + 6x_2^2
+  %   \end{bmatrix}
+  % \end{align*}
+  % Now notice that we have around the point $\pm e_2$ that
+  % \begin{align*}
+  %   D^2q_1(\pm e_2)=2\begin{bmatrix}
+  %     0 & 4 \\
+  %     4 & 6
+  %   \end{bmatrix}
+  % \end{align*}
+  % which is of full rank. 
+
+
   % \begin{align*}
   %   \psi\colon \R^2&\to B_r\setminus\brk[c]*{re_3} \\
   %   x&\mapsto \frac{r}{s^2+1}\vect{x \\ s^2-1}
@@ -2041,8 +1995,488 @@ simply connected entrant boundary.
   %   0&=x_1^2\brk*{\brk*{s^2+1}-rx_1}+x_2^2\brk*{3rx_1-\brk*{s^2+1}}+2x_2\brk*{s^2+1}\brk*{s^2-1} \\
   %   &=\brk*{s^2+1}\brk*{x_1^2-x_2^2}-rx_1^3+3rx_1x_2^2+2x_2\brk*{s^4-1}
   % \end{align}
-  \td{complete this section.}
-\end{example}
+\end{proof}
+
+\begin{proposition}
+  There exists an $\e>0$ such that the planar variety $p^\e(x)$ given by equation \eqref{}
+  has one connectivity component.
+\end{proposition}
+\begin{proof}
+  By proposition \ref{pr:n3_polynomial_Vp0} we have that $V\brk*{p^0}$
+  consists of six arcs which all meet at the points $e_2$ and $-e_2$.
+  The set $V\brk*{p^0}$ is sketched in figure \ref{}.
+  We will argue that the corresponding figure for a small enough $\e$ is given by \ref{}.
+  Away from the singularities at $\pm e_2$ we obtain the result by proposition \ref{} and picking
+  $\e$ small enough. By symmetry of $p^\e$, that is we have
+  \begin{align}
+    p^\e\brk*{-x}=p^\e(x)
+  \end{align}
+  it suffises to inspect what happens around the point $e_2$ as $\e\to0$.
+
+  Now define the polynomial $q$ by
+  \begin{align}
+    p^\e(x)=\e q(x)+p^0(x)\,.
+  \end{align}
+  For simplicity we would like to move the singular point to the origin so we give
+  \begin{align*}
+    p^0(x-e_2)=(x_1^2 + x_2^2 - 2x_2)(x_1^4 + 2x_1^2x_2^2 + x_2^4 - 4x_1^2x_2 - 4x_2^3 - 3x_1^2 + 4x_2^2)
+  \end{align*}
+  and
+  \begin{align*}
+    q(x-e_2)=(x_1^2 + x_2^2 - 2x_2 + 2)(2x_1x_2 + x_2^2 - 2x_1 - 2x_2)
+  \end{align*}
+  By Tougeron's theorem there exists a neighbourhood $U$ around the origin such that
+  \begin{align}
+    p\colon (\e,x)\mapsto p^\e(x)
+  \end{align}
+  % is diffeomorphic on $U$ to its jet
+  % \begin{align}
+  %   J^{}
+  % \end{align}
+  \td{continue this argument}
+  Taking the homogeneous parts of lowest order we obtain
+  \begin{align*}
+    h_3(x)=\brk*{p^0\brk*{x-e_2}}_3=2x_2(3x_1^2-4x_2^2)
+  \end{align*}
+  and
+  \begin{align*}
+    h_1(x)=\brk*{q\brk*{x-e_2}}_1=-4(x_1+x_2)\,.
+  \end{align*}
+  % We now denote the arcs $\alpha_k$ as in the plot \ref{}.
+  % \td{insert plot}
+  % \begin{figure}
+  %   \centering
+  %   \missingfigure[]{}
+  %   \caption{Plot of $\brk*{p^0\brk*{x-e_2}}_3$}
+  % \end{figure}
+  % We claim that for $\e$ sufficiently small the function
+  In proposition \ref{pr:n3_polynomial_regularH}
+  it will be shown that the polynomial
+  \begin{align}
+    h^\e(x)=\e h_1(x)+h_3(x)\,.
+  \end{align}
+  has a variety of the shape given in figure \ref{fi:n3_polynomial_intersectionOriginRegular}
+  % is obtained by removing the singular point and adding handles between
+  % the arcs $\alpha_2$ and $\alpha_5$, $\alpha_3$ and $\alpha_4$ and $\alpha_6$ and $\alpha_1$.
+  % To see this note that
+  Moreover $V\brk*{h^\e}$ converges to $V\brk*{h^0}$ with respect to the Hausdorff metric as
+  $\e\to0$. Now 
+  \td{continue proof}
+\end{proof}
+
+% Let $p\in\R\pwrSeries{X_1,\dots,X_n}$ be a formal power series.
+% The following definitions are inspired by \cite{Viro2006}.
+% Define the \emph{Milnor number} $m\brk*{p}$ as the dimension
+% \begin{align}
+%   m\brk*{p}= \dim_\R\bigslant{\R\pwrSeries{X_1,\dots,X_n}}{\brk*{\partial_1p,\dots,\partial_np}}
+% \end{align}
+% where $\brk*{\partial_1p,\dots,\partial_np}$ denotes the ideal spanned by the
+% partial derivatives of $p$.
+
+% \begin{theorem}[Tougeron's theorem]
+%   If $x$ is a singularity of $V\brk*{p}$ with finite Milnor number $m$
+%   then there exists a neighbourhood $U$ of $x$ and a diffeomorphism
+%   \begin{align}
+%     \phi\colon U\to \phi(U)
+%   \end{align}
+%   such that
+%   \begin{align}
+%     \phi\brk*{V_U\brk*{p}}=V_{\phi(U)}\brk*{J^{m+1}_xp}
+%   \end{align}
+%   where $J^{m+1}_x p$ is the $m+1$-jet of $p$ at $x$.
+% \end{theorem}
+% \begin{proof}
+%   See \cite{Arnold2012}.
+% \end{proof}
+
+\begin{proposition}[The set $V\brk*{p^0}$]\label{pr:n3_polynomial_Vp0}
+  The set $V\brk*{p^0}$ where $p^0$ given by equation \eqref{}
+  consists of six arcs which all meet at the points $\pm e_2$ and nowhere else.
+\end{proposition}
+\begin{proof}
+  \tdrewrite{It should be much easier arguing in $\R^3$.}
+  From the factorisation
+  \begin{align*}
+    p^0(x)=\underbrace{\brk*{s^2-1}}_{=q_1(x)}\underbrace{\brk*{\brk*{s^2-1}^2-3x_1^2}}_{=q_2(x)}
+  \end{align*}
+  we see that
+  \begin{align*}
+    V\brk*{p^0}=V\brk*{q_1}\cup V\brk*{q_2}=S^1\cup V\brk*{q_2}
+  \end{align*}
+  We claim that the set of points $V\brk*{q_2}$ consists of four curves intersecting the
+  circle $S^1$ precisely at the points $\pm e_2$ and that there are no other singular points.
+  From this the claim will then follow.
+  To show this take a closer look at
+  \begin{align*}
+    q_2(x)=\brk*{s^2-1}^2-3x_1^2\,.
+  \end{align*}
+  Substituting $\tix_k=x_k^2$ we can write this as
+  \begin{align*}
+    q_2(x)&=\brk*{\tix_1+\tix_2-1}^2-3\tix_1\\
+    &=\tix_1^2+2\tix_1\tix_2+\tix_2^2-5\tix_1-2\tix_2+1 \\
+    &=\brk*{\tix_1+\tix_2}^2-5\tix_1-2\tix_2+1\\
+    &=\tiq_2\brk*{\tix}\,.
+  \end{align*}
+  Now the equation 
+  \begin{align*}
+    0=\tiq_2\brk*{\tix}
+  \end{align*}
+  is that of a conic section. Since we are assuming $\tix\in\R_{\geq0}^2$
+  we obtain the connected arc $\tiA$ in the upper right quadrant intersecting the $\tix_1$-axis at the points
+  \begin{align*}
+    \tia^\pm=\vect{\frac{5\pm2\sqrt{6}}{2} & 0}^\top
+  \end{align*}
+  and touching the $\tix_2$-axis at the point $e_2$.
+  The arc $\tiA$ is shown in figure \ref{fi:n3_polynomial_conicArc}.
+  \begin{figure}
+    \centering
+    \input{../Figures/n3_polynomial_conicArc.pdf_tex}
+    \caption{The arc $\tiA$.}
+    \label{fi:n3_polynomial_conicArc}
+  \end{figure}
+  Since there are only two points where the curve intersects $\partial\R_{\geq0}^2$
+  and the curve does not leave this quadrant at infinity it follows that $\tiC$ is
+  a connected compact arc.
+  Define the mappings
+  \begin{align}
+    \sqrt[\leftroot{2}\uproot{4}\circ_1\circ_2]{}\colon \R_{\geq0}^2&\to\R^2 \\
+    \tix&\mapsto x=\vect{\circ_1\sqrt{\tix_1}&\circ_2\sqrt{\tix_2}}^\top
+  \end{align}
+  for signs $\circ_1,\circ_2\in\brk[c]*{+,-}$.
+  Now taking the image of the arc $\tiA$ under this square root we obtain four arcs
+  \begin{align*}
+    A^{\circ_1\circ_2}=\brk[c]*{\sqrt[\leftroot{2}\uproot{4}\circ_1\circ_2]{\tix}\colon\tix\in \tiA}
+  \end{align*}
+  for signs $\circ_1,\circ_2\in\brk[c]*{+,-}$.
+  Note that by construction the arc $A^\text{I}=A^{++}$ lies in the first quadrant and analogously
+  $A^\text{II}=A^{-+}$, $A^\text{III}=A^{--}$ and $A^\text{IV}=A^{+-}$ lie in the second, third and fourth quadrants.
+  Now define four points on the $x_1$-axis by
+  \begin{align}
+    a^{\circ_1\circ_2}=\sqrt[\leftroot{2}\uproot{4}\circ_1+]{a^{\circ_2}}\,.
+  \end{align}
+  We see that $A^\text{I}\cap A^\text{IV}=\brk[c]*{a^{++},a^{+-}}$ and
+  $A^\text{II}\cap A^\text{III}=\brk[c]*{a^{--},a^{-+}}$.
+  We also see that $A^\text{I}\cap A^\text{II}=\brk[c]*{e_2}$ and 
+  $A^\text{III}\cap A^\text{IV}=\brk[c]*{-e_2}$
+  Since the origin is not contained in any arc it thus follows that $A^\text{I}\cap A^\text{III}=\emptyset$ 
+  and $A^\text{II}\cap A^\text{IV}=\emptyset$.
+  Thus the union
+  \begin{align}
+    A=A^{++}\cup A^{+-}\cup A^{-+}\cup A^{--}
+  \end{align}
+  consists of four arcs which meet at the points $\pm e_2$ and hence also
+  $V\brk*{p_2}=A$.
+  \ruggedtodo{insert picture here, remove quadrant notation.}
+
+  It now remains to be shown that $A\cap S^1=\brk[c]*{\pm e_2}$.
+  For this let $x\in S^1$ such that
+  \begin{align}
+    0=q_2(x)
+  \end{align}
+  but then this claim follows immediately from $q_2(x)=-3x_1^2$.
+
+  \begin{figure}
+    \centering
+    \input{../Figures/n3_polynomial_projectionComponentConics.pdf_tex}
+    \caption{Sketch of the set $V\brk*{q_2}$.}
+    \label{fi:n3_polynomial_projectionComponentConics}
+  \end{figure}
+  
+
+%   Since we have that
+%   \begin{align*}
+%     q(x)=\brk*{x_1^2+x_2^2}^2-3x_1^2
+%     =x_1^4+x_2^4+2x_1^2x_2^2-3x_1^2
+%   \end{align*}
+%   has the gradient
+%   \begin{align*}
+%     \nabla q(x)=\vect{4x_1^3+4x_1x_2^2-6x_1 \\ 4x_2^3+4x_1^2x_2}
+%     =4\vect{x_1\brk*{x_1^2+x_2^2-\frac{3}{2}x_1} \\ x_2^3+x_1^2x_2}
+%   \end{align*}
+%   which does not vanish at the points given by \eqref{eq:n3_example_rootsOfZeroes}
+%   we have that the four curves are in fact two curves.
+%   We also calculate the derivative
+%   \begin{align*}
+%     \nabla p^0(x)=\vect{}
+%   \end{align*}
+%   and the second derivative
+%   \begin{align*}
+%     D^2p^0(x)=6\begin{bmatrix}
+%       5x_1^4 + 6x_1^2x_2^2 + x_2^4 - 12x_1^2 - 3x_2^2 + 2 & 2x_1x_2(2x_1^2 + 2x_2^2 - 3) \\
+%       * & x_1^4 + 6x_1^2x_2^2 + 5x_2^4 - 3x_1^2 - 6x_2^2 + 1
+%     \end{bmatrix}
+%   \end{align*}
+%   Note that this is degenerate at the points $\pm e_2$.
+  
+%   All six curves intersect precisely at the points $\pm e_1$. If we now add the variation
+%   \begin{align*}
+%     q_1(x)=\brk*{s^2+1}\brk*{\brk*{s^2-1}^2-x_1^2}+2x_1x_2\brk*{s^2+1}
+%   \end{align*}
+%   to our variety we 
+\end{proof}
+
+\begin{proposition}
+  For $\e>0$ sufficiently small the variety $V\brk*{p^\e}$ is smooth.
+\end{proposition}
+\begin{proof}
+  % Since we \emph{really} do not want to deal with sixth order polynomials we take the stereographic
+  % projection when constructing $p^\e$ in a different component to obtain a fifth order polynomial instead
+  % (much better). For this let
+  % \begin{align*}
+  %   \psi\colon \R^2&\to B_r\setminus\brk[c]*{re_3} \\
+  %   x&\mapsto \frac{r}{s^2+1}\vect{x \\ s^2-1}
+  % \end{align*}
+  % where $s=\abs{x}$. 
+  % If we now precompose with this new inverse stereographic projection we obtain
+  % \begin{align*}
+  %   &\brk*{rn\cdot u}\circ\psi (x) \\
+  %   &= \frac{r^2}{\brk*{s^2+1}^3}\brk*{x_1^2\brk*{\brk*{s^2+1}-rx_1}+x_2^2\brk*{3rx_1-\brk*{s^2+1}}+2x_2\brk*{s^2-1}\brk*{s^2+1}}
+  % \end{align*}
+  % which vanishes precisely iff
+  % \begin{align}
+  %   0&=2x_1^4x_2+4x_1^2x_2^3+2x_2^5+x_1^4-x_2^4-rx_1^3+3rx_1x_2^2+x_1^2-x_2^2-2x_2=P^r(x)
+  % \end{align}
+  % In order to show smoothness it is sufficient 
+  % to show that $V\brk*{P^r,\partial_1P^r,\partial_2P^r}=\emptyset$.
+  % Thus we calculate
+  % \begin{align}
+  %   \partial_1P^r(x)
+  %   &=8x_1^3x_2+8x_1x_2^3+4x_1^3-3rx_1^2+3rx_2^2+2x_1
+  % \end{align}
+  % and
+  % \begin{align}
+  %   \frac{1}{2}\partial_2P^r(x)
+  %   &=x_1^4+6x_1^2x_2^2+5x_2^4-2x_2^3+3rx_1x_2-x_2-1
+  % \end{align}
+  % We further obtain
+  % \begin{align}
+  %   \frac{x_1}{2}\partial_1P^r(x)
+  %   &=4x_1^4x_2+4x_1^2x_2^3+2x_1^4-\frac{3}{2}rx_1^3+\frac{3}{2}rx_2^2x_1+x_1^2
+  % \end{align}
+  % and
+  % \begin{align}
+  %   x_2\partial_2P^r(x)
+  %   &=2x_1^4x_2+12x_1^2x_2^3+10x_2^5-4x_2^4+6rx_1x_2^2-2x_2^2-2x_2
+  % \end{align}
+  % and thus
+  % \begin{align}
+  %   &P^r(x)-\frac{x_1}{2}\partial_1P^r(x)-x_2\partial_2P^r(x) \\
+  %   &=-4x_1^4x_2+2x_2^5-x_1^4-x_2^4+\frac{1}{2}rx_1^3+\frac{3}{2}rx_1x_2^2-x_2^2-2x_2
+  % \end{align}
+  % \begin{align}
+  %   &P^r(x)-x_2\partial_2P^r(x) \\
+  %   &=-2x_1^4x_2+x_1^4-x_2^4+\frac{1}{2}rx_1^3+\frac{3}{2}rx_1x_2^2-x_2^2-2x_2
+  % \end{align}
+  % Note that the first equation is only cubic. Hence we can calculate
+  % the roots of $x_1$ as a function of $x_2$, plug this solution into 
+  
+  We inspect the equations
+  \begin{align}
+    P(x)
+    =-x_1^3+x_1x_2^2+x_1^2-x_2^2+2x_2x_3
+  \end{align}
+  and
+  \begin{align}
+    Q(x)=x_1^2+x_2^2+x_3^2-r^2
+  \end{align}
+  closer. One calculates
+  \begin{align}
+    T=\vect{\nabla P(x)&\frac{1}{2}\nabla Q(x)}=
+    \begin{bmatrix}
+      -3x_1^2+x_2^2+2x_1 & x_1\\
+      2x_1x_2-2x_2+2x_3&x_2 \\
+      2x_2&x_3
+    \end{bmatrix}
+  \end{align}
+  % \begin{align}
+  %   \nabla P(x)=\vect{-3x_1^2+x_2^2+2x_1 \\
+  %   2x_1x_2-2x_2+2x_3 \\
+  %   2x_2}
+  % \end{align}
+  % and further
+  % \begin{align}
+  %   H(x)&=\nabla P-n\cdot\nabla P\, n \\
+  %   &=P(x)-\e\brk*{-3x_1^3+3x_1x_2^2+2x_1^2
+  %   -2x_2^2+4x_2x_3}x\\
+  %   % &= \vect{-3x_1^2+x_2^2+2x_1 \\
+  %   % 2x_1x_2-2x_2+2x_3 \\
+  %   % 2x_2}
+  % \end{align}
+  % where we used that $n=\e x$.
+  
+  % To show that the variety $V\brk*{P,Q}$ has no singular points
+  % it suffises by the Jacobi criterion to show that
+  % \begin{align*}
+  %   V\brk*{P,Q,H_1,H_2,H_3}=\emptyset
+  % \end{align*}
+  % For an $x\in V\brk*{\dots}$ we must have
+  % \td{continue proof}
+  By the Jacobi criterion it is sufficient to show that this matrix is
+  of full rank on $V(P,Q)$.
+  This is equivalent to showing that
+  \begin{align}
+    0&\neq \det\begin{bmatrix}
+      T_{11}&T_{12}\\T_{21}&T_{22}
+    \end{bmatrix}
+    =-5x_1^2x_2+x_2^3+4x_1x_2-2x_1x_3
+    =R_1(x)\,, \\
+    0&\neq \det\begin{bmatrix}
+      T_{21}&T_{22}\\T_{31}&T_{32}
+    \end{bmatrix}
+    =2x_1x_2x_3-2x_2x_3+2x_3^2-2x_2^2
+    =R_2(x)\text{ or } \\
+    0&\neq \det\begin{bmatrix}
+      T_{31}&T_{32}\\T_{11}&T_{12}
+    \end{bmatrix}
+    =2x_1x_2+3x_1^2x_3-x_2^2x_3-2x_1x_3
+    =R_3(x)
+  \end{align}
+  for any $x\in V\brk*{P,Q}$. This in turn is equivalent to showing that
+  \begin{align}
+    V\brk*{P,Q,R_1,R_2,R_3}=\emptyset\,.
+  \end{align}
+\end{proof}
+
+For the next proposition we require the definition of tubular neighbourhoods.
+For a given $\delta>0$ and a subset $A\subseteq\R^d$ we call the union of $\delta$ balls
+\begin{align}
+  \tubular_\delta\brk*{A}=\bigcup_{x\in A}B_\delta(x)
+\end{align}
+a \emph{tubular neighbourhood} of $A$.
+We have the following proposition.
+\begin{proposition}[Convergence at non-singular points]
+  Let $U$ be an open bounded set such that $p$ is non-singular on $\overline{U}$
+  Then there exists a $\delta>0$ such that for all $\e<\delta$
+  we have that the Hausdorff distance satisfies 
+  $d_H\brk*{V_U\brk*{p^\e},V_U\brk*{p^0}}<\delta$ and 
+  $V_U\brk*{p^\e}$ is homotopic to $V_U\brk*{p^0}$.
+\end{proposition}
+\begin{proof}
+  It follows that $D^2p^0$ is bijective at every point on $\overline{U}$.
+  By the implicit function theorem there exists around every point $x\in\overline{U}$
+  a neighbourhood $U_x$, a $\delta_x>0$ and 
+  a mapping $h\colon B_{\delta_x}\times V_{U_x}\brk*{p^0}\to U_x$ such that $h_\e$ parametrises
+  $V_{U_x}\brk*{p^\e}$. Since $\overline{U}$ is compact we can choose finitely many such $x$,
+  pick $\delta$ to be the minimum of all $\delta_x$. By the pasting lemma we can then construct
+  our desired homotopy $h$.
+  \td{fill in the details.}
+\end{proof}
+
+\begin{proposition}\label{pr:n3_polynomial_regularH}
+  The variety given by $h$ has three arcs arranged as in figure \ref{fi:n3_polynomial_intersectionOriginRegular}.
+\end{proposition}
+\begin{proof}
+  
+  % We write
+  % \begin{align}
+  %   0=\h^\e(x)=2x_2\brk*{3x_1^2-4x_2^2}-4\e\brk*{x_1+x_2}
+  % \end{align}
+  % This has the solution
+  We start by showing that the set $V\brk*{h^\e}$ has no singular points.
+  By Jacobi's formula we can calculate the singular points by determining the critical points
+  of $h^\e$. Hence we calculate
+  \begin{align}
+    0=\nabla h^\e(x)=2\vect{6x_1x_2-2\e \\ 3x_1^2-12x_2^2 -2\e}
+  \end{align}
+  % It hence follows by setting both equations equal, cancelling $-2\e$ and dividing by $3$ that
+  % \begin{align}
+  %   2x_1x_2=x_1^2-4x_2^2\,.
+  % \end{align}
+  % For this to have real solutions we must have
+  % \begin{align}
+  %   4x_1x_2+16x_2^2\geq0\,.
+  % \end{align}
+  % Hence obtain that
+  % \begin{align}
+  %   x_1=\sqrt
+  % \end{align}
+  % \begin{align}
+  %   x_1=\frac{\e^2}{3x_2}
+  % \end{align}
+  % and inserting this into the second equation that
+  % \begin{align}
+    
+  % \end{align}
+  Now $x$ must also fulfil the condition
+  \begin{align}
+    0&=h^\e(x) \\
+    &=2x_2\brk*{3x_1^2-4x_2^2}-4\e\brk*{x_1+x_2} \\
+    &=6x_2x_1^2-4\e x_1-8x_2^3-4\e x_2
+  \end{align}
+  This set of equations has no solution in $\R^2$ and thus all points in $V\brk*{h^\e}$
+  are non-singular.
+  % we also must have
+  % \begin{align}
+  %   16\e^2+96x_2\brk*{2x_2^3+\e x_2}\geq0
+  % \end{align}
+  % for the solution $x$ to be real.
+  % \td{finish proof}
+  Now consider the derivative at the origin
+  It now 
+  Hence $h^\e$ has no singular points and hence the six arcs have to join in
+  a manner similar to figure \ref{fi:n3_polynomial_intersectionOriginDegenerate}.
+  The behavior of $h^\e$ at infinity is determined by the higher order terms and thus
+  by the function $h_3$. Now $h_3$ is a monkey saddle and thus there are six rays emanating
+  to infinity. From the formula one sees that these are the $x_1$-axis and the lines given by 
+  \begin{align}
+    \alpha^\pm=\brk[c]*{t\vect{\pm 2 & \sqrt{3}}^\top\colon t\in\R}
+  \end{align}
+  Now the arc
+  \begin{align}
+    \beta=\brk[c]*{t\vect{1 & -1}^\top\colon t\in\R}
+  \end{align}
+  is the zero set of $h_1$. We now look at the second quadrant. Here we have that
+  $h^\e=h_3\leq0$ on $\beta$ and that
+  $h^\e=h_1\geq0$ on $\alpha^-$. By the intermediate value theorem thus there must be an arc
+  $\gamma\subseteq V\brk*{h^\e}$ starting at the origin 
+  and sandwiched in this quadrant
+  between $\alpha^-$ and $\beta$
+  and tending to $\alpha^-$ at $-\infty$.
+  An analogous argumentation on the third quadrant shows that here too there must be an arc
+  $\gamma$ starting at the origin and tending to $\infty$. 
+  Denote the union of these two arcs by $\gamma$. Then $\gamma$ divides the plane into two
+  parts and since $h^\e$ has no singular points it follows that the zeroes of $h^\e$
+  must look similar to figure \ref{fi:n3_polynomial_intersectionOriginRegular}.
+  \begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \input{../Figures/n3_polynomial_intersectionOriginDegenerate.pdf_tex}
+    \caption{Sketch of the set $V\brk*{h_3}$.}
+    \label{fi:n3_polynomial_intersectionOriginDegenerate}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \input{../Figures/n3_polynomial_intersectionOriginLine.pdf_tex}
+    \caption{Sketch of the set $V\brk*{h_1}$.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \input{../Figures/n3_polynomial_intersectionOriginRegular.pdf_tex}
+    \caption{Sketch of the set $V\brk*{h^\e}$.}
+    \label{fi:n3_polynomial_intersectionOriginRegular}
+    \end{subfigure}
+    \caption{Sketches of varieties.}
+  \end{figure}
+\end{proof}
+
+\begin{figure}
+  \centering
+  \input{../Figures/n3_polynomial_projectionDegenerate.pdf_tex}
+  \caption{A sketch of the set $V\brk*{p^0}$.}
+\end{figure}
+
+For a polynomial $p\in\R\brk[s]*{x_1,x_2}$ and a set $U\subseteq\R^2$ we denote the set of zeroes of $p$ by
+\begin{align*}
+  V_U(p)=\brk*{x\in U\colon p(x)=0}
+\end{align*}
+We call the points at which multiple arcs meet \emph{singular}.
+
+
+\td{complete this section.}
+
 
 \chapter{Harmonic vector fields, $d=3$}
 \section{No inflow or outflow}
@@ -2091,8 +2525,8 @@ We also obtain the following result:
     \label{eq:n3_hvf_noInflowNoOutflow_maxMinRel}
   \end{align}
 
-  Since on $\Gamma$ all entrant critical points of $u$ are also emergent
-  critical points of $-u$ (and vice versa) we have the relations
+  Since on $\Gamma$ all entrant stagnation points of $u$ are also emergent
+  stagnation points of $-u$ (and vice versa) we have the relations
   \begin{equation}
     \begin{aligned}
     \ind_{\Gamma^1,0}(\pm u)&=\ind_{\Gamma^2,2}(\mp u) \\
