@@ -1,6 +1,6 @@
 %% Creator: Inkscape inkscape 0.92.5, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'n3_polynomial_projectionComponentConics.pdf' (pdf, eps, ps)
+%% Accompanies image file 'n2_cube_inflowOutflow.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{213.42361541bp}%
+    \setlength{\unitlength}{182.61105803bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,20 +50,12 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.71855707)%
+  \begin{picture}(1,0.70617859)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
-    \put(0,0){\includegraphics[width=\unitlength,page=1]{n3_polynomial_projectionComponentConics.pdf}}%
-    \put(0.84271751,0.24432033){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$a^{++}$\end{tabular}}}}%
-    \put(0.47487768,0.59816885){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$e_2$\end{tabular}}}}%
-    \put(0.60133306,0.2373951){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$a^{+-}$\end{tabular}}}}%
-    \put(0.01431208,0.2473157){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$a^{--}$\end{tabular}}}}%
-    \put(0.25085048,0.24697462){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$a^{-+}$\end{tabular}}}}%
-    \put(0.36924308,0.02430476){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$-e_2$\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=2]{n3_polynomial_projectionComponentConics.pdf}}%
-    \put(0.7716064,0.53147166){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$A^{++}$\end{tabular}}}}%
-    \put(0.09722117,0.54780069){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$A^{-+}$\end{tabular}}}}%
-    \put(0.10048695,0.04650214){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$A^{--}$\end{tabular}}}}%
-    \put(0.77650509,0.05793248){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$A^{+-}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{n2_cube_inflowOutflow.pdf}}%
+    \put(0.7209409,0.61753021){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$u$\end{tabular}}}}%
+    \put(0.72020747,0.53538858){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Sigma^-$\end{tabular}}}}%
+    \put(0.72240778,0.45471358){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Sigma^+$\end{tabular}}}}%
   \end{picture}%
 \endgroup%
