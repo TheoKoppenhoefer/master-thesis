@@ -75,7 +75,6 @@
     \item Does Bocher's theorem help?
     \item Look at application of Sperner's lemma
     \item $C$ is used once for critical points, once for level sets.
-    \item Define traversing vector field
   \end{itemize}
   Some questions
   \begin{itemize}
@@ -85,6 +84,7 @@
 
 \newpage
 
+\nocite{*}
 
 \chapter{Introduction}
 
@@ -441,8 +441,9 @@ stagnation point of a stratum $X_{j+1}$. This definition of ordinary points is i
 \end{proof}
 
 \begin{definition}[Morse functions]
-  We call $u$ \emph{(essentially) Morse} if for all $j\in\cJ$ we have that $u_j$ is (essentially) non-degenerate.
-  For an essentially Morse function $u$ we define 
+  We call $u$ \emph{Morse} if for all $j\in\cJ$ we have that $u_j$ is essentially non-degenerate.
+  If both $u$ and $-u$ are Morse we call $u$ \emph{strongly Morse}.
+  For a Morse function $u$ we define 
   the \emph{interior type numbers} $M_k$ to be the number of essential interior stagnation points of $u$ of index $k$, that is
   \begin{align}
     M_k=\sum_{\substack{j\in\cJ\text{ s.t.} \\ n(j)=d}}\ind_{j,k}(u)
@@ -1007,7 +1008,7 @@ We make the following remarks
   is contained the finite subcover. Thus it follows that $\#C<\infty$ is finite.
 \end{proof}
 As a consequence we obtain the following observation:
-\begin{corollary}
+\begin{corollary}\label{co:finiteness_type_nbrs}
   For a Morse $u$ the type numbers $M_0,\dots,M_d$ and the boundary type numbers $\mu_0,\dots,\mu_{d-1}$
   are finite.
 \end{corollary}
@@ -1119,18 +1120,18 @@ We proceed to give examples for Betti numbers of selected connected domains in $
 
 We state the Morse inequalities.
 \begin{theorem}[Strong Morse inequalities, {\cite[Theorem 2.4]{Agrach1991}}]
-Let $X$ be a manifold with corners and $f\colon X\to\R$ be essentially Morse.
-Then we have for $k\in\brk[c]*{0,\dots,d}$ the inequalities
+Let $X$ be a manifold with corners and $f\colon X\to\R$ be Morse.
+Then we have for $l\in\brk[c]*{0,\dots,d}$ the inequalities
 \begin{align*}
-  \sum_{j=0}^k \brk*{-1}^{j+k}\essind_j(f)\geq \sum_{j=0}^k\brk*{-1}^{k+j}b_j(X)\,.
+  \sum_{k=0}^l \brk*{-1}^{k+l}\essind_j(f)\geq \sum_{k=0}^l\brk*{-1}^{k+l}b_j(X)\,.
 \end{align*}
-For $k=d$ we in fact have equality
+For $l=d$ we in fact have equality
 \begin{align*}
-  \sum_{j=0}^d \brk*{-1}^{j}\essind_j(f)= \chi(X)
+  \sum_{k=0}^d \brk*{-1}^{k}\essind_k(f)= \chi(X)
 \end{align*}
 where the Euler characteristic
 \begin{align*}
-  \chi(X)=\sum_{j=0}^d\brk*{-1}^{j}b_j(X)
+  \chi(X)=\sum_{k=0}^d\brk*{-1}^{k}b_k(X)
 \end{align*}
 is the alternating sum of the Betti numbers.
 \end{theorem}
@@ -1141,9 +1142,10 @@ is the alternating sum of the Betti numbers.
   The result then follows from \cite[Theorem 2.4]{Agrach1991}.
   \td{Give outline of proof idea.}
 \end{proof}
+\nomenclature{$\chi(X)$}{Euler characteristic.}
 
 \begin{corollary}[Weak Morse inequalities]
-  Let $X$ be a manifold with corners and $f\colon X\to\R$ essentially Morse. Then we have for $k\in\brk[c]*{0,\dots,d}$
+  Let $X$ be a manifold with corners and $f\colon X\to\R$ Morse. Then we have for $k\in\brk[c]*{0,\dots,d}$
   the inequalities
   \begin{align*}
     \essind_k(f)\geq b_k(X)\,.
@@ -1350,13 +1352,13 @@ Using invariant manifolds we obtain the following proof.
   has opposite signage and the claim follows.
 \end{proof}
 
-\section{A proof involving Morse theory}
 
+\section{A proof involving Morse theory}
 
 We now give a proof involving Morse theory since the techniques of the proof generalise to the three dimensional case.
 \begin{proposition}
-  Let $d=2$ and $X$ be simply connected such that $\Sigma$ is a differentiable manifold and let $f\colon X\to\R$ have no critical points on $\Sigma^0$.
-  Assume further that $\Sigma^-$ and $\Sigma^+$ are nonempty and simply connected. Then $f$ has no non-degenerate interior critical point.
+  Let $d=2$ and $X$ be a simply connected manifold with corners and let $f\colon X\to\R$ have no critical points on $\Sigma^0$.
+  Assume further that $\Sigma^-$ contains at least two points and is simply connected. Then $f$ has no non-degenerate interior critical point.
 \end{proposition}
 
 % We start with a technical lemma
@@ -1468,49 +1470,58 @@ We now give a proof involving Morse theory since the techniques of the proof gen
 % \end{proof}
 
 \begin{proof}
-  Let $x_1,x_2\in\Sigma^0(f)$ be two points on different connectivity components which we will fix later.
+  % Let $x_1,x_2\in\Sigma^0(f)$ be two points on different connectivity components which we will fix later.
+  Let $\gamma=\brk[c]*{x_1,x_2}=\partial\Sigma^-$.
   Then we can cut the domain along a curve $\Gamma$ such that the endpoints $\gamma=\partial\Gamma$
   of the cut coincide with $x_1$ and $x_2$, that is $\partial\Gamma=\brk[c]*{x_1,x_2}$.
-  Now we obtain two new domains $X^+$ and $X^-$ such that $\partial X^+ \subseteq\Sigma^+\cup\Sigma^0\cup\Gamma$ and
-  $\partial X^-\subseteq\Sigma^-\cup\Sigma^0\cup\Gamma$. We can assume that $\Gamma$ is a smooth manifold and corresponds to the stratum 
-  $X_\Gamma$ for $X^+$ and $X^-$. We also assume that the corner points $x_1,x_2\in\partial\Gamma$ correspond to the strata $X_{1}$ and $X_{2}$.
+  Now we obtain two new domains $X^+$ and $X^-$ such that $\partial X^+\cap\Sigma^-\subseteq\gamma$ and
+  $\partial X^-\cap\Sigma^+\subseteq\gamma$. We can assume that $\Gamma$ is a smooth manifold and corresponds to the stratum 
+  $X_{\Gamma^+}$ for $X^+$ and $X_{\Gamma^-}$ for $X^-$.
+  Analogously $\gamma$ corresponds to strata $X_{\gamma^\pm}$ on $X^\pm$.
+  % We also assume that the corner points $x_1,x_2\in\partial\Gamma$ correspond to the strata $X_{1}$ and $X_{2}$.
   Locally around the corner point $x_1$ we have a situation depicted as in figure \ref{fi:n2_cutOmega_flowthrough}.
-  \begin{figure}
+  \begin{figure} 
     \centering
     \input{../Figures/n2_cutOmega_flowthrough.pdf_tex}
     \caption{The situation at hand.}
     \label{fi:n2_cutOmega_flowthrough}
   \end{figure}
-  We assume that we chose $\Gamma$ in such a way that it forms an acute angle with $\Sigma$ at the boundary points $\gamma$.
+  We assume that we chose $\Gamma$ in such a way that it forms an acute angle with $u=\nabla f$ at the boundary points $\gamma$.
   % More concretely this condition is equivalent to that there exists an open neighbourhood $U_1$ of $x_1$ such that
   % $n_\Gamma\cdot u< u$ on $U_1$.
   % Here $n_\Gamma\colon\Gamma\to S^1\subseteq\R^2$ denotes the normal of the cut $\Gamma$ which points in the direction of the flow.
-  Without loss of generality $x_1$ is not an essential critical point of $-f$ on $X^-$.
-  The point $x_1$ may or may not however be a critical point of $f$ on $X^+$.
-  Analogously we can choose $\Gamma$ in such a way around $x_2$.
-  For the following argumentation we require that $u$ is strictly Morse on both $X^+$ and $X^-$, so assume for a moment that this
+  % Without loss of generality $x_1$ is not an essential critical point of $-f$ on $X^-$.
+  % The point $x_1$ may or may not however be a critical point of $f$ on $X^+$.
+  % Analogously we can choose $\Gamma$ in such a way around $x_2$.
+  For the following argumentation we require that $u$ is strongly Morse on both $X^+$ and $X^-$, so assume for a moment that this
   is the case.
-  We now focus our attention on $X^+$. Since no essential critical points lie on $\Sigma^+$
+  Since each point of $\gamma$ is an essential critical point for either $f$ or $-f$ on precisely one of the domains $X^+$ or $X^-$ we have
+  the relation
+  \begin{align}
+    \ind_{\gamma^+,0}(f)+\ind_{\gamma^+,0}(-f)+\ind_{\gamma^-,0}(f)+\ind_{\gamma^-,0}(-f)=2\,.\label{eq:n2_disproof_morse_relgamma}
+  \end{align}
+  We now focus our attention on $X^+$. Since no essential critical points of $f$ lie on $\Sigma^+\setminus\gamma$
   it follows for the boundary type numbers that
   \begin{align}
-    \mu^+_k=\ind_{\Gamma,k}(f)+\delta_{k0}\ind_{\gamma,k}(f)\label{eq:n2_disproof_morse_muplus}
+    \mu^+_k=\ind_{\Gamma^+,k}(f)+\ind_{\gamma^+,k}(f)\label{eq:n2_disproof_morse_muplus}
   \end{align}
   where $\delta_{ij}$ denotes the Kronecker delta.
   Analogously we have on $X^-$ that
   \begin{align}
-    \nu^-_k=\ind_{\Gamma,k}(-f)\label{eq:n2_disproof_morse_numinus}
+    \nu^-_k=\ind_{\Gamma^-,k}(-f)+\ind_{\gamma^-,k}(-f)\,.\label{eq:n2_disproof_morse_numinus}
   \end{align}
-  where we took into account that $\ind_{\gamma,k}(-f)=0$.
+  % where we took into account that $\ind_{\gamma,k}(-f)=0$.
   In addition we have on $\Gamma$ that the emergent critical points of $f$ on $X^+$ are the
   entrant critical points of $-f$ on $X^-$, that is
   \begin{align}
-    \ind_{\Gamma,0}(f)=\ind_{\Gamma,1}(-f)\qquad\text{ and }\qquad 
-    \ind_{\Gamma,1}(f)=\ind_{\Gamma,0}(-f)\,.\label{eq:n2_disproof_morse_relationIndex} 
+    \ind_{\Gamma^+,0}(f)=\ind_{\Gamma^-,1}(-f)\qquad\text{ and }\qquad 
+    \ind_{\Gamma^+,1}(f)=\ind_{\Gamma^-,0}(-f)\,.\label{eq:n2_disproof_morse_relationIndex} 
   \end{align}
   Using equations \eqref{eq:n2_disproof_morse_muplus}, \eqref{eq:n2_disproof_morse_numinus} and \eqref{eq:n2_disproof_morse_relationIndex}
   we obtain
   \begin{align}
-    \mu^+_0-\ind_{\gamma,0}(f)=\nu^-_1 \qquad\text{ and }\qquad \mu^+_1=\nu^-_0\,.\label{eq:n2_disproof_morse_relationMuNu}
+    \mu^+_0-\ind_{\gamma^+,0}(f)=\nu^-_1 \qquad\text{ and }\qquad
+    \mu^+_1=\nu^-_0-\ind_{\gamma^-,0}(-f)\,.\label{eq:n2_disproof_morse_relationMuNu}
   \end{align}
   Consider the Morse inequality for $f$ on $X^+$
   \begin{align}
@@ -1523,9 +1534,9 @@ We now give a proof involving Morse theory since the techniques of the proof gen
   We now add equations \eqref{eq:n2_disproof_morse_morseineqplus} and \eqref{eq:n2_disproof_morse_morseineqminus}
   and insert relations \eqref{eq:n2_disproof_morse_relationMuNu} to obtain
   \begin{align*}
-    M^-+M^+-\ind_{\gamma,0}(f)=-2\chi(X)=-2\,.
+    M^-+M^+-\ind_{\gamma^+,0}(f)-\ind_{\gamma^-,0}(-f)=-2\chi(X)=-2\,.
   \end{align*}
-  Since $\ind_{\gamma,0}(f)\leq2$ and $M^\pm\geq0$ we must in fact have $M^\pm=0$ from which the claim follows.
+  Since $\ind_{\gamma^+,0}(f)+\ind_{\gamma^-,0}(-f)\leq2$ by equation \eqref{eq:n2_disproof_morse_relgamma} and $M^\pm\geq0$ we must in fact have $M^\pm=0$ from which the claim follows.
 
   % \ref{pr:tanReg_convergence_Sigma0}
   % \ref{co:tanReg_homotopy}
@@ -1551,21 +1562,21 @@ We now give a proof involving Morse theory since the techniques of the proof gen
   % $\Gamma_\e\cap B_\eta\brk*{x_1}\cap B_\eta\brk*{x_2}$.
   
   
-  % Now $u^\e$ is by construction strictly Morse on $\Gamma^\e$.
+  % Now $u^\e$ is by construction strongly Morse on $\Gamma^\e$.
   % By the above argument the statement holds for $u^\e$ with the modified cut $\Gamma^\e$.
   % $$\brk[c]*{X_j}_{j\in\cJ}\cup\brk[c]*{X_\Gamma}\cup\brk[c]*{X_j}_{j\in\brk[c]*{1,2}}$$
   % of $X$. Again by proposition \ref{} we have that $\Sigma^0(u^\e)\to\Sigma^0(u)$ for $\e\to0$.
   % This implies that if we choose the cut $\Gamma^\e$ for $u^\e$ as in figure \ref{}
   % we obtain that for all $u^\e$ all
 
-  The claim remains to be shown in the case that $f$ is not strictly Morse on $X^+$ and $X^-$. In this case let
+  The claim remains to be shown in the case that $f$ is not strongly Morse on $X^+$ and $X^-$. In this case let
   $u^\e$ be as in corollary \ref{co:density_boundaryGeneric}.
   It follows from the slanted angles at which $\Gamma$ approaches $\gamma$ that if the points $x_1$, $x_2$ are critical points of $f$
   that they then are in fact non-degenerate.
   Hence we obtain that
   \begin{align}
-    \ind_{\gamma,k}\brk*{f^\e}=\ind_{\gamma,k}(f)\qquad\text{ and }\qquad 
-    \ind_{\gamma,k}\brk*{-f^\e}=\ind_{\gamma,k}(-f)\,.
+    \ind_{\gamma^+,k}\brk*{f^\e}=\ind_{\gamma^+,k}(f)\qquad\text{ and }\qquad 
+    \ind_{\gamma^-,k}\brk*{-f^\e}=\ind_{\gamma^-,k}(-f)\,.
     \label{eq:n3_disproof_morse_indexApprox}
   \end{align}
   By the same corollary $u^\e$ has no essential stagnation points on $\Sigma^+(u)$
@@ -1664,9 +1675,6 @@ We state a consequence of a result from \cite[Theorem 2.1]{Alessandrini1992}
 
 \section{No inflow or outflow}
 
-We say that $u$ has no \emph{inflow} on a boundary subset $S\subseteq\Sigma$ if $\Sigma^-\cap S=\emptyset$ and
-that it has no \emph{outflow} if $\Sigma^+\cap S=\emptyset$.
-Armed with this definition we can state the following result.
 % \begin{proposition}[Upper bound on $M$]
 %   Let $d=2$ and $\Omega$ be a compact manifold with corners with Betti numbers $b_0=1$, and $b_1$.
 %   Let further $u\colon X\to\R^2$ be 
@@ -1692,28 +1700,33 @@ Armed with this definition we can state the following result.
 % \end{proof}
 
 % In fact using the Morse inequalities we can obtain the stronger result.
-\begin{proposition}[Special case of the Poincaré-Hopf index theorem.]\label{pr:n2_hvf_noInflowNoOutflow}
-  Let $X\subset\R^2$ be a compact manifold with $C^1$ boundary and Betti numbers $b_0=1$, and $b_1$
-  and let $u\colon X\to\R^2$ be 
-  a strictly Morse harmonic vector field without inflow or outflow.
-  Then we have $$M+1=b_1$$.
+\begin{proposition}\label{pr:n2_hvf_noInflowNoOutflow}
+  Let $X\subset\R^2$ be a compact manifold with corners and Betti numbers $b_0=1$, and $b_1$
+  and let $u\colon X\to\R^2$ be
+  a strongly Morse harmonic vector field without boundary stagnation points.
+  Then we have the relation $M=-\chi(X)$ where $M$ denotes the number of stagnation points and
+  $\chi(X)$ is the Euler characteristic of $X$.
 \end{proposition}
-\begin{proof}[Sketch of proof.]
-  We slit $\Omega$ such that it is homeomorphic to the disk as is 
+\begin{proof}
+  We slit the domain $X$ such that it is homeomorphic to the disk as is 
   depicted in figure \ref{fi:n2_hvf_slitDomain}.
-  Denote the slit by $\Gamma$. Since the number of stagnation points is 
-  finite by proposition ??, we can choose $\Gamma$ in such a way that it does not contain
-  any stagnation points.
-  We also denote the points at which
-  $\Gamma$ meets $\Sigma$ by $x_1,\dots,x_{2b_1}\in\partial\Gamma=\gamma$.
+  Denote the slit by $\Gamma$. Since the number of interior stagnation points is 
+  finite by proposition \ref{pr:finiteness_critical_points}, we can choose $\Gamma$ in such a way that it does not contain
+  any interior stagnation points.
+  We write denote the boundary of $\Gamma$ by $\gamma=\partial\Gamma=\Gamma\cap\Sigma$
+  and define points $\brk[c]*{x_1,\dots,x_{2b_1}}=\gamma$.
   Note that there are $2b_1$ many such points.
-  We can assume that $\Gamma$ is a smooth manifold. Now at the point $x_1$
-  we have that $u$ is almost parallel to the boundary $\Sigma$. Thus we can slant
-  the cut in such a way such that $x_1$ is an essential stagnation point of index $0$ of $u$ on the stratification
-  of $\tiX$. Here $\tiX$ denotes the covering space of $X$ generated by the cut $\Gamma$.
-  We denote the induced strata by $\Gamma$ also with $\Gamma$. Note that then $x_1$ is no
-  essential stagnation point for $-u$.
-  We modify the cut for the other points $x_2,\dots,x_{2b_1}$ as with $x_1$.
+  % We can assume that $\Gamma$ is a smooth manifold.
+  % Now at the point $x_1$
+  % we have that $u$ is parallel to the boundary $\Sigma$.
+  % Thus we can slant
+  % the cut in such a way such that $x_1$ is an essential stagnation point of index $0$ of $u$ on the stratification
+  % of $\tiX$.
+  % Here $\tiX$ denotes the covering space of $X$ generated by the cut $\Gamma$.
+  % We denote the induced strata by $\Gamma$ also with $\Gamma$. Note that then $x_1$ is no
+  % essential stagnation point for $-u$.
+  % We modify the cut for the other points $x_2,\dots,x_{2b_1}$ as with $x_1$.
+  Without loss of generality we can assume that $\Gamma$ and $u$ form an acute angle at each point of $\gamma$.
   The situation is depicted in figure \ref{fi:n2_hvf_slitDomain}.
   \begin{figure}
     \centering
@@ -1721,17 +1734,20 @@ Armed with this definition we can state the following result.
     \caption{How we slit the domain.}
     \label{fi:n2_hvf_slitDomain}
   \end{figure}
-  For the following argumentation we require that $u$ is strictly Morse on the new domain $\tiX$ 
+  For the following argumentation we require that $u$ is strongly Morse on the new domain $\tiX$ 
   so assume for a moment that this is the case.
-  Since there are no stagnation points on $\Sigma$ all boundary stagnation points of $u$ are on
-  the strata induced by $\Gamma$ and $x_1,\dots,x_{2b_1}$. Hence we have relations
+  Since each $x_j$ is either an essential critical point of $u$ or of $-u$ on the slit domain $\tiX$ we have that
   \begin{align}
-    \mu_k=\ind_{\Gamma,k}(u)+2b_1\delta_{k0} \qquad\text{ and }\qquad
-    \nu_k=\ind_{\Gamma,k}(-u)\label{eq:n2_hvf_noInflowNoOutflow_relationsMuIndex}
+    \ind_{\gamma,0}(u)+\ind_{\gamma,0}(-u)=2b_1\,.\label{eq:n2_hvf_noInflowNoOutflow_relgamma}
+  \end{align}
+  Since there are no stagnation points on $\Sigma$ we have the relations
+  \begin{align}
+    \mu_k=\ind_{\Gamma,k}(u)+\ind_{\gamma,k}(u) \qquad\text{ and }\qquad
+    \nu_k=\ind_{\Gamma,k}(-u)+\ind_{\gamma,k}(-u)\label{eq:n2_hvf_noInflowNoOutflow_relationsMuIndex}
   \end{align}
   for all $k\in\brk[c]*{0,1}$.
-  Since on $\Gamma$ all entrant stagnation points of $u$ are also emergent
-  stagnation points of $-u$ (and vice versa) we have the relations
+  All entrant stagnation points of $u$ on $\Gamma$ are also emergent
+  stagnation points of $-u$ on $\Gamma$ (and vice versa) and hence we have the relations
   \begin{align}
     \ind_{\Gamma,0}(u)=\ind_{\Gamma,1}(-u) \qquad\text{ and }\qquad
     \ind_{\Gamma,1}(u)=\ind_{\Gamma,0}(-u)\,.\label{eq:n2_hvf_noInflowNoOutflow_relationsIndex}
@@ -1739,10 +1755,10 @@ Armed with this definition we can state the following result.
   Equations \eqref{eq:n2_hvf_noInflowNoOutflow_relationsMuIndex} and \eqref{eq:n2_hvf_noInflowNoOutflow_relationsIndex}
   yield 
   \begin{align}
-    \mu_0=\nu_1+2b_1 \qquad\text{ and }\qquad
-    \mu_1=\nu_0\,.\label{eq:n2_hvf_noInflowNoOutflow_relationsMuNu}
+    \mu_0-\ind_{\gamma,0}(u)=\nu_1 \qquad\text{ and }\qquad
+    \mu_1=\nu_0-\ind_{\gamma,0}(-u)\,.\label{eq:n2_hvf_noInflowNoOutflow_relationsMuNu}
   \end{align}
-  Since $\Omega$ is now simply connected $u$ is 
+  Since $\tiX$ is now simply connected $u$ is 
   by proposition \ref{pr:n2:hvf:simplyConnected}
   the gradient of a harmonic function $f$ on this new domain.
   For this $f$ we have the Morse inequalities
@@ -1754,14 +1770,15 @@ Armed with this definition we can state the following result.
     M+\nu_1-\nu_0&=-\chi(\tiX)=-1\,. \label{eq:n2_hvf_MorseInequalities_2}
   \end{align}
   Adding equations \eqref{eq:n2_hvf_MorseInequalities_1} and \eqref{eq:n2_hvf_MorseInequalities_2} and using the relation
-  \eqref{eq:n2_hvf_noInflowNoOutflow_relationsMuNu} we obtain
+  \eqref{eq:n2_hvf_noInflowNoOutflow_relationsMuNu} and then \eqref{eq:n2_hvf_noInflowNoOutflow_relgamma} we obtain
   \begin{align*}
-    2M-2b_1=-2
+    -2=2M-\ind_{\gamma,0}(u)-\ind_{\gamma,0}(u)
+    =2M-2b_1
   \end{align*}
   from which the claim follows.
 
-  The claim remains to be shown in the case that $u$ is not strictly Morse on $\tiX$. In this case let
-  $u^\e$ for $\e\in E$ be a family of strictly Morse functions as in corollary \ref{co:density_boundaryGeneric}.
+  The claim remains to be shown in the case that $u$ is not strongly Morse on $\tiX$. In this case let
+  $u^\e$ for $\e\in E$ be a family of strongly Morse functions as in corollary \ref{co:density_boundaryGeneric}.
   Since the $x_1,\dots,x_{2b_1}\in\gamma$ are non-degenerate stagnation points of $u$
   due to the slanted angle at which
   $\Gamma$ approaches $\gamma$
@@ -1771,14 +1788,15 @@ Armed with this definition we can state the following result.
     \ind_{\gamma,k}\brk*{-u^\e}=\ind_{\gamma,k}(-u)
     \label{eq:n3_disproof_morse_indexApprox}
   \end{align}
-  By the same corollary $u^\e$ has no stagnation points on $\Sigma^0(u)$.
+  By the same corollary $u^\e$ has no stagnation points on $\Sigma$.
   The claim then follows by the calculations above where we replace
   $u$ with $u^\e$ and then note that $M^\e=M$.
 \end{proof}
-We now give an alternative proof using the argument principle.\ruggedtodo[]{One could use the argument principle for Riemann surfaces.}
+We now give an alternative proof using the argument principle.
+\td{Cite Lang rather than Gamelin in the following proof.}
 \begin{proof}
-  As before we slit the domain such that it is homeomorphic to a disk. By proposition ?? $u$ is the gradient of a
-  harmonic function $f$ on this new domain. Let $h\in\Hol(\C)$ be the holomorphic function given by $h=\nabla f$.
+  As before we slit the domain such that it is homeomorphic to a disk. By proposition \ref{pr:n2:hvf:simplyConnected} $u$ is the gradient of a
+  harmonic function $f$ on this new domain $\tiX$. Let $h\in\Hol(\tiX)$ be the holomorphic function given by $h=\nabla f$.
   Let $\gamma$ traverse the boundary of the slit domain such that the domain lies to the left of $\gamma$.
   We now determine the change of argument $\arg h$ along $\gamma$. For this
   consider first the parts of $\gamma$ traversing the slits. Since $\nabla f$ is continuously differentiable
@@ -1786,17 +1804,47 @@ We now give an alternative proof using the argument principle.\ruggedtodo[]{One 
   the contribution in the change of $\arg h$ from the slits vanishes.
   On the other hand as $\gamma$ traverses the boundary $\Sigma$ the contribution to the change in
   argument of $\arg h$ is $2\pi$ for every hole in the domain 
-  since $h=u$ is tangent to $\Sigma$ and traverses the holes clockwise direction.
+  since $h\cdot\gamma'=u\cdot\gamma'$ does not change sign as $\gamma$ traverses a hole clockwise direction.
   Similarly the contribution to the change in argument of $\arg h$ is $-2\pi$ for the outer boundary component
   which is traversed counterclockwise.
   Since we have $b_1$ holes in the domain the total change of $\arg h$ as $\gamma$ traverses $\Sigma$ is
   $2\pi(b_1-1)$.
   Since $h$ has no poles it follows from the argument principle (see for example \cite[Chapter VIII]{Gamelin2001}) that
-  \begin{align}
+  \begin{align*}
     2\pi(b_1-1)=\int_\gamma\dif\arg (h(z)) =  2\pi M
-  \end{align}
+  \end{align*}
   From this the claim follows.
 \end{proof}
+
+We say that $u$ has no \emph{inflow} on a boundary subset $S\subseteq\Sigma$ if $\Sigma^-\cap S=\emptyset$ and
+that it has no \emph{outflow} if $\Sigma^+\cap S=\emptyset$.
+Armed with this definition we can give the following corollary.
+\begin{corollary}\label{co:n2_noInflowNoOutflow}
+  Let $X$ be a compact manifold with corners and $u\colon X\to\R^d$ a strongly Morse
+  harmonic vector field without inflow or outflow on
+  $\Sigma$. Then we have the relation $M=-\chi(X)$ where $M$ is the number of stagnation points
+  and $\chi(X)$ is the Euler characteristic of $X$.
+\end{corollary}
+This result could also have been proved using the Poincaré-Hopf index theorem.
+For this define:
+\begin{definition}[{\cite[Definition 1.1.1]{Brasselet2009}}]
+  The \emph{Poincaré-Hopf index} $\ind_{\text{PH},x}(f)$ of an isolated
+  interior stagnation point $x$ of $u$ is the degree of the Gauss map $u/\abs{u}\colon S^{d-1}_\e(x)\to S^{d-1}$
+   for sufficiently small $\e>0$.
+  The \emph{total index} $\ind_{\text{PH}}(u)$ is the sum of indexes $\ind_{\text{PH},x}(f)$
+  for every interior stagnation point $x$ of $u$.
+\end{definition}
+Note that in $d=2$ dimensions a point $x$ with Morse index $k$ has Poincaré-Hopf index $(-1)^k$.
+Thus we have for a harmonic vector field that $M=-\ind_\text{PH}(u)$ and thus corollary \ref{co:n2_noInflowNoOutflow}
+also follows from the Poincaré-Hopf index theorem:
+\begin{theorem}[Poincaré-Hopf index theorem, {\cite[p. 33]{Milnor1965}}]
+  Let $u\colon X\to\R^d$ be a vector field on a manifold with boundary without inflow. Then we have
+  that the total index $\ind_\text{PH}(u)$ equals the Euler characteristic $\chi(X)$.
+\end{theorem}
+\begin{proof}
+  \td{find citation}
+\end{proof}
+
 
 In the following we would like to give examples for harmonic vector fields.
 For this define two differential operators for $d=2$ dimensions by
@@ -1979,24 +2027,25 @@ The following proof comes from \cite{Wahlen2023}
 Mimicking the proof in 2 dimensions we obtain the following proposition.
 \begin{proposition}
   Let $X\subset\R^3$ be a compact manifold homeomorphic to the ball $B$ such that $\Sigma$ is a differentiable manifold.
-  Let $f\colon X\to\R$ be a Morse harmonic function. Assume that $\Sigma^-$ is simply connected.
+  Let $f\colon X\to\R$ be a Morse harmonic function. Assume that the strictly entrant boundary $\Sigma^-$ is non-empty and simply connected.
   Then we have that
   \begin{align*}
     M_1-M_2=0\,.
   \end{align*}
 \end{proposition}
 \begin{proof}
-  As in the two dimensional case we split the domain $\Omega$ with a plane $\Gamma$ such that
-  $\partial\Gamma=\gamma\subseteq\Sigma^0$.
-  Denote the two arising domains $X^+$ and $X^-$ where $\partial X^+\subseteq\Sigma^+\cup\Sigma^0\cup\overline{\Gamma}$ and
-  $\partial X^-=\Sigma^-\cup\overline{\Gamma}$.
+  As in the two dimensional case we split the domain $\Omega$ with a surface $\Gamma$ such that
+  $\partial\Gamma=\gamma=\partial\Sigma^-$.
+  \td{Why would this even be possible?}
+  Denote the two arising domains $X^+$ and $X^-$ where $\partial X^-\cap\Sigma^+\subseteq\gamma$ and
+  $\partial X^+\cap \Sigma^-\subseteq\gamma$.
   We can assume that $\Gamma$ as well as $\gamma$ are smooth manifold.
-  Since by proposition ?? there are finitely many critical points in $\Omega$
+  Since by proposition \ref{pr:finiteness_critical_points} there are finitely many interior critical points in $X$
   we can also assume that no interior critical points lie on $\Gamma$.
   Furthermore we assume that $\Gamma$ is bent towards $X^+$ at $\gamma$.
-  For the following argumentation we require that $f$ is strictly Morse on both $X^+$ and
+  For the following argumentation we require that $f$ is strongly Morse on both $X^+$ and
   $X^-$ so assume for a moment that this is the case.
-  Now we have that $\gamma$ is diffeomorphic to the circle $\R/\Z$.
+  Now we have that $\gamma$ is homeomorphic to the circle $\R/\Z$.
   Since $f$ is non-degenerate the
   the number of maxima and minima of $f$ on $\gamma$ must be equal and thus
   \begin{align}
@@ -2052,8 +2101,8 @@ Mimicking the proof in 2 dimensions we obtain the following proposition.
   \end{align*}
   from which the claim follows.
 
-  The claim remains to be shown in the case that $f$ is not strictly Morse on $X^+$ and $X^-$. In this case let
-  $f^\e$ for $\e\in E$ be a family of strictly Morse functions as in corollary \ref{co:density_boundaryGeneric}.
+  The claim remains to be shown in the case that $f$ is not strongly Morse on $X^+$ and $X^-$. In this case let
+  $f^\e$ for $\e\in E$ be a family of strongly Morse functions as in corollary \ref{co:density_boundaryGeneric}.
   Since $x_1$, $x_2$ are non-degenerate critical points of $f$
   due to the slanted angle at which
   $\Gamma$ approaches $\gamma$
@@ -2330,25 +2379,24 @@ simply connected entrant boundary.
     A^{\circ_1\circ_2}=\brk[c]*{\sqrt[\leftroot{2}\uproot{4}\circ_1\circ_2]{\tix}\colon\tix\in \tiA}
   \end{align*}
   for signs $\circ_1,\circ_2\in\brk[c]*{+,-}$.
-  Note that by construction the arc $A^\text{I}=A^{++}$ lies in the first quadrant and analogously
-  $A^\text{II}=A^{-+}$, $A^\text{III}=A^{--}$ and $A^\text{IV}=A^{+-}$ lie in the second, third and fourth quadrants.
+  Note that by construction the arc $A^{++}$ lies in the first quadrant and analogously
+  $A^{-+}$, $A^{--}$ and $A^{+-}$ lie in the second, third and fourth quadrants.
   Now define four points on the $x_1$-axis by
   \begin{align}
     a^{\circ_1\circ_2}=\sqrt[\leftroot{2}\uproot{4}\circ_1+]{a^{\circ_2}}\,.
   \end{align}
-  We see that $A^\text{I}\cap A^\text{IV}=\brk[c]*{a^{++},a^{+-}}$ and
-  $A^\text{II}\cap A^\text{III}=\brk[c]*{a^{--},a^{-+}}$.
-  We also see that $A^\text{I}\cap A^\text{II}=\brk[c]*{e_2}$ and 
-  $A^\text{III}\cap A^\text{IV}=\brk[c]*{-e_2}$
-  Since the origin is not contained in any arc it thus follows that $A^\text{I}\cap A^\text{III}=\emptyset$ 
-  and $A^\text{II}\cap A^\text{IV}=\emptyset$.
+  We see that $A^{++}\cap A^{+-}=\brk[c]*{a^{++},a^{+-}}$ and
+  $A^{-+}\cap A^{--}=\brk[c]*{a^{--},a^{-+}}$.
+  We also see that $A^{++}\cap A^{-+}=\brk[c]*{e_2}$ and 
+  $A^{--}\cap A^{+-}=\brk[c]*{-e_2}$
+  Since the origin is not contained in any arc it thus follows that $A^{++}\cap A^{--}=\emptyset$ 
+  and $A^{-+}\cap A^{+-}=\emptyset$.
   Thus the union
   \begin{align}
     A=A^{++}\cup A^{+-}\cup A^{-+}\cup A^{--}
   \end{align}
   consists of four arcs which meet at the points $\pm e_2$ and hence also
   $V\brk*{p_2}=A$.
-  \ruggedtodo{insert picture here, remove quadrant notation.}
 
   It now remains to be shown that $A\cap S^1=\brk[c]*{\pm e_2}$.
   For this let $x\in S^1$ such that
@@ -2700,28 +2748,29 @@ We obtain as a quick consequence of the hairy ball theorem
 \end{proof}\ruggedtodo[]{A little more rigour would not harm.}
 We also obtain the following result:
 \begin{proposition}
-  Let $X\subseteq\R^3$ be a differentiable manifold with Betti numbers $b_0$, $b_1$ and $b_2$.
-  Let $u\colon X\to\R$ be a Morse harmonic vector field without inflow or outflow. Then we have the following relation for
-  the interior type numbers of $u$
+  Let $X\subseteq\R^3$ be a compact manifold with corners and Betti numbers $b_0$, $b_1$ and $b_2$.
+  Let $u\colon X\to\R$ be a strongly Morse harmonic vector field without boundary critical points.
+  Then the following relation for
+  the interior type numbers of $u$ holds:
   \begin{align*}
-    M_2=M_1\,.
+    M_1=M_2\,.
   \end{align*}
 \end{proposition}
 \begin{proof}
-  As in the two dimensional case we cut the domain $X$ with planes $\Gamma$ such that the slit domain is
+  As in the two dimensional case we cut the domain $X$ with a surface $\Gamma$ such that the slit domain is
   homeomorphic to a ball with bubbles.
-  Since the number of stagnation points is finite by proposition ??, we can choose $\Gamma$ in such a way
-  that it does not contain any stagnation points. We also denote the curves at which $\Gamma$ meets $\Sigma$ by 
+  Since the number of interior stagnation points of $u$ is finite by proposition \ref{pr:finiteness_critical_points}, we can choose $\Gamma$ in such a way
+  that it does not contain any stagnation points. We also denote the arcs at which $\Gamma$ meets $\Sigma$ by 
   $\gamma_1,\dots,\gamma_{b_1}\subseteq\partial\Gamma$. Note that there are $b_1$ many such curves.
-  We can assume that $\Gamma$ and the $\gamma_j$ are smooth manifolds and that $\Gamma$ approaches
+  We can assume that $\Gamma$ and the $\gamma_j$ are manifolds with corners and that $\Gamma$ approaches
   each $\gamma_j$ at a slanted angle.
   The cut now yields a new domain $\tiX$ which is a covering space of $X$.
   On this covering space we denote the cover of the cut $\Gamma$ and the sets $\gamma_j$ by
   $\Gamma^i$ and $\gamma_j^i$ with $i\in\brk*{1,2}$.
-  Since this new domain $\tiX$ is homeomorphic to a ball with bubbles by proposition \ref{pr:n2:hvf:simplyConnected}
-  the vector field $u$ is the gradient of a harmonic function $f$.
-  For the following argumentation we require that $u$ is strictly Morse on $\tiX$.
-  Now we have that each $\gamma_j$ is diffeomorphic to the circle $S^1\subseteq\R^2$.
+  Since this new domain $\tiX$ is homeomorphic to a ball with bubbles
+  the vector field $u=\nabla f$ is the gradient of a harmonic function $f$ by proposition \ref{pr:n2:hvf:simplyConnected}.
+  For the following argumentation we require that $u$ is strongly Morse on $\tiX$, so assume for a moment that this is the case.
+  Now we have that each $\gamma_j$ is homeomorphic to the circle $S^1\subseteq\R^2$.
   Since $f$ is non-degenerate the number of maxima and minima of $f$ on $\gamma_j^1\cup\gamma_j^2$ must be equal and thus
   \begin{align}
     \sum_i\brk*{\ind_{\gamma_j^i,0}(f)+\ind_{\gamma_j^i,1}(-f)}=\sum_i\brk*{\ind_{\gamma_j^i,1}(f)+\ind_{\gamma_j^i,0}(-f)}\,.
@@ -2744,7 +2793,7 @@ We also obtain the following result:
   %   \ind_{\gamma^1,1}(\pm u)&=\ind_{\gamma^2,0}(\mp u)\,.
   %   \end{aligned}\label{eq:n3_hvf_noInflowNoOutflow_relationsIndex_gamma}
   % \end{equation}
-  Since there are no boundary critical points on $\Sigma^0$ it follows for the 
+  As there are no boundary critical points on $\Sigma$ it follows for the 
   boundary type numbers that
   \begin{equation}
     \begin{aligned}
@@ -2762,20 +2811,17 @@ We also obtain the following result:
     \end{aligned}
     \label{eq:n3_hvf_noInflowNoOutflow_relationsMuNu}
   \end{equation}
-  Since $\Omega$ is now simply connected $u$ is 
-  by proposition \ref{pr:n2:hvf:simplyConnected}
-  the gradient of a harmonic function $f$ on this new domain.
-  For this $f$ we have the Morse inequalities
+  For $f$ we have the Morse inequalities
   \begin{align}
-    M_2+\mu_2-M_1-\mu_1+\mu_0&=-\chi(\tiX) \label{eq:n3_hvf_MorseInequalities_1}
+    M_2+\mu_2-M_1-\mu_1+\mu_0&=-\chi\brk*{\tiX} \label{eq:n3_hvf_MorseInequalities_1}
   \end{align}
   and for $-f$ the Morse inequalities
   \begin{align}
-    M_1+\nu_2-M_2-\nu_1+\nu_0=-\chi(\tiX) \label{eq:n3_hvf_MorseInequalities_2}\,.
+    M_1+\nu_2-M_2-\nu_1+\nu_0=-\chi\brk*{\tiX} \label{eq:n3_hvf_MorseInequalities_2}\,.
   \end{align}
   Subtracting equation \eqref{eq:n3_hvf_MorseInequalities_2} from \eqref{eq:n3_hvf_MorseInequalities_1} and using the relation
   \eqref{eq:n3_hvf_noInflowNoOutflow_relationsMuNu} we obtain
-  together with equation \eqref{eq:n3_hvf_noInflowNoOutflow_maxMinRel}
+  together with equation \eqref{eq:n3_hvf_noInflowNoOutflow_maxMinRel} that
   \begin{align*}
     0&=2\brk*{M_2-M_1}
     +\sum_{i,j}\brk*{\ind_{\gamma_j^i,0}(f)
@@ -2786,8 +2832,8 @@ We also obtain the following result:
   \end{align*}
   from which the claim follows.
 
-  The claim remains to be shown in the case that $f$ is not strictly Morse on $X^+$ and $X^-$. In this case let
-  $f^\e$ for $\e\in E$ be a family of strictly Morse functions as in corollary \ref{co:density_boundaryGeneric}.
+  The claim remains to be shown in the case that $f$ is not strongly Morse on $X^+$ and $X^-$. In this case let
+  $f^\e$ for $\e\in E$ be a family of strongly Morse functions as in corollary \ref{co:density_boundaryGeneric}.
   Since $x_1$, $x_2$ are non-degenerate critical points of $f$
   due to the slanted angle at which
   $\Gamma$ approaches each $\gamma_j$
@@ -2802,6 +2848,15 @@ We also obtain the following result:
   The claim then follows by the calculations above where we replace
   $f$ with $f^\e$ and then note that $M_1^\e=M_1$ and $M_2^\e=M_2$.
 \end{proof}
+
+As a consequence we obtain the following:
+\begin{corollary}
+  Let $X$ be a compact manifold with corners and $u\colon X\to\R^d$ a strongly Morse harmonic vector field
+  without inflow or outflow on the boundary $\Sigma$. The we have that
+  \begin{align*}
+    M_1=M_2\,.
+  \end{align*}
+\end{corollary}
 
 \chapter{Harmonic functions, $d=4$} 
 Define the harmonic function 
@@ -2876,8 +2931,6 @@ equivalent to $\bx\in \partial B_1\subseteq \R^2$. The situation is depicted in 
 
 % TODO: potentially add Irwin, smooth dynamical systems
 % \chapter{Bibliography}
-\nocite{*}
-\td{Change Gamelin to Lang, complex analysis}
 %Main source
 %\printbibliography[heading=none, keyword={main}]
 %\noindent Other sources
