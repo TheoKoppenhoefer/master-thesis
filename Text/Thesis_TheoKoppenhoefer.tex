@@ -84,8 +84,6 @@
 
 \newpage
 
-\nocite{*}
-
 \chapter{Introduction}
 
 \ruggedtodo[inline]{Some amazing introduction}
@@ -528,9 +526,9 @@ We return to our example:
 \end{example}
 
 The previous definitions translate naturally to $f$.
-That is we call $f$ Morse, non-degenerate, et cetera if $u=\nabla f$ is Morse, non-degenerate, et cetera.
-Similarly we call $x$ a \emph{critical point} of $f$ of index $k$ if it is a
-stagnation point of $u$ of index $k$.
+That is, we call $f$ Morse, non-degenerate, et cetera if $u=\nabla f$ is Morse, non-degenerate, et cetera.
+Similarly we call $x$ a \emph{critical point} of $f$ if it is a
+stagnation point of $u$.
 
 % To illustrate the preceding definitions we return to our previous example.
 % \begin{example}
@@ -593,10 +591,10 @@ Given $u$ we define the modification
 \begin{align}
   u^\e=u+\e\label{eq:nonDegeneracy:definitionUEps}
 \end{align}
-\nomenclature{$u_\e$}{modification to $u$ as in equation \eqref{eq:nonDegeneracy:definitionUEps}}
 for some $\e\in\R^d$. We would like to show that $u_\e$ is for almost all choices of $\e$ non-degenerate and can 
 thus be used to approximate a degenerate $u$.
 Our approach is to use Thom's theorem which is inspired by the approach in \cite[Chapter 6]{Hirsch1994}.
+\nomenclature{$u_\e$}{modification to $u$ as in equation \eqref{eq:nonDegeneracy:definitionUEps}}
 \begin{definition}[Transversality]
   We call a function $g\colon Y_1\to Y_2$ between to manifolds $Y_1$ and $Y_2$ (without boundary)
   \emph{transverse} to a submanifold $A\subseteq Y_2$ if for all points in the 
@@ -2026,26 +2024,25 @@ The following proof comes from \cite{Wahlen2023}
 
 Mimicking the proof in 2 dimensions we obtain the following proposition.
 \begin{proposition}
-  Let $X\subset\R^3$ be a compact manifold homeomorphic to the ball $B$ such that $\Sigma$ is a differentiable manifold.
-  Let $f\colon X\to\R$ be a Morse harmonic function. Assume that the strictly entrant boundary $\Sigma^-$ is non-empty and simply connected.
+  Let $X\subset\R^3$ be a compact manifold with corners.
+  Let $f\colon X\to\R$ be a Morse harmonic function. Assume that the strictly entrant boundary $\Sigma^-$ is non-empty and simply connected
+  and that $\gamma=\partial\Sigma^-$ is a one-dimensional manifold with corners homeomorphic to the circle $S^1\subseteq\R^2$.
   Then we have that
   \begin{align*}
     M_1-M_2=0\,.
   \end{align*}
 \end{proposition}
 \begin{proof}
-  As in the two dimensional case we split the domain $\Omega$ with a surface $\Gamma$ such that
+  As in the two dimensional case we split the domain $X$ with a surface $\Gamma$ such that
   $\partial\Gamma=\gamma=\partial\Sigma^-$.
-  \td{Why would this even be possible?}
-  Denote the two arising domains $X^+$ and $X^-$ where $\partial X^-\cap\Sigma^+\subseteq\gamma$ and
+  Denote the two arising domains by $X^+$ and $X^-$ where $\partial X^-\cap\Sigma^+\subseteq\gamma$ and
   $\partial X^+\cap \Sigma^-\subseteq\gamma$.
-  We can assume that $\Gamma$ as well as $\gamma$ are smooth manifold.
   Since by proposition \ref{pr:finiteness_critical_points} there are finitely many interior critical points in $X$
   we can also assume that no interior critical points lie on $\Gamma$.
-  Furthermore we assume that $\Gamma$ is bent towards $X^+$ at $\gamma$.
+  Furthermore we assume that $\Gamma$ approaches $\gamma$ at a slanted angle.
   For the following argumentation we require that $f$ is strongly Morse on both $X^+$ and
   $X^-$ so assume for a moment that this is the case.
-  Now we have that $\gamma$ is homeomorphic to the circle $\R/\Z$.
+  By assumption we have that $\gamma$ is homeomorphic to the circle $\R/\Z$.
   Since $f$ is non-degenerate the
   the number of maxima and minima of $f$ on $\gamma$ must be equal and thus
   \begin{align}
@@ -2059,7 +2056,7 @@ Mimicking the proof in 2 dimensions we obtain the following proposition.
   We now turn our attention to $X^+$. Since no essential critical points lie on $\Sigma^+$ 
   it follows for the boundary type numbers that
   \begin{align}
-    \mu^+_k=\ind_{\Gamma^+,k}(f)+\ind_{\gamma^+,k}(f)\,.\label{eq:n3_disproof_morse_muplus}
+    \mu^+_k=\ind_{\Gamma^+, k}(f)+\ind_{\gamma^+,k}(f)\,.\label{eq:n3_disproof_morse_muplus}
   \end{align}
   Analogously we have on $X^-$ that
   \begin{align}
@@ -2934,6 +2931,8 @@ equivalent to $\bx\in \partial B_1\subseteq \R^2$. The situation is depicted in 
 %Main source
 %\printbibliography[heading=none, keyword={main}]
 %\noindent Other sources
+
+\nocite{*}
 \printbibliography
 
 
