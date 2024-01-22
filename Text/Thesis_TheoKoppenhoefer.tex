@@ -169,6 +169,8 @@ More generally we give the definition of a stratification as
 In the case that the stratification arises through relation \eqref{eq:def_mfCorners_stratification}
 we have precisely $X_{j}\precsim X_{j+1}$ for $j\in\brk[c]*{1,\dots,d}$ and $X_0\precsim X_0$.
 Note that in general for a given stratum $X_j$ the stratum $X_{j+1}$ such that $X_j\precsim X_{j+1}$ need not be unique.
+In the following we assume, unless otherwise stated, that the stratification is finite, that is $\#\cJ<\infty$ and 
+that the interior $\Omega$ corresponds to a single stratum.
 
 For completeness we also give the definition of the contingent cone for a 
 stratification $X_j$ of $X$:
@@ -176,7 +178,7 @@ stratification $X_j$ of $X$:
   We denote the \emph{(Bouligand) contingent cone} for a set $Y\subseteq X$ at $x\in\overline{Y}$ by $C_xY$.
   It is defined as the set of all $v\in\R^d$ such that there exists sequences $\lambda_n\to0$ and $x_n\to x$ in
   $Y$ such that
-  $$\lim_n\lambda_n\brk*{x-x_n}=v\,.$$
+  $$\lim_n\lambda_n\brk*{x_n-x}=v\,.$$
 \end{definition}
 
 For clarification we give an example
@@ -229,7 +231,8 @@ In the following we define the emergent and the entrant boundary in a way that g
       v\in \brk*{C_xX}^*=\brk[c]*{w\in T_x^*X\colon \brk[a]*{w, w'}\geq0\text{ for all }w'\in C_xX}\,.
     \end{align*}
   \end{enumerate}
-  We call $v$ \emph{strictly entrant} if in addition $v$ is not tangential to $\Sigma$ or $v$ lies in the relative interior $\relint\brk*{C_xX}^*$. 
+  We call $v$ \emph{strictly entrant} if in addition $v$ is not tangential to $\Sigma$ and if $v\in\brk*{C_xX}^*$ then
+  $v$ lies in the relative interior $\relint\brk*{C_xX}^*$.
   Analogously $v$ is \emph{(strictly) emergent} if $-v$ is (strictly) entrant.
   Now define the \emph{entrant boundary} $\Sigma^{\leq0}$ to be the set of boundary points at which $u$ is entrant.
   We define the \emph{strictly entrant boundary} $\Sigma^-$ to be the set of strictly entrant boundary points of $u$.
@@ -240,12 +243,12 @@ In the following we define the emergent and the entrant boundary in a way that g
   \end{align}
 \end{definition}
 \nomenclature{$\Sigma$}{Boundary $\Sigma=\partial X$}
-\nomenclature{$\Sigma^-$, $\Sigma^{\leq0}$}{(strictly) entrant boundary. See definition \ref{df:emergentEntrantBd}.}
-\nomenclature{$\Sigma^+$, $\Sigma^{\geq0}$}{(strictly) emergent boundary. See definition \ref{df:emergentEntrantBd}.}
-\nomenclature{$\Sigma^0$}{tangential boundary. See definition \ref{df:emergentEntrantBd}.}
+\nomenclature{$\Sigma^-$, $\Sigma^{\leq0}$}{(Strictly) entrant boundary. See definition \ref{df:emergentEntrantBd}.}
+\nomenclature{$\Sigma^+$, $\Sigma^{\geq0}$}{(Strictly) emergent boundary. See definition \ref{df:emergentEntrantBd}.}
+\nomenclature{$\Sigma^0$}{Tangential boundary. See definition \ref{df:emergentEntrantBd}.}
+\nomenclature{$\Sigma^\text{irr}$}{Irregular boundary. See definition \ref{df:nonDegeneracy}.}
 \nomenclature{$B_r(x)$, $B_r$}{Ball of radius $r$ around the point $x$ / the origin.}
 \nomenclature{$S^{d-1}(x)$, $S^{d-1}$}{$(d-1)$-dimensional sphere around $x$ / the origin.}
-
 
 % We would now like to illustrate the preceding definitions.
 % \begin{example}\label{ex:n3_hvf_canonical}
@@ -304,14 +307,14 @@ We would now like to illustrate the preceding definitions.
   For a boundary point $x\in I\times\brk[c]*{1}$ the dual cone of the contingent cone
   $C_xX$ is given by
   \begin{align*}
-    \brk*{C_xX}^*=C_xX\,.
+    \brk*{C_xX}^*=\brk[c]*{-r e_2\colon r\geq0}\,.
   \end{align*}
-  Hence we have that $x\in\Sigma^-$ iff
+  Now we have that $x\in\Sigma^{\leq0}$ if
   \begin{align*}
-    0>n\cdot u = -2x_2
+    0\geq n\cdot u = -2x_2
   \end{align*}
-  which is always fulfilled and thus $I\times\brk[c]*{1}\subseteq\Sigma^-$.
-  At the boundary point $x=\vect{1&1}^\top$ the dual of the contingent cone is also given by
+  which is always fulfilled and thus $I\times\brk[c]*{1}\subseteq\Sigma^{\leq0}$.
+  At the boundary point $x=\vect{1&1}^\top$ the dual of the contingent cone is given by
   \begin{align*}
     \brk*{C_xX}^*=C_xX\,.
   \end{align*}
@@ -320,10 +323,10 @@ We would now like to illustrate the preceding definitions.
   By analogous argumentation on the other sides of the square $\Sigma=\partial X$
   one obtains that
   \begin{align*}
-    \Sigma^-=\Sigma{\leq0}&=I\times\brk[c]*{1}\cup I\times\brk[c]*{-1}\\
-    \Sigma^+=\Sigma{\geq0}&=\brk[c]*{1}\times I\cup \brk[c]*{-1}\times I\,.
+    \Sigma^{\leq0}&=I\times\brk[c]*{1}\cup I\times\brk[c]*{-1}\\
+    \Sigma^{\geq0}&=\brk[c]*{1}\times I\cup \brk[c]*{-1}\times I\,.
   \end{align*}
-  In particular the tangential boundary $\Sigma^{0}=\emptyset$ is empty.
+  % In particular the tangential boundary $\Sigma^{0}=\emptyset$ is empty.
   A plot of the sets can be seen in figure \ref{pl:n2_hvf_canonical_boundary}.
   \begin{figure}
     \centering
@@ -357,13 +360,14 @@ The following are slight generalisation of definitions given in \cite[p.138f]{Sh
 to include harmonic vector fields.
 \begin{definition}[Stagnation points]\label{df:nonDegeneracy}
   Let $u_j\colon X_j\to T^*X_j$ be a $C^1$ vector field on a stratum $X_j$ of $X$.
-  We call the zeroes $x\in X_j$ of $u_j$ \emph{stagnation points}.
+  We call the zeroes $x\in X_j$ of $u_j$ \emph{stagnation points of $u_j$ on $X_j$}.
   If $x\in\Omega$ then we call $x$ an \emph{interior stagnation point}.
-  If $x$ lies in the entrant boundary $\Sigma^{\leq0}$ or is an interior stagnation point we call $x$ an \emph{essential stagnation point}.
-  The set of all essential stagnation points of $u_j$ is denoted by $\critical_j=\critical_j(u)$.
-  A stagnation point $x$ is called
-  \emph{non-degenerate} if $x$ does not lie in the tangential boundary $\Sigma^0$ 
-  and additionally the derivative
+  If $u(x)\in \brk*{C_xX}^*$ we call $x$ an \emph{essential stagnation point}.
+  The set of all essential stagnation points of $u_j$ is denoted by $\critical_j=\critical_j(u)$ and
+  the essential stagnation points of $u$ and $-u$ on $X_j$ are called \emph{stagnation points of $u$ on $X_j$}.
+  A stagnation point $x$ of $u_j$ is called
+  \emph{non-degenerate} if it is contained in the relative interior $\relint X_j$
+  and the derivative
   \begin{align*}
     Du_j(x)=Du_j\big\vert_x\in T_xT^*X_j\cong \R^{n(j)\times n(j)}
   \end{align*}
@@ -371,15 +375,20 @@ to include harmonic vector fields.
   In addition we say that $x$ has \emph{index} $k$
   if $Du_j(x)$ has exactly $k$ negative eigenvalues.
   $u_j$ is called \emph{(essentially) non-degenerate} if all its (essential) stagnation points
-  are non-degenerate. 
-  Assume $u_j$ is non-degenerate then we can define the \emph{$k$-th type number} $\ind_{j,k}(u)$ of the
-  stratum $X_j$ to be the number of essential stagnation points of $u_j$ of index $k$,
+  are non-degenerate.
+  Finally, we call a non-degenerate essential stagnation point of $u_j$ such that additionally $u(x)\in\relint \brk*{C_xX}^*$
+  \emph{regular}.
+  Boundary points which are non-regular essential stagnation points are called \emph{irregular boundary points}.
+  We call the set of all irregular boundary points the irregular boundary $\Sigma^\text{irr}$.
+  $u_j$ is called \emph{regular} if it has no irregular boundary points.
+  We can define the \emph{$k$-th type number} $\ind_{j,k}(u)$ of the
+  stratum $X_j$ to be the number of regular stagnation points of $u_j$ of index $k$,
   that is
   \begin{align}
     \ind_{j,k}(u)=\#\brk[c]*{x\in\critical_j(u)\colon x\text{ has index }k}\,.\label{eq:def_typenbr_strata}
   \end{align}
 \end{definition}
-\nomenclature{$\critical_j$}{Number of essential stagnation points. See definition \ref{df:nonDegeneracy}.}
+\nomenclature{$\critical_j$}{Set of essential stagnation points. See definition \ref{df:nonDegeneracy}.}
 \nomenclature{$\ind_{j,k}$}{$k$-th type number on the stratum $X_j$. See equation \eqref{eq:def_typenbr_strata}.}
 
 To illustrate the preceding definitions we return to our previous example.
@@ -397,7 +406,8 @@ To illustrate the preceding definitions we return to our previous example.
   for all $x\in\Omega$ we see that $Du(0)$ is bijective and thus the origin is a non-degenerate interior stagnation point.
   Since $Du(0)$ has
   exactly one negative eigenvalue we see that the origin has index $1$. 
-  Hence we have $\ind_{2,k}=\delta_{k1}$ where $\delta$ denotes the Kronecker delta.
+  Since an interior stagnation point is also an essential stagnation point 
+  we have $\ind_{2,k}=\delta_{k1}$ where $\delta$ denotes the Kronecker delta.
   For $x\in I\times\brk[c]*{1}=Y$ we calculate
   \begin{align*}
     u_1(x)=\pi_1\circ u(x)=\brk*{u-n\cdot u \,n}(x)
@@ -418,28 +428,42 @@ To illustrate the preceding definitions we return to our previous example.
   and thus $e_1$ is an eigenvector of $Du_1(e_2)$ to eigenvalue $2$. Since $e_1$
   spans the eigenspace $T_{e_2}Y$ it follows that $e_2$ is a non-degenerate stagnation point
   of $u_1$ with index $0$.
-  Now since $e_2\in\Sigma^-$ we have that $e_2$ is in fact an essential stagnation point.
+  Now since $u\brk*{e_2}\in\relint\brk*{C_xX}^*$ we have that $e_2$ is in fact a regular point.
   Proceeding in this manner for the other segments of the square $\Sigma$ we obtain that
   $\ind{1,k}=2\delta_{0k}$.
   If we now consider the point $x=\vect{1&1}^\top$ then we have that $u_0(x)=0$ and thus $x$ is a stagnation
-  point. Now since $x$ does not lie in $\Sigma^0$ and the derivative
-  $Du_0=0\in T_xT^*X_0=0$ is bijective we have that $x$ is a non-degenerate critical point of
-  index $0$. Since however $x\notin \Sigma^{\leq 0}$ we have that $x$ is not an essential stagnation point.
+  point.
+  Now the derivative $Du_0=0\in T_xT^*X_0=0$ is bijective and thus
+  we have that $x$ has
+  index $0$. Since however $u(x)\notin \brk*{C_xX}^*$ we have that $x$ is not an essential stagnation point.
   Analogous argumentation on the other three corners yields that $\ind_{0,0}=0$.
 \end{example}
 
-We call a boundary point $x\in X_j$ on a strata $X_j$ \emph{ordinary} if $u(x)$ is not 
-stagnation point of a stratum $X_{j+1}$. This definition of ordinary points is inspired by \cite{Morse1970}.
-\begin{proposition}
-  The condition that the stagnation point $x\in X_j$ does not lie in $\Sigma^0$ is equivalent to that
-  $x$ is ordinary.
+The following characterisation of the irregular boundary will come in handy for showing the density of Morse functions later on:
+\begin{proposition}[Characterisation of the irregular boundary]\label{pr:characterisation_irregular_bd}
+  The condition that the stagnation point $x\in X_j$ lies in $\Sigma^\text{irr}$ is equivalent to that
+  $x$ is stagnation point of $u_{j+1}$ for a stratum $X_j\precsim X_{j+1}$.
 \end{proposition}
 \begin{proof}
-  \td{Some proof}
+  We calculate for some boundary point $x\in\Sigma$:
+  \begin{align*}
+    \brk*{C_xX}^*\setminus\relint\brk*{C_xX}^*
+    &=\left\{w\in T_xX\;\begin{array}{|l}
+      \brk[a]*{w,w'}\geq0\text{ for all }w'\in C_xX\text{ and }\\
+      \brk[a]*{w,w'}=0\text{ for some }w'\in \partial C_xX\setminus\brk[c]*{0}
+    \end{array}\right\}\,.
+  \end{align*}
+  Now $w'\in\partial C_xX\setminus\brk[c]*{0}$ iff $w'\in T_xX_{j+1}$ is orthogonal to $T_xX_j$ at $x$.
+  Thus we have that $$u(x)\in \brk*{C_xX}^*\setminus\relint\brk*{C_xX}^*$$ iff $u(x)\in \brk*{C_xX}^*$
+  and there exists a normal $n\in T_xX_{j+1}$ such that
+  \begin{align*}
+    0=\brk*{n\cdot u\;n}(x)=\brk*{n\cdot u_{j+1}\;n}(x)=u_{j+1}(x)-u_j(x)
+  \end{align*}
+  from which the claim follows.
 \end{proof}
 
 \begin{definition}[Morse functions]
-  We call $u$ \emph{Morse} if for all $j\in\cJ$ we have that $u_j$ is essentially non-degenerate.
+  We call $u$ \emph{Morse} if for all $j\in\cJ$ we have that $u_j$ is regular.
   If both $u$ and $-u$ are Morse we call $u$ \emph{strongly Morse}.
   For a Morse function $u$ we define 
   the \emph{interior type numbers} $M_k$ to be the number of essential interior stagnation points of $u$ of index $k$, that is
@@ -529,6 +553,8 @@ The previous definitions translate naturally to $f$.
 That is, we call $f$ Morse, non-degenerate, et cetera if $u=\nabla f$ is Morse, non-degenerate, et cetera.
 Similarly we call $x$ a \emph{critical point} of $f$ if it is a
 stagnation point of $u$.
+Note that most authors refer to regular and essential stagnation points as simply non-degenerate stagnation points
+and that this naming was introduced simply to distinguish between these different concepts.
 
 % To illustrate the preceding definitions we return to our previous example.
 % \begin{example}
@@ -583,43 +609,46 @@ stagnation point of $u$.
 %   the $\pm e_3$ are non-degenerate critical points of $f$ with index $0$.
 % \end{example}
 
-\section{On assuming non-degeneracy}\label{se:assuming_nonDegeneracy}
+\section{Density of Morse functions}\label{se:assuming_nonDegeneracy}
 
-In the following section we argue that assuming non-degeneracy 
-of $u$ and $f$ is not a great restriction.
+In the following section we argue that 
+$u$ and $f$ being Morse is not a great restriction.
 Given $u$ we define the modification
 \begin{align}
   u^\e=u+\e\label{eq:nonDegeneracy:definitionUEps}
 \end{align}
-for some $\e\in\R^d$. We would like to show that $u_\e$ is for almost all choices of $\e$ non-degenerate and can 
-thus be used to approximate a degenerate $u$.
+for some $\e\in\R^d$. We would like to show that the set $E$ of $\e$ for which $u^\e$ is Morse
+is residual in $\R$.
+Recall that a \emph{residual} set is a set whose complement is \emph{meagre}, that is whose complement
+is the countable union of nowhere dense subsets.
+Since residual sets are dense in a Baire space by the Baire category theorem we can 
+use $u^\e$ to approximate a degenerate $u$.
 Our approach is to use Thom's theorem which is inspired by the approach in \cite[Chapter 6]{Hirsch1994}.
-\nomenclature{$u_\e$}{modification to $u$ as in equation \eqref{eq:nonDegeneracy:definitionUEps}}
-\begin{definition}[Transversality]
-  We call a function $g\colon Y_1\to Y_2$ between to manifolds $Y_1$ and $Y_2$ (without boundary)
+\nomenclature{$u^\e$}{modification to $u$ as in equation \eqref{eq:nonDegeneracy:definitionUEps}}
+\begin{definition}[Transversality, {\cite[§3.2]{Hirsch1994}}]
+  We call a function $g\colon Y_1\to Y_2$ between two manifolds $Y_1$ and $Y_2$ (without boundary)
   \emph{transverse} to a submanifold $A\subseteq Y_2$ if for all points in the 
   preimage $x\in g^{-1}(A)$ we have that
   \begin{align*}
-    \Image(Dg_x)+T_{g(x)}A = T_{g(x)}Y\,.
+    \Image\brk*{Dg_x}+T_{g(x)}A = T_{g(x)}Y_2\,.
   \end{align*}
 \end{definition}
 \nomenclature{$A$}{submanifold, can be thought of as the zero section of $T^*X$}
-As an application we make the following observation.
+As an application of this definition we make the following observation:
 \begin{proposition}[Transversal characterisation of non-degeneracy]\label{pr:nonDegeneracy:alternativeCharacterisation}
   Let $u_j\colon X_j\to T^*X_j$ be a differentiable vector field.
-  Then $u_j$ is non-degenerate iff $u_j$ is transverse to the zero section $A_j$ of $T^*X_j$
-  and contains no stagnation points in $\Sigma^0$.
+  Then $u_j$ is non-degenerate iff $u_j$ is transverse to the zero section $A_j$ of the cotangent space $T^*X_j$.
 \end{proposition}
 \begin{proof}
-  First note that we have that $x\in u_j^{-1}(A)$ iff $u_j(x)=0$ and thus $u_j^{-1}(A)=C$.
+  First note that we have that $x\in u_j^{-1}(A)$ iff $u_j(x)=0$ and thus $u_j^{-1}(A)=C$ is the set of stagnation points.
   Unravelling the definition of transversality we get that $u_j$ is transverse to the zero section iff for all $x\in C=u_j^{-1}(A)$
   we have that
   \begin{align}
-    \Image(Du_j(x))+T_{u_j(x)}A = T_{u_j(x)}TX\,. \label{eq:nonDegeneracy:uTransverse}
+    \Image\brk*{Du_j(x)}+T_{u_j(x)}A = T_{u_j(x)}TX\,. \label{eq:nonDegeneracy:uTransverse}
   \end{align}
   As $A$ is the zero section we have $T_{u_j(x)}A=0$ and equation \eqref{eq:nonDegeneracy:uTransverse}
-  is equivalent to stating that $Du_j$ is of full rank. But $Du_j$ being of full rank at all points
-  in $C$ and $u_j$ having no stagnation points in $\Sigma^0$ is equivalent to $u_j$ being non-degenerate.
+  is equivalent to stating that $Du_j$ is of full rank at $x$. But $Du_j$ being of full rank at all stagnation points
+  is equivalent to $u_j$ being non-degenerate.
 \end{proof}
 % Analogously we make the following observation.
 % \begin{proposition}[Transversal characterisation of tangency regularity]\label{pr:tanRegular_alternativeCharacterisation}
@@ -627,75 +656,92 @@ As an application we make the following observation.
 %   Then we have that $u$ is tangency regular on a stratum $X_j$ iff
 %    $u^N_j$ is transverse to the zero section of $N^*X_j$.
 % \end{proposition}
-The following version of Thom's transversality theorem is an adaption (i.e.\ weakening) of \cite[Theorem 2.7]{Hirsch1994} to our needs.
-\begin{theorem}[Parametric transversality theorem.]
-  Let $E,Y_1,Y_2$ be $C^r$-manifolds (without boundary) and $A\subseteq Y_2$ a $C^r$ submanifold such that
+The alternative characterisation of non-degeneracy given in proposition \ref{pr:nonDegeneracy:alternativeCharacterisation}
+is sometimes used as a definition of non-degeneracy.
+We can now state a weakened version of the Thom's transversality theorem from \cite[Theorem 2.7]{Hirsch1994}:
+\begin{theorem}[Parametric transversality theorem, {\cite[§3 Theorem 2.7]{Hirsch1994}}]
+  Let $\cE,Y_1,Y_2$ be $C^r$-manifolds (without boundary) and $A\subseteq Y_2$ a $C^r$ submanifold such that
   \begin{align*}
     r>\dim Y_1-\dim Y_2+\dim A\,.
   \end{align*}
-  Let further $F\colon E\to C^r\brk*{Y_1,Y_2}$ be such that the evaluation map
+  Let further $F\colon \cE\to C^r\brk*{Y_1,Y_2}$ be such that the evaluation map
   \begin{align*}
-    F^\text{ev}\colon E\times Y_1&\to Y_2 \\
+    F^\text{ev}\colon \cE\times Y_1&\to Y_2 \\
     (\e,x)&\mapsto F_\e(x)
   \end{align*}
   is $C^r$ and transverse to $A$.
   Then the set
   \begin{align*}
-    \pitchfork(F;A)=\brk[c]*{\e\in E\colon F_\e\text{ is transverse to } A}
+    E=\brk[c]*{\e\in \cE\colon F_\e\text{ is transverse to } A}
   \end{align*}
-  is dense.
+  is residual in $\cE$.
 \end{theorem}
 \begin{proof}
   See \cite[Theorem 2.7]{Hirsch1994} for details.
 \end{proof}
-Using proposition \ref{pr:nonDegeneracy:alternativeCharacterisation} 
-we get a generalisation of the results in \cite[§2]{Morse1970}.
+From this we obtain
+a generalisation of the results in \cite[§2]{Morse1970} which will prove useful later:
 \begin{corollary}[Density of boundary generic functions]\label{co:density_boundaryGeneric}
   Let $u\colon X\to T^*X$ be a harmonic vector field on $X$ and let $X_j$ be a stratification of $X$.
-  Assume that $u$ has no stagnation points on $\Sigma^0$.
-  Then there exists a $\delta>0$ such that for almost every $\e\in B_\delta\subseteq\R^d$ we have that
+  Assume that $u$ has no irregular stagnation points.
+  Then there exists a $\delta>0$ and a residual (and thus dense) set $E\subseteq B_\delta\subseteq\R^d$ such that for every $\e\in E$
+  the following statements hold:
   \begin{enumerate}
-    \item $u^\e$ is non-degenerate on $X_j$ \label{co:nonDegeneracy_density_nonDeg}
+    \item $u_j^\e\to u_j$ converge uniformly on all strata $X_j$ as $\e\to0$.\label{co:nonDegeneracy_density_uniform}
+    \item If $x_\e\to x$ is a convergent sequence of stagnation points of $u_j^\e$ as $\e\to0$ then
+      $x$ is a stagnation point of $u_j$.\label{co:nonDegeneracy_density_limitPoint}
+    \item $u^\e$ is strongly Morse. \label{co:nonDegeneracy_density_nonDeg}
     % \item if in addition $\Sigma$ is a differentiable manifold then $u^\e$ is tangency regular on $X_j$ \label{co:nonDegeneracy_density_tanReg}
-    \item $u^\e\to u$ uniformly
-    \item if $x_\e\to x$ then $x$ is a stagnation point of $u$
-    \item Additionally we can find for every $\eta>0$ a $\delta>0$ such that all stagnation points of $u^\e$ are contained in a 
-    $\eta$-neighbourhood of the set of stagnation points of $u$.
+    \item Additionally we can find for every $\eta>0$ a $\delta>0$ such that all stagnation points of $u^\e$ are contained in an 
+    $\eta$-neighbourhood of the set of stagnation points of $u$.\label{co:nonDegeneracy_density_etaNbh}
     \item the property of being entrant or emergent of stagnation points of $u^\e$ is preserved, that is 
-      a stagnation point $x^\e$ of $u^\e$ lies in $\Sigma^+\brk*{u^\e}$ iff it lies in $\Sigma^-\brk*{u}$.
-    \item If $x$ is a non-degenerate stagnation point on the stratum $X_j$ of $u$ we have that
-     \begin{align*}
-        \ind_{X_j,k}\brk*{u^\e}=\ind_{X_j,k}\brk*{u}\qquad\text{ and }\qquad\ind_{X_j,k}\brk*{-u^\e}=\ind_{X_j,k}\brk*{-u}
+      a stagnation point $x^\e$ of $u^\e$ lies in $\Sigma^\pm\brk*{u^\e}$ iff it lies in $\Sigma^\pm\brk*{u}$.\label{co:nonDegeneracy_density_entrEmerg}
+    \item If $u_j$ is non-degenerate on the stratum $X_j$ we have\label{co:nonDegeneracy_density_index}
+      for all $k$ that
+      \begin{align*}
+        \ind_{X_j,k}\brk*{u^\e}=\ind_{X_j,k}\brk*{u}\qquad\text{ and }\qquad\ind_{X_j,k}\brk*{-u^\e}=\ind_{X_j,k}\brk*{-u}\,.
       \end{align*}
-      for all $k$.
   \end{enumerate}
 \end{corollary}
 \begin{proof}
-  \td{Fill in the details for the following. .}
+  \emph{Part \ref{co:nonDegeneracy_density_uniform}}. Follows from compactness of $\overline{X}_j\subseteq X$ and the continuity of $\pi_j$.
+
+  \emph{Part \ref{co:nonDegeneracy_density_limitPoint}}. Let $x_\e\to x$ be a convergent sequence of stagnation points on the stratum $X_j$.
+  By part \ref{co:nonDegeneracy_density_uniform} $u_j^\e\to u_j$ as $\e\to0$ uniformly which implies
+  \begin{align}
+    0=\lim_\e u_j^\e\brk*{x_\e}
+    =u_j\brk*{x}
+  \end{align}
+  and thus $x$ is a stagnation point of $u_j$.
+
+  \emph{Part \ref{co:nonDegeneracy_density_nonDeg}}. 
   The following is essentially an adaptation of a proof given in \cite[§2]{Morse1970}.
-  We first show that we can choose a $\delta>0$ such that for all $\e\in B_\delta\subseteq\R^d$ we have no stagnation points on $\Sigma^0\brk*{u^\e}$.
-  Assume not. Then there exist sequences $\e_k\to0$ and $x_k$ of stagnation points of $u^{\e_k}$ on $\Sigma^0(u^{\e_k})$.
+  We first show that we can choose a $\delta>0$ such that for all $\e\in B_\delta\subseteq\R^d$ the function $u^\e$ has
+  no irregular stagnation points.
+  Assume not. Then there exists a sequence $\e_k\to0$ and irregular stagnation points $x_k\in\Sigma^\text{irr}\brk*{u^{\e_k}} $ of $u^{\e_k}$.
   By compactness of $X$ we can assume that $x_k\to x$ for some $x\in X$ after taking a sub-sequence.
   After taking a further sub-sequence we can also assume that all $x_k$ lie in a stratum $X_j$.
-  The condition that $x_j$ are stagnation points and lie in $\Sigma^0\brk*{u^{\e_j}}$
-  means that there exists a stratum $X_{j-1}$ such that $x_j$ is also stagnation point of this stratum.
-  But then $x$ is also a stagnation point of $X_{j-1}$ for $u$ since $u^\e\to u$.
-  This implies that $x$ is a stagnation point of $X_{j-1}$, but $x\in\overline{X}_j$ and hence $x\in\Sigma^0$
-  is a stagnation point. A contradiction.
+  The condition that the $x_k\in\Sigma^\text{irr}\brk*{u^{\e_k}}$ are stagnation points
+  means that after taking a further sub-sequence there exists a stratum $X_{j-1}$ such that $x_k$ is also stagnation point of this stratum
+  by proposition \ref{pr:characterisation_irregular_bd}.
+  But then $x\in\overline{X}_j$ is also a stagnation point of $X_{j-1}$ by part \ref{co:nonDegeneracy_density_limitPoint}.
+  Analogously $x$ is also stagnation point of $X_j$.
+  Thus $x\in\Sigma^\text{irr}$
+  is an irregular stagnation point. A contradiction.
 
-  The next part of the proof is inspired by \cite{Hirsch1994} use of transversality to show a similar statement.
-  Set $r=2$, $E=B_\delta$ and $Y_2=T^*X_j$ in the previous theorem.
+  The next part of the proof is inspired by the use of transversality in \cite[§6 Theorem 1.2]{Hirsch1994} to show a similar statement.
+  Set $r=2$, $\cE=B_\delta$ and $Y_2=T^*X_j$ in the previous theorem.
   We initially set $Y_1=X_j=\Omega$.
   We would like to apply the parametric transversality theorem to the function
   \begin{align*}
-    F\colon E&\to C^\infty\brk*{X_j,T^*X_j} \\
+    F\colon \cE&\to C^\infty\brk*{X_j,T^*X_j} \\
     \e&\mapsto u^\e
   \end{align*}
-  We note that $F^\text{ev}$ is sufficiently smooth. 
+  and note that $F^\text{ev}$ is sufficiently smooth. 
   We need to show that $F^\text{ev}$ is transverse to the
   zero section $A\subseteq T^*X_j$. Then the parametric transversality theorem 
-  yields a dense $E_j\subseteq E$ on which
-  $F$ is transverse to $A$.
+  yields a residual $E_j\subseteq \cE$ on which
+  $F_\e=u^\e$ is transverse to $A$.
   For this note that for all $(\e,x)\in F^{-1}(A)$ we have
   \begin{align}
     \Image\brk*{DF^\text{ev}_{(\e,x)}}=T_xT^*X_j\label{eq:nonDegeneracy:surjectiveDF}
@@ -708,10 +754,10 @@ we get a generalisation of the results in \cite[§2]{Morse1970}.
   \end{align*}
   is surjective. 
   Proposition \ref{pr:nonDegeneracy:alternativeCharacterisation}
-  now yields that $u^\e$ is non-degenerate on $E_j$.
+  now implies that $u^\e$ is non-degenerate on $X_j$ for $\e\in E_j$.
   
   Analogously we set $Y_1=X_j$ to be an arbitrary strata in the previous proof and replace
-  $u^\e$ with the restriction $u_j^\e$. To show that
+  $u^\e$ with the projection $u_j^\e$. To show that
   equation \eqref{eq:nonDegeneracy:surjectiveDF} holds we resort to the fact that
   \begin{align*}
     DF^\text{ev}_{(\e,x)}
@@ -719,7 +765,7 @@ we get a generalisation of the results in \cite[§2]{Morse1970}.
     =D\pi_j\circ \brk*{Du^\e(x)}_{(\e,x)}
   \end{align*}
   is surjective as a concatenation of surjective functions.
-  Thus there also exists a dense set $E_j\subseteq\R$ on which $u^\e_j$ is
+  Thus there also exists a residual set $E_j\subseteq\cE$ on which $u^\e_j$ is
   non-degenerate on $X_j$.
 
   % Now to the tangency regularity. 
@@ -756,55 +802,49 @@ we get a generalisation of the results in \cite[§2]{Morse1970}.
   % for every $\e\in\overline{E}$ the function $u^\e$ fulfils conditions
   % \ref{co:nonDegeneracy_density_nonDeg} and \ref{co:nonDegeneracy_density_tanReg}.
   
-  \td{The following implication is false, look into \cite{Hirsch1994} for fix.}
-  Now the set
-  \begin{align}
-    \overline{E}=\bigcap_j E_j\subseteq\R
-  \end{align}
-  is dense in $\R$ and
-  for every $\e\in\overline{E}$ the function $u^\e$ fulfils condition
+  Now the intersection
+  \begin{align*}
+    E=\bigcap_j E_j\subseteq \cE =B_\delta
+  \end{align*}
+  is residual and
+  for every $\e\in E$ the function $u^\e$ fulfils condition
   \ref{co:nonDegeneracy_density_nonDeg}.
 
-  
-  Let $x_\e\to x$ on the stratum $X_j$.
-  The uniform convergence $u^\e\to u$ as $\e\to0$ and the continuity of $\pi_j$ 
-  imply that $x$ is a stagnation point of $u$.
-  More concretely let $x_\e\to x$ be convergent sequence of stagnation points for $u^\e$
-  as $\e\to0$ then we have that
-  \begin{align}
-    0=\lim_\e u_j^\e\brk*{x_\e}
-    =u_j\brk*{x}
-  \end{align}
-  and thus $x$ is a stagnation point.
-
-
-  Let $U_\eta$ denote the open $\eta$-neighbourhood of the set of stagnation points of $u$.
-  Since $u$ has no stagnation points in $\Sigma^0$ we have for any stratum $X_j$ that
-  $u_j\neq0$ on the compact set $\overline{X}_j\setminus U_\eta$ which implies that we can choose $\delta>0$ 
-  so small that $\abs{u_j}>\delta$ on $\overline{X}_j\setminus U_\eta$
+  \emph{Part \ref{co:nonDegeneracy_density_etaNbh}}. 
+  Let $C_\eta$ denote the open $\eta$-neighbourhood of the set of stagnation points of $u$.
+  Since $u$ has no irregular stagnation points we have for any stratum $X_j$ that
+  $u_j\neq0$ on the compact set $\overline{X}_j\setminus C_\eta$ which implies that we can choose $\delta>0$ 
+  so small that $\abs{u_j}>2\delta$ on $\overline{X}_j\setminus C_\eta$
   for all strata $X_j$.
-  For any $\e\in B_\delta$ it then follows that $u^\e$ has no stagnation points on the set $\overline{X}_j\setminus U_\eta$
+  For any $\e\in B_\delta$ it then follows that $u^\e$ has no stagnation points on the set $\overline{X}_j\setminus C_\eta$
   which yields the claim.
 
-  Since the boundary stagnation points of $u$ have a positive distance to the tangential boundary $\Sigma^0$,
-  say $2\eta$ we can choose $\delta$ as in the previous part of the proof. Now consider the continuous mapping
+  \emph{Part \ref{co:nonDegeneracy_density_entrEmerg}}.
+  % Since the boundary stagnation points of $u$ have a positive distance to the irregular boundary $\Sigma^\text{irr}$,
+  % say $2\eta$ we can choose $\delta$ as in the previous part of the proof.
+  Now consider a stratum $X_j$ and the continuous mapping
   \begin{align*}
-    x\mapsto \dist\brk*{u(x),\partial C_xX_j}
+    \Phi\colon X_j&\to\R_{\geq0}\\
+    x&\mapsto \dist\brk*{u(x),\partial C_xX}
   \end{align*}
-  which is positive on $X_j\setminus \brk*{\Sigma^0}_\eta$ and thus attains a positive minimum over all strata $X_j$.
+  on $X_j$. $\Phi$ is positive on the set of stagnation points $C$ of $u_j$ on $X_j$ and thus we can choose $\eta>0$
+  such that $\Phi$ is also positive in the neighbourhood $C_{2\eta}$.
+  Choose $\delta>0$ smaller than in part \ref{co:nonDegeneracy_density_etaNbh}.
+  Now the mapping $\Phi$ attains a positive minimum on the compact set $\overline{C_{\eta}}$.
   We can assume that $\delta>0$ is less than this minimum.
-  The choice of $\delta$ in this way ensures that the property of being entrant or emergent is preserved.
+  The choice of $\delta$ in this way ensures that emergent stagnation points of $u_j$ are also emergent stagnation points of $u_j^\e$ on $X_j$.
+  Analogous argumentation with $-u$ then ensures that entrant stagnation points of $u_j$ are also entrant stagnation points of $u_j^\e$ on $X_j$.
+  Since there are finitely many strata $X_j$ we can choose $\delta>0$ such that part \ref{co:nonDegeneracy_density_entrEmerg} follows.
 
-  Since $x$ is not contained in $\Sigma^0$, by continuity $x$ will
-  be entrant or emergent.
-  On the other hand if $x$ is a non-degenerate stagnation point of $u$ on the stratum $X_j$ it follows 
+  \emph{Part \ref{co:nonDegeneracy_density_index}}.
+  Pick $\delta>0$ as in part \ref{co:nonDegeneracy_density_entrEmerg} and such that
+  If $x$ is a non-degenerate stagnation point of $u$ on the stratum $X_j$ it follows 
   from the inverse function theorem that there exists for sufficiently small $\delta$
   a neighbourhood around $x$ on which there is a one-to-one correspondence between the
   stagnation points of $u$ and $u^\e$.
   Since there are by proposition \ref{pr:finiteness_critical_points} at most finitely many non-degenerate stagnation points of
   $u$ we can choose $\delta$ to be minimal over all these stagnation points.
   The equality of the indexes then follows from $Du^\e=Du$.
-
 \end{proof}
 
 % We have a brief intermezzo
@@ -986,8 +1026,8 @@ we get a generalisation of the results in \cite[§2]{Morse1970}.
 \chapter{Some general remarks}
 \td{Bring order into this section.}
 
-We make the following remarks
-\td{This was stated somewhere in \cite{Morse1969}.}
+The finiteness of the number of critical points is a known fact which is mentioned
+for example in \cite{Morse1970}. For completeness we give the following proposition:
 \begin{proposition}\label{pr:finiteness_critical_points}
   The number of non-degenerate
   stagnation points of $u_j$ on $X_j$ is finite.
@@ -1013,7 +1053,7 @@ As a consequence we obtain the following observation:
 
 \td{State the theorem of Sard}
 
-We state Morse's lemma according to \cite[p.145]{Hirsch1994}
+We state Morse's lemma according to \cite[§6, Lemma 1.1]{Hirsch1994}
 \begin{lemma}
   Let $f\colon X\to\R$ be $C^{2+r}$ and $x$ be a non-degenerate
   critical point of index $k$. Then there exists a $C^r$ chart $(\varphi,U)$ at $x$
@@ -1022,7 +1062,9 @@ We state Morse's lemma according to \cite[p.145]{Hirsch1994}
     f\colon\varphi^{-1}(y)=f(x)-\sum_{j=1}^ky_j^2+\sum_{j=k+1}^dy_j^2\,.
   \end{align*}
 \end{lemma}
-\td{State proof.}
+\begin{proof}
+  See for example \cite[§6]{Hirsch1994}.
+\end{proof}
 
 
 \section{Betti numbers}
@@ -1134,8 +1176,8 @@ where the Euler characteristic
 is the alternating sum of the Betti numbers.
 \end{theorem}
 \begin{proof}
-  A for manifolds with $C^1$ boundary is given for instance in \cite[Theorem 10.2']{Morse1969}
-  The definition of essential critical points of $f$ and its index given in definition \ref{} coincides with 
+  A for manifolds with $C^1$ boundary is given for instance in \cite[Theorem 10.2']{Morse1969}.
+  The definition of regular critical points of $f$ and their index given in definition \ref{df:nonDegeneracy} coincides with 
   the definition of a critical point and its co-index of $-f$ given in \cite{Agrach1991}.
   The result then follows from \cite[Theorem 2.4]{Agrach1991}.
   \td{Give outline of proof idea.}
@@ -1197,10 +1239,8 @@ In the following we deduce some basic relations for harmonic vector fields in di
   \end{enumerate}
 \end{proof}
 
-If one considers not necessarily simply connected domains $\Omega$ then we obtain the previous
-properties at least locally.
-
-\newpage
+If one considers not necessarily simply connected domains $\Omega$ then we obtain the
+properties of proposition \ref{pr:n2:hvf:simplyConnected} at least locally.
 
 \chapter{Harmonic functions, $d=2$}
 
@@ -1355,7 +1395,7 @@ Using invariant manifolds we obtain the following proof.
 
 We now give a proof involving Morse theory since the techniques of the proof generalise to the three dimensional case.
 \begin{proposition}
-  Let $d=2$ and $X$ be a simply connected manifold with corners and let $f\colon X\to\R$ have no critical points on $\Sigma^0$.
+  Let $d=2$ and $X$ be a simply connected manifold with corners and let $f\colon X\to\R$ have no irregular critical points.
   Assume further that $\Sigma^-$ contains at least two points and is simply connected. Then $f$ has no non-degenerate interior critical point.
 \end{proposition}
 
@@ -1407,11 +1447,11 @@ We now give a proof involving Morse theory since the techniques of the proof gen
 %   Set $\Psi_\e=\Phi_\e^{-1}$, $x_\e=\Phi_\e(x_0)$ and $U_\e=\Phi_\e(U_0)$.
 %   Set $\phi_\e=\phi_0\circ\Psi_\e$ and
 %   \begin{align}
-%     u_\e = D_x\phi_\e\circ\pi_\e\circ u\circ\phi_\e^{-1}
+%     u^\e = D_x\phi_\e\circ\pi_\e\circ u\circ\phi_\e^{-1}
 %   \end{align}
 %   where $\pi_\e$ is the restriction onto $T^*U_\e$. We now calculate
 %   \begin{align}
-%     D_\e u_\e=D_\e D_x\phi_\e+D_x\phi_\e D_e\pi_\e+D_x\phi_\e \pi_\e Du D_\e\phi_\e^{-1}
+%     D_\e u^\e=D_\e D_x\phi_\e+D_x\phi_\e D_e\pi_\e+D_x\phi_\e \pi_\e Du D_\e\phi_\e^{-1}
 %   \end{align}
 %   where we used the linearity of $D_x\phi_\e$ and $\pi_\e$.
 %   We now calculate
@@ -1556,7 +1596,7 @@ We now give a proof involving Morse theory since the techniques of the proof gen
   % precisely at $\Sigma^0\brk*{u^\e}$.
   % Furthermore by choosing $\delta$ sufficiently small we can also ensure that
   % $\Gamma$ has no critical points of $u^\e$ inside of $\overline{B_\eta\brk*{x_1}}\cup \overline{B_\eta\brk*{x_2}}$
-  % and that $\Gamma_\e$ is slanted in such a way that $u_\e$ has no critical points on
+  % and that $\Gamma_\e$ is slanted in such a way that $u^\e$ has no critical points on
   % $\Gamma_\e\cap B_\eta\brk*{x_1}\cap B_\eta\brk*{x_2}$.
   
   
@@ -1568,9 +1608,10 @@ We now give a proof involving Morse theory since the techniques of the proof gen
   % we obtain that for all $u^\e$ all
 
   The claim remains to be shown in the case that $f$ is not strongly Morse on $X^+$ and $X^-$. In this case let
-  $u^\e$ be as in corollary \ref{co:density_boundaryGeneric}.
-  It follows from the slanted angles at which $\Gamma$ approaches $\gamma$ that if the points $x_1$, $x_2$ are critical points of $f$
-  that they then are in fact non-degenerate.
+  $E^+,E^-\subseteq B_\delta$ be as in corollary \ref{co:density_boundaryGeneric} applied separately to the domains $X^+$ and $X^-$.
+  Since $E^\pm$ are residual in $B_\delta$ we can in particular pick a $\e\in E^+\cap E^-$ by the Baire category theorem.
+  It follows from the slanted angles at which $\Gamma$ approaches $\gamma$ that if the points $x_1$, $x_2$ are essential critical points of $f$
+  that they then are in fact regular.
   Hence we obtain that
   \begin{align}
     \ind_{\gamma^+,k}\brk*{f^\e}=\ind_{\gamma^+,k}(f)\qquad\text{ and }\qquad 
@@ -1665,8 +1706,6 @@ We state a consequence of a result from \cite[Theorem 2.1]{Alessandrini1992}
 \begin{proof}
   See \cite[Theorem 2.1]{Alessandrini1992}.
 \end{proof}
-
-\newpage
 
 \chapter{Harmonic vector fields, $d=2$}
 
@@ -1776,7 +1815,7 @@ We state a consequence of a result from \cite[Theorem 2.1]{Alessandrini1992}
   from which the claim follows.
 
   The claim remains to be shown in the case that $u$ is not strongly Morse on $\tiX$. In this case let
-  $u^\e$ for $\e\in E$ be a family of strongly Morse functions as in corollary \ref{co:density_boundaryGeneric}.
+  $u^\e$ for $\e\in E$ be a strongly Morse function as in corollary \ref{co:density_boundaryGeneric}.
   Since the $x_1,\dots,x_{2b_1}\in\gamma$ are non-degenerate stagnation points of $u$
   due to the slanted angle at which
   $\Gamma$ approaches $\gamma$
@@ -1791,7 +1830,6 @@ We state a consequence of a result from \cite[Theorem 2.1]{Alessandrini1992}
   $u$ with $u^\e$ and then note that $M^\e=M$.
 \end{proof}
 We now give an alternative proof using the argument principle.
-\td{Cite Lang rather than Gamelin in the following proof.}
 \begin{proof}
   As before we slit the domain such that it is homeomorphic to a disk. By proposition \ref{pr:n2:hvf:simplyConnected} $u$ is the gradient of a
   harmonic function $f$ on this new domain $\tiX$. Let $h\in\Hol(\tiX)$ be the holomorphic function given by $h=\nabla f$.
@@ -1835,12 +1873,12 @@ For this define:
 Note that in $d=2$ dimensions a point $x$ with Morse index $k$ has Poincaré-Hopf index $(-1)^k$.
 Thus we have for a harmonic vector field that $M=-\ind_\text{PH}(u)$ and thus corollary \ref{co:n2_noInflowNoOutflow}
 also follows from the Poincaré-Hopf index theorem:
-\begin{theorem}[Poincaré-Hopf index theorem, {\cite[p. 33]{Milnor1965}}]
-  Let $u\colon X\to\R^d$ be a vector field on a manifold with boundary without inflow. Then we have
+\begin{theorem}[Poincaré-Hopf index theorem, {\cite[§6]{Milnor1965}}]
+  Let $u\colon X\to\R^d$ be a vector field on a manifold with corners without inflow. Then we have
   that the total index $\ind_\text{PH}(u)$ equals the Euler characteristic $\chi(X)$.
 \end{theorem}
 \begin{proof}
-  \td{find citation}
+  See for example \cite[§6]{Milnor1965}.
 \end{proof}
 
 
@@ -2098,8 +2136,10 @@ Mimicking the proof in 2 dimensions we obtain the following proposition.
   \end{align*}
   from which the claim follows.
 
+
   The claim remains to be shown in the case that $f$ is not strongly Morse on $X^+$ and $X^-$. In this case let
-  $f^\e$ for $\e\in E$ be a family of strongly Morse functions as in corollary \ref{co:density_boundaryGeneric}.
+  $E^+,E^-\subseteq B_\delta$ be as in corollary \ref{co:density_boundaryGeneric} applied separately to the domains $X^+$ and $X^-$.
+  Since $E^\pm$ are residual in $B_\delta$ we can in particular pick a $\e\in E^+\cap E^-$ by the Baire category theorem.
   Since $x_1$, $x_2$ are non-degenerate critical points of $f$
   due to the slanted angle at which
   $\Gamma$ approaches $\gamma$
@@ -2442,8 +2482,12 @@ simply connected entrant boundary.
 %   to our variety we 
 \end{proof}
 
-\begin{proposition}
-  For $\e>0$ sufficiently small the variety $V\brk*{p^\e}$ is smooth.
+\begin{proposition}[Smoothness]
+  For any $\eta>0$ and $\e>0$ sufficiently small (that is $r$ sufficiently large) the variety $V\brk*{p^\e}$ is smooth.
+  % \begin{itemize}
+  %   \item $C_\eta^r=r\brk*{S^2\setminus\tubular_\eta\brk*{\R e_3}}$
+  %   \item $\tubular_\eta\brk*{\R e_3}$
+  % \end{itemize}
 \end{proposition}
 \begin{proof}
   % Since we \emph{really} do not want to deal with sixth order polynomials we take the stereographic
@@ -2498,23 +2542,23 @@ simply connected entrant boundary.
   % the roots of $x_1$ as a function of $x_2$, plug this solution into 
   
   We inspect the equations
-  \begin{align}
+  \begin{align*}
     P(x)
     =-x_1^3+x_1x_2^2+x_1^2-x_2^2+2x_2x_3
-  \end{align}
+  \end{align*}
   and
-  \begin{align}
+  \begin{align*}
     Q(x)=x_1^2+x_2^2+x_3^2-r^2
-  \end{align}
+  \end{align*}
   closer. One calculates
-  \begin{align}
+  \begin{align*}
     T=\vect{\nabla P(x)&\frac{1}{2}\nabla Q(x)}=
     \begin{bmatrix}
       -3x_1^2+x_2^2+2x_1 & x_1\\
       2x_1x_2-2x_2+2x_3&x_2 \\
       2x_2&x_3
     \end{bmatrix}
-  \end{align}
+  \end{align*}
   % \begin{align}
   %   \nabla P(x)=\vect{-3x_1^2+x_2^2+2x_1 \\
   %   2x_1x_2-2x_2+2x_3 \\
@@ -2539,9 +2583,9 @@ simply connected entrant boundary.
   % For an $x\in V\brk*{\dots}$ we must have
   % \td{continue proof}
   By the Jacobi criterion it is sufficient to show that this matrix is
-  of full rank on $V(P,Q)$.
+  of full rank on $V_U(P,Q)$.
   This is equivalent to showing that
-  \begin{align}
+  \begin{align*}
     0&\neq \det\begin{bmatrix}
       T_{11}&T_{12}\\T_{21}&T_{22}
     \end{bmatrix}
@@ -2557,11 +2601,78 @@ simply connected entrant boundary.
     \end{bmatrix}
     =2x_1x_2+3x_1^2x_3-x_2^2x_3-2x_1x_3
     =R_3(x)
-  \end{align}
+  \end{align*}
   for any $x\in V\brk*{P,Q}$. This in turn is equivalent to showing that
   \begin{align}
-    V\brk*{P,Q,R_1,R_2,R_3}=\emptyset\,.
+    V_U\brk*{P,Q,R_1,R_2,R_3}=\emptyset\,.\label{eq:n3_ex_smoothness_varCond}
   \end{align}
+  Indeed, consider the variety
+  \begin{align}
+    V\brk*{P,R_1,R_2,R_3} \label{eq:n3_ex_smoothness_subvar}
+  \end{align}
+  Maple calculates the Gröbner basis with lexicographic order $x<y<z$
+  \begin{align*}
+    4x_1^8 - 18x_1^7 + 48x_1^6 - 66x_1^5 + 37x_1^4 - 5x_1^3 \\
+    4x_1^5x_2 - 14x_1^4x_2 + 34x_1^3x_2 - 32x_1^2x_2 + 5x_1x_2 \\
+    4x_1^7 + 2x_1^6 + 58x_1^5 - 116x_1^4 + 52x_1^3 + 85x_1x_2^2 \\
+    16x_1^4x_2 - 44x_1^3x_2 + 35x_1^2x_2 + 17x_2^3 - 4x_1x_2 \\
+    8x_1^4x_2 - 22x_1^3x_2 + 60x_1^2x_2 - 36x_1x_2 + 17x_1x_3 \\
+    -4x_1^7 - 2x_1^6 - 58x_1^5 + 116x_1^4 - 137x_1^3 + 85x_1^2 - 85x_2^2 + 170x_2x_3 \\
+    12x_1^7 + 6x_1^6 - 166x_1^5 + 332x_1^4 - 269x_1^3 + 85x_1^2 - 255x_2^2 + 170x_3^2
+  \end{align*}
+  from which we see that the variety \eqref{eq:n3_ex_smoothness_subvar} contains finitely many points.
+  Thus if we choose $R$ so large that all of these points are contained in the ball $B_R$ then we have
+  that \eqref{eq:n3_ex_smoothness_varCond} holds for all $r>R$.
+  % We will show this in two steps. 
+  % First we claim that for any $\eta>0$ we have
+  % \begin{align}
+  %   V\brk*{P,Q,R_1,R_2,R_3}\setminus C_\eta^r=\emptyset\,
+  %   \label{eq:n3_ex_smoothness_step1}
+  % \end{align}
+  % for $r$ sufficiently large. 
+  % Since the homogeneous parts of maximal degree satisfy
+  % \begin{align*}
+  %   \brk*{P}_3&=-x_1^3+x_1x_2^2=x_1(x_2^2-x_1^2) \\
+  %   \brk*{R_1}_3&=-5x_1^2x_2+x_2^3=x_2(x_2^2-5x_1^2) \\
+  %   \brk*{R_2}_3&=2x_1x_2x_3 \\
+  %   \brk*{R_3}_3&=3x_1^2x_3-x_2^2x_3=x_3(3x_1^2-x_2^2)
+  % \end{align*}
+  % we obtain for the variety
+  % \begin{align}
+  %   V\brk*{\brk*{P}_3,\brk*{R_1}_3,\brk*{R_2}_3,\brk*{R_3}_3}=\R e_3
+  %   \label{eq:n3_3x_smoothness_homogVar}
+  % \end{align}
+  % Now observe that we have for $x\in C_\eta^1$ that
+  % \begin{align*}
+  %   \frac{1}{r^6}\brk*{P^2+\sum_jR_j^2}\brk*{rx}
+  %   =\underbrace{\brk*{\brk*{P}_3^2+\sum_j\brk*{R_j}_3^2}}_{>0\text{ on }C_\eta^1\text{ by }\eqref{eq:n3_3x_smoothness_homogVar}}\brk*{x}+\bigO\brk*{\frac{1}{r}}
+  % \end{align*}
+  % and thus for $r$ sufficiently large equation \eqref{eq:n3_ex_smoothness_step1} does indeed hold.
+  % We now claim that $\neq0$ on $V(Q)\setminus B_{r\eta}\brk*{re_3}$ for $r$ sufficiently large.
+  % To show this, observe that for $x\in C_\eta^1$ we have
+  % \begin{align*}
+  %   \frac{1}{r^3}R_1\brk*{rx}=\underbrace{\brk*{R_1}_3\brk*{x}}_{\neq0\text{ for }rx\notin\tubular_\eta\brk*{\R e_3}}+\bigO\brk*{\frac{1}{r}}
+  % \end{align*}
+  % and thus for $r$ sufficiently large we indeed have $R_1\neq0$ on the desired set.
+  % Analogous argumentation with $R_2$, $R_3$ and $P$ yield .
+
+  % We now show for any sufficiently small $\eta>0$ we have that
+  % \begin{align*}
+  %   V\brk*{P,Q,R_1,R_2,R_3}\cap B_{r\eta}\brk*{re_3}=\emptyset
+  % \end{align*}
+  % for all sufficiently large $r$.
+  % For this we inspect 
+
+  % In the second part we show that
+  % \begin{align*}
+  %   V\brk*{P,Q,R_1,R_2,R_3}\cap \tubular_\eta\brk*{\R e_3}=\emptyset
+  % \end{align*}
+  % for sufficiently large $r$.
+  % For this note that for $x\in S^2\cap\tubular_{\eta/r}\brk*{\R e_3}$ we have
+  % \begin{align*}
+  %   \frac{1}{r^2}R_2(rx)=\underbrace{2x_3^2}_{>1\text{ for }r\text{ large}}+\bigO\brk*{\frac{1}{r}}
+  % \end{align*}
+  % from which this claim also follows.
 \end{proof}
 
 In the following we need a notion of convergence of subsets on a metric space.
@@ -2614,72 +2725,35 @@ We have the following proposition.
   The variety given by $h$ has three arcs arranged as in figure \ref{fi:n3_polynomial_intersectionOriginRegular}.
 \end{proposition}
 \begin{proof}
+  Once again we consider the variety $V\brk*{P,Q}$. We parametrise $V(Q)$ in a neighbourhood $U$ around the point $re_3$ to obtain
+  \begin{align}
+    V_U\brk*{P,Q}=V_U\brk*{\underbrace{-x_1^3+x_1x_2^2+x_1^2-x_2^2+x_2\sqrt{r^2-x_1^2-x_2^2}}_{=\tiP}}
+  \end{align}
+  Now let $x\in S^1$ be close to $e_3$. Then we have that
+  \begin{align}
+    \frac{1}{r^3}\tiP\brk*{rx}=\brk*{\tiP}_3(x)+\frac{1}{r}\brk*{\tiP}_2(x)=\tiP^\e(x)
+  \end{align}
+  Now observe that $\brk*{\tiP}_3=-x_1^3+x_1x_2^2$ is a monkey saddle and thus $V_U\brk*{\brk*{\tiP}_3}$ is 
+  similar to figure \ref{fi:n3_polynomial_intersectionOriginDegenerate}.
+  We denote by
+  \begin{align*}
+    \alpha=\brk[c]*{t\vect{1 & -1}^\top\colon t\in\R}
+  \end{align*}
+  an arc of  $V_U\brk*{\brk*{\tiP}_3}$.
+  We also observe that the $V_U\brk*{\brk*{\tiP}_2}$ looks similar to figure \ref{}.
+  Here too we remark that
+  \begin{align}
+    \beta=\brk[c]*{ t\in\R}
+  \end{align}
+  is a zero set of $V_U\brk*{\brk*{\tiP}_2}$.
+  This is depicted in figure \ref{fi:n3_polynomial_intersectionOriginOtherTerm}.
   
-  % We write
-  % \begin{align}
-  %   0=\h^\e(x)=2x_2\brk*{3x_1^2-4x_2^2}-4\e\brk*{x_1+x_2}
-  % \end{align}
-  % This has the solution
-  We start by showing that the set $V\brk*{h^\e}$ has no singular points.
-  By Jacobi's formula we can calculate the singular points by determining the critical points
-  of $h^\e$. Hence we calculate
-  \begin{align}
-    0=\nabla h^\e(x)=2\vect{6x_1x_2-2\e \\ 3x_1^2-12x_2^2 -2\e}
-  \end{align}
-  % It hence follows by setting both equations equal, cancelling $-2\e$ and dividing by $3$ that
-  % \begin{align}
-  %   2x_1x_2=x_1^2-4x_2^2\,.
-  % \end{align}
-  % For this to have real solutions we must have
-  % \begin{align}
-  %   4x_1x_2+16x_2^2\geq0\,.
-  % \end{align}
-  % Hence obtain that
-  % \begin{align}
-  %   x_1=\sqrt
-  % \end{align}
-  % \begin{align}
-  %   x_1=\frac{\e^2}{3x_2}
-  % \end{align}
-  % and inserting this into the second equation that
-  % \begin{align}
-    
-  % \end{align}
-  Now $x$ must also fulfil the condition
-  \begin{align}
-    0&=h^\e(x) \\
-    &=2x_2\brk*{3x_1^2-4x_2^2}-4\e\brk*{x_1+x_2} \\
-    &=6x_2x_1^2-4\e x_1-8x_2^3-4\e x_2
-  \end{align}
-  This set of equations has no solution in $\R^2$ and thus all points in $V\brk*{h^\e}$
-  are non-singular.
-  % we also must have
-  % \begin{align}
-  %   16\e^2+96x_2\brk*{2x_2^3+\e x_2}\geq0
-  % \end{align}
-  % for the solution $x$ to be real.
-  % \td{finish proof}
-  Now consider the derivative at the origin
-  It now 
-  Hence $h^\e$ has no singular points and hence the six arcs have to join in
-  a manner similar to figure \ref{fi:n3_polynomial_intersectionOriginDegenerate}.
-  The behavior of $h^\e$ at infinity is determined by the higher order terms and thus
-  by the function $h_3$. Now $h_3$ is a monkey saddle and thus there are six rays emanating
-  to infinity. From the formula one sees that these are the $x_1$-axis and the lines given by 
-  \begin{align}
-    \alpha^\pm=\brk[c]*{t\vect{\pm 2 & \sqrt{3}}^\top\colon t\in\R}
-  \end{align}
-  Now the arc
-  \begin{align}
-    \beta=\brk[c]*{t\vect{1 & -1}^\top\colon t\in\R}
-  \end{align}
-  is the zero set of $h_1$. We now look at the second quadrant. Here we have that
-  $h^\e=h_3\leq0$ on $\beta$ and that
-  $h^\e=h_1\geq0$ on $\alpha^-$. By the intermediate value theorem thus there must be an arc
+  We now look at the second quadrant. Here we have that
+  $\tiP^\e=\brk*{\tiP}_3\leq0$ on $\beta$ and that
+  $\tiP^\e=\brk*{\tiP}_2\geq0$ on $\alpha$. By the intermediate value theorem thus there must be an arc
   $\gamma\subseteq V\brk*{h^\e}$ starting at the origin 
   and sandwiched in this quadrant
-  between $\alpha^-$ and $\beta$
-  and tending to $\alpha^-$ at $-\infty$.
+  between $\alpha$ and $\beta$.
   An analogous argumentation on the third quadrant shows that here too there must be an arc
   $\gamma$ starting at the origin and tending to $\infty$. 
   Denote the union of these two arcs by $\gamma$. Then $\gamma$ divides the plane into two
@@ -2698,6 +2772,7 @@ We have the following proposition.
     \centering
     \input{../Figures/n3_polynomial_intersectionOriginLine.pdf_tex}
     \caption{Sketch of the set $V\brk*{h_1}$.}
+    \label{fi:n3_polynomial_intersectionOriginOtherTerm}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.3\textwidth}
@@ -2709,6 +2784,106 @@ We have the following proposition.
     \caption{Sketches of varieties.}
   \end{figure}
 \end{proof}
+
+% \begin{proposition}\label{pr:n3_polynomial_regularH}
+%   The variety given by $h$ has three arcs arranged as in figure \ref{fi:n3_polynomial_intersectionOriginRegular}.
+% \end{proposition}
+% \begin{proof}
+  
+%   % We write
+%   % \begin{align}
+%   %   0=\h^\e(x)=2x_2\brk*{3x_1^2-4x_2^2}-4\e\brk*{x_1+x_2}
+%   % \end{align}
+%   % This has the solution
+%   We start by showing that the set $V\brk*{h^\e}$ has no singular points.
+%   By Jacobi's formula we can calculate the singular points by determining the critical points
+%   of $h^\e$. Hence we calculate
+%   \begin{align}
+%     0=\nabla h^\e(x)=2\vect{6x_1x_2-2\e \\ 3x_1^2-12x_2^2 -2\e}
+%   \end{align}
+%   % It hence follows by setting both equations equal, cancelling $-2\e$ and dividing by $3$ that
+%   % \begin{align}
+%   %   2x_1x_2=x_1^2-4x_2^2\,.
+%   % \end{align}
+%   % For this to have real solutions we must have
+%   % \begin{align}
+%   %   4x_1x_2+16x_2^2\geq0\,.
+%   % \end{align}
+%   % Hence obtain that
+%   % \begin{align}
+%   %   x_1=\sqrt
+%   % \end{align}
+%   % \begin{align}
+%   %   x_1=\frac{\e^2}{3x_2}
+%   % \end{align}
+%   % and inserting this into the second equation that
+%   % \begin{align}
+    
+%   % \end{align}
+%   Now $x$ must also fulfil the condition
+%   \begin{align}
+%     0&=h^\e(x) \\
+%     &=2x_2\brk*{3x_1^2-4x_2^2}-4\e\brk*{x_1+x_2} \\
+%     &=6x_2x_1^2-4\e x_1-8x_2^3-4\e x_2
+%   \end{align}
+%   This set of equations has no solution in $\R^2$ and thus all points in $V\brk*{h^\e}$
+%   are non-singular.
+%   % we also must have
+%   % \begin{align}
+%   %   16\e^2+96x_2\brk*{2x_2^3+\e x_2}\geq0
+%   % \end{align}
+%   % for the solution $x$ to be real.
+%   % \td{finish proof}
+%   Now consider the derivative at the origin
+%   It now 
+%   Hence $h^\e$ has no singular points and hence the six arcs have to join in
+%   a manner similar to figure \ref{fi:n3_polynomial_intersectionOriginDegenerate}.
+%   The behavior of $h^\e$ at infinity is determined by the higher order terms and thus
+%   by the function $h_3$. Now $h_3$ is a monkey saddle and thus there are six rays emanating
+%   to infinity. From the formula one sees that these are the $x_1$-axis and the lines given by 
+%   \begin{align}
+%     \alpha^\pm=\brk[c]*{t\vect{\pm 2 & \sqrt{3}}^\top\colon t\in\R}
+%   \end{align}
+%   Now the arc
+%   \begin{align}
+%     \beta=\brk[c]*{t\vect{1 & -1}^\top\colon t\in\R}
+%   \end{align}
+%   is the zero set of $h_1$. We now look at the second quadrant. Here we have that
+%   $h^\e=h_3\leq0$ on $\beta$ and that
+%   $h^\e=h_1\geq0$ on $\alpha^-$. By the intermediate value theorem thus there must be an arc
+%   $\gamma\subseteq V\brk*{h^\e}$ starting at the origin 
+%   and sandwiched in this quadrant
+%   between $\alpha^-$ and $\beta$
+%   and tending to $\alpha^-$ at $-\infty$.
+%   An analogous argumentation on the third quadrant shows that here too there must be an arc
+%   $\gamma$ starting at the origin and tending to $\infty$. 
+%   Denote the union of these two arcs by $\gamma$. Then $\gamma$ divides the plane into two
+%   parts and since $h^\e$ has no singular points it follows that the zeroes of $h^\e$
+%   must look similar to figure \ref{fi:n3_polynomial_intersectionOriginRegular}.
+%   \begin{figure}
+%     \centering
+%     \begin{subfigure}[b]{0.3\textwidth}
+%     \centering
+%     \input{../Figures/n3_polynomial_intersectionOriginDegenerate.pdf_tex}
+%     \caption{Sketch of the set $V\brk*{h_3}$.}
+%     \label{fi:n3_polynomial_intersectionOriginDegenerate}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}[b]{0.3\textwidth}
+%     \centering
+%     \input{../Figures/n3_polynomial_intersectionOriginLine.pdf_tex}
+%     \caption{Sketch of the set $V\brk*{h_1}$.}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}[b]{0.3\textwidth}
+%     \centering
+%     \input{../Figures/n3_polynomial_intersectionOriginRegular.pdf_tex}
+%     \caption{Sketch of the set $V\brk*{h^\e}$.}
+%     \label{fi:n3_polynomial_intersectionOriginRegular}
+%     \end{subfigure}
+%     \caption{Sketches of varieties.}
+%   \end{figure}
+% \end{proof}
 
 \begin{figure}
   \centering
@@ -2730,19 +2905,18 @@ We call the points at which multiple arcs meet \emph{singular}.
 \section{No inflow or outflow}
 We obtain as a quick consequence of the hairy ball theorem
 \begin{proposition}
-  Let $\Omega$ have Betti numbers $b_0$, $b_1$ and $b_2$.
+  Let $X$ have Betti numbers $b_0$, $b_1$ and $b_2$.
   Let $u\colon X\to\R$
-  be a Morse harmonic vector field without inflow or outflow. Then we have
+  be a Morse harmonic vector field without boundary stagnation points. Then we have
   \begin{align*}
     b_2\leq b_1\,.
   \end{align*}
 \end{proposition}
 \begin{proof} 
   Assume not. Since $\Omega$ has $b_2$ bubbles and $b_1$ holes there exists by the pigeon hole
-  principle a bubble $\Gamma\subseteq\Sigma$ without a hole. Since $u$ has no inflow or outflow on $\Gamma$ we
-  have that the restriction $u\vert_\Gamma\in T\Gamma$ is a vector field on $\Gamma$. Since $u$ is regular
-  $u\vert_\Gamma$ does not vanish. But $\Gamma$ is homeomorphic to the Ball in contradiction to the hairy ball theorem.
-\end{proof}\ruggedtodo[]{A little more rigour would not harm.}
+  principle a bubble $\Gamma\subseteq\Sigma$ without a hole. Since $u$ has no boundary stagnation points on $\Gamma$ we
+  the restriction $u\vert_\Gamma$ does not vanish. But $\Gamma$ is homeomorphic to the Ball in contradiction to the hairy ball theorem.
+\end{proof}
 We also obtain the following result:
 \begin{proposition}
   Let $X\subseteq\R^3$ be a compact manifold with corners and Betti numbers $b_0$, $b_1$ and $b_2$.
@@ -2830,7 +3004,7 @@ We also obtain the following result:
   from which the claim follows.
 
   The claim remains to be shown in the case that $f$ is not strongly Morse on $X^+$ and $X^-$. In this case let
-  $f^\e$ for $\e\in E$ be a family of strongly Morse functions as in corollary \ref{co:density_boundaryGeneric}.
+  $f^\e$ for $\e\in E$ be a strongly Morse function as in corollary \ref{co:density_boundaryGeneric}.
   Since $x_1$, $x_2$ are non-degenerate critical points of $f$
   due to the slanted angle at which
   $\Gamma$ approaches each $\gamma_j$
@@ -2841,7 +3015,7 @@ We also obtain the following result:
     \label{eq:n3_hvf_noInflowNoOutflow_morse_indexApprox}
   \end{align}
   By the same corollary we can assume that $f^\e$ has no critical points on
-  $\Sigma^0(f)$.
+  $\Sigma$.
   The claim then follows by the calculations above where we replace
   $f$ with $f^\e$ and then note that $M_1^\e=M_1$ and $M_2^\e=M_2$.
 \end{proof}
