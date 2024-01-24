@@ -46,7 +46,6 @@
 % The following displays the labels, uncomment for final version
 % \usepackage{showlabels}
 
-\newcommand{\bx}{\bar{x}}
 \newcommand{\ownresult}{{[$*$]}}
 \newcommand{\bigsetminus}{\mathbin{\big\backslash}}
 % \renewcommand{\chaptername}{Section}
@@ -2161,10 +2160,13 @@ In fact we can give an example for such a function with
 simply connected entrant boundary.
 \begin{example}[A harmonic function with interior critical point and simply connected entrant boundary]
   Consider the domain $X=\overline{B}_r\subseteq\R^3$ with $r>0$ sufficiently large and the harmonic function
-  \begin{align*}
+  \begin{align}
+    \begin{aligned}
     f\colon X&\to\R \\
     x&\mapsto \frac{x_1^2}{2}-\frac{x_1^3}{3}-\frac{x_2^2}{2}+x_1x_2^2+x_2x_3
-  \end{align*}
+    \end{aligned}
+    \label{eq:n3_polynomial_defnf}
+  \end{align}
   This induces the harmonic vector field
   \begin{align*}
     u\colon X&\to\R^3 \\
@@ -2191,38 +2193,60 @@ simply connected entrant boundary.
     \label{pl:n3_hf_inflowOutflowStagnationPoint_Surface}
   \end{figure}
 \end{example}
+
+
+For polynomials $p_1,\dots,p_k\in\R\brk[s]*{x_1,\dots,x_d}$ and a set $U\subseteq\R^d$ we denote the
+variety spanned by these polynomials on $U$ by $V_U\brk*{p_1,\dots,p_k}$.
+In the case that $U=\R^d$ we write $V(\dots)=V_U(\dots)$.
+% We call the points at which multiple arcs meet \emph{singular}.
 \begin{proposition}
-  The function given by equation \eqref{} has simply connected emergent and entrant boundaries.
+  The harmonic function given by equation \eqref{eq:n3_polynomial_defnf} has simply connected emergent and entrant boundaries.
 \end{proposition}
 \begin{proof}
-  Consider the inverse stereographic projection given by 
+  We calculate
   \begin{align*}
-    \psi\colon \R^2&\to B_r\setminus\brk[c]*{re_1} \\
-    x&\mapsto \frac{r}{s^2+1}\vect{s^2-1 \\ x}
+    rn\cdot u(x) = x_1^2(1-x_1)+x_2^2(3x_1-1)+2x_2x_3=p_1(x)
   \end{align*}
-  where $s=\abs{x}$. We calculate
+  and define further
   \begin{align*}
-    rn\cdot u(x) = x_1^2(1-x_1)+x_2^2(3x_1-1)+2x_2x_3
+    P_2(r,x)=x_1^2+x_2^2+x_3^2-r^2\,.
   \end{align*}
-  If we precompose with the inverse stereographic projection we obtain
-  \begin{align*}
-    &\brk*{rn\cdot u}\circ\psi (x) \\
-    &= \frac{r^2}{\brk*{s^2+1}^3}\brk*{\brk*{s^2-1}^2\brk*{\brk*{s^2+1}-r\brk*{s^2-1}}+x_1^2\brk*{3r\brk*{s^2-1}-\brk*{s^2+1}}+2x_1\brk*{s^2+1}x_2}
-  \end{align*}
-  which vanishes precisely iff
-  \begin{align*}
-    0&=\frac{1}{r}\brk*{s^2-1}^2\brk*{\brk*{s^2+1}-\brk*{s^2-1}}+x_1^2\brk*{3\brk*{s^2-1}-\frac{1}{r}\brk*{s^2+1}}+\frac{1}{r}2x_1\brk*{s^2+1}x_2 \\
-    &=\frac{1}{r}\brk*{s^2+1}\brk*{\brk*{s^2-1}^2-x_1^2}-\brk*{s^2-1}^3+3\brk*{s^2-1}x_1^2+\frac{1}{r}2x_1x_2\brk*{s^2+1}
-  \end{align*}
-  Writing $\e=1/r$ and setting
-  \begin{align*}
-    p^\e(x)=\e\brk*{\brk*{s^2+1}\brk*{\brk*{s^2-1}^2-x_1^2}+2x_1x_2\brk*{s^2+1}}-\brk*{s^2-1}^3+3\brk*{s^2-1}x_1^2
-  \end{align*}
-  we see that this is equivalent to the condition $p^\e(x)=0$.
-  Our aim is to show that the real planar variety defined in this way is compact and has precisely one connectivity component.
-  It then follows from the Jordan curve theorem that this variety splits the plane into two components, namely one where 
-  $p^\e$ is positive and one where it is negative. The image of these sets under the stereographic projection is then precisely
-  $\Sigma^+$ and $\Sigma^-$ respectively and it follows that these sets are simply connected.
+  Thus we have that the tangential boundary $\Sigma^0=V\brk*{p_1,P_2(r,\cdot)}$
+  is precisely the variety given by the polynomials $p_1$ and $P_2(r,\cdot)$ for a
+  fixed radius $r>0$.
+  % Consider the inverse stereographic projection given by 
+  % \begin{align*}
+  %   \psi\colon \R^2&\to B_r\setminus\brk[c]*{re_1} \\
+  %   x&\mapsto \frac{r}{s^2+1}\vect{s^2-1 \\ x}
+  % \end{align*}
+  % where $s=\abs{x}$.
+  By proposition \ref{pr:n3_polynomial_smoothConnected} there exists $r>0$ such that
+  $\Sigma^0$  is smooth and connected.
+  The stereographic projection
+  of $\Sigma^0$ then defines a simple closed planar curve.
+  By the Jordan curve theorem this curve then splits the plane into two simply connected regions.
+  The preimage of these simply connected regions under the stereographic projections then corresponds
+  precisely to the entrant and emergent boundaries from which the claim follows.
+
+  % If we precompose with the inverse stereographic projection we obtain
+  % \begin{align*}
+  %   &\brk*{rn\cdot u}\circ\psi (x) \\
+  %   &= \frac{r^2}{\brk*{s^2+1}^3}\brk*{\brk*{s^2-1}^2\brk*{\brk*{s^2+1}-r\brk*{s^2-1}}+x_1^2\brk*{3r\brk*{s^2-1}-\brk*{s^2+1}}+2x_1\brk*{s^2+1}x_2}
+  % \end{align*}
+  % which vanishes precisely iff
+  % \begin{align*}
+  %   0&=\frac{1}{r}\brk*{s^2-1}^2\brk*{\brk*{s^2+1}-\brk*{s^2-1}}+x_1^2\brk*{3\brk*{s^2-1}-\frac{1}{r}\brk*{s^2+1}}+\frac{1}{r}2x_1\brk*{s^2+1}x_2 \\
+  %   &=\frac{1}{r}\brk*{s^2+1}\brk*{\brk*{s^2-1}^2-x_1^2}-\brk*{s^2-1}^3+3\brk*{s^2-1}x_1^2+\frac{1}{r}2x_1x_2\brk*{s^2+1}
+  % \end{align*}
+  % Writing $\e=1/r$ and setting
+  % \begin{align*}
+  %   p^\e(x)=\e\brk*{\brk*{s^2+1}\brk*{\brk*{s^2-1}^2-x_1^2}+2x_1x_2\brk*{s^2+1}}-\brk*{s^2-1}^3+3\brk*{s^2-1}x_1^2
+  % \end{align*}
+  % we see that this is equivalent to the condition $p^\e(x)=0$.
+
+  % It then follows from the Jordan curve theorem that this variety splits the plane into two components, namely one where 
+  % $p^\e$ is positive and one where it is negative. The image of these sets under the stereographic projection is then precisely
+  % $\Sigma^+$ and $\Sigma^-$ respectively and it follows that these sets are simply connected.
 
   % we also calculate for this part
   % \begin{align*}
@@ -2244,7 +2268,6 @@ simply connected entrant boundary.
   % \end{align*}
   % which is of full rank. 
 
-
   % \begin{align*}
   %   \psi\colon \R^2&\to B_r\setminus\brk[c]*{re_3} \\
   %   x&\mapsto \frac{r}{s^2+1}\vect{x \\ s^2-1}
@@ -2265,51 +2288,160 @@ simply connected entrant boundary.
   % \end{align}
 \end{proof}
 
-\begin{proposition}
-  There exists an $\e>0$ such that the planar variety $p^\e(x)$ given by equation \eqref{}
+
+We now define $p_2$ to be the dehomogenisation of $P_2$, that is
+\begin{align*}
+  p_2=P_2(1,\cdot)\,.
+\end{align*}
+Analogously let $P_1$ denote the homogenisation of $p_1$, that is
+\begin{align*}
+  P_1(\e,x)=\e^3p_1\brk*{x/\e}\,.
+\end{align*}
+In the following we assume that $\e=1/r$ if $\e>0$ and $r>0$.
+
+% \begin{figure}
+%   \centering
+%   \input{../Figures/n3_polynomial_projectionDegenerate.pdf_tex}
+%   \caption{A sketch of the set $V\brk*{p^0}$.}
+% \end{figure}
+
+\begin{proposition}\label{pr:n3_polynomial_smoothConnected}
+  There exists an $r>0$ such that the planar variety $V\brk*{p_1,P_2(r,\cdot)}$ is smooth and
   has one connectivity component.
 \end{proposition}
 \begin{proof}
-  By proposition \ref{pr:n3_polynomial_Vp0} we have that $V\brk*{p^0}$
-  consists of six arcs which all meet at the points $e_2$ and $-e_2$.
-  The set $V\brk*{p^0}$ is sketched in figure \ref{}.
-  We will argue that the corresponding figure for a small enough $\e$ is given by \ref{}.
-  Away from the singularities at $\pm e_2$ we obtain the result by proposition \ref{} and picking
-  $\e$ small enough. By symmetry of $p^\e$, that is we have
-  \begin{align}
-    p^\e\brk*{-x}=p^\e(x)
-  \end{align}
-  it suffises to inspect what happens around the point $e_2$ as $\e\to0$.
+  By proposition \ref{pr:n3_polynomial_smoothness} there exists a $R>0$ such that for all $r>R$ we have that the
+  variety $V\brk*{p_1,P_2(r,\cdot)}$ is smooth.
 
-  Now define the polynomial $q$ by
+  By rescaling we obtain
   \begin{align}
-    p^\e(x)=\e q(x)+p^0(x)\,.
+    V\brk*{p_1,P_2(r,\cdot)}=rV\brk*{p_1(r\cdot),p_2}
+    =rV\brk*{P_1(\e,\cdot),p_2}=r\cV_\e\label{eq:n3_polynomial_smoothConnected_relVeps}
   \end{align}
-  For simplicity we would like to move the singular point to the origin so we give
+  where we set $\e=1/r$ and $\cV_\e=V\brk*{P_1(\e,\cdot),p_2}$. Motivated by taking the limit $r\to\infty$ we
+  inspect the variety $\cV_0$ closer. We observe that
   \begin{align*}
-    p^0(x-e_2)=(x_1^2 + x_2^2 - 2x_2)(x_1^4 + 2x_1^2x_2^2 + x_2^4 - 4x_1^2x_2 - 4x_2^3 - 3x_1^2 + 4x_2^2)
+    P_1(0,x)=-x_1^3+3x_1x_2^2
   \end{align*}
-  and
+  which is the monkey saddle embedded into $\R^3$. We define curves
   \begin{align*}
-    q(x-e_2)=(x_1^2 + x_2^2 - 2x_2 + 2)(2x_1x_2 + x_2^2 - 2x_1 - 2x_2)
+    \alpha^\pm=\brk[c]*{t\vect{\pm\sqrt{3}&1}^\top \colon t\in\R}\cap S^2
   \end{align*}
-  By Tougeron's theorem there exists a neighbourhood $U$ around the origin such that
+  and $\alpha^0=\brk*{\brk[c]*{0}\times\R}\cap S^2$. 
+  Setting $A=\alpha^-\cup\alpha^+\cup\alpha^0$
+  we have the relation
+  \begin{align*}
+    \cV_0=V\brk*{P_1(\e,\cdot),p_2}
+    =\brk*{A\times\R}\cap S^2\,.
+  \end{align*}
+  Thus $\cV_0$ consists of six smooth arcs originating at the singularity $e_3$ and
+  ending at the singularity $-e_3$. Similar to the classical beach ball.
+
+  Now consider for $\rho>0$ the open sets $W_\rho=B_\rho\times\R\subseteq\R^3$ and $U_\rho=\R^3\setminus W_\rho$.
+  Since $\cV_0$ is smooth on $\overline{U}_\rho$ we obtain from proposition \ref{pr:n3_polynomial_smoothness}
+  that in a certain sense $\cV_\e$ is obtained from $\cV_0$ by a small deformation on $U_\rho$.
+  Thus in order to show connectedness of $\cV_\e$ for sufficiently small $\e>0$ we have to inspect what happens
+  around the points $\pm e_3$.
+  Now observe that we have the symmetry
   \begin{align}
-    p\colon (\e,x)\mapsto p^\e(x)
+    p_1(x_1,-x_2,-x_3)=p_1(x)\label{eq:n3_polynomial_smoothConnected_symmetr}
   \end{align}
+  and thus it suffices to inspect what happens around the point $e_3$.
+  For this parametrise $S^2\cap B_{1/2}\times\R_{\geq0}$
+  by the diffeomorphism
+  \begin{align*}
+    \psi\colon B_{1/2}&\to S^2\cap B_{1/2}\times\R_{\geq0}\\
+    \barx&\mapsto \vect{\barx&\sqrt{1-\abs{\barx}^2}}^\top\,.
+  \end{align*}
+  We set
+  \begin{align*}
+    \overline{\cV_\e}=\psi^{-1}\brk*{\cV_\e\cap \brk*{B_{1/2}\times\R_{\geq0}}}
+    =V_{B_{1/2}}\brk*{P_1\brk*{\e,x_1,x_2,\sqrt{1-x_1^2-x_2^2}}}
+    =V_{B_{1/2}}\brk*{\barP_1(\e,x)}
+  \end{align*}
+  where we set
+  \begin{align*}
+    \barP_1(\e,x)=P_1\brk*{\e,x_1,x_2,\sqrt{1-x_1^2-x_2^2}}
+    =-x_1^3+x_1x_2^2+\e\brk*{x_1^2-x_2^2+x_2\sqrt{1-x_1^2-x_2^2}}\,.
+  \end{align*}
+  In a similar manner we define $\baralpha^\bullet=\psi^{-1}\brk*{\alpha^\bullet}$, $\barU_\rho=\psi^{-1}\brk*{\barU_\rho}$
+  and $\barA=\psi^{-1}\brk*{A}$.
+  Now let the set $C\subseteq W$ be as in proposition \ref{pr:n3_polynomial_regularH}.
+  Pick $\rho>0$ so small that $W_{2\rho}\subseteq W$ where $W$ is the set in the formulation of proposition
+  \ref{pr:n3_polynomial_regularH}. 
+  Now we can pick $\eta$ smaller than the minimum distance between two arcs of $\cV_0$ on $U_{\rho}$.
+  We also assume that $\eta$ is smaller than the Hausdorff distance between $\baralpha^0\cup\baralpha^-\cap\barU_\rho$
+  and $C$.
+  Now choose $\delta$ as in proposition \ref{pr:n3_polynomial_convergenceSmoothSet}. We can assume that $R>1/\delta$.
+  We thus have a situation as in figure \ref{fi:n3_polynomial_arcOverview}.
+  \begin{figure}
+    \centering
+    \input{../Figures/n3_polynomial_arcOverview.pdf_tex}
+    \caption{An overview of the situation around $e_3$.}
+    \label{fi:n3_polynomial_arcOverview}
+  \end{figure}
+  \begin{figure}
+    \centering
+    \input{../Figures/n3_polynomial_arcNumbering.pdf_tex}
+    \caption{The numbering of the arcs around $e_3$.}
+    \label{fi:n3_polynomial_arcNumbering}
+  \end{figure}
+  \begin{figure}
+    \centering
+    \input{../Figures/n3_polynomial_arcConnections.pdf_tex}
+    \caption{The connection of the arcs at $\pm e_3$.}
+    \label{fi:n3_polynomial_arcConnections}
+  \end{figure}
+  Number the arcs lying close to $\alpha$ as in figure \ref{fi:n3_polynomial_arcNumbering}.
+  Since $\bargamma$ splits $W_{2\rho}$ and lies in $C$ we must have that
+  $\bargamma$ in fact connects arcs 3 and 6.
+  As the variety is smooth we must also have that arcs 1 and 2 are connected
+  and analogously that arcs 4 and 5 are connected.
+  The situation around $-e_3$ is analogous but mirrored by equation \eqref{eq:n3_polynomial_smoothConnected_symmetr}.
+  A summary of this can be seen in figure \ref{fi:n3_polynomial_arcConnections}.
+  Thus we in fact have that $\cV_\e$ is connected. 
+  The claim then follows from the relation \eqref{eq:n3_polynomial_smoothConnected_relVeps}.
+
+  % By proposition \ref{pr:n3_polynomial_Vp0} we have that $V\brk*{p^0}$
+  % consists of six arcs which all meet at the points $e_2$ and $-e_2$.
+  % The set $V\brk*{p^0}$ is sketched in figure \ref{}.
+  % We will argue that the corresponding figure for a small enough $\e$ is given by \ref{}.
+  % Away from the singularities at $\pm e_2$ we obtain the result by proposition \ref{} and picking
+  % $\e$ small enough. By symmetry of $p^\e$, that is we have
+  % \begin{align}
+  %   p^\e\brk*{-x}=p^\e(x)
+  % \end{align}
+  % it suffises to inspect what happens around the point $e_2$ as $\e\to0$.
+
+  % Now define the polynomial $q$ by
+  % \begin{align}
+  %   p^\e(x)=\e q(x)+p^0(x)\,.
+  % \end{align}
+  % For simplicity we would like to move the singular point to the origin so we give
+  % \begin{align*}
+  %   p^0(x-e_2)=(x_1^2 + x_2^2 - 2x_2)(x_1^4 + 2x_1^2x_2^2 + x_2^4 - 4x_1^2x_2 - 4x_2^3 - 3x_1^2 + 4x_2^2)
+  % \end{align*}
+  % and
+  % \begin{align*}
+  %   q(x-e_2)=(x_1^2 + x_2^2 - 2x_2 + 2)(2x_1x_2 + x_2^2 - 2x_1 - 2x_2)
+  % \end{align*}
+  % By Tougeron's theorem there exists a neighbourhood $U$ around the origin such that
+  % \begin{align}
+  %   p\colon (\e,x)\mapsto p^\e(x)
+  % \end{align}
   % is diffeomorphic on $U$ to its jet
   % \begin{align}
   %   J^{}
   % \end{align}
-  \td{continue this argument}
-  Taking the homogeneous parts of lowest order we obtain
-  \begin{align*}
-    h_3(x)=\brk*{p^0\brk*{x-e_2}}_3=2x_2(3x_1^2-4x_2^2)
-  \end{align*}
-  and
-  \begin{align*}
-    h_1(x)=\brk*{q\brk*{x-e_2}}_1=-4(x_1+x_2)\,.
-  \end{align*}
+  % \td{continue this argument}
+  % Taking the homogeneous parts of lowest order we obtain
+  % \begin{align*}
+  %   h_3(x)=\brk*{p^0\brk*{x-e_2}}_3=2x_2(3x_1^2-4x_2^2)
+  % \end{align*}
+  % and
+  % \begin{align*}
+  %   h_1(x)=\brk*{q\brk*{x-e_2}}_1=-4(x_1+x_2)\,.
+  % \end{align*}
   % We now denote the arcs $\alpha_k$ as in the plot \ref{}.
   % \td{insert plot}
   % \begin{figure}
@@ -2318,18 +2450,18 @@ simply connected entrant boundary.
   %   \caption{Plot of $\brk*{p^0\brk*{x-e_2}}_3$}
   % \end{figure}
   % We claim that for $\e$ sufficiently small the function
-  In proposition \ref{pr:n3_polynomial_regularH}
-  it will be shown that the polynomial
-  \begin{align}
-    h^\e(x)=\e h_1(x)+h_3(x)\,.
-  \end{align}
-  has a variety of the shape given in figure \ref{fi:n3_polynomial_intersectionOriginRegular}
+  % In proposition \ref{pr:n3_polynomial_regularH}
+  % it will be shown that the polynomial
+  % \begin{align}
+  %   h^\e(x)=\e h_1(x)+h_3(x)\,.
+  % \end{align}
+  % has a variety of the shape given in figure \ref{fi:n3_polynomial_intersectionOriginRegular}
   % is obtained by removing the singular point and adding handles between
   % the arcs $\alpha_2$ and $\alpha_5$, $\alpha_3$ and $\alpha_4$ and $\alpha_6$ and $\alpha_1$.
   % To see this note that
-  Moreover $V\brk*{h^\e}$ converges to $V\brk*{h^0}$ with respect to the Hausdorff metric as
-  $\e\to0$. Now 
-  \td{continue proof}
+  % Moreover $V\brk*{h^\e}$ converges to $V\brk*{h^0}$ with respect to the Hausdorff metric as
+  % $\e\to0$. Now 
+  % \td{continue proof}
 \end{proof}
 
 % Let $p\in\R\pwrSeries{X_1,\dots,X_n}$ be a formal power series.
@@ -2357,133 +2489,133 @@ simply connected entrant boundary.
 %   See \cite{Arnold2012}.
 % \end{proof}
 
-\begin{proposition}[The set $V\brk*{p^0}$]\label{pr:n3_polynomial_Vp0}
-  The set $V\brk*{p^0}$ where $p^0$ given by equation \eqref{}
-  consists of six arcs which all meet at the points $\pm e_2$ and nowhere else.
-\end{proposition}
-\begin{proof}
-  \tdrewrite{It should be much easier arguing in $\R^3$.}
-  From the factorisation
-  \begin{align*}
-    p^0(x)=\underbrace{\brk*{s^2-1}}_{=q_1(x)}\underbrace{\brk*{\brk*{s^2-1}^2-3x_1^2}}_{=q_2(x)}
-  \end{align*}
-  we see that
-  \begin{align*}
-    V\brk*{p^0}=V\brk*{q_1}\cup V\brk*{q_2}=S^1\cup V\brk*{q_2}
-  \end{align*}
-  We claim that the set of points $V\brk*{q_2}$ consists of four curves intersecting the
-  circle $S^1$ precisely at the points $\pm e_2$ and that there are no other singular points.
-  From this the claim will then follow.
-  To show this take a closer look at
-  \begin{align*}
-    q_2(x)=\brk*{s^2-1}^2-3x_1^2\,.
-  \end{align*}
-  Substituting $\tix_k=x_k^2$ we can write this as
-  \begin{align*}
-    q_2(x)&=\brk*{\tix_1+\tix_2-1}^2-3\tix_1\\
-    &=\tix_1^2+2\tix_1\tix_2+\tix_2^2-5\tix_1-2\tix_2+1 \\
-    &=\brk*{\tix_1+\tix_2}^2-5\tix_1-2\tix_2+1\\
-    &=\tiq_2\brk*{\tix}\,.
-  \end{align*}
-  Now the equation 
-  \begin{align*}
-    0=\tiq_2\brk*{\tix}
-  \end{align*}
-  is that of a conic section. Since we are assuming $\tix\in\R_{\geq0}^2$
-  we obtain the connected arc $\tiA$ in the upper right quadrant intersecting the $\tix_1$-axis at the points
-  \begin{align*}
-    \tia^\pm=\vect{\frac{5\pm2\sqrt{6}}{2} & 0}^\top
-  \end{align*}
-  and touching the $\tix_2$-axis at the point $e_2$.
-  The arc $\tiA$ is shown in figure \ref{fi:n3_polynomial_conicArc}.
-  \begin{figure}
-    \centering
-    \input{../Figures/n3_polynomial_conicArc.pdf_tex}
-    \caption{The arc $\tiA$.}
-    \label{fi:n3_polynomial_conicArc}
-  \end{figure}
-  Since there are only two points where the curve intersects $\partial\R_{\geq0}^2$
-  and the curve does not leave this quadrant at infinity it follows that $\tiC$ is
-  a connected compact arc.
-  Define the mappings
-  \begin{align}
-    \sqrt[\leftroot{2}\uproot{4}\circ_1\circ_2]{}\colon \R_{\geq0}^2&\to\R^2 \\
-    \tix&\mapsto x=\vect{\circ_1\sqrt{\tix_1}&\circ_2\sqrt{\tix_2}}^\top
-  \end{align}
-  for signs $\circ_1,\circ_2\in\brk[c]*{+,-}$.
-  Now taking the image of the arc $\tiA$ under this square root we obtain four arcs
-  \begin{align*}
-    A^{\circ_1\circ_2}=\brk[c]*{\sqrt[\leftroot{2}\uproot{4}\circ_1\circ_2]{\tix}\colon\tix\in \tiA}
-  \end{align*}
-  for signs $\circ_1,\circ_2\in\brk[c]*{+,-}$.
-  Note that by construction the arc $A^{++}$ lies in the first quadrant and analogously
-  $A^{-+}$, $A^{--}$ and $A^{+-}$ lie in the second, third and fourth quadrants.
-  Now define four points on the $x_1$-axis by
-  \begin{align}
-    a^{\circ_1\circ_2}=\sqrt[\leftroot{2}\uproot{4}\circ_1+]{a^{\circ_2}}\,.
-  \end{align}
-  We see that $A^{++}\cap A^{+-}=\brk[c]*{a^{++},a^{+-}}$ and
-  $A^{-+}\cap A^{--}=\brk[c]*{a^{--},a^{-+}}$.
-  We also see that $A^{++}\cap A^{-+}=\brk[c]*{e_2}$ and 
-  $A^{--}\cap A^{+-}=\brk[c]*{-e_2}$
-  Since the origin is not contained in any arc it thus follows that $A^{++}\cap A^{--}=\emptyset$ 
-  and $A^{-+}\cap A^{+-}=\emptyset$.
-  Thus the union
-  \begin{align}
-    A=A^{++}\cup A^{+-}\cup A^{-+}\cup A^{--}
-  \end{align}
-  consists of four arcs which meet at the points $\pm e_2$ and hence also
-  $V\brk*{p_2}=A$.
+% \begin{proposition}[The set $V\brk*{p^0}$]\label{pr:n3_polynomial_Vp0}
+%   The set $V\brk*{p^0}$ where $p^0$ given by equation \eqref{}
+%   consists of six arcs which all meet at the points $\pm e_2$ and nowhere else.
+% \end{proposition}
+% \begin{proof}
+%   \tdrewrite{It should be much easier arguing in $\R^3$.}
+%   From the factorisation
+%   \begin{align*}
+%     p^0(x)=\underbrace{\brk*{s^2-1}}_{=q_1(x)}\underbrace{\brk*{\brk*{s^2-1}^2-3x_1^2}}_{=q_2(x)}
+%   \end{align*}
+%   we see that
+%   \begin{align*}
+%     V\brk*{p^0}=V\brk*{q_1}\cup V\brk*{q_2}=S^1\cup V\brk*{q_2}
+%   \end{align*}
+%   We claim that the set of points $V\brk*{q_2}$ consists of four curves intersecting the
+%   circle $S^1$ precisely at the points $\pm e_2$ and that there are no other singular points.
+%   From this the claim will then follow.
+%   To show this take a closer look at
+%   \begin{align*}
+%     q_2(x)=\brk*{s^2-1}^2-3x_1^2\,.
+%   \end{align*}
+%   Substituting $\tix_k=x_k^2$ we can write this as
+%   \begin{align*}
+%     q_2(x)&=\brk*{\tix_1+\tix_2-1}^2-3\tix_1\\
+%     &=\tix_1^2+2\tix_1\tix_2+\tix_2^2-5\tix_1-2\tix_2+1 \\
+%     &=\brk*{\tix_1+\tix_2}^2-5\tix_1-2\tix_2+1\\
+%     &=\tiq_2\brk*{\tix}\,.
+%   \end{align*}
+%   Now the equation 
+%   \begin{align*}
+%     0=\tiq_2\brk*{\tix}
+%   \end{align*}
+%   is that of a conic section. Since we are assuming $\tix\in\R_{\geq0}^2$
+%   we obtain the connected arc $\tiA$ in the upper right quadrant intersecting the $\tix_1$-axis at the points
+%   \begin{align*}
+%     \tia^\pm=\vect{\frac{5\pm2\sqrt{6}}{2} & 0}^\top
+%   \end{align*}
+%   and touching the $\tix_2$-axis at the point $e_2$.
+%   The arc $\tiA$ is shown in figure \ref{fi:n3_polynomial_conicArc}.
+%   \begin{figure}
+%     \centering
+%     \input{../Figures/n3_polynomial_conicArc.pdf_tex}
+%     \caption{The arc $\tiA$.}
+%     \label{fi:n3_polynomial_conicArc}
+%   \end{figure}
+%   Since there are only two points where the curve intersects $\partial\R_{\geq0}^2$
+%   and the curve does not leave this quadrant at infinity it follows that $\tiC$ is
+%   a connected compact arc.
+%   Define the mappings
+%   \begin{align}
+%     \sqrt[\leftroot{2}\uproot{4}\circ_1\circ_2]{}\colon \R_{\geq0}^2&\to\R^2 \\
+%     \tix&\mapsto x=\vect{\circ_1\sqrt{\tix_1}&\circ_2\sqrt{\tix_2}}^\top
+%   \end{align}
+%   for signs $\circ_1,\circ_2\in\brk[c]*{+,-}$.
+%   Now taking the image of the arc $\tiA$ under this square root we obtain four arcs
+%   \begin{align*}
+%     A^{\circ_1\circ_2}=\brk[c]*{\sqrt[\leftroot{2}\uproot{4}\circ_1\circ_2]{\tix}\colon\tix\in \tiA}
+%   \end{align*}
+%   for signs $\circ_1,\circ_2\in\brk[c]*{+,-}$.
+%   Note that by construction the arc $A^{++}$ lies in the first quadrant and analogously
+%   $A^{-+}$, $A^{--}$ and $A^{+-}$ lie in the second, third and fourth quadrants.
+%   Now define four points on the $x_1$-axis by
+%   \begin{align}
+%     a^{\circ_1\circ_2}=\sqrt[\leftroot{2}\uproot{4}\circ_1+]{a^{\circ_2}}\,.
+%   \end{align}
+%   We see that $A^{++}\cap A^{+-}=\brk[c]*{a^{++},a^{+-}}$ and
+%   $A^{-+}\cap A^{--}=\brk[c]*{a^{--},a^{-+}}$.
+%   We also see that $A^{++}\cap A^{-+}=\brk[c]*{e_2}$ and 
+%   $A^{--}\cap A^{+-}=\brk[c]*{-e_2}$
+%   Since the origin is not contained in any arc it thus follows that $A^{++}\cap A^{--}=\emptyset$ 
+%   and $A^{-+}\cap A^{+-}=\emptyset$.
+%   Thus the union
+%   \begin{align}
+%     A=A^{++}\cup A^{+-}\cup A^{-+}\cup A^{--}
+%   \end{align}
+%   consists of four arcs which meet at the points $\pm e_2$ and hence also
+%   $V\brk*{p_2}=A$.
 
-  It now remains to be shown that $A\cap S^1=\brk[c]*{\pm e_2}$.
-  For this let $x\in S^1$ such that
-  \begin{align}
-    0=q_2(x)
-  \end{align}
-  but then this claim follows immediately from $q_2(x)=-3x_1^2$.
+%   It now remains to be shown that $A\cap S^1=\brk[c]*{\pm e_2}$.
+%   For this let $x\in S^1$ such that
+%   \begin{align}
+%     0=q_2(x)
+%   \end{align}
+%   but then this claim follows immediately from $q_2(x)=-3x_1^2$.
 
-  \begin{figure}
-    \centering
-    \input{../Figures/n3_polynomial_projectionComponentConics.pdf_tex}
-    \caption{Sketch of the set $V\brk*{q_2}$.}
-    \label{fi:n3_polynomial_projectionComponentConics}
-  \end{figure}
+%   \begin{figure}
+%     \centering
+%     \input{../Figures/n3_polynomial_projectionComponentConics.pdf_tex}
+%     \caption{Sketch of the set $V\brk*{q_2}$.}
+%     \label{fi:n3_polynomial_projectionComponentConics}
+%   \end{figure}
   
 
-%   Since we have that
-%   \begin{align*}
-%     q(x)=\brk*{x_1^2+x_2^2}^2-3x_1^2
-%     =x_1^4+x_2^4+2x_1^2x_2^2-3x_1^2
-%   \end{align*}
-%   has the gradient
-%   \begin{align*}
-%     \nabla q(x)=\vect{4x_1^3+4x_1x_2^2-6x_1 \\ 4x_2^3+4x_1^2x_2}
-%     =4\vect{x_1\brk*{x_1^2+x_2^2-\frac{3}{2}x_1} \\ x_2^3+x_1^2x_2}
-%   \end{align*}
-%   which does not vanish at the points given by \eqref{eq:n3_example_rootsOfZeroes}
-%   we have that the four curves are in fact two curves.
-%   We also calculate the derivative
-%   \begin{align*}
-%     \nabla p^0(x)=\vect{}
-%   \end{align*}
-%   and the second derivative
-%   \begin{align*}
-%     D^2p^0(x)=6\begin{bmatrix}
-%       5x_1^4 + 6x_1^2x_2^2 + x_2^4 - 12x_1^2 - 3x_2^2 + 2 & 2x_1x_2(2x_1^2 + 2x_2^2 - 3) \\
-%       * & x_1^4 + 6x_1^2x_2^2 + 5x_2^4 - 3x_1^2 - 6x_2^2 + 1
-%     \end{bmatrix}
-%   \end{align*}
-%   Note that this is degenerate at the points $\pm e_2$.
+% %   Since we have that
+% %   \begin{align*}
+% %     q(x)=\brk*{x_1^2+x_2^2}^2-3x_1^2
+% %     =x_1^4+x_2^4+2x_1^2x_2^2-3x_1^2
+% %   \end{align*}
+% %   has the gradient
+% %   \begin{align*}
+% %     \nabla q(x)=\vect{4x_1^3+4x_1x_2^2-6x_1 \\ 4x_2^3+4x_1^2x_2}
+% %     =4\vect{x_1\brk*{x_1^2+x_2^2-\frac{3}{2}x_1} \\ x_2^3+x_1^2x_2}
+% %   \end{align*}
+% %   which does not vanish at the points given by \eqref{eq:n3_example_rootsOfZeroes}
+% %   we have that the four curves are in fact two curves.
+% %   We also calculate the derivative
+% %   \begin{align*}
+% %     \nabla p^0(x)=\vect{}
+% %   \end{align*}
+% %   and the second derivative
+% %   \begin{align*}
+% %     D^2p^0(x)=6\begin{bmatrix}
+% %       5x_1^4 + 6x_1^2x_2^2 + x_2^4 - 12x_1^2 - 3x_2^2 + 2 & 2x_1x_2(2x_1^2 + 2x_2^2 - 3) \\
+% %       * & x_1^4 + 6x_1^2x_2^2 + 5x_2^4 - 3x_1^2 - 6x_2^2 + 1
+% %     \end{bmatrix}
+% %   \end{align*}
+% %   Note that this is degenerate at the points $\pm e_2$.
   
-%   All six curves intersect precisely at the points $\pm e_1$. If we now add the variation
-%   \begin{align*}
-%     q_1(x)=\brk*{s^2+1}\brk*{\brk*{s^2-1}^2-x_1^2}+2x_1x_2\brk*{s^2+1}
-%   \end{align*}
-%   to our variety we 
-\end{proof}
+% %   All six curves intersect precisely at the points $\pm e_1$. If we now add the variation
+% %   \begin{align*}
+% %     q_1(x)=\brk*{s^2+1}\brk*{\brk*{s^2-1}^2-x_1^2}+2x_1x_2\brk*{s^2+1}
+% %   \end{align*}
+% %   to our variety we 
+% \end{proof}
 
-\begin{proposition}[Smoothness]
-  For any $\eta>0$ and $\e>0$ sufficiently small (that is $r$ sufficiently large) the variety $V\brk*{p^\e}$ is smooth.
+\begin{proposition}[Smoothness]\label{pr:n3_polynomial_smoothness}
+  There exists $R>0$ such that for every $r>R$ the variety $V\brk*{p_1,P_2\brk*{r,\cdot}}$ is smooth.
   % \begin{itemize}
   %   \item $C_\eta^r=r\brk*{S^2\setminus\tubular_\eta\brk*{\R e_3}}$
   %   \item $\tubular_\eta\brk*{\R e_3}$
@@ -2541,21 +2673,22 @@ simply connected entrant boundary.
   % Note that the first equation is only cubic. Hence we can calculate
   % the roots of $x_1$ as a function of $x_2$, plug this solution into 
   
-  We inspect the equations
+  % We inspect the equations
+  % \begin{align*}
+  %   P(x)
+  %   =-x_1^3+x_1x_2^2+x_1^2-x_2^2+2x_2x_3
+  % \end{align*}
+  % and
+  % \begin{align*}
+  %   Q(x)=x_1^2+x_2^2+x_3^2-r^2
+  % \end{align*}
+  % closer.
+  One calculates
   \begin{align*}
-    P(x)
-    =-x_1^3+x_1x_2^2+x_1^2-x_2^2+2x_2x_3
-  \end{align*}
-  and
-  \begin{align*}
-    Q(x)=x_1^2+x_2^2+x_3^2-r^2
-  \end{align*}
-  closer. One calculates
-  \begin{align*}
-    T=\vect{\nabla P(x)&\frac{1}{2}\nabla Q(x)}=
+    T=\vect{\nabla p_1(x)&\frac{1}{2}\nabla_x P_2(r,x)}=
     \begin{bmatrix}
-      -3x_1^2+x_2^2+2x_1 & x_1\\
-      2x_1x_2-2x_2+2x_3&x_2 \\
+      -3x_1^2+3x_2^2+2x_1 & x_1\\
+      6x_1x_2-2x_2+2x_3&x_2 \\
       2x_2&x_3
     \end{bmatrix}
   \end{align*}
@@ -2583,42 +2716,42 @@ simply connected entrant boundary.
   % For an $x\in V\brk*{\dots}$ we must have
   % \td{continue proof}
   By the Jacobi criterion it is sufficient to show that this matrix is
-  of full rank on $V_U(P,Q)$.
+  of full rank on $V\brk*{p_1,P_2\brk*{r,\cdot}}$.
   This is equivalent to showing that
   \begin{align*}
     0&\neq \det\begin{bmatrix}
       T_{11}&T_{12}\\T_{21}&T_{22}
     \end{bmatrix}
-    =-5x_1^2x_2+x_2^3+4x_1x_2-2x_1x_3
-    =R_1(x)\,, \\
+    =-9x_1^2x_2+3x_2^3+4x_1x_2-2x_1x_3
+    =h_1(x)\,, \\
     0&\neq \det\begin{bmatrix}
       T_{21}&T_{22}\\T_{31}&T_{32}
     \end{bmatrix}
-    =2x_1x_2x_3-2x_2x_3+2x_3^2-2x_2^2
-    =R_2(x)\text{ or } \\
+    =6x_1x_2x_3-2x_2x_3+2x_3^2-2x_2^2
+    =h_2(x)\text{ or } \\
     0&\neq \det\begin{bmatrix}
       T_{31}&T_{32}\\T_{11}&T_{12}
     \end{bmatrix}
-    =2x_1x_2+3x_1^2x_3-x_2^2x_3-2x_1x_3
-    =R_3(x)
+    =2x_1x_2+3x_1^2x_3-3x_2^2x_3-2x_1x_3
+    =h_3(x)
   \end{align*}
-  for any $x\in V\brk*{P,Q}$. This in turn is equivalent to showing that
+  for any $x\in V\brk*{p_1,P_2\brk*{r,\cdot}}$. This in turn is equivalent to showing that
   \begin{align}
-    V_U\brk*{P,Q,R_1,R_2,R_3}=\emptyset\,.\label{eq:n3_ex_smoothness_varCond}
+    V\brk*{p_1,P_2\brk*{r,\cdot},h_1,h_2,h_3}=\emptyset\,.\label{eq:n3_ex_smoothness_varCond}
   \end{align}
   Indeed, consider the variety
   \begin{align}
-    V\brk*{P,R_1,R_2,R_3} \label{eq:n3_ex_smoothness_subvar}
+    V\brk*{p_1,h_1,h_2,h_3} \label{eq:n3_ex_smoothness_subvar}
   \end{align}
   Maple calculates the Gröbner basis with lexicographic order $x<y<z$
   \begin{align*}
-    4x_1^8 - 18x_1^7 + 48x_1^6 - 66x_1^5 + 37x_1^4 - 5x_1^3 \\
-    4x_1^5x_2 - 14x_1^4x_2 + 34x_1^3x_2 - 32x_1^2x_2 + 5x_1x_2 \\
-    4x_1^7 + 2x_1^6 + 58x_1^5 - 116x_1^4 + 52x_1^3 + 85x_1x_2^2 \\
-    16x_1^4x_2 - 44x_1^3x_2 + 35x_1^2x_2 + 17x_2^3 - 4x_1x_2 \\
-    8x_1^4x_2 - 22x_1^3x_2 + 60x_1^2x_2 - 36x_1x_2 + 17x_1x_3 \\
-    -4x_1^7 - 2x_1^6 - 58x_1^5 + 116x_1^4 - 137x_1^3 + 85x_1^2 - 85x_2^2 + 170x_2x_3 \\
-    12x_1^7 + 6x_1^6 - 166x_1^5 + 332x_1^4 - 269x_1^3 + 85x_1^2 - 255x_2^2 + 170x_3^2
+    72x_1^8 - 198x_1^7 + 228x_1^6 - 153x_1^5 + 56x_1^4 - 5x_1^3 \\
+    72x_1^5x_2 - 126x_1^4x_2 + 102x_1^3x_2 - 51x_1^2x_2 + 5x_1x_2 \\
+    -24x_1^7 + 42x_1^6 - 2x_1^5 - 23x_1^4 + 7x_1^3 + 10x_1x_2^2 \\
+    48x_1^4x_2 - 60x_1^3x_2 + 13x_1^2x_2 + 15x_2^3 \\
+    24x_1^4x_2 - 30x_1^3x_2 + 29x_1^2x_2 - 10x_1x_2 + 5x_1x_3 \\
+    72x_1^7 - 126x_1^6 + 6x_1^5 + 69x_1^4 - 31x_1^3 + 10x_1^2 - 10x_2^2 + 20x_2x_3 \\
+    -72x_1^7 + 414x_1^6 - 654x_1^5 + 399x_1^4 - 97x_1^3 + 10x_1^2 - 30x_2^2 + 20x_3^2
   \end{align*}
   from which we see that the variety \eqref{eq:n3_ex_smoothness_subvar} contains finitely many points.
   Thus if we choose $R$ so large that all of these points are contained in the ball $B_R$ then we have
@@ -2696,92 +2829,166 @@ We have the following proposition.
 \nomenclature{$d_H(A,B)$}{Hausdorff metric. See equation \eqref{eq:def_HausdorffMetric}.}
 \nomenclature{$\dist(x,A)$}{Distance between $x$ and $A$. See equation \eqref{eq:def_distance}}
 \nomenclature{$\tubular_\delta(A)$}{Tubular neighbourhood of $A$. See equation \eqref{eq:def_tubularNbh}.}
-\begin{proposition}[Convergence at non-singular points]
-  Let $U$ be an open bounded set such that $p$ is non-singular on $\overline{U}$
-  Then there exists a $\delta>0$ such that for all $\e<\delta$
-  we have that the Hausdorff distance satisfies 
-  $d_H\brk*{V_U\brk*{p^\e},V_U\brk*{p^0}}<\delta$ and 
-  $V_U\brk*{p^\e}$ is homotopic to $V_U\brk*{p^0}$.
+% \begin{proposition}[Convergence at non-singular points]
+%   Let $U$ be an open bounded set such that $P_1\brk*{0,\cdot}$ is non-singular on an open neighbourhood of $\overline{U}$
+%   Then there exists a $\delta>0$ such that for all $\e<\delta$
+%   we have that the Hausdorff distance satisfies 
+%   $d_H\brk*{V_U\brk*{P_1},V_U\brk*{P_1\brk*{0,\cdot}}}<\delta$ and 
+%   $V_U\brk*{P_1}$ is homotopic to $V_U\brk*{P_1\brk*{0,\cdot}}$.
+% \end{proposition}
+% \begin{proof}
+%   Since $P(0,\cdot)$ is non-singular on an open neighbourhood of $\overline{U}$ it follows that $DP(0,\cdot)$ is bijective on every point on
+%   $\overline{U}$.
+%   % By the implicit function theorem or constant rank theorem there exists a coordinate permutation $O$ and a
+%   % differentiable function $g\colon U_x\to\R$ such that
+%   % \begin{align*}
+%   %   \brk[c]*{O\brk*{y,g(y)}\colon y\in U_x}
+%   % \end{align*}
+%   % is precisely the set on which $p$ vanishes.
+%   By the implicit function theorem there exists around every point $x\in\overline{U}$
+%   a neighbourhood $U_x$, a $\delta_x>0$ and 
+%   a mapping $h\colon B_{\delta_x}\times V_{U_x}\brk*{p^0}\to U_x$ such that $h_\e$ parametrises
+%   $V_{U_x}\brk*{p^\e}$. Since $\overline{U}$ is compact we can choose finitely many such $x$,
+%   pick $\delta$ to be the minimum of all $\delta_x$. By the pasting lemma we can then construct
+%   our desired homotopy $h$.
+%   \td{fill in the details.}
+% \end{proof}
+
+\begin{proposition}[Convergence at smooth points]\label{pr:n3_polynomial_convergenceSmoothSet}
+  For $\e\in\R$ and an open set $W\subseteq\R^3$ define the variety $\cV_\e=V_W\brk*{P_1\brk*{\e,\cdot},p_2}$.
+  Let $U\subseteq \R^3$ be an open set such that $\cV_0$ is smooth
+  in an open neighbourhood of $\overline{U}$. Let further $\eta>0$.
+  Then there exists a $\delta>0$ such that for all $\e<\delta$ we have that the Hausdorff distance
+  satisfies
+  \begin{align*}
+    d_H\brk*{\cV_\e,\cV_0}<\eta
+  \end{align*}
+  and additionally $\cV_\e$ is homotopic to $\cV_0$.
 \end{proposition}
 \begin{proof}
-  Since $p$ is non-singular on $\overline{U}$ it follows that $D^2p^0$ is bijective on every point on
-  $\overline{U}$.
-  % By the implicit function theorem or constant rank theorem there exists a coordinate permutation $O$ and a
-  % differentiable function $g\colon U_x\to\R$ such that
-  % \begin{align*}
-  %   \brk[c]*{O\brk*{y,g(y)}\colon y\in U_x}
-  % \end{align*}
-  % is precisely the set on which $p$ vanishes.
-  By the implicit function theorem there exists around every point $x\in\overline{U}$
-  a neighbourhood $U_x$, a $\delta_x>0$ and 
-  a mapping $h\colon B_{\delta_x}\times V_{U_x}\brk*{p^0}\to U_x$ such that $h_\e$ parametrises
-  $V_{U_x}\brk*{p^\e}$. Since $\overline{U}$ is compact we can choose finitely many such $x$,
-  pick $\delta$ to be the minimum of all $\delta_x$. By the pasting lemma we can then construct
-  our desired homotopy $h$.
-  \td{fill in the details.}
+  Consider the mapping
+  \begin{align*}
+    F=\vect{P_1\\p_2}\colon \R^4\to\R^2\,.
+  \end{align*}
+  Since $V\brk*{P_1(0,\cdot),p_2}$ is smooth on an open neighbourhood of $\overline{U}$
+  we have by the Jacobi criterion that
+  \begin{align}
+    DF = \left[\begin{array}{c|c}
+      *&\begin{array}{c}
+        D P_1(0,\cdot)\\
+        D p_2
+      \end{array}
+    \end{array}\right]\label{eq:n3_polynomial_homotopic_df}
+  \end{align}
+  is of full rank on $\overline{U}$.
+  By the implicit function theorem there exists at every point $x\in\overline{U}$ open neighbourhoods
+  $\Omega_x\subseteq \R^4$ of $(x,0)$ and $\omega_x\subseteq\R^3$, a coordinate permutation $I\in O(4)$
+  and a mapping $g_x\in C^1\brk*{\omega_x;\R}$ such that
+  \begin{align*}
+    V\brk*{P_1,p_2}\cap \Omega_x=\brk[c]*{I\brk*{y,g_x(y)}\colon y\in\omega_x}\,.
+  \end{align*}
+  By equation \eqref{eq:n3_polynomial_homotopic_df} we can assume that $I$ does not permute the $\e$-coordinate.
+  We can also assume that $\Omega_x=B_{\delta_x}\times W\subseteq\R^4$ for some open $W\subseteq\R^3$ and 
+  some $\delta_x>0$.
+  Now for $x\in\overline{U}$ the $\Omega_x$ form an open cover of $\overline{U}$.
+  By compactness there exists a finite subcover. Now set $\delta>0$ to be the minimum of all 
+  $\delta_x$ for the $\Omega_x$ in this finite subcover.
+
+  We can now use the pasting lemma to construct our desired homotopy.
+
+  The result with the Hausdorff distance then follows from compactness of $\overline{U}$.
+  \td{fill in details.}
 \end{proof}
 
 \begin{proposition}\label{pr:n3_polynomial_regularH}
-  The variety given by $h$ has three arcs arranged as in figure \ref{fi:n3_polynomial_intersectionOriginRegular}.
+  Let $\barU_\rho$, $\baralpha$, $\e$, et cetera be as in the formulation of proposition \ref{pr:n3_polynomial_smoothConnected}.
+  There exists an open cube $W\subseteq\R^2$ of the origin and a set 
+  $C\subseteq W$ such that $C$ has positive Hausdorff distance to the set
+  $\brk*{\baralpha^0\cup\baralpha^-}\cap \barU_\rho$ for any $\rho>0$
+  and such that for any sufficiently small $\e>0$ there is an arc $\bargamma$
+  entirely contained in $C\cap\overline{\cV_\e}$ splitting $W$ into two parts.
 \end{proposition}
 \begin{proof}
-  Once again we consider the variety $V\brk*{P,Q}$. We parametrise $V(Q)$ in a neighbourhood $U$ around the point $re_3$ to obtain
-  \begin{align}
-    V_U\brk*{P,Q}=V_U\brk*{\underbrace{-x_1^3+x_1x_2^2+x_1^2-x_2^2+x_2\sqrt{r^2-x_1^2-x_2^2}}_{=\tiP}}
-  \end{align}
-  Now let $x\in S^1$ be close to $e_3$. Then we have that
-  \begin{align}
-    \frac{1}{r^3}\tiP\brk*{rx}=\brk*{\tiP}_3(x)+\frac{1}{r}\brk*{\tiP}_2(x)=\tiP^\e(x)
-  \end{align}
-  Now observe that $\brk*{\tiP}_3=-x_1^3+x_1x_2^2$ is a monkey saddle and thus $V_U\brk*{\brk*{\tiP}_3}$ is 
-  similar to figure \ref{fi:n3_polynomial_intersectionOriginDegenerate}.
-  We denote by
+  % Then we calculate
+  % \begin{align}
+  %   V_U\brk*{P_1(\e,\cdot),p_2}\cong V_W\brk*{P_1\brk*{\e,x_1,x_2,\sqrt{r^2-x_1^2-x_2^2}}}
+  % \end{align}
+  % are diffeomorphic.
+  % Rewriting
+  % \begin{align*}
+  %   0=-x_1^3+x_1x_2^2+x_1^2-x_2^2+x_2\sqrt{r^2-x_1^2-x_2^2} \\
+  %   \Leftrightarrow x_1^3-x_1x_2^2-x_1^2+x_2^2=x_2\sqrt{r^2-x_1^2-x_2^2}\\
+  %   \Leftrightarrow \brk*{x_1^3-x_1x_2^2-x_1^2+x_2^2}^2=
+  % \end{align*}
+  The following proof borrows notation from proposition \ref{pr:n3_polynomial_smoothConnected}.
+  Let $W\subseteq\R^2$ be an open cube around the origin which we fix later.
+  Define
   \begin{align*}
-    \alpha=\brk[c]*{t\vect{1 & -1}^\top\colon t\in\R}
+    \barp_1(x)=\barP_1(1,x)=p_1\brk*{x_1,x_2,\sqrt{1-x_1^2-x_2^2}}
   \end{align*}
-  an arc of  $V_U\brk*{\brk*{\tiP}_3}$.
-  We also observe that the $V_U\brk*{\brk*{\tiP}_2}$ looks similar to figure \ref{}.
-  Here too we remark that
+  and observe that
   \begin{align}
-    \beta=\brk[c]*{ t\in\R}
+    \barP_1(\e,x)=\brk*{\barp_1}_3+\e\brk*{\barp_1}_{\leq2}\,.
   \end{align}
-  is a zero set of $V_U\brk*{\brk*{\tiP}_2}$.
-  This is depicted in figure \ref{fi:n3_polynomial_intersectionOriginOtherTerm}.
+  As noted earlier $\brk*{\barp_1}_3=-x_1^3+3x_1x_2^2$ is a monkey saddle
+  and $V_W\brk*{\brk*{\barp_1}_3}=\barA$ is
+  similar to figure \ref{fi:n3_polynomial_intersectionOriginDegenerate}.
+  The signs in the figure indicate the sign of $\brk*{\barp_1}_3$ in a given region.
+  % We denote by
+  % \begin{align*}
+  %   \alpha=\brk[c]*{t\vect{1 & 1}^\top\colon t\in\R}
+  % \end{align*}
+  % an arc of  $V_W\brk*{\brk*{q}_3}$.
+  Since we have
+  $$\brk*{\barp_1}_{\leq2}=x_1^2-x_2^2+x_2\sqrt{1-x_1^2-x_2^2}$$
+  we obtain that $\nabla \brk*{\barp_1}_{\leq2}(0)=e_2$ and $\brk*{\barp_1}_{\leq2}(0)=0$.
+  Hence we observe that the $V_W\brk*{\brk*{\barp_1}_{\leq2}}$ looks similar to figure \ref{fi:n3_polynomial_intersectionOriginOtherTerm}
+  for a sufficiently small neighbourhood $W$.
+  We denote this arc by $\barbeta=V_W\brk*{\brk*{\barp_1}_{\leq2}}$.
+  If we choose $W$ small enough we can ensure that $\barbeta$ has positive Hausdorff distance to
+  the set $\brk*{\baralpha^0\cup\baralpha^-}\cap \barU_\rho$.
+  Now we claim that the set $C$ consisting of the vertical lines between $\baralpha^+$
+  and $\barbeta$ fulfills the claim.
   
-  We now look at the second quadrant. Here we have that
-  $\tiP^\e=\brk*{\tiP}_3\leq0$ on $\beta$ and that
-  $\tiP^\e=\brk*{\tiP}_2\geq0$ on $\alpha$. By the intermediate value theorem thus there must be an arc
-  $\gamma\subseteq V\brk*{h^\e}$ starting at the origin 
-  and sandwiched in this quadrant
-  between $\alpha$ and $\beta$.
-  An analogous argumentation on the third quadrant shows that here too there must be an arc
-  $\gamma$ starting at the origin and tending to $\infty$. 
-  Denote the union of these two arcs by $\gamma$. Then $\gamma$ divides the plane into two
-  parts and since $h^\e$ has no singular points it follows that the zeroes of $h^\e$
+  Indeed, we have that
+  $\barP_1(\e,\cdot)=\brk*{\barp_1}_3\leq0$ on $\barbeta$ and that
+  $\barP_1(\e,\cdot)=\brk*{\barp_1}_{\leq2}\geq0$ on $\baralpha^+$. By the intermediate value theorem thus there must be for each
+  $(x_1,0)\in W$ a corresponding point 
+  $(x_1,\bargamma(x_1))\in V_W\brk*{\barP_1(\e,\cdot)}$ sandwiched between $\barbeta$ and $\baralpha^+$.  
+  Since $V_W\brk*{\barP_1(\e,\cdot)}$ is smooth $\bargamma$ in fact defines an arc which we also denote by $\bargamma$.
+  Then $\bargamma$ divides the plane into two
+  parts and since $V_W\brk*{\barP_1\brk*{\e,\cdot}}$ it follows that $V_W\brk*{\barP_1\brk*{\e,\cdot}}$
   must look similar to figure \ref{fi:n3_polynomial_intersectionOriginRegular}.
+  For clarity the idea of the proof is also depicted in figure \ref{fi:n3_polynomial_intersectionOrigin_overview}.
   \begin{figure}
     \centering
     \begin{subfigure}[b]{0.3\textwidth}
     \centering
-    \input{../Figures/n3_polynomial_intersectionOriginDegenerate.pdf_tex}
+    \input{../Figures/n3_polynomial_intersectionOriginDegenerate_new.pdf_tex}
     \caption{Sketch of the set $V\brk*{h_3}$.}
     \label{fi:n3_polynomial_intersectionOriginDegenerate}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.3\textwidth}
     \centering
-    \input{../Figures/n3_polynomial_intersectionOriginLine.pdf_tex}
+    \input{../Figures/n3_polynomial_intersectionOriginLine_new.pdf_tex}
     \caption{Sketch of the set $V\brk*{h_1}$.}
     \label{fi:n3_polynomial_intersectionOriginOtherTerm}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.3\textwidth}
     \centering
-    \input{../Figures/n3_polynomial_intersectionOriginRegular.pdf_tex}
+    \input{../Figures/n3_polynomial_intersectionOriginRegular_new.pdf_tex}
     \caption{Sketch of the set $V\brk*{h^\e}$.}
     \label{fi:n3_polynomial_intersectionOriginRegular}
     \end{subfigure}
     \caption{Sketches of varieties.}
+  \end{figure}
+  \begin{figure}
+    \centering
+    \input{../Figures/n3_polynomial_intersectionOrigin_overview.pdf_tex}
+    \caption{A sketch of the set $V\brk*{p^0}$.}
+    \label{fi:n3_polynomial_intersectionOrigin_overview}
   \end{figure}
 \end{proof}
 
@@ -2884,18 +3091,6 @@ We have the following proposition.
 %     \caption{Sketches of varieties.}
 %   \end{figure}
 % \end{proof}
-
-\begin{figure}
-  \centering
-  \input{../Figures/n3_polynomial_projectionDegenerate.pdf_tex}
-  \caption{A sketch of the set $V\brk*{p^0}$.}
-\end{figure}
-
-For a polynomial $p\in\R\brk[s]*{x_1,x_2}$ and a set $U\subseteq\R^2$ we denote the set of zeroes of $p$ by
-\begin{align*}
-  V_U(p)=\brk*{x\in U\colon p(x)=0}
-\end{align*}
-We call the points at which multiple arcs meet \emph{singular}.
 
 
 \td{complete this section.}
@@ -3039,15 +3234,15 @@ This has a stagnation point at the origin. We now claim that the sets $\Sigma^+$
 we have a tube in $\R^4$ with throughflow and a stagnation point.
 
 \begin{proof}
-To prove this claim we observe that the boundary $\partial B_1$ can be parametrised by the coordinates $\bx = (x_2,x_3,x_4)$
-for which we have $\abs{\bx}\leq 1$. By the condition
+To prove this claim we observe that the boundary $\partial B_1$ can be parametrised by the coordinates $\barx = (x_2,x_3,x_4)$
+for which we have $\abs{\barx}\leq 1$. By the condition
 \begin{align}
   \sum_i x_i^2 = 1\label{eq:n4:ball}
 \end{align}
 on the boundary $\partial B_1$ we have that $x_1$ is then uniquely determined up to sign. Thus we have have defined parametrisations
 \begin{align}
   \begin{aligned}\phi_\pm\colon B_1\subseteq\R^3&\to\R \\
-  \bx&\mapsto x\text{ such that } \pm x_1\geq0
+  \barx&\mapsto x\text{ such that } \pm x_1\geq0
   \end{aligned}\label{eq:n4:parametrisation}
 \end{align}
 with inverses $\psi_\pm = \brk*{\phi_\pm}^{-1}$.
@@ -3069,9 +3264,9 @@ Using condition \eqref{eq:n4:ball} we obtain the equivalent condition
 \end{align*}
 Define the cylinder
 \begin{align*}
-  C = \brk[c]*{\bx\in \R^3\colon x_3^2+x_4^2<1/2} = \R\times B_{1/\sqrt{2}}
+  C = \brk[c]*{\barx\in \R^3\colon x_3^2+x_4^2<1/2} = \R\times B_{1/\sqrt{2}}
 \end{align*}
-If we return to our parametrisation \eqref{eq:n4:parametrisation} we see that we have $\bx\in B_1\cap C$ iff
+If we return to our parametrisation \eqref{eq:n4:parametrisation} we see that we have $\barx\in B_1\cap C$ iff
 $\phi_\pm(x)\in \Sigma^+$ and hence 
 \begin{align*}
   B_1\cap C=\psi_\pm\brk*{\Sigma^+}\,.
@@ -3081,7 +3276,7 @@ Analogously  we have
   B_1\setminus C=\psi_\pm\brk*{\Sigma^-}\,.
 \end{align*}
 The claim then follows from the fact that $\phi$ is a homeomorphism onto its image and $x_1=0$ is 
-equivalent to $\bx\in \partial B_1\subseteq \R^2$. The situation is depicted in figure \ref{fi:n4_sigma}.
+equivalent to $\barx\in \partial B_1\subseteq \R^2$. The situation is depicted in figure \ref{fi:n4_sigma}.
 
 \td{Check that the transition at the boundary is legal.}
 \begin{figure}[h]
