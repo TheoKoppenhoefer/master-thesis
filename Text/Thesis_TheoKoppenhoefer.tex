@@ -67,6 +67,7 @@
   General TODOs
   \begin{itemize}
     \item Check for typos.
+    \item use $\eqqcolon$ for definitions.
     \item Does Girault-Raviart theorem with Helmholtz decomp. help?
     \item bring in results from \cite{Shelton1980} and \cite{Morse1970}
     \item Harmonic vector fields, find up to date reference
@@ -74,6 +75,8 @@
     \item Does Bocher's theorem help?
     \item Look at application of Sperner's lemma
     \item $C$ is used once for critical points, once for level sets.
+    \item Look into James Kelliher, stream functions for divergence free vector fields. 
+    Relation to differential forms.
   \end{itemize}
   Some questions
   \begin{itemize}
@@ -248,6 +251,7 @@ In the following we define the emergent and the entrant boundary in a way that g
 \nomenclature{$\Sigma^\text{irr}$}{Irregular boundary. See definition \ref{df:nonDegeneracy}.}
 \nomenclature{$B_r(x)$, $B_r$}{Ball of radius $r$ around the point $x$ / the origin.}
 \nomenclature{$S^{d-1}(x)$, $S^{d-1}$}{$(d-1)$-dimensional sphere around $x$ / the origin.}
+\nomenclature{$e_j$}{$j$-th unit vector in $\R^d$.}
 
 % We would now like to illustrate the preceding definitions.
 % \begin{example}\label{ex:n3_hvf_canonical}
@@ -1241,159 +1245,170 @@ In the following we deduce some basic relations for harmonic vector fields in di
 If one considers not necessarily simply connected domains $\Omega$ then we obtain the
 properties of proposition \ref{pr:n2:hvf:simplyConnected} at least locally.
 
-\chapter{Harmonic functions, $d=2$}
+\chapter{The case of connected entrant boundaries
+on simply connected domains in $d=2$ dimensions}
 
-The following result is essentially a negative to question \ref{qu:flowthroughStagnationPoint} in $d=2$ dimensions.
-\begin{proposition}\label{pr:n2:hf:nonExistence}
-  Let $\Omega$ be homeomorphic to $B_1\subseteq\R^2$. Let further $f\colon\overline{\Omega}\to\R$ be regular harmonic  
-  with critical point $x_1\in\Omega$. Then $\Sigma^-\subseteq\Sigma$ is not connected.
-\end{proposition}
-We shall give two different proofs of this result. One involving level-sets and the other involving invariant manifolds
+We will start this section by giving an essentially negative answer to question \ref{qu:flowthroughStagnationPoint}
+in $d=2$ dimensions. Thus it is not possible to have a harmonic function with interior critical point on a simply connected
+planar domain with connected entrant boundary. The proof of this will involve Morse theory on manifolds with corners which was
+introduced in the previous chapter.
+We shall then state a result from \cite{Alessandrini1992} which more generally relates the number of entrant components with the number
+of critical points in the plane using tools from complex analysis. 
+After that we give examples showing that dropping the condition of simply connectedness on the domain yields
+a harmonic function with interior stagnation point. 
+We will also consider the analogous problem in $d=4$ dimensions and show that there exists a function and domain with the
+desired properties.
 
-\section{A proof involving level-sets}
+% \begin{proposition}\label{pr:n2:hf:nonExistence}
+%   Let $\Omega$ be homeomorphic to $B_1\subseteq\R^2$. Let further $f\colon\overline{\Omega}\to\R$ be regular harmonic  
+%   with critical point $x_1\in\Omega$. Then $\Sigma^-\subseteq\Sigma$ is not connected.
+% \end{proposition}
+% We shall give two different proofs of this result. One involving level-sets and the other involving invariant manifolds
 
-\ruggedtodo[]{write omega-limit.}
-\begin{proof}[Sketch of Proof.]
-  Let $y_c=f(x_1)$ and $x_1,\dots,x_M$ be all the critical points such that $f(x_\cdot)=y_c$.
-  We claim that the level set
-  \begin{align*}
-    C=\brk[c]*{f=y_c}\subseteq\overline{\Omega}
-  \end{align*}
-  can be represented by a multigraph $G$
-  which divides the boundary $\Sigma$ into 4 components. To show this let $\gamma_i\colon \brk*{a_i,b_i}\to C$ for $i\in\brk[c]{1,\dots,4}$ parametrise the curves in
-  $C$ intersecting at $x_1$. These can be constructed with the initial value problem
-  \begin{align*} 
-    \gamma'&=\brk*{\nabla f}^\perp\big\vert_\gamma \\
-    \gamma(0) &= \gamma_0
-  \end{align*}
-  where $\gamma_0\in C$ is chosen sufficiently near $x_1$. We assume that the intervals on which the $\gamma_i$ are
-  defined are maximal. We thus have for
-  \begin{align*}
-    \gamma_i^-=\lim_{t\to a_i}\gamma(t) \\
-    \gamma_i^+=\lim_{t\to b_i}\gamma(t)
-  \end{align*}
-  that $\gamma_i^\pm\in\brk[c]*{x_1,\dots,x_M,\Sigma}$ since the $x_j$ are the sole points on $\Omega\cap\overline{C}$
-  at which $\nabla f^\perp=0$. This argument can be applied to all of the 
-  $x_1,\dots,x_M$. We therefore have a situation similar to the one depicted in figure \ref{fi:n2:levelSets:overview}.
+% \section{A proof involving level-sets}
+
+% \ruggedtodo[]{write omega-limit.}
+% \begin{proof}[Sketch of Proof.]
+%   Let $y_c=f(x_1)$ and $x_1,\dots,x_M$ be all the critical points such that $f(x_\cdot)=y_c$.
+%   We claim that the level set
+%   \begin{align*}
+%     C=\brk[c]*{f=y_c}\subseteq\overline{\Omega}
+%   \end{align*}
+%   can be represented by a multigraph $G$
+%   which divides the boundary $\Sigma$ into 4 components. To show this let $\gamma_i\colon \brk*{a_i,b_i}\to C$ for $i\in\brk[c]{1,\dots,4}$ parametrise the curves in
+%   $C$ intersecting at $x_1$. These can be constructed with the initial value problem
+%   \begin{align*} 
+%     \gamma'&=\brk*{\nabla f}^\perp\big\vert_\gamma \\
+%     \gamma(0) &= \gamma_0
+%   \end{align*}
+%   where $\gamma_0\in C$ is chosen sufficiently near $x_1$. We assume that the intervals on which the $\gamma_i$ are
+%   defined are maximal. We thus have for
+%   \begin{align*}
+%     \gamma_i^-=\lim_{t\to a_i}\gamma(t) \\
+%     \gamma_i^+=\lim_{t\to b_i}\gamma(t)
+%   \end{align*}
+%   that $\gamma_i^\pm\in\brk[c]*{x_1,\dots,x_M,\Sigma}$ since the $x_j$ are the sole points on $\Omega\cap\overline{C}$
+%   at which $\nabla f^\perp=0$. This argument can be applied to all of the 
+%   $x_1,\dots,x_M$. We therefore have a situation similar to the one depicted in figure \ref{fi:n2:levelSets:overview}.
   
-  \begin{figure}
-    \centering
-    \def\svgwidth{0.8\textwidth}
-    \input{../Figures/n2_levelSets_overview.pdf_tex}
-    \caption{The situation at hand: The edges represent level curves and the interior vertices critical points.}
-    \label{fi:n2:levelSets:overview}
-  \end{figure}
+%   \begin{figure}
+%     \centering
+%     \def\svgwidth{0.8\textwidth}
+%     \input{../Figures/n2_levelSets_overview.pdf_tex}
+%     \caption{The situation at hand: The edges represent level curves and the interior vertices critical points.}
+%     \label{fi:n2:levelSets:overview}
+%   \end{figure}
 
-  Thus $C$ can be represented by a multigraph $G$ with vertices $v_1,\dots,v_K$ and edges $e_1,\dots,e_L\subseteq C$.
-  In the following we identify the graph $G$ with its planar embedding in $\overline{\Omega}$.
-  Assume $G$ contains a cycle with vertex sequence $v_{i_1},\dots,v_{i_J}$ and edges $e_{i_1},\dots,e_{i_J}$. Then
-  \begin{align*}
-    \partial E = \bigcup_j e_{i_j}\subseteq C
-  \end{align*}
-  is the boundary of a domain $E$ for which $f=y_c$ on $\partial E$. By the maximum principle $f=y_c$ on $E$ and thus
-  $f=y_c$ on $\overline{\Omega}$, a contradiction to the non-degeneracy. Hence $G$ is acyclic and the number of 
-  intersections of $C$ with the boundary $\Sigma$ is at least four and thus the boundary $\Sigma$ is divided into at least four components.
+%   Thus $C$ can be represented by a multigraph $G$ with vertices $v_1,\dots,v_K$ and edges $e_1,\dots,e_L\subseteq C$.
+%   In the following we identify the graph $G$ with its planar embedding in $\overline{\Omega}$.
+%   Assume $G$ contains a cycle with vertex sequence $v_{i_1},\dots,v_{i_J}$ and edges $e_{i_1},\dots,e_{i_J}$. Then
+%   \begin{align*}
+%     \partial E = \bigcup_j e_{i_j}\subseteq C
+%   \end{align*}
+%   is the boundary of a domain $E$ for which $f=y_c$ on $\partial E$. By the maximum principle $f=y_c$ on $E$ and thus
+%   $f=y_c$ on $\overline{\Omega}$, a contradiction to the non-degeneracy. Hence $G$ is acyclic and the number of 
+%   intersections of $C$ with the boundary $\Sigma$ is at least four and thus the boundary $\Sigma$ is divided into at least four components.
   
-  Now choose four neighbouring components $\omega_1,\dots,\omega_4$ as depicted in figure \ref{fi:n2:levelSets:neighbouringComponents}
-  \begin{figure}
-    \centering
-    \input{../figures/n2_levelSets_selectionOmega.pdf_tex}
-    \caption{The choice of $\omega_1,\dots,\omega_4$.}
-    \label{fi:n2:levelSets:neighbouringComponents}
-  \end{figure}
-  Let $A\subseteq\Omega$ be the domain bounded
-  by $\omega_1$ and $C$ as in the figure. The maximum principle yields that $\omega_1$ contains a local maximum or minimum of $f$ since
-  $f=y_c$ is constant on the other boundaries $\partial A\setminus\omega_1$.
-  By the same argument $\omega_2,\dots,\omega_4$ also contain local extrema. 
-  \ruggedtodo[]{use argument with $\nabla f$ here to show that extrema can be assumed to be alternating.}
-  Since the $\partial\omega_i$ cannot be extremal points on $\Sigma$
-  we can assume without loss of generality (by switching $f$ for $-f$) that $\omega_1$ and $\omega_3$ contain local maxima and $\omega_2 $ and $\omega_4$ local
-  minima. By Hopf's lemma we thus have
-  \begin{align*}
-    \Sigma^-\cap\omega_2\neq\emptyset\neq\Sigma^-\cap\omega_4
-  \end{align*}
-  and 
-  \begin{align*}
-    \Sigma^+\cap\omega_1\neq\emptyset\neq\Sigma^+\cap\omega_3
-  \end{align*}
-  From this the claim follows.
-\end{proof}
+%   Now choose four neighbouring components $\omega_1,\dots,\omega_4$ as depicted in figure \ref{fi:n2:levelSets:neighbouringComponents}
+%   \begin{figure}
+%     \centering
+%     \input{../figures/n2_levelSets_selectionOmega.pdf_tex}
+%     \caption{The choice of $\omega_1,\dots,\omega_4$.}
+%     \label{fi:n2:levelSets:neighbouringComponents}
+%   \end{figure}
+%   Let $A\subseteq\Omega$ be the domain bounded
+%   by $\omega_1$ and $C$ as in the figure. The maximum principle yields that $\omega_1$ contains a local maximum or minimum of $f$ since
+%   $f=y_c$ is constant on the other boundaries $\partial A\setminus\omega_1$.
+%   By the same argument $\omega_2,\dots,\omega_4$ also contain local extrema. 
+%   \ruggedtodo[]{use argument with $\nabla f$ here to show that extrema can be assumed to be alternating.}
+%   Since the $\partial\omega_i$ cannot be extremal points on $\Sigma$
+%   we can assume without loss of generality (by switching $f$ for $-f$) that $\omega_1$ and $\omega_3$ contain local maxima and $\omega_2 $ and $\omega_4$ local
+%   minima. By Hopf's lemma we thus have
+%   \begin{align*}
+%     \Sigma^-\cap\omega_2\neq\emptyset\neq\Sigma^-\cap\omega_4
+%   \end{align*}
+%   and 
+%   \begin{align*}
+%     \Sigma^+\cap\omega_1\neq\emptyset\neq\Sigma^+\cap\omega_3
+%   \end{align*}
+%   From this the claim follows.
+% \end{proof}
 
-\section{A proof involving invariant manifolds}
+% \section{A proof involving invariant manifolds}
 
-Using invariant manifolds we obtain the following proof.
+% Using invariant manifolds we obtain the following proof.
 
-\begin{proof}[Sketch of Proof.]
-  Let $x_1,\dots,x_M$ denote the critical points of $f$. Let $\lambda_i\colon\brk*{a_i,b_i}\to\overline{\Omega}$ for $i\in\brk[c]{1,2}$ parametrise the unstable manifolds of the
-  critical point $x_1$ and
-  $\lambda_i\colon\brk*{a_i,b_i}\to\overline{\Omega}$ for $i\in\brk[c]{3,4}$ be chosen to parametrise the stable manifolds of $x_1$.
-  As in the previous proof we can assume the interval on which the $\lambda_i$ are defined to be maximal. We thus have for
-  \begin{align*}
-    \lambda_i^-=\lim_{t\to a_i}\lambda(t) \\
-    \lambda_i^+=\lim_{t\to b_i}\lambda(t)
-  \end{align*}
-  that $\lambda_i^\pm\in\brk[c]*{x_1,\dots,x_M,\Sigma}$ since the $x_j$ are the sole points on $\overline{\Omega}$
-  at which $Df=0$. Thus all invariant manifolds of all critical points form a directed multigraph $G$ with vertices $v_1,\dots,v_K$ and 
-  edges $e_1,\dots,e_L\subseteq\overline{\Omega}$. Here the direction of the edge is determined by whether $f$ increases or decreases
-  along the edge.
-  Once again we identify the graph with its planar embedding.
-  By construction graph is acyclic directed. We claim that the underlying undirected graph is in fact a forest. Thus it remains to
-  be shown that the underlying undirected graph is acyclic.
-  Assume not, i.e.\ we have a undirected cycle A with vertices $x_{i_1},\dots,x_{i_J}$ and edges $e_{i_1},\dots,e_{i_J}$.
-  The set of cycles forms a partial ordering with respect to the property `contains another cycle'.
-  \ruggedtodo[]{More precise.}
-  We can assume that our chosen cycle A
-  contains no other distinct cycles, i.e.\ it is a minimal cycle.
-  We note that each vertex has 2 incoming and 2 outgoing arcs which lie opposite to one another.
-  We also note that the edges cannot cross. 
-  We can thus describe the trail $x_{i_1},\dots,x_{i_J}$ by a set of directives of the type
-  \begin{align*}
-    (d_1,\dots,d_K) \in \brk[c]*{\text{l},\text{r},\text{s}}^J\,.
-  \end{align*}
-  Here l, r and s stand for `left', `right' and `straight' respectively.
-  The underlying idea is that we follow a particular trail and orient all vertices as in figure \ref{fi:n2:invariantMF:directivesDefinition}.
+% \begin{proof}[Sketch of Proof.]
+%   Let $x_1,\dots,x_M$ denote the critical points of $f$. Let $\lambda_i\colon\brk*{a_i,b_i}\to\overline{\Omega}$ for $i\in\brk[c]{1,2}$ parametrise the unstable manifolds of the
+%   critical point $x_1$ and
+%   $\lambda_i\colon\brk*{a_i,b_i}\to\overline{\Omega}$ for $i\in\brk[c]{3,4}$ be chosen to parametrise the stable manifolds of $x_1$.
+%   As in the previous proof we can assume the interval on which the $\lambda_i$ are defined to be maximal. We thus have for
+%   \begin{align*}
+%     \lambda_i^-=\lim_{t\to a_i}\lambda(t) \\
+%     \lambda_i^+=\lim_{t\to b_i}\lambda(t)
+%   \end{align*}
+%   that $\lambda_i^\pm\in\brk[c]*{x_1,\dots,x_M,\Sigma}$ since the $x_j$ are the sole points on $\overline{\Omega}$
+%   at which $Df=0$. Thus all invariant manifolds of all critical points form a directed multigraph $G$ with vertices $v_1,\dots,v_K$ and 
+%   edges $e_1,\dots,e_L\subseteq\overline{\Omega}$. Here the direction of the edge is determined by whether $f$ increases or decreases
+%   along the edge.
+%   Once again we identify the graph with its planar embedding.
+%   By construction graph is acyclic directed. We claim that the underlying undirected graph is in fact a forest. Thus it remains to
+%   be shown that the underlying undirected graph is acyclic.
+%   Assume not, i.e.\ we have a undirected cycle A with vertices $x_{i_1},\dots,x_{i_J}$ and edges $e_{i_1},\dots,e_{i_J}$.
+%   The set of cycles forms a partial ordering with respect to the property `contains another cycle'.
+%   \ruggedtodo[]{More precise.}
+%   We can assume that our chosen cycle A
+%   contains no other distinct cycles, i.e.\ it is a minimal cycle.
+%   We note that each vertex has 2 incoming and 2 outgoing arcs which lie opposite to one another.
+%   We also note that the edges cannot cross. 
+%   We can thus describe the trail $x_{i_1},\dots,x_{i_J}$ by a set of directives of the type
+%   \begin{align*}
+%     (d_1,\dots,d_K) \in \brk[c]*{\text{l},\text{r},\text{s}}^J\,.
+%   \end{align*}
+%   Here l, r and s stand for `left', `right' and `straight' respectively.
+%   The underlying idea is that we follow a particular trail and orient all vertices as in figure \ref{fi:n2:invariantMF:directivesDefinition}.
   
-  \begin{figure}
-    \centering
-    \begin{minipage}{0.4\textwidth}
-      \def\svgwidth{0.7\textwidth}
-      \input{../Figures/n2_invariantMF_directivesDefinition.pdf_tex}
-      \caption{Explanation of the directives `l',`r' and `r'.}
-      \label{fi:n2:invariantMF:directivesDefinition}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.4\textwidth}
-      \def\svgwidth{1\textwidth}
-      \input{../Figures/n2_invariantMF_directivesExample.pdf_tex}
-      \caption{An example for a cycle.}
-      \label{fi:n2:invariantMF:directivesExample}
-    \end{minipage}
-  \end{figure}
+%   \begin{figure}
+%     \centering
+%     \begin{minipage}{0.4\textwidth}
+%       \def\svgwidth{0.7\textwidth}
+%       \input{../Figures/n2_invariantMF_directivesDefinition.pdf_tex}
+%       \caption{Explanation of the directives `l',`r' and `r'.}
+%       \label{fi:n2:invariantMF:directivesDefinition}
+%     \end{minipage}
+%     \hfill
+%     \begin{minipage}{0.4\textwidth}
+%       \def\svgwidth{1\textwidth}
+%       \input{../Figures/n2_invariantMF_directivesExample.pdf_tex}
+%       \caption{An example for a cycle.}
+%       \label{fi:n2:invariantMF:directivesExample}
+%     \end{minipage}
+%   \end{figure}
 
-  An example of the trail `srsr' is given in figure \ref{fi:n2:invariantMF:directivesExample}.
-  We now note that cycles of the type r,\dots,r or l,\dots,l
-  cannot occur as we otherwise would have a directed cycle. Thus there exists a vertex where the chosen direction is s. 
-  Without loss of generality this vertex is $x_{i_1}$.
-  Since we can swap $f$ with $-f$ we can assume without loss of generality that the cycle lies to right of $x_{i_1}$.
-  Now consider new cycle B starting at $x_{i_1}$ with directives r,\dots,r.
-  Since all vertices of B lie within the cycle A we must at some step reach a vertex on the cycle A. But then cycle B is a new distinct cycle
-  contained in cycle A, a contradiction to the minimality of A.
-  Hence every case considered leads to a contradiction and it follows that the underlying undirected multigraph of $G$
-  is acyclic.
+%   An example of the trail `srsr' is given in figure \ref{fi:n2:invariantMF:directivesExample}.
+%   We now note that cycles of the type r,\dots,r or l,\dots,l
+%   cannot occur as we otherwise would have a directed cycle. Thus there exists a vertex where the chosen direction is s. 
+%   Without loss of generality this vertex is $x_{i_1}$.
+%   Since we can swap $f$ with $-f$ we can assume without loss of generality that the cycle lies to right of $x_{i_1}$.
+%   Now consider new cycle B starting at $x_{i_1}$ with directives r,\dots,r.
+%   Since all vertices of B lie within the cycle A we must at some step reach a vertex on the cycle A. But then cycle B is a new distinct cycle
+%   contained in cycle A, a contradiction to the minimality of A.
+%   Hence every case considered leads to a contradiction and it follows that the underlying undirected multigraph of $G$
+%   is acyclic.
   
-  Now call a leaf positive if it lies on the emergent boundary and
-  negative if it lies on the entrant boundary. The case that a leaf is neither positive or negative cannot occur.\ruggedtodo[]{elaborate}
-  We now pick a tree $\widetilde{G}$ out of $G$ and note that
-  there are at least 4 boundary vertices to this tree.
-  By construction we see that each `neighbouring'\ruggedtodo[]{elaborate} leaf of this tree
-  has opposite signage and the claim follows.
-\end{proof}
+%   Now call a leaf positive if it lies on the emergent boundary and
+%   negative if it lies on the entrant boundary. The case that a leaf is neither positive or negative cannot occur.\ruggedtodo[]{elaborate}
+%   We now pick a tree $\widetilde{G}$ out of $G$ and note that
+%   there are at least 4 boundary vertices to this tree.
+%   By construction we see that each `neighbouring'\ruggedtodo[]{elaborate} leaf of this tree
+%   has opposite signage and the claim follows.
+% \end{proof}
 
 
-\section{A proof involving Morse theory}
+\section{A negative result using Morse theory}
 
 We now give a proof involving Morse theory since the techniques of the proof generalise to the three dimensional case.
-\begin{proposition}
+\begin{proposition}[Negative answer to question \ref{} in $d=2$ dimensions]\label{pr:n2_negativeResult}
   Let $d=2$ and $X$ be a simply connected manifold with corners and let $f\colon X\to\R$ have no irregular critical points.
   Assume further that $\Sigma^-$ contains at least two points and is simply connected. Then $f$ has no non-degenerate interior critical point.
 \end{proposition}
@@ -1668,31 +1683,36 @@ We now give a proof involving Morse theory since the techniques of the proof gen
 %   \end{align*}
 % \end{proof}
 
-\section{Allowing for Inflow and outflow}
+\section{A generalisation of this result}
 
-The strategy in the above proofs can be generalised to show the following
-\begin{conjecture}
-  Let $X\subseteq\R^2$ be a manifold with corners with Betti numbers $b_0=1$ and $b_1$.
-  Let further $f\colon X\to\R$ be Morse harmonic with $M$ critical points.
-  Assume that 
-  $\overline{\Sigma^-}\subseteq\Sigma$ on a given connected component 
-  of the boundary $\Sigma$
-  consists of at most one connected component. Then we have
-  \begin{align*}
-    \frac{4}{3}M\leq b_1+1\,.
-  \end{align*}
-\end{conjecture}
-This inequality can probably be improved considerably.
+% The strategy in the above proofs can be generalised to show the following
+% \begin{conjecture}
+%   Let $X\subseteq\R^2$ be a manifold with corners with Betti numbers $b_0=1$ and $b_1$.
+%   Let further $f\colon X\to\R$ be Morse harmonic with $M$ critical points.
+%   Assume that 
+%   $\overline{\Sigma^-}\subseteq\Sigma$ on a given connected component 
+%   of the boundary $\Sigma$
+%   consists of at most one connected component. Then we have
+%   \begin{align*}
+%     \frac{4}{3}M\leq b_1+1\,.
+%   \end{align*}
+% \end{conjecture}
+% This inequality can probably be improved considerably.
 
-Let $J^\pm$ denote the number of connected components of $\Sigma^\pm$.
+We could also have used tools from complex analysis to show proposition \ref{}.
+In fact, \cite{Alessandrini1992} gives a more refined result which we will state in the
+following.
+
+Let $J^\pm$ denote the number of connected components of $\Sigma^\pm$ which are proper
+subsets of a component of $\Sigma$.
 Consider a disjoint decomposition of the boundary $\Sigma=\Sigma_{\geq0}\sqcup\Sigma_{\leq0}$ such
 that $\Sigma_{\geq0}\subseteq\Sigma^{\geq0}$ and $\Sigma_{\leq0}\subseteq\Sigma^{\leq0}$.
-Let now $J^{\geq0}$ denote the minimal number of connected components of $\Sigma^{\geq0}$ of all such
-decompositions.
-We state a consequence of a result from \cite[Theorem 2.1]{Alessandrini1992}
-\begin{proposition} 
+Let now $J^{\geq0}$ denote the minimal number of connected components of $\Sigma_{\geq0}$ 
+which are proper subsets of a component of $\Sigma$.
+We state a consequence of a result from \cite[Theorem 2.1 and 2.2]{Alessandrini1992}:
+\begin{proposition}[Weakening of {\cite[Theorem 2.1 and 2.2]{Alessandrini1992}}.]\label{pr:alessandrini_inflowOutflow}
   Let $\Omega\subseteq\R^d$ be an open bounded domain with a boundary consisting of simple closed $C^{1,\alpha}$ curves.
-  Let $u\colon \overline{\Omega}\to \R$ be harmonic (with certain conditions on the boundary).
+  Let $u\colon X\to \R$ be a harmonic vector field.
   Then we have
   \begin{align*}
     M\leq b_1-b_0+\frac{J^++J^-}{2}\,.
@@ -1703,199 +1723,30 @@ We state a consequence of a result from \cite[Theorem 2.1]{Alessandrini1992}
   \end{align*}
 \end{proposition}
 \begin{proof}
-  See \cite[Theorem 2.1]{Alessandrini1992}.
+  See \cite[Theorem 2.1]{Alessandrini1992} and \cite[Theorem 2.2]{Alessandrini1992} where we set $\underline{\alpha}=n$ to be the outer unit normal and $D=b_0-b_1$.
 \end{proof}
-
-\chapter{Harmonic vector fields, $d=2$}
-
-
-\section{No inflow or outflow}
-
-% \begin{proposition}[Upper bound on $M$]
-%   Let $d=2$ and $\Omega$ be a compact manifold with corners with Betti numbers $b_0=1$, and $b_1$.
-%   Let further $u\colon X\to\R^2$ be 
-%   a Morse harmonic vector field without inflow or outflow.
-%   Then we have $$M+1\leq b_1\,.$$
-% \end{proposition}
-% \begin{proof}[Sketch of proof.]
-%   As in the second proof of proposition \ref{pr:n2:hf:nonExistence} the critical manifolds form a directed multigraph.
-%   Since no critical manifold can intersect with the boundary each vertex
-%   of the graph has degree 4 and we thus have $2M$ edges. Now we obtain with Euler's polyhedron formula
-%   for a planar graph with multiple components
-%   \begin{align*}
-%     \text{\# minimal cycles}
-%     &= \text{\#faces}-1 \\
-%     &= 1+\text{\#components}-\text{\#vertices}+\text{\#edges} -1 \\
-%     &\geq 1+1-M+2M -1 = M+1
-%   \end{align*}
-%   Here we use the term `minimal' as in the second proof of proposition \ref{pr:n2:hf:nonExistence}.
-%   Note that each minimal cycle must contain a hole of the domain since else we could restrict $u$ to a simply
-%   connected region containing this cycle. Then by proposition \ref{pr:n2:hvf:simplyConnected} $u$ would correspond to the gradient of 
-%   a harmonic function in this region and we would obtain a contradiction as in the proof of proposition \ref{pr:n2:hf:nonExistence}.
-%   Hence the number of minimal cycles is a lower bound on the number of holes $b_1$ of the domain.
-% \end{proof}
-
-% In fact using the Morse inequalities we can obtain the stronger result.
-\begin{proposition}\label{pr:n2_hvf_noInflowNoOutflow}
-  Let $X\subset\R^2$ be a compact manifold with corners and Betti numbers $b_0=1$, and $b_1$
-  and let $u\colon X\to\R^2$ be
-  a strongly Morse harmonic vector field without boundary stagnation points.
-  Then we have the relation $M=-\chi(X)$ where $M$ denotes the number of stagnation points and
-  $\chi(X)$ is the Euler characteristic of $X$.
-\end{proposition}
-\begin{proof}
-  We slit the domain $X$ such that it is homeomorphic to the disk as is 
-  depicted in figure \ref{fi:n2_hvf_slitDomain}.
-  Denote the slit by $\Gamma$. Since the number of interior stagnation points is 
-  finite by proposition \ref{pr:finiteness_critical_points}, we can choose $\Gamma$ in such a way that it does not contain
-  any interior stagnation points.
-  We write denote the boundary of $\Gamma$ by $\gamma=\partial\Gamma=\Gamma\cap\Sigma$
-  and define points $\brk[c]*{x_1,\dots,x_{2b_1}}=\gamma$.
-  Note that there are $2b_1$ many such points.
-  % We can assume that $\Gamma$ is a smooth manifold.
-  % Now at the point $x_1$
-  % we have that $u$ is parallel to the boundary $\Sigma$.
-  % Thus we can slant
-  % the cut in such a way such that $x_1$ is an essential stagnation point of index $0$ of $u$ on the stratification
-  % of $\tiX$.
-  % Here $\tiX$ denotes the covering space of $X$ generated by the cut $\Gamma$.
-  % We denote the induced strata by $\Gamma$ also with $\Gamma$. Note that then $x_1$ is no
-  % essential stagnation point for $-u$.
-  % We modify the cut for the other points $x_2,\dots,x_{2b_1}$ as with $x_1$.
-  Without loss of generality we can assume that $\Gamma$ and $u$ form an acute angle at each point of $\gamma$.
-  The situation is depicted in figure \ref{fi:n2_hvf_slitDomain}.
-  \begin{figure}
-    \centering
-    \input{../Figures/n2_cutOmega_noInflowNoOutflow.pdf_tex}
-    \caption{How we slit the domain.}
-    \label{fi:n2_hvf_slitDomain}
-  \end{figure}
-  For the following argumentation we require that $u$ is strongly Morse on the new domain $\tiX$ 
-  so assume for a moment that this is the case.
-  Since each $x_j$ is either an essential critical point of $u$ or of $-u$ on the slit domain $\tiX$ we have that
-  \begin{align}
-    \ind_{\gamma,0}(u)+\ind_{\gamma,0}(-u)=2b_1\,.\label{eq:n2_hvf_noInflowNoOutflow_relgamma}
-  \end{align}
-  Since there are no stagnation points on $\Sigma$ we have the relations
-  \begin{align}
-    \mu_k=\ind_{\Gamma,k}(u)+\ind_{\gamma,k}(u) \qquad\text{ and }\qquad
-    \nu_k=\ind_{\Gamma,k}(-u)+\ind_{\gamma,k}(-u)\label{eq:n2_hvf_noInflowNoOutflow_relationsMuIndex}
-  \end{align}
-  for all $k\in\brk[c]*{0,1}$.
-  All entrant stagnation points of $u$ on $\Gamma$ are also emergent
-  stagnation points of $-u$ on $\Gamma$ (and vice versa) and hence we have the relations
-  \begin{align}
-    \ind_{\Gamma,0}(u)=\ind_{\Gamma,1}(-u) \qquad\text{ and }\qquad
-    \ind_{\Gamma,1}(u)=\ind_{\Gamma,0}(-u)\,.\label{eq:n2_hvf_noInflowNoOutflow_relationsIndex}
-  \end{align}
-  Equations \eqref{eq:n2_hvf_noInflowNoOutflow_relationsMuIndex} and \eqref{eq:n2_hvf_noInflowNoOutflow_relationsIndex}
-  yield 
-  \begin{align}
-    \mu_0-\ind_{\gamma,0}(u)=\nu_1 \qquad\text{ and }\qquad
-    \mu_1=\nu_0-\ind_{\gamma,0}(-u)\,.\label{eq:n2_hvf_noInflowNoOutflow_relationsMuNu}
-  \end{align}
-  Since $\tiX$ is now simply connected $u$ is 
-  by proposition \ref{pr:n2:hvf:simplyConnected}
-  the gradient of a harmonic function $f$ on this new domain.
-  For this $f$ we have the Morse inequalities
-  \begin{align}
-    M+\mu_1-\mu_0&=-\chi(\tiX)=-1 \label{eq:n2_hvf_MorseInequalities_1}
-  \end{align}
-  and for $-f$ the Morse inequalities
-  \begin{align}
-    M+\nu_1-\nu_0&=-\chi(\tiX)=-1\,. \label{eq:n2_hvf_MorseInequalities_2}
-  \end{align}
-  Adding equations \eqref{eq:n2_hvf_MorseInequalities_1} and \eqref{eq:n2_hvf_MorseInequalities_2} and using the relation
-  \eqref{eq:n2_hvf_noInflowNoOutflow_relationsMuNu} and then \eqref{eq:n2_hvf_noInflowNoOutflow_relgamma} we obtain
-  \begin{align*}
-    -2=2M-\ind_{\gamma,0}(u)-\ind_{\gamma,0}(u)
-    =2M-2b_1
-  \end{align*}
-  from which the claim follows.
-
-  The claim remains to be shown in the case that $u$ is not strongly Morse on $\tiX$. In this case let
-  $u^\e$ for $\e\in E$ be a strongly Morse function as in corollary \ref{co:density_boundaryGeneric}.
-  Since the $x_1,\dots,x_{2b_1}\in\gamma$ are non-degenerate stagnation points of $u$
-  due to the slanted angle at which
-  $\Gamma$ approaches $\gamma$
-  we obtain that
-  \begin{align}
-    \ind_{\gamma,k}\brk*{u^\e}=\ind_{\gamma,k}(u)\qquad\text{ and }\qquad 
-    \ind_{\gamma,k}\brk*{-u^\e}=\ind_{\gamma,k}(-u)
-    \label{eq:n3_disproof_morse_indexApprox}
-  \end{align}
-  By the same corollary $u^\e$ has no stagnation points on $\Sigma$.
-  The claim then follows by the calculations above where we replace
-  $u$ with $u^\e$ and then note that $M^\e=M$.
-\end{proof}
-We now give an alternative proof using the argument principle.
-\begin{proof}
-  As before we slit the domain such that it is homeomorphic to a disk. By proposition \ref{pr:n2:hvf:simplyConnected} $u$ is the gradient of a
-  harmonic function $f$ on this new domain $\tiX$. Let $h\in\Hol(\tiX)$ be the holomorphic function given by $h=\nabla f$.
-  Let $\gamma$ traverse the boundary of the slit domain such that the domain lies to the left of $\gamma$.
-  We now determine the change of argument $\arg h$ along $\gamma$. For this
-  consider first the parts of $\gamma$ traversing the slits. Since $\nabla f$ is continuously differentiable
-  along the slit and $\gamma$ traverses the slit once in one direction and once in the other 
-  the contribution in the change of $\arg h$ from the slits vanishes.
-  On the other hand as $\gamma$ traverses the boundary $\Sigma$ the contribution to the change in
-  argument of $\arg h$ is $2\pi$ for every hole in the domain 
-  since $h\cdot\gamma'=u\cdot\gamma'$ does not change sign as $\gamma$ traverses a hole clockwise direction.
-  Similarly the contribution to the change in argument of $\arg h$ is $-2\pi$ for the outer boundary component
-  which is traversed counterclockwise.
-  Since we have $b_1$ holes in the domain the total change of $\arg h$ as $\gamma$ traverses $\Sigma$ is
-  $2\pi(b_1-1)$.
-  Since $h$ has no poles it follows from the argument principle (see for example \cite[Chapter VIII]{Gamelin2001}) that
-  \begin{align*}
-    2\pi(b_1-1)=\int_\gamma\dif\arg (h(z)) =  2\pi M
-  \end{align*}
-  From this the claim follows.
-\end{proof}
-
-We say that $u$ has no \emph{inflow} on a boundary subset $S\subseteq\Sigma$ if $\Sigma^-\cap S=\emptyset$ and
-that it has no \emph{outflow} if $\Sigma^+\cap S=\emptyset$.
-Armed with this definition we can give the following corollary.
-\begin{corollary}\label{co:n2_noInflowNoOutflow}
-  Let $X$ be a compact manifold with corners and $u\colon X\to\R^d$ a strongly Morse
-  harmonic vector field without inflow or outflow on
-  $\Sigma$. Then we have the relation $M=-\chi(X)$ where $M$ is the number of stagnation points
-  and $\chi(X)$ is the Euler characteristic of $X$.
-\end{corollary}
-This result could also have been proved using the Poincaré-Hopf index theorem.
-For this define:
-\begin{definition}[{\cite[Definition 1.1.1]{Brasselet2009}}]
-  The \emph{Poincaré-Hopf index} $\ind_{\text{PH},x}(f)$ of an isolated
-  interior stagnation point $x$ of $u$ is the degree of the Gauss map $u/\abs{u}\colon S^{d-1}_\e(x)\to S^{d-1}$
-   for sufficiently small $\e>0$.
-  The \emph{total index} $\ind_{\text{PH}}(u)$ is the sum of indexes $\ind_{\text{PH},x}(f)$
-  for every interior stagnation point $x$ of $u$.
-\end{definition}
-Note that in $d=2$ dimensions a point $x$ with Morse index $k$ has Poincaré-Hopf index $(-1)^k$.
-Thus we have for a harmonic vector field that $M=-\ind_\text{PH}(u)$ and thus corollary \ref{co:n2_noInflowNoOutflow}
-also follows from the Poincaré-Hopf index theorem:
-\begin{theorem}[Poincaré-Hopf index theorem, {\cite[§6]{Milnor1965}}]
-  Let $u\colon X\to\R^d$ be a vector field on a manifold with corners without inflow. Then we have
-  that the total index $\ind_\text{PH}(u)$ equals the Euler characteristic $\chi(X)$.
-\end{theorem}
-\begin{proof}
-  See for example \cite[§6]{Milnor1965}.
-\end{proof}
+If we set $X$ to be homeomorphic to the ball, that is $b_1-b_0=-1$ and require the entrant
+boundary to be simply connected we then obtain from proposition \ref{pr:alessandrini_inflowOutflow} that $M\leq0$, 
+that is $f$ has no non-degenerate critical point.
+\td{incorporate this result in the following examples.}
 
 
-In the following we would like to give examples for harmonic vector fields.
+\section{If we allow for holes in the domain}
+
+We would like to give examples for harmonic vector fields.
 For this define two differential operators for $d=2$ dimensions by
-\begin{align*}
-  \nabla^\perp f=\Curl f=\vect{-\partial_2f \\ \partial_1f}
-\end{align*}
+\begin{align}
+  \nabla^\perp f=\Curl f=\vect{-\partial_2f \\ \partial_1f}\label{eq:n2_nablaPerp}
+\end{align}
 and
 \begin{align*}
   \curl u=-\partial_1u_2+\partial_2u_1\,.
 \end{align*}
-\td{Look into James Kelliher, stream functions for divergence free vector fields. 
-Relation to differential forms.}
+\nomenclature{$\nabla^\perp$}{Orthogonal gradient. Given by equation \eqref{eq:n2_nablaPerp}.}
 
-The following proposition gives us a recipe to generate harmonic vector fields in $d=2$ dimensions.
+The next proposition gives us a recipe to generate harmonic vector fields in $d=2$ dimensions.
 \begin{proposition}
-  Let $\psi\colon\Omega\to\R$ be harmonic then $\nabla^\perp f$ is a harmonic vector field.
+  Let $\psi\colon\Omega\to\R$ be harmonic then $u=\nabla^\perp\psi$ is a harmonic vector field.
 \end{proposition} 
 \begin{proof}
   Since $\diver \nabla^\perp=0$ we have
@@ -1908,132 +1759,155 @@ The following proposition gives us a recipe to generate harmonic vector fields i
   \end{align*}
 \end{proof}
 The function $\psi$ is also called a \emph{stream function}.
-
-We now give an example of a harmonic vector field without 
-inflow or outflow and with one stagnation point.
-For this consider the stream function
-\begin{equation}
-  \begin{aligned}
-  \psi\colon\R^2\setminus\brk[c]*{-e_1,e_1}&\to\R \\
-  x&\mapsto\Phi_2\brk*{x-e_1}+\Phi_2\brk*{x+e_1}
-  \end{aligned}\label{eq:n2:hvf:noInflowNoOutflow}
-\end{equation}
-where
-\begin{align*}
-  \Phi_2=\log(\abs{\cdot})
-\end{align*}
-is a multiple of the fundamental solution of the Laplace equation on $\R^2$ and $e_i$ is the $i$-th unit vector.
-Figure \ref{pl:n2_hvf_noInflowNoOutflow} indicates that $u=\nabla^\perp\psi$
-in the region $X=\psi^{-1}\brk*{[-1,1]}$ has the desired properties.
-\begin{figure}
-  \centering
-  \includegraphics[width=0.6\textwidth]{../Plots/HarmonicVectorFields_gr1.eps}
-  \caption{A plot of $u=\nabla^\perp\psi$ in the region $\psi^{-1}\brk*{[-1,1]}$.
-    Here $\psi$ is given by equation \eqref{eq:n2:hvf:noInflowNoOutflow}.}
-  \label{pl:n2_hvf_noInflowNoOutflow}
-\end{figure}
-Since $\psi$ is constant on each component of $\partial X$ the function $u$ has 
-no inflow or outflow.
-It follows from $\psi(-x)=\psi(x)$ that $u(-x)=-u(x)$ 
-and thus the origin $x=0$ is a stagnation point.
-By proposition \ref{pr:n2_hvf_noInflowNoOutflow} it is in fact the
-sole stagnation point of $u$ on $X$.
-
-In a second example from \cite{Wahlen2023} we fix the domain rather than the function.
-For this set $X=\overline{B_4}\setminus\brk*{B_1(2e_1)\cup B_1(-2e_1)}$ to be the domain.
-We then have the system
-\begin{equation}
-  \begin{aligned}
-    \Delta \psi&=0 &&\text{, on }\Omega \\
-    \psi&=0 &&\text{, on the outer ring }4S^1 \\
-    \psi&=1 &&\text{, on the inner rings }S^1(-2e_1)\cup S^1(2e_1)
-  \end{aligned}\label{eq:n2:hvf:roundRegion:noInflowNoOutflow}
-\end{equation}
-We solve this system numerically and set $u=\nabla^\perp\psi$.
-The result is plotted in figure \ref{pl:n2_hvf_roundRegion_noInflowNoOutflow}.
-\begin{figure}
-  \centering
-  \includegraphics[width=0.6\textwidth]{../Plots/HarmonicVectorFields_gr4.eps}
-  \caption{A plot of $u=\nabla^\perp\psi$ where $\psi$ is the numerical solution to
-   \eqref{eq:n2:hvf:roundRegion:noInflowNoOutflow}.}
-  \label{pl:n2_hvf_roundRegion_noInflowNoOutflow}
-\end{figure}
-Again it follows from symmetry that the origin is a stagnation point and
-from proposition \ref{pr:n2_hvf_noInflowNoOutflow} that it is in fact the sole stagnation point of $u$.
-
-\section{Example of inflow on one side and outflow on the other}
-In the following we aim to give examples of domains in $d=2$ dimensions for which 
+In the following we aim to give examples of harmonic vector fields on
+domains in $d=2$ dimensions with interior stagnation points for which 
 we have inflow on one simply connected boundary component and outflow on another simply connected boundary
-component with stagnation points.
-For this consider first the stream function
-\begin{equation}
-  \begin{aligned}
-  \psi\colon \R^2\setminus\brk[c]*{-e_1,e_1}&\to\R \\
-  x&\mapsto\Phi_2\brk*{x-e_1}+x_1
-  \end{aligned}\label{eq:n2:hvf:InflowOutflow:singleHole}
-\end{equation}
-Figure \ref{pl:n2_hvf_InflowOutflow_asymmetric_single} indicates that $u=\nabla^\perp\psi$ fulfils the
-requirements on the domain $X=\psi^{-1}\brk*{[-0.5,2]}\cap \R\times[-2,2]$.
-\begin{figure}
-  \centering
-  \includegraphics[width=0.6\textwidth]{../Plots/HarmonicVectorFields_gr3.eps}
-  \caption{A plot of $u=\nabla^\perp\psi$ in the region $\psi^{-1}\brk*{[-0.5,2]}\cap \R\times[-2,2]$.
-  Here $\psi$ is given by equation \eqref{eq:n2:hvf:InflowOutflow:singleHole}.}
-  \label{pl:n2_hvf_InflowOutflow_asymmetric_single}
-\end{figure}
-An elementary calculation reveals that the origin is a stagnation point of $u$.
+component.
 
-Now we would like to have a harmonic vector field similar to the example with two holes with
-inflow on the one side and outflow on the other. 
-For this consider the streamline
-\begin{equation}
-  \begin{aligned}
-  u\colon\R^2\setminus\brk[c]*{-e_1,e_1}&\to\R \\
-  x&\mapsto\Phi_2\brk*{x-e_1}-\Phi_2\brk*{x+e_1}+x_1
-  \end{aligned}\label{eq:n2:hvf:noInflowNoOutflow:doubleHoles}
-\end{equation}
-Figure \ref{pl:n2_hvf_InflowOutflow_symmetric_region} indicates that $u=\nabla^\perp\psi$ 
-on the domain $X=\psi^{-1}\brk*{[-0.7,0.7]}\cap \R\times[-2,2]$ is the function
-we are looking for.
-\begin{figure}
-  \centering
-  \includegraphics[width=0.6\textwidth]{../Plots/HarmonicVectorFields_gr2.eps}
-  \caption{A plot of $u=\nabla^\perp\psi$ in the region $\psi^{-1}\brk*{[-0.7,0.7]}\cap \R\times[-2,2]$.
-  Here $\psi$ is given by equation \eqref{eq:n2:hvf:noInflowNoOutflow:doubleHoles}.}
-  \label{pl:n2_hvf_InflowOutflow_symmetric_region}
-\end{figure}
+\begin{example}[Flow through tube with hole and stagnation point]\label{ex:n2_flowthroughHole}
+  Consider the stream function
+  \begin{equation}
+    \begin{aligned}
+    \psi\colon \R^2\setminus\brk[c]*{-e_1,e_1}&\to\R \\
+    x&\mapsto\Phi_2\brk*{x-e_1}+x_1
+    \end{aligned}\label{eq:n2:hvf:InflowOutflow:singleHole}
+  \end{equation}
+  where
+  \begin{align}
+    \Phi_2=\log(\abs{\cdot})\label{eq:n2_defPhi}
+  \end{align}
+  is a multiple of the fundamental solution of the Laplace equation on $\R^2$ and $e_i$ is the $i$-th unit vector.
+  A plot of the streamlines in figure \ref{pl:n2_hvf_InflowOutflow_asymmetric_single} indicates that $u=\nabla^\perp\psi$ fulfils the
+  requirements on the domain
+  $$X=\psi^{-1}\brk*{[-0.5,2]}\cap \brk*{\R\times[-2,2]}\,.$$
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.6\textwidth]{../Plots/HarmonicVectorFields_gr3.eps}
+    \caption{A plot of $u=\nabla^\perp\psi$ in the region $\psi^{-1}\brk*{[-0.5,2]}\cap \brk*{\R\times[-2,2]}$.
+    Here $\psi$ is given by equation \eqref{eq:n2:hvf:InflowOutflow:singleHole}.}
+    \label{pl:n2_hvf_InflowOutflow_asymmetric_single}
+  \end{figure}
+  Indeed, an elementary calculation reveals that the origin is a stagnation point of $u$.
+\end{example}
+\nomenclature{$\Phi_2$}{Multiple of the fundamental solution of the Laplace equation on $\R^2$. Given by equation \eqref{eq:n2_defPhi}.}
+Example \ref{ex:n2_flowthroughHole} highlights the importance of the requirement in proposition \ref{pr:n2_negativeResult} that the domain be simply connected.
+We now give a similar example, this time with two holes in the domain.
+
+\begin{example}[Flow through tube with two holes and stagnation points]
+  We consider the stream function
+  \begin{equation}
+    \begin{aligned}
+    \psi\colon\R^2\setminus\brk[c]*{-e_1,e_1}&\to\R \\
+    x&\mapsto\Phi_2\brk*{x-e_1}-\Phi_2\brk*{x+e_1}+x_1
+    \end{aligned}\label{eq:n2:hvf:noInflowNoOutflow:doubleHoles}
+  \end{equation}
+  A plot of the streamlines in figure \ref{pl:n2_hvf_InflowOutflow_symmetric_region} indicates that $u=\nabla^\perp\psi$ 
+  on the domain
+  $$X=\psi^{-1}\brk*{[-0.7,0.7]}\cap \brk*{\R\times[-2,2]}$$
+  has the desired properties.
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.6\textwidth]{../Plots/HarmonicVectorFields_gr2.eps}
+    \caption{A plot of $u=\nabla^\perp\psi$ in the region $\psi^{-1}\brk*{[-0.7,0.7]}\cap \brk*{\R\times[-2,2]}$.
+    Here $\psi$ is given by equation \eqref{eq:n2:hvf:noInflowNoOutflow:doubleHoles}.}
+    \label{pl:n2_hvf_InflowOutflow_symmetric_region}
+  \end{figure}
+\end{example}
+
+\section{The case of $d=4$ dimensions}
+
+We ask whether there exists a harmonic vector field on a simply connected domain with connected entrant boundary and with interior stagnation point 
+in a dimension higher than $d=2$. Indeed, in $d=4$ dimensions we can readily give an example
+of such a harmonic vector field.
+\begin{example}[Connected entrant boundary in $d=4$ dimensions]\label{ex:n4}
+  Consider as domain $X=B_1\subseteq\R^4$ the unit ball and
+  the harmonic function 
+  \begin{equation}
+    \begin{aligned}
+    f\colon X&\to \R \\
+    x &\mapsto x_1^2+x_2^2-x_3^2-x_4^2\,.
+    \end{aligned}
+    \label{eq:n4_deff}
+  \end{equation}
+  This has a critical point at the origin.
+  We will show in proposition \ref{pr:n4_connectedBd} that the entrant boundary $\Sigma^-$ is
+  in fact connected.
+\end{example}
+
+\begin{proposition}[Simply connected entry boundary in example \ref{ex:n4}]\label{pr:n4_connectedBd}
+  The harmonic function given by equation \eqref{eq:n4_deff} has simply connected entrant boundary.
+\end{proposition}
+\begin{proof}
+  First observe that the boundary $\Sigma=S^3$ can be away from the equator locally parametrised by the coordinates $\barx = (x_2,x_3,x_4)$
+  for which we have $\abs{\barx}\leq 1$. By the condition
+  \begin{align}
+    \sum_i x_i^2 = 1\label{eq:n4:ball}
+  \end{align}
+  on the boundary $\Sigma=S^3$ we have that $x_1$ is then uniquely determined up to sign.
+  Thus we have have defined parametrisations
+  \begin{align}
+    \begin{aligned}\phi_\pm\colon \R^3\supseteq B_1&\to \Sigma\subseteq\R^4 \\
+    \barx&\mapsto x=\brk*{x_1,\barx}\text{ such that } \pm x_1\geq0
+    \end{aligned}\label{eq:n4:parametrisation}
+  \end{align}
+  with inverses $\psi_\pm = \brk*{\phi_\pm}^{-1}$.
+  We now calculate the gradient of $f$
+  \begin{align*}
+    \nabla f = 2\vect{x_1 & x_2 & -x_3 & -x_4}^\top
+  \end{align*}
+  and the outer unit normal to the boundary $\Sigma$ is given by
+  \begin{align*}
+    n = \vect{x_1 & \cdots & x_4}^\top\,.
+  \end{align*}
+  Thus we have $x\in\Sigma^\pm$ iff
+  \begin{align*}
+    0<\pm \nabla f\cdot n = \pm 2\brk*{x_1^2+x_2^2-x_3^2-x_4^2}\,.
+  \end{align*}
+  Using condition \eqref{eq:n4:ball} we obtain the equivalent condition
+  \begin{align*}
+    0<\pm 1-2\brk*{x_3^2+x_4^2}
+  \end{align*}
+  Define the cylinder
+  \begin{align*}
+    C = \brk[c]*{\barx\in \R^3\colon x_3^2+x_4^2<1/2} = \R\times B_{1/\sqrt{2}}\subseteq\R^3
+  \end{align*}
+  If we return to our parametrisation \eqref{eq:n4:parametrisation} we see that we have $\barx\in B_1\cap C$ iff
+  $\phi_\pm(\barx)\in \Sigma^+$ and hence 
+  \begin{align*}
+    B_1\cap C=\psi_\pm\brk*{\Sigma^+}
+  \end{align*}
+  and 
+  \begin{align*}
+    B_1\setminus C=\psi_\pm\brk*{\Sigma^-}\,.
+  \end{align*}
+  Since $\phi_+$ is a homeomorphism onto the northern hemisphere and
+  $\phi_-$ a homeomorphism onto the southern hemisphere and the surface $S^2$
+  corresponds to the equatorial sphere the claim then follows.
+  The situation is depicted in figure \ref{fi:n4_sigma}.
+  \begin{figure}[h]
+    \centering
+    \def\svgwidth{0.7\textwidth}
+    \input{../Figures/n4_sigma.pdf_tex}
+    \caption{Visualisation of the situation in the proof of proposition \ref{pr:n4_connectedBd}.}
+    \label{fi:n4_sigma}
+  \end{figure}
+\end{proof}
 
 
-In another example given by \cite{Wahlen2023} we fix the domain rather than the function.
-Let $\Omega=B_4\setminus\brk*{B_1(2e_1)\cup B_1(-2e_1)}$ be the domain as before.
-We now have the system
-\begin{equation}
-  \begin{aligned}
-    \Delta \psi&=0 &&\text{, on }\Omega \\
-    \psi&=0 &&\text{, on the outer ring }4S^1 \\
-    \psi&=-1 &&\text{, on the left inner ring }S^1(-2e_1) \\
-    \psi&=1 &&\text{, on the right inner ring }S^1(2e_1)
-  \end{aligned}\label{eq:n2:hvf:roundRegion:InflowOutflow}
-\end{equation}
-We solve this system numerically and set $u=\nabla^\perp\psi$.
-The result is plotted in figure \ref{pl:n2_hvf_roundRegion_InflowOutflow}.
-\begin{figure}
-  \centering
-  \includegraphics[width=0.6\textwidth]{../Plots/HarmonicVectorFields_gr5.eps}
-  \caption{A plot of $u=\nabla^\perp\psi$ where $\psi$ is the numerical solution to
-   \eqref{eq:n2:hvf:roundRegion:InflowOutflow}.}
-  \label{pl:n2_hvf_roundRegion_InflowOutflow}
-\end{figure}
-Here we obtain from the symmetry $\psi(-x_1,x_2)=\psi(x)$ that $\psi=0$ on
-the $x_2$-axis. Since also $\psi=0$ on $4S^1$ we have two stagnation points
-at $\pm4e_2$.
 
-\chapter{Harmonic functions, $d=3$}
+\chapter{The case of simply connected entrant boundaries in $d=3$ dimensions.}
 
-\section{The cylinder}
+In the following chapter we will discuss Question \ref{} in the case of $d=3$ dimensions.
+We will first give a negative answer in the case of a cylinder.
+After that we will use Morse theory to essentially argue that the number of interior stagnation points
+of such an example with simply connected entrant boundary must be an even number.
+Finally we will give an example of a function and a domain with the desired properties.
 
-The following proof comes from \cite{Wahlen2023}
-\begin{proposition}
+\section{A negative result for the cylinder}
+
+The following proof comes from \cite{Wahlen2023} and is a negative answer to quesion \ref{}
+for the cylinder.
+\begin{proposition}\label{pr:n3_inflowOutflowCylinder}
   Let $\Omega=(0,1)\times U\subseteq\R^3$ be an open cylinder where $U\subseteq\R^2$ is an open set.
   Let further $f\colon X=\overline{\Omega}\to\R$ be
   harmonic such that the sides
@@ -2057,10 +1931,10 @@ The following proof comes from \cite{Wahlen2023}
   a contradiction.
 \end{proof}
 
-\section{Simply connected entrant boundary}
+\section{A condition on the interior type numbers}
 
 Mimicking the proof in 2 dimensions we obtain the following proposition.
-\begin{proposition}
+\begin{proposition}\label{pr:n3_inflowOutflowRels}
   Let $X\subset\R^3$ be a compact manifold with corners.
   Let $f\colon X\to\R$ be a Morse harmonic function. Assume that the strictly entrant boundary $\Sigma^-$ is non-empty and simply connected
   and that $\gamma=\partial\Sigma^-$ is a one-dimensional manifold with corners homeomorphic to the circle $S^1\subseteq\R^2$.
@@ -2155,9 +2029,19 @@ Mimicking the proof in 2 dimensions we obtain the following proposition.
 \end{proof}
 
 
-\section{A harmonic function with interior critical point and simply connected entrant boundary}
-In fact we can give an example for such a function with
-simply connected entrant boundary.
+\section{A harmonic function with interior critical point and simply connected entrant boundary in $d=3$ dimensions}
+
+Based on example \ref{ex:n4} in $d=4$ dimensions of a harmonic vector field with interior stagnation point
+the author argued that it would be simplest to construct such a vector field in $d=3$ dimensions in a similar manner.
+More specifically we choose as domain the ball and polynomials as our harmonic function. 
+In choosing the ball as domain we also take into account the result from proposition \ref{pr:n3_inflowOutflowCylinder}
+which is a negative result to question \ref{} for the cylinder.
+Based on the result from proposition \ref{pr:n3_inflowOutflowRels} we see that the number of stagnation
+points must be at least two.
+The author then implemented a Mathematica routine to generate harmonic polynomials
+with two stagnation points and a plotting function to inspect what occurs.
+Indeed, this approach yielded a function with the desired properties as
+we shall discuss in the following example.
 \begin{example}[A harmonic function with interior critical point and simply connected entrant boundary]
   Consider the domain $X=\overline{B}_r\subseteq\R^3$ with $r>0$ sufficiently large, and the harmonic function
   \begin{align}
@@ -2198,6 +2082,7 @@ simply connected entrant boundary.
   \end{figure}
   We will give a formal proof of this in proposition \ref{pr:n3_polynomial_simplyConnected}.
 \end{example}
+\td{Bring order into this section. Rename propositions to lemmas / etc.}
 We start by stating some required definitions.
 For polynomials $p_1,\dots,p_k\in\R\brk[s]*{x_1,\dots,x_d}$ and a set $U\subseteq\R^d$ we denote the
 variety generated by these polynomials on $U$ by $V_U\brk*{p_1,\dots,p_k}$.
@@ -2220,6 +2105,7 @@ For a given $\delta>0$ and a subset $A\subseteq\R^d$ we call the union of $\delt
 \end{align}
 a \emph{tubular neighbourhood} of $A$.
 We have the following proposition, the proof of which will span several propositions.
+\nomenclature{$V_U\brk*{\dots}$, $V\brk*{\dots}$}{Algebraic variety.}
 \nomenclature{$d_H(A,B)$}{Hausdorff metric. See equation \eqref{eq:def_HausdorffMetric}.}
 \nomenclature{$\dist(x,A)$}{Distance between $x$ and $A$. See equation \eqref{eq:def_distance}}
 \nomenclature{$\tubular_\delta(A)$}{Tubular neighbourhood of $A$. See equation \eqref{eq:def_tubularNbh}.}
@@ -2382,7 +2268,7 @@ Analogously let $P_1$ denote the homogenisation of $p_1$, that is
   We set
   \begin{align*}
     \widetilde{\cV}_\e=\psi^{-1}\brk*{\cV_\e\cap \brk*{B_{1/2}\times\R_{\geq0}}}
-    =V_{B_{1/2}}\brk*{P_1\brk*{\e,\cdot_1,\cdot_2,\sqrt{1-\cdot_1^2-\cdot_2^2}}}
+    =V_{B_{1/2}}\brk*{x\mapsto P_1\brk*{\e,x_1,x_2,\sqrt{1-x_1^2-x_2^2}}}
     =V_{B_{1/2}}\brk*{\tiP_1\brk*{\e,\cdot}}
   \end{align*}
   where we defined
@@ -2442,6 +2328,7 @@ Analogously let $P_1$ denote the homogenisation of $p_1$, that is
       2x_2&x_3
     \end{bmatrix}
   \end{align*}
+  \td{Add a reference for the following.}
   By the Jacobi criterion it is sufficient to show that this matrix is
   of full rank on $V\brk*{p_1,P_2\brk*{r,\cdot}}$.
   This is equivalent to showing that
@@ -2470,15 +2357,16 @@ Analogously let $P_1$ denote the homogenisation of $p_1$, that is
   \begin{align}
     V\brk*{p_1,h_1,h_2,h_3} \label{eq:n3_ex_smoothness_subvar}
   \end{align}
-  Maple calculates the Gröbner basis with lexicographic order $x<y<z$
+  \td{Add references, elaborate the following.}
+  Maple calculates the Gröbner basis with lexicographic order $x_1<x_2<x_3$
   \begin{align*}
-    72x_1^8 - 198x_1^7 + 228x_1^6 - 153x_1^5 + 56x_1^4 - 5x_1^3 \\
-    72x_1^5x_2 - 126x_1^4x_2 + 102x_1^3x_2 - 51x_1^2x_2 + 5x_1x_2 \\
-    -24x_1^7 + 42x_1^6 - 2x_1^5 - 23x_1^4 + 7x_1^3 + 10x_1x_2^2 \\
-    48x_1^4x_2 - 60x_1^3x_2 + 13x_1^2x_2 + 15x_2^3 \\
-    24x_1^4x_2 - 30x_1^3x_2 + 29x_1^2x_2 - 10x_1x_2 + 5x_1x_3 \\
-    72x_1^7 - 126x_1^6 + 6x_1^5 + 69x_1^4 - 31x_1^3 + 10x_1^2 - 10x_2^2 + 20x_2x_3 \\
-    -72x_1^7 + 414x_1^6 - 654x_1^5 + 399x_1^4 - 97x_1^3 + 10x_1^2 - 30x_2^2 + 20x_3^2
+    & 72x_1^8 - 198x_1^7 + 228x_1^6 - 153x_1^5 + 56x_1^4 - 5x_1^3\,, \\
+    & 72x_1^5x_2 - 126x_1^4x_2 + 102x_1^3x_2 - 51x_1^2x_2 + 5x_1x_2\,, \\
+    & -24x_1^7 + 42x_1^6 - 2x_1^5 - 23x_1^4 + 7x_1^3 + 10x_1x_2^2\,, \\
+    & 48x_1^4x_2 - 60x_1^3x_2 + 13x_1^2x_2 + 15x_2^3\,, \\
+    & 24x_1^4x_2 - 30x_1^3x_2 + 29x_1^2x_2 - 10x_1x_2 + 5x_1x_3\,, \\
+    & 72x_1^7 - 126x_1^6 + 6x_1^5 + 69x_1^4 - 31x_1^3 + 10x_1^2 - 10x_2^2 + 20x_2x_3\,, \\
+    & -72x_1^7 + 414x_1^6 - 654x_1^5 + 399x_1^4 - 97x_1^3 + 10x_1^2 - 30x_2^2 + 20x_3^2\,,
   \end{align*}
   from which we see that the variety \eqref{eq:n3_ex_smoothness_subvar} contains finitely many points.
   Thus if we choose $R$ so large that all of these points are contained in the ball $B_R$ then we have
@@ -2535,6 +2423,7 @@ Analogously let $P_1$ denote the homogenisation of $p_1$, that is
   % \end{align*}
   % from which this claim also follows.
 
+  \td{The following proof is a little unclear in parts.}
 \begin{proposition}[Convergence at smooth points]\label{pr:n3_polynomial_convergenceSmoothSet}
   For $\e\in\R$ and an open set $W\subseteq\R^3$ define the variety $\cV_\e=V_W\brk*{P_1\brk*{\e,\cdot},p_2}$.
   Let $U\subseteq \R^3$ be an open set such that $\cV_0$ is smooth
@@ -2566,7 +2455,7 @@ Analogously let $P_1$ denote the homogenisation of $p_1$, that is
   $\Omega_x\subseteq \R^4$ of $(x,0)$ and $\omega_x\subseteq\R^3$, a coordinate permutation $I\in O(4)$
   and a mapping $g_x\in C^1\brk*{\omega_x;\R}$ such that
   \begin{align*}
-    V\brk*{P_1,p_2}\cap \Omega_x=\brk[c]*{\varphi(x)=I\brk*{y,g_x(y)}\colon y\in\omega_x}\,.
+    V\brk*{P_1,p_2}\cap \Omega_x=\brk[c]*{I\brk*{y,g_x(y)}\colon y\in\omega_x}\,.
   \end{align*}
   By equation \eqref{eq:n3_polynomial_homotopic_df} we can assume (possibly after shrinking the open sets) that $I$ does not permute the $\e$-coordinate.
   We can also assume that $\Omega_x=B_{\delta_x}\times W_x\subseteq\R^4$ for some open $W_x\subseteq\R^3$ and 
@@ -2590,6 +2479,7 @@ Analogously let $P_1$ denote the homogenisation of $p_1$, that is
   $\delta_x$ for the $\Omega_x$ in this finite subcover and the claim follows.
 \end{proof}
 
+\td{Issues with final step in the proof.}
 \begin{proposition}\label{pr:n3_polynomial_regularH}
   Let $\tiU_\rho$, $\tialpha$, $\e$, et cetera be as in the proof of proposition \ref{pr:n3_polynomial_smoothConnected}.
   There exists an open cube $W\subseteq\R^2$ containing the origin and a set 
@@ -2601,34 +2491,37 @@ Analogously let $P_1$ denote the homogenisation of $p_1$, that is
 \begin{proof}
   We borrow notation from the proof of proposition \ref{pr:n3_polynomial_smoothConnected}.
   Let $W\subseteq\R^2$ be an open cube around the origin which we fix later.
-  Define
-  \begin{align*}
-    \tip_1(x)=\tiP_1(1,x)=p_1\brk*{x_1,x_2,\sqrt{1-x_1^2-x_2^2}}
-  \end{align*}
+  Define polynomials
+  \begin{align}
+    \tiq_1(x)&=-x_1^3+3x_1x_2^2\label{eq:n3_polynomial_regularH_defq1} \\ 
+    \tiq_2(x)&=x_1^2-x_2^2+x_2\sqrt{1-x_1^2-x_2^2} \label{eq:n3_polynomial_regularH_defq2}
+  \end{align}
+  % \begin{align*}
+  %   \tip_1(x)=\tiP_1(1,x)=p_1\brk*{x_1,x_2,\sqrt{1-x_1^2-x_2^2}}
+  % \end{align*}
   and observe that
   \begin{align}
-    \tiP_1(\e,x)=\brk*{\tip_1}_3+\e\brk*{\tip_1}_{\leq2}\,.\label{eq:n3_polynomial_regularH_relTiP}
+    \tiP_1(\e,\cdot)=\tiq_1+\e\tiq_2\,.\label{eq:n3_polynomial_regularH_relTiP}
   \end{align}
-  Here we use $\brk*{\cdot}_k$ to refer to the parts homogeneous of degree $k$ and
-  $\brk*{\cdot}_{\leq k}$ to refer to the parts homogeneous of degree $\leq k$.
-  As noted earlier $\brk*{\tip_1}_3=-x_1^3+3x_1x_2^2$ is a monkey saddle
-  and $V_W\brk*{\brk*{\tip_1}_3}=\tiA$ is
+  % Here we use $\brk*{\cdot}_k$ to refer to the parts homogeneous of degree $k$ and
+  % $\brk*{\cdot}_{\leq k}$ to refer to the parts homogeneous of degree $\leq k$.
+  By equation \eqref{eq:n3_polynomial_regularH_defq1} $\tiq_1$ is a monkey saddle
+  and $V_W\brk*{\tiq_1}=\tiA$ is
   similar to figure \ref{fi:n3_polynomial_intersectionOriginDegenerate}.
-  The signs in the figure indicate the sign of $\brk*{\tip_1}_3$ in a given region.
-  Since we have
-  $$\brk*{\tip_1}_{\leq2}=x_1^2-x_2^2+x_2\sqrt{1-x_1^2-x_2^2}$$
-  we obtain that $\nabla \brk*{\tip_1}_{\leq2}(0)=e_2$ and $\brk*{\tip_1}_{\leq2}(0)=0$.
-  Hence we observe that the $V_W\brk*{\brk*{\tip_1}_{\leq2}}$ looks similar to figure \ref{fi:n3_polynomial_intersectionOriginOtherTerm}
+  The signs in the figure indicate the sign of $\tiq_1$ in a given region.
+  From equation \eqref{eq:n3_polynomial_regularH_defq2}
+  we obtain that $\nabla \tiq_2(0)=e_2$ and $\tiq_2(0)=0$.
+  Hence we observe that the $V_W\brk*{\tiq_2}$ looks similar to figure \ref{fi:n3_polynomial_intersectionOriginOtherTerm}
   for a sufficiently small neighbourhood $W$.
-  More concretely we choose $W$ so small that the arc $\tibeta=V_W\brk*{\brk*{\tip_1}_{\leq2}}$ has positive distance to $\tiA\cap \tiU_\rho$ for
+  More concretely we choose $W$ so small that the arc $\tibeta=V_W\brk*{\tiq_2}$ has positive distance to $\tiA\cap \tiU_\rho$ for
   any $\rho>0$ and such that a given vertical line in $W$ intersects $\tibeta$ in precisely one point.
   Now we claim that the set $C$ consisting of the vertical lines between $\tialpha^+$
   and $\tibeta$ fulfills the claim.
 
-  Indeed, consider the first quadrant.
+  Indeed, consider the right half plane.
   Here we have that
-  $\tiP_1(\e,\cdot)=\brk*{\tip_1}_3\leq0$ on $\tibeta$ and that
-  $\tiP_1(\e,\cdot)=\brk*{\tip_1}_{\leq2}\geq0$ on $\tialpha^+$. By the intermediate value theorem thus there must be for each
+  $\tiP_1(\e,\cdot)=\tiq_1\leq0$ on the arc $\tibeta$ and that
+  $\tiP_1(\e,\cdot)=\tiq_2\geq0$ on the arc $\tialpha^+$. By the intermediate value theorem thus there must be for each
   $(x_1,0)\in W$ a corresponding point 
   $(x_1,\tigamma(x_1))\in V_W\brk1{\tiP_1(\e,\cdot)}=\widetilde{\cV}_\e$ sandwiched between $\tibeta$ and $\tialpha^+$.  
   Since $\widetilde{\cV}_\e$ is smooth $\tigamma$ in fact defines an arc which we also denote by $\tigamma$.
@@ -2644,14 +2537,14 @@ Analogously let $P_1$ denote the homogenisation of $p_1$, that is
     \begin{subfigure}[b]{0.3\textwidth}
     \centering
     \input{../Figures/n3_polynomial_intersectionOriginDegenerate_new.pdf_tex}
-    \caption{Sketch of the set $V\brk*{\brk*{\tip_1}_3}$.}
+    \caption{Sketch of the set $V\brk*{\tiq_1}$.}
     \label{fi:n3_polynomial_intersectionOriginDegenerate}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.3\textwidth}
     \centering
     \input{../Figures/n3_polynomial_intersectionOriginLine_new.pdf_tex}
-    \caption{Sketch of the set $V\brk*{\brk*{\tip_1}_{\leq2}}$.}
+    \caption{Sketch of the set $V\brk*{\tiq_2}$.}
     \label{fi:n3_polynomial_intersectionOriginOtherTerm}
     \end{subfigure}
     \hfill
@@ -2671,9 +2564,258 @@ Analogously let $P_1$ denote the homogenisation of $p_1$, that is
   \end{figure}
 \end{proof}
 
+\chapter{No in- or outflow in $d=2$ dimensions}
 
-\chapter{Harmonic vector fields, $d=3$}
-\section{No inflow or outflow}
+% \begin{proposition}[Upper bound on $M$]
+%   Let $d=2$ and $\Omega$ be a compact manifold with corners with Betti numbers $b_0=1$, and $b_1$.
+%   Let further $u\colon X\to\R^2$ be 
+%   a Morse harmonic vector field without inflow or outflow.
+%   Then we have $$M+1\leq b_1\,.$$
+% \end{proposition}
+% \begin{proof}[Sketch of proof.]
+%   As in the second proof of proposition \ref{pr:n2:hf:nonExistence} the critical manifolds form a directed multigraph.
+%   Since no critical manifold can intersect with the boundary each vertex
+%   of the graph has degree 4 and we thus have $2M$ edges. Now we obtain with Euler's polyhedron formula
+%   for a planar graph with multiple components
+%   \begin{align*}
+%     \text{\# minimal cycles}
+%     &= \text{\#faces}-1 \\
+%     &= 1+\text{\#components}-\text{\#vertices}+\text{\#edges} -1 \\
+%     &\geq 1+1-M+2M -1 = M+1
+%   \end{align*}
+%   Here we use the term `minimal' as in the second proof of proposition \ref{pr:n2:hf:nonExistence}.
+%   Note that each minimal cycle must contain a hole of the domain since else we could restrict $u$ to a simply
+%   connected region containing this cycle. Then by proposition \ref{pr:n2:hvf:simplyConnected} $u$ would correspond to the gradient of 
+%   a harmonic function in this region and we would obtain a contradiction as in the proof of proposition \ref{pr:n2:hf:nonExistence}.
+%   Hence the number of minimal cycles is a lower bound on the number of holes $b_1$ of the domain.
+% \end{proof}
+
+% In fact using the Morse inequalities we can obtain the stronger result.
+\begin{proposition}\label{pr:n2_hvf_noInflowNoOutflow}
+  Let $X\subset\R^2$ be a compact manifold with corners and Betti numbers $b_0=1$, and $b_1$
+  and let $u\colon X\to\R^2$ be
+  a strongly Morse harmonic vector field without boundary stagnation points.
+  Then we have the relation $M=-\chi(X)$ where $M$ denotes the number of stagnation points and
+  $\chi(X)$ is the Euler characteristic of $X$.
+\end{proposition}
+\begin{proof}
+  We slit the domain $X$ such that it is homeomorphic to the disk as is 
+  depicted in figure \ref{fi:n2_hvf_slitDomain}.
+  Denote the slit by $\Gamma$. Since the number of interior stagnation points is 
+  finite by proposition \ref{pr:finiteness_critical_points}, we can choose $\Gamma$ in such a way that it does not contain
+  any interior stagnation points.
+  We write denote the boundary of $\Gamma$ by $\gamma=\partial\Gamma=\Gamma\cap\Sigma$
+  and define points $\brk[c]*{x_1,\dots,x_{2b_1}}=\gamma$.
+  Note that there are $2b_1$ many such points.
+  % We can assume that $\Gamma$ is a smooth manifold.
+  % Now at the point $x_1$
+  % we have that $u$ is parallel to the boundary $\Sigma$.
+  % Thus we can slant
+  % the cut in such a way such that $x_1$ is an essential stagnation point of index $0$ of $u$ on the stratification
+  % of $\tiX$.
+  % Here $\tiX$ denotes the covering space of $X$ generated by the cut $\Gamma$.
+  % We denote the induced strata by $\Gamma$ also with $\Gamma$. Note that then $x_1$ is no
+  % essential stagnation point for $-u$.
+  % We modify the cut for the other points $x_2,\dots,x_{2b_1}$ as with $x_1$.
+  Without loss of generality we can assume that $\Gamma$ and $u$ form an acute angle at each point of $\gamma$.
+  The situation is depicted in figure \ref{fi:n2_hvf_slitDomain}.
+  \begin{figure}
+    \centering
+    \input{../Figures/n2_cutOmega_noInflowNoOutflow.pdf_tex}
+    \caption{How we slit the domain.}
+    \label{fi:n2_hvf_slitDomain}
+  \end{figure}
+  For the following argumentation we require that $u$ is strongly Morse on the new domain $\tiX$ 
+  so assume for a moment that this is the case.
+  Since each $x_j$ is either an essential critical point of $u$ or of $-u$ on the slit domain $\tiX$ we have that
+  \begin{align}
+    \ind_{\gamma,0}(u)+\ind_{\gamma,0}(-u)=2b_1\,.\label{eq:n2_hvf_noInflowNoOutflow_relgamma}
+  \end{align}
+  Since there are no stagnation points on $\Sigma$ we have the relations
+  \begin{align}
+    \mu_k=\ind_{\Gamma,k}(u)+\ind_{\gamma,k}(u) \qquad\text{ and }\qquad
+    \nu_k=\ind_{\Gamma,k}(-u)+\ind_{\gamma,k}(-u)\label{eq:n2_hvf_noInflowNoOutflow_relationsMuIndex}
+  \end{align}
+  for all $k\in\brk[c]*{0,1}$.
+  All entrant stagnation points of $u$ on $\Gamma$ are also emergent
+  stagnation points of $-u$ on $\Gamma$ (and vice versa) and hence we have the relations
+  \begin{align}
+    \ind_{\Gamma,0}(u)=\ind_{\Gamma,1}(-u) \qquad\text{ and }\qquad
+    \ind_{\Gamma,1}(u)=\ind_{\Gamma,0}(-u)\,.\label{eq:n2_hvf_noInflowNoOutflow_relationsIndex}
+  \end{align}
+  Equations \eqref{eq:n2_hvf_noInflowNoOutflow_relationsMuIndex} and \eqref{eq:n2_hvf_noInflowNoOutflow_relationsIndex}
+  yield 
+  \begin{align}
+    \mu_0-\ind_{\gamma,0}(u)=\nu_1 \qquad\text{ and }\qquad
+    \mu_1=\nu_0-\ind_{\gamma,0}(-u)\,.\label{eq:n2_hvf_noInflowNoOutflow_relationsMuNu}
+  \end{align}
+  Since $\tiX$ is now simply connected $u$ is 
+  by proposition \ref{pr:n2:hvf:simplyConnected}
+  the gradient of a harmonic function $f$ on this new domain.
+  For this $f$ we have the Morse inequalities
+  \begin{align}
+    M+\mu_1-\mu_0&=-\chi(\tiX)=-1 \label{eq:n2_hvf_MorseInequalities_1}
+  \end{align}
+  and for $-f$ the Morse inequalities
+  \begin{align}
+    M+\nu_1-\nu_0&=-\chi(\tiX)=-1\,. \label{eq:n2_hvf_MorseInequalities_2}
+  \end{align}
+  Adding equations \eqref{eq:n2_hvf_MorseInequalities_1} and \eqref{eq:n2_hvf_MorseInequalities_2} and using the relation
+  \eqref{eq:n2_hvf_noInflowNoOutflow_relationsMuNu} and then \eqref{eq:n2_hvf_noInflowNoOutflow_relgamma} we obtain
+  \begin{align*}
+    -2=2M-\ind_{\gamma,0}(u)-\ind_{\gamma,0}(u)
+    =2M-2b_1
+  \end{align*}
+  from which the claim follows.
+
+  The claim remains to be shown in the case that $u$ is not strongly Morse on $\tiX$. In this case let
+  $u^\e$ for $\e\in E$ be a strongly Morse function as in corollary \ref{co:density_boundaryGeneric}.
+  Since the $x_1,\dots,x_{2b_1}\in\gamma$ are non-degenerate stagnation points of $u$
+  due to the slanted angle at which
+  $\Gamma$ approaches $\gamma$
+  we obtain that
+  \begin{align}
+    \ind_{\gamma,k}\brk*{u^\e}=\ind_{\gamma,k}(u)\qquad\text{ and }\qquad 
+    \ind_{\gamma,k}\brk*{-u^\e}=\ind_{\gamma,k}(-u)
+    \label{eq:n3_disproof_morse_indexApprox}
+  \end{align}
+  By the same corollary $u^\e$ has no stagnation points on $\Sigma$.
+  The claim then follows by the calculations above where we replace
+  $u$ with $u^\e$ and then note that $M^\e=M$.
+\end{proof}
+We now give an alternative proof using the argument principle.
+\begin{proof}
+  As before we slit the domain such that it is homeomorphic to a disk. By proposition \ref{pr:n2:hvf:simplyConnected} $u$ is the gradient of a
+  harmonic function $f$ on this new domain $\tiX$. Let $h\in\Hol(\tiX)$ be the holomorphic function given by $h=\nabla f$.
+  Let $\gamma$ traverse the boundary of the slit domain such that the domain lies to the left of $\gamma$.
+  We now determine the change of argument $\arg h$ along $\gamma$. For this
+  consider first the the slits. Since $\nabla f$ is continuously differentiable
+  along the slit and $\gamma$ traverses the slit once in one direction and once in the other,
+  the contribution to the change of $\arg h$ from the slits vanishes.
+  On the other hand as $\gamma$ traverses the boundary $\Sigma$ the contribution to the change in
+  argument of $\arg h$ is $2\pi$ for every hole in the domain 
+  since $h\cdot\gamma'=u\cdot\gamma'$ does not change sign as $\gamma$ traverses a hole in clockwise direction.
+  Similarly the contribution to the change in argument of $\arg h$ is $-2\pi$ for the outer boundary component
+  which is traversed counterclockwise.
+  Since we have $b_1$ holes in the domain the total change of $\arg h$ as $\gamma$ traverses $\Sigma$ is
+  $2\pi(b_1-1)$.
+  Since $h$ has no poles it follows from the argument principle (see for example \cite[Chapter VIII]{Gamelin2001}) that
+  \begin{align*}
+    2\pi(b_1-1)=\int_\gamma\dif\arg (h(z)) =  2\pi M
+  \end{align*}
+  from which the claim follows.
+\end{proof}
+
+We say that $u$ has no \emph{inflow} on a boundary subset $S\subseteq\Sigma$ if $\Sigma^-\cap S=\emptyset$ and
+that it has no \emph{outflow} if $\Sigma^+\cap S=\emptyset$.
+Armed with this definition we can give the following corollary.
+\begin{corollary}\label{co:n2_noInflowNoOutflow}
+  Let $X$ be a compact manifold with corners and $u\colon X\to\R^2$ a strongly Morse
+  harmonic vector field without inflow or outflow on
+  $\Sigma$. Then we have the relation $M=-\chi(X)$ where $M$ is the number of stagnation points
+  and $\chi(X)$ is the Euler characteristic of $X$.
+\end{corollary}
+This result could also have been proved using the Poincaré-Hopf index theorem.
+For this define:
+\begin{definition}[{\cite[Definition 1.1.1]{Brasselet2009}}]
+  The \emph{Poincaré-Hopf index} $\ind_{\text{PH},x}(f)$ of an isolated
+  interior stagnation point $x$ of $u$ is the degree of the Gauss map $u/\abs{u}\colon S^{d-1}_\e(x)\to S^{d-1}$
+   for sufficiently small $\e>0$.
+  The \emph{total index} $\ind_{\text{PH}}(u)$ is the sum of indexes $\ind_{\text{PH},x}(f)$
+  for every interior stagnation point $x$ of $u$.
+\end{definition}
+Note that in $d=2$ dimensions a point $x$ with Morse index $k$ has Poincaré-Hopf index $(-1)^k$.
+Thus we have for a harmonic vector field in $d=2$ dimensions that $M=-\ind_\text{PH}(u)$ and thus corollary \ref{co:n2_noInflowNoOutflow}
+also follows from the Poincaré-Hopf index theorem:
+\begin{theorem}[Poincaré-Hopf index theorem, {\cite[§6]{Milnor1965}}]
+  Let $u\colon X\to\R^d$ be a vector field on a manifold with corners without inflow. Then we have
+  that the total index $\ind_\text{PH}(u)$ equals the Euler characteristic $\chi(X)$.
+\end{theorem}
+\begin{proof}
+  See for example \cite[§6]{Milnor1965}.
+\end{proof}
+
+We now give an example of a harmonic vector field in $d=2$ dimensions without 
+inflow or outflow and with one stagnation point.
+\begin{example}
+  Consider the stream function
+  \begin{equation}
+    \begin{aligned}
+    \psi\colon\R^2\setminus\brk[c]*{-e_1,e_1}&\to\R \\
+    x&\mapsto\Phi_2\brk*{x-e_1}+\Phi_2\brk*{x+e_1}
+    \end{aligned}\label{eq:n2:hvf:noInflowNoOutflow}
+  \end{equation}
+  where $\Phi_2$ is as in example \ref{ex:n2_flowthroughHole}.
+  A plot of the streamlines in figure \ref{pl:n2_hvf_noInflowNoOutflow}
+  indicates that $u=\nabla^\perp\psi$
+  in the domain $X=\psi^{-1}\brk*{[-1,1]}$ has the desired properties.
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.6\textwidth]{../Plots/HarmonicVectorFields_gr1.eps}
+    \caption{A plot of $u=\nabla^\perp\psi$ in the domain $\psi^{-1}\brk*{[-1,1]}$.
+      Here $\psi$ is given by equation \eqref{eq:n2:hvf:noInflowNoOutflow}.}
+    \label{pl:n2_hvf_noInflowNoOutflow}
+  \end{figure}
+  Indeed, since $\psi$ is constant on each component of $\partial X$ the function $u$ has 
+  neither inflow nor outflow.
+  It follows from $\psi(-x)=\psi(x)$ that $u(-x)=-u(x)$ 
+  and thus the origin $x=0$ is a stagnation point.
+  By proposition \ref{pr:n2_hvf_noInflowNoOutflow} it is in fact the
+  sole stagnation point of $u$ on $X$.
+\end{example}
+
+In a second example given by \cite{Wahlen2023} we fix the domain rather than the function.
+\begin{example}
+  Set $X=\overline{B_4}\setminus\brk*{B_1(2e_1)\cup B_1(-2e_1)}$ to be the domain.
+  We then have the system
+  \begin{equation}
+    \begin{aligned}
+      \Delta \psi&=0 &&\text{, on }\Omega \\
+      \psi&=0 &&\text{, on the outer ring }4S^1 \\
+      \psi&=1 &&\text{, on the inner rings }S^1(-2e_1)\cup S^1(2e_1)
+    \end{aligned}\label{eq:n2:hvf:roundRegion:noInflowNoOutflow}
+  \end{equation}
+  We solve this system numerically and set $u=\nabla^\perp\psi$.
+  The result is plotted in figure \ref{pl:n2_hvf_roundRegion_noInflowNoOutflow}.
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.6\textwidth]{../Plots/HarmonicVectorFields_gr4.eps}
+    \caption{A plot of $u=\nabla^\perp\psi$ where $\psi$ is the numerical solution to
+    \eqref{eq:n2:hvf:roundRegion:noInflowNoOutflow}.}
+    \label{pl:n2_hvf_roundRegion_noInflowNoOutflow}
+  \end{figure}
+  Again it follows from symmetry that the origin is a stagnation point and
+  from proposition \ref{pr:n2_hvf_noInflowNoOutflow} that it is in fact the sole stagnation point of $u$.
+\end{example}
+
+\begin{example}[Stagnation points on the boundary]
+  In another example given by \cite{Wahlen2023} we fix the domain rather than the function.
+  Let $\Omega=B_4\setminus\brk*{B_1(2e_1)\cup B_1(-2e_1)}$ be the domain as before.
+  We now have the system
+  \begin{equation}
+    \begin{aligned}
+      \Delta \psi&=0 &&\text{, on }\Omega \\
+      \psi&=0 &&\text{, on the outer ring }4S^1 \\
+      \psi&=-1 &&\text{, on the left inner ring }S^1(-2e_1) \\
+      \psi&=1 &&\text{, on the right inner ring }S^1(2e_1)
+    \end{aligned}\label{eq:n2:hvf:roundRegion:InflowOutflow}
+  \end{equation}
+  We solve this system numerically and set $u=\nabla^\perp\psi$.
+  The result is plotted in figure \ref{pl:n2_hvf_roundRegion_InflowOutflow}.
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.6\textwidth]{../Plots/HarmonicVectorFields_gr5.eps}
+    \caption{A plot of $u=\nabla^\perp\psi$ where $\psi$ is the numerical solution to
+    \eqref{eq:n2:hvf:roundRegion:InflowOutflow}.}
+    \label{pl:n2_hvf_roundRegion_InflowOutflow}
+  \end{figure}
+  Here we obtain from the symmetry $\psi(-x_1,x_2)=\psi(x)$ that $\psi=0$ on
+  the $x_2$-axis. Since also $\psi=0$ on $4S^1$ we have two stagnation points
+  at $\pm4e_2$.
+\end{example}
+
+\chapter{No in- or outflow in $d=3$ dimensions}
+
 We obtain as a quick consequence of the hairy ball theorem
 \begin{proposition}
   Let $X$ have Betti numbers $b_0$, $b_1$ and $b_2$.
@@ -2800,69 +2942,6 @@ As a consequence we obtain the following:
   \end{align*}
 \end{corollary}
 
-\chapter{Harmonic functions, $d=4$} 
-Define the harmonic function 
-\begin{align*}
-  f\colon B_1\subseteq\R^4&\to \R \\
-  x &\mapsto x_1^2+x_2^2-x_3^2-x_4^2\,.
-\end{align*}
-This has a stagnation point at the origin. We now claim that the sets $\Sigma^+$ and $\Sigma^-$ are both simply connected, i.e.\
-we have a tube in $\R^4$ with throughflow and a stagnation point.
-
-\begin{proof}
-To prove this claim we observe that the boundary $\partial B_1$ can be parametrised by the coordinates $\barx = (x_2,x_3,x_4)$
-for which we have $\abs{\barx}\leq 1$. By the condition
-\begin{align}
-  \sum_i x_i^2 = 1\label{eq:n4:ball}
-\end{align}
-on the boundary $\partial B_1$ we have that $x_1$ is then uniquely determined up to sign. Thus we have have defined parametrisations
-\begin{align}
-  \begin{aligned}\phi_\pm\colon B_1\subseteq\R^3&\to\R \\
-  \barx&\mapsto x\text{ such that } \pm x_1\geq0
-  \end{aligned}\label{eq:n4:parametrisation}
-\end{align}
-with inverses $\psi_\pm = \brk*{\phi_\pm}^{-1}$.
-We now calculate the gradient of $f$
-\begin{align*}
-  \nabla f = 2\vect{x_1 & x_2 & -x_3 & -x_4}^\top
-\end{align*}
-and the normal to $\partial B_1$
-\begin{align*}
-  n = \vect{x_1 & \cdots & x_4}^\top\,.
-\end{align*}
-Thus we have $x\in\Sigma^\pm$ iff
-\begin{align*}
-  0<\pm \nabla f\cdot n = \pm 2\brk*{x_1^2+x_2^2-x_3^2-x_4^2}
-\end{align*}
-Using condition \eqref{eq:n4:ball} we obtain the equivalent condition
-\begin{align*}
-  0<\pm 1-2\brk*{x_3^2+x_4^2}
-\end{align*}
-Define the cylinder
-\begin{align*}
-  C = \brk[c]*{\barx\in \R^3\colon x_3^2+x_4^2<1/2} = \R\times B_{1/\sqrt{2}}
-\end{align*}
-If we return to our parametrisation \eqref{eq:n4:parametrisation} we see that we have $\barx\in B_1\cap C$ iff
-$\phi_\pm(x)\in \Sigma^+$ and hence 
-\begin{align*}
-  B_1\cap C=\psi_\pm\brk*{\Sigma^+}\,.
-\end{align*}
-Analogously  we have 
-\begin{align*}
-  B_1\setminus C=\psi_\pm\brk*{\Sigma^-}\,.
-\end{align*}
-The claim then follows from the fact that $\phi$ is a homeomorphism onto its image and $x_1=0$ is 
-equivalent to $\barx\in \partial B_1\subseteq \R^2$. The situation is depicted in figure \ref{fi:n4_sigma}.
-
-\td{Check that the transition at the boundary is legal.}
-\begin{figure}[h]
-  \centering
-  \def\svgwidth{0.7\textwidth}
-  \input{../Figures/n4_sigma.pdf_tex}
-  \caption{Visualisation of the situation.}
-  \label{fi:n4_sigma}
-\end{figure}
-\end{proof}
 
 
 % \printnomenclature
@@ -2879,6 +2958,7 @@ equivalent to $\barx\in \partial B_1\subseteq \R^2$. The situation is depicted i
 
 \nocite{*}
 \printbibliography
+\td{add literature, check that all literature is used.}
 
 
 \end{document}
