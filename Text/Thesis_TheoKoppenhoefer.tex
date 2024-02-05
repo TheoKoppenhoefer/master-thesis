@@ -1183,8 +1183,41 @@ is the alternating sum of the Betti numbers.
   The definition of regular critical points of $f$ and their index given in definition \ref{df:nonDegeneracy} coincides with 
   the definition of a critical point and its co-index of $-f$ given in \cite{Agrach1991}.
   The result then follows from \cite[Theorem 2.4]{Agrach1991}.
-  \td{Give outline of proof idea.}
+  Nonetheless we will give an idea of the proof.
+\end{proof} 
+\td{Give outline of proof idea.}
+Define for $a\in\R$ the manifold $X^a\leftdef\brk[c]*{x\in X\colon f(x)\leq a}$.
+The main idea is to inspect what happens to the manifold $X^a$ as we vary $a$.
+This is the approach used in \cite{Milnor1963}, \cite{Agrach1991} and \cite{Handron2002}.
+The proof involves two main steps. The first is to show the following
+\begin{lemma}
+  Assume that the interval $[a,b]$ contains no critical value of $f$.
+  Then $X^a\simeq X^b$ are homotopic.
+\end{lemma}
+\begin{proof}
+  See for instance \cite[p.7]{Agrach1991}.
 \end{proof}
+The second step involves showing that
+\begin{lemma}
+  If the interval $[a,b]$ contains one critical value $c\in\R$ with non-degenerate essential critical points
+  $x_1,\dots,x_r$ of $f$ with coindices $\lambda_1,\dots,\lambda_r$
+  then $X^b$ is obtained from $X^a$ by attaching the $\lambda$-cells
+\end{lemma}
+
+The final part of the proof is then given in all details in \ref[§I.5]{Milnor1963}.
+We shall however sketch for the equality in equation \eqref{}.
+For this define a generalisation of the Euler characteristic by
+\begin{align}
+  \chi\brk*{X,Y}\leftdef \sum_k\dim_\R H_k\brk*{X,Y}\,.
+\end{align}
+One can show that this is additive, in the sense that given suitable $X\subseteq Y\subseteq Z$
+we have that
+\begin{align}
+  \chi\brk*{X,Z}=\chi\brk*{X,Y}+\chi\brk*{Y,Z}
+\end{align}
+
+
+
 \nomenclature{$\chi(X)$}{Euler characteristic.}
 
 \begin{corollary}[Weak Morse inequalities]
@@ -1407,8 +1440,10 @@ desired properties.
 
 \section{A negative result using Morse theory}
 
-We now give a proof involving Morse theory since the techniques of the proof generalise to the three dimensional case.
-\begin{proposition}[Negative answer to question \ref{} in $d=2$ dimensions]\label{pr:n2_negativeResult}
+We now give a result which is essentially a negative answer to question \ref{qu:flowthroughStagnationPoint}.
+It was possible to prove this statement using level sets of critical points or using invariant manifolds.
+The following proof involves Morse theory since the techniques of the proof generalise to the three dimensional case.
+\begin{proposition}[Negative answer to question \ref{qu:flowthroughStagnationPoint} in $d=2$ dimensions]\label{pr:n2_negativeResult}
   Let $d=2$ and $X$ be a simply connected manifold with corners and let $f\colon X\to\R$ have no irregular critical points.
   Assume further that $\Sigma^-$ contains at least two points and is simply connected. Then $f$ has no non-degenerate interior critical point.
 \end{proposition}
@@ -1699,7 +1734,7 @@ We now give a proof involving Morse theory since the techniques of the proof gen
 % \end{conjecture}
 % This inequality can probably be improved considerably.
 
-We could also have used tools from complex analysis to show proposition \ref{}.
+We could also have used tools from complex analysis to show proposition \ref{pr:n2_negativeResult}.
 In fact, \cite{Alessandrini1992} gives a more refined result which we will state in the
 following.
 
@@ -1733,8 +1768,10 @@ that is $f$ has no non-degenerate critical point.
 
 \section{If we allow for holes in the domain}
 
-We would like to give examples for harmonic vector fields.
-For this define two differential operators for $d=2$ dimensions by
+In the following we will give examples of harmonic vector fields on domains with holes
+with simply connected entrant boundaries
+and interior stagnation points.
+For this define two differential operators in $d=2$ dimensions by
 \begin{align}
   \nabla^\perp f=\Curl f=\vect{-\partial_2f \\ \partial_1f}\label{eq:n2_nablaPerp}
 \end{align}
@@ -1744,9 +1781,9 @@ and
 \end{align*}
 \nomenclature{$\nabla^\perp$}{Orthogonal gradient. Given by equation \eqref{eq:n2_nablaPerp}.}
 
-The next proposition gives us a recipe to generate harmonic vector fields in $d=2$ dimensions.
+The next proposition gives us a recipe to generate harmonic vector fields.
 \begin{proposition}
-  Let $\psi\colon\Omega\to\R$ be harmonic then $u=\nabla^\perp\psi$ is a harmonic vector field.
+  Let $\psi\colon\R^2\supseteq\Omega\to\R$ be harmonic then $u=\nabla^\perp\psi$ is a harmonic vector field.
 \end{proposition} 
 \begin{proof}
   Since $\diver \nabla^\perp=0$ we have
@@ -1759,8 +1796,8 @@ The next proposition gives us a recipe to generate harmonic vector fields in $d=
   \end{align*}
 \end{proof}
 The function $\psi$ is also called a \emph{stream function}.
-In the following we aim to give examples of harmonic vector fields on
-domains in $d=2$ dimensions with interior stagnation points for which 
+The next example is our first example of a harmonic vector fields
+in $d=2$ dimensions with an interior stagnation points for which 
 we have inflow on one simply connected boundary component and outflow on another simply connected boundary
 component.
 
@@ -1897,15 +1934,16 @@ of such a harmonic vector field.
 
 \chapter{The case of simply connected entrant boundaries in $d=3$ dimensions.}
 
-In the following chapter we will discuss Question \ref{} in the case of $d=3$ dimensions.
+In the following chapter we will discuss question \ref{qu:flowthroughStagnationPoint} in the case of $d=3$ dimensions.
+That is, we are looking for a harmonic function with interior stagnation point on a simply connected domain and connected entrant boundary.
 We will first give a negative answer in the case of a cylinder.
 After that we will use Morse theory to essentially argue that the number of interior stagnation points
-of such an example with simply connected entrant boundary must be an even number.
+of such an example must be an even number.
 Finally we will give an example of a function and a domain with the desired properties.
 
 \section{A negative result for the cylinder}
 
-The following proof comes from \cite{Wahlen2023} and is a negative answer to quesion \ref{}
+The following proof comes from \cite{Wahlen2023} and is a negative answer to question \ref{qu:flowthroughStagnationPoint}
 for the cylinder.
 \begin{proposition}\label{pr:n3_inflowOutflowCylinder}
   Let $\Omega=(0,1)\times U\subseteq\R^3$ be an open cylinder where $U\subseteq\R^2$ is an open set.
@@ -1933,7 +1971,8 @@ for the cylinder.
 
 \section{A condition on the interior type numbers}
 
-Mimicking the proof in 2 dimensions we obtain the following proposition.
+Mimicking the proof of proposition \ref{pr:n2_negativeResult} in two dimensions we obtain a condition on the type numbers for a harmonic function with interior
+stagnation point and simply connected entrant boundary.
 \begin{proposition}\label{pr:n3_inflowOutflowRels}
   Let $X\subset\R^3$ be a compact manifold with corners.
   Let $f\colon X\to\R$ be a Morse harmonic function. Assume that the strictly entrant boundary $\Sigma^-$ is non-empty and simply connected
@@ -2035,14 +2074,14 @@ Based on example \ref{ex:n4} in $d=4$ dimensions of a harmonic vector field with
 the author argued that it would be simplest to construct such a vector field in $d=3$ dimensions in a similar manner.
 More specifically we choose as domain the ball and polynomials as our harmonic function. 
 In choosing the ball as domain we also take into account the result from proposition \ref{pr:n3_inflowOutflowCylinder}
-which is a negative result to question \ref{} for the cylinder.
+which is a negative result to question \ref{qu:flowthroughStagnationPoint} for the cylinder.
 Based on the result from proposition \ref{pr:n3_inflowOutflowRels} we see that the number of stagnation
 points must be at least two.
 The author then implemented a Mathematica routine to generate harmonic polynomials
 with two stagnation points and a plotting function to inspect what occurs.
 Indeed, this approach yielded a function with the desired properties as
-we shall discuss in the following example.
-\begin{example}[A harmonic function with interior critical point and simply connected entrant boundary]
+we shall discuss in this section.
+\begin{example}[A harmonic function with interior critical point and simply connected entrant boundary]\label{ex:n3_polynomial_defn}
   Consider the domain $X=\overline{B}_r\subseteq\R^3$ with $r>0$ sufficiently large, and the harmonic function
   \begin{align}
     \begin{aligned}
@@ -2067,6 +2106,7 @@ we shall discuss in the following example.
   The boundary of the domain is shaded in blue for $\Sigma^-$ and in red for $\Sigma^+$.
   The stereographic projection of the boundary is plotted in figure \ref{pl:n3_hf_inflowOutflowStagnationPoint_Surface}.
   This plot indicates that the entrant boundary and the emergent boundary are simply connected.
+  Indeed, we will show this in theorem \ref{th:n3_polynomial_connectedInflowOutflow}.
   \begin{figure}
     \centering
     \includegraphics[width=0.6\textwidth]{../plots/n3_hf_inflowOutflow_Ball_overview.pdf}
@@ -2080,67 +2120,200 @@ we shall discuss in the following example.
     \caption{Stereographic projection of the surface $\Sigma$. $\Sigma^+$ is shaded red, $\Sigma^-$ blue.}
     \label{pl:n3_hf_inflowOutflowStagnationPoint_Surface}
   \end{figure}
-  We will give a formal proof of this in proposition \ref{pr:n3_polynomial_simplyConnected}.
+  % We will give a formal proof of this in proposition \ref{pr:n3_polynomial_simplyConnected}.
 \end{example}
-\td{Bring order into this section. Rename propositions to lemmas / etc.}
-We start by stating some required definitions.
+
+The remainder of this section will be devoted to the proof of the following theorem:
+\begin{theorem}\label{th:n3_polynomial_connectedInflowOutflow}
+  The harmonic function given by equation \eqref{eq:n3_polynomial_defnf} on the sphere
+  has interior stagnation points and connected emergent and entrant
+  boundaries for sufficiently large $r>0$.
+\end{theorem}
+
+Before we proceed to the proof we require some definitions from algebraic geometry.
+For an introduction this subject we refer the reader to \cite{Gathmann2023}, \cite{Harris1992} or \cite{Hartshorne1977}.
 For polynomials $p_1,\dots,p_k\in\R\brk[s]*{x_1,\dots,x_d}$ and a set $U\subseteq\R^d$ we denote the
 variety generated by these polynomials on $U$ by $V_U\brk*{p_1,\dots,p_k}$.
 In the case that $U=\R^d$ we write $V(\dots)=V_U(\dots)$.
-We will also need a notion of convergence of subsets on a metric space.
-We define the \emph{Hausdorff metric} for two sets $A,B\subseteq X$ to be given by 
-\begin{align}
-  d_H\brk*{A,B}=\max\brk[c]*{\sup_{x\in A}\dist\brk*{x,B},\,\sup_{y\in B}\dist\brk*{y,A}}
-  \label{eq:def_HausdorffMetric}
-\end{align}
-where
-\begin{align}
-  \dist\brk*{x,B}=\inf_{y\in B}d(x,y)\label{eq:def_distance}
-\end{align}
-is the smallest distance from $x$ to $B$.
-% We also require the definition of tubular neighbourhoods.
-For a given $\delta>0$ and a subset $A\subseteq\R^d$ we call the union of $\delta$ balls
-\begin{align}
-  \tubular_\delta\brk*{A}=\bigcup_{x\in A}B_\delta(x)\label{eq:def_tubularNbh}
-\end{align}
-a \emph{tubular neighbourhood} of $A$.
-We have the following proposition, the proof of which will span several propositions.
+\begin{definition}[Smoothness, {\cite[§5]{Hartshorne1977}}]
+  We call a $k$ dimensional algebraic variety $V_U\brk*{p_1,\dots,p_n}$ \emph{smooth} or \emph{non-singular}
+  if the the jacobian
+  \begin{align*}
+    \begin{bmatrix}
+      \nabla p_1 & \cdots & \nabla p_n
+    \end{bmatrix}^\top
+  \end{align*}
+  is of rank $d-k$ on $V_U\brk*{p_1,\dots,p_n}$. This criterion of smoothness is also called the
+  \emph{Jacobi criterion}. By the implicit function theorem this means that the variety $V_U\brk*{p_1,\dots,p_n}$
+  in fact defines a $d-k$ dimensional submanifold of $\R^d$.
+\end{definition}
 \nomenclature{$V_U\brk*{\dots}$, $V\brk*{\dots}$}{Algebraic variety.}
-\nomenclature{$d_H(A,B)$}{Hausdorff metric. See equation \eqref{eq:def_HausdorffMetric}.}
-\nomenclature{$\dist(x,A)$}{Distance between $x$ and $A$. See equation \eqref{eq:def_distance}}
-\nomenclature{$\tubular_\delta(A)$}{Tubular neighbourhood of $A$. See equation \eqref{eq:def_tubularNbh}.}
 
-\begin{proposition}\label{pr:n3_polynomial_simplyConnected}
-  The harmonic function given by equation \eqref{eq:n3_polynomial_defnf} has simply connected emergent and entrant boundaries.
-\end{proposition}
-\begin{proof}
-  We calculate
-  \begin{align*}
-    rn\cdot u(x) = x_1^2(1-x_1)+x_2^2(3x_1-1)+2x_2x_3=p_1(x)
-  \end{align*}
+The proof of theorem \ref{th:n3_polynomial_connectedInflowOutflow} requires lemmas \ref{pr:n3_polynomial_smoothness} and \ref{pr:n3_polynomial_smoothConnected}
+which we will show later on.
+\begin{proof}[Proof of theorem {\ref{th:n3_polynomial_connectedInflowOutflow}}]
+  It was already discussed in example \ref{ex:n3_polynomial_defn} that $f$ has an interior critical point at the
+  origin and is harmonic.
+  For the connectedness of the entrant and emergent boundaries we calculate
+  \begin{align}
+    rn\cdot u(x) = x_1^2(1-x_1)+x_2^2(3x_1-1)+2x_2x_3\rightdef p_1(x)\label{eq:n3_polynomial_defp1}
+  \end{align}
   and define further
-  \begin{align*}
-    P_2(r,x)=x_1^2+x_2^2+x_3^2-r^2\,.
-  \end{align*}
+  \begin{align}
+    P_2(r,x)\leftdef x_1^2+x_2^2+x_3^2-r^2\,.\label{eq:n3_polynomial_defP2}
+  \end{align}
   Thus we have that the tangential boundary $\Sigma^0=V\brk*{p_1,P_2(r,\cdot)}$
   is precisely the variety generated by the polynomials $p_1$ and $P_2(r,\cdot)$ for a
   fixed radius $r>0$.
-  % Consider the inverse stereographic projection given by 
-  % \begin{align*}
-  %   \psi\colon \R^2&\to B_r\setminus\brk[c]*{re_1} \\
-  %   x&\mapsto \frac{r}{s^2+1}\vect{s^2-1 \\ x}
-  % \end{align*}
-  % where $s=\abs{x}$.
-  It will be shown in proposition \ref{pr:n3_polynomial_smoothConnected} that there exists $r>0$ such that
-  $\Sigma^0$ is smooth and connected.
-  The stereographic projection
-  of $\Sigma^0$ then defines a simple closed planar curve.
+  In lemma \ref{pr:n3_polynomial_smoothness} we will show that the variety $V\brk*{p_1,P_2(r,\cdot)}$ is in fact smooth
+  and in lemma \ref{pr:n3_polynomial_smoothConnected} we will then show that it is in fact connected.
+  Thus $\Sigma^0$ then defines a simple closed curve on $\Sigma$
+  and the stereographic projection of $\Sigma^0$ defines a simple closed planar curve.
   This is indicated by the black curve in figure \ref{pl:n3_hf_inflowOutflowStagnationPoint_Surface}.
   By the Jordan curve theorem this curve then splits the plane into two connected regions, 
   one of which is simply connected.
   The preimage of these connected regions under the stereographic projections then corresponds
-  precisely to the entrant and emergent boundaries from which the claim follows.
+  precisely to the entrant and emergent boundaries.
+  From this it follows that the entrant and emergent
+  boundaries are simply connected which proves the theorem.
 \end{proof}
+
+From now onwards we assume that $p_1$ and $P_2$ are given by equations \ref{eq:n3_polynomial_defp1} and \ref{eq:n3_polynomial_defP2}.
+We first show the smoothness which was required in the proof of theorem \ref{th:n3_polynomial_connectedInflowOutflow}.
+\begin{lemma}[Smoothness]\label{pr:n3_polynomial_smoothness}
+  There exists $R>0$ such that for every $r>R$ the variety $V\brk*{p_1,P_2\brk*{r,\cdot}}$ is smooth.
+\end{lemma}
+\begin{proof}
+  One calculates
+  \begin{align*}
+    T\leftdef\vect{\nabla p_1(x)&\frac{1}{2}\nabla_x P_2(r,x)}=
+    \begin{bmatrix}
+      -3x_1^2+3x_2^2+2x_1 & x_1\\
+      6x_1x_2-2x_2+2x_3&x_2 \\
+      2x_2&x_3
+    \end{bmatrix}
+  \end{align*}
+  By the Jacobi criterion it is sufficient to show that this matrix is
+  of full rank on $V\brk*{p_1,P_2\brk*{r,\cdot}}$.
+  This is equivalent to showing that
+  \begin{align*}
+    0&\neq \det\begin{bmatrix}
+      T_{11}&T_{12}\\T_{21}&T_{22}
+    \end{bmatrix}
+    =-9x_1^2x_2+3x_2^3+4x_1x_2-2x_1x_3
+    \rightdef h_1(x)\,, \\
+    0&\neq \det\begin{bmatrix}
+      T_{21}&T_{22}\\T_{31}&T_{32}
+    \end{bmatrix}
+    =6x_1x_2x_3-2x_2x_3+2x_3^2-2x_2^2
+    \rightdef h_2(x)\text{ or } \\
+    0&\neq \det\begin{bmatrix}
+      T_{31}&T_{32}\\T_{11}&T_{12}
+    \end{bmatrix}
+    =2x_1x_2+3x_1^2x_3-3x_2^2x_3-2x_1x_3
+    \rightdef h_3(x)
+  \end{align*}
+  for any $x\in V\brk*{p_1,P_2\brk*{r,\cdot}}$. This in turn is equivalent to showing that
+  \begin{align}
+    V\brk*{p_1,P_2\brk*{r,\cdot},h_1,h_2,h_3}=\emptyset\,.\label{eq:n3_ex_smoothness_varCond}
+  \end{align}
+  Indeed, consider the variety
+  \begin{align}
+    V\brk*{p_1,h_1,h_2,h_3}\,. \label{eq:n3_ex_smoothness_subvar}
+  \end{align}
+  Maple calculates the Gröbner basis with lexicographic order $x_1<x_2<x_3$
+  \begin{align}
+    & 72x_1^8 - 198x_1^7 + 228x_1^6 - 153x_1^5 + 56x_1^4 - 5x_1^3\,,\label{eq:n3_ex_smoothness_pol1} \\
+    & 72x_1^5x_2 - 126x_1^4x_2 + 102x_1^3x_2 - 51x_1^2x_2 + 5x_1x_2\,, \label{eq:n3_ex_smoothness_pol2}\\
+    & -24x_1^7 + 42x_1^6 - 2x_1^5 - 23x_1^4 + 7x_1^3 + 10x_1x_2^2\,, \label{eq:n3_ex_smoothness_pol3} \\
+    & 48x_1^4x_2 - 60x_1^3x_2 + 13x_1^2x_2 + 15x_2^3\,, \\
+    & 24x_1^4x_2 - 30x_1^3x_2 + 29x_1^2x_2 - 10x_1x_2 + 5x_1x_3\,, \\
+    & 72x_1^7 - 126x_1^6 + 6x_1^5 + 69x_1^4 - 31x_1^3 + 10x_1^2 - 10x_2^2 + 20x_2x_3\,, \\
+    & -72x_1^7 + 414x_1^6 - 654x_1^5 + 399x_1^4 - 97x_1^3 + 10x_1^2 - 30x_2^2 + 20x_3^2\,.\label{eq:n3_ex_smoothness_poln}
+  \end{align}
+  For an introduction to Gröbner bases we refer the reader to for example \cite{Cox2015}.
+  We will however only use the fact that the polynomials \eqref{eq:n3_ex_smoothness_pol1}-\eqref{eq:n3_ex_smoothness_poln}
+  generate the variety \eqref{eq:n3_ex_smoothness_subvar}.
+  We see from the basis vector \eqref{eq:n3_ex_smoothness_pol1} that
+  for $x\in V\brk*{p_1,h_1,h_2,h_3}$ the coordinate $x_1$ can take only finitely many values.
+  It then follows with \eqref{eq:n3_ex_smoothness_pol2} that also $x_2$ can take only finitely many values
+  and finally with \eqref{eq:n3_ex_smoothness_pol3} that $x_3$ can also take only finitely many values.
+  So the variety \eqref{eq:n3_ex_smoothness_subvar} contains finitely many points.
+  Thus if we choose $R$ so large that all of these points are contained in the ball $B_R$ then we have
+  that \eqref{eq:n3_ex_smoothness_varCond} holds for all $r>R$.
+\end{proof}
+  % We will show this in two steps. 
+  % First we claim that for any $\eta>0$ we have
+  % \begin{align}
+  %   V\brk*{P,Q,R_1,R_2,R_3}\setminus C_\eta^r=\emptyset\,
+  %   \label{eq:n3_ex_smoothness_step1}
+  % \end{align}
+  % for $r$ sufficiently large. 
+  % Since the homogeneous parts of maximal degree satisfy
+  % \begin{align*}
+  %   \brk*{P}_3&=-x_1^3+x_1x_2^2=x_1(x_2^2-x_1^2) \\
+  %   \brk*{R_1}_3&=-5x_1^2x_2+x_2^3=x_2(x_2^2-5x_1^2) \\
+  %   \brk*{R_2}_3&=2x_1x_2x_3 \\
+  %   \brk*{R_3}_3&=3x_1^2x_3-x_2^2x_3=x_3(3x_1^2-x_2^2)
+  % \end{align*}
+  % we obtain for the variety
+  % \begin{align}
+  %   V\brk*{\brk*{P}_3,\brk*{R_1}_3,\brk*{R_2}_3,\brk*{R_3}_3}=\R e_3
+  %   \label{eq:n3_3x_smoothness_homogVar}
+  % \end{align}
+  % Now observe that we have for $x\in C_\eta^1$ that
+  % \begin{align*}
+  %   \frac{1}{r^6}\brk*{P^2+\sum_jR_j^2}\brk*{rx}
+  %   =\underbrace{\brk*{\brk*{P}_3^2+\sum_j\brk*{R_j}_3^2}}_{>0\text{ on }C_\eta^1\text{ by }\eqref{eq:n3_3x_smoothness_homogVar}}\brk*{x}+\bigO\brk*{\frac{1}{r}}
+  % \end{align*}
+  % and thus for $r$ sufficiently large equation \eqref{eq:n3_ex_smoothness_step1} does indeed hold.
+  % We now claim that $\neq0$ on $V(Q)\setminus B_{r\eta}\brk*{re_3}$ for $r$ sufficiently large.
+  % To show this, observe that for $x\in C_\eta^1$ we have
+  % \begin{align*}
+  %   \frac{1}{r^3}R_1\brk*{rx}=\underbrace{\brk*{R_1}_3\brk*{x}}_{\neq0\text{ for }rx\notin\tubular_\eta\brk*{\R e_3}}+\bigO\brk*{\frac{1}{r}}
+  % \end{align*}
+  % and thus for $r$ sufficiently large we indeed have $R_1\neq0$ on the desired set.
+  % Analogous argumentation with $R_2$, $R_3$ and $P$ yield .
+
+  % We now show for any sufficiently small $\eta>0$ we have that
+  % \begin{align*}
+  %   V\brk*{P,Q,R_1,R_2,R_3}\cap B_{r\eta}\brk*{re_3}=\emptyset
+  % \end{align*}
+  % for all sufficiently large $r$.
+  % For this we inspect 
+
+  % In the second part we show that
+  % \begin{align*}
+  %   V\brk*{P,Q,R_1,R_2,R_3}\cap \tubular_\eta\brk*{\R e_3}=\emptyset
+  % \end{align*}
+  % for sufficiently large $r$.
+  % For this note that for $x\in S^2\cap\tubular_{\eta/r}\brk*{\R e_3}$ we have
+  % \begin{align*}
+  %   \frac{1}{r^2}R_2(rx)=\underbrace{2x_3^2}_{>1\text{ for }r\text{ large}}+\bigO\brk*{\frac{1}{r}}
+  % \end{align*}
+  % from which this claim also follows.
+
+
+% \begin{proposition}\label{pr:n3_polynomial_simplyConnected}
+%   The harmonic function given by equation \eqref{eq:n3_polynomial_defnf} has simply connected emergent and entrant boundaries.
+% \end{proposition}
+% \begin{proof}
+%   % Consider the inverse stereographic projection given by 
+%   % \begin{align*}
+%   %   \psi\colon \R^2&\to B_r\setminus\brk[c]*{re_1} \\
+%   %   x&\mapsto \frac{r}{s^2+1}\vect{s^2-1 \\ x}
+%   % \end{align*}
+%   % where $s=\abs{x}$.
+%   It will be shown in proposition \ref{pr:n3_polynomial_smoothConnected} that there exists $r>0$ such that
+%   $\Sigma^0$ is smooth and connected.
+%   The stereographic projection
+%   of $\Sigma^0$ then defines a simple closed planar curve.
+%   This is indicated by the black curve in figure \ref{pl:n3_hf_inflowOutflowStagnationPoint_Surface}.
+%   By the Jordan curve theorem this curve then splits the plane into two connected regions, 
+%   one of which is simply connected.
+%   The preimage of these connected regions under the stereographic projections then corresponds
+%   precisely to the entrant and emergent boundaries from which the claim follows.
+% \end{proof}
   % If we precompose with the inverse stereographic projection we obtain
   % \begin{align*}
   %   &\brk*{rn\cdot u}\circ\psi (x) \\
@@ -2200,47 +2373,130 @@ We have the following proposition, the proof of which will span several proposit
   %   &=\brk*{s^2+1}\brk*{x_1^2-x_2^2}-rx_1^3+3rx_1x_2^2+2x_2\brk*{s^4-1}
   % \end{align}
 
-The following definitions will play a central role in the upcoming propositions.
+
 We now define $p_2$ to be the dehomogenisation of $P_2$, that is
 \begin{align*}
-  p_2=P_2(1,\cdot)\,.
+  p_2\leftdef P_2(1,\cdot)\,.
 \end{align*}
 Analogously let $P_1$ denote the homogenisation of $p_1$, that is
 \begin{align*}
-  P_1(\e,x)=\e^3p_1\brk*{x/\e}\,.
+  P_1(\e,x)\leftdef\e^3p_1\brk*{x/\e}\,.
 \end{align*}
-% In the following we assume that $\e=1/r$ if $\e>0$ and $r>0$.
+By rescaling the variety $V\brk*{p_1,P_2(r,\cdot)}$ we obtain
+\begin{align}
+  V\brk*{p_1,P_2(r,\cdot)}=rV\brk*{x\mapsto p_1(rx),p_2}
+  =rV\brk*{P_1(\e,\cdot),p_2}=r\cV_\e\label{eq:n3_polynomial_smoothConnected_relVeps}
+\end{align}
+where we set $\e=1/r$ and $\cV_\e\leftdef V\brk*{P_1(\e,\cdot),p_2}$. Motivated by taking the limit $r\to\infty$ we
+inspect the variety $\cV_0$ closer.
+The next proposition is required in the proof of lemma \ref{pr:n3_polynomial_smoothConnected}. It essentially states that the varieties
+$\cV_\e\to\cV_0$ converge as $\e\to0$ outside of singular points.
+We will thus also need a notion of convergence of subsets on a metric space.
+\begin{definition}[Hausdorff metric, tubular neighbourhood]
+  The \emph{Hausdorff metric} for two sets $A,B\subseteq X$ is given by 
+  \begin{align}
+    d_H\brk*{A,B}=\max\brk[c]*{\sup_{x\in A}\dist\brk*{x,B},\,\sup_{y\in B}\dist\brk*{y,A}}
+    \label{eq:def_HausdorffMetric}
+  \end{align}
+  where
+  \begin{align}
+    \dist\brk*{x,B}=\inf_{y\in B}d(x,y)\label{eq:def_distance}
+  \end{align}
+  is the smallest distance from $x$ to $B$.
+  % We also require the definition of tubular neighbourhoods.
+  For a given $\delta>0$ and a subset $A\subseteq\R^d$ we call the union of $\delta$ balls
+  \begin{align}
+    \tubular_\delta\brk*{A}=\bigcup_{x\in A}B_\delta(x)\label{eq:def_tubularNbh}
+  \end{align}
+  a \emph{tubular neighbourhood} of $A$.
+\end{definition}
+% We have the following proposition, the proof of which will span several propositions.
+\nomenclature{$d_H(A,B)$}{Hausdorff metric. See equation \eqref{eq:def_HausdorffMetric}.}
+\nomenclature{$\dist(x,A)$}{Distance between $x$ and $A$. See equation \eqref{eq:def_distance}}
+\nomenclature{$\tubular_\delta(A)$}{Tubular neighbourhood of $A$. See equation \eqref{eq:def_tubularNbh}.}
 
+\begin{proposition}[Convergence of $\cV_\e$ at smooth points]\label{pr:n3_polynomial_convergenceSmoothSet}
+  Let $U\subseteq \R^3$ be an open set such that $\cV_0$ is smooth
+  in an open neighbourhood of $\overline{U}$. Let further $\eta>0$.
+  Then there exists a $\delta>0$ such that for all $\e<\delta$ we have that the Hausdorff distance
+  satisfies
+  \begin{align*}
+    d_H\brk*{\cV_\e\cap U,\cV_0\cap U}<\eta
+  \end{align*}
+  and additionally $\cV_\e\cap U$ is isotopic to $\cV_0\cap U$.
+\end{proposition}
+\begin{proof}
+  Consider the mapping
+  \begin{align*}
+    F=\vect{P_1\\p_2}\colon \R^4\to\R^2\,.
+  \end{align*}
+  Since $V\brk*{P_1(0,\cdot),p_2}$ is smooth on an open neighbourhood of $\overline{U}$
+  we have by the Jacobi criterion that
+  \begin{align}
+    DF(0,\cdot) = \left[\begin{array}{c|c}
+        D_\e P_1(0,\cdot)&D_x P_1(0,\cdot)\\
+        0&D p_2
+      \end{array}\right]\label{eq:n3_polynomial_homotopic_df}
+  \end{align}
+  is of full rank on $\overline{U}$.
+  By the implicit function theorem there exists at every point $x\in\overline{U}$ open neighbourhoods
+  $\Omega_x\subseteq \R^4$ of $(0,x)$ and $\omega_x\subseteq\R^3$, a coordinate permutation $I\in O(4)$
+  and a continuously differentiable mapping $g_x\colon\omega_x\to\R$ such that
+  \begin{align*}
+    V\brk*{P_1,p_2}\cap \Omega_x=\brk[c]*{I\brk*{y,g_x(y)}\colon y\in\omega_x}\,.
+  \end{align*}
+  Since $D_xF(0,x)$ is of full rank we can assume (possibly after shrinking the open sets) that $I$ does not permute the $\e$-coordinate.
+  Thus we can write $y=(\e,y_1,y_2)\in\omega_x$.
+  We can also assume that $\Omega_x=B_{\delta_x}\times W_x\subseteq\R^4$ for some open $W_x\subseteq\R^3$ and 
+  some $\delta_x>0$.
+  Hence we also obtain that $\omega_x=B_{\delta_x}\times w_x$ for some open $w_x\subseteq\R^2$ and we can define our
+  isotopy on $\Omega_x$ as
+  \begin{align*}
+    \varphi_x\colon B_{\delta_x}\times w_x&\to W_x\\
+    y&\mapsto \proj_{\R^4\to W_x}I\brk*{y,g_x\brk*{y}}\,.
+  \end{align*}
+  Note that $\varphi_x\brk*{\brk[c]*{\e}\times w_x}=\cV_\e\cap W_x$.
+  From this it also follows that we can choose $\delta_x$
+  such that
+  \begin{align*}
+    d_H\brk*{\cV_\e\cap W_x,\cV_0\cap W_x}<\eta\,.
+  \end{align*}
+  Now for $x\in\overline{U}$ the $\Omega_x$ form an open cover of $\overline{U}$.
+  By compactness there exists a finite subcover.
+  Set $\delta>0$ to be the minimum of all 
+  $\delta_x$ for the $\Omega_x$ in this finite subcover and the claim follows.
+\end{proof}
+
+The next lemma shows the connectedness of the variety $V\brk*{p_1,P_2(r,\cdot)}$.
+Because the proof is quite lengthy, a part of the proof has been split off into
+proposition \ref{pr:n3_polynomial_regularH} which will be proved later on.
+% In the following we assume that $\e=1/r$ if $\e>0$ and $r>0$.
 % \begin{figure}
 %   \centering
 %   \input{../Figures/n3_polynomial_projectionDegenerate.pdf_tex}
 %   \caption{A sketch of the set $V\brk*{p^0}$.}
 % \end{figure}
 
-\begin{proposition}\label{pr:n3_polynomial_smoothConnected}
-  There exists an $r>0$ such that the planar variety $V\brk*{p_1,P_2(r,\cdot)}$ is smooth and
+\begin{lemma}[Connectedness]\label{pr:n3_polynomial_smoothConnected}
+  There exists an $r>0$ such that the planar variety $V\brk*{p_1,P_2(r,\cdot)}$
   has one connectivity component.
-\end{proposition}
+\end{lemma}
 \begin{proof}
-  By proposition \ref{pr:n3_polynomial_smoothness} there exists a $R>0$ such that for all $r>R$ we have that the
-  variety $V\brk*{p_1,P_2(r,\cdot)}$ is smooth.
-  By rescaling we obtain
-  \begin{align}
-    V\brk*{p_1,P_2(r,\cdot)}=rV\brk*{p_1(r\cdot),p_2}
-    =rV\brk*{P_1(\e,\cdot),p_2}=r\cV_\e\label{eq:n3_polynomial_smoothConnected_relVeps}
-  \end{align}
-  where we set $\e=1/r$ and $\cV_\e=V\brk*{P_1(\e,\cdot),p_2}$. Motivated by taking the limit $r\to\infty$ we
-  inspect the variety $\cV_0$ closer. We observe that
+  By lemma \ref{pr:n3_polynomial_smoothness} there exists a $R>0$ such that for all $r>R$ we have that the
+  variety $V\brk*{p_1,P_2(r,\cdot)}$ is smooth and by equation \eqref{eq:n3_polynomial_smoothConnected_relVeps}
+  $\cV_\e$ is also smooth for $\e<1/R$.
+  We inspect $\cV_0$ closer.
+  Observe that
   \begin{align*}
     P_1(0,x)=-x_1^3+3x_1x_2^2
   \end{align*}
   which is the monkey saddle embedded into $\R^3$. We thus define curves
   \begin{align*}
-    \tialpha^\pm=\brk[c]*{t\vect{\pm\sqrt{3}&1}^\top \colon t\in\R}
+    \tialpha^\pm\leftdef\brk[c]*{t\vect{\pm\sqrt{3}&1}^\top \colon t\in\R}
   \end{align*}
-  and $\tialpha^0=\brk[c]*{0}\times\R$.
-  We then define $\alpha^\bullet=\brk*{\tialpha^\bullet\times\R}\cap S^2$.
-  Setting $A=\alpha^-\cup\alpha^+\cup\alpha^0$
+  and $\tialpha^0\leftdef\brk[c]*{0}\times\R$.
+  We then define $\alpha^\bullet\leftdef\brk*{\tialpha^\bullet\times\R}\cap S^2$.
+  Setting $A\leftdef\alpha^-\cup\alpha^+\cup\alpha^0$
   we have the relation
   \begin{align*}
     \cV_0=V\brk*{P_1(\e,\cdot),p_2}
@@ -2248,8 +2504,8 @@ Analogously let $P_1$ denote the homogenisation of $p_1$, that is
   \end{align*}
   Thus $\cV_0$ consists of six smooth arcs originating at the singularity $e_3$ and
   ending at the singularity $-e_3$. Similar to the classical beach ball.
-  Now consider for $\rho>0$ the open sets $W_\rho=B_\rho\times\R\subseteq\R^3$ and $U_\rho=\R^3\setminus W_\rho$.
-  Since $\cV_0$ is smooth in a neighbourhood of $\overline{U}_\rho$ we obtain from proposition \ref{pr:n3_polynomial_smoothness}
+  Now consider for $\rho>0$ the open sets $W_\rho\leftdef B_\rho\times\R\subseteq\R^3$ and $U_\rho\leftdef\R^3\setminus W_\rho$.
+  Since $\cV_0$ is smooth in a neighbourhood of $\overline{U}_\rho$ we obtain from proposition \ref{pr:n3_polynomial_convergenceSmoothSet}
   that in a certain sense $\cV_\e$ is obtained from $\cV_0$ by a small deformation on $U_\rho$.
   Thus in order to show connectedness of $\cV_\e$ for sufficiently small $\e>0$ we have to inspect what happens
   around the points $\pm e_3$.
@@ -2267,24 +2523,24 @@ Analogously let $P_1$ denote the homogenisation of $p_1$, that is
   \end{align*}
   We set
   \begin{align*}
-    \widetilde{\cV}_\e=\psi^{-1}\brk*{\cV_\e\cap \brk*{B_{1/2}\times\R_{\geq0}}}
+    \widetilde{\cV}_\e\leftdef\psi^{-1}\brk*{\cV_\e\cap \brk*{B_{1/2}\times\R_{\geq0}}}
     =V_{B_{1/2}}\brk*{x\mapsto P_1\brk*{\e,x_1,x_2,\sqrt{1-x_1^2-x_2^2}}}
     =V_{B_{1/2}}\brk*{\tiP_1\brk*{\e,\cdot}}
   \end{align*}
   where we defined
   \begin{align*}
-    \tiP_1(\e,x)=P_1\brk*{\e,x_1,x_2,\sqrt{1-x_1^2-x_2^2}}
+    \tiP_1(\e,x)\leftdef P_1\brk*{\e,x_1,x_2,\sqrt{1-x_1^2-x_2^2}}
     =-x_1^3+3x_1x_2^2+\e\brk*{x_1^2-x_2^2+x_2\sqrt{1-x_1^2-x_2^2}}\,.
   \end{align*}
-  In a similar manner we define $\tialpha^\bullet=\psi^{-1}\brk*{\alpha^\bullet}$, $\tiU_\rho=\psi^{-1}\brk*{U_\rho}$,
-  $\tiW_\rho=\psi^{-1}\brk*{W_\rho}$
-  and $\tiA=\psi^{-1}\brk*{A}$.
+  In a similar manner we define $\tialpha^\bullet\leftdef\psi^{-1}\brk*{\alpha^\bullet}$, $\tiU_\rho\leftdef\psi^{-1}\brk*{U_\rho}$,
+  $\tiW_\rho\leftdef\psi^{-1}\brk*{W_\rho}$
+  and $\tiA\leftdef\psi^{-1}\brk*{A}$.
   Now let the sets $W$ and $C\subseteq W$ be as in proposition \ref{pr:n3_polynomial_regularH}.
   Pick $\rho>0$ so small that $\tiW_{2\rho}\subseteq W$. 
   Now we can pick $\eta$ smaller than the minimum distance between two arcs of $\widetilde{\cV_0}$ on $\tiU_{\rho}$.
   We also assume that $\eta$ is smaller than the Hausdorff distance between $\brk*{\tialpha^0\cup\tialpha^-}\cap\tiU_\rho$
   and $C$.
-  Now choose $\delta$ as in proposition \ref{pr:n3_polynomial_convergenceSmoothSet}. We can assume that $R>1/\delta$.
+  Now choose $\delta$ as in proposition \ref{pr:n3_polynomial_convergenceSmoothSet}. We can assume that $0<\e<\delta$.
   We thus have a situation as in figure \ref{fi:n3_polynomial_arcOverview}.
   \begin{figure}
     \centering
@@ -2305,7 +2561,7 @@ Analogously let $P_1$ denote the homogenisation of $p_1$, that is
     \label{fi:n3_polynomial_arcConnections}
   \end{figure}
   Number the arcs lying close to $A\cap U_\rho$ as in figure \ref{fi:n3_polynomial_arcNumbering}.
-  Since $\tigamma$ by proposition \ref{pr:n3_polynomial_regularH} splits $\tiW_{2\rho}$ and lies in $C$ we must have that
+  Since $\tigamma$ by proposition \ref{pr:n3_polynomial_regularH} splits $\tiW_{2\rho}$ and lies in $C\cap\widetilde{\cV}_\e$ we must have that
   $\tigamma$ in fact connects arcs 3 and 6.
   As the variety is smooth we must also have that arcs 1 and 2 are connected
   and analogously that arcs 4 and 5 are connected.
@@ -2315,173 +2571,9 @@ Analogously let $P_1$ denote the homogenisation of $p_1$, that is
   The claim then follows from relation \eqref{eq:n3_polynomial_smoothConnected_relVeps}.
 \end{proof}
 
-\begin{proposition}[Smoothness]\label{pr:n3_polynomial_smoothness}
-  There exists $R>0$ such that for every $r>R$ the variety $V\brk*{p_1,P_2\brk*{r,\cdot}}$ is smooth.
-\end{proposition}
-\begin{proof}
-  One calculates
-  \begin{align*}
-    T=\vect{\nabla p_1(x)&\frac{1}{2}\nabla_x P_2(r,x)}=
-    \begin{bmatrix}
-      -3x_1^2+3x_2^2+2x_1 & x_1\\
-      6x_1x_2-2x_2+2x_3&x_2 \\
-      2x_2&x_3
-    \end{bmatrix}
-  \end{align*}
-  \td{Add a reference for the following.}
-  By the Jacobi criterion it is sufficient to show that this matrix is
-  of full rank on $V\brk*{p_1,P_2\brk*{r,\cdot}}$.
-  This is equivalent to showing that
-  \begin{align*}
-    0&\neq \det\begin{bmatrix}
-      T_{11}&T_{12}\\T_{21}&T_{22}
-    \end{bmatrix}
-    =-9x_1^2x_2+3x_2^3+4x_1x_2-2x_1x_3
-    =h_1(x)\,, \\
-    0&\neq \det\begin{bmatrix}
-      T_{21}&T_{22}\\T_{31}&T_{32}
-    \end{bmatrix}
-    =6x_1x_2x_3-2x_2x_3+2x_3^2-2x_2^2
-    =h_2(x)\text{ or } \\
-    0&\neq \det\begin{bmatrix}
-      T_{31}&T_{32}\\T_{11}&T_{12}
-    \end{bmatrix}
-    =2x_1x_2+3x_1^2x_3-3x_2^2x_3-2x_1x_3
-    =h_3(x)
-  \end{align*}
-  for any $x\in V\brk*{p_1,P_2\brk*{r,\cdot}}$. This in turn is equivalent to showing that
-  \begin{align}
-    V\brk*{p_1,P_2\brk*{r,\cdot},h_1,h_2,h_3}=\emptyset\,.\label{eq:n3_ex_smoothness_varCond}
-  \end{align}
-  Indeed, consider the variety
-  \begin{align}
-    V\brk*{p_1,h_1,h_2,h_3} \label{eq:n3_ex_smoothness_subvar}
-  \end{align}
-  \td{Add references, elaborate the following.}
-  Maple calculates the Gröbner basis with lexicographic order $x_1<x_2<x_3$
-  \begin{align*}
-    & 72x_1^8 - 198x_1^7 + 228x_1^6 - 153x_1^5 + 56x_1^4 - 5x_1^3\,, \\
-    & 72x_1^5x_2 - 126x_1^4x_2 + 102x_1^3x_2 - 51x_1^2x_2 + 5x_1x_2\,, \\
-    & -24x_1^7 + 42x_1^6 - 2x_1^5 - 23x_1^4 + 7x_1^3 + 10x_1x_2^2\,, \\
-    & 48x_1^4x_2 - 60x_1^3x_2 + 13x_1^2x_2 + 15x_2^3\,, \\
-    & 24x_1^4x_2 - 30x_1^3x_2 + 29x_1^2x_2 - 10x_1x_2 + 5x_1x_3\,, \\
-    & 72x_1^7 - 126x_1^6 + 6x_1^5 + 69x_1^4 - 31x_1^3 + 10x_1^2 - 10x_2^2 + 20x_2x_3\,, \\
-    & -72x_1^7 + 414x_1^6 - 654x_1^5 + 399x_1^4 - 97x_1^3 + 10x_1^2 - 30x_2^2 + 20x_3^2\,,
-  \end{align*}
-  from which we see that the variety \eqref{eq:n3_ex_smoothness_subvar} contains finitely many points.
-  Thus if we choose $R$ so large that all of these points are contained in the ball $B_R$ then we have
-  that \eqref{eq:n3_ex_smoothness_varCond} holds for all $r>R$.
-\end{proof}
-  % We will show this in two steps. 
-  % First we claim that for any $\eta>0$ we have
-  % \begin{align}
-  %   V\brk*{P,Q,R_1,R_2,R_3}\setminus C_\eta^r=\emptyset\,
-  %   \label{eq:n3_ex_smoothness_step1}
-  % \end{align}
-  % for $r$ sufficiently large. 
-  % Since the homogeneous parts of maximal degree satisfy
-  % \begin{align*}
-  %   \brk*{P}_3&=-x_1^3+x_1x_2^2=x_1(x_2^2-x_1^2) \\
-  %   \brk*{R_1}_3&=-5x_1^2x_2+x_2^3=x_2(x_2^2-5x_1^2) \\
-  %   \brk*{R_2}_3&=2x_1x_2x_3 \\
-  %   \brk*{R_3}_3&=3x_1^2x_3-x_2^2x_3=x_3(3x_1^2-x_2^2)
-  % \end{align*}
-  % we obtain for the variety
-  % \begin{align}
-  %   V\brk*{\brk*{P}_3,\brk*{R_1}_3,\brk*{R_2}_3,\brk*{R_3}_3}=\R e_3
-  %   \label{eq:n3_3x_smoothness_homogVar}
-  % \end{align}
-  % Now observe that we have for $x\in C_\eta^1$ that
-  % \begin{align*}
-  %   \frac{1}{r^6}\brk*{P^2+\sum_jR_j^2}\brk*{rx}
-  %   =\underbrace{\brk*{\brk*{P}_3^2+\sum_j\brk*{R_j}_3^2}}_{>0\text{ on }C_\eta^1\text{ by }\eqref{eq:n3_3x_smoothness_homogVar}}\brk*{x}+\bigO\brk*{\frac{1}{r}}
-  % \end{align*}
-  % and thus for $r$ sufficiently large equation \eqref{eq:n3_ex_smoothness_step1} does indeed hold.
-  % We now claim that $\neq0$ on $V(Q)\setminus B_{r\eta}\brk*{re_3}$ for $r$ sufficiently large.
-  % To show this, observe that for $x\in C_\eta^1$ we have
-  % \begin{align*}
-  %   \frac{1}{r^3}R_1\brk*{rx}=\underbrace{\brk*{R_1}_3\brk*{x}}_{\neq0\text{ for }rx\notin\tubular_\eta\brk*{\R e_3}}+\bigO\brk*{\frac{1}{r}}
-  % \end{align*}
-  % and thus for $r$ sufficiently large we indeed have $R_1\neq0$ on the desired set.
-  % Analogous argumentation with $R_2$, $R_3$ and $P$ yield .
-
-  % We now show for any sufficiently small $\eta>0$ we have that
-  % \begin{align*}
-  %   V\brk*{P,Q,R_1,R_2,R_3}\cap B_{r\eta}\brk*{re_3}=\emptyset
-  % \end{align*}
-  % for all sufficiently large $r$.
-  % For this we inspect 
-
-  % In the second part we show that
-  % \begin{align*}
-  %   V\brk*{P,Q,R_1,R_2,R_3}\cap \tubular_\eta\brk*{\R e_3}=\emptyset
-  % \end{align*}
-  % for sufficiently large $r$.
-  % For this note that for $x\in S^2\cap\tubular_{\eta/r}\brk*{\R e_3}$ we have
-  % \begin{align*}
-  %   \frac{1}{r^2}R_2(rx)=\underbrace{2x_3^2}_{>1\text{ for }r\text{ large}}+\bigO\brk*{\frac{1}{r}}
-  % \end{align*}
-  % from which this claim also follows.
-
-  \td{The following proof is a little unclear in parts.}
-\begin{proposition}[Convergence at smooth points]\label{pr:n3_polynomial_convergenceSmoothSet}
-  For $\e\in\R$ and an open set $W\subseteq\R^3$ define the variety $\cV_\e=V_W\brk*{P_1\brk*{\e,\cdot},p_2}$.
-  Let $U\subseteq \R^3$ be an open set such that $\cV_0$ is smooth
-  in an open neighbourhood of $\overline{U}$. Let further $\eta>0$.
-  Then there exists a $\delta>0$ such that for all $\e<\delta$ we have that the Hausdorff distance
-  satisfies
-  \begin{align*}
-    d_H\brk*{\cV_\e,\cV_0}<\eta
-  \end{align*}
-  and additionally $\cV_\e$ is isotopic to $\cV_0$.
-\end{proposition}
-\begin{proof}
-  Consider the mapping
-  \begin{align*}
-    F=\vect{P_1\\p_2}\colon \R^4\to\R^2\,.
-  \end{align*}
-  Since $V\brk*{P_1(0,\cdot),p_2}$ is smooth on an open neighbourhood of $\overline{U}$
-  we have by the Jacobi criterion that
-  \begin{align}
-    DF = \left[\begin{array}{c|c}
-      *&\begin{array}{c}
-        D_x P_1(0,\cdot)\\
-        D p_2
-      \end{array}
-    \end{array}\right]\label{eq:n3_polynomial_homotopic_df}
-  \end{align}
-  is of full rank on $\overline{U}$.
-  By the implicit function theorem there exists at every point $x\in\overline{U}$ open neighbourhoods
-  $\Omega_x\subseteq \R^4$ of $(x,0)$ and $\omega_x\subseteq\R^3$, a coordinate permutation $I\in O(4)$
-  and a mapping $g_x\in C^1\brk*{\omega_x;\R}$ such that
-  \begin{align*}
-    V\brk*{P_1,p_2}\cap \Omega_x=\brk[c]*{I\brk*{y,g_x(y)}\colon y\in\omega_x}\,.
-  \end{align*}
-  By equation \eqref{eq:n3_polynomial_homotopic_df} we can assume (possibly after shrinking the open sets) that $I$ does not permute the $\e$-coordinate.
-  We can also assume that $\Omega_x=B_{\delta_x}\times W_x\subseteq\R^4$ for some open $W_x\subseteq\R^3$ and 
-  some $\delta_x>0$.
-  Thus we also obtain that $\omega_x=B_{\delta_x}\times w_x$ for some open $w_x\subseteq\R^2$ and we can define our
-  isotopy on $\Omega_x$ as
-  \begin{align*}
-    \varphi\colon B_{\delta_x}\times w_x&\to W_x\\
-    y&\mapsto \proj_{\R^4\to W}I\brk*{y,g_x\brk*{y}}
-  \end{align*}
-  where $y=(\e,y_1,y_2)$.
-  Note that $\varphi\brk*{\brk[c]*{\e}\times w_x}=\cV_\e\cap W_x$.
-  From this it also follows that we can choose $\delta_x$
-  such that
-  \begin{align*}
-    d_H\brk*{\cV_\e\cap W_x,\cV_0\cap W_x}<\eta\,.
-  \end{align*}
-  Now for $x\in\overline{U}$ the $\Omega_x$ form an open cover of $\overline{U}$.
-  By compactness there exists a finite subcover.
-  Set $\delta>0$ to be the minimum of all 
-  $\delta_x$ for the $\Omega_x$ in this finite subcover and the claim follows.
-\end{proof}
-
-\td{Issues with final step in the proof.}
+The following proposition is part of the proof of lemma \ref{pr:n3_polynomial_smoothConnected}:
 \begin{proposition}\label{pr:n3_polynomial_regularH}
-  Let $\tiU_\rho$, $\tialpha$, $\e$, et cetera be as in the proof of proposition \ref{pr:n3_polynomial_smoothConnected}.
+  Let $\tiU_\rho$, $\tialpha^\bullet$, $\tiA$, $\widetilde{\cV}_\e$ and $\tiP_1$ be as in the proof of lemma \ref{pr:n3_polynomial_smoothConnected}.
   There exists an open cube $W\subseteq\R^2$ containing the origin and a set 
   $C\subseteq W$ such that $C$ has positive Hausdorff distance to the set
   $\brk*{\tialpha^0\cup\tialpha^-}\cap \tiU_\rho$ for any $\rho>0$
@@ -2489,12 +2581,12 @@ Analogously let $P_1$ denote the homogenisation of $p_1$, that is
   entirely contained in $C\cap\widetilde{\cV}_\e$ splitting $W$ into two parts.
 \end{proposition}
 \begin{proof}
-  We borrow notation from the proof of proposition \ref{pr:n3_polynomial_smoothConnected}.
+  We borrow notation from the proof of lemma \ref{pr:n3_polynomial_smoothConnected}.
   Let $W\subseteq\R^2$ be an open cube around the origin which we fix later.
   Define polynomials
   \begin{align}
-    \tiq_1(x)&=-x_1^3+3x_1x_2^2\label{eq:n3_polynomial_regularH_defq1} \\ 
-    \tiq_2(x)&=x_1^2-x_2^2+x_2\sqrt{1-x_1^2-x_2^2} \label{eq:n3_polynomial_regularH_defq2}
+    \tiq_1(x)&\leftdef-x_1^3+3x_1x_2^2\label{eq:n3_polynomial_regularH_defq1} \\ 
+    \tiq_2(x)&\leftdef x_1^2-x_2^2+x_2\sqrt{1-x_1^2-x_2^2} \label{eq:n3_polynomial_regularH_defq2}
   \end{align}
   % \begin{align*}
   %   \tip_1(x)=\tiP_1(1,x)=p_1\brk*{x_1,x_2,\sqrt{1-x_1^2-x_2^2}}
@@ -2518,17 +2610,137 @@ Analogously let $P_1$ denote the homogenisation of $p_1$, that is
   Now we claim that the set $C$ consisting of the vertical lines between $\tialpha^+$
   and $\tibeta$ fulfills the claim.
 
-  Indeed, consider the right half plane.
-  Here we have that
-  $\tiP_1(\e,\cdot)=\tiq_1\leq0$ on the arc $\tibeta$ and that
-  $\tiP_1(\e,\cdot)=\tiq_2\geq0$ on the arc $\tialpha^+$. By the intermediate value theorem thus there must be for each
-  $(x_1,0)\in W$ a corresponding point 
-  $(x_1,\tigamma(x_1))\in V_W\brk1{\tiP_1(\e,\cdot)}=\widetilde{\cV}_\e$ sandwiched between $\tibeta$ and $\tialpha^+$.  
-  Since $\widetilde{\cV}_\e$ is smooth $\tigamma$ in fact defines an arc which we also denote by $\tigamma$.
-  An analogous argumentation using signage extends $\tigamma$ to the third quadrant.
+  We first show that there exists a curve $\tigamma$ through the origin which is
+  entirely contained in $C\cap \widetilde{\cV}_\e$.
+  For this note that we have $\tiP_1\brk*{\e,0}=0$ and $\nabla_x\tiP_1\brk*{\e,x}\big\vert_{x=0}=\e e_2$
+  and thus there exists locally around the origin a parametrisation $\tigamma(t)=\brk*{t,\tigamma_2(t)}$.
+  By a similar argument there also exists locally a parametrisation $\tibeta(t)=\brk1{t,\tibeta_2(t)}$.
+  We see that $\tigamma$ lies locally below $\tialpha^+$ and thus we need to show that $\tigamma_2$ also lies locally
+  above $\tibeta_2$ on the right half plane and locally below $\tibeta_2$ on the left half plane.
+  We calculate derivatives
+  \begin{align*}
+    D\tiq_1\big\vert_{x=0}&=0 \\
+    D^2\tiq_1\big\vert_{x=0}&=0 \\
+    D^3\tiq_1\big\vert_{x=0}\brk*{v,v,v}&=-6v_1^3+18v_1v_2^2
+  \end{align*}
+  and
+  \begin{align*}
+    D\tiq_2\big\vert_{x=0}&=e_2^\top\\
+    D^2\tiq_2\big\vert_{x=0}&=\begin{bmatrix}
+      2&\\
+      &-2
+    \end{bmatrix} \\
+    D^3\tiq_2\big\vert_{x=0}\brk*{v,v,v}&=3v_1^2v_2+v_2^3
+  \end{align*}
+  and now by relation \eqref{eq:n3_polynomial_regularH_relTiP}
+  \begin{align}
+    \begin{aligned}
+    Dh\big\vert_{x=0}&=\e D_x\tiq_2\\
+    D^2h\big\vert_{x=0}&=\e D_x^2\tiq_2 \\
+    D^3h\big\vert_{x=0}\brk*{v,v,v}&=-6v_1^3+18v_1v_2^2+\e\brk*{3v_1^2v_2+v_2^3}
+    \,.
+    \end{aligned}
+    \label{eq:n3_polynomial_regularH_DPDq}
+  \end{align}
+  where we wrote $h(x)=\tiP_1(\e,x)$ for brevity. We have $0=h\circ\tigamma$ and thus
+  \begin{align}
+    0=\partial_t\brk*{h\circ\tigamma}\big\vert_{t=0}=\brk*{Dh\big\vert_{\tigamma}\tigamma'}_{t=0}
+    =\e\tigamma_2'(0)\label{eq:n3_polynomial_regularH_gammaDer1}
+  \end{align}
+  so $\tigamma_2'(0)=0$ and in particular $\tigamma'(0)=e_1$.
+  Taking another derivative we get
+  \begin{align}
+    \begin{aligned}
+    0&=\partial_t^2\brk*{h\circ\tigamma}\big\vert_{t=0}  \\
+    &=\brk*{D^2h\big\vert_{\tigamma}\brk*{\tigamma',\tigamma'}+Dh\big\vert_{\tigamma}\tigamma''}_{t=0} \\
+    &=\brk*{D^2h\big\vert_{x=0}\brk*{e_1,e_1}+Dh\big\vert_{x=0}\tigamma''}_{t=0} \\
+    &=\e\brk*{2+\tigamma_2''}(0)
+    \end{aligned}
+    \label{eq:n3_polynomial_regularH_gammaDer2}
+  \end{align}
+  so $\tigamma''(0)=-2e_2$.
+  The third derivative then yields
+  \begin{align*}
+    0&=\partial_t^3\brk*{h\circ\tigamma}\big\vert_{t=0} \\
+    &=\brk*{D^3h\big\vert_{\tigamma}\brk*{\tigamma',\tigamma',\tigamma'}
+    +3D^2h\big\vert_{\tigamma}\brk*{\tigamma',\tigamma''}
+    +Dh\big\vert_{\tigamma}\tigamma'''}_{t=0} \\
+    &=\brk*{D^3h\big\vert_{x=0}\brk*{e_1,e_1,e_1}
+    -6D^2h\big\vert_{x=0}\brk*{e_1,e_2}
+    +Dh\big\vert_{x=0}\tigamma'''}_{t=0} \\
+    &=\brk*{-6+\e\brk*{\tigamma_2'''}}(0)
+  \end{align*}
+  so $\tigamma_2'''(0)=6/\e$.
+  Analogously we observe that it follows from $0=\tiq_2\circ\tibeta$ that
+  \begin{align}
+    0=\e\partial_t\brk*{\tiq_2\circ\tibeta}\big\vert_{x=0}
+    =\e\brk*{D\tiq_2\big\vert_{\tigamma}\tibeta'}_{t=0}
+    \label{eq:n3_polynomial_regularH_betaDer1}
+  \end{align}
+  and
+  \begin{align}
+    0=\e\partial_t^2\brk*{\tiq_2\circ\tibeta}\big\vert_{x=0}
+    =\e\brk*{D^2\tiq_2\big\vert_{\tigamma}\brk*{\tibeta',\tibeta'}+D\tiq_2\big\vert_{\tigamma}\tibeta''}_{t=0}\,.
+    \label{eq:n3_polynomial_regularH_betaDer2}
+  \end{align}
+  By the relations \eqref{eq:n3_polynomial_regularH_DPDq}, equation \eqref{eq:n3_polynomial_regularH_betaDer1} is identical to
+  equation \eqref{eq:n3_polynomial_regularH_gammaDer1} 
+  and equation  \eqref{eq:n3_polynomial_regularH_betaDer2} is identical to equation 
+  \eqref{eq:n3_polynomial_regularH_gammaDer2} with $\tigamma$ replaced by $\tibeta$.
+  Now equations  \eqref{eq:n3_polynomial_regularH_gammaDer1} and  \eqref{eq:n3_polynomial_regularH_gammaDer2}
+  determined $\tigamma'(0)$ and $\tigamma''(0)$ uniquely and thus we have that
+  $\tigamma(0)=\tibeta(0)$, $\tigamma'(0)=\tibeta'(0)$ and $\tigamma''(0)=\tibeta''(0)$.
+  For the third derivative we observe that
+  \begin{align*}
+    0&=\partial_t^3\brk*{\tiq_2\circ\tibeta}\big\vert_{t=0} \\
+    &=\brk*{D^3\tiq_2\big\vert_{\tigamma}\brk*{\tibeta',\tibeta',\tibeta'}
+    +3D^2\tiq_2\big\vert_{\tigamma}\brk*{\tibeta',\tibeta''}
+    +D\tiq_2\big\vert_{\tigamma}\tibeta'''}_{t=0} \\
+    &=\brk*{D^3\tiq_2\big\vert_{x=0}\brk*{e_1,e_1,e_1}
+    -6D^2\tiq_2\big\vert_{x=0}\brk*{e_1,e_2}
+    +D\tiq_2\big\vert_{x=0}\tibeta'''}_{t=0} \\
+    &=\tibeta_2'''(0)
+  \end{align*}
+  so $\tibeta'''(0)=0$.
+  Thus we obtain
+  \begin{align*}
+    \partial_t^k\brk*{\tigamma_2-\tibeta_2}\big\vert_{t=0}&=0 
+  \end{align*}
+  for $k\leq2$ and
+  \begin{align*}
+    \partial_t^3\brk*{\tigamma_2-\tibeta_2}\big\vert_{t=0}&=6/\e>0\,.
+  \end{align*}
+  Hence we indeed have that $\tigamma_2>\tibeta_2$ in a sufficiently small neighbourhood of the origin for $t>0$
+  and also that  $\tigamma_2<\tibeta_2$ in a sufficiently small neighbourhood for $t<0$.
+
+  Now that we have established that $\tigamma$ lies locally in $C$ it remains to be shown that
+  $\tigamma$ indeed reaches the boundary $\partial W$.
+  For this let $\tigamma\colon [0,b)\to C$ be a maximally extended parametrisation of $\tigamma$.
+  Since $C$ is compact there exists a sequence $t_k\to b$ such that $x_k=\tigamma\brk*{t_k}\to x$
+  is convergent. Then we have by continuity that also $h(x)=0$ so also $x\in\cV_\e$.
+  As $\cV_\e$ is smooth we have that $Dh(x)$ is of full rank. Thus by the implicit function theorem 
+  we must in fact have that $b<\infty$ and the parametrisation of $\tigamma$ can be extended beyond
+  the point $b$. But this means that $x\in\partial C$.
+  Again by smoothness $x$ cannot lie in the origin. 
+  Now note that
+  $\tiP_1(\e,\cdot)=\tiq_1<0$ on the arc $\tibeta$ and that
+  $\tiP_1(\e,\cdot)=\tiq_2>0$ on the arc $\tialpha^+$.
+  So $\tigamma$ cannot intersect $\partial C$ on $\tibeta$ or on $\tialpha$.
+  Thus we must have that $x\in\partial W$ and hence $\tigamma$ splits $W$ in the right half plane into two parts.
+  % Now we have that $0\in\widetilde{\cV}_\e$. Since
+  % $\nabla_x\tiP(\e,0)=e_2$ there exists a curve $\tigamma$ 
+  % By the intermediate value theorem thus there must be for each
+  % $(x_1,0)\in W$ a corresponding point 
+  % $(x_1,\tigamma(x_1))\in V_W\brk1{\tiP_1(\e,\cdot)}=\widetilde{\cV}_\e$ sandwiched between $\tibeta$ and $\tialpha^+$.  
+  % Since $\widetilde{\cV}_\e$ is smooth $\tigamma$ in fact defines an arc which we also denote by $\tigamma$.
+  % An analogous argumentation using signage extends $\tigamma$ to the third quadrant.
+  % On the left half plane note that we have the symmetries
+  % \begin{align*}
+  %   \tiq_2(-x_1,x_2)=
+  % \end{align*}
+  On the left half plane the argumentation is analogous.
   Then $\tigamma$ divides the plane into two
-  parts and it follows that $\widetilde{\cV}_\e$
-  which yields the claim.
+  parts which yields the claim.
   For clarity the idea of the proof is also depicted in figure \ref{fi:n3_polynomial_intersectionOrigin_overview}.
   Also note that as a consequence $\widetilde{\cV}_\e$
   looks similar to figure \ref{fi:n3_polynomial_intersectionOriginRegular}.
@@ -2564,7 +2776,34 @@ Analogously let $P_1$ denote the homogenisation of $p_1$, that is
   \end{figure}
 \end{proof}
 
+% \begin{lemma}[Smooth curves in ]
+%   Let $X\subseteq\R^2$ be compact and $\gamma=V_X(p)\subseteq X$ a smooth one-dimensional variety
+%   intersecting the boundary.
+%   Then $\gamma$ intersects the boundary at least twice. 
+% \end{lemma}
+% \begin{proof}
+%   Let $\gamma\colon [a,b)\to X$ be a parametrisation of the curve $\gamma$, possibly excluding an endpoints.
+%   Since $X$ is compact there exists a sequence $t_k\to b$ such that $x_k=\gamma\brk*{t_k}\to x$ is
+%   convergent. Then we have by continuity that $p(x)=0$ so also $x\in V_X(p)$.
+%   Since $V_X(p)$ is smooth we have that $Dp(x)$ is of full rank.
+%   Thus by the implicit function theorem we must in fact have that $b<\infty$
+%   and the parametrisation of $\gamma$ can in fact be
+%   extended beyond the point $b$. But this means that $x\in\partial X$.
+%   Analogous argumentation for a sequence $t_k\to a$ yields a further point on the boundary $\partial X$.
+% \end{proof}
+
+
+
 \chapter{No in- or outflow in $d=2$ dimensions}
+
+In the second part of this thesis we will discuss harmonic vector fields without
+inflow or outflow through the boundary.
+More generally we will first consider harmonic vector fields without boundary critical points.
+Here we will show in proposition \ref{pr:n2_hvf_noInflowNoOutflow} that in $d=2$ dimensions there is a strong relation between the 
+number of critical points and the domain topology.
+We will then discuss briefly how this relates to the Poincaré-Hopf index theorem.
+After that we will give examples which illustrate these results.
+
 
 % \begin{proposition}[Upper bound on $M$]
 %   Let $d=2$ and $\Omega$ be a compact manifold with corners with Betti numbers $b_0=1$, and $b_1$.
@@ -2591,6 +2830,13 @@ Analogously let $P_1$ denote the homogenisation of $p_1$, that is
 % \end{proof}
 
 % In fact using the Morse inequalities we can obtain the stronger result.
+
+\section{Relations between the domain topology and the number of stagnation points}
+Our first result relates the number of critical points with the domain topology.
+We shall give two proofs of this result, one involving Morse theory and the other involving
+the argument principle. The reason for this is that the result follows quickly from the
+argument principle. However, the techniques of the proof involving Morse theory generalise
+more readily to $d=3$ dimensions.
 \begin{proposition}\label{pr:n2_hvf_noInflowNoOutflow}
   Let $X\subset\R^2$ be a compact manifold with corners and Betti numbers $b_0=1$, and $b_1$
   and let $u\colon X\to\R^2$ be
@@ -2683,8 +2929,8 @@ Analogously let $P_1$ denote the homogenisation of $p_1$, that is
   The claim then follows by the calculations above where we replace
   $u$ with $u^\e$ and then note that $M^\e=M$.
 \end{proof}
-We now give an alternative proof using the argument principle.
-\begin{proof}
+We now give an alternative and simpler proof of proposition \ref{pr:n2_hvf_noInflowNoOutflow} using the argument principle.
+\begin{proof}[Alternative proof]
   As before we slit the domain such that it is homeomorphic to a disk. By proposition \ref{pr:n2:hvf:simplyConnected} $u$ is the gradient of a
   harmonic function $f$ on this new domain $\tiX$. Let $h\in\Hol(\tiX)$ be the holomorphic function given by $h=\nabla f$.
   Let $\gamma$ traverse the boundary of the slit domain such that the domain lies to the left of $\gamma$.
@@ -2715,7 +2961,7 @@ Armed with this definition we can give the following corollary.
   $\Sigma$. Then we have the relation $M=-\chi(X)$ where $M$ is the number of stagnation points
   and $\chi(X)$ is the Euler characteristic of $X$.
 \end{corollary}
-This result could also have been proved using the Poincaré-Hopf index theorem.
+This corollary could also have been proved using the Poincaré-Hopf index theorem.
 For this define:
 \begin{definition}[{\cite[Definition 1.1.1]{Brasselet2009}}]
   The \emph{Poincaré-Hopf index} $\ind_{\text{PH},x}(f)$ of an isolated
@@ -2735,9 +2981,13 @@ also follows from the Poincaré-Hopf index theorem:
   See for example \cite[§6]{Milnor1965}.
 \end{proof}
 
-We now give an example of a harmonic vector field in $d=2$ dimensions without 
+
+\section{Examples of harmonic vector fields}
+
+We would like to illustrate the previous results with examples.
+We first give an example of a harmonic vector field in $d=2$ dimensions without 
 inflow or outflow and with one stagnation point.
-\begin{example}
+\begin{example}[No in- or outflow]
   Consider the stream function
   \begin{equation}
     \begin{aligned}
@@ -2765,9 +3015,9 @@ inflow or outflow and with one stagnation point.
 \end{example}
 
 In a second example given by \cite{Wahlen2023} we fix the domain rather than the function.
-\begin{example}
+\begin{example}[No in- or outflow]
   Set $X=\overline{B_4}\setminus\brk*{B_1(2e_1)\cup B_1(-2e_1)}$ to be the domain.
-  We then have the system
+  We let the stream function $\psi$ be determined by the system
   \begin{equation}
     \begin{aligned}
       \Delta \psi&=0 &&\text{, on }\Omega \\
@@ -2775,8 +3025,8 @@ In a second example given by \cite{Wahlen2023} we fix the domain rather than the
       \psi&=1 &&\text{, on the inner rings }S^1(-2e_1)\cup S^1(2e_1)
     \end{aligned}\label{eq:n2:hvf:roundRegion:noInflowNoOutflow}
   \end{equation}
-  We solve this system numerically and set $u=\nabla^\perp\psi$.
-  The result is plotted in figure \ref{pl:n2_hvf_roundRegion_noInflowNoOutflow}.
+  and set $u=\nabla^\perp\psi$.
+  A numerical solution to this system is plotted in figure \ref{pl:n2_hvf_roundRegion_noInflowNoOutflow}.
   \begin{figure}
     \centering
     \includegraphics[width=0.6\textwidth]{../Plots/HarmonicVectorFields_gr4.eps}
@@ -2784,14 +3034,15 @@ In a second example given by \cite{Wahlen2023} we fix the domain rather than the
     \eqref{eq:n2:hvf:roundRegion:noInflowNoOutflow}.}
     \label{pl:n2_hvf_roundRegion_noInflowNoOutflow}
   \end{figure}
-  Again it follows from symmetry that the origin is a stagnation point and
+  Again, it follows from symmetry that the origin is a stagnation point and
   from proposition \ref{pr:n2_hvf_noInflowNoOutflow} that it is in fact the sole stagnation point of $u$.
 \end{example}
 
+Our third example highlights the importance of assuming that $u$ be Morse in corollary \ref{co:n2_noInflowNoOutflow}.
 \begin{example}[Stagnation points on the boundary]
-  In another example given by \cite{Wahlen2023} we fix the domain rather than the function.
+  In this example given by \cite{Wahlen2023} we again start by fixing the domain.
   Let $\Omega=B_4\setminus\brk*{B_1(2e_1)\cup B_1(-2e_1)}$ be the domain as before.
-  We now have the system
+  We let the stream function $\psi$ be determined by the system
   \begin{equation}
     \begin{aligned}
       \Delta \psi&=0 &&\text{, on }\Omega \\
@@ -2800,8 +3051,8 @@ In a second example given by \cite{Wahlen2023} we fix the domain rather than the
       \psi&=1 &&\text{, on the right inner ring }S^1(2e_1)
     \end{aligned}\label{eq:n2:hvf:roundRegion:InflowOutflow}
   \end{equation}
-  We solve this system numerically and set $u=\nabla^\perp\psi$.
-  The result is plotted in figure \ref{pl:n2_hvf_roundRegion_InflowOutflow}.
+  and then set $u=\nabla^\perp\psi$.
+  The numerical solution to this system is plotted in figure \ref{pl:n2_hvf_roundRegion_InflowOutflow}.
   \begin{figure}
     \centering
     \includegraphics[width=0.6\textwidth]{../Plots/HarmonicVectorFields_gr5.eps}
@@ -2812,9 +3063,35 @@ In a second example given by \cite{Wahlen2023} we fix the domain rather than the
   Here we obtain from the symmetry $\psi(-x_1,x_2)=\psi(x)$ that $\psi=0$ on
   the $x_2$-axis. Since also $\psi=0$ on $4S^1$ we have two stagnation points
   at $\pm4e_2$.
+  This function again has no in- or outflow through the boundary. The domain contains
+  two holes so $\chi\brk*{X}=-1$. Now $u$ has no interior stagnation point, seemingly contradicting
+  corollary \ref{co:n2_noInflowNoOutflow}. But since the two stagnation points
+  at $\pm4e_2$ lie on the boundary $u$ is in fact not Morse and thus we cannot apply corollary \ref{co:n2_noInflowNoOutflow}.
+  This shows the importance of the assumption that $u$ is Morse.
+  Proposition \ref{pr:n2_noInflowOutflow_halfBd}
+  essentially states that in this case the stagnation points of $u$ on the boundary
+  count half as much as stagnation points in the interior.
+  This explains why there are two critical points in this example.
 \end{example}
 
+\begin{proposition}[Critical points on the boundary, {\cite[Theorem 1.1]{Alessandrini1992}}]\label{pr:n2_noInflowOutflow_halfBd}
+  Let $\Omega\subseteq\R^2$ be bounded, open, with piecewise $C^{1,\alpha}$ boundary.
+  Let further $f\colon X\to\R$ be harmonic and constant on each boundary component,
+  say $f=a_j$ on a boundary component $\Gamma_j$. Then there exist finitely many critical
+  points $x_1,\dots,x_k\in X$ of $u$ with multiplicities $m_1,\dots,m_k$ and we have that
+  \begin{align*}
+    \sum_{x_j\in\Omega}m_j+\frac{1}{2}\sum_{x_j\in \Sigma}m_j=-\chi\brk*{X}\,.
+  \end{align*}
+\end{proposition}
+\begin{proof}
+  The proof uses complex analysis techniques and can be found in \cite[Theorem 1.1]{Alessandrini1992}.
+\end{proof}
+
 \chapter{No in- or outflow in $d=3$ dimensions}
+
+This question is in part inspired by a question posed in \cite[p.198]{Lortz1970}.
+
+
 
 We obtain as a quick consequence of the hairy ball theorem
 \begin{proposition}
