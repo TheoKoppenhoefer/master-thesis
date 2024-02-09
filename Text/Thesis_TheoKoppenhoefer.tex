@@ -4,12 +4,30 @@
 
 %%%%% TITLE PAGE
 
+
+% \usepackage{../Latex_Templates/MA_Titlepage}
+
+% birthdate
+% \birthday{November 9th 2000}
+% % birthplace
+% \birthplace{Heidelberg}
+% \date{\today}
+
+% supervisor
+\supervisor{Supervisor: Erik Wahlén}
+% examinor
+\examinor{Examinor: Evgeny Lokharu}
+%Name des Instituts an dem der Betreuer der Arbeit tätig ist.
+%z.B.: Mathematisches Institut
+% \institute{Institut }
+%\institute{Mathematisches Institut}
+\documenttype{Master thesis in mathematics}
+
 %\subject{, VT23}
-\title{Some relations between equilibria of harmonic vector fields and the domain topology. \\[1ex]
-	  \large Master Thesis}
+\title{Some relations between equilibria of harmonic vector fields and the domain topology}
 %\subtitle{}
 \author{Theo Koppenhöfer}
-\date{Lund \\[1ex] \today}
+\date{\today}
 
 \addbibresource{bibliography.bib}
 
@@ -49,6 +67,7 @@
 \newcommand{\ownresult}{{[$*$]}}
 \newcommand{\bigsetminus}{\mathbin{\big\backslash}}
 % \renewcommand{\chaptername}{Section}
+\newcommand{\openX}{\interior\brk*{X}}
 
 %%%%% The content starts here %%%%%%%%%%%%%
 
@@ -73,6 +92,8 @@
     \item Harmonic vector fields, find up to date reference
     \item Mention Sard's theorem
     \item Does Bocher's theorem help?
+    \item What can be said about singular sets with no in- or outflow in 3D?
+    \item define relative homol. / euler characteristic
     \item Look at application of Sperner's lemma
     \item $C$ is used once for critical points, once for level sets.
     \item Look into James Kelliher, stream functions for divergence free vector fields. 
@@ -88,27 +109,59 @@
 
 \chapter{Introduction}
 
+\setcounter{page}{1}
+
 \ruggedtodo[inline]{Some amazing introduction}
 
 Unless otherwise stated we denote by $X\subseteq\R^d$ a compact subset of $\R^d$ with boundary $\Sigma=\partial X$ and nonempty interior
-$\Omega=\interior(X)$.
+$\openX$.
 In the following we will work in dimensions $d\in\brk[c]{2,3}$.
 Unless otherwise stated we denote by
 \begin{align*}
   f\colon X\to\R
 \end{align*}
-a $C^2$ function on $X$. Often $f$ will be assumed to be harmonic.
+a $C^2$ function on $X$. Often $f$ will be assumed to be \emph{harmonic},
+that is $\Delta f=0$ on $\openX$ where $\Delta$ denotes the Laplace operator.
 We also denote by
 \begin{align*}
   u\colon X\to\R^d
 \end{align*}
 a vector field of class $C^1$.
-In the following we often assume that $u$ is in fact \emph{harmonic}, that is $u$ fulfils
-$\diver u=0$ and $\curl u=0$.
+In the following we often assume that $u$ is in fact a \emph{harmonic vector field}, that is $u$ fulfils
+$\diver u=0$ and $\curl u=0$ on $\openX$.
+Note that a harmonic function $f$ gives rise to a harmonic vector field via $u=\nabla f$.
+In general a harmonic vector field $u$ is not the gradient of a harmonic function as example \ref{}
+will illustrate.
+% \section{On harmonic vector fields}
+% In the following we deduce some basic relations for harmonic vector fields in dimensions $d\in\brk[c]{2,3}$.
+On simply connected domains this implication is however true:
+\begin{proposition}[Harmonic vector fields on simply connected domains]\label{pr:n2:hvf:simplyConnected}
+  Let $d\in\brk[c]*{2,3}$ and $\Omega\subseteq\R^d$ be open and simply connected and $u$ be a harmonic vector field. Then
+  \begin{enumerate}
+    \item 
+    $u=\nabla f$ is the gradient field of some
+    function $f\colon\Omega\to\R$.
+    \item  $f$ is harmonic.
+    \item $u$ is in fact $C^\infty$.
+    \item The components $u_i$ are harmonic.
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  \begin{enumerate}
+    \item 
+    Since $\curl u =0$ this is a direct consequence of Stokes theorem.
+    \item This follows from $\Delta f = \diver u=0$.
+    \item This follows from the fact that $f$ is harmonic
+    \item This follows from $u_i=\partial_if$.
+  \end{enumerate}
+\end{proof}
+If one considers not necessarily simply connected domains $\Omega$ then we obtain the
+properties of proposition \ref{pr:n2:hvf:simplyConnected} at least locally.
+
 % \begin{align*}
 %   \diver u=0 \qquad \text{ and }\qquad \curl u=0\,.
 % \end{align*}
-Often but not always we assume that in fact $u=\nabla f$ is a gradient field.
+% Often but not always we assume that in fact $u=\nabla f$ is a gradient field.
 One question we seek to answer in this thesis is the following:
 \begin{question}[Flowthrough with stagnation point]\label{qu:flowthroughStagnationPoint}
   Does there exist a region $X\subseteq\R^3$ homeomorphic to a ball with flow $u$ through the region such that
@@ -129,7 +182,7 @@ To make the formulation of these questions more precise we begin with some gener
 
 \nomenclature{$d$}{Dimensions $d=2$ or $d=3$}
 \nomenclature{$X$}{Compact domain in $\R^d$, often assumed to be a manifold with corners.}
-\nomenclature{$\Omega$}{Interior $\Omega=\interior\brk*{X}$}
+% \nomenclature{$\Omega$}{Interior $\Omega=\interior\brk*{X}$}
 \nomenclature{$f\colon X\to\R$}{A harmonic function.}
 \nomenclature{$u\colon X\to\R^d\text{ or }T^*X$}{A harmonic vector field.}
 
@@ -140,7 +193,7 @@ More precisely, we require $X$ to be a compact Riemannian manifold with corners:
 \begin{definition}[Manifolds with corners, \cite{Handron2002}]
   We introduce the notation
   \begin{align*}
-    H_j^d=\R_{\geq0}^j\times\R^{d-j}\subseteq\R^d\,.
+    H_j^d\leftdef\R_{\geq0}^j\times\R^{d-j}\subseteq\R^d\,.
   \end{align*}
   where $j\in\brk[c]*{0,\dots,d}$.
   A \emph{manifold with (convex) corners} is a topological space $X$ together with an atlas $\cA$ such that for every point
@@ -148,12 +201,12 @@ More precisely, we require $X$ to be a compact Riemannian manifold with corners:
   diffeomorphism $\phi\colon U_x\to H_j^d$ in $\cA$ with $\phi(x)=0$.
   We further define for $k\in\brk[c]*{0,\dots,d}$ a collection of sets 
   \begin{align}
-    X_k=\brk[c]*{x\in X\colon j(x)=d-k}\label{eq:def_mfCorners_stratification},
+    X_k\leftdef\brk[c]*{x\in X\colon j(x)=d-k}\label{eq:def_mfCorners_stratification},
   \end{align}
   which form a stratification of $X$.
 \end{definition}
 
-More generally we give the definition of a stratification as 
+More generally we give the definition of a stratification as follows:
 \begin{definition}[Stratified space, \cite{Handron2002}]\label{df:stratified_space}
   Let $X$ be a topological space. A \emph{stratum} is a subspace $X_j\subseteq X$, $j\in\cJ$, indexed by a partially ordered set $\cJ$ such that
   \begin{enumerate}
@@ -172,13 +225,13 @@ In the case that the stratification arises through relation \eqref{eq:def_mfCorn
 we have precisely $X_{j}\precsim X_{j+1}$ for $j\in\brk[c]*{1,\dots,d}$ and $X_0\precsim X_0$.
 Note that in general for a given stratum $X_j$ the stratum $X_{j+1}$ such that $X_j\precsim X_{j+1}$ need not be unique.
 In the following we assume, unless otherwise stated, that the stratification is finite, that is $\#\cJ<\infty$ and 
-that the interior $\Omega$ corresponds to a single stratum.
+that the interior $\openX$ corresponds to a single stratum.
 
 For completeness we also give the definition of the contingent cone for a 
 stratification $X_j$ of $X$:
-\begin{definition}[contingent cone, {\cite[Def. 4.6]{Jahn2020}}]
+\begin{definition}[Contingent cone, {\cite[Def. 4.6]{Jahn2020}}]
   We denote the \emph{(Bouligand) contingent cone} for a set $Y\subseteq X$ at $x\in\overline{Y}$ by $C_xY$.
-  It is defined as the set of all $v\in\R^d$ such that there exists sequences $\lambda_n\to0$ and $x_n\to x$ in
+  It is defined as the set of all $v\in\R^d$ such that there exist sequences $\lambda\colon\N\to\R_{>0}$ and $x_n\to x$ in
   $Y$ such that
   $$\lim_n\lambda_n\brk*{x_n-x}=v\,.$$
 \end{definition}
@@ -189,7 +242,7 @@ For clarification we give an example
   Then we have a stratification given by
   \begin{align*}
     X_0&=\brk[c]*{\vect{-1\\-1},\vect{-1\\1},\vect{1\\1},\vect{1\\-1}}\\
-    X_1&=I\times\brk[c]*{-1}\cup I\times\brk[c]*{1}\cup \brk[c]*{-1}\times I\cup \brk[c]*{1}\times I\\
+    X_1&=\brk*{I\times\brk[c]*{-1}}\cup \brk*{I\times\brk[c]*{1}}\cup\brk*{ \brk[c]*{-1}\times I}\cup\brk*{ \brk[c]*{1}\times I}\\
     X_2&=I\times I
   \end{align*}
   where $I=(-1,1)\subseteq\R$.
@@ -227,7 +280,7 @@ In the following we define the emergent and the entrant boundary in a way that g
 \begin{definition}[Emergent and entrant boundary]\label{df:emergentEntrantBd}
   We call a vector $v\in T_x\R^d$ \emph{entrant} at a boundary point $x\in\Sigma$ if
   \begin{enumerate}
-    \item $v$ points into $\Omega$ or
+    \item $v$ points into $\openX$ or
     \item $v$ lies in the dual cone of the contingent cone $C_xX$, that is
     \begin{align*}
       v\in \brk*{C_xX}^*=\brk[c]*{w\in T_x^*X\colon \brk[a]*{w, w'}\geq0\text{ for all }w'\in C_xX}\,.
@@ -241,7 +294,7 @@ In the following we define the emergent and the entrant boundary in a way that g
   In the same manner we define the \emph{emergent boundary} $\Sigma^{\geq0}$ and the \emph{strictly emergent boundary} $\Sigma^+$.
   Further define the \emph{tangential boundary} $\Sigma^0$ to be
   \begin{align}
-    \Sigma^0=\Sigma^{\leq0}\cup\Sigma^{\geq0}\bigsetminus\brk*{\Sigma^+\cup\Sigma^-}\subseteq\Sigma\,.
+    \Sigma^0\leftdef\Sigma^{\leq0}\cup\Sigma^{\geq0}\bigsetminus\brk*{\Sigma^+\cup\Sigma^-}\subseteq\Sigma\,.
   \end{align}
 \end{definition}
 \nomenclature{$\Sigma$}{Boundary $\Sigma=\partial X$}
@@ -303,7 +356,7 @@ We would now like to illustrate the preceding definitions.
   This induces the harmonic vector field $u=\nabla f$, or more precisely
   \begin{equation}
     \begin{aligned}
-    u\colon \Omega&\to\R^3 \\
+    u\colon X&\to\R^3 \\
     x&\mapsto 2\vect{x_1 & -x_2}^\top\,.\label{eq:n2_hvf_canonical}
     \end{aligned}
   \end{equation}
@@ -353,18 +406,18 @@ More precisely, for $x\in X_j$ let
 denote the orthogonal projection of a vector at $x$ onto the cotangent space of the stratum $X_j$ at $x$.
 Now let
 \begin{align}
-  u_j=\pi_j\circ u\big\vert_{X_j}\in C^1\brk*{T^*X_j}\label{eq:def_projectionUStratification}
+  u_j\leftdef\pi_j\circ u\big\vert_{X_j}\in C^1\brk*{T^*X_j}\label{eq:def_projectionUStratification}
 \end{align}
 be the projection of $u$ onto the cotangent bundle $T^*X_j$.
 \nomenclature{$u_j$}{Projection of $u$ to the cotangent bundle $T^*X_j$. See equation \eqref{eq:def_projectionUStratification}.}
 \nomenclature{$\pi_j$}{Orthogonal projection onto the cotangent bundle $T^*X_j$. See equation \eqref{eq:def_projectionStratification}.}
 
-The following are slight generalisation of definitions given in \cite[p.138f]{Shelton1980}, \cite[§5]{Morse1969} and \cite[p.282f]{Morse1970}
+The following are slight generalisations of definitions given in \cite[p.138f]{Shelton1980}, \cite[§5]{Morse1969} and \cite[p.282f]{Morse1970}
 to include harmonic vector fields.
 \begin{definition}[Stagnation points]\label{df:nonDegeneracy}
   Let $u_j\colon X_j\to T^*X_j$ be a $C^1$ vector field on a stratum $X_j$ of $X$.
   We call the zeroes $x\in X_j$ of $u_j$ \emph{stagnation points of $u_j$ on $X_j$}.
-  If $x\in\Omega$ then we call $x$ an \emph{interior stagnation point}.
+  If $x\in\openX$ then we call $x$ an \emph{interior stagnation point}.
   If $u(x)\in \brk*{C_xX}^*$ we call $x$ an \emph{essential stagnation point}.
   The set of all essential stagnation points of $u_j$ is denoted by $\critical_j=\critical_j(u)$ and
   the essential stagnation points of $u$ and $-u$ on $X_j$ are called \emph{stagnation points of $u$ on $X_j$}.
@@ -388,7 +441,7 @@ to include harmonic vector fields.
   stratum $X_j$ to be the number of regular stagnation points of $u_j$ of index $k$,
   that is
   \begin{align}
-    \ind_{j,k}(u)=\#\brk[c]*{x\in\critical_j(u)\colon x\text{ has index }k}\,.\label{eq:def_typenbr_strata}
+    \ind_{j,k}(u)\leftdef\#\brk[c]*{x\in\critical_j(u)\colon x\text{ has index }k}\,.\label{eq:def_typenbr_strata}
   \end{align}
 \end{definition}
 \nomenclature{$\critical_j$}{Set of essential stagnation points. See definition \ref{df:nonDegeneracy}.}
@@ -406,7 +459,7 @@ To illustrate the preceding definitions we return to our previous example.
        & -2
     \end{bmatrix}
   \end{align*}
-  for all $x\in\Omega$ we see that $Du(0)$ is bijective and thus the origin is a non-degenerate interior stagnation point.
+  for all $x\in\openX$ we see that $Du(0)$ is bijective and thus the origin is a non-degenerate interior stagnation point.
   Since $Du(0)$ has
   exactly one negative eigenvalue we see that the origin has index $1$. 
   Since an interior stagnation point is also an essential stagnation point 
@@ -471,25 +524,25 @@ The following characterisation of the irregular boundary will come in handy for 
   For a Morse function $u$ we define 
   the \emph{interior type numbers} $M_k$ to be the number of essential interior stagnation points of $u$ of index $k$, that is
   \begin{align}
-    M_k=\sum_{\substack{j\in\cJ\text{ s.t.} \\ n(j)=d}}\ind_{j,k}(u)
+    M_k\leftdef\sum_{\substack{j\in\cJ\text{ s.t.} \\ n(j)=d}}\ind_{j,k}(u)
     =\#\brk[c]3{x\in\bigcup_{\substack{j\in\cJ\text{ s.t.} \\ n(j)=d}}\critical_j(u)\colon x\text{ has index }k}\,.
     \label{eq:def_typenbr_interior}
   \end{align}
   The total number $M$ of interior
   stagnation points of $u$ is then given by
   \begin{align}
-    M=\sum_kM_k\,.\label{eq:def_stagnationPtNbr}
+    M\leftdef\sum_kM_k\,.\label{eq:def_stagnationPtNbr}
   \end{align}
   Analogously we define the \emph{$k$-th boundary type numbers} to be the number of essential boundary 
   stagnation points of $u$ of index $k$, that is
   \begin{align}
-    \mu_k=\sum_{\substack{j\in\cJ\text{ s.t.}\\ n(j)<d}}\ind_{j,k}(u)\label{eq:bdTypeNbrs}
+    \mu_k\leftdef\sum_{\substack{j\in\cJ\text{ s.t.}\\ n(j)<d}}\ind_{j,k}(u)\label{eq:bdTypeNbrs}
   \end{align}
   We further write $\nu_k$ for the $k$-th boundary type number of $-u$.
   We define the \emph{type number} to be the number of
   essential stagnation points of $u$ of index $k$, that is
   \begin{align}
-    \ind_k(u)=\sum_{j\in\cJ}\ind_{j,k}(u)=M_k+\mu_k\,.\label{eq:def_typenbr_total}
+    \ind_k(u)\leftdef\sum_{j\in\cJ}\ind_{j,k}(u)=M_k+\mu_k\,.\label{eq:def_typenbr_total}
   \end{align}
 \end{definition}
 \nomenclature{$\ind_k$}{$k$-th type number. See equation \eqref{eq:def_typenbr_total}.}
@@ -618,7 +671,7 @@ In the following section we argue that
 $u$ and $f$ being Morse is not a great restriction.
 Given $u$ we define the modification
 \begin{align}
-  u^\e=u+\e\label{eq:nonDegeneracy:definitionUEps}
+  u^\e\leftdef u+\e\label{eq:nonDegeneracy:definitionUEps}
 \end{align}
 for some $\e\in\R^d$. We would like to show that the set $E$ of $\e$ for which $u^\e$ is Morse
 is residual in $\R$.
@@ -734,7 +787,7 @@ a generalisation of the results in \cite[§2]{Morse1970} which will prove useful
 
   The next part of the proof is inspired by the use of transversality in \cite[§6 Theorem 1.2]{Hirsch1994} to show a similar statement.
   Set $r=2$, $\cE=B_\delta$ and $Y_2=T^*X_j$ in the previous theorem.
-  We initially set $Y_1=X_j=\Omega$.
+  We initially set $Y_1=X_j=\openX$.
   We would like to apply the parametric transversality theorem to the function
   \begin{align*}
     F\colon \cE&\to C^\infty\brk*{X_j,T^*X_j} \\
@@ -1026,7 +1079,7 @@ a generalisation of the results in \cite[§2]{Morse1970} which will prove useful
 %   \end{enumerate}
 % \end{corollary}
 
-\chapter{Some general remarks}
+\chapter{The Morse inequalities}
 \td{Bring order into this section.}
 
 The finiteness of the number of critical points is a known fact which is mentioned
@@ -1056,34 +1109,20 @@ As a consequence we obtain the following observation:
 
 \td{State the theorem of Sard}
 
-We state Morse's lemma according to \cite[§6, Lemma 1.1]{Hirsch1994}
-\begin{lemma}
-  Let $f\colon X\to\R$ be $C^{2+r}$ and $x$ be a non-degenerate
-  critical point of index $k$. Then there exists a $C^r$ chart $(\varphi,U)$ at $x$
-  such that we have
-  \begin{align*}
-    f\colon\varphi^{-1}(y)=f(x)-\sum_{j=1}^ky_j^2+\sum_{j=k+1}^dy_j^2\,.
-  \end{align*}
-\end{lemma}
-\begin{proof}
-  See for example \cite[§6]{Hirsch1994}.
-\end{proof}
-
-
 \section{Betti numbers}
 
-Let $H_k(X;\R)$ denote the $k$-th homology space of $X$.
+Let $H_k(X)$ denote the $k$-th homology space of $X$ with coefficients in the field $\K$.
 For an introduction and definition of these we refer the reader to \cite[Chapter 2]{Hatcher2002}.
 We define the $k$-th Betti number as the dimension
 \begin{align}
-  b_k=\dim_\R H_k(X;\R)\,.\label{eq:df_bettiNbrs}
+  b_k\leftdef\dim_\K H_k(X)\,.\label{eq:df_bettiNbrs}
 \end{align}
 \nomenclature{$b_k$}{Betti number as defined in equation \eqref{eq:df_bettiNbrs}}
 
 We proceed to give examples for Betti numbers of selected connected domains in $\R^d$.
 \begin{example}[In flatland]
   In $d=2$ dimensions the $0$-th Betti number counts the number of connected components
-  of $\Omega$ and the first Betti number counts the number of holes of this domain.
+  of $X$ and the first Betti number counts the number of holes of this domain.
   All other Betti numbers vanish in $\R^2$.
   More concretely we give the Betti numbers for selected domains in table \ref{tb:n2_domains_bettiNbrs}.
 \end{example}
@@ -1118,10 +1157,16 @@ We proceed to give examples for Betti numbers of selected connected domains in $
 
 \begin{example}[In spaceland]
   In $d=3$ dimensions the $0$-th Betti number counts the number of connected components
-  of $\Omega$, the first Betti number counts the number of holes and the second Betti number
+  of $X$, the first Betti number counts the number of holes and the second Betti number
   counts the number of bubbles of the domain. All other Betti numbers vanish.
   The Betti numbers for selected domains can be seen in table \ref{tb:n3_domains_bettiNbrs}.
 \end{example}
+
+With the Betti numbers we can define the \emph{Euler characteristic} to be
+\begin{align*}
+  \chi(X)=\sum_{k=0}^d\brk*{-1}^{k}b_k(X)
+\end{align*}
+the alternating sum of the Betti numbers.
 
 \begin{table}
   \centering
@@ -1157,92 +1202,201 @@ We proceed to give examples for Betti numbers of selected connected domains in $
   \label{tb:n3_domains_bettiNbrs}
 \end{table}
 
-\td{Comment on the finiteness of Betti numbers. Check numbers for ball with torus bubble.}
-
 \section{The Morse inequalities}
 
 We state the Morse inequalities.
-\begin{theorem}[Strong Morse inequalities, {\cite[Theorem 2.4]{Agrach1991}}]
+\begin{theorem}[Morse inequalities, {\cite[Theorem 2.4]{Agrach1991}}]
 Let $X$ be a manifold with corners and $f\colon X\to\R$ be Morse.
 Then we have for $l\in\brk[c]*{0,\dots,d}$ the inequalities
 \begin{align*}
   \sum_{k=0}^l \brk*{-1}^{k+l}\essind_j(f)\geq \sum_{k=0}^l\brk*{-1}^{k+l}b_j(X)\,.
 \end{align*}
 For $l=d$ we in fact have equality
-\begin{align*}
-  \sum_{k=0}^d \brk*{-1}^{k}\essind_k(f)= \chi(X)
-\end{align*}
-where the Euler characteristic
-\begin{align*}
-  \chi(X)=\sum_{k=0}^d\brk*{-1}^{k}b_k(X)
-\end{align*}
-is the alternating sum of the Betti numbers.
+\begin{align}
+  \sum_{k=0}^d \brk*{-1}^{k}\essind_k(f)= \chi(X)\label{eq:MorseIneq_eqality}
+\end{align}
+where $\chi(X)$ denotes the Euler characteristic.
 \end{theorem}
 \begin{proof}
-  A for manifolds with $C^1$ boundary is given for instance in \cite[Theorem 10.2']{Morse1969}.
+  A proof for manifolds with $C^1$ boundary is given for instance in \cite[Theorem 10.2']{Morse1969}.
   The definition of regular critical points of $f$ and their index given in definition \ref{df:nonDegeneracy} coincides with 
   the definition of a critical point and its co-index of $-f$ given in \cite{Agrach1991}.
   The result then follows from \cite[Theorem 2.4]{Agrach1991}.
   Nonetheless we will give an idea of the proof.
-\end{proof} 
+\end{proof}
 \td{Give outline of proof idea.}
 Define for $a\in\R$ the manifold $X^a\leftdef\brk[c]*{x\in X\colon f(x)\leq a}$.
-The main idea is to inspect what happens to the manifold $X^a$ as we vary $a$.
-This is the approach used in \cite{Milnor1963}, \cite{Agrach1991} and \cite{Handron2002}.
-The proof involves two main steps. The first is to show the following
-\begin{lemma}
+The main idea is to inspect how the topology of the manifold $X^a$ changes as we vary $a$.
+This was the idea in Morse's original proof of these inequalities for manifolds without boundary in \cite{Morse1925}.
+Later proofs of the Morse inequalities for manifolds without boundary using this approach added more terminology from algebraic topology and differential geometry.
+Proofs of these classical Morse inequalities can be found in \cite{Milnor1963} and \cite{Morse1969}.
+There also exists proofs using dynamical system techniques
+which can be found for instance in \cite{Smale1960}.
+We require however the Morse inequalities on manifolds with corners.
+This is a special case of stratified Morse theory by Goresky and McPherson which is outlined for instance in \cite[§5.5]{Cisneros2020}.
+We will try to avoid the fancy tools that are used in stratified Morse theory and instead
+resort to \cite{Agrach1991} and \cite{Handron2002} where the Morse inequalities are shown for
+manifolds with corners.
+In the following we will outline the main ideas of the proof to convince the reader
+as to why equation \eqref{eq:MorseIneq_eqality} is reasonable.
+
+% This is the approach used in \cite{Milnor1963}, \cite{Agrach1991} and \cite{Handron2002}.
+% The proof involves two main steps. The first is to show the following
+In both \cite{Handron2002} one first constructs a 
+vector field $G$ on $X$ such that at
+every $x\in\overline{X}_j$ we have $G(x)=-u_j(x)$ where $X_j$ is the stratum of maximum dimension
+such that $u_j(x)$ points into $X$.
+In classical Morse theory for manifolds without boundary one simply sets $G=-\nabla f$.
+It is shown in \cite[§2.4]{Handron2002} that $G$ is a well-defined vector field.
+One then obtains a flow $\phi$ as in the following proposition:
+\begin{proposition}[{\cite[Lemma 1]{Handron2002}}]
+  Let $f$ be a Morse function then $G$ induces a flow $\phi\colon X\times\R_{\geq0}\to X$ such that
+  \begin{enumerate}
+    \item $\phi(\cdot,0)=\Id_X$
+    \item $\partial_t\phi\brk*{x,t}=G\circ\phi\brk*{x,t}$
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  See \cite[Lemma 1]{Handron2002}. Note that the requirement that \ref{} implies that
+  $f$ fulfills property $(3)$.
+\end{proof}
+One then uses this flow $\phi$ to show the following:
+\begin{lemma}[Interval without critical value, {\cite[Theorem 7]{Handron2002}} and {\cite[p.7]{Agrach1991}}]
   Assume that the interval $[a,b]$ contains no critical value of $f$.
   Then $X^a\simeq X^b$ are homotopic.
 \end{lemma}
 \begin{proof}
-  See for instance \cite[p.7]{Agrach1991}.
+  See for instance \cite[Theorem 7]{Handron2002}.
+  One uses the flow $\phi$ to define a homotopy between $X^a$ and $X^b$.
 \end{proof}
-The second step involves showing that
-\begin{lemma}
-  If the interval $[a,b]$ contains one critical value $c\in\R$ with non-degenerate essential critical points
-  $x_1,\dots,x_r$ of $f$ with coindices $\lambda_1,\dots,\lambda_r$
-  then $X^b$ is obtained from $X^a$ by attaching the $\lambda$-cells
-\end{lemma}
 
-The final part of the proof is then given in all details in \ref[§I.5]{Milnor1963}.
-We shall however sketch for the equality in equation \eqref{}.
+% We state Morse's lemma according to \cite[§6, Lemma 1.1]{Hirsch1994}
+% \begin{lemma}
+%   Let $f\colon X\to\R$ be $C^{2+r}$ and $x$ be a non-degenerate
+%   critical point of index $k$. Then there exists a $C^r$ chart $(\varphi,U)$ at $x$
+%   such that we have
+%   \begin{align*}
+%     f\colon\varphi^{-1}(y)=f(x)-\sum_{j=1}^ky_j^2+\sum_{j=k+1}^dy_j^2\,.
+%   \end{align*}
+% \end{lemma}
+% \begin{proof}
+%   See for example \cite[§6]{Hirsch1994}.
+% \end{proof}
+
+We state Morse's lemma according to \cite[Lemma 5]{Handron2002}.
+\begin{proposition}[Morse's lemma, {\cite[Lemma 5]{Handron2002}}]
+  Let $f\colon X\to\R$ be $C^{2}$ and $x$ be an essential non-degenerative
+  critical point of index $k$ on the stratum $X_j$ of dimension $n$. Then there exists a
+  local chart $\varphi\colon H\to U$ such that
+  \begin{align*}
+    f\circ\varphi^{-1}(y)=f(x)-\sum_{j=1}^ky_j^2+\sum_{j=k+1}^ny_j^2+\sum_{j=n}^dy_j\,.
+  \end{align*}
+\end{proposition}
+\begin{proof}
+  The case that $n=d$ is the classical version of the Morse lemma and can be found for instance
+  in \cite[§6, Lemma 1.1]{Hirsch1994}.
+  Note that the definition of an essential critical point in \ref{Handron2002} 
+  fulfilling property $(3)$ also encompasses our definition of a non-degenerate
+  essential critical point. Hence this statement follows from \cite[Lemma 5]{Handron2002}.
+  The idea of the proof involves first applying the Morse lemma on the stratum of the critical point.
+  Then this coordinate chart is extended with Taylor in a suitable manner to be a
+  full coordinate chart on $X$ such that \ref{} holds.
+\end{proof}
+
+Using the Morse lemma one can then show the following result:
+\begin{lemma}[Interval with critical value, {\cite[Theorem 8]{Handron2002}} and {\cite[Theorem 2.2]{Agrach1991}}]
+  If the interval $[a,b]$ contains one critical value $c\in\R$ with non-degenerate essential critical point
+  $x$ of index $k$.
+  then $X^b$ is homology equivalent to $X^a$ by attaching the $k$-cell
+  $D^{k}$.
+\end{lemma}
+\begin{proof}
+  This is proven in \cite[Theorem 8]{Handron2002}.
+  The proof is in structure very similar to \cite{Milnor1963}.
+  One first uses the Morse lemma to choose a suitable coordinate system.
+  It then proceeds in three steps.
+  First one defines a region $H$ as in figure \ref{}.
+  Then one shows that $X^a$ with $H$ attached is homotopic to $X^b$.
+  Finally one shows that $X^a$ with a $k$-cell attached is homotopic to
+  $X^a$ with $H$ attached.
+\end{proof}
+
+
+We require a result from algebraic topology:
+\begin{lemma}[Excision theorem, {\cite[Theorem 2.20]{Hatcher2002}}]
+  Given subspaces $Z\subseteq A\subseteq X$ such that $\overline{Z}\subseteq\interior\brk*{A}$
+  then for every $k$ we have that $H_k\brk*{X\setminus Z,A\setminus Z}\cong H_k\brk*{X,A}$
+  are isomorphic.
+\end{lemma}
+\begin{lemma}[Excision theorem, {\cite[Theorem 2.20]{Hatcher2002}}]
+  Given subspaces $A,B\subseteq X$ such that $X\subseteq\interior\brk*{A}\cup\interior\brk*{B}$
+  then for every $k$ we have that $H_k\brk*{B,A\cap B}\cong H_k\brk*{X,A}$
+  are isomorphic.
+\end{lemma}
+\begin{proof}
+  See \cite[Theorem 2.20]{Hatcher2002}.
+\end{proof}
+
+The final part of the proof is then given in all details in \cite[§I.5]{Milnor1963}.
+Since we only use the equality in equation \eqref{eq:MorseIneq_eqality} we shall outline its proof.
 For this define a generalisation of the Euler characteristic by
 \begin{align}
-  \chi\brk*{X,Y}\leftdef \sum_k\dim_\R H_k\brk*{X,Y}\,.
+  \chi\brk*{X,Y}\leftdef \sum_k\brk*{-1}^k\dim_\K H_k\brk*{X,Y}\,.
 \end{align}
-One can show that this is additive, in the sense that given suitable $X\subseteq Y\subseteq Z$
+One can show that this is additive, in the sense that given suitable $X\supseteq Y\supseteq Z$
 we have that
 \begin{align}
-  \chi\brk*{X,Z}=\chi\brk*{X,Y}+\chi\brk*{Y,Z}
+  \chi\brk*{X,Z}=\chi\brk*{X,Y}+\chi\brk*{Y,Z}\label{eq:MorseIneq_additivChi}
 \end{align}
-
+Let $a_0<\dots<a_L$ be such that $[a_l,a_{l+1}]$ contains precisely one critical value with
+index $k_l$ and such that $X=X^{a_L}$
+It now follows from excision that
+\begin{align}
+  H_k\brk*{X^{a_{l+1}},X^{a_{l}}}
+  &=H_k\brk*{X^{a_{l}}\cup D^{k_l},X^{a_{k}}} \\
+  &=H_k\brk*{D^{k_l},S^{k_l}} \\
+  &=\begin{cases}
+    \K &\text{ if }k=k_l,\\
+    0 &\text{ else}
+  \end{cases}\,.
+\end{align}
+Hence we obtain by inductively applying \eqref{eq:MorseIneq_additivChi}
+and then equation 
+\begin{align*}
+  \chi\brk*{X}=\sum_k \chi\brk*{X^{x_{k+1}},X^k}
+  =\sum_k\brk*{-1}^k\ind_k\brk*{f}
+\end{align*}
 
 
 \nomenclature{$\chi(X)$}{Euler characteristic.}
 
-\begin{corollary}[Weak Morse inequalities]
-  Let $X$ be a manifold with corners and $f\colon X\to\R$ Morse. Then we have for $k\in\brk[c]*{0,\dots,d}$
-  the inequalities
-  \begin{align*}
-    \essind_k(f)\geq b_k(X)\,.
-  \end{align*}
-\end{corollary}
-\begin{proof}
-  \td{Write some proof.}
-\end{proof}
-If we now assume that $f$ is harmonic then the maximum principle implies that
+% \begin{corollary}[Weak Morse inequalities]
+%   Let $X$ be a manifold with corners and $f\colon X\to\R$ Morse. Then we have for $k\in\brk[c]*{0,\dots,d}$
+%   the inequalities
+%   \begin{align*}
+%     \essind_k(f)\geq b_k(X)\,.
+%   \end{align*}
+% \end{corollary}
+% \begin{proof}
+%   \td{Write some proof.}
+% \end{proof}
+As a final result in this chapter we inspect the Morse inequalities in the special case
+that $f$ is harmonic.
+If we assume that $f$ is harmonic the maximum principle implies that
 $M_0=0=M_d$.
-If we additionally assume that we have dimensions $d=2$ we obtain \cite[Corollary 10.1]{Morse1969}.
-\begin{corollary}[Morse inequalities for $f$ harmonic, $d=2$]
-  Let $d=2$, $\Omega$ and $f$ be regular and assume that $f$ is harmonic. Then we have
+If we additionally assume that we have dimensions $d=2$ we obtain from \ref{} a result from \cite[Corollary 10.1]{Morse1969}.
+\begin{corollary}[Morse inequalities for harmonic $f$ in $\R^2$, {\cite[Corollary 10.1]{Morse1969}}]
+  Let $X\subseteq\R^2$ be a manifold with corners and $f\colon X\to\R$ be harmonic and Morse.
+  Then we have
   \begin{align*}
     \mu_0&\geq b_0 \\
     M+\mu_1-\mu_0&=b_1-b_0\,.
   \end{align*}
 \end{corollary}
-In dimensions $d=3$ we obtain \cite[Corollary 10.2]{Morse1969}
-\begin{corollary}[Morse inequalities for $f$ harmonic, $d=3$]
-  Let $d=3$, $\Omega$ and $f$ be regular and assume that $f$ is harmonic. Then we have
+In dimensions $d=3$ we obtain from \ref{} a result from \cite[Corollary 10.2]{Morse1969}.
+\begin{corollary}[Morse inequalities for harmonic $f$ in $\R^3$, {\cite[Corollary 10.2]{Morse1969}}]
+  Let $X\subseteq\R^3$ be a manifold with corners and $f\colon X\to\R$ be harmonic and Morse
+  Then we have
   \begin{align*}
     \mu_0&\geq b_0 \\
     M_1+\mu_1-\mu_0&\geq b_1-b_0 \\
@@ -1251,35 +1405,8 @@ In dimensions $d=3$ we obtain \cite[Corollary 10.2]{Morse1969}
 \end{corollary}
 \td{Give a classical example of a Morse function to determine the Betti numbers.}
 
-\section{On harmonic vector fields}
 
-In the following we deduce some basic relations for harmonic vector fields in dimensions $d\in\brk[c]{2,3}$.
-\begin{proposition}[Harmonic vector fields on simply connected domains]\label{pr:n2:hvf:simplyConnected}
-  Let $\Omega\subseteq\R^d$ be open and simply connected and $u$ be a harmonic vector field. Then
-  \begin{enumerate}
-    \item 
-    $u=\nabla f$ is the gradient field of some
-    function $f\colon\Omega\to\R$.
-    \item  $f$ is harmonic.
-    \item $u$ is in fact $C^\infty$.
-    \item The components $u_i=\partial_if$ are harmonic.
-  \end{enumerate}
-\end{proposition}
-\begin{proof}
-  \begin{enumerate}
-    \item 
-    Since $\curl u =0$ this is a direct consequence of Stokes theorem.
-    \item This follows from $\Delta f = \diver u=0$.
-    \item This follows from the fact that $f$ is harmonic
-    \item This follows from $u_i=\partial_if$.
-  \end{enumerate}
-\end{proof}
-
-If one considers not necessarily simply connected domains $\Omega$ then we obtain the
-properties of proposition \ref{pr:n2:hvf:simplyConnected} at least locally.
-
-\chapter{The case of connected entrant boundaries
-on simply connected domains in $d=2$ dimensions}
+\chapter{Connected entrant boundaries in $\R^2$}
 
 We will start this section by giving an essentially negative answer to question \ref{qu:flowthroughStagnationPoint}
 in $d=2$ dimensions. Thus it is not possible to have a harmonic function with interior critical point on a simply connected
@@ -1438,7 +1565,7 @@ desired properties.
 % \end{proof}
 
 
-\section{A negative result using Morse theory}
+\section{A negative result for simply connected domains}
 
 We now give a result which is essentially a negative answer to question \ref{qu:flowthroughStagnationPoint}.
 It was possible to prove this statement using level sets of critical points or using invariant manifolds.
@@ -1662,11 +1789,11 @@ The following proof involves Morse theory since the techniques of the proof gene
   It follows from the slanted angles at which $\Gamma$ approaches $\gamma$ that if the points $x_1$, $x_2$ are essential critical points of $f$
   that they then are in fact regular.
   Hence we obtain that
-  \begin{align}
+  \begin{align*}
     \ind_{\gamma^+,k}\brk*{f^\e}=\ind_{\gamma^+,k}(f)\qquad\text{ and }\qquad 
     \ind_{\gamma^-,k}\brk*{-f^\e}=\ind_{\gamma^-,k}(-f)\,.
-    \label{eq:n3_disproof_morse_indexApprox}
-  \end{align}
+    % \label{eq:n2_disproof_morse_indexApprox}
+  \end{align*}
   By the same corollary $u^\e$ has no essential stagnation points on $\Sigma^+(u)$
   and $-u$ has no essential stagnation points on $\Sigma^-(u)$.
   % \begin{align}
@@ -1735,65 +1862,75 @@ The following proof involves Morse theory since the techniques of the proof gene
 % This inequality can probably be improved considerably.
 
 We could also have used tools from complex analysis to show proposition \ref{pr:n2_negativeResult}.
-In fact, \cite{Alessandrini1992} gives a more refined result which we will state in the
-following.
+In fact, using complex analysis \cite{Alessandrini1992} gives a more refined result
+for which we require the next definition.
 
+\begin{definition}[Number of entrant / emergent boundary components, {\cite{Alessandrini1992}}]
 Let $J^\pm$ denote the number of connected components of $\Sigma^\pm$ which are proper
 subsets of a component of $\Sigma$.
 Consider a disjoint decomposition of the boundary $\Sigma=\Sigma_{\geq0}\sqcup\Sigma_{\leq0}$ such
 that $\Sigma_{\geq0}\subseteq\Sigma^{\geq0}$ and $\Sigma_{\leq0}\subseteq\Sigma^{\leq0}$.
 Let now $J^{\geq0}$ denote the minimal number of connected components of $\Sigma_{\geq0}$ 
 which are proper subsets of a component of $\Sigma$.
+\end{definition}
+
 We state a consequence of a result from \cite[Theorem 2.1 and 2.2]{Alessandrini1992}:
-\begin{proposition}[Weakening of {\cite[Theorem 2.1 and 2.2]{Alessandrini1992}}.]\label{pr:alessandrini_inflowOutflow}
-  Let $\Omega\subseteq\R^d$ be an open bounded domain with a boundary consisting of simple closed $C^{1,\alpha}$ curves.
-  Let $u\colon X\to \R$ be a harmonic vector field.
-  Then we have
-  \begin{align*}
-    M\leq b_1-b_0+\frac{J^++J^-}{2}\,.
-  \end{align*}
-  If in addition we assume that there are no stagnation points on the boundary then we have
-  \begin{align*}
-    M\leq b_1-b_0+J^{\geq0}\,.
-  \end{align*}
+\begin{proposition}[Special case of {\cite[Theorem 2.1 and 2.2]{Alessandrini1992}}]\label{pr:alessandrini_inflowOutflow}
+  Let $X\subseteq\R^d$ be a bounded domain with a boundary consisting of simple closed $C^{1,\alpha}$ curves.
+  Let $u\colon X\to \R$ be a harmonic vector field, nonzero on each component.
+  Then we have the relation
+  \begin{align}
+    M\leq -\chi\brk*{X}+\frac{J^++J^-}{2}\label{eq:n2_Alessandrini1}
+  \end{align}
+  where $M$ denotes the number of stagnation points of $u$, counting multiplicities.
+  If in addition we assume that there are no irregular stagnation points then we have
+  \begin{align}
+    M\leq -\chi\brk*{X}+J^{\geq0}\,.\label{eq:n2_Alessandrini2}
+  \end{align}
 \end{proposition}
 \begin{proof}
-  See \cite[Theorem 2.1]{Alessandrini1992} and \cite[Theorem 2.2]{Alessandrini1992} where we set $\underline{\alpha}=n$ to be the outer unit normal and $D=b_0-b_1$.
+  See \cite[Theorem 2.1]{Alessandrini1992} and \cite[Theorem 2.2]{Alessandrini1992} where we set $\underline{\alpha}=n$ to be the outer unit normal and $D=\chi\brk*{X}$
+  to be the Euler characteristic.
 \end{proof}
-If we set $X$ to be homeomorphic to the ball, that is $b_1-b_0=-1$ and require the entrant
-boundary to be simply connected we then obtain from proposition \ref{pr:alessandrini_inflowOutflow} that $M\leq0$, 
-that is $f$ has no non-degenerate critical point.
-\td{incorporate this result in the following examples.}
+If we set $X$ to be homeomorphic to the ball, that is $\chi\brk*{X}=1$, and require the entrant
+boundary to be simply connected, that is $J^\pm=J^{\geq0}=1$, we then obtain from proposition \ref{pr:alessandrini_inflowOutflow} that $M\leq0$
+and $f$ has no non-degenerate critical point.
 
+\section{The case of holes in the domain}
 
-\section{If we allow for holes in the domain}
-
-In the following we will give examples of harmonic vector fields on domains with holes
-with simply connected entrant boundaries
-and interior stagnation points.
+If we set $J^\pm=J^{\geq0}=1$ in relations \eqref{eq:n2_Alessandrini1} or \eqref{eq:n2_Alessandrini2}
+we obtain the condition on the number of interior stagnation points
+\begin{align}
+  M\leq-\chi\brk*{X}+1\,.\label{eq:n2_Alessandrini_specialCase}
+\end{align}
+This indicates that if we allow for holes in the domain $X$ it is possible to have a vector field with simply
+connected entrant boundary and interior stagnation points.
+In fact we will give two examples where we have equality in equation \eqref{eq:n2_Alessandrini_specialCase}
+for the cases $\chi\brk*{X}=0$ and $\chi\brk*{X}=-1$.
 For this define two differential operators in $d=2$ dimensions by
 \begin{align}
-  \nabla^\perp f=\Curl f=\vect{-\partial_2f \\ \partial_1f}\label{eq:n2_nablaPerp}
+  \nabla^\perp f=\Curl f\leftdef\vect{-\partial_2f \\ \partial_1f}\label{eq:n2_nablaPerp}
 \end{align}
 and
 \begin{align*}
-  \curl u=-\partial_1u_2+\partial_2u_1\,.
+  \curl u\leftdef-\partial_1u_2+\partial_2u_1\,.
 \end{align*}
 \nomenclature{$\nabla^\perp$}{Orthogonal gradient. Given by equation \eqref{eq:n2_nablaPerp}.}
 
 The next proposition gives us a recipe to generate harmonic vector fields.
 \begin{proposition}
-  Let $\psi\colon\R^2\supseteq\Omega\to\R$ be harmonic then $u=\nabla^\perp\psi$ is a harmonic vector field.
+  Let $\psi\colon\R^2\supseteq X\to\R$ be harmonic then $u=\nabla^\perp\psi$ is a harmonic vector field.
 \end{proposition} 
 \begin{proof}
-  Since $\diver \nabla^\perp=0$ we have
+  We have
   \begin{align*}
     \diver u = \diver\nabla^\perp \psi=0
   \end{align*}
   and one calculates
   \begin{align*}
-    \curl u = \curl\nabla^\perp \psi = -\Delta \psi = 0\,.
+    \curl u = \curl\nabla^\perp \psi = -\Delta \psi = 0
   \end{align*}
+  from which the claim follows.
 \end{proof}
 The function $\psi$ is also called a \emph{stream function}.
 The next example is our first example of a harmonic vector fields
@@ -1828,7 +1965,7 @@ component.
 \end{example}
 \nomenclature{$\Phi_2$}{Multiple of the fundamental solution of the Laplace equation on $\R^2$. Given by equation \eqref{eq:n2_defPhi}.}
 Example \ref{ex:n2_flowthroughHole} highlights the importance of the requirement in proposition \ref{pr:n2_negativeResult} that the domain be simply connected.
-We now give a similar example, this time with two holes in the domain.
+We now give a similar example, this time with two holes in the domain and two interior stagnation points.
 
 \begin{example}[Flow through tube with two holes and stagnation points]
   We consider the stream function
@@ -1932,7 +2069,7 @@ of such a harmonic vector field.
 
 
 
-\chapter{The case of simply connected entrant boundaries in $d=3$ dimensions.}
+\chapter{Simply connected entrant boundaries in $\R^3$}
 
 In the following chapter we will discuss question \ref{qu:flowthroughStagnationPoint} in the case of $d=3$ dimensions.
 That is, we are looking for a harmonic function with interior stagnation point on a simply connected domain and connected entrant boundary.
@@ -1946,8 +2083,8 @@ Finally we will give an example of a function and a domain with the desired prop
 The following proof comes from \cite{Wahlen2023} and is a negative answer to question \ref{qu:flowthroughStagnationPoint}
 for the cylinder.
 \begin{proposition}\label{pr:n3_inflowOutflowCylinder}
-  Let $\Omega=(0,1)\times U\subseteq\R^3$ be an open cylinder where $U\subseteq\R^2$ is an open set.
-  Let further $f\colon X=\overline{\Omega}\to\R$ be
+  Let $X=[0,1]\times \overline{U}\subseteq\R^3$ be a cylinder where $U\subseteq\R^2$ is an open set.
+  Let further $f\colon X\to\R$ be
   harmonic such that the sides
   $[0,1]\times \partial U=\Sigma^0$ are the tangential boundary,
   the lid $\brk[c]{0}\times U=\Sigma^+$ is the entrant boundary and
@@ -2056,11 +2193,11 @@ stagnation point and simply connected entrant boundary.
   due to the slanted angle at which
   $\Gamma$ approaches $\gamma$
   we obtain that
-  \begin{align}
+  \begin{align*}
     \ind_{\gamma,k}\brk*{f^\e}=\ind_{\gamma,k}(f)\qquad\text{ and }\qquad 
     \ind_{\gamma,k}\brk*{-f^\e}=\ind_{\gamma,k}(-f)
-    \label{eq:n3_disproof_morse_indexApprox}
-  \end{align}
+    % \label{eq:n3_disproof_morse_indexApprox}
+  \end{align*}
   By the same corollary we can assume that $f^\e$ has no essential critical points on
   $\Sigma^+(f)$ and $-f^\e$ has no essential critical points on $\Sigma^-(f)$.
   The claim then follows by the calculations above where we replace
@@ -2068,7 +2205,7 @@ stagnation point and simply connected entrant boundary.
 \end{proof}
 
 
-\section{A harmonic function with interior critical point and simply connected entrant boundary in $d=3$ dimensions}
+\section{An example}
 
 Based on example \ref{ex:n4} in $d=4$ dimensions of a harmonic vector field with interior stagnation point
 the author argued that it would be simplest to construct such a vector field in $d=3$ dimensions in a similar manner.
@@ -2792,9 +2929,47 @@ The following proposition is part of the proof of lemma \ref{pr:n3_polynomial_sm
 %   Analogous argumentation for a sequence $t_k\to a$ yields a further point on the boundary $\partial X$.
 % \end{proof}
 
+% \section{An example with positive distance between the entrant and emergent boundaries}
+
+% In example \ref{} we show that $\Sigma^+$ is separated from $\Sigma^-$ by the curve
+% $C=V\brk*{}$. In the following we will construct an example in which the entrant and
+% emergent boundaries are simply connected and we have an interior stagnation point.
+
+% \begin{example}
+%   Let $f$ and $X$ be as in example \ref{}. Define for $\rho>0$ the cutoff function $\theta_\rho\colon\Sigma\to\R$ by the
+%   condition that $\theta_\rho=1$ outside of $\tubular_{2\rho}\brk*{C}$ and 
+%   support contained in $\supp\theta_\rho\subseteq\Sigma\setminus\tubular_{\rho}\brk*{C}$.
+%   Consider now the solution $f_\rho$ to the system
+%   \begin{align*}
+%     \Delta f_\rho&=0 &&\text{ on }\Omega, \\
+%     \nabla f_\rho\cdot n&=\theta_\rho\brk*{\nabla f\cdot n} &&\text{ on }\Sigma, \\
+%     \brk[a]*{f_\rho}_\Omega&=\brk[a]*{f}_\Omega &&
+%   \end{align*}
+%   where $n$ is the outer unit normal. 
+%   By definition of $f_\rho$ the entrant and emergent boundaries are simply connected
+%   and have positive distance.
+%   Thus it remains to be shown that there exists $\rho>0$ such that $f_\rho$ has an interior
+%   critical point.
+%   We claim that
+%   \begin{align*}
+%     \norm*{f_\rho-f}_{L^\infty\brk*{B_2}}\longrightarrow0\text{ as }\rho\to0\,.
+%   \end{align*}
+%   Indeed, setting $g_\rho\leftdef f_\rho-f$ one obtains from the mean value property of $g_\rho$ that
+%   \begin{align*}
+%     \norm*{g_\rho}_{L^\infty\brk*{B_1}}
+%     &\stackrel{\text{mean value property}}{\lesssim}\norm*{g_\rho}_{L^1\brk*{B_r}} \\
+%     &\stackrel{\text{Poincaré-Wirtinger}}{\lesssim}\norm{\nabla g_\rho}_{L^1\brk*{B_r}} \\
+%     &\stackrel{\text{Hölder}}{\lesssim}\norm{\nabla g_\rho}_{L^2\brk*{B_r}} \\
+%     &=\brk*{\int_\Omega\Delta g_\rho^2\dif x}^{1/2} \\
+%     &\stackrel{\text{divergence theorem}}{=}\brk*{\int_\Sigma\nabla g_\rho^2\cdot n\dif x}^{1/2} \\
+%     &\stackrel{\text{divergence theorem}}{=}\brk*{\int_\Sigma\brk*{\theta_\rho-1}\brk*{\nabla f\cdot n}\dif x}^{1/2}\longrightarrow0
+%   \end{align*}
+%   as $\rho\to0$. It then follows 
+% \end{example}
 
 
-\chapter{No in- or outflow in $d=2$ dimensions}
+
+\chapter{No in- or outflow in $\R^2$}
 
 In the second part of this thesis we will discuss harmonic vector fields without
 inflow or outflow through the boundary.
@@ -2831,7 +3006,7 @@ After that we will give examples which illustrate these results.
 
 % In fact using the Morse inequalities we can obtain the stronger result.
 
-\section{Relations between the domain topology and the number of stagnation points}
+\section{A condition on the number of stagnation points}
 Our first result relates the number of critical points with the domain topology.
 We shall give two proofs of this result, one involving Morse theory and the other involving
 the argument principle. The reason for this is that the result follows quickly from the
@@ -2923,7 +3098,7 @@ more readily to $d=3$ dimensions.
   \begin{align}
     \ind_{\gamma,k}\brk*{u^\e}=\ind_{\gamma,k}(u)\qquad\text{ and }\qquad 
     \ind_{\gamma,k}\brk*{-u^\e}=\ind_{\gamma,k}(-u)
-    \label{eq:n3_disproof_morse_indexApprox}
+    \label{eq:n2_disproof_morse_indexApprox}
   \end{align}
   By the same corollary $u^\e$ has no stagnation points on $\Sigma$.
   The claim then follows by the calculations above where we replace
@@ -3006,7 +3181,7 @@ inflow or outflow and with one stagnation point.
       Here $\psi$ is given by equation \eqref{eq:n2:hvf:noInflowNoOutflow}.}
     \label{pl:n2_hvf_noInflowNoOutflow}
   \end{figure}
-  Indeed, since $\psi$ is constant on each component of $\partial X$ the function $u$ has 
+  Indeed, since $\psi$ is constant on each component of $\Sigma$ the function $u$ has 
   neither inflow nor outflow.
   It follows from $\psi(-x)=\psi(x)$ that $u(-x)=-u(x)$ 
   and thus the origin $x=0$ is a stagnation point.
@@ -3014,15 +3189,15 @@ inflow or outflow and with one stagnation point.
   sole stagnation point of $u$ on $X$.
 \end{example}
 
-In a second example given by \cite{Wahlen2023} we fix the domain rather than the function.
+In a second example given by \cite{Wahlen2023} we start with the domain rather than the function.
 \begin{example}[No in- or outflow]
   Set $X=\overline{B_4}\setminus\brk*{B_1(2e_1)\cup B_1(-2e_1)}$ to be the domain.
   We let the stream function $\psi$ be determined by the system
   \begin{equation}
     \begin{aligned}
-      \Delta \psi&=0 &&\text{, on }\Omega \\
-      \psi&=0 &&\text{, on the outer ring }4S^1 \\
-      \psi&=1 &&\text{, on the inner rings }S^1(-2e_1)\cup S^1(2e_1)
+      \Delta \psi&=0 &&\text{on }\openX, \\
+      \psi&=0 &&\text{on the outer ring }4S^1, \\
+      \psi&=1 &&\text{on the inner rings }S^1(-2e_1)\cup S^1(2e_1),
     \end{aligned}\label{eq:n2:hvf:roundRegion:noInflowNoOutflow}
   \end{equation}
   and set $u=\nabla^\perp\psi$.
@@ -3041,14 +3216,14 @@ In a second example given by \cite{Wahlen2023} we fix the domain rather than the
 Our third example highlights the importance of assuming that $u$ be Morse in corollary \ref{co:n2_noInflowNoOutflow}.
 \begin{example}[Stagnation points on the boundary]
   In this example given by \cite{Wahlen2023} we again start by fixing the domain.
-  Let $\Omega=B_4\setminus\brk*{B_1(2e_1)\cup B_1(-2e_1)}$ be the domain as before.
+  Let $X=\overline{B}_4\setminus\brk*{B_1(2e_1)\cup B_1(-2e_1)}$ be the domain as before.
   We let the stream function $\psi$ be determined by the system
   \begin{equation}
     \begin{aligned}
-      \Delta \psi&=0 &&\text{, on }\Omega \\
-      \psi&=0 &&\text{, on the outer ring }4S^1 \\
-      \psi&=-1 &&\text{, on the left inner ring }S^1(-2e_1) \\
-      \psi&=1 &&\text{, on the right inner ring }S^1(2e_1)
+      \Delta \psi&=0 &&\text{on }\openX, \\
+      \psi&=0 &&\text{on the outer ring }4S^1, \\
+      \psi&=-1 &&\text{on the left inner ring }S^1(-2e_1), \\
+      \psi&=1 &&\text{on the right inner ring }S^1(2e_1),
     \end{aligned}\label{eq:n2:hvf:roundRegion:InflowOutflow}
   \end{equation}
   and then set $u=\nabla^\perp\psi$.
@@ -3075,20 +3250,21 @@ Our third example highlights the importance of assuming that $u$ be Morse in cor
 \end{example}
 
 \begin{proposition}[Critical points on the boundary, {\cite[Theorem 1.1]{Alessandrini1992}}]\label{pr:n2_noInflowOutflow_halfBd}
-  Let $\Omega\subseteq\R^2$ be bounded, open, with piecewise $C^{1,\alpha}$ boundary.
-  Let further $f\colon X\to\R$ be harmonic and constant on each boundary component,
-  say $f=a_j$ on a boundary component $\Gamma_j$. Then there exist finitely many critical
+  Let $X\subseteq\R^2$ be bounded with piecewise $C^{1,\alpha}$ boundary.
+  Let further $f\colon X\to\R$ be harmonic, not constant on each connectivity component 
+  and constant on each boundary component. Then there exist finitely many critical
   points $x_1,\dots,x_k\in X$ of $u$ with multiplicities $m_1,\dots,m_k$ and we have that
   \begin{align*}
-    \sum_{x_j\in\Omega}m_j+\frac{1}{2}\sum_{x_j\in \Sigma}m_j=-\chi\brk*{X}\,.
+    \sum_{x_j\in\openX}m_j+\frac{1}{2}\sum_{x_j\in \Sigma}m_j=-\chi\brk*{X}\,.
   \end{align*}
 \end{proposition}
 \begin{proof}
-  The proof uses complex analysis techniques and can be found in \cite[Theorem 1.1]{Alessandrini1992}.
+  The proof uses complex analysis techniques and can be found in \cite{Alessandrini1992}.
 \end{proof}
 
-\chapter{No in- or outflow in $d=3$ dimensions}
+\chapter{No in- or outflow in $\R^3$}
 
+\td{Write a decent introduction}
 This question is in part inspired by a question posed in \cite[p.198]{Lortz1970}.
 
 
@@ -3103,7 +3279,7 @@ We obtain as a quick consequence of the hairy ball theorem
   \end{align*}
 \end{proposition}
 \begin{proof} 
-  Assume not. Since $\Omega$ has $b_2$ bubbles and $b_1$ holes there exists by the pigeon hole
+  Assume not. Since $X$ has $b_2$ bubbles and $b_1$ holes there exists by the pigeon hole
   principle a bubble $\Gamma\subseteq\Sigma$ without a hole. Since $u$ has no boundary stagnation points on $\Gamma$ we
   the restriction $u\vert_\Gamma$ does not vanish. But $\Gamma$ is homeomorphic to the Ball in contradiction to the hairy ball theorem.
 \end{proof}
