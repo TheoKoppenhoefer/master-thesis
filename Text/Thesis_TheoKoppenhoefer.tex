@@ -86,18 +86,8 @@
   General TODOs
   \begin{itemize}
     \item Check for typos.
-    \item use $\eqqcolon$ for definitions.
-    \item Does Girault-Raviart theorem with Helmholtz decomp. help?
+    \item add Alber
     \item bring in results from \cite{Shelton1980} and \cite{Morse1970}
-    \item Harmonic vector fields, find up to date reference
-    \item Mention Sard's theorem
-    \item Does Bocher's theorem help?
-    \item What can be said about singular sets with no in- or outflow in 3D?
-    \item define relative homol. / euler characteristic
-    \item Look at application of Sperner's lemma
-    \item $C$ is used once for critical points, once for level sets.
-    \item Look into James Kelliher, stream functions for divergence free vector fields. 
-    Relation to differential forms.
   \end{itemize}
   Some questions
   \begin{itemize}
@@ -164,7 +154,7 @@ properties of proposition \ref{pr:n2:hvf:simplyConnected} at least locally.
 % Often but not always we assume that in fact $u=\nabla f$ is a gradient field.
 One question we seek to answer in this thesis is the following:
 \begin{question}[Flowthrough with stagnation point]\label{qu:flowthroughStagnationPoint}
-  Does there exist a region $X\subseteq\R^3$ homeomorphic to a ball with flow $u$ through the region such that
+  Does there exist a region $X\subseteq\R^d$ homeomorphic to a ball with flow $u$ through the region such that
   \begin{enumerate}
     \item $u$ is a harmonic vector field
     \item $u$ has an interior stagnation point
@@ -172,8 +162,11 @@ One question we seek to answer in this thesis is the following:
   \end{enumerate}
 \end{question}
 The answer for this will turn out to be `yes' for dimensions $d\geq3$ and `no' for $d=2$ dimensions.
-Another question we will consider is of the type:
-\begin{question}[stagnation points of harmonic vector fields without inflow or outflow]
+Somewhat related, \cite[p.198]{Lortz1970} poses the question whether it is possible to have a harmonic vector field
+without inflow or outflow through the boundary with interior stagnation points in $\R^3$.
+Inspired by this we will also consider the following question:
+\begin{question}[Stagnation points of harmonic vector fields without inflow or outflow]
+  \label{qu:noInflowNoOutflow}
   Let $u$ be a harmonic vector field in a domain $X$ such that at every boundary point it is tangential to the boundary.
   What can be said about the relation between the number of stagnation points and the domain topology?
 \end{question}
@@ -218,6 +211,7 @@ More generally we give the definition of a stratification as follows:
   In the case that $X_j\subseteq\overline{X}_k$ and additionally $n(k)=0$ or $n(k)=n(j)+1$ we will
   write $X_j\precsim X_k$ or, abusing notation, we will write $X_k=X_{j+1}$.
 \end{definition}
+\td{$n(k)=0$ or $n(k)=n(j)+1$ a little unclear. Also $X_0\precsim X_0$ unclear.}
 \nomenclature{$X_j$}{A stratification of $X$ as given in definition \ref{df:stratified_space}.
    Often but not always assumed to be given by equation \eqref{eq:def_mfCorners_stratification}}
 
@@ -262,7 +256,7 @@ For clarification we give an example
     \end{minipage}
   \end{figure}
   For an interior point $x\in X_2$ we have 
-  the contingent cone $C_xX=T_x\R^d$.
+  the contingent cone $C_xX=\R^2$.
   For a boundary point $x\in Y=I\times \brk[c]*{1}\subset X_1$ we have the contingent cone
   \begin{align*}
     C_xX=\brk[c]*{v\in T_x\R^2\colon v\cdot n\leq 0}
@@ -278,12 +272,12 @@ For clarification we give an example
 In the following we define the emergent and the entrant boundary in a way that generalises
 \cite[p.282]{Morse1970} for stratified manifolds.
 \begin{definition}[Emergent and entrant boundary]\label{df:emergentEntrantBd}
-  We call a vector $v\in T_x\R^d$ \emph{entrant} at a boundary point $x\in\Sigma$ if
+  We call a vector $v\in T_xX$ \emph{entrant} at a boundary point $x\in\Sigma$ if
   \begin{enumerate}
     \item $v$ points into $\openX$ or
     \item $v$ lies in the dual cone of the contingent cone $C_xX$, that is
     \begin{align*}
-      v\in \brk*{C_xX}^*=\brk[c]*{w\in T_x^*X\colon \brk[a]*{w, w'}\geq0\text{ for all }w'\in C_xX}\,.
+      v\in \brk*{C_xX}^*=\brk[c]*{w\in T_xX\colon w\cdot w'\geq0\text{ for all }w'\in C_xX}\,.
     \end{align*}
   \end{enumerate}
   We call $v$ \emph{strictly entrant} if in addition $v$ is not tangential to $\Sigma$ and if $v\in\brk*{C_xX}^*$ then
@@ -305,7 +299,6 @@ In the following we define the emergent and the entrant boundary in a way that g
 \nomenclature{$B_r(x)$, $B_r$}{Ball of radius $r$ around the point $x$ / the origin.}
 \nomenclature{$S^{d-1}(x)$, $S^{d-1}$}{$(d-1)$-dimensional sphere around $x$ / the origin.}
 \nomenclature{$e_j$}{$j$-th unit vector in $\R^d$.}
-
 % We would now like to illustrate the preceding definitions.
 % \begin{example}\label{ex:n3_hvf_canonical}
 %   We now consider our domain to be the ball $B_1\subseteq\R^3$ around the origin in $d=3$ dimensions.
@@ -371,16 +364,16 @@ We would now like to illustrate the preceding definitions.
   \end{align*}
   which is always fulfilled and thus $I\times\brk[c]*{1}\subseteq\Sigma^{\leq0}$.
   At the boundary point $x=\vect{1&1}^\top$ the dual of the contingent cone is given by
-  \begin{align*}
-    \brk*{C_xX}^*=C_xX\,.
-  \end{align*}
+  \begin{align}
+    \brk*{C_xX}^*=C_xX\,.\label{eq:n2_hvf_canonical}
+  \end{align}
   Since $v=u(x)=2\vect{1 &-1}^\top$ we have that $v\notin\brk*{C_xX}^*$ and $-v\notin\brk*{C_xX}^*$
   and thus $x\notin\Sigma^{\geq0}\cup\Sigma^{\leq0}$.
   By analogous argumentation on the other sides of the square $\Sigma=\partial X$
   one obtains that
   \begin{align*}
-    \Sigma^{\leq0}&=I\times\brk[c]*{1}\cup I\times\brk[c]*{-1}\\
-    \Sigma^{\geq0}&=\brk[c]*{1}\times I\cup \brk[c]*{-1}\times I\,.
+    \Sigma^{\leq0}&=\brk*{I\times\brk[c]*{1}}\cup \brk*{I\times\brk[c]*{-1}}\\
+    \Sigma^{\geq0}&=\brk*{\brk[c]*{1}\times I}\cup \brk*{\brk[c]*{-1}\times I}\,.
   \end{align*}
   % In particular the tangential boundary $\Sigma^{0}=\emptyset$ is empty.
   A plot of the sets can be seen in figure \ref{pl:n2_hvf_canonical_boundary}.
@@ -393,6 +386,31 @@ We would now like to illustrate the preceding definitions.
   \end{figure}
 \end{example}
 
+Since the dual of the contingent cone $\brk*{C_xX}^*$ will also play a role later on we make a
+further remark to illustrate the concept.
+\begin{remark}[Contingent cone]
+  If the angle of the cone $C_xX$ at a corner point $x$ in the plane is $\alpha$ the angle formed by the
+  cone $\brk*{C_xX}^*$ is $\pi-\alpha$.
+  Thus equation \eqref{eq:n2_hvf_canonical} in the previous example is a special case for $\alpha=\pi/2$.
+  The more general case is illustrated in figure \ref{fi:n2_contingentCone_greaterLess}.
+  \begin{figure}
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+      \centering
+      \input{../Figures/n2_contingentCone_greater.pdf_tex}
+      \caption{$\alpha>\pi/2$}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\textwidth}
+      \centering
+      \input{../Figures/n2_contingentCone_less.pdf_tex}
+      \caption{$\alpha<\pi/2$}
+    \end{subfigure}
+    \caption{Illustration of a planar contingent cone (yellow) and its polar cone (red).}
+    \label{fi:n2_contingentCone_greaterLess}
+  \end{figure}
+\end{remark}
+
 Given a vector field $u\colon X\to\R^d$ and a stratification $X_j$ of $X$ we can construct for every
 $j\in\cJ$ a vector field
 \begin{align*}
@@ -401,7 +419,7 @@ $j\in\cJ$ a vector field
 Here $T^*X_j$ denotes the cotangent space of the manifold $X_j$ which is defined for instance in \cite[Chapter 6]{Hirsch1994}.
 More precisely, for $x\in X_j$ let
 \begin{align}
-  \pi_j\big\vert_x\colon\R^d\cong T_x^*\R^d\to T_x^*X_{j}\label{eq:def_projectionStratification}
+  \pi_j\big\vert_x\colon T_x^*X\to T_x^*X_{j}\label{eq:def_projectionStratification}
 \end{align}
 denote the orthogonal projection of a vector at $x$ onto the cotangent space of the stratum $X_j$ at $x$.
 Now let
@@ -422,8 +440,7 @@ to include harmonic vector fields.
   The set of all essential stagnation points of $u_j$ is denoted by $\critical_j=\critical_j(u)$ and
   the essential stagnation points of $u$ and $-u$ on $X_j$ are called \emph{stagnation points of $u$ on $X_j$}.
   A stagnation point $x$ of $u_j$ is called
-  \emph{non-degenerate} if it is contained in the relative interior $\relint X_j$
-  and the derivative
+  \emph{non-degenerate} if the derivative
   \begin{align*}
     Du_j(x)=Du_j\big\vert_x\in T_xT^*X_j\cong \R^{n(j)\times n(j)}
   \end{align*}
@@ -505,8 +522,8 @@ The following characterisation of the irregular boundary will come in handy for 
   \begin{align*}
     \brk*{C_xX}^*\setminus\relint\brk*{C_xX}^*
     &=\left\{w\in T_xX\;\begin{array}{|l}
-      \brk[a]*{w,w'}\geq0\text{ for all }w'\in C_xX\text{ and }\\
-      \brk[a]*{w,w'}=0\text{ for some }w'\in \partial C_xX\setminus\brk[c]*{0}
+      w\cdot w'\geq0\text{ for all }w'\in C_xX\text{ and }\\
+      w\cdot w'=0\text{ for some }w'\in \partial C_xX\setminus\brk[c]*{0}
     \end{array}\right\}\,.
   \end{align*}
   Now $w'\in\partial C_xX\setminus\brk[c]*{0}$ iff $w'\in T_xX_{j+1}$ is orthogonal to $T_xX_j$ at $x$.
@@ -605,12 +622,38 @@ We return to our example:
   \end{align*}
 \end{example}
 
+The finiteness of the number of critical points for Morse functions is a known fact which is mentioned
+for example in \cite{Morse1970}. For completeness we give the following proposition:
+\begin{proposition}\label{pr:finiteness_critical_points}
+  The number of non-degenerate
+  stagnation points of $u_j$ on $X_j$ is finite.
+\end{proposition}
+\begin{proof}
+  Let $x\in X_j$ be a non-degenerate stagnation point of $u_j$. Since $Du_j(x)$ is invertible there exists
+  by the inverse function theorem an open neighbourhood $U_x\subseteq X_j$ of $x$ on which 
+  $u_j$ is bijective. Hence $x$ is the only stagnation point in $U_x$. Let $C$ denote the set of all
+  non-degenerate stagnation points of $u_j$. Then the sets $U_x$ for $x\in C$ together with
+  \begin{align}
+    U_C=\R^d\setminus \overline{C}
+  \end{align}
+  form an open cover of $\overline{X}_j$. But $\overline{X}_j$ is compact and thus there exists
+  a finite subcover. Since we have for every stagnation point $x\in C$ that
+  $x\not\in U_y$ for all other $y\in C\setminus\brk[c]*{x}$ and $x\not\in U_C$ we must have that $U_x$
+  is contained the finite subcover. Thus it follows that $\#C<\infty$ is finite.
+\end{proof}
+As a consequence we obtain the following observation:
+\begin{corollary}\label{co:finiteness_type_nbrs}
+  For a Morse vector field $u\colon X\to\R^d$ the type numbers $M_0,\dots,M_d$ and the boundary type numbers $\mu_0,\dots,\mu_{d-1}$
+  are finite.
+\end{corollary}
+
 The previous definitions translate naturally to $f$.
 That is, we call $f$ Morse, non-degenerate, et cetera if $u=\nabla f$ is Morse, non-degenerate, et cetera.
 Similarly we call $x$ a \emph{critical point} of $f$ if it is a
 stagnation point of $u$.
 Note that most authors refer to regular and essential stagnation points as simply non-degenerate stagnation points
 and that this naming was introduced simply to distinguish between these different concepts.
+
 
 % To illustrate the preceding definitions we return to our previous example.
 % \begin{example}
@@ -681,15 +724,21 @@ Since residual sets are dense in a Baire space by the Baire category theorem we 
 use $u^\e$ to approximate a degenerate $u$.
 Our approach is to use Thom's theorem which is inspired by the approach in \cite[Chapter 6]{Hirsch1994}.
 \nomenclature{$u^\e$}{modification to $u$ as in equation \eqref{eq:nonDegeneracy:definitionUEps}}
-\begin{definition}[Transversality, {\cite[§3.2]{Hirsch1994}}]
-  We call a function $g\colon Y_1\to Y_2$ between two manifolds $Y_1$ and $Y_2$ (without boundary)
-  \emph{transverse} to a submanifold $A\subseteq Y_2$ if for all points in the 
+\begin{definition}[Transversality, {\cite[§3.2]{Hirsch1994}} and {\cite{Agrach1991}}]
+  Let $X$ be a manifold with corners and $Y$ a manifold without boundary.
+  We call a function $g\colon X\to Y$
+  \emph{transverse} to a submanifold $A\subseteq Y$ with corners if for all points in the 
   preimage $x\in g^{-1}(A)$ we have that
-  \begin{align*}
-    \Image\brk*{Dg_x}+T_{g(x)}A = T_{g(x)}Y_2\,.
-  \end{align*}
+  \begin{align}
+    Dg\big\vert_x\brk*{C_xX}+C_{g(x)}A = T_{g(x)}Y\,.\label{eq:nonDegeneracy_defTransversality}
+  \end{align}
 \end{definition}
 \nomenclature{$A$}{submanifold, can be thought of as the zero section of $T^*X$}
+In the remainder of this section we will deal with manifolds without boundaries and then condition
+\eqref{eq:nonDegeneracy_defTransversality} reduces to
+\begin{align*}
+  \Image\brk*{Dg_x}+T_{g(x)}A = T_{g(x)}Y\,.
+\end{align*}
 As an application of this definition we make the following observation:
 \begin{proposition}[Transversal characterisation of non-degeneracy]\label{pr:nonDegeneracy:alternativeCharacterisation}
   Let $u_j\colon X_j\to T^*X_j$ be a differentiable vector field.
@@ -1080,42 +1129,21 @@ a generalisation of the results in \cite[§2]{Morse1970} which will prove useful
 % \end{corollary}
 
 \chapter{The Morse inequalities}
-\td{Bring order into this section.}
 
-The finiteness of the number of critical points is a known fact which is mentioned
-for example in \cite{Morse1970}. For completeness we give the following proposition:
-\begin{proposition}\label{pr:finiteness_critical_points}
-  The number of non-degenerate
-  stagnation points of $u_j$ on $X_j$ is finite.
-\end{proposition}
-\begin{proof}
-  Let $x\in X_j$ be a non-degenerate stagnation point of $u_j$. Since $Du_j(x)$ is invertible there exists
-  by the inverse function theorem an open neighbourhood $U_x\subseteq X_j$ of $x$ on which 
-  $u_j$ is bijective. Hence $x$ is the only stagnation point in $U_x$. Let $C$ denote the set of all
-  non-degenerate stagnation points of $u_j$. Then the sets $U_x$ for $x\in C$ together with
-  \begin{align}
-    U_C=\R^d\setminus \overline{C}
-  \end{align}
-  form an open cover of $\overline{X}_j$. But $\overline{X}_j$ is compact and thus there exists
-  a finite subcover. Since we have for every stagnation point $x\in C$ that
-  $x\not\in U_y$ for all other $y\in C\setminus\brk[c]*{x}$ and $x\not\in U_C$ we must have that $U_x$
-  is contained the finite subcover. Thus it follows that $\#C<\infty$ is finite.
-\end{proof}
-As a consequence we obtain the following observation:
-\begin{corollary}\label{co:finiteness_type_nbrs}
-  For a Morse $u$ the type numbers $M_0,\dots,M_d$ and the boundary type numbers $\mu_0,\dots,\mu_{d-1}$
-  are finite.
-\end{corollary}
-
-\td{State the theorem of Sard}
+The aim of this chapter is to state and motivate the Morse inequalities for manifolds
+with corners. For this we first introduce the Betti numbers of the domain $X$,
+then we state the Morse inequalities and finally we give a motivation as to why these
+inequalities hold.
+After that we state the Morse inequalities in the special case of $d\in\brk[c]*{2,3}$ dimensions 
+for a harmonic Morse function $f$.
 
 \section{Betti numbers}
 
-Let $H_k(X)$ denote the $k$-th homology space of $X$ with coefficients in the field $\K$.
+Let $H_k(X)$ denote the $k$-th homology group of $X$ with coefficients in the field $\K$.
 For an introduction and definition of these we refer the reader to \cite[Chapter 2]{Hatcher2002}.
 We define the $k$-th Betti number as the dimension
 \begin{align}
-  b_k\leftdef\dim_\K H_k(X)\,.\label{eq:df_bettiNbrs}
+  b_k=b_k\brk*{X}\leftdef\dim_\K H_k(X)\,.\label{eq:df_bettiNbrs}
 \end{align}
 \nomenclature{$b_k$}{Betti number as defined in equation \eqref{eq:df_bettiNbrs}}
 
@@ -1124,7 +1152,7 @@ We proceed to give examples for Betti numbers of selected connected domains in $
   In $d=2$ dimensions the $0$-th Betti number counts the number of connected components
   of $X$ and the first Betti number counts the number of holes of this domain.
   All other Betti numbers vanish in $\R^2$.
-  More concretely we give the Betti numbers for selected domains in table \ref{tb:n2_domains_bettiNbrs}.
+  More concretely, we give the Betti numbers for selected domains in table \ref{tb:n2_domains_bettiNbrs}.
 \end{example}
 
 \begin{table}
@@ -1162,7 +1190,7 @@ We proceed to give examples for Betti numbers of selected connected domains in $
   The Betti numbers for selected domains can be seen in table \ref{tb:n3_domains_bettiNbrs}.
 \end{example}
 
-With the Betti numbers we can define the \emph{Euler characteristic} to be
+Now we can define the \emph{Euler characteristic} to be
 \begin{align*}
   \chi(X)=\sum_{k=0}^d\brk*{-1}^{k}b_k(X)
 \end{align*}
@@ -1206,30 +1234,31 @@ the alternating sum of the Betti numbers.
 
 We state the Morse inequalities.
 \begin{theorem}[Morse inequalities, {\cite[Theorem 2.4]{Agrach1991}}]
-Let $X$ be a manifold with corners and $f\colon X\to\R$ be Morse.
-Then we have for $l\in\brk[c]*{0,\dots,d}$ the inequalities
-\begin{align*}
-  \sum_{k=0}^l \brk*{-1}^{k+l}\essind_j(f)\geq \sum_{k=0}^l\brk*{-1}^{k+l}b_j(X)\,.
-\end{align*}
-For $l=d$ we in fact have equality
-\begin{align}
-  \sum_{k=0}^d \brk*{-1}^{k}\essind_k(f)= \chi(X)\label{eq:MorseIneq_eqality}
-\end{align}
-where $\chi(X)$ denotes the Euler characteristic.
+  \label{th:Morse_MorseIneq}
+  Let $X$ be a manifold with corners and $f\colon X\to\R$ be smooth and Morse.
+  Then we have for $l\in\brk[c]*{0,\dots,d}$ the inequalities
+  \begin{align}
+    \sum_{k=0}^l \brk*{-1}^{k+l}\essind_j(f)\geq \sum_{k=0}^l\brk*{-1}^{k+l}b_j(X)\,.
+    \label{eq:MorseIneq_inequality}
+  \end{align}
+  For $l=d$ we in fact have equality
+  \begin{align}
+    \sum_{k=0}^d \brk*{-1}^{k}\essind_k(f)= \chi(X)\label{eq:MorseIneq_equality}
+  \end{align}
+  where $\chi(X)$ denotes the Euler characteristic.
 \end{theorem}
 \begin{proof}
-  A proof for manifolds with $C^1$ boundary is given for instance in \cite[Theorem 10.2']{Morse1969}.
   The definition of regular critical points of $f$ and their index given in definition \ref{df:nonDegeneracy} coincides with 
   the definition of a critical point and its co-index of $-f$ given in \cite{Agrach1991}.
   The result then follows from \cite[Theorem 2.4]{Agrach1991}.
   Nonetheless we will give an idea of the proof.
 \end{proof}
-\td{Give outline of proof idea.}
 Define for $a\in\R$ the manifold $X^a\leftdef\brk[c]*{x\in X\colon f(x)\leq a}$.
-The main idea is to inspect how the topology of the manifold $X^a$ changes as we vary $a$.
+The main idea in the proof of the Morse inequalities is to inspect how the topology of the manifold $X^a$ changes as we vary $a$.
 This was the idea in Morse's original proof of these inequalities for manifolds without boundary in \cite{Morse1925}.
 Later proofs of the Morse inequalities for manifolds without boundary using this approach added more terminology from algebraic topology and differential geometry.
-Proofs of these classical Morse inequalities can be found in \cite{Milnor1963} and \cite{Morse1969}.
+Proofs of the Morse inequalities can be found in \cite[§5]{Milnor1963} for manifolds without boundary and 
+in \cite[Theorem 10.2']{Morse1969} for manifolds with $C^1$ boundary.
 There also exists proofs using dynamical system techniques
 which can be found for instance in \cite{Smale1960}.
 We require however the Morse inequalities on manifolds with corners.
@@ -1238,37 +1267,76 @@ We will try to avoid the fancy tools that are used in stratified Morse theory an
 resort to \cite{Agrach1991} and \cite{Handron2002} where the Morse inequalities are shown for
 manifolds with corners.
 In the following we will outline the main ideas of the proof to convince the reader
-as to why equation \eqref{eq:MorseIneq_eqality} is reasonable.
+as to why equation \eqref{eq:MorseIneq_equality} is reasonable.
 
 % This is the approach used in \cite{Milnor1963}, \cite{Agrach1991} and \cite{Handron2002}.
 % The proof involves two main steps. The first is to show the following
-In both \cite{Handron2002} one first constructs a 
-vector field $G$ on $X$ such that at
-every $x\in\overline{X}_j$ we have $G(x)=-u_j(x)$ where $X_j$ is the stratum of maximum dimension
-such that $u_j(x)$ points into $X$.
-In classical Morse theory for manifolds without boundary one simply sets $G=-\nabla f$.
-It is shown in \cite[§2.4]{Handron2002} that $G$ is a well-defined vector field.
-One then obtains a flow $\phi$ as in the following proposition:
-\begin{proposition}[{\cite[Lemma 1]{Handron2002}}]
-  Let $f$ be a Morse function then $G$ induces a flow $\phi\colon X\times\R_{\geq0}\to X$ such that
-  \begin{enumerate}
-    \item $\phi(\cdot,0)=\Id_X$
-    \item $\partial_t\phi\brk*{x,t}=G\circ\phi\brk*{x,t}$
-  \end{enumerate}
+% In \cite{Handron2002} one constructs a 
+% vector field $G$ on $X$ such that at
+% every $x\in\overline{X}_j$ we have $G(x)=-u_j(x)$ where $X_j$ is the stratum of maximum dimension
+% such that $u_j(x)$ points into $X$.
+% In classical Morse theory for manifolds without boundary one simply sets $G=-\nabla f$.
+% It is shown in \cite[§2.4]{Handron2002} that $G$ is a well-defined vector field.
+% One then obtains a flow $\phi$ as in the following proposition:
+% \begin{proposition}[{\cite[Lemma 1]{Handron2002}}]
+%   Let $f$ be a Morse function then $G$ induces a flow $\phi\colon X\times\R_{\geq0}\to X$ such that
+%   \begin{enumerate}
+%     \item $\phi(\cdot,0)=\Id_X$
+%     \item $\partial_t\phi\brk*{x,t}=G\circ\phi\brk*{x,t}$
+%   \end{enumerate}
+% \end{proposition}
+% \begin{proof}
+%   See \cite[Lemma 1]{Handron2002}. Note that the requirement that \ref{} implies that
+%   $f$ fulfills property $(3)$.
+% \end{proof}
+% One then uses this flow $\phi$ to show the following:
+% \begin{lemma}[Interval without critical value, {\cite[Theorem 7]{Handron2002}} and {\cite[p.7]{Agrach1991}}]
+%   \label{le:Morse_homotopicNoCP}
+%   Assume that the interval $[a,b]$ contains no critical value of $f$.
+%   Then $X^a\simeq X^b$ are homotopic.
+% \end{lemma}
+% \begin{proof}
+%   See for instance \cite[Theorem 7]{Handron2002}.
+%   One uses the flow $\phi$ to define a homotopy between $X^a$ and $X^b$.
+% \end{proof}
+
+We first cite a result from \cite{Agrach1991}.
+\begin{proposition}[{\cite[Theorem 2.1]{Agrach1991}}]
+  \label{pr:Morse_TransversalityLemma}
+  Let $t_0,t_1\in\R$ and $F\colon \R\times X\to Y$ be a smooth map such that for each $t_0\leq t\leq t_1$ the function
+  $f_t=F\brk*{t,\cdot}$ is transverse to a submanifold with corners $W\subseteq Y$.
+  Then the sets $f_{t_0}^{-1}\brk*{W}\simeq f_{t_1}^{-1}\brk*{W}$
+  are homotopic.
 \end{proposition}
 \begin{proof}
-  See \cite[Lemma 1]{Handron2002}. Note that the requirement that \ref{} implies that
-  $f$ fulfills property $(3)$.
+  See \cite[Theorem 2.1]{Agrach1991}.
+  The proof involves the construction of a flow $P$ defined on a neighbourhood of $X$
+  for which $P_t\brk*{f_{t_0}^{-1}\brk*{W}}\subseteq f_{t}^{-1}\brk*{W}$ for all $t_0\leq t\leq t_1$.
 \end{proof}
-One then uses this flow $\phi$ to show the following:
+With this result one can show the following:
 \begin{lemma}[Interval without critical value, {\cite[Theorem 7]{Handron2002}} and {\cite[p.7]{Agrach1991}}]
+  \label{le:Morse_homotopicNoCP}
   Assume that the interval $[a,b]$ contains no critical value of $f$.
   Then $X^a\simeq X^b$ are homotopic.
 \end{lemma}
 \begin{proof}
-  See for instance \cite[Theorem 7]{Handron2002}.
-  One uses the flow $\phi$ to define a homotopy between $X^a$ and $X^b$.
+  One sets $f_t=f-t$ in the previous lemma and $W=\R_{\leq0}$.
+  Note that $X^c=f_c^{-1}\brk*{W}$ for all $c\in\R$.
+  We have for every
+  $a\leq t\leq b$ and and $x\in f_t^{-1}\brk*{W}$ that
+  \begin{align*}
+    Df_t\big\vert_{x}\brk*{C_{x}X}+C_{f(x)}W=C_{f(x)}\R=\R
+  \end{align*}
+  since $C_{f(x)}W=\R$ for $f(x)<t$ and $$Df_t\big\vert_{x}\brk*{C_xX}=Df\big\vert_{x}\brk*{C_xX}=\R$$
+  for $f(x)=t$
+  since $f$ has no critical values on the interval $[a,b]$.
+  Thus $f_t$ is transverse to $W$ for each $a\leq t\leq b$ and the result follows.
 \end{proof}
+A similar result is given in \cite[Theorem 7]{Handron2002}.
+The proof in \cite[Theorem 7]{Handron2002} also involves the construction of a flow
+on the manifold $X$. It requires however an additional technical property, named
+property $(3)$, which is why we gave the proof by \cite{Agrach1991} for this lemma.
+
 
 % We state Morse's lemma according to \cite[§6, Lemma 1.1]{Hirsch1994}
 % \begin{lemma}
@@ -1285,88 +1353,144 @@ One then uses this flow $\phi$ to show the following:
 
 We state Morse's lemma according to \cite[Lemma 5]{Handron2002}.
 \begin{proposition}[Morse's lemma, {\cite[Lemma 5]{Handron2002}}]
-  Let $f\colon X\to\R$ be $C^{2}$ and $x$ be an essential non-degenerative
+  Let $f\colon X\to\R$ be $C^{2}$ and $x$ be an essential regular non-degenerate
   critical point of index $k$ on the stratum $X_j$ of dimension $n$. Then there exists a
-  local chart $\varphi\colon H\to U$ such that
-  \begin{align*}
-    f\circ\varphi^{-1}(y)=f(x)-\sum_{j=1}^ky_j^2+\sum_{j=k+1}^ny_j^2+\sum_{j=n}^dy_j\,.
-  \end{align*}
+  local chart $\varphi\colon H_{d-n}^d\supseteq V\to U$ such that
+  \begin{align}
+    f\circ\varphi^{-1}(y)=f(x)-\sum_{j=1}^ky_j^2+\sum_{j=k+1}^ny_j^2+\sum_{j=n+1}^dy_j\,.
+    \label{eq:Morse_MorseLemma}
+  \end{align}
 \end{proposition}
 \begin{proof}
   The case that $n=d$ is the classical version of the Morse lemma and can be found for instance
   in \cite[§6, Lemma 1.1]{Hirsch1994}.
-  Note that the definition of an essential critical point in \ref{Handron2002} 
-  fulfilling property $(3)$ also encompasses our definition of a non-degenerate
-  essential critical point. Hence this statement follows from \cite[Lemma 5]{Handron2002}.
+  Note that the definition of an essential critical point in \cite{Handron2002} 
+  fulfilling property $(3)$ also encompasses our definition of a non-degenerate regular
+  essential critical point. Here the regularity condition ensures that property $(3)$ in \cite{Handron2002}
+  is fulfilled. Hence this statement follows from \cite[Lemma 5]{Handron2002}.
   The idea of the proof involves first applying the Morse lemma on the stratum of the critical point.
-  Then this coordinate chart is extended with Taylor in a suitable manner to be a
-  full coordinate chart on $X$ such that \ref{} holds.
+  Then this coordinate chart is extended with Taylor in a suitable manner to a
+  full coordinate chart on $X$ such that equation \eqref{eq:Morse_MorseLemma} holds.
 \end{proof}
 
 Using the Morse lemma one can then show the following result:
 \begin{lemma}[Interval with critical value, {\cite[Theorem 8]{Handron2002}} and {\cite[Theorem 2.2]{Agrach1991}}]
-  If the interval $[a,b]$ contains one critical value $c\in\R$ with non-degenerate essential critical point
-  $x$ of index $k$.
-  then $X^b$ is homology equivalent to $X^a$ by attaching the $k$-cell
+  \label{le:Morse_homotopicCP}
+  If the interval $[a,b]$ contains one critical value $a<c<b$ with corresponding non-degenerate essential critical point
+  $x$ of index $k$
+  then $X^b$ is homotopic to $X^a$ by attaching the $k$-cell
   $D^{k}$.
 \end{lemma}
 \begin{proof}
   This is proven in \cite[Theorem 8]{Handron2002}.
+  Here we note that we do not require what \cite{Handron2002} calls property $(3)$
+  since this was only used to show the analogue of lemma \ref{le:Morse_homotopicNoCP} and in the formulation of the
+  Morse lemma.
   The proof is in structure very similar to \cite{Milnor1963}.
-  One first uses the Morse lemma to choose a suitable coordinate system.
-  It then proceeds in three steps.
-  First one defines a region $H$ as in figure \ref{}.
-  Then one shows that $X^a$ with $H$ attached is homotopic to $X^b$.
-  Finally one shows that $X^a$ with a $k$-cell attached is homotopic to
-  $X^a$ with $H$ attached.
+  One first uses the Morse lemma to choose a suitable coordinate system
+  in a neighbourhood of the critical point.
+  Then one chooses $\e>0$ so small such that $B_{2\e}\subseteq V$.
+  The proof then proceeds in three steps.
+  First one defines a region $H$ as in figure \ref{fi:morseIneq_CP}.
+  Then one shows that $X^{c-\e}$ with $H$ attached is homotopic to $X^{c+\e}$.
+  Finally one shows that $X^{c-\e}$ with the $k$-cell $D^k$ attached is homotopic to
+  $X^{c-\e}$ with $H$ attached.
+  The claim then follows from
+  \begin{align*}
+    X^a\cup D^k
+    \simeq X^{c-\e}\cup D^k
+    \simeq X^{c-\e}\cup H
+    \simeq X^{c+\e}
+    \simeq X^b
+  \end{align*}
+  where we also used the result of lemma \ref{le:Morse_homotopicNoCP}.
 \end{proof}
+\begin{figure}
+  \centering
+  \begin{subfigure}{0.45\textwidth}
+    \centering
+    \def\svgwidth{\textwidth}
+    \input{../Figures/morseIneq_interiorCP.pdf_tex}
+    % \label{fi:morseIneq_interiorCP}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}{0.45\textwidth}
+    \centering
+    \def\svgwidth{\textwidth}
+    \input{../Figures/morseIneq_cornerCP.pdf_tex}
+    % \label{fi:morseIneq_cornerCP}
+  \end{subfigure}
+  \caption{}
+  \label{fi:morseIneq_CP}
+\end{figure}
 
+In the original proof \cite{Morse1925} of the Morse inequalities Morse inspected
+in the analoga to lemmas \ref{le:Morse_homotopicNoCP} and \ref{le:Morse_homotopicCP} directly how the Betti numbers of the manifold
+changed from $X^a$ to $X^b$.
+The modern proofs however lean on the language of algebraic topology which
+is why we now need to argue how lemmas \ref{le:Morse_homotopicNoCP} and \ref{le:Morse_homotopicCP} imply the Morse inequalities.
+This final part of the proof is given in all details in \cite[§I.5]{Milnor1963}.
+Since we only use the equality in equation \eqref{eq:MorseIneq_equality} we shall outline its proof.
 
+Denote the $k$-th relative homology group by $H_k\brk*{X,A}$ for spaces $A\subseteq X$.
+Once again we refer the reader to \cite[Chapter 2]{Hatcher2002} for details regarding their definition.
 We require a result from algebraic topology:
-\begin{lemma}[Excision theorem, {\cite[Theorem 2.20]{Hatcher2002}}]
-  Given subspaces $Z\subseteq A\subseteq X$ such that $\overline{Z}\subseteq\interior\brk*{A}$
-  then for every $k$ we have that $H_k\brk*{X\setminus Z,A\setminus Z}\cong H_k\brk*{X,A}$
+% \begin{lemma}[Excision theorem, {\cite[Theorem 2.20]{Hatcher2002}}]
+%   Given subspaces $Z\subseteq A\subseteq X$ such that $\overline{Z}\subseteq\interior\brk*{A}$
+%   then for every $k$ we have that $H_k\brk*{X\setminus Z,A\setminus Z}\cong H_k\brk*{X,A}$
+%   are isomorphic.
+% \end{lemma}
+% \begin{lemma}[Excision theorem, {\cite[Theorem 2.20]{Hatcher2002}}]
+%   Given subspaces $A,B\subseteq X$ such that $X\subseteq\interior\brk*{A}\cup\interior\brk*{B}$
+%   then for every $k$ we have that $H_k\brk*{B,A\cap B}\cong H_k\brk*{X,A}$
+%   are isomorphic.
+% \end{lemma}
+\begin{proposition}[Corollary of the excision theorem, {\cite[Corollary 2.24]{Hatcher2002}}]
+  \label{pr:Morse_excisionCor}
+  Let $X=A\cup B$ be a CW-complex. Then we have for every $k$ that $H_k\brk*{X,A}\cong H_k\brk*{B,A\cap B}$
   are isomorphic.
-\end{lemma}
-\begin{lemma}[Excision theorem, {\cite[Theorem 2.20]{Hatcher2002}}]
-  Given subspaces $A,B\subseteq X$ such that $X\subseteq\interior\brk*{A}\cup\interior\brk*{B}$
-  then for every $k$ we have that $H_k\brk*{B,A\cap B}\cong H_k\brk*{X,A}$
-  are isomorphic.
-\end{lemma}
+\end{proposition}
 \begin{proof}
-  See \cite[Theorem 2.20]{Hatcher2002}.
+  See \cite[Corollary 2.24]{Hatcher2002}.
 \end{proof}
-
-The final part of the proof is then given in all details in \cite[§I.5]{Milnor1963}.
-Since we only use the equality in equation \eqref{eq:MorseIneq_eqality} we shall outline its proof.
-For this define a generalisation of the Euler characteristic by
+Now define the Euler characteristic for relative homology group by
 \begin{align}
   \chi\brk*{X,Y}\leftdef \sum_k\brk*{-1}^k\dim_\K H_k\brk*{X,Y}\,.
 \end{align}
-One can show that this is additive, in the sense that given suitable $X\supseteq Y\supseteq Z$
+It is shown in \cite[§5]{Milnor1963} that this is additive, in the sense that given suitable $X\supseteq Y\supseteq Z$
 we have that
 \begin{align}
   \chi\brk*{X,Z}=\chi\brk*{X,Y}+\chi\brk*{Y,Z}\label{eq:MorseIneq_additivChi}
 \end{align}
-Let $a_0<\dots<a_L$ be such that $[a_l,a_{l+1}]$ contains precisely one critical value with
-index $k_l$ and such that $X=X^{a_L}$
-It now follows from excision that
-\begin{align}
+Let $a_0<\dots<a_L$ be such that $[a_l,a_{l+1}]$ contains precisely one critical value in its interior with
+index $k_l$ and such that $X=X^{a_L}$ and $X^{a_0}=\emptyset$.
+It now follows from lemma \ref{le:Morse_homotopicCP} and proposition \ref{pr:Morse_excisionCor} that
+\begin{align*}
   H_k\brk*{X^{a_{l+1}},X^{a_{l}}}
-  &=H_k\brk*{X^{a_{l}}\cup D^{k_l},X^{a_{k}}} \\
-  &=H_k\brk*{D^{k_l},S^{k_l}} \\
+  &=H_k\brk*{X^{a_{l}}\cup D^{k_l},X^{a_{l}}} \\
+  &= H_k\brk*{D^{k_l},S^{k_l}} \\
   &=\begin{cases}
     \K &\text{ if }k=k_l,\\
     0 &\text{ else}
-  \end{cases}\,.
+  \end{cases}
+\end{align*}
+so
+\begin{align}
+  \chi\brk*{X^{a_{l+1}},X^{a_l}}=\brk*{-1}^{k_l}\,.\label{eq:Morse_chiSingleCP}
 \end{align}
-Hence we obtain by inductively applying \eqref{eq:MorseIneq_additivChi}
-and then equation 
+Hence we obtain by inductively applying equation \eqref{eq:MorseIneq_additivChi}
+and then \eqref{eq:Morse_chiSingleCP} that
 \begin{align*}
-  \chi\brk*{X}=\sum_k \chi\brk*{X^{x_{k+1}},X^k}
+  \chi\brk*{X}=\chi\brk*{X^{a_L},X^{a_0}}=\sum_l \chi\brk*{X^{a_{l+1}},X^{a_l}}
   =\sum_k\brk*{-1}^k\ind_k\brk*{f}
 \end{align*}
-
+so equation \eqref{eq:MorseIneq_equality} of the Morse inequalities follows
+for the case that no two critical points lie in the same level set.
+In case there are multiple critical points on the same level set the notation
+becomes a little more involved but the idea of the proof is the same.
+The proof of the inequalities \eqref{eq:MorseIneq_inequality} involves defining the
+Betti numbers for relative homology groups and then making a similar argumentation
+as above with these Betti numbers instead of the Euler characteristic. For details we refer the reader to \cite[§5]{Milnor1963}.
 
 \nomenclature{$\chi(X)$}{Euler characteristic.}
 
@@ -1380,30 +1504,30 @@ and then equation
 % \begin{proof}
 %   \td{Write some proof.}
 % \end{proof}
-As a final result in this chapter we inspect the Morse inequalities in the special case
+In the final part of this chapter we inspect the Morse inequalities in the special case
 that $f$ is harmonic.
 If we assume that $f$ is harmonic the maximum principle implies that
 $M_0=0=M_d$.
-If we additionally assume that we have dimensions $d=2$ we obtain from \ref{} a result from \cite[Corollary 10.1]{Morse1969}.
+If we additionally assume that we have dimensions $d=2$ we obtain from the Morse inequalities (theorem \ref{th:Morse_MorseIneq}) a result from \cite[Corollary 10.1]{Morse1969}.
 \begin{corollary}[Morse inequalities for harmonic $f$ in $\R^2$, {\cite[Corollary 10.1]{Morse1969}}]
   Let $X\subseteq\R^2$ be a manifold with corners and $f\colon X\to\R$ be harmonic and Morse.
   Then we have
   \begin{align*}
     \mu_0&\geq b_0 \\
-    M+\mu_1-\mu_0&=b_1-b_0\,.
+    M+\mu_1-\mu_0&=-\chi\brk*{X}\,.
   \end{align*}
 \end{corollary}
-In dimensions $d=3$ we obtain from \ref{} a result from \cite[Corollary 10.2]{Morse1969}.
+In dimensions $d=3$ we obtain from theorem \ref{th:Morse_MorseIneq} a result from \cite[Corollary 10.2]{Morse1969}.
 \begin{corollary}[Morse inequalities for harmonic $f$ in $\R^3$, {\cite[Corollary 10.2]{Morse1969}}]
   Let $X\subseteq\R^3$ be a manifold with corners and $f\colon X\to\R$ be harmonic and Morse
   Then we have
   \begin{align*}
     \mu_0&\geq b_0 \\
     M_1+\mu_1-\mu_0&\geq b_1-b_0 \\
-    M_2+\mu_2-M_1-\mu_1+\mu_0&= b_2-b_1+b_0\,.
+    M_2+\mu_2-M_1-\mu_1+\mu_0&= \chi\brk*{X}\,.
   \end{align*}
 \end{corollary}
-\td{Give a classical example of a Morse function to determine the Betti numbers.}
+\td{Perhaps give a classical example of a Morse function to determine the Betti numbers.}
 
 
 \chapter{Connected entrant boundaries in $\R^2$}
@@ -2950,9 +3074,9 @@ The following proposition is part of the proof of lemma \ref{pr:n3_polynomial_sm
 %   and have positive distance.
 %   Thus it remains to be shown that there exists $\rho>0$ such that $f_\rho$ has an interior
 %   critical point.
-%   We claim that
+%   We claim that for $k\in\N$
 %   \begin{align*}
-%     \norm*{f_\rho-f}_{L^\infty\brk*{B_2}}\longrightarrow0\text{ as }\rho\to0\,.
+%     \norm*{D^k\brk*{f_\rho-f}}_{L^\infty\brk*{B_2}}\longrightarrow0\text{ as }\rho\to0\,.
 %   \end{align*}
 %   Indeed, setting $g_\rho\leftdef f_\rho-f$ one obtains from the mean value property of $g_\rho$ that
 %   \begin{align*}
@@ -2962,9 +3086,10 @@ The following proposition is part of the proof of lemma \ref{pr:n3_polynomial_sm
 %     &\stackrel{\text{Hölder}}{\lesssim}\norm{\nabla g_\rho}_{L^2\brk*{B_r}} \\
 %     &=\brk*{\int_\Omega\Delta g_\rho^2\dif x}^{1/2} \\
 %     &\stackrel{\text{divergence theorem}}{=}\brk*{\int_\Sigma\nabla g_\rho^2\cdot n\dif x}^{1/2} \\
-%     &\stackrel{\text{divergence theorem}}{=}\brk*{\int_\Sigma\brk*{\theta_\rho-1}\brk*{\nabla f\cdot n}\dif x}^{1/2}\longrightarrow0
+%     &=\brk*{\int_\Sigma\brk*{\theta_\rho-1}\brk*{\nabla f\cdot n}\dif x}^{1/2}\longrightarrow0
 %   \end{align*}
 %   as $\rho\to0$. It then follows 
+%   \td{finish this example}
 % \end{example}
 
 
@@ -3264,26 +3389,31 @@ Our third example highlights the importance of assuming that $u$ be Morse in cor
 
 \chapter{No in- or outflow in $\R^3$}
 
-\td{Write a decent introduction}
-This question is in part inspired by a question posed in \cite[p.198]{Lortz1970}.
-
-
-
-We obtain as a quick consequence of the hairy ball theorem
-\begin{proposition}
-  Let $X$ have Betti numbers $b_0$, $b_1$ and $b_2$.
-  Let $u\colon X\to\R$
-  be a Morse harmonic vector field without boundary stagnation points. Then we have
-  \begin{align*}
-    b_2\leq b_1\,.
-  \end{align*}
-\end{proposition}
-\begin{proof} 
-  Assume not. Since $X$ has $b_2$ bubbles and $b_1$ holes there exists by the pigeon hole
-  principle a bubble $\Gamma\subseteq\Sigma$ without a hole. Since $u$ has no boundary stagnation points on $\Gamma$ we
-  the restriction $u\vert_\Gamma$ does not vanish. But $\Gamma$ is homeomorphic to the Ball in contradiction to the hairy ball theorem.
-\end{proof}
-We also obtain the following result:
+In $\R^3$ our results to question \ref{qu:noInflowNoOutflow} remain unsatisfactory.
+Nonetheless we will state them in this final chapter.
+The question from \cite[p.198]{Lortz1970} remains if it is possible to have a harmonic vector field in $\R^3$ with
+interior stagnation point and no in- or outflow through the boundary.
+This can be generalised to the question if it is possible to have a harmonic vector field
+$u\colon \R^3\supseteq X\to\R^3$ with interior critical points and 
+without critical points on the boundary.
+We remark that the boundary $\Sigma$ cannot have a component homeomorphic to
+the sphere $S^2$ as a direct consequence of the hairy ball theorem.
+% We obtain as a quick consequence of the hairy ball theorem
+% \begin{proposition}
+%   Let $X$ have Betti numbers $b_0$, $b_1$ and $b_2$.
+%   Let $u\colon X\to\R$
+%   be a Morse harmonic vector field without boundary stagnation points. Then we have
+%   \begin{align*}
+%     b_2\leq b_1\,.
+%   \end{align*}
+% \end{proposition}
+% \begin{proof} 
+%   Assume not. Since $X$ has $b_2$ bubbles and $b_1$ holes there exists by the pigeon hole
+%   principle a bubble $\Gamma\subseteq\Sigma$ without a hole. Since $u$ has no boundary stagnation points on $\Gamma$ we
+%   the restriction $u\vert_\Gamma$ does not vanish. But $\Gamma$ is homeomorphic to the Ball in contradiction to the hairy ball theorem.
+% \end{proof}
+We can also give a nontrivial condition on the interior critical points of such a $u$
+using the techniques of previous proofs:
 \begin{proposition}
   Let $X\subseteq\R^3$ be a compact manifold with corners and Betti numbers $b_0$, $b_1$ and $b_2$.
   Let $u\colon X\to\R$ be a strongly Morse harmonic vector field without boundary critical points.
