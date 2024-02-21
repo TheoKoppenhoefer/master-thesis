@@ -125,9 +125,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.98994949"
-     inkscape:cx="252.71945"
-     inkscape:cy="910.9656"
+     inkscape:zoom="1.979899"
+     inkscape:cx="460.48442"
+     inkscape:cy="910.49096"
      inkscape:document-units="mm"
      inkscape:current-layer="layer2"
      showgrid="false"
@@ -280,12 +280,6 @@
        d="m 80.075523,80.732568 c 2.7e-5,-0.09469 0.655945,-6.354242 1.457594,-13.91011 0.801647,-7.555867 1.457541,-13.798006 1.457541,-13.87142 0,-0.10737 0.289847,-0.133399 1.481887,-0.133081 6.435586,0.0017 13.049302,1.603632 18.098435,4.383646 1.04338,0.57448 2.92995,1.790734 3.48349,2.245777 l 0.27679,0.227537 -11.305904,9.140824 c -6.218246,5.027455 -12.125796,9.804165 -13.127891,10.614912 -1.253634,1.014254 -1.821974,1.420377 -1.821942,1.301915 z"
        id="path1010"
        inkscape:connector-curvature="0" />
-    <circle
-       style="display:inline;opacity:1;fill:none;fill-opacity:0.11170211;stroke:#000000;stroke-width:0.40000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="path965"
-       cx="79.917305"
-       cy="81.184967"
-       r="0.43525237" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:2.0521853px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
@@ -313,6 +307,12 @@
        x="109.91995"
        y="-11.70551"
        transform="rotate(49.476256)" />
+    <circle
+       style="display:inline;opacity:1;fill:none;fill-opacity:0.11170211;stroke:#000000;stroke-width:0.40000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path965"
+       cx="79.917305"
+       cy="81.184967"
+       r="0.43525237" />
   </g>
   <g
      inkscape:groupmode="layer"

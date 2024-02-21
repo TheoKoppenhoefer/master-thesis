@@ -16,7 +16,7 @@
 % supervisor
 \supervisor{Supervisor: Erik Wahlén}
 % examinor
-\examinor{Examinor: Evgeny Lokharu}
+\examinor{Examiner: Evgeniy Lokharu}
 %Name des Instituts an dem der Betreuer der Arbeit tätig ist.
 %z.B.: Mathematisches Institut
 % \institute{Institut }
@@ -34,6 +34,16 @@
 \usepackage{svg}
 \graphicspath{{../Plots/}}
 \graphicspath{{../Figures/}}
+
+\newcounter{annotateAboveCtr}
+\newcommand{\annotateAbove}[5][]{
+  \stepcounter{annotateAboveCtr}
+  \tikzmark{annotateAbove_\arabic{annotateAboveCtr}}{#3}
+  \tikzset{external/export=false}
+  \begin{tikzpicture}[remember picture, overlay, node distance = 0.5cm]
+    \node[,text width=5cm] (annotateAbove_\arabic{annotateAboveCtr}_descr) [above right= #4cm and #5cm of annotateAbove_\arabic{annotateAboveCtr}]{#2};
+    \draw[,->,thick] (annotateAbove_\arabic{annotateAboveCtr}_descr) to [in=90,out=-180] (annotateAbove_\arabic{annotateAboveCtr});
+  \end{tikzpicture}}
 
 \usepackage{makecell}
 \newcounter{symbolCount}
@@ -208,12 +218,16 @@ More generally we give the definition of a stratification as follows:
     \item $X_j\cap \overline{X}_k\neq\emptyset$ iff $X_j\subseteq\overline{X}_k$ iff $j\prec k$.
   \end{enumerate}
   The pair of $X$ and the collection of strata is called a \emph{stratified space}.
-  In the case that $X_j\subseteq\overline{X}_k$ and additionally $n(k)=0$ or $n(k)=n(j)+1$ we will
+  In the case that $X_j\subseteq\overline{X}_k$ 
+  we will write $X_j\prec X_k$ using the notation of \cite{Handron2002}.
+  If additionally $n(k)=0$ or $n(k)=n(j)+1$ we will
   write $X_j\precsim X_k$ or, abusing notation, we will write $X_k=X_{j+1}$.
 \end{definition}
 \td{$n(k)=0$ or $n(k)=n(j)+1$ a little unclear. Also $X_0\precsim X_0$ unclear.}
 \nomenclature{$X_j$}{A stratification of $X$ as given in definition \ref{df:stratified_space}.
    Often but not always assumed to be given by equation \eqref{eq:def_mfCorners_stratification}}
+\nomenclature{$\prec$}{We write $X_j\prec X_k$ if $X_j\subseteq\overline{X}_k$. See definition \ref{df:stratified_space} for details.}
+\nomenclature{$\precsim$}{We write $X_j\precsim X_k$ if $X_j\prec X_k$ and an additional condition holds. See definition \ref{df:stratified_space} for details.}
 
 In the case that the stratification arises through relation \eqref{eq:def_mfCorners_stratification}
 we have precisely $X_{j}\precsim X_{j+1}$ for $j\in\brk[c]*{1,\dots,d}$ and $X_0\precsim X_0$.
@@ -406,7 +420,7 @@ further remark to illustrate the concept.
       \input{../Figures/n2_contingentCone_less.pdf_tex}
       \caption{$\alpha<\pi/2$}
     \end{subfigure}
-    \caption{Illustration of a planar contingent cone (yellow) and its polar cone (red).}
+    \caption{Illustration of a planar contingent cone (yellow) and its dual cone (red).}
     \label{fi:n2_contingentCone_greaterLess}
   \end{figure}
 \end{remark}
@@ -483,7 +497,7 @@ To illustrate the preceding definitions we return to our previous example.
   we have $\ind_{2,k}=\delta_{k1}$ where $\delta$ denotes the Kronecker delta.
   For $x\in I\times\brk[c]*{1}=Y$ we calculate
   \begin{align*}
-    u_1(x)=\pi_1\circ u(x)=\brk*{u-n\cdot u \,n}(x)
+    u_1(x)=\pi_1\circ u(x)=\brk*{u-\brk*{n\cdot u}n}(x)
     =2x_1e_1
   \end{align*}
   and thus we have that $x=e_2$ is the unique stagnation point of $u$ on $I\times\brk[c]*{1}$.
@@ -498,12 +512,12 @@ To illustrate the preceding definitions we return to our previous example.
     =\brk*{u_1\circ \gamma}'(0)
     =\brk*{2te_1}'(0)=2e_1=2\gamma'(0)
   \end{align*}
-  and thus $e_1$ is an eigenvector of $Du_1(e_2)$ to eigenvalue $2$. Since $e_1$
+  and thus $e_1$ is an eigenvector of $Du_1(e_2)$ to the eigenvalue $2$. Since $e_1$
   spans the eigenspace $T_{e_2}Y$ it follows that $e_2$ is a non-degenerate stagnation point
   of $u_1$ with index $0$.
   Now since $u\brk*{e_2}\in\relint\brk*{C_xX}^*$ we have that $e_2$ is in fact a regular point.
   Proceeding in this manner for the other segments of the square $\Sigma$ we obtain that
-  $\ind{1,k}=2\delta_{0k}$.
+  $\ind_{1,k}=2\delta_{0k}$.
   If we now consider the point $x=\vect{1&1}^\top$ then we have that $u_0(x)=0$ and thus $x$ is a stagnation
   point.
   Now the derivative $Du_0=0\in T_xT^*X_0=0$ is bijective and thus
@@ -517,25 +531,96 @@ The following characterisation of the irregular boundary will come in handy for 
   The condition that the stagnation point $x\in X_j$ lies in $\Sigma^\text{irr}$ is equivalent to that
   $x$ is stagnation point of $u_{j+1}$ for a stratum $X_j\precsim X_{j+1}$.
 \end{proposition}
+We first remark that $x$ being a stagnation point of $u_{j+1}$ makes at first sight no sense since $x\notin X_{j+1}$.
+We have however that $x\in\partial X_{j+1}$. The concept of tangent space $T_xX_{j+1}$ and the projection $\pi_{j+1}$
+can thus be extended to $\partial X_{j+1}$ by continuity and so we can reasonably speak of evaluating $u_{j+1}$ at the point $x$.
 \begin{proof}
-  We calculate for some boundary point $x\in\Sigma$:
-  \begin{align*}
-    \brk*{C_xX}^*\setminus\relint\brk*{C_xX}^*
-    &=\left\{w\in T_xX\;\begin{array}{|l}
+  We first claim that for some boundary point $x\in\Sigma\cap X_j$ the relations
+  \begin{align}
+    \begin{aligned}
+    \partial\brk*{C_xX}^* &\leftdef\brk*{C_xX}^*\setminus\relint\brk*{C_xX}^*\\
+    &\stackrel{\brk*{+}}{=}\left\{w\in T_xX\;\begin{array}{|l}
       w\cdot w'\geq0\text{ for all }w'\in C_xX\text{ and }\\
-      w\cdot w'=0\text{ for some }w'\in \partial C_xX\setminus\brk[c]*{0}
-    \end{array}\right\}\,.
-  \end{align*}
-  Now $w'\in\partial C_xX\setminus\brk[c]*{0}$ iff $w'\in T_xX_{j+1}$ is orthogonal to $T_xX_j$ at $x$.
-  Thus we have that $$u(x)\in \brk*{C_xX}^*\setminus\relint\brk*{C_xX}^*$$ iff $u(x)\in \brk*{C_xX}^*$
-  and there exists a normal $n\in T_xX_{j+1}$ such that
-  \begin{align*}
-    0=\brk*{n\cdot u\;n}(x)=\brk*{n\cdot u_{j+1}\;n}(x)=u_{j+1}(x)-u_j(x)
-  \end{align*}
-  from which the claim follows.
-\end{proof}
+      w\cdot w'=0\text{ for some }w'\in C_xX\setminus T_xX_{j}
+    \end{array}\right\}\\
+    &\stackrel{\brk*{*}}{=}\left\{w\in T_xX\;\begin{array}{|l}
+      w\cdot w'\geq0\text{ for all }w'\in C_xX\text{ and }\\
+      w\cdot w'=0\text{ for some }w'\in T_xX_{j+1}\setminus T_xX_{j}\\
+      \text{where }X_{j}\precsim X_{j+1}
+    \end{array}\right\}
+    \end{aligned}
+    \label{eq:characterisation_irregular_bd_relationCxX}
+  \end{align}
+  hold.
+  To see the equality $\brk*{+}$ let $w\in\partial \brk*{C_xX}^*$
+  and $w_k\in T_xX\setminus\brk*{C_xX}^*$ be a sequence converging to $w$. Then there
+  exists for each $w_k$ a $w_k'\in C_xX$ such that $w_k\cdot w_k'<0$. We can assume that $\abs*{w_k'}=1$
+  and after taking a subsequence that $w_k'$ converge to a $w'\in C_xX$. But then we have by continuity that
+  $w\cdot w'\leq 0$ so the inclusion `$\subseteq$' follows.
+  On the other hand if $w\in \relint\brk*{C_xX}^*$ then there exists a relatively open neighbourhood $U\subseteq \brk*{C_xX}^*$ of $w$.
+  Assume that $w\cdot w'=0$ for some $C_xX\setminus T_xX_j$.
+  Since we have that $T_xX_j\perp \brk*{C_xX}^*$ are perpendicular we can assume that the component of $w'$ projected onto the space $T_xX_j$
+  vanishes.
+  Then we have for $\lambda<0$ small enough that $w+\lambda w'\in U$
+  and it follows that $\brk*{w+\lambda w'}\cdot w'=\lambda\abs*{w'}^2<0$, a contradiction. Thus `$\supseteq$' follows.
+  \begin{figure}
+    \centering
+    \input{../Figures/irregularCPs_X12.pdf_tex}
+    \label{fi:irregularCPs_X12}
+    \caption{An overview of the proof of $\brk*{+}$ in equation \eqref{eq:characterisation_irregular_bd_relationCxX}.}
+  \end{figure}
 
-\begin{definition}[Morse functions]
+  For $\brk*{*}$ we show the
+  inclusion `$\subseteq$'. Let $w\in \partial\brk*{C_xX}^*$ and $w'\in \brk*{T_xX_k\cap C_xX}\setminus T_xX_j$ for some stratum $X_j\prec X_k$ with $w\cdot w'=0$.
+  We assume that $X_k$ is chosen to be of minimal dimension.
+  Now if $X_j\precsim X_k$ we are finished. Else there exist strata $X_{k-1}^1,X_{k-1}^2\precsim X_k$
+  adjacent to $X_j$. Then there further exist $w_1'\in \brk*{T_xX_{k-1}^1\cap C_xX}\setminus T_xX_j$ and $w_2'\in \brk*{T_xX_{k-1}^2\cap C_xX}\setminus T_xX_j$
+  such that $w'=w_1'+w_2'$. But then it follows from
+  \begin{align*}
+    0=w\cdot w'=\underbrace{w\cdot w_1'}_{\geq0}+\underbrace{w\cdot w_2'}_{\geq0}
+  \end{align*}
+  that also $0=w\cdot w_1'$ which contradicts the choice of $X_k$ having minimal dimension.
+  Hence the inclusion `$\subseteq$' follows.
+  \begin{figure}
+    \centering
+    \input{../Figures/irregularCPs_X123.pdf_tex}
+    \label{fi:irregularCPs_X123}
+    \caption{An overview of the proof of $\brk*{*}$ in equation \eqref{eq:characterisation_irregular_bd_relationCxX}.}
+  \end{figure}
+
+  Now let $x$ be an irregular stagnation point of $u_j$ then  $u(x)\in \partial\brk*{C_xX}^*$. Hence there
+  exists a $w'\in T_xX_{j+1}\setminus T_xX_j$ such that $u(x)\cdot w'=0$. 
+  Additionally we have that $u(x)\cdot w=0$ for all $w\in T_xX_j$ since $x$ is stagnation point of $u_j$.
+  Since we have that
+  $\Span\brk*{w'}+T_xX_j=T_xX_{j+1}$ by dimension reasons it then follows that
+  $u(x)\cdot w=0$ for all $w\in T_xX_{j+1}$ which means that $u_{j+1}(x)=0$.
+
+  Conversely assume that $x$ is stagnation point for some stratum $X_{j+1}$. Then we have that
+  $u(x)\cdot w=0$ for all $w\in T_xX_{j+1}$. Since  $\Span\brk*{w'}+T_xX_j=T_xX_{j+1}$
+  for some $w'\in T_xX_{j+1}\setminus T_xX_j$
+  it then follows from equation \eqref{eq:characterisation_irregular_bd_relationCxX} that $u(x)\in \partial\brk*{C_xX}^*$
+  and thus $x$ is an irregular stagnation point.
+\end{proof}
+% \begin{proof}
+%   We calculate for some boundary point $x\in\Sigma$:
+%   \begin{align*}
+%     \brk*{C_xX}^*\setminus\relint\brk*{C_xX}^*
+%     &=\left\{w\in T_xX\;\begin{array}{|l}
+%       w\cdot w'\geq0\text{ for all }w'\in C_xX\text{ and }\\
+%       w\cdot w'=0\text{ for some }w'\in \partial C_xX\setminus\brk[c]*{0}
+%     \end{array}\right\}\,.
+%   \end{align*}
+%   Now $w'\in\partial C_xX\setminus\brk[c]*{0}$ iff $w'\in T_xX_{j+1}$ is orthogonal to $T_xX_j$ at $x$.
+%   Thus we have that $$u(x)\in \brk*{C_xX}^*\setminus\relint\brk*{C_xX}^*$$ iff $u(x)\in \brk*{C_xX}^*$
+%   and there exists a normal $n\in T_xX_{j+1}$ such that
+%   \begin{align*}
+%     0=\brk*{n\cdot u\;n}(x)=\brk*{n\cdot u_{j+1}\;n}(x)=u_{j+1}(x)-u_j(x)
+%   \end{align*}
+%   from which the claim follows.
+% \end{proof}
+
+The following definition of type numbers is inspired by \cite[Definition 10.3]{Morse1969}:
+\begin{definition}[Morse functions, {\cite[Definition 10.3]{Morse1969}}]
   We call $u$ \emph{Morse} if for all $j\in\cJ$ we have that $u_j$ is regular.
   If both $u$ and $-u$ are Morse we call $u$ \emph{strongly Morse}.
   For a Morse function $u$ we define 
@@ -610,7 +695,7 @@ We return to our example:
   Let $X$, $f$ and $u$ be as in example \ref{ex:n2_hvf_canonical}. By the calculations of the previous example
   \ref{ex:n2_hvf_index} we have that $u$ is Morse and we can calculate the interior type numbers
   \begin{align*}
-    M_k=\ind_{2,k}=\delta_{2k}
+    M_k=\ind_{2,k}=\delta_{1k}
   \end{align*}
   and the boundary type numbers
   \begin{align*}
@@ -618,7 +703,7 @@ We return to our example:
   \end{align*}
   This then yields the type numbers
   \begin{align*}
-    \ind_k(u)=M_k+\mu_k=\delta_{2k}+2\delta_{0k}\,.
+    \ind_k(u)=M_k+\mu_k=\delta_{1k}+2\delta_{0k}\,.
   \end{align*}
 \end{example}
 
@@ -717,7 +802,7 @@ Given $u$ we define the modification
   u^\e\leftdef u+\e\label{eq:nonDegeneracy:definitionUEps}
 \end{align}
 for some $\e\in\R^d$. We would like to show that the set $E$ of $\e$ for which $u^\e$ is Morse
-is residual in $\R$.
+is residual in $\R^d$.
 Recall that a \emph{residual} set is a set whose complement is \emph{meagre}, that is whose complement
 is the countable union of nowhere dense subsets.
 Since residual sets are dense in a Baire space by the Baire category theorem we can 
@@ -763,7 +848,7 @@ As an application of this definition we make the following observation:
 % \end{proposition}
 The alternative characterisation of non-degeneracy given in proposition \ref{pr:nonDegeneracy:alternativeCharacterisation}
 is sometimes used as a definition of non-degeneracy.
-We can now state a weakened version of the Thom's transversality theorem from \cite[Theorem 2.7]{Hirsch1994}:
+We can now state a weakened version of the Thom's transversality theorem which is proven in \cite[§3 Theorem 2.7]{Hirsch1994}:
 \begin{theorem}[Parametric transversality theorem, {\cite[§3 Theorem 2.7]{Hirsch1994}}]
   Let $\cE,Y_1,Y_2$ be $C^r$-manifolds (without boundary) and $A\subseteq Y_2$ a $C^r$ submanifold such that
   \begin{align*}
@@ -781,9 +866,9 @@ We can now state a weakened version of the Thom's transversality theorem from \c
   \end{align*}
   is residual in $\cE$.
 \end{theorem}
-\begin{proof}
-  See \cite[Theorem 2.7]{Hirsch1994} for details.
-\end{proof}
+% \begin{proof}
+%   See \cite[Theorem 2.7]{Hirsch1994} for details.
+% \end{proof}
 From this we obtain
 a generalisation of the results in \cite[§2]{Morse1970} which will prove useful later:
 \begin{corollary}[Density of boundary generic functions]\label{co:density_boundaryGeneric}
@@ -1247,12 +1332,13 @@ We state the Morse inequalities.
   \end{align}
   where $\chi(X)$ denotes the Euler characteristic.
 \end{theorem}
-\begin{proof}
+% \begin{proof}
   The definition of regular critical points of $f$ and their index given in definition \ref{df:nonDegeneracy} coincides with 
   the definition of a critical point and its co-index of $-f$ given in \cite{Agrach1991}.
-  The result then follows from \cite[Theorem 2.4]{Agrach1991}.
+  Theorem \ref{th:Morse_MorseIneq} then follows from \cite[Theorem 2.4]{Agrach1991}.
   Nonetheless we will give an idea of the proof.
-\end{proof}
+% \end{proof}
+
 Define for $a\in\R$ the manifold $X^a\leftdef\brk[c]*{x\in X\colon f(x)\leq a}$.
 The main idea in the proof of the Morse inequalities is to inspect how the topology of the manifold $X^a$ changes as we vary $a$.
 This was the idea in Morse's original proof of these inequalities for manifolds without boundary in \cite{Morse1925}.
@@ -1308,7 +1394,7 @@ We first cite a result from \cite{Agrach1991}.
   Then the sets $f_{t_0}^{-1}\brk*{W}\simeq f_{t_1}^{-1}\brk*{W}$
   are homotopic.
 \end{proposition}
-\begin{proof}
+\begin{proof}[Idea of proof]
   See \cite[Theorem 2.1]{Agrach1991}.
   The proof involves the construction of a flow $P$ defined on a neighbourhood of $X$
   for which $P_t\brk*{f_{t_0}^{-1}\brk*{W}}\subseteq f_{t}^{-1}\brk*{W}$ for all $t_0\leq t\leq t_1$.
@@ -1361,7 +1447,7 @@ We state Morse's lemma according to \cite[Lemma 5]{Handron2002}.
     \label{eq:Morse_MorseLemma}
   \end{align}
 \end{proposition}
-\begin{proof}
+\begin{proof}[Idea of proof]
   The case that $n=d$ is the classical version of the Morse lemma and can be found for instance
   in \cite[§6, Lemma 1.1]{Hirsch1994}.
   Note that the definition of an essential critical point in \cite{Handron2002} 
@@ -1381,7 +1467,7 @@ Using the Morse lemma one can then show the following result:
   then $X^b$ is homotopic to $X^a$ by attaching the $k$-cell
   $D^{k}$.
 \end{lemma}
-\begin{proof}
+\begin{proof}[Idea of proof]
   This is proven in \cite[Theorem 8]{Handron2002}.
   Here we note that we do not require what \cite{Handron2002} calls property $(3)$
   since this was only used to show the analogue of lemma \ref{le:Morse_homotopicNoCP} and in the formulation of the
@@ -1425,7 +1511,7 @@ Using the Morse lemma one can then show the following result:
 \end{figure}
 
 In the original proof \cite{Morse1925} of the Morse inequalities Morse inspected
-in the analoga to lemmas \ref{le:Morse_homotopicNoCP} and \ref{le:Morse_homotopicCP} directly how the Betti numbers of the manifold
+in the analogues to lemmas \ref{le:Morse_homotopicNoCP} and \ref{le:Morse_homotopicCP} directly how the Betti numbers of the manifold
 changed from $X^a$ to $X^b$.
 The modern proofs however lean on the language of algebraic topology which
 is why we now need to argue how lemmas \ref{le:Morse_homotopicNoCP} and \ref{le:Morse_homotopicCP} imply the Morse inequalities.
@@ -1434,7 +1520,7 @@ Since we only use the equality in equation \eqref{eq:MorseIneq_equality} we shal
 
 Denote the $k$-th relative homology group by $H_k\brk*{X,A}$ for spaces $A\subseteq X$.
 Once again we refer the reader to \cite[Chapter 2]{Hatcher2002} for details regarding their definition.
-We require a result from algebraic topology:
+We require a result from algebraic topology proven in \cite[Corollary 2.24]{Hatcher2002}:
 % \begin{lemma}[Excision theorem, {\cite[Theorem 2.20]{Hatcher2002}}]
 %   Given subspaces $Z\subseteq A\subseteq X$ such that $\overline{Z}\subseteq\interior\brk*{A}$
 %   then for every $k$ we have that $H_k\brk*{X\setminus Z,A\setminus Z}\cong H_k\brk*{X,A}$
@@ -1450,9 +1536,6 @@ We require a result from algebraic topology:
   Let $X=A\cup B$ be a CW-complex. Then we have for every $k$ that $H_k\brk*{X,A}\cong H_k\brk*{B,A\cap B}$
   are isomorphic.
 \end{proposition}
-\begin{proof}
-  See \cite[Corollary 2.24]{Hatcher2002}.
-\end{proof}
 Now define the Euler characteristic for relative homology group by
 \begin{align}
   \chi\brk*{X,Y}\leftdef \sum_k\brk*{-1}^k\dim_\K H_k\brk*{X,Y}\,.
@@ -2012,10 +2095,11 @@ We state a consequence of a result from \cite[Theorem 2.1 and 2.2]{Alessandrini1
     M\leq -\chi\brk*{X}+J^{\geq0}\,.\label{eq:n2_Alessandrini2}
   \end{align}
 \end{proposition}
-\begin{proof}
-  See \cite[Theorem 2.1]{Alessandrini1992} and \cite[Theorem 2.2]{Alessandrini1992} where we set $\underline{\alpha}=n$ to be the outer unit normal and $D=\chi\brk*{X}$
+% \begin{proof}
+  For a proof we refer the reader to \cite[Theorem 2.1]{Alessandrini1992} and \cite[Theorem 2.2]{Alessandrini1992}. Here one sets $\underline{\alpha}=n$ to be the outer unit normal and $D=\chi\brk*{X}$
   to be the Euler characteristic.
-\end{proof}
+% \end{proof}
+
 If we set $X$ to be homeomorphic to the ball, that is $\chi\brk*{X}=1$, and require the entrant
 boundary to be simply connected, that is $J^\pm=J^{\geq0}=1$, we then obtain from proposition \ref{pr:alessandrini_inflowOutflow} that $M\leq0$
 and $f$ has no non-degenerate critical point.
@@ -2342,7 +2426,8 @@ The author then implemented a Mathematica routine to generate harmonic polynomia
 with two stagnation points and a plotting function to inspect what occurs.
 Indeed, this approach yielded a function with the desired properties as
 we shall discuss in this section.
-\begin{example}[A harmonic function with interior critical point and simply connected entrant boundary]\label{ex:n3_polynomial_defn}
+\begin{example}[A harmonic function with interior critical point and simply connected entrant boundary]
+  \label{ex:n3_polynomial_defn}
   Consider the domain $X=\overline{B}_r\subseteq\R^3$ with $r>0$ sufficiently large, and the harmonic function
   \begin{align}
     \begin{aligned}
@@ -2398,7 +2483,7 @@ variety generated by these polynomials on $U$ by $V_U\brk*{p_1,\dots,p_k}$.
 In the case that $U=\R^d$ we write $V(\dots)=V_U(\dots)$.
 \begin{definition}[Smoothness, {\cite[§5]{Hartshorne1977}}]
   We call a $k$ dimensional algebraic variety $V_U\brk*{p_1,\dots,p_n}$ \emph{smooth} or \emph{non-singular}
-  if the the jacobian
+  if the the Jacobian
   \begin{align*}
     \begin{bmatrix}
       \nabla p_1 & \cdots & \nabla p_n
@@ -2869,7 +2954,7 @@ The following proposition is part of the proof of lemma \ref{pr:n3_polynomial_sm
   More concretely we choose $W$ so small that the arc $\tibeta=V_W\brk*{\tiq_2}$ has positive distance to $\tiA\cap \tiU_\rho$ for
   any $\rho>0$ and such that a given vertical line in $W$ intersects $\tibeta$ in precisely one point.
   Now we claim that the set $C$ consisting of the vertical lines between $\tialpha^+$
-  and $\tibeta$ fulfills the claim.
+  and $\tibeta$ fulfils the claim.
 
   We first show that there exists a curve $\tigamma$ through the origin which is
   entirely contained in $C\cap \widetilde{\cV}_\e$.
@@ -3053,44 +3138,252 @@ The following proposition is part of the proof of lemma \ref{pr:n3_polynomial_sm
 %   Analogous argumentation for a sequence $t_k\to a$ yields a further point on the boundary $\partial X$.
 % \end{proof}
 
-% \section{An example with positive distance between the entrant and emergent boundaries}
+\section{An example with positive distance between the entrant and emergent boundaries}
 
-% In example \ref{} we show that $\Sigma^+$ is separated from $\Sigma^-$ by the curve
-% $C=V\brk*{}$. In the following we will construct an example in which the entrant and
-% emergent boundaries are simply connected and we have an interior stagnation point.
+In the previous example we showed that $\Sigma^+$ is separated from $\Sigma^-$ by the curve
+$\Sigma^0=V\brk*{p_1,P_2(r,\cdot)}$. In the following we will show that it is possible to thicken 
+this curve $\Sigma^0$ without loosing the fundamental properties of the solution. 
+More concretely, we construct a harmonic function $f_\rho$ for which the entrant and
+emergent boundaries are simply connected, have positive distance from one another
+and such that $f_\rho$ has an interior stagnation point.
+For this we use the notation from the previous example.
+We need a preliminary result:
+\begin{proposition}[Existence of a cutoff function]\label{pr:n3_thickening_cutoff}
+  Let $\Sigma$ and $\Sigma^0$ be as in example \ref{ex:n3_polynomial_defn}. For every $\rho>0$ there exists a cutoff function $\theta_\rho\colon\Sigma\to[0,1]$ such that
+  \begin{enumerate}
+    \item $\theta_\rho=1$ outside of the tubular neighbourhood $\tubular_{\rho}\brk*{\Sigma^0}$,\label{en:n3_thickening_cutoff_1}
+    \item $\theta_\rho$ has support contained in $\Sigma\setminus\Sigma^0$ and\label{en:n3_thickening_cutoff_2}
+    \item $\brk[a]*{\theta_\rho p_1}_\Sigma=0$, where $\brk[a]*{h}_X\leftdef\int_Xh$ denotes the mean of a function $h\colon X\to Y$.\label{en:n3_thickening_cutoff_3}
+  \end{enumerate}
+\end{proposition}
+\nomenclature{$\brk[a]*{h}_X$}{Mean $\int_Xh$ of a function $h\colon X\to Y$.}
+\begin{proof}
+  Let $\theta^+_\lambda\colon \Sigma\to[0,1]$ be a family of cutoff functions smoothly depending on $\lambda$ such that
+  $\theta^+_\lambda=1$ outside of $\tubular_{\lambda}\brk*{\Sigma^0}\cup \Sigma^-$ and $\theta_\lambda^+$ has
+  support contained in $\Sigma^+$.
+  Analogously we let $\theta^-_\lambda\colon\Sigma\to[0,1]$ be a family of cutoff functions smoothly depending on $\lambda$
+  such that $\theta^-_\lambda=1$ outside of $\tubular_{\lambda}\brk*{\Sigma^0}\cup \Sigma^+$ and $\theta_\lambda^-$ has
+  support contained in $\Sigma^-$.
+  We can also assume that both $\theta^+_\lambda$ and $\theta^-_\lambda$ are monotonously increasing in $\lambda$.
+  Set 
+  \begin{align}
+    \titheta_\rho=\theta^+_\rho+\theta^-_{\lambda\brk*{\rho}}
+    \label{eq:n3_thickening_cutoff_titheta}
+  \end{align}
+  where $\lambda\colon\R_{\geq0}\to\R_{\geq0}$
+  is a suitably chosen map. By construction the support of $\titheta_\rho$ lies outside of 
+  the set $\Sigma\setminus\Sigma^0$ so $\titheta_\rho$ fulfils condition \ref{en:n3_thickening_cutoff_2}.
+  For condition \ref{en:n3_thickening_cutoff_3}
+  we calculate
+  \begin{align}
+    \brk[a]*{\titheta_\rho p_1}_\Sigma
+    =\brk[a]*{\theta_\rho^+p_1}_{\Sigma^+}+\brk[a]*{\theta_{\lambda\brk*{\rho}}^-p_1}_{\Sigma^-}
+    \label{eq:n3_thickening_cutoff_meanVal}
+  \end{align}
+  Now we have that $p_1<0$ on $\Sigma^-$ and that $p_1>0$ on $\Sigma^+$.
+  Thus $\brk[a]*{\theta_\rho^+p_1}_{\Sigma^+}>0$ is monotonically increasing with $\rho$ and
+  \begin{align*}
+    \brk[a]*{\theta_\rho^+p_1}_{\Sigma^+}\longrightarrow \brk[a]*{p_1}_{\Sigma^+}\rightdef c^+
+  \end{align*}
+  as $\rho\to0$.
+  Analogously $\brk[a]*{\theta_{\lambda}^-p_1}_{\Sigma^-}<0$ is
+  monotonically and continuously decreasing with $\lambda$ and 
+  \begin{align*}
+    \brk[a]*{\theta_\lambda^-p_1}_{\Sigma^-}\longrightarrow \brk[a]*{p_1}_{\Sigma^-}\rightdef c^-
+  \end{align*}
+  as $\lambda\to0$. It follows from the divergence theorem that
+  \begin{align*}
+    0=r\int_X\Delta f=\int_\Sigma r\nabla f\cdot n=\brk[a]*{p_1}_\Sigma
+    =c^++c^-
+  \end{align*}
+  where $n\Sigma\to S^2$ is the outer unit normal.
+  It then follows that for each $\rho>0$ there exists a $\lambda(\rho)>0$ such that
+  \begin{align*}
+    \brk[a]*{\theta_\rho^+p_1}_{\Sigma^+}=\brk[a]*{\theta_{\lambda(\rho)}^-p_1}_{\Sigma^-}
+  \end{align*}
+  so by equation \eqref{eq:n3_thickening_cutoff_meanVal} $\titheta_\rho$ also fulfils condition \ref{en:n3_thickening_cutoff_3}.
+  In fact we can also assume that $\lambda(\rho)\to0$ as $\rho\to0$.
+  Now choose $\tilambda(\rho)$ such that $\max\brk1{\tilambda,\lambda(\tilambda)}<\rho$.
+  This defines a function $\tilambda\colon \R_{\geq0}\to\R_{\geq0}$ and we set
+  $\theta_\rho\leftdef \titheta_{\tilambda(\rho)}$. 
+  % It remains to show property \ref{en:n3_thickening_cutoff_1}.
+  Property \ref{en:n3_thickening_cutoff_1} then follows from the fact that $\titheta_\rho=1$ outside of the neighbourhood $\tubular_{\max\brk*{\rho,\lambda(\rho)}}\brk*{\Sigma^0}$ by
+  equation \ref{eq:n3_thickening_cutoff_titheta}.
+\end{proof}
+With the help of this cutoff function $\theta_\rho$ we can now formulate our main result in this section:
+\begin{example}[Thickening $\Sigma^0$]
+  \label{ex:n3_thickening}
+  Let $f$ and $X$ be as in example \ref{ex:n3_polynomial_defn} and the cutoff function $\theta_\rho$ be as in
+  the previous proposition.
+  % Define for $\rho>0$ the cutoff function $\theta_\rho\colon\Sigma\to[0,1]$ by the
+  % condition that $\theta_\rho=1$ outside of $\tubular_{\rho}\brk*{\Sigma^0}$ and 
+  % support contained in $\supp\theta_\rho\subseteq\Sigma\setminus\Sigma^0$.
+  % We additionally require that
+  % \begin{align*}
+  %   \brk[a]*{\theta_\rho p_1}_\Sigma=0
+  % \end{align*}
+  % where $\brk[a]*{h}_X\leftdef\int_Xh$ denotes the mean of a function $h\colon X\to Y$
+  % and $p_1=r\nabla f\cdot n$ as in the previous section.
+  % We argue first that such a cutoff function $\theta_\rho$ exists.
+  Consider now the solution $f_\rho$ to the system
+  \begin{align*}
+    \Delta f_\rho&=0 &&\text{ on }X, \\
+    \nabla f_\rho\cdot n&=\theta_\rho\brk*{\nabla f\cdot n} &&\text{ on }\Sigma, \\
+    \brk[a]*{f_\rho}_X&=\brk[a]*{f}_X &&
+  \end{align*}
+  where $n\colon\Sigma\to S^2$ is the outer unit normal.
+  By definition of $f_\rho$ the entrant and emergent boundaries are simply connected
+  and have positive distance from one another.
+  We will show in proposition \ref{pr:n3_thickening_cp} that there exists $\rho>0$ such that $f_\rho$ has an interior
+  critical point.
+\end{example}
+\nomenclature{$\lesssim$}{$x\lesssim y$ means there exists a constant $c\geq1$ such that $x\leq cy$.}
 
-% \begin{example}
-%   Let $f$ and $X$ be as in example \ref{}. Define for $\rho>0$ the cutoff function $\theta_\rho\colon\Sigma\to\R$ by the
-%   condition that $\theta_\rho=1$ outside of $\tubular_{2\rho}\brk*{C}$ and 
-%   support contained in $\supp\theta_\rho\subseteq\Sigma\setminus\tubular_{\rho}\brk*{C}$.
-%   Consider now the solution $f_\rho$ to the system
-%   \begin{align*}
-%     \Delta f_\rho&=0 &&\text{ on }\Omega, \\
-%     \nabla f_\rho\cdot n&=\theta_\rho\brk*{\nabla f\cdot n} &&\text{ on }\Sigma, \\
-%     \brk[a]*{f_\rho}_\Omega&=\brk[a]*{f}_\Omega &&
-%   \end{align*}
-%   where $n$ is the outer unit normal. 
-%   By definition of $f_\rho$ the entrant and emergent boundaries are simply connected
-%   and have positive distance.
-%   Thus it remains to be shown that there exists $\rho>0$ such that $f_\rho$ has an interior
-%   critical point.
-%   We claim that for $k\in\N$
-%   \begin{align*}
-%     \norm*{D^k\brk*{f_\rho-f}}_{L^\infty\brk*{B_2}}\longrightarrow0\text{ as }\rho\to0\,.
-%   \end{align*}
-%   Indeed, setting $g_\rho\leftdef f_\rho-f$ one obtains from the mean value property of $g_\rho$ that
-%   \begin{align*}
-%     \norm*{g_\rho}_{L^\infty\brk*{B_1}}
-%     &\stackrel{\text{mean value property}}{\lesssim}\norm*{g_\rho}_{L^1\brk*{B_r}} \\
-%     &\stackrel{\text{Poincaré-Wirtinger}}{\lesssim}\norm{\nabla g_\rho}_{L^1\brk*{B_r}} \\
-%     &\stackrel{\text{Hölder}}{\lesssim}\norm{\nabla g_\rho}_{L^2\brk*{B_r}} \\
-%     &=\brk*{\int_\Omega\Delta g_\rho^2\dif x}^{1/2} \\
-%     &\stackrel{\text{divergence theorem}}{=}\brk*{\int_\Sigma\nabla g_\rho^2\cdot n\dif x}^{1/2} \\
-%     &=\brk*{\int_\Sigma\brk*{\theta_\rho-1}\brk*{\nabla f\cdot n}\dif x}^{1/2}\longrightarrow0
-%   \end{align*}
-%   as $\rho\to0$. It then follows 
-%   \td{finish this example}
-% \end{example}
+\begin{proposition}[Structural stability]\label{pr:n3_thickening_cp}
+  Let $x$ be a non-degenerate interior critical point of $f$.
+  Then there exist $\Rho>0$ and $\e>0$ such that for all $\rho\leq\Rho$ the function $f_\rho$ from example
+  \ref{ex:n3_thickening} has an interior critical point in $\overline{B}_\e(x)$.
+\end{proposition}
+\begin{proof}
+  To simplify notation we only show this for the interior critical point of $f$ at the origin $x=0$.
+  Define $g_\rho\leftdef f_\rho-f$.
+  By linearity $g_\rho$ is a solution the system
+  \begin{align*}
+    \Delta g_\rho&=0 &&\text{ on }X, \\
+    \nabla g_\rho\cdot n&=\brk*{\theta_\rho-1}\brk*{\nabla f\cdot n} &&\text{ on }\Sigma, \\
+    \brk[a]*{g_\rho}_X&=0 &&
+  \end{align*}
+  To simplify notation we write $x\lesssim y$ instead of $x\leq cy$ for
+  some constant $c\geq1$ which is independent of $\rho$.
+  We have that
+  \begin{align*}
+    \\
+    \norm*{Dg_\rho}_{L^2\brk*{X;\R^d}}^2
+    &\annotateAbove{\text{divergence Theorem}}{=}{0.1}{0.1} \int_{\Sigma}g_\rho\brk*{\nabla g_\rho\cdot n} \\ \\
+    &\annotateAbove{\text{Cauchy-Schwarz}}{\leq}{0}{0} \norm*{g_\rho}_{L^2\brk*{\Sigma}}\norm*{\nabla g_\rho\cdot n}_{L^2\brk*{\Sigma}} \\ \\
+    &\annotateAbove{\text{trace theorem}}{\lesssim}{0}{0} \norm*{g_\rho}_{W^{1,2}\brk*{X}}\norm*{\nabla g_\rho\cdot n}_{L^2\brk*{\Sigma}} \\ \\
+    &\annotateAbove{\text{Poincaré-Wirtinger}}{\lesssim}{0}{0} \norm*{Dg_\rho}_{L^2\brk*{X;\R^d}}\norm*{\nabla g_\rho\cdot n}_{L^2\brk*{\Sigma}}
+  \end{align*}
+  and thus together with dominated convergence
+  % \begin{align*}
+  %   \norm*{Dg_\rho}_{L^2\brk*{X;\R^d}}\lesssim\norm*{\nabla g_\rho\cdot n}_{L^2\brk*{\Sigma}}\,.
+  % \end{align*}
+  % Note that we have by dominated convergence
+  \begin{align*}
+    \norm*{Dg_\rho}_{L^2\brk*{X;\R^d}}\lesssim\norm*{\nabla g_\rho\cdot n}_{L^2\brk*{\Sigma}}
+    =\norm*{\brk*{\theta_\rho-1} \brk*{\nabla f\cdot n}}_{L^2\brk*{\Sigma}}\longrightarrow0
+  \end{align*}
+  as $\rho\to0$.
+  As a consequence of this we obtain on the one hand that for a compactly contained open set
+  $\brk[c]*{0}\Subset U\Subset X$ with smooth boundary we have
+  \begin{align}
+    \begin{aligned}
+    \\
+    \norm*{Dg_\rho}_{L^\infty\brk*{U;\R^{d\times d}}}
+    &\annotateAbove{\text{mean value property}}{\lesssim}{0}{0} \norm*{Dg_\rho}_{L^1\brk*{X;\R^{d\times d}}}\\ \\
+    &\annotateAbove{\text{Cauchy-Schwarz}}{\lesssim}{0}{0} \norm*{Dg_\rho}_{L^2\brk*{X;\R^{d\times d}}}
+    \longrightarrow0
+    \end{aligned}
+    \label{eq:n3_thickening_cp_dg}
+  \end{align}
+  as $\rho\to0$.
+  It also follows for a compactly contained open set $U\Subset V\Subset X$ with smooth boundary that
+  \begin{align}
+    \begin{aligned}
+    \\
+    \norm*{D^2g_\rho}_{L^\infty\brk*{U;\R^{d\times d}}}
+    &\annotateAbove{\text{mean value property}}{\lesssim}{0}{0} \norm*{D^2g_\rho}_{L^1\brk*{V;\R^{d\times d}}}\\ \\
+    &\annotateAbove{\text{Cauchy-Schwarz}}{\lesssim}{0}{0} \norm*{D^2g_\rho}_{L^2\brk*{V;\R^{d\times d}}}\\ \\
+    &\annotateAbove{\text{interior regularity}}{\lesssim}{0}{0} \norm*{Dg_\rho}_{L^2\brk*{X;\R^{d}}}\longrightarrow0
+    \end{aligned}
+    \label{eq:n3_thickening_cp_d2g}
+  \end{align}
+  as $\rho\to0$.
+  % \begin{align*}
+  %   \norm*{g_\rho}_{L^\infty\brk*{U_1}}
+  %   \stackrel{\text{mean value property}}{\lesssim}\norm*{g_\rho}_{L^1\brk*{U_2}}
+  %   \stackrel{\text{Poincaré-Wirtinger}}{\lesssim}\norm*{Dg_\rho}_{L^2\brk*{U_2}}
+  %   \lesssim \norm*{Dg_\rho\cdot n}_{L^2\brk*{\partial U_2}}
+  % \end{align*}
+  % By interior regularity we have that
+  % \begin{align*}
+  %   \norm*{D^2g_\rho}_{L^\infty\brk*{U_1}}
+  %   \lesssim \norm*{D^2g_\rho}_{L^2\brk*{U_2}}
+  %   \lesssim \norm*{Dg_\rho}_{L^2\brk*{U_3}}
+  %   \lesssim \norm*{Dg_\rho}_{L^\infty\brk*{U_4}}
+  % \end{align*}
+  % and by the divergence theorem further
+  % \begin{align*}
+  %   \norm*{Dg_\rho}_{L^2\brk*{U_3}}^2
+  % \end{align*}
+  % We claim that for $k\in\N$
+  % \begin{align*}
+  %   \norm*{D^k\brk*{f_\rho-f}}_{L^\infty\brk*{B_2}}\longrightarrow0\text{ as }\rho\to0\,.
+  % \end{align*}
+  % Indeed, setting $g_\rho\leftdef f_\rho-f$ one obtains from the mean value property of $g_\rho$ that
+  % \begin{align*}
+  %   \norm*{g_\rho}_{L^\infty\brk*{B_1}}
+  %   &\stackrel{\text{mean value property}}{\lesssim}\norm*{g_\rho}_{L^1\brk*{B_r}} \\
+  %   &\stackrel{\text{Poincaré-Wirtinger}}{\lesssim}\norm{\nabla g_\rho}_{L^1\brk*{B_r}} \\
+  %   &\stackrel{\text{Hölder}}{\lesssim}\norm{\nabla g_\rho}_{L^2\brk*{B_r}} \\
+  %   &=\brk*{\int_\Omega\Delta g_\rho^2\dif x}^{1/2} \\
+  %   &\stackrel{\text{divergence theorem}}{=}\brk*{\int_\Sigma\nabla g_\rho^2\cdot n\dif x}^{1/2} \\
+  %   &=\brk*{\int_\Sigma\brk*{\theta_\rho-1}\brk*{\nabla f\cdot n}\dif x}^{1/2}\longrightarrow0
+  % \end{align*}
+  % as $\rho\to0$. It then follows 
+  % We then choose $\rho$ so small that
+
+  We would like to apply a fixed point theorem. For this we define a mapping 
+  \begin{align*}
+    F_\rho\brk*{y}= y -D^2f\big\vert_0^{-1}Df_\rho(y)
+  \end{align*}
+  where we used the fact that $D^2f\big\vert_0$ is bijective by non-degeneracy.
+  We denote by $\norm*{\cdot}_{\text{Op}}$ the operator norm induced by $L^\infty\brk*{U;\R^d}$, that is
+  \begin{align*}
+    \norm{h}_{\text{Op}}=\sup_{y\in L^\infty\brk*{U;\R^d}\setminus\brk[c]*{0}}\frac{\norm*{hy}_{L^\infty\brk*{U;\R^d}}}{\norm*{y}_{L^\infty\brk*{U;\R^d}}}
+  \end{align*}
+  for some function $h\in L^\infty\brk*{U;\R^{d\times d}}$.
+  Set $U=B_\e\subseteq\R^3$ to be an open ball around the origin with radius $\e>0$.
+  We calculate the derivative
+  \begin{align*}
+    DF_\rho=\Id -D^2f\big\vert_0^{-1}D^2f_\rho
+  \end{align*}
+  and take the operator norm
+  \begin{align}
+    \frac{1}{c}\norm*{DF_\rho}_{\text{Op}}\leq\norm*{D^2f\big\vert_0-D^2f_\rho}_{\text{Op}}
+    \leq \norm*{D^2f\big\vert_0-D^2f}_{\text{Op}}+\norm*{D^2g_\rho}_{\text{Op}}
+    \label{eq:n3_thickening_cp_DF}
+  \end{align}
+  for some constant $c\geq1$ independent of $\rho$.
+  Now we have by continuity that
+  $$\norm*{D^2f\big\vert_0-D^2f}_{\text{Op}}\lesssim \norm*{D^2f\big\vert_0-D^2f}_{L^\infty\brk*{U;\R^{d\times d}}}\longrightarrow0$$
+  as $\e\to0$.
+  Pick $\e>0$ such that $\norm*{D^2f\big\vert_0-D^2f}_{\text{Op}}\leq 1/\brk*{4c}$.
+  Now we have for $\rho\to0$ that 
+  $$\norm*{D^2g_\rho}_{\text{Op}}\lesssim\norm*{D^2g_\rho}_{L^\infty\brk*{U;\R^{d\times d}}}\longrightarrow0$$
+  by equation
+  \eqref{eq:n3_thickening_cp_d2g}. Thus there exists a $\Rho>0$ such that $\norm*{D^2g_\rho}_{\text{Op}}\leq1/\brk*{4c}$
+  for all $\rho\leq\Rho$.
+  By equation \eqref{eq:n3_thickening_cp_DF} it then follows that
+  $\norm*{DF_\rho}_{\text{Op}}\leq 1/2$
+  for all $\rho\leq\Rho$.
+  Since we have by equation \eqref{eq:n3_thickening_cp_dg} that
+  \begin{align*}
+    \abs*{F_\rho(0)}=\abs*{D^2f\big\vert_0^{-1}Df_\rho(0)}
+    \lesssim \abs{Df_\rho(0)}
+    =\abs{Dg_\rho(0)}\leq\norm*{Dg_\rho}_{L^\infty\brk*{U;\R^d}}\longrightarrow0
+  \end{align*}
+  as $\rho\to0$ we can also additionally choose $\Rho>0$ such that for all $\rho\leq\Rho$ we have that
+  $\abs*{F_\rho(0)}\leq \e/2$.
+  We then have for all $\rho\leq\Rho$ that
+  $F_\rho\brk*{\overline{B}_\e}\subseteq \overline{B}_\e$ and $F_\rho$ is a contraction.
+  It then follows from fixed point theorems that for every $\rho\leq\Rho$
+  the function $F_\rho$ has a fixed point, say $y_\rho\in \overline{B}_\e$. This then fulfils by the construction of $F_\rho$ the equation
+  \begin{align*}
+    y_\rho=F_\rho\brk*{y_\rho}=y_\rho-D^2f\big\vert_0^{-1}Df_\rho\brk*{y_\rho}
+  \end{align*}
+  which implies that $Df_\rho\brk*{y_\rho}=0$ and $y_\rho$ is an interior critical point.
+\end{proof}
 
 
 
@@ -3277,9 +3570,7 @@ also follows from the Poincaré-Hopf index theorem:
   Let $u\colon X\to\R^d$ be a vector field on a manifold with corners without inflow. Then we have
   that the total index $\ind_\text{PH}(u)$ equals the Euler characteristic $\chi(X)$.
 \end{theorem}
-\begin{proof}
-  See for example \cite[§6]{Milnor1965}.
-\end{proof}
+For a proof we refer the reader for instance to \cite[§6]{Milnor1965}.
 
 
 \section{Examples of harmonic vector fields}
