@@ -5,6 +5,7 @@ ALLCACHE=$(wildcard cache/* cache)
 ALLFIG=$(wildcard Figures/*.pdf_tex)
 MAIN=Thesis_TheoKoppenhoefer.tex
 SHELL=/bin/bash
+TEMPLATES=/mnt/64BB-4184/Filing/Education/University/Lund/Courses/MasterThesis/Latex_Templates
 
 all: $(ALLTEX) $(ALLCACHE) $(ALLFIG) ## Build full thesis (LaTeX + figures)
 	make figures
@@ -20,14 +21,14 @@ all: $(ALLTEX) $(ALLCACHE) $(ALLFIG) ## Build full thesis (LaTeX + figures)
 figures:
 	cd ../Figures; for file in $$(ls *.svg); do inkscape --export-pdf=$${file%.svg}.pdf --export-latex $$file; done
 
-quick: $(MAIN)
-	pdflatex -shell-escape $(MAIN)
+quick: $(MAIN) $(TEMPLATES)
+	export TEXINPUTS=$(TEMPLATES)//:; pdflatex -shell-escape $(MAIN)
 
-clean:  ## Clean LaTeX and output figure files
+clean: $(MAIN) ## Clean LaTeX and output figure files
 	rubber --clean $(MAIN)
 	rm cache/*
 
-watch:  ## Recompile on any update of LaTeX or SVG sources
+watch: $(MAIN) ## Recompile on any update of LaTeX or SVG sources
 	@while true; do		  \
 		sleep 0.01; inotifywait -e modify,delete,delete_self $(MAIN);	\
 		sleep 0.01;			\

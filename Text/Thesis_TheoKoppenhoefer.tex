@@ -35,16 +35,6 @@
 \graphicspath{{../Plots/}}
 \graphicspath{{../Figures/}}
 
-\newcounter{annotateAboveCtr}
-\newcommand{\annotateAbove}[5][]{
-  \stepcounter{annotateAboveCtr}
-  \tikzmark{annotateAbove_\arabic{annotateAboveCtr}}{#3}
-  \tikzset{external/export=false}
-  \begin{tikzpicture}[remember picture, overlay, node distance = 0.5cm]
-    \node[,text width=5cm] (annotateAbove_\arabic{annotateAboveCtr}_descr) [above right= #4cm and #5cm of annotateAbove_\arabic{annotateAboveCtr}]{#2};
-    \draw[,->,thick] (annotateAbove_\arabic{annotateAboveCtr}_descr) to [in=90,out=-180] (annotateAbove_\arabic{annotateAboveCtr});
-  \end{tikzpicture}}
-
 \usepackage{makecell}
 \newcounter{symbolCount}
 \newcommand{\nomenclature}[2]{\stepcounter{symbolCount}
@@ -86,9 +76,60 @@
 
 \maketitle 
 
-\tableofcontents
+\setcounter{page}{-6}
+
+\section*{Abstract}
+
+% This 
+% In this thesis we will broadly speaking inspect how the number $M$
+% of critical points of a harmonic function $f$ on a domain $X$
+% relate to the topology of this domain and the 
+The overarching theme of this thesis can be summarised in two broad questions.
+The first question is when it is possible to have a harmonic vector field $u$
+on a bounded domain with interior stagnation points such that the boundary set
+on which $u$ enters the domain is connected and the set on which $u$
+leaves the domain is connected.
+The answer in two dimensions is essentially `no'.
+If one however allows for holes in the domain the answer becomes a `yes'
+for which we give explicit examples.
+In four dimensions a simple example shows that
+this is possible with the ball as the domain.
+In three dimensions we use Morse theory to argue that the number of
+stagnation points is even. With the help of this result and numerical methods we found a harmonic
+polynomial on the ball which has interior stagnation points and simply connected
+inflow and outflow sets.
+
+The second question revolves around whether it is possible to have a harmonic vector field
+with interior stagnation points such that the vector field at the boundary is tangential.
+More generally we consider harmonic vector fields without stagnation points
+on the boundary.
+This question in two dimensions yields a very elegant relation between the
+domain topology and the number of interior critical points. 
+We also give examples of vector fields illustrating this point.
+In three dimensions we do not find such an example but we use Morse theory to infer 
+that for such an example the number of critical points has to be even.
+
+As part of the thesis we also formulate a version of Morse theory by \cite{Agrach1991}
+and \cite{Handron2002}
+for manifolds with boundaries.
+This relates the domain topology with the number of critical points.
+Additionally we give a proof for the density of Morse functions
+for this type of Morse theory.
+
+\section*{Populärvetenskaplig sammanfattning}
+
+\td{Translate this abstract}
 
 \newpage
+
+\section*{Acknowledgements}
+\td{Heap praise on people here. In particular:
+Erik Wahlén, Martin Löfström, Ludvig Sundell, Anne-Lisa Rathsmann, Thomas Renström,
+others}
+
+% \td{Heap praise on whoever comes to mind.}
+
+\tableofcontents
 
 \listoftodos
 
@@ -96,8 +137,10 @@
   General TODOs
   \begin{itemize}
     \item Check for typos.
-    \item add Alber
-    \item bring in results from \cite{Shelton1980} and \cite{Morse1970}
+    \item add Alber to sources
+    \item Find proper title.
+    \item Mention \cite{Shelton1980} and \cite{Morse1970} in introduction
+    \item Send Erik Latex commands
   \end{itemize}
   Some questions
   \begin{itemize}
@@ -105,13 +148,54 @@
   \end{itemize}
 }
 
-\newpage
-
 \chapter{Introduction}
 
-\setcounter{page}{1}
+Harmonic vector fields arise naturally within certain areas of mathematics and physics.
+Classical electrostatic, magnetic and gravitational fields in vacuum are examples of harmonic vector fields.
+Other examples is the heat flow in a system that has reached steady state or
+an irrotational flow through an inviscid incompressible medium.
+The null points of for instance the electrostatic or magnetic fields
+are particularly interesting.
+These are examples of stagnation points of harmonic vector fields.
+If one considers the underlying potentials which exist at least locally then these stagnation points
+correspond to critical points of a harmonic function.
+The study of these points has a long tradition.
+Walsh gives in \cite{Walsh1950} comprehensive overview of the state of knowledge about the position
+and number of critical points of harmonic functions in 1950.
+In particular complex analysis by that time had clarified the situation in two dimensions
+significantly though far less was (and is) known about the situation in three dimensions.
+20 years later Morse applies his theory in \cite{Morse1969} and \cite{Morse1970}
+to the critical points of harmonic functions.
+Morse gives in both works a set of inequalities for two and three dimensions relating the number and type of critical points on the
+boundary and the interior with the domain topology.
+He then poses in \cite{Morse1970} the question: To a given
+set of numbers of critical points and a domain topology fulfilling these inequalities does there exists a
+harmonic function in $\R^3$ with precisely these numbers of critical points?
+This question is answered affirmatively in 1980 in \cite{Shelton1980} with a 
+construction using line charges. 
+Inspired by this we will apply Morse theory to harmonic functions in an attempt to
+answer questions \ref{} and \ref{}.
 
-\ruggedtodo[inline]{Some amazing introduction}
+% The thesis starts out with some mathematical preliminaries. After that we show the density of
+% Morse functions. In the second chapter we state the Morse inequalities.
+% In chapter 3 we 
+\td{outline structure of thesis}
+
+This thesis is directed to an audience with basic knowledge of harmonic functions such
+as the maximum principle, the mean value property and the existence and uniqueness of solutions.
+For a comprehensive introduction to the
+theory of partial differential equations more generally we refer the reader to \cite{Evans2010}.
+We also assume the reader has had exposure to basic topology and some form of differential topology or
+differential geometry. 
+In some parts knowledge of complex analysis as in for example \cite{Gamelin2001} is required though it is not 
+essential to understand the thesis.
+Elementary knowledge of convex optimisation is helpful but not a prerequisite.
+Despite Morse theory playing a central role in this thesis we do not assume that the reader has had
+prior exposure to this topic. To simplify things we avoid the language of homology
+theory where possible and instead give the theory in the classical sense as a set of inequalities.
+Thus we do not require prior knowledge of algebraic topology.
+
+\section{Mathematical preliminaries}
 
 Unless otherwise stated we denote by $X\subseteq\R^d$ a compact subset of $\R^d$ with boundary $\Sigma=\partial X$ and nonempty interior
 $\openX$.
@@ -130,8 +214,7 @@ a vector field of class $C^1$.
 In the following we often assume that $u$ is in fact a \emph{harmonic vector field}, that is $u$ fulfils
 $\diver u=0$ and $\curl u=0$ on $\openX$.
 Note that a harmonic function $f$ gives rise to a harmonic vector field via $u=\nabla f$.
-In general a harmonic vector field $u$ is not the gradient of a harmonic function as example \ref{}
-will illustrate.
+In general a harmonic vector field $u$ is not the gradient of a harmonic function like in for instance example \ref{ex:n2_flowthroughHole}.
 % \section{On harmonic vector fields}
 % In the following we deduce some basic relations for harmonic vector fields in dimensions $d\in\brk[c]{2,3}$.
 On simply connected domains this implication is however true:
@@ -220,23 +303,21 @@ More generally we give the definition of a stratification as follows:
   The pair of $X$ and the collection of strata is called a \emph{stratified space}.
   In the case that $X_j\subseteq\overline{X}_k$ 
   we will write $X_j\prec X_k$ using the notation of \cite{Handron2002}.
-  If additionally $n(k)=0$ or $n(k)=n(j)+1$ we will
-  write $X_j\precsim X_k$ or, abusing notation, we will write $X_k=X_{j+1}$.
+  If additionally $n(k)=n(j)+1$ we will
+  write $X_j\precsim X_k$ or, indicating that the strata differ by one in their dimension, we may write $X_k=X_{j+1}$.
 \end{definition}
-\td{$n(k)=0$ or $n(k)=n(j)+1$ a little unclear. Also $X_0\precsim X_0$ unclear.}
 \nomenclature{$X_j$}{A stratification of $X$ as given in definition \ref{df:stratified_space}.
    Often but not always assumed to be given by equation \eqref{eq:def_mfCorners_stratification}}
 \nomenclature{$\prec$}{We write $X_j\prec X_k$ if $X_j\subseteq\overline{X}_k$. See definition \ref{df:stratified_space} for details.}
-\nomenclature{$\precsim$}{We write $X_j\precsim X_k$ if $X_j\prec X_k$ and an additional condition holds. See definition \ref{df:stratified_space} for details.}
+\nomenclature{$\precsim$}{We write $X_j\precsim X_k$ if $X_j\prec X_k$ and the strata differ in dimension by one. See definition \ref{df:stratified_space} for details.}
 
 In the case that the stratification arises through relation \eqref{eq:def_mfCorners_stratification}
-we have precisely $X_{j}\precsim X_{j+1}$ for $j\in\brk[c]*{1,\dots,d}$ and $X_0\precsim X_0$.
+we have precisely $X_{j}\precsim X_{j+1}$ for $j\in\brk[c]*{1,\dots,d}$.
 Note that in general for a given stratum $X_j$ the stratum $X_{j+1}$ such that $X_j\precsim X_{j+1}$ need not be unique.
 In the following we assume, unless otherwise stated, that the stratification is finite, that is $\#\cJ<\infty$ and 
 that the interior $\openX$ corresponds to a single stratum.
 
-For completeness we also give the definition of the contingent cone for a 
-stratification $X_j$ of $X$:
+For completeness we also give the definition of the contingent cone:
 \begin{definition}[Contingent cone, {\cite[Def. 4.6]{Jahn2020}}]
   We denote the \emph{(Bouligand) contingent cone} for a set $Y\subseteq X$ at $x\in\overline{Y}$ by $C_xY$.
   It is defined as the set of all $v\in\R^d$ such that there exist sequences $\lambda\colon\N\to\R_{>0}$ and $x_n\to x$ in
@@ -244,7 +325,7 @@ stratification $X_j$ of $X$:
   $$\lim_n\lambda_n\brk*{x_n-x}=v\,.$$
 \end{definition}
 
-For clarification we give an example
+To clarify we give an example:
 \begin{example}[Cubical domain]
   Consider the domain to be the cube $X=[-1,1]^2\subseteq\R^2$.
   Then we have a stratification given by
@@ -282,6 +363,8 @@ For clarification we give an example
   The situation is depicted in figure \ref{fi:n2_tangencyCone_square}.
   The contingent cone on the other parts of the square $\Sigma=\partial X$ is given by similar formulas.
 \end{example}
+
+\td{Add dual cone definition to cube. Explain relative interior.}
 
 In the following we define the emergent and the entrant boundary in a way that generalises
 \cite[p.282]{Morse1970} for stratified manifolds.
@@ -379,7 +462,7 @@ We would now like to illustrate the preceding definitions.
   which is always fulfilled and thus $I\times\brk[c]*{1}\subseteq\Sigma^{\leq0}$.
   At the boundary point $x=\vect{1&1}^\top$ the dual of the contingent cone is given by
   \begin{align}
-    \brk*{C_xX}^*=C_xX\,.\label{eq:n2_hvf_canonical}
+    \brk*{C_xX}^*=C_xX\,.\label{eq:n2_hvf_canonical_CxX}
   \end{align}
   Since $v=u(x)=2\vect{1 &-1}^\top$ we have that $v\notin\brk*{C_xX}^*$ and $-v\notin\brk*{C_xX}^*$
   and thus $x\notin\Sigma^{\geq0}\cup\Sigma^{\leq0}$.
@@ -405,7 +488,7 @@ further remark to illustrate the concept.
 \begin{remark}[Contingent cone]
   If the angle of the cone $C_xX$ at a corner point $x$ in the plane is $\alpha$ the angle formed by the
   cone $\brk*{C_xX}^*$ is $\pi-\alpha$.
-  Thus equation \eqref{eq:n2_hvf_canonical} in the previous example is a special case for $\alpha=\pi/2$.
+  Thus equation \eqref{eq:n2_hvf_canonical_CxX} in the previous example is a special case for $\alpha=\pi/2$.
   The more general case is illustrated in figure \ref{fi:n2_contingentCone_greaterLess}.
   \begin{figure}
     \centering
@@ -477,6 +560,7 @@ to include harmonic vector fields.
 \end{definition}
 \nomenclature{$\critical_j$}{Set of essential stagnation points. See definition \ref{df:nonDegeneracy}.}
 \nomenclature{$\ind_{j,k}$}{$k$-th type number on the stratum $X_j$. See equation \eqref{eq:def_typenbr_strata}.}
+\td{Give motivation with flow.}
 
 To illustrate the preceding definitions we return to our previous example.
 \begin{example}\label{ex:n2_hvf_index}
@@ -595,11 +679,11 @@ can thus be extended to $\partial X_{j+1}$ by continuity and so we can reasonabl
   $\Span\brk*{w'}+T_xX_j=T_xX_{j+1}$ by dimension reasons it then follows that
   $u(x)\cdot w=0$ for all $w\in T_xX_{j+1}$ which means that $u_{j+1}(x)=0$.
 
-  Conversely assume that $x$ is stagnation point for some stratum $X_{j+1}$. Then we have that
+  Conversely assume that $x\in X_j$ is stagnation point for some stratum $X_{j+1}$. Then we have that
   $u(x)\cdot w=0$ for all $w\in T_xX_{j+1}$. Since  $\Span\brk*{w'}+T_xX_j=T_xX_{j+1}$
   for some $w'\in T_xX_{j+1}\setminus T_xX_j$
   it then follows from equation \eqref{eq:characterisation_irregular_bd_relationCxX} that $u(x)\in \partial\brk*{C_xX}^*$
-  and thus $x$ is an irregular stagnation point.
+  and $x$ is an irregular stagnation point.
 \end{proof}
 % \begin{proof}
 %   We calculate for some boundary point $x\in\Sigma$:
@@ -884,7 +968,7 @@ a generalisation of the results in \cite[§2]{Morse1970} which will prove useful
     % \item if in addition $\Sigma$ is a differentiable manifold then $u^\e$ is tangency regular on $X_j$ \label{co:nonDegeneracy_density_tanReg}
     \item Additionally we can find for every $\eta>0$ a $\delta>0$ such that all stagnation points of $u^\e$ are contained in an 
     $\eta$-neighbourhood of the set of stagnation points of $u$.\label{co:nonDegeneracy_density_etaNbh}
-    \item the property of being entrant or emergent of stagnation points of $u^\e$ is preserved, that is 
+    \item the property of being strictly entrant or strictly emergent of stagnation points of $u^\e$ is preserved, that is 
       a stagnation point $x^\e$ of $u^\e$ lies in $\Sigma^\pm\brk*{u^\e}$ iff it lies in $\Sigma^\pm\brk*{u}$.\label{co:nonDegeneracy_density_entrEmerg}
     \item If $u_j$ is non-degenerate on the stratum $X_j$ we have\label{co:nonDegeneracy_density_index}
       for all $k$ that
@@ -893,6 +977,13 @@ a generalisation of the results in \cite[§2]{Morse1970} which will prove useful
       \end{align*}
   \end{enumerate}
 \end{corollary}
+We remark that the fact that $u$ has no irregular stagnation points is essential to the point 
+\ref{co:nonDegeneracy_density_index} of this corollary. 
+Assume for instance $u_d$ has a non-degenerate stagnation point $x$ on the boundary $\Sigma$, 
+which means by proposition \ref{pr:characterisation_irregular_bd} that $x$ is an irregular critical point. 
+It may then follow that for $\e$ contained in a cone 
+at the origin the corresponding critical point of
+$u^\e$ moves outside of the domain $X$ which in turn changes the index.
 \begin{proof}
   \emph{Part \ref{co:nonDegeneracy_density_uniform}}. Follows from compactness of $\overline{X}_j\subseteq X$ and the continuity of $\pi_j$.
 
@@ -954,7 +1045,7 @@ a generalisation of the results in \cite[§2]{Morse1970} which will prove useful
     =D\brk*{u_j^\e(x)}_{(\e,x)}
     =D\pi_j\circ \brk*{Du^\e(x)}_{(\e,x)}
   \end{align*}
-  is surjective as a concatenation of surjective functions.
+  is surjective as a composition of surjective functions.
   Thus there also exists a residual set $E_j\subseteq\cE$ on which $u^\e_j$ is
   non-degenerate on $X_j$.
 
@@ -1002,7 +1093,8 @@ a generalisation of the results in \cite[§2]{Morse1970} which will prove useful
 
   \emph{Part \ref{co:nonDegeneracy_density_etaNbh}}. 
   Let $C_\eta$ denote the open $\eta$-neighbourhood of the set of stagnation points of $u$.
-  Since $u$ has no irregular stagnation points we have for any stratum $X_j$ that
+  % Since $u$ has no irregular stagnation points
+  We have for any stratum $X_j$ that
   $u_j\neq0$ on the compact set $\overline{X}_j\setminus C_\eta$ which implies that we can choose $\delta>0$ 
   so small that $\abs{u_j}>2\delta$ on $\overline{X}_j\setminus C_\eta$
   for all strata $X_j$.
@@ -1015,9 +1107,9 @@ a generalisation of the results in \cite[§2]{Morse1970} which will prove useful
   Now consider a stratum $X_j$ and the continuous mapping
   \begin{align*}
     \Phi\colon X_j&\to\R_{\geq0}\\
-    x&\mapsto \dist\brk*{u(x),\partial C_xX}
+    x&\mapsto \dist\brk*{u(x),\partial \brk*{C_xX}^*}
   \end{align*}
-  on $X_j$. $\Phi$ is positive on the set of stagnation points $C$ of $u_j$ on $X_j$ and thus we can choose $\eta>0$
+  on $X_j$. Since $u$ has no irregular stagnation points $\Phi$ is positive on the set of stagnation points $C$ of $u_j$ on $X_j$. Thus we can choose $\eta>0$
   such that $\Phi$ is also positive in the neighbourhood $C_{2\eta}$.
   Choose $\delta>0$ smaller than in part \ref{co:nonDegeneracy_density_etaNbh}.
   Now the mapping $\Phi$ attains a positive minimum on the compact set $\overline{C_{\eta}}$.
@@ -1027,13 +1119,13 @@ a generalisation of the results in \cite[§2]{Morse1970} which will prove useful
   Since there are finitely many strata $X_j$ we can choose $\delta>0$ such that part \ref{co:nonDegeneracy_density_entrEmerg} follows.
 
   \emph{Part \ref{co:nonDegeneracy_density_index}}.
-  Pick $\delta>0$ as in part \ref{co:nonDegeneracy_density_entrEmerg} and such that
+  Pick $\delta>0$ as in part \ref{co:nonDegeneracy_density_entrEmerg}.
   If $x$ is a non-degenerate stagnation point of $u$ on the stratum $X_j$ it follows 
   from the inverse function theorem that there exists for sufficiently small $\delta$
   a neighbourhood around $x$ on which there is a one-to-one correspondence between the
   stagnation points of $u$ and $u^\e$.
   Since there are by proposition \ref{pr:finiteness_critical_points} at most finitely many non-degenerate stagnation points of
-  $u$ we can choose $\delta$ to be minimal over all these stagnation points.
+  $u$ we can choose $\delta$ to be minimal over all these stagnation points such that this one-to-one correspondence holds.
   The equality of the indexes then follows from $Du^\e=Du$.
 \end{proof}
 
@@ -3394,6 +3486,10 @@ inflow or outflow through the boundary.
 More generally we will first consider harmonic vector fields without boundary critical points.
 Here we will show in proposition \ref{pr:n2_hvf_noInflowNoOutflow} that in $d=2$ dimensions there is a strong relation between the 
 number of critical points and the domain topology.
+More concretely we will show that the number of critical points $M$ equals under certain conditions the negative Euler characteristic $-\chi\brk*{X}$.
+This relation between the domain topology in the plane and the number of critical points also shows up for instance
+for Green functions for instance in
+\cite[p.133]{Nehari1975}.
 We will then discuss briefly how this relates to the Poincaré-Hopf index theorem.
 After that we will give examples which illustrate these results.
 
