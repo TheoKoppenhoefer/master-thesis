@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{181.75672888bp}%
+    \setlength{\unitlength}{198.06300838bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,15 +50,16 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.69601479)%
+  \begin{picture}(1,0.45380462)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
-    \put(0.40336123,0.67148554){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$X$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{n2_contingentCone_less.pdf}}%
-    \put(0.18905117,0.03836767){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x$\end{tabular}}}}%
-    \put(0.71783365,0.21529181){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\brk*{C_xX}^*$\end{tabular}}}}%
-    \put(0.59003777,0.47623081){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$C_xX$\end{tabular}}}}%
-    \put(0.39208354,0.38576261){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\alpha$\end{tabular}}}}%
-    \put(0.55404641,0.13364402){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\pi-\alpha$\end{tabular}}}}%
+    \put(0.13196664,0.02732723){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x$\end{tabular}}}}%
+    \put(0.27302965,0.2686121){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\alpha$\end{tabular}}}}%
+    \put(0.38555842,0.09350185){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\pi-\alpha$\end{tabular}}}}%
+    \put(0.73900022,0.28295145){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$X$\end{tabular}}}}%
+    \put(0.74106405,0.11724987){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\brk*{C_xX}^*$\end{tabular}}}}%
+    \put(0.73706765,0.19843857){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$C_xX$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{n2_contingentCone_less.pdf}}%
   \end{picture}%
 \endgroup%

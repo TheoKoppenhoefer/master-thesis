@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{199.56652259bp}%
+    \setlength{\unitlength}{250.19167536bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,20 +50,22 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.78577473)%
+  \begin{picture}(1,0.62677677)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{irregularCPs_X123.pdf}}%
-    \put(0.10142062,0.38923398){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$w'$\end{tabular}}}}%
-    \put(0.11872125,0.54301699){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_xX_l$\end{tabular}}}}%
-    \put(-0.00238284,0.15087038){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_xX_{l-1}^2$\end{tabular}}}}%
-    \put(0.72255981,0.18930234){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$C_xX$\end{tabular}}}}%
-    \put(0.20330185,0.72178966){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_xX_{l-1}^1$\end{tabular}}}}%
-    \put(0.6462322,0.44415197){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$w$\end{tabular}}}}%
-    \put(0.7491996,0.36478301){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\brk*{C_xX}^*$\end{tabular}}}}%
-    \put(0.14755549,0.20661673){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$w_2'$\end{tabular}}}}%
-    \put(0.26289277,0.47381457){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$w_1'$\end{tabular}}}}%
-    \put(0.36979155,0.00677006){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_xX_j$\end{tabular}}}}%
+    \put(0.79338081,0.41857841){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_xX_j$\end{tabular}}}}%
+    \put(0.79501463,0.28740156){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\brk*{C_xX}^*$\end{tabular}}}}%
+    \put(0.7918509,0.3516742){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$C_xX$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{irregularCPs_X123.pdf}}%
+    \put(0.08089862,0.31047425){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$w'$\end{tabular}}}}%
+    \put(0.09469854,0.43313996){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_xX_l$\end{tabular}}}}%
+    \put(-0.00190068,0.12034244){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_xX_{l-1}^2$\end{tabular}}}}%
+    \put(0.16216464,0.57573879){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_xX_{l-1}^1$\end{tabular}}}}%
+    \put(0.51547004,0.35427983){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$w$\end{tabular}}}}%
+    \put(0.11769831,0.16480877){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$w_2'$\end{tabular}}}}%
+    \put(0.20969761,0.37794034){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$w_1'$\end{tabular}}}}%
+    \put(0.2949659,0.00540017){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_xX_j$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{irregularCPs_X123.pdf}}%
   \end{picture}%
 \endgroup%

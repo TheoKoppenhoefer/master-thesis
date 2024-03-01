@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{182.61105803bp}%
+    \setlength{\unitlength}{347.46516589bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,12 +50,18 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.70617859)%
+  \begin{picture}(1,0.53429074)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{n2_cube_inflowOutflow.pdf}}%
-    \put(0.7209409,0.61753021){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$u$\end{tabular}}}}%
-    \put(0.72020747,0.53538858){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Sigma^-$\end{tabular}}}}%
-    \put(0.72240778,0.45471358){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Sigma^+$\end{tabular}}}}%
+    \put(0.48949464,0.45645883){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$u$\end{tabular}}}}%
+    \put(0.48910918,0.41328905){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Sigma^-$\end{tabular}}}}%
+    \put(0.49026555,0.3708902){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Sigma^+$\end{tabular}}}}%
+    \put(0.50661973,0.22982761){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x_1$\end{tabular}}}}%
+    \put(0.19685223,0.51161609){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x_2$\end{tabular}}}}%
+    \put(0.49657176,0.12907612){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}interior stagnation point\end{tabular}}}}%
+    \put(0.49602666,0.08056208){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}essential boundary stagnation point of $u$\end{tabular}}}}%
+    \put(0.49711687,0.03368348){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}essential boundary stagnation point of $-u$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{n2_cube_inflowOutflow.pdf}}%
   \end{picture}%
 \endgroup%

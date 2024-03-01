@@ -1,6 +1,6 @@
 %% Creator: Inkscape inkscape 0.92.5, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'n2_contingentCone_greater.pdf' (pdf, eps, ps)
+%% Accompanies image file 'n2_entrantVector.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{127.96486337bp}%
+    \setlength{\unitlength}{159.51440157bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,14 +50,16 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.61053288)%
+  \begin{picture}(1,0.52988793)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
-    \put(0,0){\includegraphics[width=\unitlength,page=1]{n2_contingentCone_greater.pdf}}%
-    \put(0.34407509,0.00511623){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x$\end{tabular}}}}%
-    \put(0.61060728,0.13751505){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\alpha$\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=2]{n2_contingentCone_greater.pdf}}%
-    \put(0.5347732,0.41937805){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\pi-\alpha$\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=3]{n2_contingentCone_greater.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{n2_entrantVector.pdf}}%
+    \put(0.25170078,0.35665283){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$X$\end{tabular}}}}%
+    \put(0.0636298,0.10604404){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x$\end{tabular}}}}%
+    \put(0.0636298,0.41374571){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$v$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{n2_entrantVector.pdf}}%
+    \put(0.68053495,0.48952204){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$u$\end{tabular}}}}%
+    \put(0.67969504,0.39548682){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Sigma^-$\end{tabular}}}}%
+    \put(0.68221421,0.3031306){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Sigma^+$\end{tabular}}}}%
   \end{picture}%
 \endgroup%

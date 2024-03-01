@@ -60,7 +60,7 @@
     \put(0.25645745,0.28883681){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$X^+$\end{tabular}}}}%
     \put(0.19433308,0.12854066){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$X^-$\end{tabular}}}}%
     \put(0.28790307,0.04340738){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Sigma^-$\end{tabular}}}}%
-    \put(0.13681057,0.39084345){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Sigma^+\cup\Sigma^0$\end{tabular}}}}%
+    \put(0.13681057,0.39084345){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Sigma\setminus\Sigma^-$\end{tabular}}}}%
     \put(0.83014878,0.26506084){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x_1$\end{tabular}}}}%
     \put(0.05472249,0.29325252){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x_2$\end{tabular}}}}%
     \put(0.45512449,0.35116593){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}critical point\end{tabular}}}}%
