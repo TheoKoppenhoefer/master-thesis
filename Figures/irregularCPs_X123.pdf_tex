@@ -59,9 +59,9 @@
     \put(0.7918509,0.3516742){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$C_xX$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{irregularCPs_X123.pdf}}%
     \put(0.08089862,0.31047425){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$w'$\end{tabular}}}}%
-    \put(0.09469854,0.43313996){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_xX_l$\end{tabular}}}}%
-    \put(-0.00190068,0.12034244){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_xX_{l-1}^2$\end{tabular}}}}%
-    \put(0.16216464,0.57573879){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_xX_{l-1}^1$\end{tabular}}}}%
+    \put(0.09469854,0.43313996){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_xX_k$\end{tabular}}}}%
+    \put(-0.00190068,0.12034244){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_xX_{k-1}^2$\end{tabular}}}}%
+    \put(0.16216464,0.57573879){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T_xX_{k-1}^1$\end{tabular}}}}%
     \put(0.51547004,0.35427983){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$w$\end{tabular}}}}%
     \put(0.11769831,0.16480877){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$w_2'$\end{tabular}}}}%
     \put(0.20969761,0.37794034){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$w_1'$\end{tabular}}}}%

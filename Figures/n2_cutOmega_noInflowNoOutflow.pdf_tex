@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{348.34734028bp}%
+    \setlength{\unitlength}{351.1651151bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,12 +50,20 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.39212184)%
+  \begin{picture}(1,0.56900858)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{n2_cutOmega_noInflowNoOutflow.pdf}}%
-    \put(0.20736085,0.14323501){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Gamma$\end{tabular}}}}%
-    \put(0.83698922,0.17694568){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x_j$\end{tabular}}}}%
-    \put(0.27804461,0.24871678){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Omega$\end{tabular}}}}%
+    \put(0.83829723,0.35555902){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x_j$\end{tabular}}}}%
+    \put(0.28383764,0.42675422){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$X$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{n2_cutOmega_noInflowNoOutflow.pdf}}%
+    \put(0.06615516,0.09242423){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$u$\end{tabular}}}}%
+    \put(0.06577382,0.04970937){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Sigma$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{n2_cutOmega_noInflowNoOutflow.pdf}}%
+    \put(0.06597939,0.00501909){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Gamma$\end{tabular}}}}%
+    \put(0.41468565,0.0991262){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}interior stagnation point\end{tabular}}}}%
+    \put(0.41414629,0.05112331){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}essential boundary stagnation point of $u$\end{tabular}}}}%
+    \put(0.41522501,0.00473869){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}essential boundary stagnation point of $-u$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{n2_cutOmega_noInflowNoOutflow.pdf}}%
   \end{picture}%
 \endgroup%

@@ -3,7 +3,8 @@
 ALLTEX=$(wildcard *.tex ../Plots/*.pgf ../Figures/*.tex)
 ALLCACHE=$(wildcard cache/* cache)
 ALLFIG=$(wildcard Figures/*.pdf_tex)
-MAIN=Thesis_TheoKoppenhoefer.tex
+NAME=Thesis_TheoKoppenhoefer
+MAIN=$(NAME).tex
 SHELL=/bin/bash
 TEMPLATES=/mnt/64BB-4184/Filing/Education/University/Lund/Courses/MasterThesis/Latex_Templates
 
@@ -20,6 +21,11 @@ all: $(ALLTEX) $(ALLCACHE) $(ALLFIG) ## Build full thesis (LaTeX + figures)
 
 figures:
 	cd ../Figures; for file in $$(ls *.svg); do inkscape --export-pdf=$${file%.svg}.pdf --export-latex $$file; done
+	make quick
+
+bibliography:
+	biber Thesis_TheoKoppenhoefer
+	make quick
 
 quick: $(MAIN) $(TEMPLATES)
 	export TEXINPUTS=$(TEMPLATES)//:; pdflatex -shell-escape $(MAIN)

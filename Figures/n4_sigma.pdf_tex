@@ -50,19 +50,23 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.59633572)%
+  \begin{picture}(1,0.67998199)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{n4_sigma.pdf}}%
-    \put(0.39254274,0.58405609){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\phi_+$\end{tabular}}}}%
-    \put(0.38404573,0.15408559){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\phi_-$\end{tabular}}}}%
+    \put(0.42254264,0.56262759){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\phi_+$\end{tabular}}}}%
+    \put(0.43440268,0.15837128){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\phi_-$\end{tabular}}}}%
     \put(0.6197593,0.00408603){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\R^4$\end{tabular}}}}%
     \put(0.07815371,0.0260503){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\R^3$\end{tabular}}}}%
-    \put(0.35458146,0.45622766){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$B_1\setminus C$\end{tabular}}}}%
-    \put(0.19279623,0.11872859){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$B_1\cap C$\end{tabular}}}}%
+    \put(0.35458146,0.45622766){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$B_1\subseteq\R^3$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{n4_sigma.pdf}}%
     \put(0.81636584,0.19265686){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\phi_\pm\brk*{S^2}$\end{tabular}}}}%
     \put(0.78315168,0.5462273){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$B_1\subseteq\R^4$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{n4_sigma.pdf}}%
+    \put(0.05702395,0.66491254){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$X$\end{tabular}}}}%
+    \put(0.05625064,0.63109496){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$B_1\setminus C$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{n4_sigma.pdf}}%
+    \put(0.05669454,0.59692178){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$B_1\cap C$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{n4_sigma.pdf}}%
   \end{picture}%
 \endgroup%

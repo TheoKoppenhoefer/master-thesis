@@ -58,9 +58,9 @@
     \put(0.83444061,0.38436681){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Sigma_{\leq0}$\end{tabular}}}}%
     \put(0.83533073,0.35172867){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Sigma_{\geq0}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{n2_cutOmega_corneredMf.pdf}}%
-    \put(0.53755974,0.18386377){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}interior stagnation point\end{tabular}}}}%
-    \put(0.53714008,0.14651838){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}essential boundary stagnation point of $u$\end{tabular}}}}%
-    \put(0.53797936,0.11043183){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}essential boundary stagnation point of $-u$\end{tabular}}}}%
+    \put(0.49224167,0.12176126){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}interior stagnation point\end{tabular}}}}%
+    \put(0.491822,0.08441586){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}essential boundary stagnation point of $u$\end{tabular}}}}%
+    \put(0.49266129,0.04832932){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}essential boundary stagnation point of $-u$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{n2_cutOmega_corneredMf.pdf}}%
     \put(0.83460054,0.31686874){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\Gamma$\end{tabular}}}}%
     \put(0.22195507,0.15494848){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$X^-$\end{tabular}}}}%

@@ -500,10 +500,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4"
-     inkscape:cx="235.88572"
+     inkscape:cx="196.60001"
      inkscape:cy="868.70091"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer3"
+     inkscape:current-layer="layer5"
      showgrid="false"
      inkscape:snap-global="false"
      inkscape:snap-bbox="true"
@@ -756,7 +756,7 @@
          id="tspan2583"
          x="63.777077"
          y="67.227875"
-         style="stroke-width:0.26458332">$T_xX_l$</tspan></text>
+         style="stroke-width:0.26458332">$T_xX_k$</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:2.02098894px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
@@ -767,7 +767,7 @@
          id="tspan2591"
          x="55.25103"
          y="94.836029"
-         style="stroke-width:0.26458332">$T_xX_{l-1}^2$</tspan></text>
+         style="stroke-width:0.26458332">$T_xX_{k-1}^2$</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:2.02098894px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
@@ -778,7 +778,7 @@
          id="tspan2587"
          x="69.731773"
          y="54.641808"
-         style="stroke-width:0.26458332">$T_xX_{l-1}^1$</tspan></text>
+         style="stroke-width:0.26458332">$T_xX_{k-1}^1$</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:2.02098894px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
