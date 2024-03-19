@@ -57,8 +57,8 @@
     \put(0.9005607,0.35491987){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x_1$\end{tabular}}}}%
     \put(0.45320878,0.81368399){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x_2$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{n3_polynomial_intersectionOrigin_overview.pdf}}%
-    \put(-0.00282924,0.27922682){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$C$\end{tabular}}}}%
-    \put(0.20939937,0.74725996){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$W$\end{tabular}}}}%
+    \put(-0.00282924,0.27922682){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\tiC$\end{tabular}}}}%
+    \put(0.20939937,0.74725996){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\tiW$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{n3_polynomial_intersectionOrigin_overview.pdf}}%
     \put(0.24100063,0.58129461){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\baralpha^-$\end{tabular}}}}%
     \put(0.63156606,0.54901644){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\baralpha^+$\end{tabular}}}}%

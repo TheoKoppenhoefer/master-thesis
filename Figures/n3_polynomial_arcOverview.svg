@@ -161,7 +161,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.979899"
-     inkscape:cx="251.81942"
+     inkscape:cx="324.27951"
      inkscape:cy="866.74181"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -302,7 +302,7 @@
          id="tspan4123"
          x="21.715651"
          y="76.769913"
-         style="stroke-width:0.26458332">$C$</tspan></text>
+         style="stroke-width:0.26458332">$\tiC$</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:2.82222223px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
@@ -313,7 +313,7 @@
          id="tspan4127"
          x="92.341614"
          y="84.787994"
-         style="stroke-width:0.26458332">$W$</tspan></text>
+         style="stroke-width:0.26458332">$\tiW$</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:2.82222223px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
@@ -369,14 +369,14 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:2.82222223px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="74.701828"
-       y="41.490334"
+       x="70.960052"
+       y="40.955795"
        id="text946"><tspan
          sodipodi:role="line"
          id="tspan944"
-         x="74.701828"
-         y="41.490334"
-         style="stroke-width:0.26458332">$A$</tspan></text>
+         x="70.960052"
+         y="40.955795"
+         style="stroke-width:0.26458332">$\tiA\cap\tiW_{2\rho}\cap\tiU_\rho$</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker1030)"
        d="m 73.365483,42.158507 c -3.345456,1.824048 -7.310728,3.338189 -11.358954,4.810852"

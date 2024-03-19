@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{264.52040558bp}%
+    \setlength{\unitlength}{280.8794915bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,20 +50,20 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.74497677)%
+  \begin{picture}(1,0.70158756)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{n3_polynomial_arcOverview.pdf}}%
-    \put(0.79192601,0.3149279){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x_1$\end{tabular}}}}%
-    \put(0.39498132,0.72199886){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x_2$\end{tabular}}}}%
+    \put(0.74580236,0.29658576){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x_1$\end{tabular}}}}%
+    \put(0.37197667,0.67994794){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x_2$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{n3_polynomial_arcOverview.pdf}}%
-    \put(-0.00251044,0.19191392){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$C$\end{tabular}}}}%
-    \put(0.7543294,0.10599079){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$W$\end{tabular}}}}%
-    \put(0.49799209,0.08021392){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\tiW_{2\rho}\cap \tiU_{\rho}$\end{tabular}}}}%
+    \put(-0.00236423,0.1807364){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\tiC$\end{tabular}}}}%
+    \put(0.71039547,0.09981764){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\tiW$\end{tabular}}}}%
+    \put(0.46898785,0.07554207){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\tiW_{2\rho}\cap \tiU_{\rho}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{n3_polynomial_arcOverview.pdf}}%
-    \put(0.13792985,0.59008293){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\tubular_\eta\brk*{\tiA\cap \tiU_\rho}\cap \tiW_{2\rho}$\end{tabular}}}}%
+    \put(0.12989649,0.55571511){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\tubular_\eta\brk*{\tiA\cap \tiU_\rho}\cap \tiW_{2\rho}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{n3_polynomial_arcOverview.pdf}}%
-    \put(0.56529845,0.56997589){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$A$\end{tabular}}}}%
+    \put(0.494612,0.54217372){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\tiA\cap\tiW_{2\rho}\cap\tiU_\rho$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=5]{n3_polynomial_arcOverview.pdf}}%
   \end{picture}%
 \endgroup%

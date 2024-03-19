@@ -24,7 +24,7 @@ figures:
 	make quick
 
 bibliography:
-	biber Thesis_TheoKoppenhoefer
+	biber $(NAME)
 	make quick
 
 quick: $(MAIN) $(TEMPLATES)

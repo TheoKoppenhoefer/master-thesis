@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{198.09935209bp}%
+    \setlength{\unitlength}{235.27599746bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,18 +50,18 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.68960182)%
+  \begin{picture}(1,0.66723896)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{morseIneq_interiorCP.pdf}}%
-    \put(0.59137774,0.45163594){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$f\circ\phi^{-1}=c-\e$\end{tabular}}}}%
-    \put(0.13116935,0.57532919){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$f\circ\phi^{-1}=c+\e$\end{tabular}}}}%
-    \put(0.6624035,0.26521945){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\vect{y_1 \, \cdots\, y_k}$\end{tabular}}}}%
-    \put(0.40270797,0.67081963){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\vect{y_k \,\cdots \, y_n}$\end{tabular}}}}%
+    \put(0.60945884,0.44343021){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$f\circ\phi^{-1}=c-\e$\end{tabular}}}}%
+    \put(-0.001661,0.56633236){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$f\circ\phi^{-1}=c+\e$\end{tabular}}}}%
+    \put(0.67335132,0.24856846){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\vect{y_1 \, \cdots\, y_k}$\end{tabular}}}}%
+    \put(0.41080704,0.64906586){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\vect{y_k \,\cdots \, y_n}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{morseIneq_interiorCP.pdf}}%
-    \put(0.05003998,0.24838306){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$H$\end{tabular}}}}%
+    \put(0.08084596,0.24032837){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$H$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{morseIneq_interiorCP.pdf}}%
-    \put(0.61588688,0.19897908){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$D^k$\end{tabular}}}}%
+    \put(0.61546242,0.10558356){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$D^k$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{morseIneq_interiorCP.pdf}}%
   \end{picture}%
 \endgroup%

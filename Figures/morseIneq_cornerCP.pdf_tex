@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{230.40083933bp}%
+    \setlength{\unitlength}{278.35329849bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,16 +50,16 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.66154009)%
+  \begin{picture}(1,0.628263)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{morseIneq_cornerCP.pdf}}%
-    \put(0.64767972,0.47549801){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$f\circ\phi^{-1}=c-\e$\end{tabular}}}}%
-    \put(0.11026742,0.56261499){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$f\circ\phi^{-1}=c+\e$\end{tabular}}}}%
-    \put(0.38212325,0.62207849){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\vect{y_n \,\cdots \, y_d}$\end{tabular}}}}%
-    \put(0.65669125,0.26736188){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\vect{y_1 \, \cdots \, y_k}$\end{tabular}}}}%
-    \put(0.14104905,0.24672986){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$H$\end{tabular}}}}%
-    \put(0.46154232,0.17550207){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$D^k$\end{tabular}}}}%
+    \put(0.65727991,0.42135843){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$f\circ\phi^{-1}=c-\e$\end{tabular}}}}%
+    \put(-0.00193917,0.53499144){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$f\circ\phi^{-1}=c+\e$\end{tabular}}}}%
+    \put(0.40283739,0.59153534){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\vect{y_n \,\cdots \, y_d}$\end{tabular}}}}%
+    \put(0.6735472,0.2388382){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\vect{y_1 \, \cdots \, y_k}$\end{tabular}}}}%
+    \put(0.18322244,0.2346158){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$H$\end{tabular}}}}%
+    \put(0.48797994,0.16688519){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$D^k$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{morseIneq_cornerCP.pdf}}%
   \end{picture}%
 \endgroup%
