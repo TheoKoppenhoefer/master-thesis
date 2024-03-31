@@ -91,8 +91,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2.8284271"
-     inkscape:cx="152.31855"
-     inkscape:cy="946.45457"
+     inkscape:cx="147.01525"
+     inkscape:cy="1003.0231"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -226,5 +226,27 @@
          x="34.528126"
          y="39.295834"
          style="stroke-width:0.26458332">$X_2$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:2.82222223px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="66.977745"
+       y="42.840042"
+       id="text866"><tspan
+         sodipodi:role="line"
+         id="tspan864"
+         x="66.977745"
+         y="42.840042"
+         style="stroke-width:0.26458332">$x_1$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:2.82222223px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="39.382164"
+       y="17.395981"
+       id="text870"><tspan
+         sodipodi:role="line"
+         id="tspan868"
+         x="39.382164"
+         y="17.395981"
+         style="stroke-width:0.26458332">$x_2$</tspan></text>
   </g>
 </svg>

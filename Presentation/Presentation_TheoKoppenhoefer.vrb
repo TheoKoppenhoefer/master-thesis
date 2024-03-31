@@ -1,0 +1,13 @@
+Why harmonic vector fields?
+  \begin{itemize}
+    \item gravitational field in classical mechanics
+    \item steady state heat flow
+    \item irrotational flow of an inviscid incompressible medium
+    \item electrostatic field in vacuum
+    \item magnetostatic field in vacuum
+  \end{itemize}
+  \tikzset{external/export=false}
+  Why stagnation points?
+  \[\begin{tikzcd}[column sep=huge]
+    \text{vector field topology} \arrow[r,leftrightarrow,"\text{Morse theory}"] &\text{stagnation points}
+  \end{tikzcd}\]

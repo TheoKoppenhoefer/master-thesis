@@ -13,8 +13,14 @@
 \date{\today}
 
 \addbibresource{bibliography.bib}
+\graphicspath{{../Art/}}
 \graphicspath{{../Plots/}}
 \graphicspath{{../Figures/}}
+
+\tikzexternaldisable
+
+
+\usepackage{transparent}
 
 
 \begin{document}
@@ -22,24 +28,57 @@
 % \frame[plain]
 
 % Frame 2
+{
+  \usebackgroundtemplate{%
+  {\transparent{0.3}\includegraphics[trim=2cm 5cm 0 1cm,width=\paperwidth,height=\paperheight]{../Art/mainExample_005_edited.pdf}}}
 \frame[plain]{\titlepage}
+}
 
 % Frame 3
 % \frame[plain]{\tableofcontents }
 
 \section{Introduction}
+{
+  \usebackgroundtemplate{%
+  \includegraphics[trim=2cm 0 -30cm -30cm,width=\paperwidth,height=\paperheight]{../Art/centering_003_edited.pdf}}
+\begin{frame}[fragile]
+  Why harmonic vector fields?
+  \begin{itemize}
+    \item gravitational field in classical mechanics
+    \item steady state heat flow
+    \item irrotational flow of an inviscid incompressible medium
+    \item electrostatic field in vacuum
+    \item magnetostatic field in vacuum
+  \end{itemize}
+  \tikzset{external/export=false}
+  Why stagnation points?
+  \[\begin{tikzcd}[column sep=huge]
+    \text{vector field topology} \arrow[r,leftrightarrow,"\text{Morse theory}"] &\text{stagnation points}
+  \end{tikzcd}\]
+\end{frame}
+}
 
 
 \section{Flowthrough with stagnation point}
 
 \begin{frame}
+  The following question is inspired by \cite{Alber1992}:
   \begin{question}[Flowthrough with stagnation point] \label{qu:flowthroughStagnationPoint}
-		Does there exist a domain $X\subset\R^d$ homeomorphic to a ball and a harmonic vector field $u\colon X\to\R^d$ on $X$ such that
+		Does there exist a domain $X\subset\R^d$ homeomorphic to a ball and a harmonic vector field $u\colon X\to\R^d$ such that
 		\begin{enumerate}
 		  \item $u$ has an interior stagnation point
 		  \item the boundaries on which $u$ enters and leaves the region are simply connected?
 		\end{enumerate}
 	\end{question}
+\end{frame}
+
+\begin{frame}
+  \begin{figure}
+    \centering
+    \input{../Figures/n3_cylinder.pdf_tex}
+    \caption{This kind of situation is not possible.}
+    \label{fi:n3_cylinder}
+  \end{figure}
 \end{frame}
 
 \begin{frame}
@@ -58,15 +97,6 @@
     \item $d=4$ dimensions: Possible for $X=B_1$, $u=\nabla f$ with $$f=x_1^2+x_2^2-x_3^2-x_4^2\,.$$
   \end{itemize}
 \end{answer}
-\end{frame}
-
-\begin{frame}
-  \begin{figure}
-    \centering
-    \input{../Figures/n3_cylinder.pdf_tex}
-    \caption{This kind of situation is not possible.}
-    \label{fi:n3_cylinder}
-  \end{figure}
 \end{frame}
 
 \begin{frame}
@@ -116,6 +146,7 @@
 \section{Harmonic vector fields without inflow or outflow}
 
 \begin{frame}
+  The following question is inspired by \cite{Lortz1970}:
   \begin{question}[Harmonic vector fields without inflow or outflow]
     Let $u$ be a harmonic vector field in a domain $X$ such that at every boundary point it is tangential to the boundary
     and non-vanishing.
@@ -124,18 +155,34 @@
 \end{frame}
 
 \begin{frame}
-  In $d=2$ dimensions one essentially has the relation
-  \begin{align*}
-    M=\chi\brk*{X}
-  \end{align*}
-  where $M$ is the number of stagnation points and $\chi\brk*{X}$ the Euler characteristic of $X$.
+  \begin{definition}[Interior stagnation points]
+    Let $X\subset\R^d$ be a $d$-dimensional compact manifold with corners and $u\colon X\to\R^d$ be a vector field without boundary stagnation points.
+    We call an interior stagnation point $x$ \emph{non-degenerate} if the derivative $Du(x)$ is bijective.
+    If all interior stagnation points are non-degenerate $u$ is called \emph{Morse}.
+  \end{definition}
+\end{frame}
+
+\begin{frame}
+  % In $d=2$ dimensions one essentially has the relation
+  % \begin{align*}
+  %   M=\chi\brk*{X}
+  % \end{align*}
+  % where $M$ is the number of stagnation points and $\chi\brk*{X}$ the Euler characteristic of $X$.
+  The following answers the question in $d=2$ dimensions:
+  \begin{proposition}[Condition on the number of stagnation points, \cite{Koppenhoefer2024}]\label{pr:n2_hvf_noInflowNoOutflow}
+    Let $X\subset\R^2$ be a compact connected planar manifold with corners
+    and let $u\colon X\to\R^2$ be
+    a Morse harmonic vector field without boundary stagnation points.
+    Then we have the relation $M=-\chi(X)$ where $M$ denotes the number of stagnation points and
+    $\chi(X)$ is the Euler characteristic of $X$.
+  \end{proposition}
 \end{frame}
 
 \begin{frame}
   \begin{figure}
     \centering
     % \includegraphics[width=0.6\textwidth]{../Plots/HarmonicVectorFields_gr1.eps}
-    \includegraphics[width=0.6\textwidth]{../Plots/n2_hvf_noInflowNoOutflow_symmetric_gray_2.pdf}
+    \includegraphics[width=0.9\textwidth]{../Plots/n2_hvf_noInflowNoOutflow_symmetric_gray_2.pdf}
     \caption{A plot of $u=\nabla^\perp\psi$ in the domain $\psi^{-1}\brk*{[-1,1]}$.
       Here $\psi\leftdef\Phi_2\brk*{x-e_1}+\Phi_2\brk*{x+e_1}$.}
     \label{pl:n2_hvf_noInflowNoOutflow}
@@ -143,7 +190,33 @@
 \end{frame}
 
 \begin{frame}
-  In $d=3$ dimensions one has essentially an even number of stagnation points.
+  \begin{definition}[Interior type number]
+    Let $u\colon X\to\R^d$ be a Morse vector field without boundary stagnation points.
+    We say that a stagnation point $x$ of $u$ has \emph{index $k$} if $Du$ has exactly $k$ negative eigenvalues.
+    The \emph{interior type number} $M_k$ denotes the number of interior stagnation points of index $k$.
+  \end{definition}
+\end{frame}
+
+\begin{frame}
+  In $d=3$ dimensions one has essentially an even number of stagnation points:
+  \begin{proposition}[Condition on the type numbers, \cite{Koppenhoefer2024}]
+    Let $X\subset\R^3$ be a compact three-dimensional manifold with corners.
+    Let $u\colon X\to\R$ be a Morse harmonic vector field without boundary stagnation points.
+    Then the following relation for
+    the interior type numbers of $u$ holds:
+    \begin{align*}
+      M_1=M_2\,.
+    \end{align*}
+  \end{proposition}
+\end{frame}
+
+\begin{frame}
+  It then follows with the Poincaré-Hopf index theorem that
+  \begin{corollary}[Condition on the domain, \cite{Koppenhoefer2024}]
+    $X\subset\R^3$ be a compact three-dimensional manifold with corners.
+    Let $u\colon X\to\R$ be a strongly Morse harmonic vector field without inflow or outflow through the boundary.
+    Then the Euler characteristic $\chi\brk*{X}=0$ vanishes.
+  \end{corollary}
 \end{frame}
 
 \section{Sources}
@@ -158,11 +231,15 @@
 	\printbibliography
 \end{frame}
 
+{
+  \usebackgroundtemplate{%
+  {\transparent{0.25}\includegraphics[trim=5cm 3cm 3cm 5cm,width=\paperwidth,height=\paperheight]{../Art/circular_001.pdf}}}
 \begin{frame}[plain]
 	\begin{center}
 		\Large{{Thank you for your attention.}}
 	\end{center}
 \end{frame}
+}
 
 % \frame[plain]
 

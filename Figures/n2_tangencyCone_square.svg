@@ -72,9 +72,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="7.9195959"
-     inkscape:cx="170.48141"
-     inkscape:cy="961.17709"
+     inkscape:zoom="3.959798"
+     inkscape:cx="168.75255"
+     inkscape:cy="947.32503"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -209,7 +209,7 @@
          y="43.557762"
          x="31.045286"
          id="tspan843"
-         sodipodi:role="line">$x\in\Omega$</tspan></text>
+         sodipodi:role="line">$x\in\interior\brk*{X}$</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:2.82222223px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
