@@ -73,7 +73,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.979899"
-     inkscape:cx="337.69776"
+     inkscape:cx="249.30941"
      inkscape:cy="707.36119"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -200,7 +200,7 @@
          id="tspan4820"
          x="46.103992"
          y="90.935196"
-         style="stroke-width:0.26458332">$\baralpha^-$</tspan></text>
+         style="stroke-width:0.26458332">$\tialpha^-$</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:2.82222223px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
@@ -211,7 +211,7 @@
          id="tspan4824"
          x="78.443611"
          y="93.607895"
-         style="stroke-width:0.26458332">$\baralpha^+$</tspan></text>
+         style="stroke-width:0.26458332">$\tialpha^+$</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:2.82222223px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
@@ -222,7 +222,7 @@
          id="tspan4828"
          x="68.287369"
          y="127.95201"
-         style="stroke-width:0.26458332">$\baralpha^0$</tspan></text>
+         style="stroke-width:0.26458332">$\tialpha^0$</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:2.82222223px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
@@ -233,7 +233,7 @@
          id="tspan4832"
          x="80.180855"
          y="111.51495"
-         style="stroke-width:0.26458332">$\barbeta$</tspan></text>
+         style="stroke-width:0.26458332">$\tibeta$</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:0.40000001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 37.350916,121.30369 c 0,0 4.210433,-3.62558 7.583774,-5.64607 3.373341,-2.02049 9.204707,-4.6806 12.795527,-6.01356 3.59082,-1.33296 5.260006,-1.4197 8.519216,-2.37202 3.25921,-0.95232 8.14222,-1.8724 11.02487,-3.37428 2.88265,-1.50188 3.57905,-3.88205 6.280832,-4.911072 2.701782,-1.029026 9.354434,-0.601358 9.354434,-0.601358"
@@ -250,6 +250,6 @@
          id="tspan4966"
          x="45.836723"
          y="118.99849"
-         style="stroke-width:0.26458332">$\bargamma$</tspan></text>
+         style="stroke-width:0.26458332">$\tigamma$</tspan></text>
   </g>
 </svg>

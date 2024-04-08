@@ -338,8 +338,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.7071068"
-     inkscape:cx="407.22479"
-     inkscape:cy="743.01822"
+     inkscape:cx="319.95597"
+     inkscape:cy="687.85576"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -518,7 +518,7 @@
          id="tspan2428"
          x="90.737999"
          y="82.783463"
-         style="stroke-width:0.26458332">$B_1\subseteq\R^3$</tspan></text>
+         style="stroke-width:0.26458332">$B_1\subset\R^3$</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="m 158.65118,110.41648 c 5.52368,10.5004 13.96928,4.98903 23.19899,11.97367"
@@ -552,7 +552,7 @@
          id="tspan1052"
          x="165.57347"
          y="67.068031"
-         style="stroke-width:0.26458332">$B_1\subseteq\R^4$</tspan></text>
+         style="stroke-width:0.26458332">$B_1\subset\R^4$</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="m 152.85144,89.892848 c 4.94494,-12.300564 12.50426,-8.384209 17.96051,-18.147601"
@@ -618,7 +618,7 @@
          id="tspan1322-7"
          x="38.637936"
          y="52.257591"
-         style="stroke-width:0.26458332">$B_1\setminus C$</tspan></text>
+         style="stroke-width:0.26458332">$B_1\setminus \overline{C}$</tspan></text>
     <rect
        style="display:inline;opacity:1;fill:url(#radialGradient893);fill-opacity:1;stroke:#000000;stroke-width:0.40000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="rect885"

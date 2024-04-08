@@ -60,11 +60,11 @@
     \put(-0.00282924,0.27922682){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\tiC$\end{tabular}}}}%
     \put(0.20939937,0.74725996){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\tiW$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{n3_polynomial_intersectionOrigin_overview.pdf}}%
-    \put(0.24100063,0.58129461){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\baralpha^-$\end{tabular}}}}%
-    \put(0.63156606,0.54901644){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\baralpha^+$\end{tabular}}}}%
-    \put(0.50890917,0.13424271){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\baralpha^0$\end{tabular}}}}%
-    \put(0.65254674,0.33275297){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\barbeta$\end{tabular}}}}%
+    \put(0.24100063,0.58129461){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\tialpha^-$\end{tabular}}}}%
+    \put(0.63156606,0.54901644){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\tialpha^+$\end{tabular}}}}%
+    \put(0.50890917,0.13424271){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\tialpha^0$\end{tabular}}}}%
+    \put(0.65254674,0.33275297){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\tibeta$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{n3_polynomial_intersectionOrigin_overview.pdf}}%
-    \put(0.23777282,0.24237435){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\bargamma$\end{tabular}}}}%
+    \put(0.23777282,0.24237435){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\tigamma$\end{tabular}}}}%
   \end{picture}%
 \endgroup%

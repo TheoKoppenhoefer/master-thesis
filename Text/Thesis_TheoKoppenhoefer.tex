@@ -63,8 +63,8 @@ Given a harmonic vector field $u$ on a bounded domain we call the set on which $
 the domain entrant boundary and the set on which $u$ exits the domain emergent boundary.
 In the first part of this thesis we ask the question of 
 when it is possible to have interior stagnation points and
-connected entrant and connected emergent boundaries.
-The answer in two dimensions is essentially `no'.
+connected entrant and emergent boundaries.
+The answer in two dimensions for a domain homeomorphic to a disc is `no'.
 If one allows for holes in the domain the answer becomes a `yes'
 for which we give explicit examples.
 In four dimensions a simple example shows that
@@ -74,14 +74,14 @@ stagnation points is even. With the help of this result and numerical methods we
 polynomial on the ball which has interior stagnation points and simply connected
 entrant and emergent sets.
 
-The second part revolves around whether there exist harmonic vector fields
+The second part revolves around harmonic vector fields
 with interior stagnation points and without boundary stagnation points.
-This question in two dimensions yields a very elegant relation between the
+This question yields in two dimensions an elegant relation between the
 domain topology and the number of interior stagnation points. 
 As a special case we obtain statements about harmonic vector fields which are tangential and nonvanishing 
 at the boundary.
 We also give examples of vector fields illustrating this point.
-In three dimensions we do not find such an example but the Morse index theorem implies
+In three dimensions we do not find an explicit example but the Morse index theorem implies
 that for such an example the number of stagnation points has to be even and
 the Euler characteristic of the domain has to vanish.
 
@@ -96,29 +96,29 @@ for this type of Morse theory.
 
 Givet ett harmoniskt vektorfält $u$ på en begränsad domän kallar vi den mängd där $u$ träder in i
 domänen för inträdesrand och den mängd där $u$ lämnar domänen utträdesrand. I den första
-delen av detta examensarbete ställer vi frågan om när det är möjligt att ha inre stagnationspunkter
-och sammanhängande inträdes- och sammanhängande utträdesrand. Svaret i två dimensioner är
-i huvudsak `nej'. Om man tillåter hål i domänen blir svaret ett `ja', vilket vi
+delen av detta examensarbete ställer vi frågan om det är möjligt att ha inre stagnationspunkter
+och sammanhängande inträdes- och utträdesrand. Svaret i två dimensioner är `nej' för en domän som är homeomorf till skivan. Om man tillåter hål i domänen blir svaret `ja', vilket vi
 ger explicita exempel på. I fyra dimensioner visar ett enkelt exempel att detta är möjligt med
-bollen som domän. I tre dimensioner använder vi Morse-teorin för att visa att antalet
+klotet som domän. I tre dimensioner använder vi Morse-teorin för att visa att antalet
 stagnationspunkter är jämnt. Med hjälp av detta resultat och numeriska metoder fann vi ett harmoniskt
-polynom på bollen som har inre stagnationspunkter och enkelt sammanhängande inträdes- och
+polynom i klotet som har inre stagnationspunkter och enkelt sammanhängande inträdes- och
 utträdesrand.
 
-Den andra delen handlar om huruvida det finns harmoniska vektorfält med inre
+Den andra delen handlar om harmoniska vektorfält med inre
 stagnationspunkter och utan stagnationspunkter på randen. Denna fråga i två dimensioner ger
 ett mycket elegant samband mellan domänens topologi och antalet inre stagnationspunkter.
 Som ett specialfall får vi uttalanden om harmoniska vektorfält som är tangentiella  och icke försvinnande vid
 randen. Vi ger också exempel på vektorfält som illustrerar denna punkt. I tre dimensioner
-hittar vi inget sådant exempel, men Morse indexteorem implicerar att för ett sådant exempel
+hittar vi inget sådant exempel, men Morse indexsats implicerar att för ett sådant exempel
 måste antalet stagnationspunkter vara jämnt och Euler-karakteristiken för domänen måste försvinna.
 
 Som en del av examensarbetet formulerar vi en version av Morse-teorin enligt \cite{Agrach1991}
 och \cite{Handron2002}
-för mångfalder med kantiga ränder.
+för mångfalder med kantiga hörn.
 Denna relaterar domäntopologin till antalet stagnationspunkter.
 Dessutom ger vi ett bevis för tätheten av Morsefunktioner
 för denna typ av Morse-teori.
+
 
 \section*{Acknowledgements}
 
@@ -132,7 +132,7 @@ Finally I would like to thank my family, friends and teachers for having support
 
 \newpage
 \tikzset{external/export next=false}
-\tikz[remember picture,overlay] \node[opacity=0.3,inner sep=0pt] at (current page.center){\includegraphics[width=1.8\paperwidth,height=1.6\paperheight]{../Art/centering_003.pdf}};
+\tikz[remember picture,overlay] \node[opacity=1,inner sep=0pt] at (current page.center){\includegraphics[width=1.8\paperwidth,height=1.6\paperheight]{../Art/centering_003_colorised.pdf}};
 
 \tableofcontents
 
@@ -145,10 +145,9 @@ Finally I would like to thank my family, friends and teachers for having support
     \item Perhaps give a classical example of a Morse function to determine the Betti numbers.
     \item Insert figure of that diffeomorphism.
     \item rework figures
+    \item possibly add to literature: Braess, Mond and Ballesteros - Singularities of mappings
     \item Look up Floer homology and Conley index theorem
     \item add literature, check that all literature is used.
-    \item Think about the structuring of the stagnation point definitions
-    \item acute angle to the vector field (p.27)
     \item Check that I get the assumption of irrotationality right
     \item Check that I get my differential geometry right: Do I need the manifold to be embedded, compact, etc?
   \end{itemize}
@@ -186,46 +185,47 @@ answer the following question:
   Does there exist a domain $X\subset\R^d$ homeomorphic to a ball and a harmonic vector field $u\colon X\to\R^d$ such that
   \begin{enumerate}
     \item $u$ has an interior stagnation point
-    \item the boundaries on which $u$ enters and leaves the region are simply connected?
+    \item the boundaries on which $u$ enters and leaves the region are connected?
   \end{enumerate}
 \end{question}
-This question is in part inspired by the requirement that $u$ be free of stagnation points for an existance result of steady, inviscid
+This question is in part inspired by the requirement that $u$ be free of stagnation points for an existence result of steady, inviscid
 and incompressible flows with nonvanishing vorticity in $\R^3$
 given in \cite{Alber1992}.
-The answer will turn out to be `yes' for dimensions $d\geq3$ and essentially `no' for $d=2$ dimensions.
+The answer will turn out to be `yes' for dimensions $d\geq3$ and `no' for $d=2$ dimensions.
 Somewhat related, \cite[p.198]{Lortz1970} poses the question whether it is possible to have a harmonic vector field
 without inflow or outflow through the boundary with interior stagnation points in $\R^3$.
 Inspired by this we will also consider the following question:
 \begin{question}[Harmonic vector fields without inflow or outflow]
-  Let $u\colon X\to\R^d$ be a harmonic vector field in a domain $X\subseteq\R^d$ such that at every boundary point it is tangential to the boundary
+  Let $u\colon X\to\R^d$ be a harmonic vector field in a domain $X\subset\R^d$ such that at every boundary point it is tangential to the boundary
   and non-vanishing.
   What can be said about the relation between the number of stagnation points and the domain topology?
 \end{question}
-In fact we will use Morse theory to deal with the following more general question:
+In fact we will use the Morse index theorem to deal with the following more general question:
 \begin{question}[Harmonic vector fields without boundary stagnation points]
   \label{qu:noInflowNoOutflow}
-  Let $u\colon X\to\R^d$ be a harmonic vector field on a domain $X\subseteq\R^d$ without boundary stagnation points.
+  Let $u\colon X\to\R^d$ be a harmonic vector field on a domain $X\subset\R^d$ without boundary stagnation points.
   What can be said about the relation between the number of stagnation points and the domain topology?
 \end{question}
 This question yields a very nice result in the case of $d=2$ dimensions.
-More concretely we will show that the number of stagnation points equals the negative Euler characteristic of the domain.
-In $d=3$ dimensions the Morse index theorem implies that the number of stagnation points has to be even and the Euler characteristic of the
+More concretely the Morse index theorem implies that the number of stagnation points equals the negative Euler characteristic of the domain.
+In $d=3$ dimensions we show that the number of stagnation points has to be even and the Euler characteristic of the
 domain has to vanish.
 
 The thesis starts out with some mathematical preliminaries.
 Here we discuss some important definitions to make the formulation of these
-questions more precise
-and show the density of Morse functions.
+questions more precise.
+We also show the density of Morse functions.
 In the next chapter we state the Morse inequalities for manifolds with corners and give a motivation as to why they hold.
-The following chapter gives an essentially negative answer to question \ref{qu:flowthroughStagnationPoint} in the case of two dimensions.
-Here we also give examples of planar
-harmonic vector fields on domains with holes and an example in four dimensions.
+The following chapter gives a negative answer to question \ref{qu:flowthroughStagnationPoint} in the case of two dimensions.
+We then give examples of planar
+harmonic vector fields which give an affirmative answer to this question if we allow for holes in the domain. We also give an example in four dimensions which answers question \ref{qu:flowthroughStagnationPoint} affirmatively.
 Chapter \ref{ch:n3_inflowOutflow} then deals with the three-dimensional case where we give an explicit example which answers question \ref{qu:flowthroughStagnationPoint}
 affirmatively in three dimensions.
 In the final chapter we deal with question \ref{qu:noInflowNoOutflow}.
-Here we use the Morse index theorem to give an elegant relation
-between the number of stagnation points and the domain topology for the planar case. 
-We also give a condition on the number of interior stagnation points and the domain topology in three dimensions.
+Here we state and apply the Morse index theorem in two and three dimensions and give explicit examples of harmonic vector fields without inflow or outflow through the boundary in $d=2$ dimensions.
+% Here we use the Morse index theorem to give an elegant relation
+% between the number of stagnation points and the domain topology for the planar case. 
+% We also give a condition on the number of interior stagnation points and the domain topology in three dimensions.
 % Chapter \ref{ch:n2_hvf_noInflowNoOutflow} then deals with question \ref{qu:noInflowNoOutflow} in two dimensions where we give an elegant relation
 % between the number of critical points and the domain topology.
 % In the final chapter we discuss the case of question \ref{qu:noInflowNoOutflow} in three dimensions where we give a condition
@@ -248,7 +248,7 @@ Thus we do not assume prior knowledge of algebraic topology.
 \chapter{Mathematical preliminaries}
 
 In this chapter we give some important definitions. We start of by defining harmonic vector fields.
-After this we define manifolds with corners, stratified spaces, tangent spaces and the entrant and emergent boundaries.
+After that we define manifolds with corners, stratified spaces, tangent spaces and the entrant and emergent boundaries.
 We then give a definition of stagnation points, type numbers and Morse functions. Throughout we give examples and results to illustrate the definitions.
 In the final part of this chapter we prove that harmonic vector fields can essentially be approximated by harmonic Morse vector fields
 whilst preserving certain properties.
@@ -299,7 +299,7 @@ On simply connected domains this implication is however true:
 \end{proof}
 If one considers not necessarily simply connected domains $\Omega$ then we obtain the
 properties of proposition \ref{pr:n2:hvf:simplyConnected} at least locally.
-More generally, we call a vector field $u\colon X\to TX$ \emph{irrotational} if it is locally the gradient of a function $f\colon X\to\R$.
+More generally, we call a vector field $u$ \emph{irrotational} if it is locally at every point locally the gradient of a function $f$.
 In the following we assume that our vector fields are irrotational, unless otherwise stated.
 
 % \begin{align*}
@@ -313,6 +313,7 @@ In the following we assume that our vector fields are irrotational, unless other
 % \nomenclature{$\Omega$}{Interior $\Omega=\interior\brk*{X}$}
 \nomenclature{$f\colon X\to\R$}{A harmonic function.}
 \nomenclature{$u\colon X\to\R^d\text{ or }TX$}{A harmonic vector field.}
+\nomenclature{$D$}{Derivative or differential.}
 \nomenclature{$\Delta$}{Big capital delta. Here used for the Laplace operator. In cartesian coordinates $\Delta=\sum_j\partial_j^2$.}
 \nomenclature{$\nabla$}{Gradient.}
 \nomenclature{$\nabla^\perp$}{Orthogonal gradient. Given by equation \eqref{eq:n2_nablaPerp}.}
@@ -391,7 +392,7 @@ The next definition generalises the definition of tangent space in \cite[§1.2]{
     D\phi\colon TU&\to TV\cong V\times\R^d\\
     v&\mapsto D\phi\big\vert_{\pi\brk*{v}}\brk*{v}
   \end{align*}
-  on on the tangent bundle $TX$.
+  on the tangent bundle $TX$.
 \end{definition}
 We also give the definition of the contingent cone:
 \begin{definition}[Contingent cone, {\cite[Def. 4.6]{Jahn2020}}]
@@ -475,7 +476,7 @@ We can now define the emergent and the entrant boundary in a way that generalise
   \end{enumerate}
   Here the set
   \begin{align}
-    \brk*{C_xX}^*=\brk[c]*{w\in T_xX\colon w\cdot w'\geq0\text{ for all }w'\in C_xX}\eqref{eq:emergentEntrantBd_dualCone}
+    \brk*{C_xX}^*=\brk[c]*{w\in T_xX\colon w\cdot w'\geq0\text{ for all }w'\in C_xX}\label{eq:emergentEntrantBd_dualCone}
   \end{align}
   denotes the dual cone of the contingent cone $C_xX$ and $\brk*{\brk*{C_xX}^*}^\perp$ denotes its orthogonal complement in $T_xX$.
   We call $v$ \emph{strictly entrant} if in addition $v$ lies in the interior $\interior\brk*{C_xX}$ or if $v$ lies in the interior
@@ -492,7 +493,7 @@ We can now define the emergent and the entrant boundary in a way that generalise
 \nomenclature{$T_xX$}{Tangent space of $X$ at $x$. See definition \ref{df:tangentSpace}.}
 \nomenclature{$C_xX$}{Contingent cone of $X$ at $x$. See definition \ref{df:contingentCone}.}
 % \nomenclature{$T_x^*X$}{Cotangent space of $X$ at $x$. See for instance \cite[Chapter 6]{Hirsch1994} or \cite[§1]{Jost2002}.}
-\nomenclature{$A^*$}{Dual cone of $A$. Defined analogous to equation \eqref{eq:emergentEntrantBd_dualCone}.}
+\nomenclature{$A^*$}{Dual cone of a set $A$. Defined analogous to equation \eqref{eq:emergentEntrantBd_dualCone}.}
 \nomenclature{$\Sigma$}{Boundary $\Sigma=\partial X$}
 \nomenclature{$\Sigma^-$, $\Sigma^{\leq0}$}{(Strictly) entrant boundary. See definition \ref{df:emergentEntrantBd}.}
 \nomenclature{$\Sigma^+$, $\Sigma^{\geq0}$}{(Strictly) emergent boundary. See definition \ref{df:emergentEntrantBd}.}
@@ -543,9 +544,9 @@ the second criteria requires a little motivation.
 For this consider a vector field $u$ and a tangent vector $v$ at the corner point $x$ as in figure \ref{fi:n2_entrantVector}.
 The domain $X$ forms an acute angle at $x$ and the $v$ almost points into $C_xX$.
 Since $v$ however does not point into $X$ it does not satisfy the first condition.
-Now assume we place a test particle at $x$ which is confined to $X$ and $u$ describes a force acting on this particle.
+Now assume we place a test particle in a neighbourhood of $x$ which is confined to $X$ and $u$ describes a force acting on this particle.
 This test particle
-will then move away from the point $x$ along the boundary $\Sigma^+$.
+will then move away from the point $x$, possibly along the boundary $\Sigma^+$.
 It is in this manner that we would like to call $u$ at $x$ entrant.
 This type of reasoning is made precise in the proof of the Morse inequalities in \cite{Agrach1991} and \cite{Handron2002}
 where a flow on $X$ is constructed.
@@ -699,7 +700,7 @@ to include vector fields which are not necessarily gradient fields.
 \end{definition}
 The reason for only considering essential stagnation points has to do with the Morse inequalities.
 In the proof given by \cite{Handron2002} a flow along the vector field $-u$ on $X$ is constructed.
-Since this flow would leave the domain at the entrant boundary this flow is modified on $\Sigma^{\leq0}$ 
+Since this flow would leave the domain at the entrant boundary the vector field is modified on $\Sigma^{\leq0}$ 
 so as to not leave $X$ and becomes discontinuous.
 For more details we refer the reader to chapter \ref{ch:Morse}.
 \begin{definition}[Non-degeneracy]\label{df:nonDegeneracy}
@@ -714,13 +715,13 @@ For more details we refer the reader to chapter \ref{ch:Morse}.
   if $Du_j(x)$ has exactly $k$ negative eigenvalues.
   $u_j$ is called \emph{(essentially) non-degenerate} if all its (essential) stagnation points
   are non-degenerate.
-  Finally, we call a non-degenerate essential stagnation point $x$ of $u_j$ \emph{regular} if additionally $u(x)\in\relint \brk*{C_xX}^*$,
-  that is $x$ lies in the strictly entrant boundary $\Sigma^-$ or is a non-degenerate interior stagnation point.
+  Finally, we call essential stagnation points $x$ of $u_j$ \emph{regular} if additionally $u(x)\in\relint \brk*{C_xX}^*$,
+  that is $x$ lies in the strictly entrant boundary $\Sigma^-$ or is an interior stagnation point.
+  $u_j$ is called \emph{regular} if all essential stagnation points of $u_j$ are regular.
   Essential boundary stagnation points of $u$ and $-u$ which are not regular are called \emph{irregular stagnation points}.
   % We call the set of all irregular stagnation points the irregular boundary $\Sigma^\text{irr}$.
-  $u_j$ is called \emph{regular} if it is essentially non-degenerate and has no irregular stagnation points.
   We can define the \emph{$k$-th type number} $\ind^\text{M}_{j,k}(u)$ of the
-  stratum $X_j$ to be the number of regular stagnation points of $u_j$ of Morse index $k$,
+  stratum $X_j$ to be the number of regular non-degenerate stagnation points of $u_j$ of Morse index $k$,
   that is
   \begin{align}
     \ind^\text{M}_{j,k}(u)\leftdef\#\brk[c]*{x\in\critical_j(u)\colon x\text{ has index }k}\,.\label{eq:def_typenbr_strata}
@@ -769,7 +770,7 @@ To illustrate the preceding definitions we return to our previous example.
   and thus $e_1$ is an eigenvector of $Du_1(e_2)$ to the eigenvalue $2$. As $e_1$
   spans the tangent space $T_{e_2}Y$ it follows that $e_2$ is a non-degenerate stagnation point
   of $u_1$ with index $0$.
-  Now since $u\brk*{e_2}\in\relint\brk*{C_xX}^*$ we have that $e_2$ is in fact an essential and regular 
+  Now since $u\brk*{e_2}\in\relint\brk*{C_xX}^*$ we have that $e_2$ is in fact an essential non-degenerate regular 
   stagnation point.
   Proceeding in this manner for the other segments of the square $\Sigma$ we obtain that
   $\ind^\text{M}_{1,k}=2\delta_{0k}$.
@@ -784,7 +785,7 @@ To illustrate the preceding definitions we return to our previous example.
   Analogous argumentation on the other three corners yields that $\ind^\text{M}_{0,0}=0$.
 \end{example}
 
-Notice that it follows from the definition that a stagnation point of $u_j$ is irregular if it is degenerate or
+Notice that it follows from the definition that a stagnation point of $u_j$ is irregular if it
 lies in the tangential boundary $\Sigma^0$.
 We would like to clarify the definition of irregular stagnation points further with the following characterisation:
 \begin{proposition}[Characterisation of irregular points]\label{pr:characterisation_irregular_bd}
@@ -892,7 +893,7 @@ can be extended to the closure $\overline{X}_{j+1}$ by continuity and so we can 
 
 The following definition of type numbers is inspired by \cite[Definition 10.3]{Morse1969}:
 \begin{definition}[Morse functions, {\cite[Definition 10.3]{Morse1969}}]
-  We call $u$ \emph{Morse} if for all $j\in\cJ$ we have that $u_j$ is regular.
+  We call $u$ \emph{Morse} if for all $j\in\cJ$ we have that $u_j$ is regular and essentially non-degenerate.
   If both $u$ and $-u$ are Morse we call $u$ \emph{strongly Morse}.
   For a Morse function $u$ we define 
   the \emph{interior type numbers} $M_k$ to be the number of essential interior stagnation points of $u$ of Morse index $k$, that is
@@ -1090,7 +1091,7 @@ Our approach is to use Thom's transversality theorem which is inspired by the ap
   \end{align}
 \end{definition}
 % \nomenclature{$A$}{submanifold, can be thought of as the zero section of $T^X$}
-In the remainder of this section we will deal with manifolds without boundaries and then condition
+In the remainder of this section we will predominantly deal with manifolds without boundaries and then condition
 \eqref{eq:nonDegeneracy_defTransversality} reduces to
 \begin{align*}
   \Image\brk*{Dg_x}+T_{g(x)}A = T_{g(x)}Y\,.
@@ -1101,8 +1102,8 @@ As an application of this definition we make the following observation:
   Then $u_j$ is non-degenerate iff $u_j$ is transverse to the zero section $A$ of the tangent space $TX_j$.
 \end{proposition}
 \begin{proof}
-  First note that we have that $x\in u_j^{-1}(A)$ iff $u_j(x)=0$ and thus $u_j^{-1}(A)=C$ is the set of stagnation points.
-  Unravelling the definition of transversality we get that $u_j$ is transverse to the zero section iff for all $x\in C=u_j^{-1}(A)$
+  First note that we have that $x\in u_j^{-1}(A)$ iff $u_j(x)=0$ and thus $u_j^{-1}(A)$ is the set of stagnation points.
+  Unravelling the definition of transversality we get that $u_j$ is transverse to the zero section iff for all $x\in u_j^{-1}(A)$
   we have that
   \begin{align}
     \Image\brk*{Du_j(x)}+T_{u_j(x)}A = T_{u_j(x)}TX_j\,. \label{eq:nonDegeneracy:uTransverse}
@@ -1143,7 +1144,7 @@ We can now state a weakened version of Thom's transversality theorem which is pr
 From this we obtain
 a generalisation of the results in \cite[§2]{Morse1970} which will be useful later:
 \begin{corollary}[Density of harmonic Morse functions]\label{co:density_boundaryGeneric}
-  Let $u\colon X\to T^X$ be a vector field on $X$ and let $X_j$ be a stratification of $X$.
+  Let $X$ be a compact manifold with corners with stratification $X_j$ and let $u\colon X\to TX$ be a smooth vector field.
   Assume that $u$ has no irregular stagnation points.
   Then there exists a $\delta>0$ and a residual (and thus dense) set $E\subseteq B_\delta\subset\R^d$ such that for every $\e\in E$
   the following statements hold:
@@ -1264,12 +1265,12 @@ Example \ref{ex:n2_noInflowOutflow_irregular} gives a concrete illustration of t
   $F_\e=u^\e$ is transverse to $A$.
   For this note that for all $(\e,x)\in F^{-1}(A)$ we have
   \begin{align}
-    \Image\brk*{DF^\text{ev}_{(\e,x)}}=T_xTX_j\label{eq:nonDegeneracy:surjectiveDF}
+    \Image\brk*{DF^\text{ev}\big\vert_{(\e,x)}}=T_xTX_j\label{eq:nonDegeneracy:surjectiveDF}
   \end{align}
   since
   \begin{align*}
-    DF^\text{ev}_{(\e,x)}=\begin{bmatrix}
-      \Id_{d\times d}\mid Du_x
+    DF^\text{ev}\big\vert_{(\e,x)}=\begin{bmatrix}
+      \Id_{d\times d}\mid Du(x)
     \end{bmatrix}
   \end{align*}
   is surjective. 
@@ -1280,9 +1281,9 @@ Example \ref{ex:n2_noInflowOutflow_irregular} gives a concrete illustration of t
   $u^\e$ with the projection $u_j^\e$. To show that
   equation \eqref{eq:nonDegeneracy:surjectiveDF} holds we resort to the fact that
   \begin{align*}
-    DF^\text{ev}_{(\e,x)}
-    =D\brk*{u_j^\e(x)}_{(\e,x)}
-    =D\pi_j\circ \brk*{Du^\e(x)}_{(\e,x)}
+    DF^\text{ev}\big\vert_{(\e,x)}
+    =D\brk*{u_j^\e(x)}\big\vert_{(\e,x)}
+    =D\pi_j\circ \brk*{Du^\e\brk*{x}}\big\vert_{(\e,x)}
   \end{align*}
   is surjective as a composition of surjective functions.
   Thus there also exists a residual set $E_j\subseteq\cE$ on which $u^\e_j$ is
@@ -1648,7 +1649,7 @@ We state the Morse inequalities for manifolds with corners:
   where $\chi(X)$ denotes the Euler characteristic.
 \end{theorem}
 % \begin{proof}
-  The definition of regular critical points of $f$ and their index given in definition \ref{df:nonDegeneracy} coincides with 
+  The definition of essential non-degenerate regular critical points of $f$ and their index given in definition \ref{df:nonDegeneracy} coincides with 
   the definition of a critical point and its co-index of $-f$ given in \cite{Agrach1991}.
   Theorem \ref{th:Morse_MorseIneq} then follows from \cite[Theorem 2.4]{Agrach1991}.
   Nonetheless we will give an idea of the proof of this theorem.
@@ -1982,11 +1983,10 @@ We will start this section by giving an essentially negative answer to question 
 in $d=2$ dimensions. Thus it is not possible to have a harmonic function with interior critical point on a simply connected
 planar domain with connected entrant and connected emergent boundaries. The proof of this will involve Morse theory on manifolds with corners which was
 introduced in the previous chapter.
-We shall then state a result from \cite{Alessandrini1992} which more generally relates the number of entrant components with the number
+We shall then state a result from \cite{Alessandrini1992} which more generally relates the number of emergent components with the number
 of stagnation points in the plane using tools from complex analysis. 
-After that we give examples showing that dropping the condition of simply connectedness on the domain yields
-a harmonic function with interior stagnation point. 
-We will also consider the analogous problem in $d=4$ dimensions and show that there exists a function and domain with the
+After that we give examples of harmonic vector fields with interior stagnation points where we drop the condition of simple connectedness of the domain and only require the strictly entrant and strictly emergent boundaries to be connected.
+We will also consider the analogous problem in $d=4$ dimensions and show that there exists a harmonic vector field on the unit ball with the
 desired properties.
 
 % \begin{proposition}\label{pr:n2:hf:nonExistence}
@@ -2139,7 +2139,7 @@ desired properties.
 
 We now give a result which is essentially a negative answer to question \ref{qu:flowthroughStagnationPoint}.
 It was possible to prove this statement using complex analysis, level sets of critical points or alternatively using invariant manifolds.
-The following proof involves Morse theory since the techniques of the proof generalise to the three dimensional case.
+The following proof involves Morse theory since the techniques of the proof generalise more readily to the three dimensional case.
 Note that the notation $\Sigma_{\leq0}$ is not to be confused with the notation $\Sigma^{\leq0}$ used for the
 entrant boundary.
 \begin{proposition}[Negative answer to question \ref{qu:flowthroughStagnationPoint} in $d=2$ dimensions]\label{pr:n2_negativeResult}
@@ -2264,7 +2264,8 @@ entrant boundary.
   Then we can cut the domain along a smooth curve $\Gamma\subset\interior\brk*{X}$ such that the endpoints $\gamma=\partial\Gamma$
   of the cut coincide with $x_1$ and $x_2$, that is $\partial\Gamma=\brk[c]*{x_1,x_2}$.
   Now we obtain two new domains $X^+$ and $X^-$ such that $\partial X^+\cap\Sigma_{\leq0}\subseteq\gamma$ and
-  $\partial X^-\cap\Sigma_{\geq0}\subseteq\gamma$. We can assume that $\Gamma$ is a smooth manifold and corresponds to the stratum 
+  $\partial X^-\cap\Sigma_{\geq0}\subseteq\gamma$.
+  Since by proposition \ref{pr:finiteness_critical_points} the number of critical points of $f$ on $\interior\brk*{X}$ is finite we can assume that none of them lie on $\Gamma$ and further that $\Gamma$ corresponds to the stratum 
   $X_{\Gamma^+}$ for $X^+$ and $X_{\Gamma^-}$ for $X^-$.
   Analogously $\gamma$ corresponds to strata $X_{\gamma^\pm}$ on $X^\pm$.
   % We also assume that the corner points $x_1,x_2\in\partial\Gamma$ correspond to the strata $X_{1}$ and $X_{2}$.
@@ -2272,7 +2273,7 @@ entrant boundary.
   \begin{figure} 
     \centering
     \input{../Figures/n2_cutOmega_corneredMf.pdf_tex}
-    \caption{The situation at hand.}
+    \caption{The situation at hand in proposition \ref{pr:n2_negativeResult}.}
     \label{fi:n2_cutOmega_flowthrough}
   \end{figure}
   We assume that we chose $\Gamma$ in such a way that it forms an acute angle with $u=\nabla f$ at the boundary points $\gamma$.
@@ -2299,8 +2300,8 @@ entrant boundary.
     \nu^-_k=\ind^\text{M}_{\Gamma^-,k}(-f)+\ind^\text{M}_{\gamma^-,k}(-f)\,.\label{eq:n2_disproof_morse_numinus}
   \end{align}
   % where we took into account that $\ind^\text{M}_{\gamma,k}(-f)=0$.
-  In addition we have on the cut $\Gamma$ that the emergent critical points of $f$ on $X^+$ are the
-  entrant critical points of $-f$ on $X^-$, that is
+  In addition we have on the cut $\Gamma$ that the essential critical points of $f$ on $X^+$ are the
+  essential critical points of $-f$ on $X^-$ under a shift of index, that is
   \begin{align}
     \ind^\text{M}_{\Gamma^+,0}(f)=\ind^\text{M}_{\Gamma^-,1}(-f)\qquad\text{ and }\qquad 
     \ind^\text{M}_{\Gamma^+,1}(f)=\ind^\text{M}_{\Gamma^-,0}(-f)\,.\label{eq:n2_disproof_morse_relationIndex} 
@@ -2360,7 +2361,7 @@ entrant boundary.
 
   The claim remains to be shown in the case that $f$ is not strongly Morse on $X^+$ and $X^-$. In this case 
   observe that since $\Gamma$ contains no interior stagnation points it follows from proposition \ref{pr:characterisation_irregular_bd}
-  that $u$ has no irregular stagnation points on $\Gamma$. It also follows from the acute angle that $\Gamma$ forms with $u$ on $\gamma$ that
+  that $u=\nabla f$ has no irregular stagnation points on $\Gamma$. It also follows from the acute angle that $\Gamma$ forms with $u$ on $\gamma$ that
   there are no irregular stagnation points on $\gamma$. Thus $u$ has no irregular stagnation points on $X^+$ or $X^-$.
   Let $E^+,E^-\subseteq B_\delta$ be as in corollary \ref{co:density_boundaryGeneric} applied separately to the domains $X^+$ and $X^-$.
   Since $E^+$ and $E^-$ are residual in $B_\delta$ we can in particular pick an $\e\in E^+\cap E^-$ by the Baire category theorem.
@@ -2455,7 +2456,7 @@ which are proper subsets of a component of $\Sigma$.
 We state a consequence of a result from \cite[Theorem 2.1 and 2.2]{Alessandrini1992}:
 \begin{proposition}[Special case of {\cite[Theorem 2.1 and 2.2]{Alessandrini1992}}]\label{pr:alessandrini_inflowOutflow}
   Let $X\subset\R^2$ be a bounded domain with a boundary consisting of simple closed $C^{1,\alpha}$ curves.
-  Let $u\colon X\to \R$ be a harmonic vector field, nonzero on each component.
+  Let $u\colon X\to \R^2$ be a harmonic vector field, nonzero on each component.
   Then we have the relation
   \begin{align}
     M\leq -\chi\brk*{X}+\frac{J^++J^-}{2}\label{eq:n2_Alessandrini1}
@@ -2470,7 +2471,7 @@ We state a consequence of a result from \cite[Theorem 2.1 and 2.2]{Alessandrini1
   For a proof we refer the reader to \cite[Theorem 2.1]{Alessandrini1992} and \cite[Theorem 2.2]{Alessandrini1992}. Here one sets $\underline{\alpha}=n$ to be the outer unit normal and $D=\chi\brk*{X}$
   to be the Euler characteristic.
 % \end{proof}
-
+% 
 If we set $X$ to be homeomorphic to the disk such that $\chi\brk*{X}=1$ and have a
 decomposition of the boundary $\Sigma$ as in proposition \ref{pr:n2_negativeResult}, that is $J^\pm=J^{\geq0}=1$,
 we then obtain from proposition \ref{pr:alessandrini_inflowOutflow} that $M\leq0$
@@ -2484,7 +2485,7 @@ we obtain the condition on the number of interior stagnation points
   M\leq-\chi\brk*{X}+1\,.\label{eq:n2_Alessandrini_specialCase}
 \end{align}
 This indicates that if we allow for holes in the domain $X$ it is possible to have a vector field with simply
-connected entrant boundary and interior stagnation points.
+connected strictly entrant and strictly emergent boundaries  and interior stagnation points.
 In fact we will give two examples where we have equality in equation \eqref{eq:n2_Alessandrini_specialCase}
 for the cases $\chi\brk*{X}=0$ and $\chi\brk*{X}=-1$.
 For this define two differential operators in $d=2$ dimensions by
@@ -2513,7 +2514,7 @@ The next proposition gives us a recipe to generate harmonic vector fields.
 \end{proof}
 The function $\psi$ is also called a \emph{stream function}.
 The next example is our first example of a harmonic vector fields
-in $d=2$ dimensions with an interior stagnation points for which 
+in $d=2$ dimensions with an interior stagnation point for which 
 we have inflow on one simply connected boundary component and outflow on another simply connected boundary
 component.
 
@@ -2571,7 +2572,7 @@ We now give a similar example, this time with two holes in the domain and two in
 
 \section{The case of $d=4$ dimensions}
 
-We ask whether there exists a harmonic vector field on a simply connected domain with connected entrant boundary and with interior stagnation point 
+We ask whether there exists a harmonic vector field on a simply connected domain with simply connected entrant and emergent boundaries and with an interior stagnation point 
 in a dimension higher than $d=2$. Indeed, in $d=4$ dimensions we can readily give an example
 of such a harmonic vector field.
 \begin{example}[Connected entrant boundary in $d=4$ dimensions]\label{ex:n4}
@@ -2585,12 +2586,12 @@ of such a harmonic vector field.
     \label{eq:n4_deff}
   \end{equation}
   This has a critical point at the origin.
-  We will show in proposition \ref{pr:n4_connectedBd} that the entrant boundary $\Sigma^-$ is
+  We will show in proposition \ref{pr:n4_connectedBd} that the entrant and emergent boundaries are
   in fact connected.
 \end{example}
 
 \begin{proposition}[Simply connected entry boundary in example \ref{ex:n4}]\label{pr:n4_connectedBd}
-  The harmonic function given by equation \eqref{eq:n4_deff} has simply connected entrant boundary.
+  The harmonic function given by equation \eqref{eq:n4_deff} has connected entrant and emergent boundaries.
 \end{proposition}
 \begin{proof}
   First observe that the boundary $\Sigma=S^3$ can be away from the equator locally parametrised by the coordinates $\barx = (x_2,x_3,x_4)$
@@ -2619,21 +2620,21 @@ of such a harmonic vector field.
     0<\pm \nabla f\cdot n = \pm 2\brk*{x_1^2+x_2^2-x_3^2-x_4^2}\,.
   \end{align*}
   Using condition \eqref{eq:n4:ball} we obtain the equivalent condition
-  \begin{align*}
-    0<\pm 1-2\brk*{x_3^2+x_4^2}
-  \end{align*}
+  \begin{align}
+	  0<\pm \brk*{1-2\brk*{x_3^2+x_4^2}}\,.\label{eq:n4_cond2}
+  \end{align}
   Define the cylinder
   \begin{align*}
     C = \brk[c]*{\barx\in \R^3\colon x_3^2+x_4^2<1/2} = \R\times B_{1/\sqrt{2}}\subset\R^3
   \end{align*}
-  If we return to our parametrisation \eqref{eq:n4:parametrisation} we see that we have $\barx\in B_1\cap C$ iff
+  If we return to our parametrisation \eqref{eq:n4:parametrisation} and take into account condition \eqref{eq:n4_cond2} we see that we have $\barx\in B_1\cap C$ iff
   $\phi_\pm(\barx)\in \Sigma^+$ and hence 
   \begin{align*}
     B_1\cap C=\psi_\pm\brk*{\Sigma^+}
   \end{align*}
   and 
   \begin{align*}
-    B_1\setminus C=\psi_\pm\brk*{\Sigma^-}\,.
+	  B_1\setminus \overline{C}=\psi_\pm\brk*{\Sigma^-}\,.
   \end{align*}
   Since $\phi_+$ is a homeomorphism onto the northern hemisphere and
   $\phi_-$ a homeomorphism onto the southern hemisphere and the surface $S^2$
@@ -2707,7 +2708,7 @@ Mimicking the proof of proposition \ref{pr:n2_negativeResult} in two dimensions 
 stagnation point and simply connected entrant and emergent boundaries.
 \begin{proposition}[Condition on the interior type numbers]\label{pr:n3_inflowOutflowRels}
   Let $X\subset\R^3$ be a compact three-dimensional manifold with corners and
-  let $f\colon X\to\R$ be a Morse harmonic function without irregular stagnation points.
+  let $f\colon X\to\R$ be a harmonic function without irregular stagnation points and such that $f$ is non-degenerate on the interior $\interior\brk*{X}$.
   Let $\Sigma=\Sigma_{\leq0}\sqcup\Sigma_{\geq0}$ be a disjoint decomposition of the boundary into simply connected nonempty sets such that
   we have for the strictly entrant boundary $\Sigma^-\subseteq\Sigma_{\leq0}$ and for the strictly emergent boundary
   $\Sigma^+\subseteq\Sigma_{\geq0}$. Additionally we require that $\gamma\leftdef\partial\Sigma_{\leq0}$ is a one-dimensional manifold diffeomorphic to the
@@ -2721,21 +2722,21 @@ stagnation point and simply connected entrant and emergent boundaries.
   $\partial X^+\cap \Sigma_{\leq0}\subseteq\gamma$.
   Since by proposition \ref{pr:finiteness_critical_points} there are finitely many interior critical points in $X$
   we can also assume that no interior critical points lie on $\Gamma$.
-  Furthermore we assume that $\Gamma$ approaches $\gamma$ at a slanted angle.
+  Furthermore we assume that $\Gamma$ approaches $\gamma$ such that $u=\nabla f$ and $\Gamma$ form an acute angle at all points on $\gamma$.
   For the following argumentation we require that $f$ is strongly Morse on both $X^+$ and
   $X^-$ so assume for a moment that this is the case.
   By assumption we have that $\gamma$ is homeomorphic to the circle $\R/\Z$.
-  Since $f$ is non-degenerate
+  Since $f$ is non-degenerate on $\gamma$
   the number of maxima and minima of $f$ on $\gamma$ must be equal and thus
   \begin{align}
-    \ind^\text{M}_{\gamma^+,0}(f)+\ind^\text{M}_{\gamma^-,1}(-f)=\ind^\text{M}_{\gamma^+,1}(f)+\ind^\text{M}_{\gamma^-,0}(-f)
+    \ind^\text{M}_{\gamma^+,0}(f)+\ind^\text{M}_{\gamma^-,1}(-f)=\ind^\text{M}_{\gamma^+,1}(f)+\ind^\text{M}_{\gamma^-,0}(-f)\,.
     \label{eq:n3_disproof_morse_maxMinRel}
   \end{align}
   % \begin{align}
   %   \ind^\text{M}_{\gamma^+,0}(f)+\ind^\text{M}_{\gamma^-,1}(-f)=2l
   % \end{align}
   % for some $l\in\N$.\ruggedtodo{elaborate this}
-  We now turn our attention to $X^+$. Since no essential critical points lie on $\Sigma_{\geq0}$ 
+  We now turn our attention to $X^+$. Since no essential critical points lie on $\Sigma_{\geq0}\setminus\gamma$ 
   it follows for the boundary type numbers that
   \begin{align}
     \mu^+_k=\ind^\text{M}_{\Gamma^+, k}(f)+\ind^\text{M}_{\gamma^+,k}(f)\,.\label{eq:n3_disproof_morse_muplus}
@@ -2744,8 +2745,8 @@ stagnation point and simply connected entrant and emergent boundaries.
   \begin{align}
     \nu^-_k=\ind^\text{M}_{\Gamma^-,k}(-f)+\ind^\text{M}_{\gamma^-,k}(-f)\,.\label{eq:n3_disproof_morse_numinus}
   \end{align}
-  In addition we have that the emergent critical points on $\Gamma=\Gamma^+$ of $f$ on $X^+$ are the
-  entrant critical points on $\Gamma=\Gamma^-$ of $-f$ on $X^-$ and vice versa, that is
+  In addition we have that the essential critical points on $\Gamma=\Gamma^+$ of $\pm f$ on $X^+$ are the
+  essential critical points on $\Gamma=\Gamma^-$ of $\mp f$ on $X^-$ under a shift of index, that is
   \begin{equation}
     \begin{aligned}
       \ind^\text{M}_{\Gamma^+,0}(f)&=\ind^\text{M}_{\Gamma^-,2}(-f)\,, \\
@@ -2770,23 +2771,23 @@ stagnation point and simply connected entrant and emergent boundaries.
   \begin{align}
     M_1^-+\nu^-_2-M_2^--\nu^-_1+\nu^-_0=\chi(X^-)=\chi(X)\label{eq:n3_disproof_morse_morseineqminus}
   \end{align}
-  where the $M_k$ continue to denote the interior type numbers of $f$.
+  where the $M_k^\pm$ denote the interior type numbers of $f$ on the respective domains $X^\pm$.
   We now subtract equation \eqref{eq:n3_disproof_morse_morseineqminus} from \eqref{eq:n3_disproof_morse_morseineqplus}
   and insert relations \eqref{eq:n3_disproof_morse_relationMuNu} to obtain
   then with equation \eqref{eq:n3_disproof_morse_maxMinRel}
   \begin{align*}
-    0&=M_1^--M_2^-+M_1^+-M_2^++\ind^\text{M}_{\gamma^+,0}(f)+\ind^\text{M}_{\gamma^-,1}(-f)-\ind^\text{M}_{\gamma^+,1}(f)-\ind^\text{M}_{\gamma^-,0}(-f) \\
-    &= M_1-M_2
+    0&=M_2^+-M_1^+-M_1^-+M_2^-+\ind^\text{M}_{\gamma^+,0}(f)+\ind^\text{M}_{\gamma^-,1}(-f)-\ind^\text{M}_{\gamma^+,1}(f)-\ind^\text{M}_{\gamma^-,0}(-f) \\
+    &= M_2-M_1
   \end{align*}
   from which the claim follows.
 
 
   The claim remains to be shown in the case that $f$ is not strongly Morse on $X^+$ and $X^-$. In this case 
-  observe that since $\Gamma$ contains no interior stagnation points it follows from proposition \ref{pr:characterisation_irregular_bd}
+  observe that since $\Gamma$ contains no interior stagnation points of $u=\nabla f$ it follows from proposition \ref{pr:characterisation_irregular_bd}
   that $u$ has no irregular points on $\Gamma$. It also follows from the slanted angle 
   that $\Gamma$ forms with $u$ on
   $\gamma$ and the fact that $\gamma$ is a $C^1$ manifold that there are no irregular stagnation points on $\gamma$.
-  Thus $u$ has no irregular stagnation points on $X^+$ or $X^-$.
+  Thus $f$ has no irregular stagnation points on $X^+$ or $X^-$.
   Let $E^+,E^-\subseteq B_\delta$ be as in corollary \ref{co:density_boundaryGeneric} applied separately to the domains $X^+$ and $X^-$.
   Since $E^\pm$ are residual in $B_\delta$ we can in particular pick a $\e\in E^+\cap E^-$ by the Baire category theorem.
   % Since the critical points of $f$ lying on $\gamma$ are non-degenerate
@@ -2818,7 +2819,7 @@ The author then implemented a Mathematica routine to generate harmonic polynomia
 with two stagnation points and a plotting function to inspect what occurs.
 Indeed, this approach yielded a function with the desired properties as
 we shall discuss in this section.
-\begin{example}[A harmonic function with interior critical point and simply connected entrant boundary]
+\begin{example}[A harmonic function with interior critical point and simply connected entrant and emergent boundaries]
   \label{ex:n3_polynomial_defn}
   Consider the domain $X=\overline{B}_r\subset\R^3$ with $r>0$ sufficiently large, and the harmonic function
   \begin{align}
@@ -2871,19 +2872,19 @@ The remainder of this section will be devoted to the proof of the following theo
 
 Before we proceed to the proof we require some definitions from algebraic geometry.
 For an introduction this subject we refer the reader to \cite{Gathmann2023}, \cite{Harris1992} or \cite{Hartshorne1977}.
-For polynomials $p_1,\dots,p_k\in\R\brk[s]*{x_1,\dots,x_d}$ and a set $U\subseteq\R^d$ we denote the
+For a given set of polynomials $p_1,\dots,p_k\in\R\brk[s]*{x_1,\dots,x_d}$ and a set $U\subseteq\R^d$ we denote the
 variety generated by these polynomials on $U$ by $V_U\brk*{p_1,\dots,p_k}$.
 In the case that $U=\R^d$ we write $V(\dots)=V_U(\dots)$.
 \begin{definition}[Smoothness, {\cite[§5]{Hartshorne1977}}]
-  We call a $k$ dimensional algebraic variety $V_U\brk*{p_1,\dots,p_n}$ \emph{smooth} or \emph{non-singular}
-  if the the Jacobian
+  We call an algebraic variety $V_U\brk*{p_1,\dots,p_k}$ \emph{smooth} or \emph{non-singular}
+  if the Jacobian
   \begin{align*}
     \begin{bmatrix}
-      D p_1 & \cdots & D p_n
+      D p_1 & \cdots & D p_k
     \end{bmatrix}
   \end{align*}
-  is of rank $d-k$ on $V_U\brk*{p_1,\dots,p_n}$. This criterion of smoothness is also called the
-  \emph{Jacobi criterion}. By the implicit function theorem this means that the variety $V_U\brk*{p_1,\dots,p_n}$
+  is of full rank on $V_U\brk*{p_1,\dots,p_k}$. This criterion of smoothness is also called the
+  \emph{Jacobi criterion}. By the implicit function theorem this means that the variety $V_U\brk*{p_1,\dots,p_k}$
   in fact defines a $d-k$ dimensional submanifold of $\R^d$.
 \end{definition}
 \nomenclature{$V_U\brk*{\dots}$, $V\brk*{\dots}$}{Algebraic variety.}
@@ -2892,6 +2893,7 @@ The proof of theorem \ref{th:n3_polynomial_connectedInflowOutflow} requires lemm
 which we will show later on.
 \begin{proof}[Proof of theorem {\ref{th:n3_polynomial_connectedInflowOutflow}}]
   It was already discussed in example \ref{ex:n3_polynomial_defn} that $f$ has an interior critical point at the
+  B
   origin and is harmonic.
   For the connectedness of the entrant and emergent boundaries we calculate
   \begin{align}
@@ -2917,7 +2919,7 @@ which we will show later on.
   boundaries are simply connected which proves the theorem.
 \end{proof}
 
-From now onwards we assume that $p_1$ and $P_2$ are given by equations \ref{eq:n3_polynomial_defp1} and \ref{eq:n3_polynomial_defP2}.
+From now onwards we assume that $p_1$ and $P_2$ are given by equations \eqref{eq:n3_polynomial_defp1} and \eqref{eq:n3_polynomial_defP2}.
 We first show the smoothness which was required in the proof of theorem \ref{th:n3_polynomial_connectedInflowOutflow}.
 \begin{lemma}[Smoothness]\label{pr:n3_polynomial_smoothness}
   There exists $R>0$ such that for every $r>R$ the variety $V\brk*{p_1,P_2\brk*{r,\cdot}}$ is smooth.
@@ -3153,7 +3155,7 @@ We will thus also need a notion of convergence of subsets on a metric space.
 \nomenclature{$\tubular_\delta(A)$}{Tubular neighbourhood of $A$. See equation \eqref{eq:def_tubularNbh}.}
 
 \begin{proposition}[Convergence of $\cV_\e$ at smooth points]\label{pr:n3_polynomial_convergenceSmoothSet}
-  Let $U\subseteq \R^3$ be an open bounded set such that $\cV_0$ is smooth
+  Let $U\subset\R^3$ be an open bounded set such that $\cV_0$ is smooth
   in an open neighbourhood of $\overline{U}$. Let further $\eta>0$.
   Then there exists a $\delta>0$ such that for all $\e<\delta$ we have that the Hausdorff distance
   satisfies
@@ -3177,16 +3179,16 @@ We will thus also need a notion of convergence of subsets on a metric space.
   \end{align}
   is of full rank on $\overline{U}$.
   By the implicit function theorem there exists at every point $x\in\overline{U}$ open neighbourhoods
-  $\Omega_x\subseteq \R^4$ of $(0,x)$ and $\omega_X\subset\R^3$, a coordinate permutation $I\in O(4)$
+  $\Omega_x\subseteq \R^4$ of $(0,x)$ and $\omega_x\subset\R^3$, a coordinate permutation $I\in O(4)$
   and a continuously differentiable mapping $g_x\colon\omega_x\to\R$ such that
   \begin{align*}
     V\brk*{P_1,p_2}\cap \Omega_x=\brk[c]*{I\brk*{y,g_x(y)}\colon y\in\omega_x}\,.
   \end{align*}
   Since $D_xF(0,x)$ is of full rank we can assume (possibly after shrinking the open sets) that $I$ does not permute the $\e$-coordinate.
   Thus we can write $y=(\e,y_1,y_2)\in\omega_x$.
-  We can also assume that $\Omega_x=B_{\delta_x}\times W_X\subset\R^4$ for some open $W_X\subset\R^3$ and 
+  We can also assume that $\Omega_x=B_{\delta_x}\times W_x\subset\R^4$ for some open $W_x\subset\R^3$ and 
   some $\delta_x>0$.
-  Hence we also obtain that $\omega_x=B_{\delta_x}\times w_x$ for some open $w_X\subset\R^2$ and we can define our
+  Hence we also obtain that $\omega_x=B_{\delta_x}\times w_x$ for some open $w_x\subset\R^2$ and we can define our
   isotopy on $\Omega_x$ as
   \begin{align*}
     \varphi_x\colon B_{\delta_x}\times w_x&\to W_x\\
@@ -3267,7 +3269,7 @@ proposition \ref{pr:n3_polynomial_regularH} which will be proved later on.
   where we defined
   \begin{align*}
     \tiP_1(\e,x)\leftdef P_1\brk*{\e,x_1,x_2,\sqrt{1-x_1^2-x_2^2}}
-    =-x_1^3+3x_1x_2^2+\e\brk*{x_1^2-x_2^2+x_2\sqrt{1-x_1^2-x_2^2}}\,.
+    =-x_1^3+3x_1x_2^2+\e\brk*{x_1^2-x_2^2+2x_2\sqrt{1-x_1^2-x_2^2}}\,.
   \end{align*}
   In a similar manner we define 
   \begin{alignat*}{3}
@@ -3275,7 +3277,7 @@ proposition \ref{pr:n3_polynomial_regularH} which will be proved later on.
     \tiW_\rho&\leftdef\psi^{-1}\brk*{W_\rho}&=& B_{1/2}\cap B_{\rho}\text{ and} \\
     \tiA&\leftdef\psi^{-1}\brk*{A}&=&B_{1/2}\cap\brk*{\tialpha^-\cup\tialpha^+\cup\tialpha^0}
   \end{alignat*}
-  to be subsets of $\R^2$. Also note that $\tialpha^\bullet\leftdef\psi^{-1}\brk*{\alpha^\bullet}$.
+  to be subsets of $\R^2$. Also note that $\tialpha^\bullet\cap B_{1/2}=\psi^{-1}\brk*{\alpha^\bullet}$.
   We require the following proposition which will be proved later:
   \begin{proposition}[Construction of $\tiC$ and $\tigamma$]\label{pr:n3_polynomial_regularH}
     Let $\tiU_\rho$, $\tialpha^\bullet$, $\tiA$, $\widetilde{\cV}_\e$ and $\tiP_1$ be as in the proof of lemma \ref{pr:n3_polynomial_smoothConnected}.
@@ -3287,8 +3289,8 @@ proposition \ref{pr:n3_polynomial_regularH} which will be proved later on.
   \end{proposition}
   Now let the sets $\tiW\subset\R^2$ and $\tiC\subseteq \tiW$ be as in this proposition.
   Pick $\rho>0$ so small that $\tiW_{2\rho}\subseteq \tiW$. 
-  We can pick $\eta$ smaller than the minimum distance between two arcs of $\widetilde{\cV_0}$ on $\tiU_{\rho}$.
-  We also assume that $\eta$ is smaller than the Hausdorff distance between $\brk*{\tialpha^0\cup\tialpha^-}\cap\tiU_\rho$
+  We can pick $\eta$ smaller than half the minimum distance between two arcs of $\widetilde{\cV_0}$ on $\tiU_{\rho}$.
+  We also assume that $\eta$ is smaller than half the Hausdorff distance between $\brk*{\tialpha^0\cup\tialpha^-}\cap\tiU_\rho$
   and $\tiC$.
   Now choose $\delta$ as in proposition \ref{pr:n3_polynomial_convergenceSmoothSet}. We can assume that $0<\e<\delta$.
   We thus have a situation as in figure \ref{fi:n3_polynomial_arcOverview}.
@@ -3311,13 +3313,13 @@ proposition \ref{pr:n3_polynomial_regularH} which will be proved later on.
     \label{fi:n3_polynomial_arcConnections}
   \end{figure}
   Number the arcs of $\cV_\e\cap U_\rho$ lying close to $A\cap U_\rho$ as in figure \ref{fi:n3_polynomial_arcNumbering}.
-  Since $\tigamma$ by proposition \ref{pr:n3_polynomial_regularH} splits $\tiW_{2\rho}$ and lies in $\tiC\cap\widetilde{\cV}_\e$ we must have that
+  Since the curve $\tigamma$ by proposition \ref{pr:n3_polynomial_regularH} splits $\tiW_{2\rho}$ and lies in $\tiC\cap\widetilde{\cV}_\e$ we must have that
   $\psi\circ\tigamma$ in fact connects arcs 3 and 6.
   As the variety is smooth we must also have that arcs 1 and 2 are connected
   and analogously that arcs 4 and 5 are connected.
   By equation \eqref{eq:n3_polynomial_smoothConnected_symmetr} the situation around $-e_3$ is analogous but mirrored.
-  We thus obtain analogous connections between the six arcs at $-e_3$ which is summarised in figure \ref{fi:n3_polynomial_arcConnections}.
-  Thus we in fact have that $\cV_\e$ is connected.
+  We thus obtain corresponding connections between the six arcs at $-e_3$ which is summarised in figure \ref{fi:n3_polynomial_arcConnections}.
+  Thus we in fact have that the variety $\cV_\e$ is connected.
   The claim then follows from relation \eqref{eq:n3_polynomial_smoothConnected_relVeps}.
 \end{proof}
 
@@ -3328,7 +3330,7 @@ It now only remains to show proposition \ref{pr:n3_polynomial_regularH}.
   Define polynomials
   \begin{align}
     \tiq_1(x)&\leftdef-x_1^3+3x_1x_2^2\label{eq:n3_polynomial_regularH_defq1} \\ 
-    \tiq_2(x)&\leftdef x_1^2-x_2^2+x_2\sqrt{1-x_1^2-x_2^2} \label{eq:n3_polynomial_regularH_defq2}
+    \tiq_2(x)&\leftdef x_1^2-x_2^2+2x_2\sqrt{1-x_1^2-x_2^2} \label{eq:n3_polynomial_regularH_defq2}
   \end{align}
   % \begin{align*}
   %   \tip_1(x)=\tiP_1(1,x)=p_1\brk*{x_1,x_2,\sqrt{1-x_1^2-x_2^2}}
@@ -3362,13 +3364,13 @@ It now only remains to show proposition \ref{pr:n3_polynomial_regularH}.
     \label{fi:n3_polynomial_intersectionOriginRegular}
     \end{subfigure}
     \caption{Sketches of varieties.}
-  \end{figure}
+  \end{figure} %
   By equation \eqref{eq:n3_polynomial_regularH_defq1} $\tiq_1$ is a monkey saddle
-  and $V_{\tiW}\brk*{\tiq_1}=\tiA$ is
+  and $V_{\tiW}\brk*{\tiq_1}=\tiA\cap\tiW$ is
   similar to figure \ref{fi:n3_polynomial_intersectionOriginDegenerate}.
   The signs in the figure indicate the sign of $\tiq_1$ in a given region.
   From equation \eqref{eq:n3_polynomial_regularH_defq2}
-  we obtain that $\tiq_2(0)=0$ and $\nabla \tiq_2(0)=e_2$.
+  we obtain that $\tiq_2(0)=0$ and $\nabla \tiq_2(0)=2e_2$.
   Hence we observe that the $V_{\tiW}\brk*{\tiq_2}$ looks similar to figure \ref{fi:n3_polynomial_intersectionOriginOtherTerm}
   for a sufficiently small neighbourhood $\tiW$.
   More concretely we choose $\tiW$ so small that the arc $\tibeta\leftdef V_{\tiW}\brk*{\tiq_2}$ has positive distance to $\tiA\cap \tiU_\rho$ for
@@ -3398,19 +3400,19 @@ It now only remains to show proposition \ref{pr:n3_polynomial_regularH}.
   \end{align*}
   and
   \begin{align*}
-    D\tiq_2\big\vert_{x=0}&=e_2^\top\\
+    D\tiq_2\big\vert_{x=0}&=2e_2^\top\\
     D^2\tiq_2\big\vert_{x=0}&=\begin{bmatrix}
       2&\\
       &-2
     \end{bmatrix} \\
-    D^3\tiq_2\big\vert_{x=0}\brk*{v,v,v}&=3v_1^2v_2+v_2^3
+	    D^3\tiq_2\big\vert_{x=0}\brk*{v,v,v}&=-6\brk*{v_1^2v_2+v_2^3}
   \end{align*}
   and now by relation \eqref{eq:n3_polynomial_regularH_relTiP}
   \begin{align}
     \begin{aligned}
-    Dh\big\vert_{x=0}&=\e D_x\tiq_2\\
-    D^2h\big\vert_{x=0}&=\e D_x^2\tiq_2 \\
-    D^3h\big\vert_{x=0}\brk*{v,v,v}&=-6v_1^3+18v_1v_2^2+\e\brk*{3v_1^2v_2+v_2^3}
+	    Dh\big\vert_{x=0}&=\e D\tiq_2\big\vert_{x=0}\\
+	    D^2h\big\vert_{x=0}&=\e D^2\tiq_2\big\vert_{x=0} \\
+    D^3h\big\vert_{x=0}\brk*{v,v,v}&=-6v_1^3+18v_1v_2^2-6\e\brk*{v_1^2v_2+v_2^3}
     \,.
     \end{aligned}
     \label{eq:n3_polynomial_regularH_DPDq}
@@ -3418,7 +3420,7 @@ It now only remains to show proposition \ref{pr:n3_polynomial_regularH}.
   where we wrote $h(x)=\tiP_1(\e,x)$ for brevity. We have $0=h\circ\tigamma$ and thus
   \begin{align}
     0=\partial_t\brk*{h\circ\tigamma}\big\vert_{t=0}=\brk*{Dh\big\vert_{\tigamma}\tigamma'}_{t=0}
-    =\e\tigamma_2'(0)\label{eq:n3_polynomial_regularH_gammaDer1}
+    =2\e\tigamma_2'(0)\label{eq:n3_polynomial_regularH_gammaDer1}
   \end{align}
   so $\tigamma_2'(0)=0$ and in particular $\tigamma'(0)=e_1$.
   Taking another derivative we get
@@ -3427,11 +3429,11 @@ It now only remains to show proposition \ref{pr:n3_polynomial_regularH}.
     0&=\partial_t^2\brk*{h\circ\tigamma}\big\vert_{t=0}  \\
     &=\brk*{D^2h\big\vert_{\tigamma}\brk*{\tigamma',\tigamma'}+Dh\big\vert_{\tigamma}\tigamma''}_{t=0} \\
     &=\brk*{D^2h\big\vert_{x=0}\brk*{e_1,e_1}+Dh\big\vert_{x=0}\tigamma''}_{t=0} \\
-    &=\e\brk*{2+\tigamma_2''}(0)
+    &=\e\brk*{2+2\tigamma_2''}(0)
     \end{aligned}
     \label{eq:n3_polynomial_regularH_gammaDer2}
   \end{align}
-  so $\tigamma''(0)=-2e_2$.
+  so $\tigamma''(0)=-e_2$.
   The third derivative then yields
   \begin{align*}
     0&=\partial_t^3\brk*{h\circ\tigamma}\big\vert_{t=0} \\
@@ -3439,21 +3441,21 @@ It now only remains to show proposition \ref{pr:n3_polynomial_regularH}.
     +3D^2h\big\vert_{\tigamma}\brk*{\tigamma',\tigamma''}
     +Dh\big\vert_{\tigamma}\tigamma'''}_{t=0} \\
     &=\brk*{D^3h\big\vert_{x=0}\brk*{e_1,e_1,e_1}
-    -6D^2h\big\vert_{x=0}\brk*{e_1,e_2}
+    -3D^2h\big\vert_{x=0}\brk*{e_1,e_2}
     +Dh\big\vert_{x=0}\tigamma'''}_{t=0} \\
-    &=\brk*{-6+\e\brk*{\tigamma_2'''}}(0)
+    &=\brk*{-6+2\e\tigamma_2'''}(0)
   \end{align*}
-  so $\tigamma_2'''(0)=6/\e$.
+  so $\tigamma_2'''(0)=3/\e$.
   Analogously we observe that it follows from $0=\tiq_2\circ\tibeta$ that
   \begin{align}
     0=\e\partial_t\brk*{\tiq_2\circ\tibeta}\big\vert_{x=0}
-    =\e\brk*{D\tiq_2\big\vert_{\tigamma}\tibeta'}_{t=0}
+    =\e\brk*{D\tiq_2\big\vert_{\tibeta}\tibeta'}_{t=0}
     \label{eq:n3_polynomial_regularH_betaDer1}
   \end{align}
   and
   \begin{align}
     0=\e\partial_t^2\brk*{\tiq_2\circ\tibeta}\big\vert_{x=0}
-    =\e\brk*{D^2\tiq_2\big\vert_{\tigamma}\brk*{\tibeta',\tibeta'}+D\tiq_2\big\vert_{\tigamma}\tibeta''}_{t=0}\,.
+    =\e\brk*{D^2\tiq_2\big\vert_{\tibeta}\brk*{\tibeta',\tibeta'}+D\tiq_2\big\vert_{\tibeta}\tibeta''}_{t=0}\,.
     \label{eq:n3_polynomial_regularH_betaDer2}
   \end{align}
   By the relations \eqref{eq:n3_polynomial_regularH_DPDq}, equation \eqref{eq:n3_polynomial_regularH_betaDer1} is identical to
@@ -3466,13 +3468,13 @@ It now only remains to show proposition \ref{pr:n3_polynomial_regularH}.
   For the third derivative we observe that
   \begin{align*}
     0&=\partial_t^3\brk*{\tiq_2\circ\tibeta}\big\vert_{t=0} \\
-    &=\brk*{D^3\tiq_2\big\vert_{\tigamma}\brk*{\tibeta',\tibeta',\tibeta'}
-    +3D^2\tiq_2\big\vert_{\tigamma}\brk*{\tibeta',\tibeta''}
-    +D\tiq_2\big\vert_{\tigamma}\tibeta'''}_{t=0} \\
+    &=\brk*{D^3\tiq_2\big\vert_{\tibeta}\brk*{\tibeta',\tibeta',\tibeta'}
+    +3D^2\tiq_2\big\vert_{\tibeta}\brk*{\tibeta',\tibeta''}
+    +D\tiq_2\big\vert_{\tibeta}\tibeta'''}_{t=0} \\
     &=\brk*{D^3\tiq_2\big\vert_{x=0}\brk*{e_1,e_1,e_1}
-    -6D^2\tiq_2\big\vert_{x=0}\brk*{e_1,e_2}
+    -3D^2\tiq_2\big\vert_{x=0}\brk*{e_1,e_2}
     +D\tiq_2\big\vert_{x=0}\tibeta'''}_{t=0} \\
-    &=\tibeta_2'''(0)
+    &=2\tibeta_2'''(0)
   \end{align*}
   so $\tibeta'''(0)=0$.
   Thus we obtain
@@ -3481,7 +3483,7 @@ It now only remains to show proposition \ref{pr:n3_polynomial_regularH}.
   \end{align*}
   for $k\leq2$ and
   \begin{align*}
-    \partial_t^3\brk*{\tigamma_2-\tibeta_2}\big\vert_{t=0}&=6/\e>0\,.
+    \partial_t^3\brk*{\tigamma_2-\tibeta_2}\big\vert_{t=0}&=3/\e>0\,.
   \end{align*}
   Hence we indeed have that $\tigamma_2>\tibeta_2$ in a sufficiently small neighbourhood of the origin for $t>0$
   and also that  $\tigamma_2<\tibeta_2$ in a sufficiently small neighbourhood for $t<0$.
@@ -3497,7 +3499,7 @@ It now only remains to show proposition \ref{pr:n3_polynomial_regularH}.
   Again by smoothness $x$ cannot lie in the origin. 
   Now note that
   $\tiP_1(\e,\cdot)=\tiq_1<0$ on the arc $\tibeta$ and that
-  $\tiP_1(\e,\cdot)=\tiq_2>0$ on the arc $\tialpha^+$.
+  $\tiP_1(\e,\cdot)=\e\tiq_2>0$ on the arc $\tialpha^+$.
   So $\tigamma$ cannot intersect $\partial \tiC$ on $\tibeta$ or on $\tialpha$.
   Thus we must have that $x\in\partial \tiW$ and hence $\tigamma$ splits $\tiW$ in the right half plane into two parts.
   % Now we have that $0\in\widetilde{\cV}_\e$. Since
@@ -3540,7 +3542,7 @@ It now only remains to show proposition \ref{pr:n3_polynomial_regularH}.
 In the previous example we showed that $\Sigma^+$ is separated from $\Sigma^-$ by the variety
 $\Sigma^0=V\brk*{p_1,P_2(r,\cdot)}$. In the following we will show that it is possible to thicken 
 the tangential boundary $\Sigma^0$ without loosing the fundamental properties of the solution. 
-More concretely, we construct a harmonic function $f_\rho$ for which the entrant and
+More concretely, we construct for $\rho>0$ a harmonic function $f_\rho$ for which the entrant and
 emergent boundaries are simply connected, have positive distance from one another
 and such that $f_\rho$ has an interior stagnation point.
 For this we use the notation from the previous example.
@@ -3550,10 +3552,10 @@ We need a preliminary result:
   \begin{enumerate}
     \item $\theta_\rho=1$ outside of the tubular neighbourhood $\tubular_{\rho}\brk*{\Sigma^0}$,\label{en:n3_thickening_cutoff_1}
     \item $\theta_\rho$ has support contained in $\Sigma\setminus\Sigma^0$ and\label{en:n3_thickening_cutoff_2}
-    \item $\brk[a]*{\theta_\rho p_1}_\Sigma=0$, where $\brk[a]*{h}_X\leftdef\int_Xh$ denotes the mean of a function $h\colon X\to Y$.\label{en:n3_thickening_cutoff_3}
+    \item $\brk[a]*{\theta_\rho p_1}_\Sigma=0$, where $\brk[a]*{h}_X\leftdef\int_Xh$ denotes the expectation value of a function $h\colon X\to Y$.\label{en:n3_thickening_cutoff_3}
   \end{enumerate}
 \end{proposition}
-\nomenclature{$\brk[a]*{h}_X$}{Mean $\int_Xh$ of a function $h\colon X\to Y$.}
+\nomenclature{$\brk[a]*{h}_X$}{Expectation value $\int_Xh$ of a function $h\colon X\to Y$.}
 \nomenclature{$L^p\brk*{X;Y}$}{Lebesgue space of functions $u\colon X\to Y$.}
 % \nomenclature{$\norm{\cdot}_{L^p\brk*{X;Y}}$}{Norm on $L^p\brk*{X;Y}$.}
 \nomenclature{$W^{k,p}\brk*{X;Y}$}{Sobolev space of order $k$ for functions $u\colon X\to Y$.}
@@ -3601,7 +3603,7 @@ We need a preliminary result:
   where $n\colon\Sigma\to S^2$ is the outer unit normal.
   It then follows from continuity that for each $\rho>0$ there exists a $\lambda(\rho)>0$ such that
   \begin{align*}
-    \brk[a]*{\theta_\rho^+p_1}_{\Sigma^+}=\brk[a]*{\theta_{\lambda(\rho)}^-p_1}_{\Sigma^-}
+    \brk[a]*{\theta_\rho^+p_1}_{\Sigma^+}+\brk[a]*{\theta_{\lambda(\rho)}^-p_1}_{\Sigma^-}=0
   \end{align*}
   so by equation \eqref{eq:n3_thickening_cutoff_meanVal} $\titheta_\rho$ also fulfils condition \ref{en:n3_thickening_cutoff_3}.
   In fact we can also assume that $\lambda(\rho)\to0$ as $\rho\to0$.
@@ -3795,7 +3797,7 @@ With the help of this cutoff function $\theta_\rho$ we can now formulate our mai
 
 In the final chapter of this thesis we will discuss harmonic vector fields without
 inflow or outflow through the boundary.
-First we will state the Morse index theorem which generalises the Poincaré-Hopf index theorem.
+First we will state the Morse index theorem which generalises the Poincaré-Hopf index theorem in a certain sense.
 As a direct consequence we obtain that the
 number of interior stagnation points for such a harmonic vector field in $d=2$ dimensions 
 must equal the negative Euler characteristic $-\chi\brk*{X}$ of the domain.
@@ -3877,7 +3879,7 @@ for all strata $X_j$ and so
 We can now formulate the Morse index theorem which is proved for instance in \cite{Morse1929}:
 \begin{theorem}[Morse index theorem, {\cite[Theorem $A_0$]{Morse1929}}]
   Let $X$ be a compact orientable manifold with smooth boundary and $u\colon X\to TX$ a continuous vector field.
-  Assume that all essential stagnation points of $u$ are isolated and not stagnation points of higher strata.
+  Assume that $u$ is regular and that all essential stagnation points of $u$ are isolated.
   Then we have that
   \begin{align*}
     \sum_j\ind^{\text{PH}}_{j}(u)=\chi\brk*{X}\,.
@@ -3888,9 +3890,9 @@ It has been generalised in \cite{Simsek2007} to manifolds with boundary for
 Morse vector fields using terminology of convex optimisation.
 One can also find a proof of this theorem in \cite{King2014} for more general stratified spaces.
 The theorem relates to the Morse inequalities in the following way:
-Assume that $u=\nabla f$ is a Morse gradient field. 
-It then follows from the fact that $u$ is regular and from proposition \ref{pr:characterisation_irregular_bd} that the stagnation points of $u$
-are not stagnation points of higher strata. Since all stagnation points are non-degenerate they are also isolated and
+Assume that $u=\nabla f$ is a Morse gradient field.
+% It then follows from the fact that $u$ is regular and from proposition \ref{pr:characterisation_irregular_bd} that the stagnation points of $u$ are not stagnation points of higher strata. 
+Since all stagnation points are non-degenerate they are also isolated and
 formula \eqref{eq:poincareHopf_totalIndex} holds. It then follows that the Morse index theorem reads as
 \begin{align*}
   \sum_k\brk*{-1}^k\ind^\text{M}_{k}(u)=\sum_j\ind^{\text{PH}}_{j}(u)=\chi\brk*{X}
@@ -4080,8 +4082,8 @@ that it has no \emph{outflow} if $\Sigma^+\cap S=\emptyset$.
 Armed with this definition we can give the following corollary.
 \begin{corollary}[No in- or outflow]\label{co:n2_noInflowNoOutflow}
   Let $X\subset\R^2$ be a compact planar manifold with smooth boundary and $u\colon X\to\R^2$ a
-  strongly Morse harmonic vector field without inflow or outflow on
-  $\Sigma$. Then we have the relation $M=-\chi(X)$ where $M$ is the number of stagnation points counting multiplicities
+  harmonic vector field without inflow or outflow 
+  or irregular stagnation points on $\Sigma$. Then we have the relation $M=-\chi(X)$ where $M$ is the number of stagnation points counting multiplicities
   and $\chi(X)$ is the Euler characteristic of $X$.
 \end{corollary}
 % This corollary could also have been proved using the Poincaré-Hopf index theorem.
@@ -4242,7 +4244,7 @@ without critical points on the boundary.
   \begin{align*}
     \ind^\text{PH}_{x}(-u)=\brk*{-1}^d\ind^\text{PH}_{x}(u)=-\ind^\text{PH}_{x}(u)
   \end{align*}
-  and thus the Morse index theorem to the vector field $-u$ yields
+  and thus the Morse index theorem applied to the vector field $-u$ yields
   \begin{align}
     \chi\brk*{X}=\ind^\text{PH}_{\interior\brk*{X}}(-u)=-\ind^\text{PH}_{\interior\brk*{X}}(u)\,.\label{eq:n3_domainCond_mu}
   \end{align}
@@ -4250,8 +4252,8 @@ without critical points on the boundary.
 \end{proof}
 This yields as a consequence
 \begin{corollary}[Condition on the type numbers and domain]\label{co:n3_conditionTypeNbrII}
-  Let $X\subseteq\R^3$ be a compact three-dimensional manifold with smooth boundary and let further
-  $u\colon X\to TX$ be a Morse harmonic vector field and no
+  Let $X\subset\R^3$ be a compact three-dimensional manifold with smooth boundary and let further
+  $u\colon X\to TX$ be a Morse harmonic vector field with no
   inflow or outflow through the boundary. Then
   we have the condition $M_1=M_2$ between the type numbers and the Euler characteristic of the domain $\chi\brk*{X}=0$ vanishes.
 \end{corollary}
@@ -4421,11 +4423,11 @@ This yields as a consequence
 %   This follows directly from the Morse inequalities in theorem \ref{th:MorseInequalities}.
 % \end{proof}
 Thus for any such vector field the number of stagnation points has to be even.
-We can also give a second condition on the domain topology which is similar to the hairy
+We can also give a second condition on the domain topology which is a version of the hairy
 ball theorem.
 \begin{proposition}[Condition on the boundary topology]
   % Let $X$ and $u$ be as in corollary \ref{co:n3_conditionTypeNbrII} where we drop the requirement on $u$ to be harmonic.
-  Let $X$ be a orientable manifold with smooth boundary and $u\colon X\to TX$ be a vector field without boundary stagnation points.
+  Let $X$ be a orientable manifold with smooth boundary and $u\colon X\to TX$ be a smooth vector field without boundary stagnation points.
   % Assume additionally that a boundary component $\Gamma\subseteq\Sigma$ is a smooth manifold.
   Then the Euler characteristic $\chi\brk*{\Gamma}=0$ vanishes for each boundary component $\Gamma\subseteq\Sigma$.
 \end{proposition}

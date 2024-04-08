@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{151.70876649bp}%
+    \setlength{\unitlength}{160.69801994bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,12 +50,14 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.8320251)%
+  \begin{picture}(1,0.84584693)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{n2_stratificiation_square.pdf}}%
-    \put(0.55283943,0.01243645){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$X_0$\end{tabular}}}}%
-    \put(0.84123569,0.48935136){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$X_1$\end{tabular}}}}%
-    \put(0.29909282,0.44670773){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$X_2$\end{tabular}}}}%
+    \put(0.52191426,0.01174077){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$X_0$\end{tabular}}}}%
+    \put(0.79417798,0.46197763){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$X_1$\end{tabular}}}}%
+    \put(0.28236193,0.42171944){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$X_2$\end{tabular}}}}%
+    \put(0.8547596,0.35920109){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x_1$\end{tabular}}}}%
+    \put(0.36798513,0.80802366){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x_2$\end{tabular}}}}%
   \end{picture}%
 \endgroup%
