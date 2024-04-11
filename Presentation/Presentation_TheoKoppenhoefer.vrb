@@ -1,5 +1,6 @@
 \begin{definition}[Stagnation point]
     We call the zeros of a vector field $u\colon X\to\R^d$ \emph{stagnation points}.
+    The stagnation points of $u=\nabla f$ are called \emph{critical points} of $f\colon X\to\R$.
   \end{definition}
   \begin{block}{Why stagnation points?}
     \tikzset{external/export=false}
