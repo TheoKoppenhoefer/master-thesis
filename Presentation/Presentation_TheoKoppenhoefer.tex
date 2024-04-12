@@ -91,7 +91,7 @@
 \section{Flowthrough with stagnation point}
 
 \begin{frame}
-  The following question is inspired by \cite{Alber1992}:
+  The following question is inspired by \autocite{Alber1992}:
   \questionFlowthrough
 \end{frame}
 
@@ -100,7 +100,7 @@
   {\transparent{0.6}{\questionFlowthrough}}
   \begin{answer}
     \begin{itemize}
-      \item For $d=2$ dimensions: Not possible, see \cite{Koppenhoefer2024}.
+      \item For $d=2$ dimensions: Not possible, see \autocite{Koppenhoefer2024}.
         The proof uses Morse theory but one can also see this with the argument principle from complex analysis.
     \end{itemize}
   \end{answer}
@@ -118,16 +118,16 @@
   \end{figure}
 \end{frame}
 
-\begin{frame}
- \begin{figure}
-    \centering
-    \includegraphics[width=0.6\textwidth]{../Plots/n2_hvf_InflowOutflow_symmetric_gray_2.pdf}
-    % \includegraphics[width=0.6\textwidth]{../Plots/HarmonicVectorFields_gr2.eps}
-    \caption{A plot of $u=\nabla^\perp\psi$ in the region $\psi^{-1}\brk*{[-0.7,0.7]}\cap \brk*{\R\times[-2,2]}$.
-    Here $\psi\leftdef\Phi_2\brk*{x-e_1}-\Phi_2\brk*{x+e_1}+x_1$.} 
-    \label{pl:n2_hvf_InflowOutflow_symmetric_region}
-  \end{figure} 
-\end{frame}
+% \begin{frame}
+%  \begin{figure}
+%     \centering
+%     \includegraphics[width=0.6\textwidth]{../Plots/n2_hvf_InflowOutflow_symmetric_gray_2.pdf}
+%     % \includegraphics[width=0.6\textwidth]{../Plots/HarmonicVectorFields_gr2.eps}
+%     \caption{A plot of $u=\nabla^\perp\psi$ in the region $\psi^{-1}\brk*{[-0.7,0.7]}\cap \brk*{\R\times[-2,2]}$.
+%     Here $\psi\leftdef\Phi_2\brk*{x-e_1}-\Phi_2\brk*{x+e_1}+x_1$.} 
+%     \label{pl:n2_hvf_InflowOutflow_symmetric_region}
+%   \end{figure} 
+% \end{frame}
 
 \begin{frame}
 
@@ -141,7 +141,7 @@
 \end{frame}
 
 \begin{frame}
-  \begin{proposition}[Negative answer for cylinders, {\cite{Wahlen2023}} or {\cite[Prop.\ 5.1]{Koppenhoefer2024}}]\label{pr:n3_inflowOutflowCylinder}
+  \begin{proposition}[Negative answer for cylinders, {\autocite{Wahlen2023}} or {\autocite[Prop.\ 5.1]{Koppenhoefer2024}}]\label{pr:n3_inflowOutflowCylinder}
     Let $X=[0,1]\times \overline{U}\subset\R^d$ be a cylinder where $U\subset\R^{d-1}$ is a bounded open set with $C^1$ boundary.
     Let further $f\colon X\to\R$ be non-constant and
     harmonic such that the sides
@@ -151,7 +151,7 @@
     Then $f$ cannot have an interior critical point.
   \end{proposition}
   \begin{proof}
-    See blackboard or \cite{Koppenhoefer2024}.
+    See blackboard or \autocite{Koppenhoefer2024}.
   \end{proof}
 \end{frame}
 
@@ -177,7 +177,7 @@
 \end{frame}
 
 \begin{frame}
-  \begin{example}[Connected entrant boundary in $d=4$ dimensions, {\cite[Ex.\ 4.7]{Koppenhoefer2024}}]\label{ex:n4}
+  \begin{example}[Connected entrant boundary in $d=4$ dimensions, {\autocite[Ex.\ 4.7]{Koppenhoefer2024}}]\label{ex:n4}
     Consider as domain $X=B_1\subset\R^4$ the unit ball and
     the harmonic function 
     \begin{equation*}
@@ -188,7 +188,7 @@
       \label{eq:n4_deff}
     \end{equation*}
     This has a critical point at the origin.
-    It is shown in \cite[Prop.\ 4.8]{Koppenhoefer2024} that the entrant and emergent boundaries are in fact connected.
+    It is shown in \autocite[Prop.\ 4.8]{Koppenhoefer2024} that the entrant and emergent boundaries are in fact connected.
   \end{example} 
 \end{frame}
 
@@ -247,7 +247,7 @@
 
 
 \begin{frame}
-  \begin{proposition}[Condition on the interior type numbers, {\cite[Prop.\ 5.2]{Koppenhoefer2024}}]\label{pr:n3_inflowOutflowRels}
+  \begin{proposition}[Condition on the interior type numbers, {\autocite[Prop.\ 5.2]{Koppenhoefer2024}}]\label{pr:n3_inflowOutflowRels}
     Let $X\subset\R^3$ be a compact three-dimensional manifold with corners and
     let $f\colon X\to\R$ be a harmonic function without irregular stagnation points and such that $f$ is non-degenerate on the interior $\interior\brk*{X}$.
     Let $\Sigma=\Sigma_{\leq0}\sqcup\Sigma_{\geq0}$ be a disjoint decomposition of the boundary into simply connected nonempty sets such that
@@ -273,7 +273,7 @@
 \end{frame}
 
 \begin{frame}
-  \begin{example}[A harmonic function with interior critical points and connected entrant and emergent boundaries, {\cite[Ex.\ 5.3]{Koppenhoefer2024}}]
+  \begin{example}[A harmonic function with interior critical points and connected entrant and emergent boundaries, {\autocite[Ex.\ 5.3]{Koppenhoefer2024}}]
     For $d=3$ dimensions we have for $r$ sufficiently large the example $X=B_r$, $u=\nabla f$ with
     \begin{align*}
       f=\frac{x_1^2}{2}-\frac{x_1^3}{3}-\frac{x_1x_2^2}{2}+x_1x_2^2+x_2x_3
@@ -304,7 +304,7 @@
   One can perturb this solution to show that there exists a harmonic vector field
   on $B_r$ with interior stagnation point such that $\Sigma^+$ and $\Sigma^-$ have positive distance
   from one another and are simply connected.
-  This is done in \cite[Ex.\ 5.12]{Koppenhoefer2024}.
+  This is done in \autocite[Ex.\ 5.12]{Koppenhoefer2024}.
 \end{frame}
 
 \begin{frame}
@@ -323,7 +323,7 @@
 \section{Harmonic vector fields without inflow or outflow}
 
 \begin{frame}
-  The following question is inspired by \cite{Lortz1970}:
+  The following question is inspired by \autocite{Lortz1970}:
   \begin{question}[Harmonic vector fields without inflow or outflow]
     Let $u$ be a harmonic vector field in a domain $X$ such that at every boundary point it is tangential to the boundary
     and non-vanishing.
@@ -338,7 +338,7 @@
   % \end{align*}
   % where $M$ is the number of stagnation points and $\chi\brk*{X}$ the Euler characteristic of $X$.
   The following answers the question in $d=2$ dimensions:
-  \begin{proposition}[Condition on the number of stagnation points, {\cite[Prop.\ 6.5]{Koppenhoefer2024}}]\label{pr:n2_hvf_noInflowNoOutflow}
+  \begin{proposition}[Condition on the number of stagnation points, {\autocite[Prop.\ 6.5]{Koppenhoefer2024}}]\label{pr:n2_hvf_noInflowNoOutflow}
     Let $X\subset\R^2$ be a compact connected planar manifold with corners
     and let $u\colon X\to\R^2$ be
     a Morse harmonic vector field without boundary stagnation points.
@@ -359,7 +359,7 @@
 \end{frame}
 
 \begin{frame}
-  \begin{example}[Stagnation points on the boundary, {\cite[Ex.\ 6.9]{Koppenhoefer2024}}]
+  \begin{example}[Stagnation points on the boundary, {\autocite[Ex.\ 6.9]{Koppenhoefer2024}}]
     Let $X=\overline{B}_4\setminus\brk*{B_1\brk*{2e_1}\cup B_1\brk*{-2e_1}}$ be the domain and let the stream function $\psi$ be given by
     \begin{equation*}
       \begin{aligned}
@@ -385,7 +385,7 @@
 
 
 \begin{frame}
-  \begin{proposition}[Condition on the domain topology, {\cite[Prop.\ 6.11]{Koppenhoefer2024}}]\label{pr:n3_domainCond}
+  \begin{proposition}[Condition on the domain topology, {\autocite[Prop.\ 6.11]{Koppenhoefer2024}}]\label{pr:n3_domainCond}
     Let $X$ be a compact orientable odd dimensional manifold with smooth boundary.
     Let further $u\colon X\to TX$ a smooth vector field with isolated stagnation points on the interior and without
     boundary stagnation points. Then the Euler characteristic of the domain $\chi\brk*{X}=0$ has to vanish.
@@ -393,7 +393,7 @@
 \end{frame}
 
 \begin{frame}
-  \begin{corollary}[Condition on the type numbers and domain, {\cite[Cor.\ 6.12]{Koppenhoefer2024}}]\label{co:n3_conditionTypeNbrII}
+  \begin{corollary}[Condition on the type numbers and domain, {\autocite[Cor.\ 6.12]{Koppenhoefer2024}}]\label{co:n3_conditionTypeNbrII}
     Let $X\subset\R^3$ be a compact three-dimensional manifold with smooth boundary and let further
     $u\colon X\to TX$ be a Morse harmonic vector field with no
     inflow or outflow through the boundary. Then

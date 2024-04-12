@@ -285,7 +285,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.979899"
-     inkscape:cx="333.90903"
+     inkscape:cx="245.52068"
      inkscape:cy="811.70217"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -453,7 +453,7 @@
          id="tspan3739"
          x="96.376625"
          y="51.951714"
-         style="stroke-width:0.26458332">$\vect{y_k \,\cdots \, y_n}$</tspan></text>
+         style="stroke-width:0.26458332">$\vect{y_{k+1} \,\cdots \, y_n}$</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:0.60000002;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.59999998, 0.59999998;stroke-dashoffset:0;stroke-opacity:1"
        d="M 73.910662,83.542879 H 95.621667"

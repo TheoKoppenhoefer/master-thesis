@@ -57,7 +57,7 @@
     \put(0.60945884,0.44343021){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$f\circ\phi^{-1}=c-\e$\end{tabular}}}}%
     \put(-0.001661,0.56633236){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$f\circ\phi^{-1}=c+\e$\end{tabular}}}}%
     \put(0.67335132,0.24856846){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\vect{y_1 \, \cdots\, y_k}$\end{tabular}}}}%
-    \put(0.41080704,0.64906586){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\vect{y_k \,\cdots \, y_n}$\end{tabular}}}}%
+    \put(0.41080704,0.64906586){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\vect{y_{k+1} \,\cdots \, y_n}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{morseIneq_interiorCP.pdf}}%
     \put(0.08084596,0.24032837){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$H$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{morseIneq_interiorCP.pdf}}%

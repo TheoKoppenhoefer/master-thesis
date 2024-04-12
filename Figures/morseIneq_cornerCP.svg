@@ -180,7 +180,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4"
-     inkscape:cx="364.72887"
+     inkscape:cx="411.15744"
      inkscape:cy="871.70212"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -310,7 +310,7 @@
          id="tspan4498"
          x="105.79396"
          y="40.895828"
-         style="stroke-width:0.26458332">$\vect{y_n \,\cdots \, y_d}$</tspan></text>
+         style="stroke-width:0.26458332">$\vect{y_{n+1} \,\cdots \, y_d}$</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:2.29400039px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
