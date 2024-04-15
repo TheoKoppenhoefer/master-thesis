@@ -120,7 +120,7 @@ för denna typ av Morse-teori.
 
 \section*{Acknowledgements}
 
-I would like to express my gratitude to Erik Wahlén for having posed many interesting questions
+I would like to express my gratitude to my supervisor Erik Wahlén for having posed many interesting questions
 which have led to this thesis and who has encouraged me throughout.
 The stimulating discussions and suggestions were very helpful.
 Additionally I would like to thank  Martin Löfström, Anna-Lisa Rathsmann and Thomas Renström
@@ -180,7 +180,7 @@ This question is answered affirmatively in 1980 in \cite{Shelton1980} with a
 construction using line charges. 
 Inspired by this we will apply Morse theory to harmonic functions in an attempt to
 answer the following question:
-\begin{question}[Flowthrough with stagnation point]\label{qu:flowthroughStagnationPoint}
+\begin{question}[Flowthrough with stagnation point, {\cite{Wahlen2023}}]\label{qu:flowthroughStagnationPoint}
   Does there exist a domain $X\subset\R^d$ homeomorphic to a ball and a harmonic vector field $u\colon X\to\R^d$ such that
   \begin{enumerate}
     \item $u$ has an interior stagnation point
@@ -194,7 +194,7 @@ The answer will turn out to be `yes' for dimensions $d\geq3$ and `no' for $d=2$ 
 Somewhat related, \cite[p.198]{Lortz1970} poses the question whether it is possible to have a harmonic vector field
 without inflow or outflow through the boundary with interior stagnation points in $\R^3$.
 Inspired by this we will also consider the following question:
-\begin{question}[Harmonic vector fields without inflow or outflow]
+\begin{question}[Harmonic vector fields without inflow or outflow, {\cite{Wahlen2023}}]
   Let $u\colon X\to\R^d$ be a harmonic vector field in a domain $X\subset\R^d$ such that at every boundary point it is tangential to the boundary
   and non-vanishing.
   What can be said about the relation between the number of stagnation points and the domain topology?
@@ -327,7 +327,7 @@ For one, we require $X$ to be a compact manifold with corners:
 \begin{definition}[Manifolds with corners, \cite{Handron2002}]
   We introduce the notation
   \begin{align*}
-    H_j^d\leftdef\R_{\geq0}^j\times\R^{d-j}\subseteq\R^d\,.
+    H_j^d\leftdef\R_{\geq0}^j\times\R^{d-j}\subseteq\R^d
   \end{align*}
   where $j\in\brk[c]*{0,\dots,d}$.
   A \emph{manifold with (convex) corners} is a topological space $X$ together with an atlas $\cA$ such that for every point
@@ -338,7 +338,7 @@ For one, we require $X$ to be a compact manifold with corners:
   in $\R^d$ which are diffeomorphic onto their image.
   We further define for $k\in\brk[c]*{0,\dots,d}$ a collection of sets 
   \begin{align}
-    X_k\leftdef\brk[c]*{x\in X\colon j(x)=d-k}\label{eq:def_mfCorners_stratification},
+    X_k\leftdef\brk[c]*{x\in X\colon j(x)=d-k}\label{eq:def_mfCorners_stratification}
   \end{align}
   which form a stratification of $X$.
 \end{definition}
@@ -914,7 +914,7 @@ definitions in \cite[Definition 10.3]{Morse1969}:
   Analogously we define the \emph{$k$-th boundary type numbers} to be the number of essential boundary 
   stagnation points of $u$ of Morse index $k$, that is
   \begin{align}
-    \mu_k\leftdef\sum_{\substack{j\in\cJ\text{ s.t.}\\ n(j)<d}}\ind^\text{M}_{j,k}(u)\label{eq:bdTypeNbrs}
+    \mu_k\leftdef\sum_{\substack{j\in\cJ\text{ s.t.}\\ n(j)<d}}\ind^\text{M}_{j,k}(u)\,.\label{eq:bdTypeNbrs}
   \end{align}
   We further write $\nu_k$ for the $k$-th boundary type number of $-u$.
   We define the \emph{type number} to be the number of
@@ -977,7 +977,7 @@ We illustrate this with our example:
   \end{align*}
   and the boundary type numbers
   \begin{align*}
-    \mu_k=\ind^\text{M}_{0,k}(u)+\ind^\text{M}_{1,k}(u)=2\delta_{0k}\\
+    \mu_k=\ind^\text{M}_{0,k}(u)+\ind^\text{M}_{1,k}(u)=2\delta_{0k}\,.
   \end{align*}
   This then yields the type numbers
   \begin{align*}
@@ -1915,7 +1915,7 @@ Now generalise the Euler characteristic for spaces $Y\subseteq X$ by
 It is shown in \cite[§5]{Milnor1963} that this is additive, in the sense that given suitable $Z\subseteq Y\subseteq X$
 we have that
 \begin{align}
-  \chi\brk*{X,Z}=\chi\brk*{X,Y}+\chi\brk*{Y,Z}\label{eq:MorseIneq_additivChi}
+  \chi\brk*{X,Z}=\chi\brk*{X,Y}+\chi\brk*{Y,Z}\label{eq:MorseIneq_additivChi}\,.
 \end{align}
 Let $a_0<\dots<a_L$ be such that $[a_l,a_{l+1}]$ contains precisely one critical value in its interior with
 index $k_l$ and such that $X^{a_0}=\emptyset$ and  $X=X^{a_L}$.
@@ -2565,14 +2565,14 @@ component.
   A plot of the streamlines in figure \ref{pl:n2_hvf_InflowOutflow_asymmetric_single} indicates that $u=\nabla^\perp\psi$ fulfils the
   requirements on the domain
   $$X=\psi^{-1}\brk*{[-0.5,2]}\cap \brk*{\R\times[-2,2]}\,.$$
-  \begin{figure}
+  \begin{figure}%
     \centering
     \includegraphics[width=0.6\textwidth]{../Plots/n2_hvf_InflowOutflow_asymmetric_gray_2.pdf}
     % \includegraphics[width=0.6\textwidth]{../Plots/HarmonicVectorFields_gr3.eps}
     \caption{A plot of $u=\nabla^\perp\psi$ in the region $\psi^{-1}\brk*{[-0.5,2]}\cap \brk*{\R\times[-2,2]}$.
     Here $\psi$ is given by equation \eqref{eq:n2:hvf:InflowOutflow:singleHole}.}
     \label{pl:n2_hvf_InflowOutflow_asymmetric_single}
-  \end{figure}
+  \end{figure}%
   Indeed, an elementary calculation reveals that the origin is a stagnation point of $u$.
 \end{example}
 \nomenclature{$\Phi_2$}{Multiple of the fundamental solution of the Laplace equation on $\R^2$. Given by equation \eqref{eq:n2_defPhi}.}
@@ -2584,7 +2584,7 @@ We now give a similar example, this time with two holes in the domain and two in
   \begin{equation}
     \begin{aligned}
     \psi\colon\R^2\setminus\brk[c]*{-e_1,e_1}&\to\R \\
-    x&\mapsto\Phi_2\brk*{x-e_1}-\Phi_2\brk*{x+e_1}+x_1
+    x&\mapsto\Phi_2\brk*{x-e_1}-\Phi_2\brk*{x+e_1}+x_1\,.
     \end{aligned}\label{eq:n2:hvf:noInflowNoOutflow:doubleHoles}
   \end{equation}
   A plot of the streamlines in figure \ref{pl:n2_hvf_InflowOutflow_symmetric_region} indicates that $u=\nabla^\perp\psi$ 
@@ -2656,7 +2656,7 @@ of such a harmonic vector field.
   \end{align}
   Define the cylinder
   \begin{align*}
-    C = \brk[c]*{\barx\in \R^3\colon x_3^2+x_4^2<1/2} = \R\times B_{1/\sqrt{2}}\subset\R^3
+    C = \brk[c]*{\barx\in \R^3\colon x_3^2+x_4^2<1/2} = \R\times B_{1/\sqrt{2}}\subset\R^3\,.
   \end{align*}
   If we return to our parametrisation \eqref{eq:n4:parametrisation} and take into account condition \eqref{eq:n4_cond2} we see that we have $\barx\in B_1\cap C$ iff
   $\phi_\pm(\barx)\in \Sigma^+$ and hence 
@@ -2857,7 +2857,7 @@ we shall discuss in this section.
   \begin{align}
     \begin{aligned}
     f\colon X&\to\R \\
-    x&\mapsto \frac{x_1^2}{2}-\frac{x_1^3}{3}-\frac{x_2^2}{2}+x_1x_2^2+x_2x_3
+    x&\mapsto \frac{x_1^2}{2}-\frac{x_1^3}{3}-\frac{x_2^2}{2}+x_1x_2^2+x_2x_3\,.
     \end{aligned}
     \label{eq:n3_polynomial_defnf}
   \end{align}
@@ -2866,7 +2866,7 @@ we shall discuss in this section.
     u\colon X&\to\R^3 \\
     x&\mapsto\nabla f(x)=\vect{x_1(1-x_1)+x_2^2 \\
       x_2(2x_1-1)+x_3 \\
-      x_2}
+      x_2}\,.
   \end{align*}
   It follows from setting $u(x)=0$ that $x_2=0$
   and then $x_3=0$ and $x_1\in\brk[c]*{0,1}$. Thus we have that $x\in\brk[c]*{0,e_1}$
@@ -3354,7 +3354,7 @@ proposition \ref{pr:n3_polynomial_regularH} which will be proved later on.
   By equation \eqref{eq:n3_polynomial_smoothConnected_symmetr} the situation around $-e_3$ is analogous but mirrored.
   We thus obtain corresponding connections between the six arcs at $-e_3$ which is summarised in figure \ref{fi:n3_polynomial_arcConnections}.
   Thus we in fact have that the variety $\cV_\e$ is connected.
-  The claim then follows from relation \eqref{eq:n3_polynomial_smoothConnected_relVeps}.
+  The claim then follows with the relation \eqref{eq:n3_polynomial_smoothConnected_relVeps}.
 \end{proof}
 
 It now only remains to show proposition \ref{pr:n3_polynomial_regularH}.
@@ -3447,7 +3447,6 @@ It now only remains to show proposition \ref{pr:n3_polynomial_regularH}.
 	    Dh\big\vert_{x=0}&=\e D\tiq_2\big\vert_{x=0}\\
 	    D^2h\big\vert_{x=0}&=\e D^2\tiq_2\big\vert_{x=0} \\
     D^3h\big\vert_{x=0}\brk*{v,v,v}&=-6v_1^3+18v_1v_2^2-6\e\brk*{v_1^2v_2+v_2^3}
-    \,.
     \end{aligned}
     \label{eq:n3_polynomial_regularH_DPDq}
   \end{align}
@@ -3615,7 +3614,7 @@ We need a preliminary result:
   we calculate
   \begin{align}
     \brk[a]*{\titheta_\rho p_1}_\Sigma
-    =\brk[a]*{\theta_\rho^+p_1}_{\Sigma^+}+\brk[a]*{\theta_{\lambda\brk*{\rho}}^-p_1}_{\Sigma^-}
+    =\brk[a]*{\theta_\rho^+p_1}_{\Sigma^+}+\brk[a]*{\theta_{\lambda\brk*{\rho}}^-p_1}_{\Sigma^-}\,.
     \label{eq:n3_thickening_cutoff_meanVal}
   \end{align}
   Now we have that $p_1<0$ on $\Sigma^-$ and that $p_1>0$ on $\Sigma^+$.
@@ -3685,11 +3684,11 @@ With the help of this cutoff function $\theta_\rho$ we can now formulate our mai
   The main idea is to apply a fixed-point theorem in a suitable manner.
   To simplify notation we only show this for the interior critical point of $f$ at the origin $x=0$.
   Define $g_\rho\leftdef f_\rho-f$.
-  By linearity $g_\rho$ is a solution the system
+  By linearity $g_\rho$ is a solution to the system
   \begin{align*}
     \Delta g_\rho&=0 &&\text{ on }X, \\
     \nabla g_\rho\cdot n&=\brk*{\theta_\rho-1}\brk*{\nabla f\cdot n} &&\text{ on }\Sigma, \\
-    \brk[a]*{g_\rho}_X&=0 &&
+    \brk[a]*{g_\rho}_X&=0 &&\,.
   \end{align*}
   To simplify notation we write $x\lesssim y$ instead of $x\leq cy$ for
   some constant $c\geq1$ which is independent of $\rho$.
