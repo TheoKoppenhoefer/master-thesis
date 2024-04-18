@@ -6,8 +6,8 @@
 %%%%% TITLE PAGE
 
 % \subject{}
-\title{Stagnation points of harmonic vector fields and the domain topology}
-\subtitle{Some applications of Morse theory}
+\title{Stagnation Points of Harmonic Vector Fields and the Domain Topology}
+\subtitle{Some Applications of Morse Theory}
 %\subtitle{Blatt 0}
 \author{Theo Koppenhöfer}
 \date{\today}
@@ -58,10 +58,12 @@
 \end{frame}
 
 \section{Introduction}
-% {
-%   \usebackgroundtemplate{%
-%   \includegraphics[trim=2cm 0 -30cm -30cm,width=\paperwidth,height=\paperheight]{../Art/centering_003_edited.pdf}}
+{
+  % \usebackgroundtemplate{%
+  % {\transparent{0.6}\includegraphics[trim=2cm 3cm 5cm -30cm,width=\paperwidth,height=\paperheight]{../Art/centering_003_colorised_fade.pdf}}}
+  % {\transparent{0.4}\includegraphics[trim=2cm 15cm 10cm 10cm,width=\paperwidth,height=\paperheight]{../Art/centering_003_colorised.pdf}}}
 \begin{frame}[fragile]
+  % \frametitle{Why harmonic vector fields?}
   \begin{block}{Why harmonic vector fields?}
     \begin{itemize}
       \item gravitational field in classical mechanics
@@ -72,7 +74,7 @@
     \end{itemize}
   \end{block}
 \end{frame}
-% }
+}
 
 \begin{frame}[fragile]
   \begin{definition}[Stagnation point]
@@ -91,7 +93,8 @@
 \section{Flowthrough with stagnation point}
 
 \begin{frame}
-  The following question is inspired by \autocite{Alber1992}:
+  The following question is inspired by \autocite["Existence of threedimensional, steady, inviscid,
+  incompressible flows with nonvanishing vorticity"]{Alber1992}:
   \questionFlowthrough
 \end{frame}
 
@@ -100,11 +103,21 @@
   {\transparent{0.6}{\questionFlowthrough}}
   \begin{answer}
     \begin{itemize}
-      \item For $d=2$ dimensions: Not possible, see \autocite{Koppenhoefer2024}.
+      \item For $d=2$ dimensions: Not possible, see \autocite[Prop. 4.1]{Koppenhoefer2024}.
         The proof uses Morse theory but one can also see this with the argument principle from complex analysis.
     \end{itemize}
   \end{answer}
 \end{frame}
+
+\begin{frame}
+  \begin{figure}
+    \centering
+    % \def\svgwidth{\textwidth}
+    \scalebox{0.7}{\input{../Figures/n2_cutOmega_corneredMf.pdf_tex}}
+    \caption{Idea of the proof involving Morse theory.}
+  \end{figure}
+\end{frame}
+
 
 \begin{frame}
   But if one allows for holes in $d=2$ dimensions it becomes possible.
@@ -141,7 +154,7 @@
 \end{frame}
 
 \begin{frame}
-  \begin{proposition}[Negative answer for cylinders, {\autocite{Wahlen2023}} or {\autocite[Prop.\ 5.1]{Koppenhoefer2024}}]\label{pr:n3_inflowOutflowCylinder}
+  \begin{proposition}[Negative answer for cylinders, {\autocite[Prop.\ 5.1]{Koppenhoefer2024}}]\label{pr:n3_inflowOutflowCylinder}
     Let $X=[0,1]\times \overline{U}\subset\R^d$ be a cylinder where $U\subset\R^{d-1}$ is a bounded open set with $C^1$ boundary.
     Let further $f\colon X\to\R$ be non-constant and
     harmonic such that the sides
@@ -219,8 +232,8 @@
 \begin{frame}
   \begin{definition}[Interior type numbers]
     Let $u\colon X\to\R^d$ be a vector field and $x$ an interior stagnation point of $u$.
-    We say that $x$ is \emph{non-degenerate} if the derivative $Du$ is bijective.
-    If in addition $u$ is irrotational we say that $x$ has \emph{Morse index $k$} if $Du$ has exactly $k$ negative eigenvalues.
+    We say that $x$ is \emph{non-degenerate} if the derivative $Du(x)$ is bijective.
+    If in addition $u$ is irrotational we say that $x$ has \emph{Morse index $k$} if $Du(x)$ has exactly $k$ negative eigenvalues.
     The \emph{interior type number} $M_k$ denotes the number of interior stagnation points of index $k$.
   \end{definition}
 \end{frame}
@@ -276,8 +289,15 @@
   \begin{example}[A harmonic function with interior critical points and connected entrant and emergent boundaries, {\autocite[Ex.\ 5.3]{Koppenhoefer2024}}]
     For $d=3$ dimensions we have for $r$ sufficiently large the example $X=B_r$, $u=\nabla f$ with
     \begin{align*}
-      f=\frac{x_1^2}{2}-\frac{x_1^3}{3}-\frac{x_1x_2^2}{2}+x_1x_2^2+x_2x_3
+      f=\frac{x_1^2}{2}-\frac{x_1^3}{3}-\frac{x_1x_2^2}{2}+x_1x_2^2+x_2x_3\,.
     \end{align*}
+    This is
+    \begin{itemize}
+      \item harmonic
+      \item has critical points at $0$ and $e_1$
+      \item connected entrant and emergent boundaries.
+    \end{itemize}
+    
   \end{example}
 \end{frame}
 
@@ -300,11 +320,57 @@
   \end{figure}
 \end{frame}
 
+% \begin{frame}[fragile]
+%   Let $\e=1/r$ and
+%   let $\cV_\e$ be the curve separating $\Sigma^+$ and $\Sigma^-$ projected onto $B_1$. 
+%   \begin{center}
+%     \tikzset{external/export next=false}
+%     \begin{tikzcd}[sep=small]
+%       \text{Smoothness of }\cV_\e \arrow[dr]\arrow[rr] & & \text{Connectedness of }\cV_\e \arrow[ld] \\
+%                                                        & \parbox{4cm}{Regions $\Sigma^+$ and $\Sigma^-$ are connected} & 
+%   \end{tikzcd}
+%   
+%   \end{center}
+% \end{frame}
+
 \begin{frame}
-  One can perturb this solution to show that there exists a harmonic vector field
-  on $B_r$ with interior stagnation point such that $\Sigma^+$ and $\Sigma^-$ have positive distance
-  from one another and are simply connected.
-  This is done in \autocite[Ex.\ 5.12]{Koppenhoefer2024}.
+  Let $\e=1/r$ and
+  let $r\cV_\e$ be the curve separating $\Sigma^+$ and $\Sigma^-$. 
+  \begin{figure}
+    \centering
+    \resizebox{\textwidth}{!}{
+      \input{../Diagrams/Proof_solution.tex}
+    }
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Proof of smoothness (Lemma 5.6)}
+  \begin{itemize}
+    \item Here smoothness means that $\cV_\e$ is a differentiable manifold \textrightarrow Jacobi criterion
+    \item $\cV_\e$ is an algebraic variety \textrightarrow use Gröbner bases to show that Jacobi criterion is fulfilled for sufficiently large $r>0$
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Proof of connectedness (Lemma 5.9)}
+  \begin{figure}
+    \centering
+    \resizebox{\textwidth}{!}{
+      \input{../Diagrams/Proof_connectedness.tex}
+    }
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}
+  \begin{remark}[Thickening $\Sigma^0$]
+    One can perturb this solution to show that there exists a harmonic vector field
+    on $B_r$ with interior stagnation point such that $\Sigma^+$ and $\Sigma^-$ have positive distance
+    from one another and are connected.
+    This is done in \autocite[Ex.\ 5.12]{Koppenhoefer2024}.
+  \end{remark}
 \end{frame}
 
 \begin{frame}
@@ -339,10 +405,10 @@
   % where $M$ is the number of stagnation points and $\chi\brk*{X}$ the Euler characteristic of $X$.
   The following answers the question in $d=2$ dimensions:
   \begin{proposition}[Condition on the number of stagnation points, {\autocite[Prop.\ 6.5]{Koppenhoefer2024}}]\label{pr:n2_hvf_noInflowNoOutflow}
-    Let $X\subset\R^2$ be a compact connected planar manifold with corners
-    and let $u\colon X\to\R^2$ be
-    a Morse harmonic vector field without boundary stagnation points.
-    Then we have the relation $M=-\chi(X)$ where $M$ denotes the number of stagnation points and
+    Let $X\subset\R^2$ be a compact planar manifold with smooth boundary
+    and let $u\colon X\to TX$ be
+    a harmonic vector field without boundary stagnation points and such that the interior stagnation points are isolated.
+    Then we have the relation $M=-\chi(X)$ where $M$ denotes the number of stagnation points counting multiplicities and
     $\chi(X)$ is the Euler characteristic of $X$.
   \end{proposition}
 \end{frame}
@@ -358,27 +424,27 @@
   \end{figure}
 \end{frame}
 
-\begin{frame}
-  \begin{example}[Stagnation points on the boundary, {\autocite[Ex.\ 6.9]{Koppenhoefer2024}}]
-    Let $X=\overline{B}_4\setminus\brk*{B_1\brk*{2e_1}\cup B_1\brk*{-2e_1}}$ be the domain and let the stream function $\psi$ be given by
-    \begin{equation*}
-      \begin{aligned}
-        \Delta \psi&=0 &&\text{on }\openX, \\
-        \psi&=0 &&\text{on the outer ring }4S^1, \\
-        \psi&=-1 &&\text{on the left inner ring }S^1(-2e_1), \\
-        \psi&=1 &&\text{on the right inner ring }S^1(2e_1),
-      \end{aligned}\label{eq:n2:hvf:roundRegion:InflowOutflow}
-    \end{equation*} 
-  \end{example}
-  
-\end{frame}
+% \begin{frame}
+%   \begin{example}[Stagnation points on the boundary, {\autocite[Ex.\ 6.9]{Koppenhoefer2024}}]
+%     Let $X=\overline{B}_4\setminus\brk*{B_1\brk*{2e_1}\cup B_1\brk*{-2e_1}}$ be the domain and let the stream function $\psi$ be given by
+%     \begin{equation*}
+%       \begin{aligned}
+%         \Delta \psi&=0 &&\text{on }\openX\,, \\
+%         \psi&=0 &&\text{on the outer ring }4S^1\,, \\
+%         \psi&=-1 &&\text{on the left inner ring }S^1(-2e_1)\,, \\
+%         \psi&=1 &&\text{on the right inner ring }S^1(2e_1)\,.
+%       \end{aligned}\label{eq:n2:hvf:roundRegion:InflowOutflow}
+%     \end{equation*} 
+%   \end{example}
+%   
+% \end{frame}
 
 \begin{frame}
   \begin{figure}
     \centering
     % \includegraphics[width=0.6\textwidth]{../Plots/HarmonicVectorFields_gr1.eps}
     \includegraphics[width=0.6\textwidth]{../Plots/n2_hvf_roundRegion_InflowOutflow_gray_2.pdf}
-    \caption{A plot of $u=\nabla^\perp\psi$ in the domain $X$ given as in the previous slide.}
+    \caption{A plot of $u=\nabla^\perp\psi$ in the domain $X$ given as in \autocite[Ex.\ 6.9]{Koppenhoefer2024}.}
     \label{pl:n2_hvf_noInflowNoOutflow}
   \end{figure}
 \end{frame}
@@ -387,7 +453,7 @@
 \begin{frame}
   \begin{proposition}[Condition on the domain topology, {\autocite[Prop.\ 6.11]{Koppenhoefer2024}}]\label{pr:n3_domainCond}
     Let $X$ be a compact orientable odd dimensional manifold with smooth boundary.
-    Let further $u\colon X\to TX$ a smooth vector field with isolated stagnation points on the interior and without
+    Let further $u\colon X\to TX$ be a smooth vector field with isolated stagnation points on the interior and without
     boundary stagnation points. Then the Euler characteristic of the domain $\chi\brk*{X}=0$ has to vanish.
   \end{proposition} 
 \end{frame}
@@ -397,14 +463,14 @@
     Let $X\subset\R^3$ be a compact three-dimensional manifold with smooth boundary and let further
     $u\colon X\to TX$ be a Morse harmonic vector field with no
     inflow or outflow through the boundary. Then
-    we have the condition $M_1=M_2$ between the type numbers and the Euler characteristic of the domain $\chi\brk*{X}=0$ vanishes.
+    we have the condition $M_1=M_2$ between the interior type numbers and the Euler characteristic of the domain $\chi\brk*{X}=0$ vanishes.
   \end{corollary}
 \end{frame}
 
 \begin{frame}
   \frametitle{Summary}
   \begin{itemize}
-    \item Is it possible to have an interior stagnation point and simply connected entrant and emergent boundaries?
+    \item Is it possible to have an interior stagnation point and connected entrant and emergent boundaries?
       \begin{itemize}
         \item $d=2$ dimensions: No, unless one allows for holes in the domain
         \item $d=3$ dimensions: Yes and $M_1=M_2$, but not possible for cylinders

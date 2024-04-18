@@ -23,6 +23,10 @@ figures:
 	cd ../Figures; for file in $$(ls *.svg); do inkscape --export-pdf=$${file%.svg}.pdf --export-latex $$file; done
 	make quick
 
+diagrams:
+	cd ../Diagrams; for file in $$(ls *.dia); do dia --export=$${file%.dia}.tex $$file; done; ./modify_diagrams.sh
+	make quick
+
 bibliography:
 	biber $(NAME)
 	make quick

@@ -22,10 +22,10 @@
 \documenttype{Master thesis in mathematics}
 
 %\subject{, VT23}
-\title{Some relations between equilibria of harmonic vector fields and the domain topology}
-%\subtitle{}
+\title{Stagnation Points of Harmonic Vector Fields and the Domain Topology}
+\subtitle{Some Applications of Morse Theory}
 \author{Theo Koppenhöfer}
-\date{\today}
+\date{April 2024}
 
 \addbibresource{bibliography.bib}
 \graphicspath{{../Art/}}
@@ -40,7 +40,7 @@
 
 % The following displays the labels, uncomment for final version
 % \usepackage{showlabels}
-
+\newcommand{\blankPage}{\newpage\null\pagestyle{empty}\newpage}
 \newcommand{\openX}{\interior\brk*{X}}
 
 %%%%% The content starts here %%%%%%%%%%%%%
@@ -51,7 +51,17 @@
 % \maketitle 
 \includepdf[pages={1}]{../Mall/2024_Koppenhoefer_E16.pdf}
 
-\setcounter{page}{-4}
+\setcounter{page}{-3}
+
+
+\maketitle
+
+\tikzset{external/export next=false}
+\tikz[remember picture,overlay] \node[opacity=1,inner sep=0pt] at (current page.center){\includegraphics[width=1.3\paperwidth,height=1.3\paperheight]{../Art/centering_003_colorised.pdf}};
+\pagestyle{empty}
+\newpage
+
+\setcounter{page}{-3}
 
 \section*{Abstract}
 
@@ -128,9 +138,6 @@ for the Master thesis discussions and Ludvig Sundell for having pointed out Grö
 Finally I would like to thank my family, friends and teachers for having supported me throughout my studies.
 
 
-\newpage
-\tikzset{external/export next=false}
-\tikz[remember picture,overlay] \node[opacity=1,inner sep=0pt] at (current page.center){\includegraphics[width=1.8\paperwidth,height=1.6\paperheight]{../Art/centering_003_colorised.pdf}};
 
 \tableofcontents
 
@@ -4265,7 +4272,7 @@ without critical points on the boundary.
 % \end{proposition}
 \begin{proposition}[Condition on the domain topology]\label{pr:n3_domainCond}
   Let $X$ be a compact orientable odd dimensional manifold with smooth boundary.
-  Let further $u\colon X\to TX$ a smooth vector field with isolated stagnation points on the interior and without
+  Let further $u\colon X\to TX$ be a smooth vector field with isolated stagnation points on the interior and without
   boundary stagnation points. Then the Euler characteristic of the domain $\chi\brk*{X}=0$ has to vanish.
 \end{proposition}
 \begin{proof}
@@ -4288,7 +4295,7 @@ This yields as a consequence
   Let $X\subset\R^3$ be a compact three-dimensional manifold with smooth boundary and let further
   $u\colon X\to TX$ be a Morse harmonic vector field with no
   inflow or outflow through the boundary. Then
-  we have the condition $M_1=M_2$ between the type numbers and the Euler characteristic of the domain $\chi\brk*{X}=0$ vanishes.
+  we have the condition $M_1=M_2$ between the interior type numbers and the Euler characteristic of the domain $\chi\brk*{X}=0$ vanishes.
 \end{corollary}
 \begin{proof}
   Note that $u$ fulfils the conditions of proposition \ref{pr:n3_domainCond} and thus the Euler characteristic
@@ -4491,6 +4498,12 @@ ball theorem.
 
 \nocite{*}
 \printbibliography
+
+\newpage
+\tikzset{external/export next=false}
+\tikz[remember picture,overlay] \node[opacity=0.7,inner sep=0pt] at (current page.center){\includegraphics[width=1.8\paperwidth,height=1.6\paperheight]{../Art/chaos_001_colorised.pdf}};
+\pagestyle{empty}
+\newpage
 
 \includepdf[pages={2}]{../Mall/2024_Koppenhoefer_E16.pdf}
 
